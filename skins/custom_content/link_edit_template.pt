@@ -1,0 +1,39 @@
+<html metal:use-macro="here/main_template/macros/master">
+  <head>
+    <title>link_edit form</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+  </head>
+<body>
+<div metal:fill-slot="header">
+  <div metal:use-macro="here/widgets/macros/generic_header">generic_header</div>
+</div>
+<div metal:fill-slot="main" i18n:domain="cmf_default">
+<div class="Desktop">
+<div class="Link">
+
+<form action="." method="post" tal:define="form options/form"
+      tal:attributes="action string:${here/absolute_url}/link_edit_form">
+<table class="FormLayout">
+ <tr>
+  <th i18n:translate="">URL</th>
+  <td>
+   <input type="text" name="remote_url" value=""
+          tal:attributes="value here/remote_url" />
+  </td>
+ </tr>
+ <tr>
+  <td> <br /> </td>
+  <td>
+    <div metal:use-macro="context/form_widgets/macros/buttons">
+      buttons here
+    </div>
+  </td>
+ </tr>
+</table>
+</form>
+
+</div>
+</div>
+</div>
+</body>
+</html>

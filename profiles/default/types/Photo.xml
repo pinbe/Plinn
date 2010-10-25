@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<object name="Photo" meta_type="Factory-based Type Information"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title">Photo</property>
+ <property name="description">Photo</property>
+ <property name="content_icon">photo_icon.gif</property>
+ <property name="content_meta_type">Photo</property>
+ <property name="product">Portfolio</property>
+ <property name="factory">addPhoto</property>
+ <property name="immediate_view">object/edit</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types"/>
+ <property name="allow_discussion">True</property>
+ <alias from="(Default)" to="photo_view"/>
+ <alias from="info" to="photo_info"/>
+ <alias from="view" to="photo_view"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    url_expr="string:${object_url}/photo_view" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    url_expr="string:${object_url}/photo_edit_form" visible="True">
+  <permission value="Manage properties"/>
+ </action>
+ <action title="Share" action_id="localroles" category="object"
+    condition_expr="" url_expr="string:${object_url}/folder_localrole_form"
+    visible="True">
+  <permission value="Set Local Roles"/>
+ </action>
+</object>

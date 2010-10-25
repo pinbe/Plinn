@@ -1,0 +1,143 @@
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="container/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<div metal:fill-slot="javascript_head_slot">
+			<script type="text/javascript" tal:attributes="src string:$portal_url/calendar.js"></script>
+			<script type="text/javascript" tal:attributes="src string:$portal_url/lang/calendar-fr.js"></script>
+			<script type="text/javascript" tal:attributes="src string:$portal_url/calendar-setup.js"></script>
+			<script type="text/javascript" tal:attributes="src string:$portal_url/generic_header_script.js"></script>
+		</div>
+  </head>
+
+  <body i18n:domain="plinn">
+    <div metal:fill-slot="main"
+    		 tal:define="form options/form;
+    		 			 fields form/fields">
+      <form method="post" tal:attributes="action form/action">
+        <table class="TwoColumnForm" cellspacing="0">
+          <tr>
+            <th i18n:translate="" nowrap="nowrap">Event Name</th>
+            <td nowrap="nowrap">
+              <input type="text" name="title" value="Title" size="35" tal:attributes="value fields/title" maxlength="100" />
+            </td>
+            <th nowrap="nowrap" style="text-align:left" i18n:translate="">Event type</th>
+          </tr>
+          <tr>
+            <th i18n:translate="">Location</th>
+            <td nowrap="nowrap">
+              <input type="text" name="location" value="location" size="35" tal:attributes="value fields/location" maxlength="100" />
+            </td>
+            <td rowspan="4" nowrap="nowrap">
+              <select name="event_type:list" size="5" multiple="multiple" tal:define="contentSubject fields/event_type; allowedSubjects python:here.portal_metadata.listAllowedSubjects(here)">
+                <option value="subj" tal:repeat="subj allowedSubjects" tal:attributes="value subj; selected python:subj in contentSubject" tal:content="subj" i18n:translate="">Event Type N</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th nowrap="nowrap" i18n:translate="">Contact Name</th>
+            <td nowrap="nowrap">
+              <input type="text" name="contact_name" value="contact_name" size="35" tal:attributes="value fields/contact_name" maxlength="100" />
+            </td>
+          </tr>
+          <tr>
+            <th nowrap="nowrap" i18n:translate="">Contact Email</th>
+            <td nowrap="nowrap">
+              <input type="text" name="contact_email" value="contact_email" size="35" tal:attributes="value fields/contact_email" maxlength="100" />
+            </td>
+          </tr>
+          <tr>
+            <th nowrap="nowrap" i18n:translate="">Contact Phone</th>
+            <td nowrap="nowrap">
+              <input id="cb_contact_phone" type="text" name="contact_phone" value="contact_phone" size="35" tal:attributes="value fields/contact_phone" maxlength="100" />
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td colspan="2">
+              <table>
+                <tr>
+                  <td>
+										<fieldset tal:define="start_date fields/start_date;
+										year start_date/year ;
+										month python:str(start_date['month']).zfill(2) ;
+										day python:str(start_date['day']).zfill(2) ;
+										hour python:str(start_date['hour']).zfill(2) ;
+										minute python:str(start_date['minute']).zfill(2) ">
+										<legend i18n:translate="">Beginning</legend>
+										<div id="start_date_fields">
+											<input id="start_date" type="hidden" /><span i18n:translate="" tal:omit-tag=""
+											><span i18n:name="month"
+											><input id="start_date_month" type="text" name="start_date.month:record" size="2" tal:attributes="value month"
+											/></span>&nbsp;/&nbsp;<span i18n:name="day"
+											><input id="start_date_day" type="text" name="start_date.day:record" size="2" tal:attributes="value day"
+											/></span>&nbsp;/&nbsp;<span i18n:name="year"
+											><input id="start_date_year" type="text" name="start_date.year:record" size="4" tal:attributes="value year"
+											/></span>&nbsp;&nbsp;<span i18n:name="hour"
+											><input id="start_date_hour" type="text" name="start_date.hour:record" size="2" tal:attributes="value hour"
+											/></span>&nbsp;:&nbsp;<span i18n:name="minute"
+											><input id="start_date_minute" type="text" name="start_date.minute:record" size="2" tal:attributes="value minute"
+											/></span></span>
+											<input id="show_start_date_cal" type="button" value="..." /><br />
+										</div>
+										</fieldset>
+                  </td>
+                  <td>
+                    <fieldset tal:define="end_date fields/end_date;
+										year end_date/year ;
+										month python:str(end_date['month']).zfill(2) ;
+										day python:str(end_date['day']).zfill(2) ;
+										hour python:str(end_date['hour']).zfill(2) ;
+										minute python:str(end_date['minute']).zfill(2) ">
+										<legend i18n:translate="">End</legend>
+										<div id="end_date_fields">
+											<input id="end_date" type="hidden" /><span i18n:translate="" tal:omit-tag=""
+											><span i18n:name="month"
+											><input id="end_date_month" type="text" name="end_date.month:record" size="2" tal:attributes="value month"
+											/></span>&nbsp;/&nbsp;<span i18n:name="day"
+											><input id="end_date_day" type="text" name="end_date.day:record" size="2" tal:attributes="value day"
+											/></span>&nbsp;/&nbsp;<span i18n:name="year"
+											><input id="end_date_year" type="text" name="end_date.year:record" size="4" tal:attributes="value year"
+											/></span>&nbsp;&nbsp;<span i18n:name="hour"
+											><input id="end_date_hour" type="text" name="end_date.hour:record" size="2" tal:attributes="value hour"
+											/></span>&nbsp;:&nbsp;<span i18n:name="minute"
+											><input id="end_date_minute" type="text" name="end_date.minute:record" size="2" tal:attributes="value minute"
+											/></span></span>
+											<input id="show_end_date_cal" type="button" value="..." /><br />
+										</div>
+										</fieldset>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">Description</th>
+            <td colspan="2" nowrap="nowrap">
+              <textarea name="description" rows="6" cols="55" tal:content="fields/description">Description</textarea>
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">Event URL</th>
+            <td colspan="2">
+              <input type="text" name="event_url" value="event_url" size="55" tal:attributes="value fields/event_url" maxlength="100" />
+            </td>
+          </tr>
+          <tr>
+            <th colspan="3">
+            	<script type="text/javascript">
+							//<!--
+							new MetadataDateManager('start_date', new Date("1969/12/31"));
+							new MetadataDateManager('end_date', new Date("1969/12/31"));
+            	//-->
+            	</script>
+            	<br />
+              <input type="submit" value="Save" name="change_and_view" i18n:attributes="value" />
+            </th>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </body>
+
+</html>

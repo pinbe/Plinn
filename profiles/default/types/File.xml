@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<object name="File" meta_type="Factory-based Type Information"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title">File</property>
+ <property name="description">Contain arbitrary downloadable files.</property>
+ <property name="content_icon">application.png</property>
+ <property name="content_meta_type">Plinn File</property>
+ <property name="product"></property>
+ <property name="factory">plinn.file</property>
+ <property name="immediate_view">object/edit</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types"/>
+ <property name="allow_discussion">True</property>
+ <alias from="(Default)" to="file_view"/>
+ <alias from="info" to="file_info"/>
+ <alias from="view" to="file_view"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    url_expr="string:${object_url}/file_view" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Web preview" action_id="preview" category="object"
+    condition_expr="" url_expr="string:${object_url}/preview" visible="False">
+  <permission value="View"/>
+ </action>
+ <action title="Download" action_id="download" category="object"
+    condition_expr="" url_expr="string:${object_url}" visible="False">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    url_expr="string:${object_url}/file_edit_form" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="Share" action_id="localroles" category="object"
+    condition_expr="" url_expr="string:${object_url}/folder_localrole_form"
+    visible="True">
+  <permission value="Set Local Roles"/>
+ </action>
+ <action title="Status history" action_id="history" category="object"
+    condition_expr="" url_expr="string:${object_url}/content_status_history"
+    visible="True">
+  <permission value="Request review"/>
+  <permission value="Review portal content"/>
+ </action>
+</object>

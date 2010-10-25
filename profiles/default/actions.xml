@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="CMF Actions Tool"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <action-provider name="portal_types"/>
+ <action-provider name="portal_workflow"/>
+ <action-provider name="portal_actions"/>
+ <action-provider name="portal_calendar"/>
+ <object name="user" meta_type="CMF Action Category">
+  <property name="title"></property>
+  <object name="login" meta_type="CMF Action" i18n:domain="cmf_default">
+   <property name="title" i18n:translate="">Login</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/login_form</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">not: member</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="mystuff" meta_type="CMF Action" i18n:domain="cmf_default">
+   <property name="title" i18n:translate="">My stuff</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${portal/portal_membership/getHomeUrl}/folder_contents</property>
+   <property name="icon_expr"></property>
+   <property
+      name="available_expr">python: member and portal.portal_membership.getHomeFolder()</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="addFavorite" meta_type="CMF Action" i18n:domain="cmf_default">
+   <property name="title" i18n:translate="">Add to favorites</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${object_url}/addtoFavorites</property>
+   <property name="icon_expr"></property>
+   <property
+      name="available_expr">portal/portal_membership/getHomeFolder</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">False</property>
+  </object>
+  <object name="favorites" meta_type="CMF Action" i18n:domain="cmf_default">
+   <property name="title" i18n:translate="">My favorites</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${portal/portal_membership/getHomeUrl}/Favorites/folder_contents</property>
+   <property name="icon_expr"></property>
+   <property
+      name="available_expr">python: member and hasattr(portal.portal_membership.getHomeFolder(), "Favorites")</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">False</property>
+  </object>
+  <object name="preferences" meta_type="CMF Action" i18n:domain="cmf_default">
+   <property name="title" i18n:translate="">Preferences</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/personalize_form</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">member</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="logout" meta_type="CMF Action" i18n:domain="cmf_default">
+   <property name="title" i18n:translate="">Log out</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/logout?noajax=1</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">member</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="logged_in" meta_type="CMF Action" i18n:domain="cmf_default">
+   <property name="title" i18n:translate="">Logged in</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/index_html</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">False</property>
+  </object>
+  <object name="join" meta_type="CMF Action" i18n:domain="cmf_default">
+   <property name="title" i18n:translate="">Join</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/join_form</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">not: member</property>
+   <property name="permissions">
+    <element value="Add portal member"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+ </object>
+ <object name="folder" meta_type="CMF Action Category">
+  <property name="title"></property>
+  <object name="folderContents" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">List</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${folder_url}/folder_contents</property>
+   <property name="icon_expr"></property>
+   <property
+      name="available_expr">python:member and folder is not object and object.portal_type !='Event'</property>
+   <property name="permissions">
+    <element value="List folder contents"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+ </object>
+ <object name="global" meta_type="CMF Action Category">
+  <property name="title"></property>
+  <object name="manage_boxes" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">Manage Boxes</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${portal_url}/manage_boxes?noajax=1</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Manage portal"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="send_email" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">Send an email</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${object_url}/send_email_form</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">member</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="undo" meta_type="CMF Action" i18n:domain="cmf_default">
+   <property name="title" i18n:translate="">Undo</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/undo_form</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">member</property>
+   <property name="permissions">
+    <element value="List undoable changes"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="configPortal" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">Configure Portal</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/reconfig_form</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Manage portal"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="manage_direcories" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">Directory</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/groups_members</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Manage Groups"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+ </object>
+ <object name="discussion" meta_type="CMF Action Category">
+  <property name="title"></property>
+  <object name="reply" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">Add comment...</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${object_url}/discussion_reply_form</property>
+   <property name="icon_expr"></property>
+   <property
+      name="available_expr">python: object is not None and object.meta_type != 'Discussion Item' and portal.portal_discussion.isDiscussionAllowedFor(object)</property>
+   <property name="permissions">
+    <element value="Reply to item"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+ </object>
+ <object name="object" meta_type="CMF Action Category">
+  <property name="title"></property>
+  <object name="noajax" meta_type="CMF Action" i18n:domain="cmf_default">
+   <property name="title" i18n:translate="">Syndicate</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${folder_url}/synPropertiesForm</property>
+   <property name="icon_expr"></property>
+   <property
+      name="available_expr">python: folder is object and portal.portal_syndication.isSiteSyndicationAllowed()</property>
+   <property name="permissions">
+    <element value="Manage properties"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="calendar_view" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">Calendar View</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${folder_url}/calendar_view</property>
+   <property name="icon_expr"></property>
+   <property
+      name="available_expr">python:member and folder is object and object.portal_type in ['Plinn Folder', 'Portfolio']</property>
+   <property name="permissions">
+    <element value="List folder contents"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+ </object>
+</object>

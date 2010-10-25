@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf">
+  <cmf:registerDirectory name="content" recursive="True"/>
+  <cmf:registerDirectory name="control" recursive="True"/>
+  <cmf:registerDirectory name="generic" recursive="True"/>
+  <cmf:registerDirectory name="custom_content" recursive="True"/>
+  <cmf:registerDirectory name="custom_control" recursive="True"/>
+  <cmf:registerDirectory name="custom_generic" recursive="True"/>
+  <cmf:registerDirectory name="images" recursive="True"/>
+  <cmf:registerDirectory name="ajax_scripts" recursive="True"/>
+  <cmf:registerDirectory name="jscalendar" recursive="True"/>
+</configure>

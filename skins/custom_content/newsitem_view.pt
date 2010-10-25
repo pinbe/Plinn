@@ -1,0 +1,15 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template_view/macros/master">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+   <metal:block fill-slot="base"
+   ><tal:span tal:replace="structure here/getBaseTag"
+  /></metal:block>
+  </head>
+  <body>
+    <div metal:fill-slot="main">
+     <div tal:replace="structure here/CookedBody">Body</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Local roles macros</title>
+    <link href="../patch_skins/zpt_stylesheet.css" rel="stylesheet" media="screen" />
+    <link href="../content/plinn_style.css" rel="stylesheet" media="screen" />
+  </head>
+
+  <body i18n:domain="plinn">
+    <pre>local_roles_summary</pre>
+    <hr />
+    <div metal:define-macro="local_roles_summary" tal:omit-tag="">
+     <div tal:repeat="role here/valid_roles">
+        <div tal:define="allMembersInRole python:here.getAllMembersInRole(role)" tal:condition="allMembersInRole" tal:omit-tag="">
+          <div tal:content="role" i18n:translate="">Role</div>
+          <ul>
+            <li tal:repeat="member allMembersInRole" tal:content="member/getMemberFullName">member</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <pre>assign_members</pre>
+    <hr />
+    <table metal:define-macro="assign_members"
+           tal:define="candidateRoles								python:mtool.getCandidateLocalRoles(here);
+		           				 rRole 												request/roleToManage | nothing ;
+		           				 currentManagedRole						python:here.getOrSetSessionVar('roleToManage', rRole, candidateRoles and candidateRoles[0] or '') ;
+		           				 currentManagedRole						python: (currentManagedRole in candidateRoles) and currentManagedRole or candidateRoles[0] ;
+		           			   usersAndGroupsWithLocalRole	python:here.users_with_local_role(currentManagedRole) ;
+		           			   prefix												here/acl_users/getGroupPrefix ;
+		           			   usersWithLocalRole						python:[ u for u in usersAndGroupsWithLocalRole if not u.startswith(prefix) ] ;
+		           			   insideList										python:mtool.getMembers(usersWithLocalRole) ;
+		           			   outsideList									python:mtool.getOtherMembers(usersWithLocalRole)">
+      <tr>
+        <th i18n:translate="">
+          Current Role: "<span i18n:name="current_role" tal:content="currentManagedRole" i18n:translate="">Manager</span>"
+        </th>
+        <th>
+          <form action="." method="get" tal:attributes="action python:'%s/%s' % (here.absolute_url(), template.id)">
+            <select name="roleToManage" size="1" id="roleSelector">
+              <option tal:repeat="role candidateRoles" value="role" tal:content="role" tal:attributes="value role ; selected python:role == currentManagedRole" i18n:translate="">Manager</option>
+            </select>&nbsp;<noscript><input type="submit" value="ok" i18n:attributes="value" /></noscript>
+          </form>
+          <script type="text/javascript">
+          // <!--
+            addListener(document.getElementById('roleSelector'), 'change', 
+              function(evt){
+                var selector = getTargetedObject(evt);
+                var fm = new FormManager(selector.form);
+                fm.submit();
+              }
+            );
+          // -->
+          </script>
+        </th>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <form action="." method="post" tal:attributes="action here/absolute_url">
+            <input type="hidden" name="role" value="Manager" tal:attributes="value currentManagedRole" /><input type="hidden" name="redirect" value="." tal:attributes="value template/id" />
+            <table>
+              <tr>
+                <th i18n:translate="">
+                  Haven't role
+                </th>
+                <td>
+                  <br />
+                </td>
+                <th i18n:translate="">
+                  Have role
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <select name="append_members:list" size="20" multiple="multiple" tal:condition="outsideList">
+                    <option value="one" tal:repeat="member outsideList"
+                      tal:attributes="value member/getId"
+                      tal:content="member/getMemberFullName">NAME Surname or login</option>
+                  </select>
+                  <div class="info_message" tal:condition="not:outsideList" i18n:translate="">
+                    No more member available for the <span tal:content="currentManagedRole" i18n:name="role" i18n:translate="" tal:omit-tag="">Manager</span> role in this folder
+                  </div>
+                </td>
+                <td class="twins_list">
+                  <input tal:condition="outsideList" type="submit" name="append_users_in_local_role:method" value="&gt;&gt;&gt;" /><br />
+                  <br />
+                  <input tal:condition="insideList" type="submit" name="remove_users_in_local_role:method" value="&lt;&lt;&lt;" />
+                </td>
+                <td>
+                  <select name="remove_members:list" size="20" multiple="multiple" tal:condition="insideList">
+                    <option tal:repeat="member insideList" value="one"
+              		  tal:attributes="value member/getId"
+                      tal:content="member/getMemberFullName">NAME Surname or login</option>
+                  </select>
+                  <div class="info_message" tal:condition="not:insideList" i18n:translate="">
+                    Nobody have got the <span tal:content="currentManagedRole" i18n:name="role" i18n:translate="" tal:omit-tag="">Manager</span> role in this folder
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </td>
+      </tr>
+    </table>
+    <pre>assign_groups</pre>
+    <hr />
+    <table metal:define-macro="assign_groups"
+           tal:define="candidateRoles			python:mtool.getCandidateLocalRoles(here);
+		           			   gtool							here/portal_groups ;
+		           			   group_prefix				here/acl_users/getGroupPrefix ;
+		           			   prefixLength				python:len(group_prefix) ;
+		           				 rRole 							request/roleToManage | nothing ;
+		           				 currentManagedRole python:here.getOrSetSessionVar('roleToManage', rRole, candidateRoles and candidateRoles[0] or '') ;
+		           				 currentManagedRole	python: (currentManagedRole in candidateRoles) and currentManagedRole or candidateRoles[0] ;
+		           				 groupNames					python:gtool.getGroupsWithLocalRole(here, currentManagedRole);
+		           			   insideList					python:gtool.getGroups(groupNames) ;
+		           			   outsideList				python:gtool.getOtherGroups(groupNames)">
+      <tr>
+        <th i18n:translate="">Current Role: "<span i18n:name="current_role" tal:content="currentManagedRole" i18n:translate="">Manager</span>"</th>
+        <th>
+          <form action="." method="get" tal:attributes="action python:'%s/%s' % (here.absolute_url(), template.id)" id="local_role_selector">
+            <select name="roleToManage" size="1" id="roleSelector">
+              <option tal:repeat="role candidateRoles" value="role" tal:content="role" tal:attributes="value role ; selected python:role == currentManagedRole" i18n:translate="">Manager</option>
+            </select>&nbsp;<noscript><input type="submit" value="ok" i18n:attributes="value" /></noscript>
+          </form>
+          <script type="text/javascript">
+          // <!--
+            addListener(document.getElementById('roleSelector'), 'change', 
+              function(evt){
+                var selector = getTargetedObject(evt);
+                var fm = new FormManager(selector.form);
+                fm.submit();
+              }
+            );
+          // -->
+          </script>
+        </th>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <form action="." method="post" tal:attributes="action here/absolute_url">
+            <input type="hidden" name="role" value="Manager" tal:attributes="value currentManagedRole" /><input type="hidden" name="redirect" value="." tal:attributes="value template/id" />
+            <table>
+              <tr>
+                <th i18n:translate="">Haven't role</th>
+                <td><br /></td>
+                <th i18n:translate="">Have role</th>
+              </tr>
+              <tr>
+                <td>
+                  <select name="append_members:list" size="20" multiple="multiple" tal:condition="outsideList">
+                    <option value="one" tal:repeat="member outsideList"
+                      tal:attributes="value member/id"
+                      tal:content="python:member.title or member.id[prefixLength:]">NAME Surname or login</option>
+                  </select>
+                  <div class="info_message" tal:condition="not:outsideList" i18n:translate="">
+                    No more group available for the <span tal:content="currentManagedRole" i18n:name="role" i18n:translate="" tal:omit-tag="">Manager</span> role in this folder
+                  </div>
+                </td>
+                <td class="twins_list">
+                  <input tal:condition="outsideList" type="submit" name="append_users_in_local_role:method" value="&gt;&gt;&gt;" /><br /><br />
+                  <input tal:condition="insideList" type="submit" name="remove_users_in_local_role:method" value="&lt;&lt;&lt;" />
+                </td>
+                <td>
+                  <select name="remove_members:list" size="20" multiple="multiple" tal:condition="insideList">
+                    <option tal:repeat="member insideList" value="one"
+              		  tal:attributes="value member/id"
+                      tal:content="python:member.title or member.id[prefixLength:]">NAME Surname or login</option>
+                  </select>
+                  <div class="info_message" tal:condition="not:insideList" i18n:translate="">
+                    No group have got the <span tal:content="currentManagedRole" i18n:name="role" i18n:translate="" tal:omit-tag="">Manager</span> role in this folder
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </td>
+      </tr>
+    </table>
+    <pre>local_roles_settings</pre>
+    <hr />
+    <table class="config" metal:define-macro="local_roles_settings">
+      <tr>
+        <td tal:define="ai_dicts here/local_roles_actions;
+                     useQueryString python:0">
+          <div metal:use-macro="here/widgets/macros/tabs">
+            GRUF tabs
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div tal:omit-tag="" metal:define-slot="form">
+            slot form here
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+
+</html>

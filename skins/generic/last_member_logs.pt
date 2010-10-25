@@ -1,0 +1,37 @@
+<html metal:use-macro="here/main_template/macros/master"
+      xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Last member logs</title>
+  </head>
+  <body metal:fill-slot="main_no_tabs" tal:omit-tag=""
+        i18n:domain="plinn"
+        tal:define="psf python:['getMemberSortableFormat', 'last_login_time'] ;
+                    rsorted_field request/form/sorted_field|nothing ;
+                    sorted_field python: here.getOrSetSessionVar('sorted_field', rsorted_field, 'last_login_time');
+                    sorted_field python: sorted_field in psf and sorted_field or here.getOrSetSessionVar('sorted_field', 'last_login_time');
+                    rsorted_dir request/form/sorted_dir|nothing;
+                    sorted_dir python: here.getOrSetSessionVar('sorted_dir', rsorted_dir, 'up');
+                    arrow python:sorted_dir=='up' and 'arrowUp.gif' or 'arrowDown.gif';
+                    alternateText python:sorted_dir == 'up' and 'ascending sort' or 'descending sort';
+                    members python:here.sort_folder_contents(mtool.listMembers(), sorted_field, sorted_dir);
+                    toggleDir python:lambda col, sorted_field, dir : (col == sorted_field) and (dir=='up' and 'down' or 'up') or dir">
+    <h1 i18n:translate="">Last member login times</h1>
+    <table cellspacing="0" class="listing">
+      <tr>
+        <th tal:define="col string:getMemberSortableFormat">
+          <a href="." tal:attributes="href python:'?sorted_field=%s&sorted_dir=%s' % (col, toggleDir(col, sorted_field, sorted_dir))" i18n:translate="">Name</a>
+            <img tal:condition="python:sorted_field == col" tal:attributes="src arrow ; alt alternateText" i18n:attributes="alt" />
+        </th>
+        <th tal:define="col string:last_login_time">
+          <a href="." tal:attributes="href python:'?sorted_field=%s&sorted_dir=%s' % (col, toggleDir(col, sorted_field, sorted_dir))" i18n:translate="">Last login time</a>
+          <img  tal:condition="python:sorted_field == col" tal:attributes="src arrow ; alt alternateText" i18n:attributes="alt" />
+        </th>
+      </tr>
+      <tr tal:repeat="m members" tal:attributes="class python:repeat['m'].odd() and 'odd' or 'even'">
+        <td><a tal:content="m/getMemberFullName" tal:attributes="href string:mailto:${m/email}>">user fullname</a></td>
+        <td tal:content="python:m.last_login_time.strftime(locale_date_fmt)" tal:on-error="string:—"></td>
+      </tr>
+    </table>
+  </body>
+</html>

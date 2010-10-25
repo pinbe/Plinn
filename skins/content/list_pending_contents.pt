@@ -1,0 +1,69 @@
+<html metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <title>list_pending_contents</title>
+  </head>
+
+  <body metal:fill-slot="main_no_tabs" tal:omit-tag="" i18n:domain="plinn"
+  			tal:define="b_start string:0;
+                    checkPerm nocall: mtool/checkPermission;
+                    b_start request/b_start | b_start;
+                    items here/getPendingDocuments;
+	                  psf python:['title', 'actor', 'submitTime'] ;
+	                  rsorted_field request/form/sorted_field|nothing ;
+			       				sorted_field python: here.getOrSetSessionVar('sorted_field', rsorted_field, 'title');
+			       				sorted_field python: sorted_field in psf and sorted_field or here.getOrSetSessionVar('sorted_field', 'title');
+			       				rsorted_dir request/form/sorted_dir|nothing ;
+			       				sorted_dir python: here.getOrSetSessionVar('sorted_dir', rsorted_dir, 'up') ;
+			  						arrow python:test(sorted_dir=='up', 'arrowUp.gif', 'arrowDown.gif');
+							      sortedItems python: here.sort_folder_contents(items, sorted_field, sorted_dir);
+                    Batch python:modules['Products.Plinn'].Batch;
+                    batch python:Batch(sortedItems, 50, request.get('b_start', 0), orphan=0)">
+    <h2 i18n:translate="">Pending documents</h2>
+    <div metal:use-macro="here/batch_macros/macros/navigation">batch navigation</div>
+    <table class="listing" cellspacing="0">
+      <tr>
+        <th><br/></th>
+        <th tal:define="col string:title;
+				                dir python:test(sorted_field==col and sorted_dir=='up',
+						                'down', 'up')" nowrap="nowrap">
+					<a tal:attributes="href string:$portal_url/list_pending_contents?sorted_field=$col&sorted_dir=$dir" i18n:translate="">Title</a>
+					<img tal:condition="python:sorted_field == col" tal:attributes="src arrow" />
+				</th>
+        <th tal:define="col string:actor;
+				                dir python:test(sorted_field==col and sorted_dir=='up',
+						                'down', 'up')" nowrap="nowrap">
+					<a href="." tal:attributes="href string:$portal_url/list_pending_contents?sorted_field=$col&sorted_dir=$dir" i18n:translate="">Submit by:</a>
+					<img tal:condition="python:sorted_field == col" tal:attributes="src arrow" />
+				</th>
+        <th tal:define="col string:submitTime;
+				                dir python:test(sorted_field==col and sorted_dir=='up', 'down', 'up')" nowrap="nowrap">
+					<a tal:attributes="href string:$portal_url/list_pending_contents?sorted_field=$col&sorted_dir=$dir" i18n:translate="">Date</a>
+					<img tal:condition="python:sorted_field == col" tal:attributes="src arrow" />
+				</th>
+      </tr>
+      
+      <div tal:repeat="item batch" tal:omit-tag="">
+        <tr valign="top" tal:define="icon python:here.restrictedTraverse(item.getIcon());
+												date python:wtool.getInfoFor(item, 'time').strftime(locale_date_fmt);
+												oddrow repeat/item/odd" tal:attributes="class python:test(oddrow, 'even', 'odd')">
+          <td>
+            <a tal:condition="icon" href="#" tal:attributes="href string:${item/getId}"><img alt="" border="0" tal:attributes="src icon/absolute_url; height icon/height; width icon/width; alt item/Type|nothing;" i18n:attributes="alt" /></a>
+          </td>
+          <td>
+            <div>
+            	<a tal:attributes="href string:${item/absolute_url}" tal:content="item/title_or_id">ID</a>
+            </div>
+            <div tal:content="python:wtool.getInfoFor(item, 'comments')">comments</div>
+          </td>
+          <td tal:content="python:mtool.getMemberFullNameById(wtool.getInfoFor(item, 'actor'))"></td>
+          <td tal:content="date">
+            Date
+          </td>
+        </tr>
+      </div>
+    </table>
+  </body>
+
+</html>

@@ -1,0 +1,92 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+<div metal:define-macro="tree" tal:omit-tag="">
+    <table cellspacing="0"
+       tal:define="expand python:rfo_depth and (rfo.talkback.hasReplies(rfo) and rfo.talkback.getReplies()[-1].id or rfo.id) or nothing;
+                   t python:here.setup_talkback_tree(here, force_expand=expand);
+       						 rows t/rows;
+       						 insert_form_position python:here.getReplyFormPosition(rows, expand);
+                   height t/root/height;">
+ <tbody tal:repeat="row rows" tal:omit-tag="">
+ <tal:define tal:define="obj nocall:row/object">
+ <tr i18n:domain="plinn">
+  <td tal:define="indent python: row.depth - 1" tal:condition="indent" tal:attributes="colspan indent" ></td>
+  <td tal:define="state row/state ; rlink row/branch ; msg python:state > 0 and 'collapse' or 'expand'" width="16">
+		<a href="#" tal:condition="state" tal:omit-tag="python:abs(state) == 2" tal:attributes="name row/id ; href python:request['URL0']+rlink['link'] ; title msg" i18n:attributes="title">
+		  <img src="/p_/pl" alt="" tal:attributes="src python:state > 0 and (abs(state)==1 and '/p_/mi' or 'mi_dis.gif') or (abs(state)==1 and '/p_/pl' or 'pl_dis.gif') ; alt msg" i18n:attributes="alt" border="0" />
+		</a><br/>
+  </td>
+  <td colspan="1" tal:attributes="colspan python: height - row.depth" tal:define="url obj/absolute_url">
+   <span tal:attributes="class python:obj.id == rfo_id and 'outline_in_reply_to' or nothing">
+   <a tal:attributes="name obj/id"></a>
+   <img border="0" src="." tal:attributes="src string:${obj/portal_url}/${obj/getIcon}" />
+   <span tal:content="obj/Title" class="reply_title">Title</span>,
+   <span i18n:translate="" tal:omit-tag="">by</span> <tal:case tal:condition="obj/listCreators"
+  ><tal:loop tal:repeat="creator obj/listCreators"
+   ><tal:case tal:condition="not: repeat/creator/start"
+    ><tal:case tal:condition="not: repeat/creator/end">, </tal:case
+    ><tal:case tal:condition="repeat/creator/end"
+     > <span tal:omit-tag="" i18n:translate="">and</span> </tal:case
+   ></tal:case
+   ><tal:span tal:content="python:mtool.getMemberFullNameById(creator, nameBefore=False)">creator</tal:span></tal:loop></tal:case
+ ><tal:case tal:condition="not: obj/listCreators"
+  ><span tal:omit-tag="" i18n:translate="">unknown</span></tal:case>
+   <span i18n:translate="at_(date)" tal:omit-tag="">at</span> <span tal:replace="python: obj.created().strftime(locale_date_fmt)">Today</span>
+   <span tal:define="discussionActions python:atool.listFilteredActionsFor( obj ).get('discussion', [])" tal:omit-tag="" tal:condition="discussionActions">
+     [ <tal:loop tal:repeat="a discussionActions"><a tal:attributes="href a/url" tal:content="a/title" i18n:translate="">action</a><tal:case tal:condition="not:repeat/a/end"> | </tal:case></tal:loop> ]
+   </span></span>
+   <div tal:content="structure obj/CookedBody" class="reply_body">Body</div>
+  </td>
+ </tr>
+ <tr tal:condition="python:insert_form_position == obj.id">
+  <td tal:attributes="colspan rfo_depth" colspan="2"></td>
+  <td tal:attributes="colspan python: height - rfo_depth">
+   <div metal:use-macro="here/talkback_tree/macros/add_reply_form">add reply form</div>
+  </td>
+ </tr>
+ </tal:define>
+ </tbody>
+</table>
+<tal:include  tal:define="new_reply_id request/new_reply_id|nothing"
+							 tal:condition="new_reply_id"
+							 tal:replace="structure python:here.jumpToReply(reply_id=new_reply_id)" />
+</div>
+
+		<form method="post" action="."
+		  tal:attributes="action string:${rfo/absolute_url}/discussion_reply_form"
+		  metal:define-macro="add_reply_form">
+		  <a name="add_reply_form"></a>
+			<div class="DesktopStatusBar" tal:condition="request/portal_status_message|nothing">
+				<img src="info.gif" alt="Information" tal:attributes="src here/info.gif/absolute_url" i18n:attributes="alt" />
+				<span tal:content="request/portal_status_message" i18n:translate="">Status message.</span>
+			</div>		  
+		  <table class="FormLayout" i18n:domain="plinn" cellspacing="0">
+		    <tr>
+		      <th i18n:translate="" class="outline_new_reply">Title</th>
+          <td colspan="2">
+		        <input name="title" tal:attributes="value python:request.form.get('title', 'Re: %s' % options['inReplyTo'].Title())"/>
+		      </td>
+        </tr>
+		    <tr>
+		      <th i18n:translate="" class="outline_new_reply">Body</th>
+          <td colspan="2">
+		        <textarea name="text" cols="70" rows="10" style="width: 100%" tal:content="request/form/text|nothing"></textarea>
+		      </td>
+        </tr>
+		    <tr>
+		      <td><br /></td>
+		      <td>
+            <input type="submit" name="add_reply" value="Validate" i18n:attributes="value" />
+          </td>
+          <th>
+            <input type="submit" value="Cancel" name="cancel_reply" i18n:attributes="value" />
+          </th>
+        </tr>
+		  </table>
+			<tal:include tal:replace="structure python:here.jumpToReply(reply_id=rfo_id)" />
+		</form>
+  </body>
+</html>

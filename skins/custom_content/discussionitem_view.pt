@@ -1,0 +1,35 @@
+<html metal:use-macro="here/main_template/macros/master">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+ <metal:slot fill-slot="base"
+ ><tal:span tal:replace="structure here/getBaseTag"
+/></metal:slot>
+</head>
+<body>
+
+<metal:slot metal:fill-slot="header">
+
+  <h1 id="DesktopTitle"
+      tal:content="here/Title">Document Title</h1>
+
+  <div id="DesktopDescription" tal:content="here/Description">
+      Document Description goes here.
+  </div>
+
+</metal:slot>
+
+<div metal:fill-slot="main" i18n:domain="plinn" tal:omit-tag="">
+
+  <div id="DiscussionAbove" tal:define="parents context/parentsInThread">
+   <span i18n:translate="" tal:omit-tag="">Above in thread:</span>
+   <span tal:repeat="p parents" tal:omit-tag=""><a tal:attributes="href p/absolute_url" tal:content="p/title_or_id">parent</a><span><img tal:attributes="src string:${portal_url}/fleche_bc.gif" tal:condition="not:repeat/p/end" width="11" height="14" /></span></span>
+  </div>
+
+  <div tal:replace="structure here/CookedBody">Body</div>
+  <div class="Discussion">
+    <div metal:use-macro="here/viewThreadsAtBottom/macros/threadsDisplay" />
+  </div>
+</div>
+
+</body>
+</html>

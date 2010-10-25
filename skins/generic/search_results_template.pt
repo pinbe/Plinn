@@ -1,0 +1,92 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+  </head>
+  <body>
+    <div metal:fill-slot="main_no_tabs" i18n:domain="plinn" tal:omit-tag=""
+         tal:define="b_start python:0;b_start request/b_start | b_start;
+                          results options/results;
+                          stext request/SearchableText|nothing;
+                          resultsLength options/resultsLength;
+                          Batch python:modules['Products.Plinn'].Batch;
+                          batch python:Batch(results, 20, b_start, orphan=1, quantumleap=1);
+                          mch nocall:options/makeColumnHeader">
+      <h2 i18n:translate="">Search Results</h2>
+      <div tal:condition="resultsLength" tal:omit-tag="">
+        <p i18n:translate=""
+         tal:condition="stext">Found <span tal:replace="python:len(results)"
+         i18n:name="count">100</span> <span i18n:name="item_s_match"
+         tal:content="python:resultsLength > 1 and 'items matching' or 'item matching'"
+         i18n:translate=""
+         tal:omit-tag="">items matching</span> '<span
+             tal:replace="request/SearchableText"
+             i18n:name="text">search term</span>'.</p>
+      <div tal:condition="not:stext">
+      <p tal:condition="python:resultsLength==1" i18n:translate="">Found 1 item.</p>
+      <p tal:condition="python:resultsLength>1" i18n:translate="">Found <span i18n:name="count" tal:content="resultsLength" tal:omit-tag="">2</span> items.</p>
+      </div>
+      </div>
+      <div metal:use-macro="here/batch_macros/macros/navigation">batch navigation</div>
+      <table class="listing" tal:condition="results" cellspacing="0">
+        <thead>
+          <tr>
+            <th width="16"><br/></th>
+            <th tal:define="ci python:mch('fTitle')">
+              <a i18n:translate="" tal:attributes="href ci/url">Title</a>
+              <img tal:condition="ci/img" tal:attributes="src ci/img/src; alt ci/img/alt"/>
+            </th>
+            <th tal:define="ci python:mch('Creator')">
+              <a i18n:translate="" tal:attributes="href ci/url">Creator</a>
+              <img tal:condition="ci/img" tal:attributes="src ci/img/src; alt ci/img/alt"/>
+            </th>
+            <th tal:define="ci python:mch('modified')">
+              <a i18n:translate="" tal:attributes="href ci/url">Last modified</a>
+              <img tal:condition="ci/img" tal:attributes="src ci/img/src; alt ci/img/alt"/>
+            </th>
+          </tr>
+        </thead>
+        <tbody tal:repeat="result batch" tal:omit-tag="">
+          <tr tal:define="objURL result/getURL;
+        								  oddrow repeat/result/odd"
+        		  tal:attributes="class python:test(oddrow, 'even', 'odd')">
+            <td>
+              <a tal:condition="result/getIcon|nothing"
+                 tal:attributes="href objURL">
+                <img src="" border="0"
+                     tal:define="alt result/Type"
+                     tal:attributes="src result/getIcon;alt alt;title alt" />
+              </a>
+            </td>
+            <td>
+              <a tal:attributes="href objURL">
+                <span tal:condition="result/Title" tal:replace="result/Title">Title</span>
+                <span tal:condition="not:result/Title" tal:omit-tag="" i18n:translate="">(No title)</span>
+              </a>
+            </td>
+            <td tal:content="python:mtool.getMembers(result.listCreators)[0].getMemberFullName(nameBefore=0)"
+                tal:on-error="python:len(result.listCreators) and result.listCreators[0] or ''"></td>
+            <td tal:content="python:result.modified.strftime(locale_date_fmt)">Date</td>
+          </tr>
+          <tr tal:condition="result/Description">
+            <td><br/></td>
+            <td colspan="3">
+              <em tal:content="structure result/Description">Description</em>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <form tal:condition="options/canSaveAsTopic"
+            tal:attributes="action string:$portal_url/save_search_as_topic"
+            method="post">
+        <h3 i18n:translate="">Save this search as topic</h3>
+        <span i18n:translate="" tal:omit-tag="">Title:</span>
+        <input type="text" name="topic_title"/>
+        <div tal:replace="structure options/queryAsHiddenInputs"></div>
+        <input type="submit" name="addTopic" value="Save" i18n:attributes="value"/>
+      </form>
+      <p tal:condition="not:results" i18n:translate="">There are no items matching your specified criteria.</p>
+    </div>
+  </body>
+</html>

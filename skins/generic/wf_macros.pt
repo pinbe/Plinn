@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title></title>
+  </head>
+
+  <body i18n:domain="plinn">
+
+    <div metal:define-macro="default_workflow"
+    		 tal:define="review_history python: wtool.getInfoFor(here, 'review_history', default=None)" >
+      <table cellspacing="0" class="listing" tal:condition="review_history">
+        <tr>
+          <th i18n:translate="">Date</th>
+          <th i18n:translate="">Actor</th>
+          <th i18n:translate="">Action</th>
+          <th i18n:translate="">Comments</th>
+          <th i18n:translate="">Email sent to</th>
+        </tr>
+        <div tal:repeat="item python:review_history[::-1]" tal:omit-tag="">
+	        <tr tal:define="oddrow repeat/item/odd" tal:attributes="class python:test(oddrow, 'even', 'odd')"
+	        		tal:condition="item/action">
+	        	<td tal:content="python:item['time'].strftime(locale_date_fmt)">time</td>
+	        	<td tal:content="python:mtool.getMemberFullNameById(item['actor'], nameBefore=0)">actor</td>
+            <td tal:content="python:item['action'].capitalize()" i18n:translate=""></td>
+            <td tal:define="comments item/comments"><span tal:replace="comments" /><em tal:condition="not:comments" i18n:translate="">(no comments)</em></td>
+            <td tal:define="email_sent python:item.get('email_sent', [])">
+            	<span tal:repeat="e email_sent">
+            		<span tal:content="python:mtool.getMemberFullNameById(e, nameBefore=0)">recipient</span><br />
+            	</span>
+            	<em tal:condition="not:email_sent" i18n:translate="">(no email sent)</em>
+            </td>
+          </tr>
+        </div>
+      </table>
+      <em i18n:translate="" i18n:domain="cmf_default" tal:condition="not:review_history">This item has not had any status changes.</em>
+    </div>
+
+  </body>
+
+</html>

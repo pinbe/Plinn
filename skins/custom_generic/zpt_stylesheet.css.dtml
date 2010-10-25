@@ -1,0 +1,509 @@
+/* <dtml-with base_properties> */
+
+body {  
+  background-color: &dtml-backgroundColor;;
+  color: &dtml-fontColor;;
+  font-family: &dtml-fontFamily;;
+  font-size : &dtml-fontBaseSize;;
+  margin: 0 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: &dtml-headingFontFamily;;
+}
+
+h1 { 
+  font-size:120%;
+}
+
+h2 { 
+  font-size:110%;
+}
+
+h3 { 
+  font-size:100%;
+}
+
+h4 {
+  font-style: italic;
+}
+
+a:link,
+a:visited,
+a:active { 
+  color: &dtml-linkColor;;
+  text-decoration: none;
+}
+
+a:hover {
+  color: &dtml-linkHoverColor;;
+  text-decoration: none;
+}
+
+form {
+	margin:0;
+}
+
+table.ContentsList tr td {  }
+
+table.ContentsList tr td img {
+  border: 0;
+}
+
+table.FormLayout {
+    width: 99% }
+  
+table.FormLayout dl.FieldHelp dd {
+  font-size : 90% ;
+  font-style : italic}
+  
+table.FormLayout td.ListDefinition {
+  font-style: italic }
+  
+table.FormLayout td.ListName {
+  color: &dtml-fontColor;;
+  font-weight: bold;
+  vertical-align: middle;
+  padding-left: 2px;
+}
+  
+table.FormLayout th {
+  font-weight: bold;
+  text-align: right }
+  
+table.FormLayout tr {
+    vertical-align: top }
+    
+table.FormLayout tr td.TextField {
+  vertical-align: top }
+  
+table.FormLayout tr th.TextField {
+    vertical-align: top }
+    
+table.NewsItems {
+  border: 0 }
+
+table.SearchResults {
+  width: auto }
+
+table.SearchResults tr td img {
+  border: 0 }
+
+table.SearchResults tr th {
+  text-align: left }
+
+table.Wizard {
+  width: auto }
+
+table.Wizard tr {
+  vertical-align: top }
+
+table.Wizard tr th {
+  text-align: right }
+
+td {
+  vertical-align: top }
+
+td.NewsBorder {
+  background-color: #369 }
+
+td.NewsByLine {
+  color: #369;
+  background-color: #ccc;
+  text-align: left;
+  vertical-align: top }
+
+td.NewsListing {
+  color: #fff;
+  font-weight: bold;
+  background-color: #369 }
+
+td.NewsTitle {
+  color: #fff;
+  font-weight: bold;
+  background-color: #369;
+  text-align: center }
+  
+/*
+textarea {
+  width : 99%
+}
+*/
+
+
+/* Top bar */
+
+#Masthead {
+  background-color: &dtml-topbarBackgroundColor;;
+  width: 100%;
+}
+
+#Masthead td {
+  vertical-align: middle;
+}
+
+#PortalLogo  {
+  vertical-align: middle;
+}
+
+#PortalLogo img {
+  border: none;
+}
+
+
+#PortalTitle {
+  font-family: &dtml-headingFontFamily;;
+  font-size: 120%;
+  font-weight: bold;
+}
+
+#NavBar { 
+  font-size: &dtml-fontSmallSize;;
+  font-weight: bold;
+}
+
+#NavBar a,
+#NavBar a:link,
+#NavBar a:visited,
+#NavBar a:active {
+  color: &dtml-specialLinkColor;;
+}
+
+#NavBar a:hover {
+  color: &dtml-specialLinkHoverColor;;
+}
+
+
+/* User menu bar */
+
+#MemberActionsBox {
+  width: 100%;
+  background-color: &dtml-memberActionsBoxBackground;;
+  color: &dtml-fontColor;;
+  font-weight: bold ;
+  font-size: &dtml-fontSmallSize;;
+  padding : 0 2px ;
+}
+#MemberActionsBox td {
+	vertical-align: middle;
+}
+
+.ActionTitle {
+  color: &dtml-fontColor;
+}
+
+.ActionLink a:link,
+.ActionLink a:visited,
+.ActionLink a:active { 
+  color: &dtml-linkColor;;
+  text-decoration: none 
+}
+
+.ActionLink a:hover { color: &dtml-linkHoverColor;}
+
+
+/* Breadcrumbs + Search form */  
+#Breadcrumbs {
+  background: &dtml-breadcrumbsBackground;;
+  font-size: &dtml-fontSmallSize;;
+  padding: 0 2px 1px 2px;
+
+}
+
+/* 
+ Main column
+ */
+
+   
+/* Status messages */
+.DesktopStatusBar  {
+  background-color: &dtml-messageBackgroundColor;;
+  border: 1px solid &dtml-messageBorderColor;;
+  color: &dtml-messageFontColor;;
+  font-size: &dtml-fontSmallSize;;
+  font-weight: bold;
+  padding-left : 1em;
+  margin-bottom : 6px;
+  vertical-align: middle;
+}
+
+.DesktopStatusBar img {
+  vertical-align: middle; 
+}
+
+/* Content tabs */
+.contentTabs {
+  border-bottom : &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+  border-collapse: collapse;
+  white-space: nowrap;
+  padding-left: 1em;
+  margin: 0;
+}
+
+.contentTabs li, .additionalTabs li { 
+  display: inline;
+  font-size: &dtml-fontSmallSize;;
+}
+
+.contentTabs a,
+.contentTabs a:visited
+{
+  background-color: &dtml-tabsBackgroundColor;;
+  color: &dtml-tabsFontColor;;
+  margin-right: 0.5em;
+  padding: 0 1em;
+  border-left : 1px dashed &dtml-tabsBorderColor;;
+  border-top : 1px dashed &dtml-tabsBorderColor;;
+  border-right : 1px dashed &dtml-tabsBorderColor;;
+}
+
+.contentTabs a:hover, .contentTabs a:active {
+  background-color: &dtml-tabsBorderColor;;
+  color: &dtml-tabsFontColor;;
+}
+
+.contentTabs .selected a,
+.contentTabs .selected a:visited,
+.contentTabs .selected a:hover {
+  border-left : &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+  border-right : &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+  border-top : &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+  border-bottom : &dtml-tabsBottomBorderSelectedWidth; solid &dtml-selectedTabBackgroundColor;;
+  color: &dtml-tabsFontColor;;
+  background-color : &dtml-selectedTabBackgroundColor;;
+}
+
+.additionalTabs {
+  padding-right : 2em ;
+  text-align : right ;
+  margin : 0 ;
+}
+
+.additionalTabs a, .additionalTabs a:visited {
+  color: &dtml-tabsFontColor;;
+  padding: 0 1em;
+  border-left : 1px dashed &dtml-tabsBorderColor;;
+}
+
+.additionalTabs .selected a {
+  background-color : &dtml-tabsBorderColor;;
+  }
+
+
+#mainCell {
+  padding: 12px 5px;
+}
+#ForematterCell {
+  background: &dtml-contentBackgroundColor;;
+  padding-bottom : 1px ;
+}
+
+/* Header */
+.header {
+  font-family: &dtml-headingFontFamily;;
+  padding: 0 0.5em;
+}
+
+/* Title */
+#DesktopTitle {
+  font-size: 120%;
+  font-weight: bold;
+  color: &dtml-fontColor;;
+  margin : 0 ;
+  padding: 2px;
+  vertical-align : bottom ;
+}
+
+#DesktopTitle img {
+  vertical-align:middle;
+  padding-right: 2px;
+}
+/* Description */
+#DesktopDescription {
+  font-size: &dtml-fontSmallSize;;
+  color: &dtml-descriptionColor;;
+}
+
+/* Content Byline */
+#ContentByLine {
+	color : &dtml-descriptionColor;;
+  background-color: &dtml-bylineBackgroundColor;;
+  font-size: &dtml-fontSmallSize;;
+  text-align: right;
+  padding: 0 1em;
+}
+
+#ContentByLine a {
+
+}
+
+/* Main content */
+#Desktop {
+  padding: 0 0.5em;
+  text-align: justify ;
+}
+
+/* Search form */
+
+#search_form {
+  font-size: &dtml-fontSmallSize;;
+}
+ 
+#Footer {
+  background-color : &dtml-footerBackgroundColor;;
+  color: &dtml-fontColor;;
+  font-size: 80%;
+  text-align: center;
+  padding : 3px;
+}
+
+/* Folder contents */
+
+.listing {
+  font-size: &dtml-fontSmallSize;;
+}
+
+.listing th { 
+  background-color: &dtml-listingHeaderBackgroundColor;;
+  text-align: left;
+  padding: 2px 0 1px 4px;
+}
+
+.listing th a,
+.listing a:link,
+.listing a:visited,
+.listing a:active { 
+  color: &dtml-specialLinkColor;;
+}
+
+.listing th a:hover {
+	color: &dtml-specialLinkHoverColor;;
+}
+
+.listing td {
+  padding : 2px ;
+  vertical-align : middle ; 
+}
+
+.listing .odd {
+  background-color: &dtml-oddRowBackgroundColor;;
+}
+.listing .even {
+  background-color: &dtml-evenRowBackgroundColor;;
+} 
+
+/* Batched navigation */
+
+.listingBar {
+  background-color: &dtml-tabsBackgroundColor;;
+  font-size: &dtml-fontSmallSize;;
+  border: 1px solid &dtml-listingBarBorderColor;;
+  padding: 0em 1em;
+  margin:1em 0;
+  text-align: center;
+  vertical-align: top;
+}
+
+.listingBar a,
+.listingBar a:link,
+.listingBar a:visited,
+.listingBar a:active {
+	color : &dtml-specialLinkColor;;
+}
+
+.listingBar a:hover {
+	color : &dtml-specialLinkHoverColor;;
+}
+
+.listingBar a.previous {
+    text-align: left;
+    float: left;
+}
+
+.listingBar a.next {
+    text-align: right;
+    float: right;
+} 
+
+/* Recent news */
+
+.newsItem {
+  font-size:90%;
+  background-color: &dtml-contentBackgroundColor;;
+  margin: 1em 0;
+}
+
+.newsTitle {
+  color: &dtml-fontColor;;
+  font-weight: bold;
+  padding: 0 2px;
+  border: &dtml-tabsBorderWidth; solid &dtml-newsTitleBorderColor;;
+}
+
+.newsTitle a {
+  color: &dtml-fontColor;;
+}
+
+.newsDescription {
+  margin: 0 0.5em;
+}
+
+.newsContent {
+  padding: 0 1em 1em 1em;
+}
+
+.newsContent ul,
+.newsContent li {
+    display: block; 
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+
+.newsAbout {
+    display: block;
+    color: &dtml-fontColor;;
+    font-size: &dtml-fontSmallSize;;
+    list-style: none;
+    list-style-image: none;
+    float: right;
+    text-align: right;
+}
+
+.newsAbout li {
+    display: inline;
+}
+
+.newsFooter {
+    font-size: &dtml-fontSmallSize;;    
+}
+
+.newsFooter li {
+    display: inline;
+    margin: 0 1em 0 0;
+}
+
+<dtml-comment>
+
+/* Not used */
+
+.ObjectStatus {
+  font-style: italic }
+
+.ContextActionsRow {
+  color: white;
+  background-color: #aaa }
+
+#ContextActionsBox {
+  background-color: #aaa;
+  padding: 0;
+  border: dotted 2px #ffa500 }
+
+#DiscussionAbove {
+  font-style: italic;
+  margin: 8pt 8pt 8pt 16pt;
+  border: dashed 2px #f00 }
+
+</dtml-comment>
+
+/* </dtml-with> */

@@ -1,0 +1,300 @@
+// (c) Benoît PIN 2006-2009
+// http://plinn.org
+// Licence GPL
+// $Id: javascript_events_api.js 1532 2009-08-13 14:18:16Z pin $
+// $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/skins/ajax_scripts/javascript_events_api.js $
+// Meta functions for events management.
+
+var addListener; /* (ob, eventName, listenerFunction, group) add event listener eventName without "on" prefix.
+				 *  optionally, listeners can be grouped to make removing convenient.
+				 */
+var removeListener; // (ob, eventName, listenerFunction, group) remove event listener.
+var removeGroupListeners; // (group) remove all listeners in group.
+var raiseMouseEvent; // (ob, eventName) raise mouse event (without "on" prefix) on object.
+
+var getTargetedObject; // (event) retrieves the object that fired the event. Event parameter is optional.
+var getEventObject; // (event) return the event object. Event parameter is optional.
+var disableDefault; // (event) disable default event's action. Event parameter is optional.
+var disablePropagation; // (event) disable event propagation or bubbling.
+
+// etc utils
+var getWindowWidth; // returns browser's window width
+var getWindowHeight; // returns browser's window height
+var clearSelection; // clear current selection (useful on drag and drop)
+var getCopyOfNode; /* (node) returns a clone of the given node.
+					* Useful when :
+						* the node came from a foreign document (eg. XmlHttpRequest xml reponse)
+						* to inject HMTL code inside tags where innerHtml is read only (IE)
+					*/
+
+(function(){
+
+function buildMetaFunctions() {
+	addListener = _build_addListener();
+	removeListener = _build_removeListener();
+	raiseMouseEvent = _build_raiseMouseEvent();
+
+	getTargetedObject = _build_getTargetedObject();
+	getEventObject = _build_getEventObject();
+	disableDefault = _build_disableDefault();
+	disablePropagation = _build_disablePropagation();
+	getWindowWidth = _build_getWindowWidth();
+	getWindowHeight = _build_getWindowHeight();
+	clearSelection = _build_clearSelection();
+}
+
+__groupListeners = {};
+
+function _build_addListener() {
+	var _browserSpecific;
+	if (browser.isIE55 || browser.isIE6up) {
+		_browserSpecific = function(ob, eventName, listenerFunction) {
+			eventName = "on" + eventName;
+			ob.attachEvent(eventName, listenerFunction);
+		};
+	}
+	else if (browser.isDOM2Event) {
+		_browserSpecific = function(ob, eventName, listenerFunction) {
+			ob.addEventListener(eventName, listenerFunction, false); // only bubbling events :-(
+		};
+	}
+	var common = function(ob, eventName, listenerFunction, group) {
+		_browserSpecific(ob, eventName, listenerFunction);
+		if (group) {
+			if(!__groupListeners[group])
+				__groupListeners[group] = new Array();
+			__groupListeners[group].push([ob, eventName, listenerFunction]);
+		}
+	}
+	return common;
+}
+
+function _build_removeListener() {
+	if (browser.isIE55 || browser.isIE6up) {
+		var _ie_removeListener = function(ob, eventName, listenerFunction) {
+			eventName = "on" + eventName;
+			ob.detachEvent(eventName, listenerFunction);
+		}
+		return _ie_removeListener;
+	}
+	else if (browser.isDOM2Event) {
+		var _dom2_removeListener = function(ob, eventName, listenerFunction) {
+			ob.removeEventListener(eventName, listenerFunction, false); // only bubbling events :-(
+		}
+		return _dom2_removeListener;
+	}
+}
+
+removeGroupListeners = function(group) {
+	var listeners = __groupListeners[group];
+	var l;
+	for (var i=0 ; i<listeners.length ; i++){
+		l = listeners[i];
+		removeListener(l[0], l[1], l[2])
+	}
+	__groupListeners[group] = null;
+		
+}
+
+function  _build_raiseMouseEvent() {
+	if (browser.isIE55 || browser.isIE6up) {
+		var _ie_raiseMouseEvent = function(ob, eventName) {
+			ob.fireEvent("on" + eventName);
+		}
+		return _ie_raiseMouseEvent;
+	}
+	else if (browser.isDOM2Event) {
+		var _dom2_raiseMouseEvent = function(ob, eventName) {
+			var event = document.createEvent("MouseEvents");
+			event.initEvent(eventName, true, true);
+			ob.dispatchEvent(event);
+		}
+		return _dom2_raiseMouseEvent;
+	}
+}
+
+function _build_getTargetedObject(){
+	if (browser.isIE55 || browser.isIE6up) {
+		var _ie_getTargetedObject = function() {
+			return window.event.srcElement;
+		}
+		return _ie_getTargetedObject;
+	}
+	else if (browser.isDOM2Event) {
+		var _appleWebKit_getTargetedeObject = function(evt) {
+			var target = evt.target;
+			// is it really safe ?...
+			return (target.nodeType == 3) ? target.parentNode : target;
+		}
+		var _dom2_getTargetedObject = function(evt) {
+			return evt.target
+		}
+		return (browser.isAppleWebKit) ? _appleWebKit_getTargetedeObject : _dom2_getTargetedObject;
+	}
+}
+
+function _build_getEventObject(){
+	if (browser.isIE) {
+		var _ie_getEventObject = function() {
+			return window.event;
+		}
+		return _ie_getEventObject;
+	}
+	else if (browser.isDOM2Event) {
+		var _dom2_getEventObject = function(evt) {
+			return evt;
+		}
+		return _dom2_getEventObject;
+	}
+}
+
+
+function _build_disableDefault(){
+	if (browser.isIE55 || browser.isIE6up) {
+		var _ie_disableDefault = function() {
+			window.event.returnValue = false;
+		}
+		return _ie_disableDefault;
+	}
+	else if (browser.isDOM2Event) {
+		var _dom2_disableDefault = function(evt) {
+			evt.preventDefault();
+		}
+		return _dom2_disableDefault;
+	}
+}
+
+function _build_disablePropagation() {
+	if (browser.isIE55 || browser.isIE6up) {
+		var _ie_disablePropagation = function() {
+			window.event.cancelBubble = true;
+		}
+		return _ie_disablePropagation;
+	}
+	else if (browser.isDOM2Event) {
+		var _dom2_disablePropagation = function(evt) {
+			evt.stopPropagation();
+		}
+		return _dom2_disablePropagation;
+	}
+}
+
+function _build_getWindowWidth() {
+	if (window.innerWidth != undefined){
+		return function(){
+			return window.innerWidth;
+			};
+	}
+	else {
+		return function(){
+			return document.documentElement.clientWidth;
+		};
+	}
+}
+
+function _build_getWindowHeight() {
+	if (window.innerHeight != undefined) {
+		return function(){
+			return window.innerHeight;
+		};
+	}
+	else {
+		return function(){
+			return document.documentElement.clientHeight;
+		};
+	}
+}
+
+function _build_clearSelection() {
+	if (document.selection) {
+		return function() {
+			document.selection.clear();
+		};
+	}
+	else {
+		return function() {
+			window.getSelection().removeAllRanges();
+		}
+	}
+}
+
+
+buildMetaFunctions();
+
+var ELEMENT_NODE = 1;
+var TEXT_NODE = 3;
+var _setAttribute;
+getCopyOfNode = function(node) {
+	
+	switch(node.nodeType) {
+		case ELEMENT_NODE:
+			var attributes = node.attributes;
+			var childs = node.childNodes;
+	
+			var e = document.createElement(node.nodeName);
+
+			var attribute;
+			for(var i=0 ; i<attributes.length ; i++) {
+				attribute = attributes[i];
+				_setAttribute(e, attribute.name, attribute.value);
+			}
+			
+			for(var i=0 ; i<childs.length ; i++)
+				e.appendChild(getCopyOfNode(childs[i]));
+			
+			return e;
+			break;
+		case TEXT_NODE:
+			return document.createTextNode(node.nodeValue);
+			break;
+	}
+}
+
+if (browser.isIE) {
+	_setAttribute = function(e, name, value) {
+		// workarround IE lack of dom implementation.
+		switch(name.toLowerCase()) {
+			case 'colspan' :
+				e.colSpan = value;
+				break;
+			case 'class' :
+				e.className = value;
+				break;
+			case 'style' :
+				var cssText = value;
+				loadCssText(e, value);
+				break;
+			default:
+				if (name.slice(0,2) == 'on') // event handler
+					e[name] = function(){eval(value);};
+				else
+					e.setAttribute(name, value);
+		}
+	};
+	var reCompoundPropName = /^\s*([^\-]+)\-([a-z])([a-z]+)\s*$/;
+	function _capitalizeCssPropName(s, g1, g2, g3) { // gN args match above regexp groups 
+		if(g2)
+			return g1 + g2.toUpperCase() + g3;
+		else
+			return s;
+	}
+
+	function loadCssText(e, cssText) {
+		var pairs = cssText.split(';');
+		var pair, name, value;
+		var style = e.style;
+		for (var i= 0; i < pairs.length; i++) {
+			pair = pairs[i].split(':');
+			if (pair.length != 2)
+				continue;
+			name = _capitalizeCssPropName(pair[0]);
+			value = pair[1];
+			style[name] = value;
+		}
+	}
+}
+else {
+	_setAttribute = function(e, name, value) {e.setAttribute(name, value);};
+}
+
+})();

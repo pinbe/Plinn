@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plinn">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Group data management</title>
+  </head>
+
+  <body metal:fill-slot="main_no_tabs"
+        tal:define="requestedGroup python:here.setAndGetSessionVar('requestedGroup', request.get('group', None), allowFalse=0)"
+        i18n:domain="plinn" tal:omit-tag="">
+    <table  metal:use-macro="here/gruf_macros/macros/gruf_settings">
+      <tr>
+        <td>Using gruf_settings macro</td>
+      </tr>
+      <tr>
+        <td metal:fill-slot="form" tal:omit-tag="">
+          <table>
+            <tr>
+              <td tal:define="template_url python:'%s/%s' % (portal_url, template.id)" >
+                <div metal:use-macro="here/gruf_macros/macros/gruf_tree">Groups tree from gruf_macros</div>
+              </td>
+              <td>
+                <div tal:condition="requestedGroup" tal:omit-tag="">
+                  <div metal:use-macro="here/gruf_macros/macros/change_group_data">change_group_data from gruf_macros</div>
+                  <div metal:use-macro="here/gruf_macros/macros/assign_roles">assign_roles from gruf_macros</div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+
+</html>

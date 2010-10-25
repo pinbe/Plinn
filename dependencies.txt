@@ -1,0 +1,21 @@
+Python and Zope products
+
+    Zope-2.7 or 2.8 or 2.9 - http://www.zope.org/Products/
+    CMF-1.5.5 - http://www.zope.org/Products/CMF/
+    Epoz - http://mjablonski.zope.de/Epoz
+    GroupUserFolder - http://ingeniweb.sourceforge.net/Products/GroupUserFolder/
+    MimetypesRegistry - http://sourceforge.net/project/showfiles.php?group_id=75272&package_id=131320
+    MosaicDocument - http://plinn.org
+    Photo - http://plinn.org
+    PIL - http://www.pythonware.com/products/pil/
+    PlinnDocument - http://plinn.org
+    PortalTransforms - http://sourceforge.net/project/showfiles.php?group_id=75272&package_id=88131
+    Portfolio - http://plinn.org
+    Utf8Splitter - http://plinn.org
+    ZTUtils_hotfix - http://plinn.org
+
+
+Javascript
+
+    jscalendar - http://www.dynarch.com/projects/calendar/
+    sarissa - http://sarissa.sourceforge.net/

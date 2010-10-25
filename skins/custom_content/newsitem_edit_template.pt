@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <title>Document edit form</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link href="zpt_stylesheet.css" rel="stylesheet" media="screen"/>
+  </head>
+
+  <body>
+    <div i18n:domain="cmf_default">
+      <div metal:fill-slot="header">
+        <div metal:use-macro="here/widgets/macros/generic_header">
+          generic_header macro
+        </div>
+      </div>
+      <div id="Desktop">
+        <div metal:fill-slot="main">
+          <form action="document_edit_form" method="post" enctype="multipart/form-data"
+          			tal:attributes="action string:${here/absolute_url}/newsitem_edit_form">
+            <input type="hidden" name="SafetyBelt" value="" tal:attributes="value here/SafetyBelt" />
+						<input type="hidden" name="onBeforeSubmit" value="SyncEpoz" />
+            <table class="FormLayout">
+              <tr>
+                <td class="TextField" colspan="2" i18n:translate="">
+                  <div tal:define="inputname string:text; formname string:edit_form; inputvalue here/text" tal:omit-tag="">
+                    <div metal:use-macro="here/wysiwyg_support/macros/wysiwygEditorBox">
+                      Wysiwig Code
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <div metal:use-macro="here/wysiwyg_support/macros/textFormatSelector">
+                    Format box, if needed
+                  </div>
+                </td>
+              </tr>
+              <!--
+              <tr>
+                <th nowrap="nowrap" i18n:translate="">External file</th>
+                <td width="100%">
+                  <input type="file" name="file" size="25" />
+                </td>
+              </tr>
+              -->
+              <tr>
+              	<td><br /></td>
+                <td width="100%">
+                  <input type="submit" name="change_and_view" value="Change and View" i18n:attributes="value" />
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,20 @@
+<html metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>content_status_history</title>
+  </head>
+
+  <body metal:fill-slot="main" tal:omit-tag="" i18n:domain="plinn">
+  	<h2 i18n:translate="">Reviewing history</h2>
+  	<table>
+  		<tr>
+  			<th i18n:translate="">Current state:</th>
+			  <td tal:content="python:wtool.getInfoFor(here, 'review_state')" i18n:translate=""></td>
+  		</tr>
+  	</table>
+  	<br />
+  	<div metal:use-macro="here/wf_macros/macros/default_workflow">default_workflow history</div>
+  </body>
+
+</html>

@@ -1,0 +1,9 @@
+From: <span tal:replace="structure options/From" />
+<tal:block tal:condition="options/To|nothing">To: <span tal:replace="structure options/To" /></tal:block><tal:block tal:condition="options/recipients|nothing" tal:replace="structure options/recipients"></tal:block>
+Subject: <span tal:replace="options/Subject" />
+Content-Type: <span tal:replace="options/ContentType" />; charset=<span tal:replace="options/charset" />
+Mime-Version: 1.0
+
+<span tal:replace="options/body">message...</span>
+
+<span tal:replace="options/footer|nothing"></span>

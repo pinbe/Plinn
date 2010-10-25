@@ -1,0 +1,7 @@
+<script type="text/javascript">
+//<!--
+function jumpToReply() {
+	window.location.href = window.location.href.split("#")[0] + "#&dtml-reply_id;"; }
+window.onload=jumpToReply;
+//-->
+</script>

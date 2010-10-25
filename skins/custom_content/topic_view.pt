@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="container/main_template_view/macros/master">
+
+  <head>
+    <title>Topic view</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <base href="." tal:attributes="href python: here.absolute_url() + '/'" metal:fill-slot="base" />
+  </head>
+
+  <body i18n:domain="plinn">
+    <div metal:fill-slot="header" tal:omit-tag="">
+      <h1 id="DesktopTitle">
+        <span tal:replace="here/title_or_id">Page Title</span>
+      </h1>
+      <div id="DesktopDescription" tal:content="structure here/Description">
+        Description of the resource goes here, perhaps even wrapping lines; this is to make it long enough to test.
+      </div>
+    </div>
+    <div metal:fill-slot="main" tal:omit-tag="">
+      <table tal:define="
+            b_start string:0;b_start request/b_start | b_start;
+            results here/queryCatalog;
+            Batch python:modules['Products.Plinn'].Batch;
+            global batch python:Batch(results, 20, int(b_start), orphan=1)" class="listing" cellspacing="0">
+          <tr>
+            <td colspan="2"><span metal:use-macro="here/batch_macros/macros/navigation">batch navigation</span></td>
+          </tr>
+<tbody tal:condition="batch" tal:omit-tag="" tal:repeat="match batch">
+          <tr tal:define="ob match/getObject ;
+                   url match/getURL;
+                   title python:match.Title or ob.id;
+                   icon python:here.restrictedTraverse(ob.getIcon())"
+              tal:attributes="class python:repeat['match'].odd() and 'odd' or 'even'">
+            <td width="20">
+              <img src="." alt="icon" height="16" width="16" tal:attributes="src icon/absolute_url|ob/getIcon ; alt ob/getPortalTypeName|ob/meta_type; height icon/height|string:16; width icon/width|string:16" i18n:attributes="alt" />
+            </td>
+            <td>
+              <a href="." tal:attributes="href url" tal:content="title">Object title</a>
+            </td>
+          </tr>
+          <tr tal:condition="match/Description">
+            <td>
+              <br />
+            </td>
+            <td tal:content="structure match/Description">
+              description
+            </td>
+          </tr>
+</tbody>
+        <tr tal:condition="not:batch">
+          <td colspan="2" i18n:translate="">No result</td>
+        </tr>
+      </table>
+      <div tal:define="topics python:here.listNearestFolderContents(contentFilter={'portal_type':'Topic'})" tal:condition="topics" tal:omit-tag="">
+        <h4 i18n:translate="">Subtopics</h4>
+        <div tal:repeat="topic topics">
+        	<a href="." tal:attributes="href topic/absolute_url" tal:define="topictitle python:topic.Title() or topic.getId()">
+          	<img height="16" width="16" border="0" alt="Topic" tal:attributes="src here/topic_icon.gif/absolute_url" i18n:attributes="alt" />
+          <span tal:replace="topictitle">Topic Title</span></a>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

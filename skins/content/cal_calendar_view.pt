@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+			metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>View and edit calendar object</title>
+  </head>
+
+  <body i18n:domain="plinn">
+		<div metal:fill-slot="header" tal:define="hideContentByLine python:1">
+		 <div metal:use-macro="here/widgets/macros/generic_header">generic_header</div>
+		</div>
+		<div metal:fill-slot="main" tal:omit-tag=""
+				 tal:define="forceSortBy string:start;
+				             rlink_mode request/form/link_mode|nothing;
+				             link_mode python:here.getOrSetSessionVar('slink_mode', rlink_mode, 'view');
+				             methodID python:link_mode == 'remove' and 'remove_object' or '';
+				             link_func python:lambda ob : '%s/%s' % (ob.absolute_url(), methodID);
+				             isEventCalendar python:True">
+	    <div metal:use-macro="here/calendar_view/macros/calendar">
+	    	<div metal:fill-slot="calendar_display" tal:attributes="class link_mode">
+	    		<div metal:use-macro="display_macro">
+						<table metal:fill-slot="cal_header">
+							<tr>
+								<td><div metal:use-macro="here/calendar_macros/macros/calNavigation">calendar navigation</div></td>
+								<div tal:condition="python:mtool.checkPermission('Add portal content', here)" tal:omit-tag="">
+									<span tal:condition="python:here.getOrSetSessionVar('slink_mode') == 'view'" tal:omit-tag="">
+										<td style="vertical-align : middle">
+										<form tal:attributes="action string:${here/absolute_url}/add_event">
+											<input type="image" height="16" width="16" border="0" src="../images/new_event.gif"
+														 alt="Add a new event..." title="Add a new event..." value="" style="margin-left : 30px"
+												 		 tal:attributes="src here/new_event.gif/absolute_url"
+												 		 i18n:attributes="alt;title" />
+										</form>
+										</td>
+										<td style="vertical-align : middle">
+											<a href="." title="Remove event..."
+												 tal:attributes="href string:${request/URL0}?link_mode=remove"
+												 i18n:attributes="title">
+												<img src="../images/remove_event.gif" height="16" width="16" border="0" alt="Remove event..."
+												 tal:attributes="src here/remove_event.gif/absolute_url"
+												 i18n:attributes="alt" />
+											</a>
+										</td>
+									</span>
+									<span tal:condition="python:here.getOrSetSessionVar('slink_mode') == 'remove'" tal:omit-tag="">
+										<td style="vertical-align : middle">
+											<img src="../images/warning.gif" alt="" height="25" width="25" border="0" tal:attributes="src here/warning.gif/absolute_url">
+										</td>
+										<td style="vertical-align : middle"><span i18n:translate="" tal:omit-tag="">The next click over an event will remove it!</span><br />
+											<a href="." tal:attributes="href string:${request/URL0}?link_mode=view"><span i18n:translate="" tal:omit-tag="">Cancel delete mode</span></a>
+										</td>
+									</span>
+								</div>
+							</tr>
+						</table>
+	    		</div>
+	    	</div>
+	    </div>
+	  </div>
+  </body>
+
+</html>

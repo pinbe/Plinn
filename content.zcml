@@ -1,0 +1,55 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five">
+
+  <!-- File -->
+  <five:registerClass
+      class=".File.File"
+      meta_type="Plinn File"
+      permission="cmf.AddPortalContent"
+      />
+
+  <utility
+      component=".File.FileFactory"
+      name="plinn.file"
+      />
+
+  <!-- Plinn Folder -->
+  <five:registerClass
+      class=".Folder.PlinnFolder"
+      meta_type="Plinn Folder"
+      permission="cmf.AddPortalFolders"
+      />
+
+  <utility
+      component=".Folder.PlinnFolderFactory"
+      name="plinn.folder.normal"
+      />
+
+  <!-- Huge Plinn Folder -->
+  <five:registerClass
+      class=".HugePlinnFolder.HugePlinnFolder"
+      meta_type="Huge Plinn Folder"
+      permission="cmf.AddPortalFolders"
+      />
+
+  <utility
+      component=".HugePlinnFolder.HugePlinnFolderFactory"
+      name="plinn.folder.huge"
+      />
+  
+  
+  <!-- Topic -->
+
+  <five:registerClass
+      class=".Topic.Topic"
+      meta_type="Plinn Topic"
+      permission="cmf.AddPortalTopics"
+      />
+
+  <utility
+      component=".Topic.TopicFactory"
+      name="plinn.topic"
+      />
+
+</configure>

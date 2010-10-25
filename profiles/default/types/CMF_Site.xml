@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<object name="CMF Site" meta_type="Factory-based Type Information"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title"></property>
+ <property name="description">Portal portal_type</property>
+ <property name="content_icon">plinn_icon.gif</property>
+ <property name="content_meta_type"></property>
+ <property name="product"></property>
+ <property name="factory"></property>
+ <property name="immediate_view"></property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="Calendar"/>
+  <element value="Document"/>
+  <element value="File"/>
+  <element value="News Item"/>
+  <element value="Plinn Document"/>
+  <element value="Plinn Folder"/>
+  <element value="Portfolio"/>
+  <element value="Topic"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="index_html"/>
+ <alias from="mkdir" to="createPlinnFolder"/>
+ <alias from="view" to="index_html"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    url_expr="string:${object_url}/index_html" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="List" action_id="folderContents" category="object"
+    condition_expr="" url_expr="string:${object_url}/folder_contents"
+    visible="True">
+  <permission value="List folder contents"/>
+ </action>
+ <action title="New..." action_id="new" category="object" condition_expr=""
+    url_expr="string:${object_url}/folder_factories" visible="False">
+  <permission value="Add portal content"/>
+ </action>
+ <action title="Rename items" action_id="rename_items" category="object"
+    condition_expr="" url_expr="string:${object_url}/folder_rename_form"
+    visible="False">
+  <permission value="Add portal content"/>
+ </action>
+</object>

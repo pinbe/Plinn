@@ -1,0 +1,56 @@
+<tal:block tal:define="
+objects here/listNearestFolderContents;
+calTool nocall:here/portal_calendar;
+
+commonIndexes python:calTool.getCommonIndexes(objects);
+rSortBy request/sortBy|nothing ;
+sortBy python:here.getOrSetSessionVar('sSortBy', rSortBy, 'modified');
+sortBy python:sortBy in commonIndexes and sortBy or here.getOrSetSessionVar('sSortBy', len(commonIndexes) and list(commonIndexes)[0] or 'modified');
+
+forceTab sortBy;
+link_func python:lambda ob: ob.absolute_url();
+isEventCalendar python:False;
+">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Calendar View</title>
+  </head>
+
+  <body metal:fill-slot="main" tal:omit-tag="">
+	  <div	tal:define="objects objects|here/listNearestFolderContents ;
+		       						calTool calTool|nocall:here/portal_calendar ;
+
+		       						DateTime nocall:modules/DateTime/DateTime ;
+		       						buildDate nocall:calTool/buildDate ;
+
+		       						forceSortBy forceSortBy | nothing ;
+		       						sortBy python: forceSortBy and forceSortBy or sortBy ;
+		       						objects python:calTool.sortObjectsByDate(objects, sortBy) ;
+		       						indexIsCallable python:calTool.indexIsCallable(sortBy, objects) ;
+		       						now modules/DateTime/DateTime ;
+		       						ryear request/form/year|nothing ;
+		       						rmonth request/form/month|nothing ;
+		       						rday request/form/day|nothing ;
+		       						year python: here.getOrSetSessionVar('syear', ryear, now.year()) ;
+		       						month python: here.getOrSetSessionVar('smonth', rmonth, now.month()) ;
+		       						day python: here.getOrSetSessionVar('sday', rday, now.day()) ;
+		       						rdisplay request/form/display|nothing;
+		       						display python: here.getOrSetSessionVar('sdisplay', rdisplay, 'month') ;
+		       						display_macro here/calendar_macros/macros/?display ;
+		       						rrange_mode request/form/range_mode|nothing ;
+		       						range_mode python:here.getOrSetSessionVar('srange_mode', rrange_mode, 'fixed') ;"
+		       	metal:define-macro="calendar"
+		       	tal:omit-tag="">
+		  <div metal:define-slot="calendar_display" tal:omit-tag="">
+		  	<div metal:use-macro="display_macro">
+					cal macro
+		  	</div>
+	  	</div>
+	  </div>
+  </body>
+
+</html>
+</tal:block>

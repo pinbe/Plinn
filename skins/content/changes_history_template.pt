@@ -1,0 +1,106 @@
+<html metal:use-macro="here/main_template/macros/master"
+      xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal">
+  <head>
+    <title>Content Changes history</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <metal:block metal:fill-slot="javascript_head_slot">
+      
+    </metal:block>
+  </head>
+  <body>
+    <div metal:fill-slot="main" tal:omit-tag=""
+         tal:define="entries options/entries;
+                     b_start options/batchNavigation/current"
+         i18n:domain="plinn">
+      <form tal:condition="python:entries is not None"
+            tal:attributes="action string:${here/absolute_url}/changes_history;"
+            method="get">
+        <table class="listing" cellspacing="0" style="width:auto">
+          <tr tal:define="navigation options/batchNavigation"
+              tal:condition="navigation">
+            <td colspan="4"
+                tal:define="previous navigation/previous;
+                            next navigation/next">
+              <a tal:condition="python:previous is not None"
+                 tal:attributes="href python:'%s/changes_history?first_transaction:int=%d' % (here.absolute_url(), previous)"
+                   i18n:translate=""
+                   style="float:left">« later revisions</a>
+              <a tal:condition="python:next is not None"
+                 tal:attributes="href python:'%s/changes_history?first_transaction:int=%d' % (here.absolute_url(), next)"
+                 i18n:translate=""
+                 style="float:right">earlier revisions »</a>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2" width="28"></th>
+            <th i18n:translate="">Date</th>
+            <th i18n:translate="">user</th>
+          </tr>
+          <tr tal:repeat="entry entries" tal:attributes="class python:repeat['entry'].odd() and 'odd' or 'even'">
+            <td>
+              <input type="radio" name="leftkey"
+                     tal:attributes="value entry/key;
+                                     checked python:entry['key'] == options['leftkey']"/>
+            </td>
+            <td>
+              <input type="radio" name="rightkey"
+                     tal:attributes="value entry/key;
+                                     checked python:entry['key'] == options['rightkey']" />
+            </td>
+            <td>
+              <a tal:content="python:entry['time'].strftime(locale_date_fmt)"
+                 tal:attributes="href python:'%s/load_revision/%s?pos:int=%d' % (here.absolute_url(),
+                                                                                 entry['key'],
+                                                                                 b_start + repeat['entry'].index)">
+                modification date
+              </a>
+            </td>
+            <td tal:define="userName python:entry['user_name']">
+              <span tal:condition="userName"
+                    tal:replace="python:mtool.getMemberFullNameById(userName.split()[-1], nameBefore=False)">
+                    user full name
+              </span>
+              <span tal:condition="not:userName" i18n:translate="" tal:omit-tag="">nobody</span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <input type="hidden" name="first_transaction:int"
+                     tal:attributes="value b_start">
+              <input type="submit" value="Compare" name="compare" i18n:attributes="value" />
+              <dl class="FieldHelp">
+                <dd i18n:translate="">Please select one revision per column to compare.</dd>
+              </dl>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <div tal:condition="options/comparison">
+        <table class="comparison" cellspacing="0">
+          <tr>
+            <th width="49%"
+                tal:content="python:options['comparison']['leftDate'].strftime(locale_date_fmt)">left</th>
+            <td width="10" class="mid"><br/></td>
+            <th width="49%"
+                tal:content="python:options['comparison']['rightDate'].strftime(locale_date_fmt)">right</th>
+          </tr>
+          <tbody tal:repeat="g options/comparison/diff">
+            <tr tal:repeat="i g" tal:attributes="class i/tag">
+              <td class="left">
+                <span tal:repeat="line python:i['left'].split('\n')" tal:omit-tag="">
+                  <span tal:replace="line"/><br/>
+                </span>
+              </td>
+              <td class="mid"><br/></td>
+              <td class="right">
+                <span tal:repeat="line python:i['right'].split('\n')" tal:omit-tag="">
+                  <span tal:replace="line"/><br/>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

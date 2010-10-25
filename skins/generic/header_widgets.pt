@@ -1,0 +1,199 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Header widgets</title>
+  </head>
+
+  <body>
+  
+  	<hr/>
+  	<pre>titleAndDescForm</pre>
+  	<hr/>
+  	
+    <div metal:define-macro="titleAndDescForm">
+	    <form method="post" onsubmit="return submitMetadataForm(this);" tal:attributes="action here/absolute_url" i18n:domain="plinn">
+	      <table class="TwoColumnForm" cellspacing="0">
+	        <tr>
+	          <th i18n:translate="">Title</th>
+	          <td>
+	            <input type="text" name="title" value="Title" size="64" tal:attributes="value here/Title" />
+	          </td>
+	        </tr>
+	        <tr>
+	          <th i18n:translate="">Description</th>
+	          <td>
+	            <textarea name="description" rows="4" cols="61" tal:content="here/Description">Description</textarea>
+	          </td>
+	        </tr>
+	        <tr>
+	          <th><br/></th>
+	          <td>
+              <input type="submit" name="metadata_edit_control:method" value="Validate" i18n:attributes="value" />
+              <a href="." style="float:right" id="showFullMetadataForm"
+              	 tal:define="mq nocall:mq|nothing;"
+              	 tal:attributes="href python:mq and '%s?%s' % (url , mq( request.form, {'edit_metadata':'fullMetadataForm'})) or '.'"
+								 i18n:translate="">Edit all metadata</a> 
+            </td>
+	        </tr>
+	      </table>
+	    </form>
+    </div>
+
+  	<hr/>
+  	<pre>fullMetadataForm</pre>
+  	<hr/>
+    
+		<div metal:define-macro="fullMetadataForm">
+      <form action="metadata_edit_form" method="post"
+						tal:attributes="action here/absolute_url" i18n:domain="plinn" onsubmit="return submitMetadataForm(this);">
+			<table class="TwoColumnForm"
+						 tal:define="allow_discussion python:getattr(here, 'allow_discussion', None);
+						 						 DateTime nocall:modules/DateTime/DateTime;">
+			 <tr>
+			  <th i18n:translate="">Enable Discussion?</th>
+			  <td colspan="3">
+			   <select name="allow_discussion">
+			    <option value="default"
+			       tal:attributes="selected python: allow_discussion is None"
+			       i18n:translate="">Default</option>
+			    <option value="off"
+			       tal:attributes="selected python: allow_discussion is False"
+			       i18n:translate="">Off</option>
+			    <option value="on"
+			       tal:attributes="selected python: allow_discussion is True"
+			       i18n:translate="">On</option>
+			   </select>
+			  </td>
+			 </tr>
+			 <tr>
+			  <th align="right" i18n:translate="">Identifier</th>
+			  <td colspan="3"> <span tal:replace="context/Identifier"></span>
+			  </td>
+			 </tr>
+			 <tr>
+			  <th align="right" i18n:translate="">Title</th>
+			  <td colspan="3">
+			   <input type="text"
+			          name="title"
+			          value=""
+			          size="65"
+			          tal:attributes="value context/Title" />
+			  </td>
+			 </tr>
+			 <tr>
+			  <th align="right" i18n:translate="">Description</th>
+			  <td colspan="3">
+			   <textarea name="description:text" rows="5" cols="65" tal:content="context/Description"></textarea>
+			  </td>
+			 </tr>
+			 <tr>
+			  <th align="right" i18n:translate="">Subject</th>
+			  <td tal:define="subj_lines python: '\n'.join( context.Subject() )">
+			   <textarea name="subject:lines" rows="3" cols="20"
+			             tal:content="subj_lines"></textarea>
+			   <br />
+			   <select name="subject:list" multiple
+			           tal:define="mtool context/portal_metadata;
+			                       items python: mtool.listAllowedSubjects(context);"
+			           tal:condition="items">
+			    <option value=""
+			            tal:define="subjects context/Subject"
+			            tal:repeat="item items"
+			            tal:attributes="value item; selected python: item in subjects"
+			            tal:content="item">
+			    </option>
+			   </select>
+			  </td>
+			  <th align="right" i18n:translate="">Contributors</th>
+			  <td tal:define="contrib_lines python: '\n'.join( context.Contributors() )">
+			   <textarea name="contributors:lines" rows="5" cols="30"
+			             tal:content="contrib_lines"></textarea>
+			  </td>
+			 </tr>
+			 <tr>
+			  <th align="right" i18n:translate="">Creation Date</th>
+			  <td> <span tal:replace="python:context.created().strftime(locale_date_fmt)">Creation date</span>
+			  </td>
+			  <th align="right" i18n:translate="">Last Modified Date</th>
+			  <td><span tal:replace="python:context.modified().strftime(locale_date_fmt)">Modification date</span></td>
+			 </tr>
+			 <!-- TODO : localise date format -->
+			 <tr tal:define="translate python:modules['Products.Plinn.utils'].translate;
+			                 _ python:lambda x: translate(x, here)">
+					<td colspan="2">
+						<fieldset tal:define="effective_date here/effective_date|nothing;
+						date python:effective_date or DateTime(1970, 0);
+						dateName string:effective_date;
+						defaultDate string:1969/12/31;
+						defaultDateLabel python:_('immediately')">
+				    	<legend i18n:translate="">Effective Date</legend>
+							<span metal:use-macro="here/widgets/macros/date_selector"></span>
+						</fieldset>
+					</td>
+            <td colspan="2">
+              <fieldset tal:define="expiration_date here/expiration_date|nothing;
+											date python:expiration_date or DateTime(2500, 0);
+											dateName string:expiration_date;
+											defaultDate string:2499/12/31;
+											defaultDateLabel python:_('never')"
+											>
+                <legend i18n:translate="">Expiration Date</legend>
+								<span metal:use-macro="here/widgets/macros/date_selector"></span>
+              </fieldset>
+            </td>
+          </tr>
+			 <tr>
+			  <th align="right" i18n:translate="">Format</th>
+            <td> <input type="text" name="format" value=""
+			              tal:attributes="value context/Format" />
+			  </td>
+            <td></td>
+            <td></td>
+          </tr>
+			 <tr>
+			  <th align="right" i18n:translate="">Language</th>
+            <td> <input type="text" name="language" value=""
+			              tal:attributes="value context/Language" />
+			  </td>
+            <td></td>
+            <td></td>
+          </tr>
+			 <tr>
+			  <th align="right" i18n:translate="">Rights</th>
+            <td> <input type="text" name="rights" value=""
+			              tal:attributes="value context/Rights" />
+			  </td>
+            <td></td>
+            <td></td>
+          </tr>
+			 <tr>
+			  <td>&nbsp;</td>
+			  <td colspan="3">
+              <input type="submit" name="metadata_edit_control:method" value="Validate" i18n:attributes="value" />
+              <a href="." style="float:right" id="showSimpleMetadataForm"
+              	 tal:define="mq nocall:mq|nothing;"
+              	 tal:attributes="href python:mq and '%s?%s' % (url , mq( request.form, {'edit_metadata':'titleAndDescForm'})) or '.'"
+              	 i18n:translate="">Edit standard metadata</a>
+            </td>
+			 </tr>
+			</table>
+			</form>
+    </div>
+    
+  	<hr/>
+  	<pre>viewTitleAndDesc</pre>
+  	<hr/>
+    
+		<div metal:define-macro="viewTitleAndDesc" i18n:domain="plinn">
+			<div id="DesktopTitle">
+				<img src="document_icon.gif" alt="" border="0" tal:define="icon python:here.restrictedTraverse(here.getIcon())" tal:attributes="src icon/absolute_url; alt here/getPortalTypeName; height icon/height; width icon/width" i18n:attributes="alt" /><span tal:content="here/title_or_id">Page Title</span>
+			</div>
+			<div id="DesktopDescription" tal:content="structure here/Description">
+			 Description of the resource goes here, perhaps even wrapping lines; this is to make it long enough to test.
+			</div>
+    </div>
+
+  </body>
+
+</html>

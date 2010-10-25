@@ -1,0 +1,23 @@
+<html metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <title>Local roles form</title>
+  </head>
+
+  <body metal:fill-slot="main" i18n:domain="plinn" tal:omit-tag="">
+    <table metal:use-macro="here/local_roles_macros/macros/local_roles_settings">
+      <tr>
+        <td>Using here/local_roles_macros/macros/local_roles_settings</td>
+      </tr>
+      <tr>
+        <td metal:fill-slot="form" tal:omit-tag="">
+          <div metal:use-macro="here/local_roles_macros/macros/assign_members">
+            Using here/local_roles_macros/macros/assign_members
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+
+</html>

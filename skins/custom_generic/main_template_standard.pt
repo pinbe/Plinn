@@ -1,0 +1,168 @@
+<metal:block define-macro="master">
+  <tal:block define="global main_macros here/main_template_macros/macros"/>
+  <metal:block use-macro="main_macros/global_defines"/>
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+  <html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+      <title tal:content="here/expanded_title">Title goes here</title>
+      <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+      <meta name="description" tal:attributes="content portal_object/description" />
+      <meta name="keywords"
+            tal:condition="exists:portal_object/keywords"
+            tal:attributes="content python:', '.join(portal_object.getProperty('keywords', []))" />
+      <base tal:omit-tag="" metal:define-slot="base" />
+
+      <link rel="Shortcut Icon" type="image/x-icon" href="favicon.ico" tal:attributes="href string:$portal_url/favicon.ico" />
+      <link rel="alternate" type="application/rss+xml"
+      			tal:define="stool nocall:here/portal_syndication"
+      			tal:attributes="title here/title_or_id ; href string:${here/absolute_url}/RSS"
+      			tal:condition="python:stool.isSyndicationAllowed(here)" />
+			
+			<link rel="stylesheet" media="screen" tal:attributes="href here/global_plinn_style.css/absolute_url" />
+      <style type="text/css" media="all" tal:content="string:@import url(${here/calendar-system.css/absolute_url});"></style>
+
+      <link metal:define-slot="css_slot" tal:replace="nothing" />
+      <script type="text/javascript" tal:attributes="src here/epoz_script_detect.js/absolute_url"></script>
+      <script type="text/javascript" tal:attributes="src here/javascript_events_api.js/absolute_url"></script>
+      <script type="text/javascript" tal:attributes="src here/sarissa.js/absolute_url"></script>
+      <script type="text/javascript">
+      	//<!--
+				function absolute_url() {
+					var e = document.getElementById("Object_URL");
+					if (e)
+						return e.innerHTML;
+					else {
+						e = document.getElementById("BC_Object_URL");
+						if (e)
+							return e.innerHTML;
+						else
+							return document.location.href;
+					}
+				}
+
+				function portal_url() {
+					var e = document.getElementById("Portal_URL");
+					return e.innerHTML;
+				}
+
+      	var startupFunctions = new Array();
+
+				function registerStartupFunction(fct) {
+					startupFunctions.push(fct);
+				}
+
+				function runAjaxStartup() {
+					for (var i = 0 ; i < startupFunctions.length ; i++)
+						startupFunctions[i]();
+				}
+
+				addListener(window, 'load', runAjaxStartup);
+				
+				var progressImage;
+				function _initLoadingStatus() {
+					progressImage = document.getElementById('loading_progress');
+				}
+				registerStartupFunction(_initLoadingStatus);
+				
+				function showProgressImage() { progressImage.style.display = 'inline'; }
+				function hideProgressImage() { progressImage.style.display = 'none'; }
+
+
+        // -->
+      </script>
+      <script type="text/javascript" tal:attributes="src here/base_properties.js/absolute_url"></script>
+      <script type="text/javascript" tal:attributes="src here/fragment_importer.js/absolute_url"></script>
+      <script type="text/javascript" tal:attributes="src here/ajax_form_manager.js/absolute_url"></script>
+	    <script type="text/javascript" tal:attributes="src here/root_handlers.js/absolute_url"></script>
+			<script type="text/javascript" tal:attributes="src here/plinn_script_loader.js/absolute_url"></script>
+
+      <script type="text/javascript" metal:define-slot="javascript_head_slot" tal:replace="nothing"></script>
+    </head>
+
+    <body>
+    	<span style="display:none">
+	    	<span id="Portal_URL" tal:content="portal_url"></span>
+	    	<span id="ajax_config"  tal:content="python:request.get('ajaxConfig', request.SESSION.get('ajaxConfig', portal_object.getProperty('ajax_config')))"></span>
+	    	<script type="text/javascript">
+	    	// <!--
+	    	  AJAX_CONFIG = document.getElementById('ajax_config');
+					AJAX_CONFIG = parseInt(AJAX_CONFIG.innerHTML);
+	    	// -->
+	    	</script>
+	    </span>
+    	<a href="#documentContent" i18n:translate="" i18n:domain="plinn" class="hidden">Skip to content</a>
+      <div metal:use-macro="main_macros/top_bar">Top bar</div>
+      <div metal:use-macro="main_macros/user_menu_bar">User menu bar</div>
+      <div id="Breadcrumbs"><div metal:use-macro="main_macros/Breadcrumbs">Breadcrumbs</div></div>
+
+      <div id="main_body">
+        <table id="Forematter" width="100%" cellspacing="0">
+          <tr>
+          	<td id="leftCell" class="boxes_container" width="15%">
+            	<span metal:use-macro="main_macros/leftCell">Left cell</span>
+            </td>
+
+            <td id="mainCell" width="70%">
+
+	            <div class="DesktopStatusBar" tal:condition="request/portal_status_message|nothing">
+	              <img src="info.gif" alt="Information" tal:attributes="src here/info.gif/absolute_url" i18n:attributes="alt" />
+	              <span tal:content="request/portal_status_message" i18n:translate="">Status message.</span>
+	            </div>
+
+	            <a name="documentContent"></a>
+		          <div metal:define-slot="main_no_tabs" tal:omit-tag="">
+		            <div tal:condition="specialCtxHeader" tal:content="structure specialCtxHeader">special context header</div>
+								<div id="ContentTabs" tal:condition="not:specialCtxHeader">
+									<div class="tabs" metal:use-macro="here/tabs/macros/tabs">Content tabs</div>
+									<div metal:use-macro="here/tabs/macros/additional_tabs">Additional tabs</div>
+								</div>
+	              <div id="ForematterCell">
+	                <div class="header">
+	                  <div tal:omit-tag="" metal:define-slot="header">
+	                    <h1 id="DesktopTitle">
+	                      <span tal:replace="here/title_or_id">Page Title</span>
+	                    </h1>
+	                    <div id="DesktopDescription" tal:content="structure here/Description">
+	                      Description of the resource goes here, perhaps even wrapping lines; this is to make it long enough to test.
+	                    </div>
+	                  </div>
+	                </div>
+
+	                <div id="Desktop">
+	                  <div metal:define-slot="main">
+	                    <h2>Section Header</h2>
+	                    <p>The content of the object is <a href=".">rendered</a>
+	                    hre. Lorem ipsum dolorem. Nihil obstat imprimatur. Semper ubi sub ubi.
+	                    Non illegitimi carborundum. In vino veritas. E pluribus unam.
+	                    </p>
+	                  </div>
+	                </div>
+                  <div tal:condition="not:isAnon" tal:omit-tag="">
+                    <div id="ContentByLine" metal:use-macro="here/content_byline/macros/byline">
+                      Content by me
+                    </div>
+                  </div>
+	                <div metal:define-slot="footer" tal:replace="nothing">footer slot</div>
+	              </div>
+	            </div>
+
+            </td>
+            <!-- end_main_column -->
+            
+            <td id="rightCell" class="boxes_container" width="15%">
+            	<div metal:use-macro="main_macros/rightCell">Right cell</div>
+            </td>
+          </tr>
+        </table>
+        <div id="Footer" tal:content="python:getattr(portal_object, 'copyright_notice','') or '© Benoît Pin — École des mines de Paris 2006-2009'">© Benoît Pin — École des mines de Paris 2006-2009</div>
+      </div>
+      <div metal:use-macro="here/widgets/macros/debug">
+        DEBUG Information
+      </div>
+    </body>
+
+  </html>
+
+</metal:block>

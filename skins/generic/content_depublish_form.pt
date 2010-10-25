@@ -1,0 +1,30 @@
+<html metal:use-macro="here/transition_form/macros/master">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+</head>
+<body i18n:domain="plinn">
+<div metal:fill-slot="main">
+
+<h2 i18n:translate="">Depublish: "<span tal:replace="here/title_or_id"
+                                    i18n:name="docTitle">Item</span>"</h2>
+	<div i18n:translate="depublish_transition_explanations">depublish_transition_explanations</div>
+</div>
+
+<form action="dummy">
+	<div metal:fill-slot="form">
+		<h3 i18n:translate="">Select the destination state</h3>
+		<label>
+			<input type="radio" name="next_action" value="depublish_to_private" checked="checked" />
+			<span i18n:translate="" tal:omit-tag="">Private</span>
+		</label>
+		<label>
+			<input type="radio" name="next_action" value="depublish_to_shared" />
+			<span i18n:translate="" tal:omit-tag="">Shared</span>
+		</label>
+		<input type="hidden" name="workflow_action" value="depublish" />
+		<br />
+    <input type="submit" value="Depublish" i18n:attributes="value" />
+   </div>
+</form>
+</body>
+</html>

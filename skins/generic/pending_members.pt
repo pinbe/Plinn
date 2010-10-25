@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Pending Members</title>
+  </head>
+
+  <body tal:omit-tag="" metal:fill-slot="main_no_tabs" i18n:domain="plinn">
+    <h2 i18n:translate="">Review members registration</h2>
+    <form action="." method="post" tal:attributes="action string:${portal_url}/member_registration_modify">
+      <table class="listing" cellspacing="0">
+        <tr>
+          <th i18n:translate="">Name</th>
+          <th i18n:translate="">Email</th>
+          <th><br /></th>
+        </tr>
+        <tbody tal:repeat="m python:mtool.getMembers([ b.getId for b in here.portal_catalog(review_state='m_pending') ])" tal:omit-tag="">
+          <tr tal:attributes="class python:repeat['m'].odd() and 'odd' or 'even'">
+            <td>
+              <input type="hidden" name="members.id:records" tal:attributes="value m/id" />
+              <label>
+              	<input type="checkbox" name="members.checked:records" checked="checked" tal:attributes="value m/id" />
+              	<span tal:replace="python:m.getMemberFullName(nameBefore=0)">Benoît PIN</span>
+              </label>
+            </td>
+            <td>
+              <a href="." tal:attributes="href string:mailto:${m/email}" tal:content="m/email">email</a>
+            </td>
+            <td>
+              <input type="submit" name="members.reject:records" value="Reject" i18n:attributes="value" />
+            </td>
+          </tr>
+        </tbody> 
+      </table>
+      <p><input type="submit" name="register" value="Register" i18n:attributes="value" /></p>
+    </form>
+  </body>
+
+</html>

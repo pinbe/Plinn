@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<object name="Container Block" meta_type="Mosaic Block Information"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title">Container block</property>
+ <property name="description"></property>
+ <property name="content_icon">mosaic_tool/image_block_icon.gif</property>
+ <property name="content_meta_type">Container Block</property>
+ <property name="template">mosaic_tool/block_container_template</property>
+ <property name="notify_wf">True</property>
+ <property name="product">MosaicDocument</property>
+ <property name="factory">addMosaicBlock</property>
+ <property name="immediate_view">view</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types"/>
+ <property name="allow_discussion">False</property>
+ <action title="view" action_id="view" category="object" condition_expr=""
+    url_expr="string:${object_url}/view" visible="True">
+  <permission value="View"/>
+ </action>
+</object>

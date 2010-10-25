@@ -1,0 +1,507 @@
+/*
+
+Date de creation : 2 juin 2004
+
+E.N.S.M.P. - C.R.I. - Gilles Rosenbaum
+
+*********************************************
+Version pour impression de zpt_stylesheet.css
+*********************************************
+
+*/
+
+/* <dtml-with base_properties> */
+
+body {  
+  /* background-color: #ffd; Printing version */
+  background-color : white;
+  color: black;
+  font-family: &dtml-fontFamily;;
+  font-size : &dtml-fontBaseSize;;
+  margin: 0 2pt }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: &dtml-headingFontFamily;;
+}
+
+h1 { 
+  font-size:120%;
+}
+
+h2 { 
+  font-size:110%;
+}
+
+h3 { 
+  font-size:100%;
+}
+
+h4 {
+  font-style: italic;
+}
+
+a:link,
+a:visited,
+a:active { 
+  color: &dtml-linkColor;;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00f;
+  text-decoration: none;
+}
+
+table.ContentsList tr td {  }
+
+table.ContentsList tr td img {
+  border: 0;
+}
+
+table.FormLayout {
+    width: 99% }
+  
+table.FormLayout dl.FieldHelp dd {
+  font-size : 90% ;
+  font-style : italic}
+  
+table.FormLayout td.ListDefinition {
+  font-style: italic }
+  
+table.FormLayout td.ListName {
+  background-color: &dtml-tabsBackgroundColor;;
+  color: &dtml-globalFontColor;;
+  font-weight: bold;
+  vertical-align: middle;
+  padding-left: 2px;
+}
+  
+table.FormLayout th {
+  font-weight: bold;
+  text-align: right }
+  
+table.FormLayout tr {
+    vertical-align: top }
+    
+table.FormLayout tr td.TextField {
+  vertical-align: top }
+  
+table.FormLayout tr th.TextField {
+    vertical-align: top }
+    
+table.NewsItems {
+  border: 0 }
+
+table.SearchResults {
+  width: auto }
+
+table.SearchResults tr td img {
+  border: 0 }
+
+table.SearchResults tr th {
+  text-align: left }
+
+table.Wizard {
+  width: auto }
+
+table.Wizard tr {
+  vertical-align: top }
+
+table.Wizard tr th {
+  text-align: right }
+
+td {
+  vertical-align: top }
+
+td.NewsBorder {
+  background-color: #369 }
+
+td.NewsByLine {
+  color: #369;
+  background-color: #ccc;
+  text-align: left;
+  vertical-align: top }
+
+td.NewsListing {
+  color: #fff;
+  font-weight: bold;
+  background-color: #369 }
+
+td.NewsTitle {
+  color: #fff;
+  font-weight: bold;
+  background-color: #369;
+  text-align: center }
+
+
+/* Top bar */
+
+#Masthead {
+  background-color: &dtml-topbarBackgroundColor;;
+  width: 100%;
+  visibility : hidden;
+}
+
+#Masthead td {
+  vertical-align: middle;
+}
+
+#PortalLogo  {
+  vertical-align: middle;
+}
+
+#PortalLogo img {
+  border: none;
+}
+
+
+#PortalTitle {
+  font-family: &dtml-headingFontFamily;;
+  font-size: 120%;
+  font-weight: bold;
+}
+
+#NavBar { 
+  font-family: &dtml-headingFontFamily;;
+  font-size: &dtml-fontSmallSize;;
+  font-weight: bold;
+  text-align: right
+}
+
+#NavBar a {
+  color: &dtml-tabsFontColor;;
+}
+
+
+/* User menu bar */
+
+#MemberActionsBox {
+  width: 100%;
+  background-color: &dtml-globalBackgroundColor;;
+  color: &dtml-globalFontColor;;
+  font-weight: bold ;
+  font-size: &dtml-fontSmallSize;;
+  padding : 0 2px ;
+  visibility : hidden;
+}
+
+.ActionTitle {
+  color: &dtml-globalFontColor;
+}
+
+.ActionLink a:link,
+.ActionLink a:visited,
+.ActionLink a:active { 
+  color: white;
+  text-decoration: none 
+}
+
+.ActionLink a:hover { color: #9cf }
+
+
+/* Breadcrumbs + Search form */  
+#Breadcrumbs {
+  background: white;
+  font-size: &dtml-fontSmallSize;;
+  padding: 0 2px 1px 2px;
+  visibility : hidden;
+}
+
+/* 
+ Main column
+ */
+
+   
+/* Status messages */
+#DesktopStatusBar  {
+  background-color: &dtml-messageBackgroundColor;;
+  border: 1px solid &dtml-messageBorderColor;;
+  color: &dtml-fontColor;;
+  font-size: &dtml-fontSmallSize;;
+  font-weight: bold; 
+  margin: 0.5em 0em 1.5em 0em;
+  padding: 0.5em 1em;
+  vertical-align: middle;
+  visibility : hidden;
+}
+
+#DesktopStatusBar img {
+  vertical-align: middle; 
+  visibility : hidden;
+}
+
+/* Content tabs */
+
+/* creer pour l'impression */
+#ContentTabs {
+  visibility : hidden;
+}
+/* \creer pour l'impression */
+
+.contentTabs {
+  border-collapse: collapse;
+  white-space: nowrap;
+  padding-left: 1em;
+  margin: 0;
+}
+
+.contentTabs li, .additionalTabs li { 
+  display: inline;
+  font-size: &dtml-fontSmallSize;;
+}
+
+.contentTabs a {
+  background-color: &dtml-tabsBackgroundColor;;
+  color: &dtml-globalFontColor;;
+  /*border: &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;*/
+  margin-right: 0.5em;
+  padding: 0 1em;
+}
+
+.contentTabs .selected a {
+  background-color: &dtml-tabsBorderColor;;
+  color: &dtml-tabsFontColor;;
+  border-top : 4px solid &dtml-tabsBorderColor;;
+}
+
+.contentTabs a:hover {
+  background-color: &dtml-tabsBorderColor;;
+  color: &dtml-tabsFontColor;;
+}
+
+.additionalTabs {
+  padding-right : 2em ;
+  padding-top : 2px ;
+  text-align : right ;
+  margin : 0 ;
+  background-color: &dtml-tabsBorderColor;;  
+}
+
+.additionalTabs a {
+  color: &dtml-tabsFontColor;;
+  padding: 0 1em;
+}
+
+#mainCell {
+  padding: 0.5em 1em;
+  width : 100%;
+  height : 100%;
+}
+
+#ForematterCell {
+  background: &dtml-contentBackgroundColor;;
+  padding-bottom : 1px ;
+  /* border: &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;; Printing version */
+  border : &dtml-tabsBorderWidth; solid black;
+}
+
+/* creer pour l'impression */
+#leftCell{
+  visibility : hidden;
+  position : absolute;
+}
+/* \creer pour l'impression */
+
+/* creer pour l'impression */
+#rightCell{
+  visibility : hidden;
+  position : absolute;
+}
+/* \creer pour l'impression */
+
+/* Header */
+.header {
+  background-color: &dtml-tabsBorderColor;;
+  border-bottom: &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+  font-family: &dtml-headingFontFamily;;
+  border : 1px solid black; /* printing version */
+}
+
+/* Title */
+#DesktopTitle {
+  background: &dtml-tabsBackgroundColor;; /* Printing version */
+  /* background : black; */
+  font-size: 120%;
+  font-weight: bold;
+  /* color: &dtml-globalFontColor;; Printing version */
+  color : black;
+  margin : 0 ;
+  padding: 2px;
+  vertical-align : bottom ;
+}
+
+#DesktopTitle img {
+  vertical-align:middle;
+  padding-right: 2px;
+}
+
+/* Description */
+#DesktopDescription {
+  font-size: &dtml-fontSmallSize;;
+  color: &dtml-tabsFontColor;;
+}
+
+/* Content Byline */
+#ContentByLine {
+  background-color: &dtml-backgroundColor;;
+  font-size: &dtml-fontSmallSize;;
+  text-align: right;
+  padding: 0 1em;
+}
+
+#ContentByLine a {
+
+}
+
+/* Main content */
+#Desktop {
+  padding: 1em;
+  text-align: justify ;
+}
+
+/* Search form */
+
+#search_form {
+  font-size: &dtml-fontSmallSize;;
+}
+ 
+#Footer {
+  background-color : &dtml-globalBackgroundColor;;
+  color: &dtml-globalFontColor;;
+  font-size: &dtml-fontSmallSize;;
+  text-align: center;
+  padding : 1px 2px ;
+  visibility : hidden;
+}
+
+/* Folder contents */
+
+.listing {
+  width: 100%;
+  font-size: &dtml-fontSmallSize;;
+}
+
+.listing th { 
+  background-color: &dtml-tabsBorderColor;;
+  text-align: left;
+  padding: 2px 0 1px 4px;
+}
+
+.listing th a { 
+  color: &dtml-tabsFontColor;;
+}
+
+.listing .odd {
+  background-color: &dtml-oddRowBackgroundColor;;
+}
+.listing .even {
+  background-color: &dtml-evenRowBackgroundColor;;
+} 
+
+/* Batched navigation */
+
+.listingBar {
+  background-color: &dtml-tabsBackgroundColor;;
+  font-size: &dtml-fontSmallSize;;
+  border: 1px solid &dtml-tabsBorderColor;;
+  padding: 0em 1em;
+  margin:1em 0;
+  text-align: center;
+  vertical-align: top;
+}
+
+.listingBar span.previous {
+    text-align: left;
+    float: left;
+}
+
+.listingBar span.next {
+    text-align: right;
+    float: right;
+} 
+
+/* Recent news */
+
+.newsItem {
+  background-color: &dtml-contentBackgroundColor;;
+  margin: 1em 0;
+}
+
+.newsTitle {
+  background-color: &dtml-tabsBackgroundColor;;
+  color: &dtml-globalFontColor;;
+  font-weight: bold;
+  font-size: 120%;
+  padding: 0 2px;
+  border: &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+}
+
+.newsTitle a {
+  color: &dtml-globalFontColor;;
+}
+
+.newsDescription {
+  font-family: &dtml-headingFontFamily;;
+  margin: 0 0.5em;
+}
+
+.newsContent {
+  padding: 0 1em 1em 1em;
+}
+
+.newsContent ul,
+.newsContent li {
+    display: block; 
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+
+.newsAbout {
+    display: block;
+    color: &dtml-discreetColor;;
+    font-size: &dtml-fontSmallSize;;
+    list-style: none;
+    list-style-image: none;
+    float: right;
+    text-align: right;
+}
+
+.newsAbout li {
+    display: inline;
+}
+
+.newsFooter {
+    font-size: &dtml-fontSmallSize;;    
+}
+
+.newsFooter li {
+    display: inline;
+    margin: 0 1em 0 0;
+}
+
+<dtml-comment>
+
+/* Not used */
+
+.ObjectStatus {
+  font-style: italic }
+
+.ContextActionsRow {
+  color: white;
+  background-color: #aaa }
+
+#ContextActionsBox {
+  background-color: #aaa;
+  padding: 0;
+  border: dotted 2px #ffa500 }
+
+#DiscussionAbove {
+  font-style: italic;
+  margin: 8pt 8pt 8pt 16pt;
+  border: dashed 2px #f00 }
+
+</dtml-comment>
+
+/* </dtml-with> */

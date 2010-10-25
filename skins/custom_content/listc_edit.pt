@@ -1,0 +1,31 @@
+<table class="TwoColumnForm" i18n:domain="plinn"
+			 tal:define="bgcolor here/base_properties/contentBackgroundColor"
+			 tal:attributes="style string:background-color:$bgcolor">
+	<tr>
+		<td>
+      <input type="checkbox" value="" name="criterion_ids:list" id=""
+          tal:attributes="value here/getId; id string:cb_${here/getId}" />
+      <input type="hidden" name="criteria.id:records" value=""
+          tal:attributes="value here/getId" />
+    </td>
+		<td>
+			<fieldset>
+				<legend tal:content="string:catalog_index_${here/Field}" i18n:translate="">Field name</legend>
+				<textarea name="criteria.value:lines:records" rows="5" cols="40"
+									tal:content="python:modules['string'].join(here.value, '\n')"></textarea><br />
+		   	<span i18n:translate="" tal:omit-tag="">Operator:</span>
+        <select name="criteria.operator:records">
+          <option value="or"
+            tal:attributes="selected python:here.operator == 'or'"
+            i18n:translate="">or</option>
+          <option value="and" 
+            tal:attributes="selected python:here.operator == 'and'"
+            i18n:translate="">and</option>
+        </select>
+    		<dl class="FieldHelp">
+			    <dd tal:content="here/Description" i18n:translate="">Criterion description</dd>
+				</dl>
+      </fieldset>
+		</td>
+	</tr>
+</table>

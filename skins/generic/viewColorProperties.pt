@@ -1,0 +1,24 @@
+<html metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <title>color table</title>
+  </head>
+
+  <body metal:fill-slot="main"
+  			tal:define="propsheet here/base_properties ;
+  									propMap propsheet/propertyMap ;
+  									strProps python:[ p for p in propMap if p['type'] == 'string' ] ;
+  									colorProps python:[ p for p in strProps if p['id'].lower().find('color') >=0 or (p['default_value'].startswith('#') and p['default_value'][1:].isalnum()  ) ]"
+  			tal:omit-tag="">
+		<h1>Color table</h1>
+    <table width="180" border="1" cellspacing="2" cellpadding="0">
+      <tr tal:repeat="prop colorProps">
+        <th tal:content="prop/id">color name</th>
+        <td tal:content="prop/default_value">#fde</td>
+        <td bgcolor="#ddd" tal:attributes="style string:background : ${prop/default_value};;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      </tr>
+    </table>
+  </body>
+
+</html>

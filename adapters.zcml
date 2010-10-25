@@ -1,0 +1,14 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+  <adapter
+    provides=".interfaces.IContentHistory"
+    for="Products.CMFDefault.interfaces.IDocument"
+    factory=".HistoryAdapters.DocumentHistory"/>
+  <adapter
+    provides=".interfaces.IContentHistory"
+    for="Products.CMFCore.interfaces.IFolderish"
+    factory=".HistoryAdapters.FolderishHistory"/>
+  <adapter
+    provides=".interfaces.IEmailNotificationSettings"
+    for="Products.CMFCore.interfaces.IContentish"
+    factory=".EmailNotification.EmailNoticationSettings"/>
+</configure>

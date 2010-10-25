@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="here/main_template/macros/master">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  </head>
+
+  <body>
+    <div metal:fill-slot="main_no_tabs" i18n:domain="cmf_default">
+      <div tal:define="purl here/portal_url;
+                  mtool here/portal_membership;
+                  member mtool/getAuthenticatedMember;
+                 ">
+        <div tal:condition="python: not( mtool.checkPermission( 'Set own properties'
+                                                        , here ) )">
+          <span id="dummy_for_redirect" tal:define="aurl here/absolute_url;
+                      rurl string:${purl}/login_form?came_from=${aurl};
+                      response request/RESPONSE;
+                      redirect python:response.redirect( rurl )" />
+        </div>
+        <!-- not Set own properties -->
+        <div class="config">
+          <h1 i18n:translate="">Member Preferences</h1>
+          <span tal:condition="request/msg|nothing" tal:replace="request/msg" />
+          <p i18n:translate=""><span i18n:name="link"><a href="password_form" i18n:translate="">Click here</a></span> to change your password.</p>
+          <form action="personalize" method="post" tal:attributes="action string:${purl}/personalize">
+            <table class="TwoColumnForm" cellspacing="0">
+              <tr>
+                <th i18n:translate="">Name</th>
+                <td>
+                  <input type="text" name="name" value="" tal:attributes="value member/name|nothing" />
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="">Given Name</th>
+                <td>
+                  <input type="text" name="given_name" tal:attributes="value member/given_name|nothing" />
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="">Email address</th>
+                <td>
+                  <input type="text" name="email" value="" tal:attributes="value member/email|nothing" />
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="">Text editor</th>
+                <td>
+                  <select name="wysiwyg_editor" size="1">
+                    <option value="plain text" tal:repeat="editor python:portal_object.getProperty('available_editors')" tal:attributes="value editor ; selected python:member.getProperty('wysiwyg_editor', '') == editor" tal:content="editor" i18n:translate="">plain</option>
+                  </select>
+                </td>
+              </tr>
+              <!--
+              <tr>
+                <th valign="top" i18n:translate="">Photos width</th>
+                <td>
+                  <input type="text" name="photo_width" size="3" tal:attributes="value member/photo_width|nothing" />&nbsp;pixels
+                </td>
+              </tr>
+              <tr>
+                <th valign="top" i18n:translate="">Listed status</th>
+                <td tal:define="listed member/listed|nothing">
+                  <input id="cb_listed" type="radio" name="listed" value="on" tal:attributes="checked listed" /><label for="cb_listed" i18n:translate="">Listed</label>
+                  <dl class="FieldHelp">
+                    <dd i18n:translate="">You will show up on the public membership roster.</dd>
+                  </dl>
+                  <input id="cb_unlisted" type="radio" name="listed" value="" tal:attributes="checked python:( hasattr(member,'listed')
+                                  and not(member.getProperty( 'listed' ) ) )" /><label for="cb_unlisted" i18n:translate="">Unlisted</label>
+                  <dl class="FieldHelp">
+                    <dd i18n:translate="">You will <i>not</i> show up on the public membership roster. Your Member folder will still be publicly accessible unless you change its security settings.</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr tal:define="s_tool here/portal_skins" tal:condition="python:len(s_tool.getSkinSelections()) > 1">
+                <th i18n:translate="">Skin</th>
+                <td tal:define="current request/portal_skin|nothing;">
+                  <select name="portal_skin">
+                    <option value="" tal:attributes="value skin;
+                                selected python:current == skin" tal:define="skins python:s_tool.getSkinSelections()" tal:content="skin" tal:repeat="skin skins">skin</option>
+                  </select>
+                </td>
+              </tr>
+              -->
+              <tr>
+                <td><br /></td>
+                <td>
+                  <br />
+                  <input type="submit" value="Change" i18n:attributes="value" />
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        <!-- class="Desktop" -->
+      </div>
+      <!-- tal:define="mtool" -->
+    </div>
+    <!-- metal:fill-slot="main" -->
+  </body>
+
+</html>

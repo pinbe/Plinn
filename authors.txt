@@ -1,0 +1,22 @@
+Python and Javascript / Ajax programming, templates, graphics :
+  Benoît PIN <pin@cri.ensmp.fr>
+
+
+
+Thanks to :
+  Georges-André Silber <silber@cri.ensmp.fr> (support, help)
+  Pierre Jouvelot <pj@cri.ensmp.fr> (support, help)
+  Katia Oliver <katia.oliver@laposte.net> (ideas, support, feedback)
+  Aline Caron <aline.caron@gmail.com> (color chart, icons)
+  Laurent Daverio <daverio@cri.ensmp.fr> (Utf8Splitter)
+
+
+
+Codes from others projects and included into Plinn:
+
+  Plone (c) Plone Foundation - http://plone.org
+    (Plone Batch and IndexIterator classes)
+    Plinn/PloneMisc.py
+    
+  (c) Matthew Eernisse - http://www.onlamp.com/pub/a/onlamp/2005/05/19/xmlhttprequest.html
+    Plinn/skins/ajax_scripts/ajax_form_manager.js ('formData2QueryString' function)

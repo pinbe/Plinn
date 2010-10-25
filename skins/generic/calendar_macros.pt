@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Calendar macros</title>
+  </head>
+
+  <body i18n:domain="plinn">
+    <pre>month macro</pre>
+    <div metal:define-macro="month"
+    		 tal:define="nextStart python:calTool.getNextMonth(year, month) ;
+           			     previousStart python:calTool.getPreviousMonth(year, month) ;
+           			     weeks python:calTool.getWeeksList(objects, sortBy, month=month, year=year)">
+      <div tal:define="navAnchor string:topNav" tal:omit-tag="">
+      	<div metal:define-slot="cal_header" tal:omit-tag="">
+		      <div metal:use-macro="here/calendar_macros/macros/calNavigation">
+		        calNavigation
+		      </div>
+		    </div>
+	    </div>
+      <table class="calendar_table">
+        <tr>
+          <th colspan="7">
+            <h1><span tal:content="python:calTool.getMonthName(month)" tal:omit-tag="" i18n:translate="">Month</span> <span tal:content="year">2004</span></h1>
+          </th>
+        </tr>
+        <tr>
+          <th tal:content="day" tal:repeat="day python:calTool.getDays(9)" i18n:translate="">Monday</th>
+        </tr>
+        <tr tal:repeat="week weeks">
+          <td tal:attributes="class python: calTool.isToday(year, month, dayInfo['day']) and 'today' or not dayInfo['day'] and 'disabled' or nothing" tal:repeat="dayInfo week">
+            <div tal:content="python:dayInfo['day'] and dayInfo['day'] or nothing">1</div>
+            <ul tal:condition="dayInfo/objects">
+              <li tal:repeat="ob dayInfo/objects">
+              	<a href="."
+              		 tal:attributes="href python:link_func(ob);
+              		 								 title python:buildDate(indexIsCallable and getattr(ob, sortBy)() or getattr(ob, sortBy)).Time()"
+              		 tal:content="ob/title_or_id">title_or_id
+              	</a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <div tal:define="navAnchor string:bottomNav" tal:omit-tag="">
+      	<div metal:define-slot="cal_footer" tal:omit-tag="">
+					<div metal:use-macro="here/calendar_macros/macros/calNavigation">
+		        calNavigation
+		      </div>
+	      </div>
+	    </div>
+    </div>
+    <hr />
+    <pre>week macro</pre>
+    <div metal:define-macro="week"
+         tal:define="weekInfo python: calTool.getWeek(objects, sortBy, year=year, month=month, day=day) ;
+         						 week weekInfo/week ;
+         						 previousStart weekInfo/previousStartDay ;
+         						 nextStart weekInfo/nextStartDay ;
+             				 dayNames python: calTool.getDays(letters=3) ;
+             				 weekAndNames python:[ (week[i], dayNames[i]) for i in range(7) ] ;
+             				 weekTable python:calTool.getWeekTable(week, sortBy, indexIsCallable) ;
+             				 matrix weekTable/weekMatrix ;
+             				 dispRRange python:request.get('disp_reel_range', 0) ;
+             				 display_range python:dispRRange and weekTable['range'] or calTool.getDisplayRange()">
+      <div tal:define="navAnchor string:topNav" tal:omit-tag="">
+      	<div metal:define-slot="cal_header" tal:omit-tag="">
+					<div metal:use-macro="here/calendar_macros/macros/calNavigation">
+		        calNavigation
+		      </div>
+		    </div>
+	    </div>
+      <table class="week_table" cellspacing="0">
+        <tr>
+          <td style="border : none">
+            <a href="." title="Click to see hidden items" i18n:attributes="title"
+            	 tal:attributes="href string:${request/URL0}?disp_reel_range:int=1#topNav"
+            	 tal:condition="python: not dispRRange and  weekTable['range'][0] < calTool.getDisplayRange()[0]">
+            	<img src="eye_up.gif" alt="Click to see hidden items" height="20" width="20" border="0" 
+            		 tal:attributes="src here/eye_up.gif/absolute_url"
+            		 i18n:attributes="alt" /></a>
+          </td>
+          <th tal:repeat="day weekAndNames" i18n:translate=""
+            ><span tal:content="python:day[1]" i18n:name="dayName" i18n:translate=""
+            >Mon</span>&nbsp;<span tal:content="python:calTool.getMonthName(day[0]['month'])+'_abbr'" i18n:name="monthName" i18n:translate=""
+            >May</span>&nbsp;<span tal:content="python:day[0]['day']" i18n:name="dayNumber"
+            >24</span></th>
+        </tr>
+        <tr>
+          <td class="hourLabel">
+            <div tal:repeat="quartIndex python:range(display_range[0], display_range[1])">
+              <span tal:replace="python:((quartIndex + 1) % 4) == 0 and ( str(quartIndex/4 + 1).zfill(2) + ':00') or nothing">10:00</span>
+            </div>
+          </td>
+          <td tal:repeat="dayIndex python:range(7)"
+          		tal:attributes="class python: calTool.isToday(year, month, week[dayIndex]['day']) and 'today' or nothing">
+            <div tal:condition="isEventCalendar"
+            		 tal:repeat="quartIndex python:range(display_range[0],  display_range[1])"
+             		 tal:attributes="class python:(quartIndex + 1) % 4 == 0 and 'hour_row' or (quartIndex + 1) % 2 == 0 and 'half_hour_row' or nothing">             		 
+             	<div tal:repeat="ob python:matrix[dayIndex][quartIndex]" tal:omit-tag="">
+	              <div class="event"
+										 tal:attributes="style python:'height : ' + str(calTool.getEventHeight(ob)*15) + 'px'">
+									<a href="."
+										 tal:attributes="href python:link_func(ob);
+										 								 title python:'%s - %s' % ( calTool.buildDate(ob.start()).Time(), calTool.buildDate(ob.end()).Time() )"
+										 tal:content="ob/title_or_id">title_or_id</a>
+								</div>
+							</div>
+            </div>        
+            <div tal:condition="not:isEventCalendar"
+            		 tal:repeat="quartIndex python:range(display_range[0],  display_range[1])"
+             		 tal:attributes="class python:(quartIndex + 1) % 4 == 0 and 'hour_row' or (quartIndex + 1) % 2 == 0 and 'half_hour_row' or nothing">
+             	<div tal:define="objects python:matrix[dayIndex][quartIndex]" tal:omit-tag="">
+             	  <ul tal:condition="objects">
+             	    <li tal:repeat="ob objects"><a href="."
+											 tal:attributes="href python:link_func(ob);
+											 								 title python:buildDate(indexIsCallable and getattr(ob, sortBy)() or getattr(ob, sortBy)).Time()" 
+											 tal:content="ob/title_or_id">title_or_id</a></li>
+             	  </ul>
+							</div>
+            </div>
+          </td>
+        <tr tal:condition="python: not dispRRange and weekTable['range'][1] > calTool.getDisplayRange()[1]">
+          <td class="hourLabel" style="border : none" 
+          		tal:attributes="colspan python:8">
+            <a href="." title="Click to see hidden items" i18n:attributes="title"
+						tal:attributes="href string:${request/URL0}?disp_reel_range:int=1#navBottom">
+            		<img src="eye_down.gif" alt="Click to see hidden items" height="20" width="20" border="0"
+            			 tal:attributes="src here/eye_down.gif/absolute_url"
+            			 i18n:attributes="alt" />
+            </a>
+          </td>
+          <td tal:replace="nothing"></td>
+        </tr>
+      </table>
+      <div tal:define="navAnchor string:navBottom" tal:omit-tag="">
+	      <div metal:define-slot="cal_footer" tal:omit-tag="">
+					<div metal:use-macro="here/calendar_macros/macros/calNavigation">
+		        calNavigation
+		      </div>
+		    </div>
+	    </div>
+    </div>
+    <hr />
+    <pre>calNavigation macro</pre>
+    <div metal:define-macro="calNavigation">
+			<a name="anchor" tal:attributes="name navAnchor"></a>
+      <table class="cal_navigation" cellspacing="0"
+      			 tal:define="previousYear previousStart/year ;
+      			 						 previousMonth previousStart/month ;
+      			 						 previousDay previousStart/day|nothing;
+      			 						 nextYear nextStart/year ;
+      			 						 nextMonth nextStart/month ;
+      			 						 nextDay nextStart/day|nothing">
+        <tr>
+          <td class="arrow">
+            <a title="Previous" href="." 
+							 tal:attributes="href python:'%s?year:int=%d&month:int=%d' % (request['URL0'], previousYear, previousMonth) + (previousDay and '&day:int=%d' % previousDay['day'] or '') + '#%s' % navAnchor"
+ 							 i18n:attributes="title"><img src="arrow_l.gif" alt="Previous" height="25" width="25" tal:attributes="src here/arrow_l.gif/absolute_url" border="0" i18n:attributes="alt" /></a>
+          </td>
+          <td>
+            <a href="." tal:attributes="class python:display == 'week' and 'selected' or nothing;
+																								href string:${request/URL0}?display=week#${navAnchor}" i18n:translate=""
+						>Week</a><a href="." tal:attributes="class python:display == 'month' and 'selected' or nothing ;
+																								 href string:${request/URL0}?display=month#${navAnchor}" i18n:translate=""
+						>Month</a>
+          </td>
+          <td class="arrow">
+            <a title="Next" href="."
+            	 tal:attributes="href python:'%s?year:int=%d&month:int=%d' % (request['URL0'], nextYear, nextMonth) + (nextDay and '&day:int=%d' % nextDay['day'] or '') + '#%s' % navAnchor"
+            	 i18n:attributes="title"><img src="arrow_r.gif" alt="Next" height="25" width="25" border="0" tal:attributes="src here/arrow_r.gif/absolute_url" i18n:attributes="alt" /></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,19 @@
+<metal:block metal:define-macro="master">
+<html metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <title>generic edit form layout</title>
+  </head>
+
+  <body>
+  	<div metal:fill-slot="header">
+	  	<div metal:use-macro="here/widgets/macros/generic_header">generic_header</div>
+  	</div>
+  	<div metal:fill-slot="main" tal:omit-tag="">
+  		<div metal:define-slot="main">main slot</div>
+  	</div>
+  </body>
+
+</html>
+</metal:block>

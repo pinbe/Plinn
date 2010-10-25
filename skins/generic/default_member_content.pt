@@ -1,0 +1,5 @@
+<div i18n:domain="plinn" tal:omit-tag="">
+<h1 i18n:translate="">Default page for <span tal:replace="options/memberFullName" i18n:name="memberFullName">Member full name</span></h1>
+<p i18n:translate="">This is the default document created for you when you have been registered in this portal.</p>
+<p i18n:translate="">To change the content just select "Edit" in the Tab bar on the top.</p>
+</div>

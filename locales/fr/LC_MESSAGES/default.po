@@ -1,0 +1,319 @@
+msgid ""
+msgstr "Project-Id-Version: Third party messages for Plinn 2.0\n"
+"POT-Creation-Date: 2004-04-22 21:04+CET\n"
+"PO-Revision-Date: 2007-10-17 14:43+0200\n"
+"Last-Translator:  Benoît PIN\n"
+"Language-Team: CRI http://cri.ensmp.fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: fr\n"
+"Language-Name: French\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: default\n"
+"X-Is-Fallback-For: fr-fr, fr-be fr-ca fr-lu fr-mc fr-ch\n"
+
+
+msgid "%d item moved down."
+msgstr "%d élément déplacé plus bas."
+
+msgid "%d items moved down."
+msgstr "%d éléments déplacés plus bas."
+
+msgid "%d item moved to bottom."
+msgstr "%d élément déplacé en dernier."
+
+msgid "%d items moved to bottom."
+msgstr "%d éléments déplacés en dernier."
+
+msgid "%d item moved to top."
+msgstr "%d élément déplacé en premier."
+
+msgid "%d items moved to top."
+msgstr "%d éléments déplacés en premier."
+
+msgid "%d item moved up."
+msgstr "%d élément déplacé plus haut."
+
+msgid "%d items moved up."
+msgstr "%d éléments déplacés plus haut."
+
+msgid "Advanced search"
+msgstr "Recherche avancée"
+
+msgid "CMF Settings changed."
+msgstr "Paramètres du site enregistrés"
+
+msgid "Changes saved."
+msgstr "Modifications enregistrées."
+
+msgid "Clipboard emptied."
+msgstr "Presse-papier vidé."
+
+msgid "Comment added."
+msgstr "Commentaire ajouté."
+
+msgid "Comment deleted."
+msgstr "Commentaire supprimé."
+
+msgid "Criteria deleted."
+msgstr "Critères supprimés."
+
+msgid "Criterion added."
+msgstr "Critère ajouté."
+
+msgid "Criterion deleted."
+msgstr "Critère supprimé."
+
+msgid "Deleted."
+msgstr "Objet(s) Supprimé(s)."
+
+msgid "Discussion thread deleted."
+msgstr "Fil de discussion supprimé."
+
+msgid "Document changed."
+msgstr "Document modifié."
+
+msgid "Email sent."
+msgstr "E-mail envoyé."
+
+msgid "End date is not valid."
+msgstr "La date de fin n'est pas valide."
+
+msgid "Event changed."
+msgstr "Événement changé."
+
+msgid "Favorite added."
+msgstr "Favori ajouté."
+
+msgid "File changed."
+msgstr "Fichier modifié."
+
+msgid "Filter cleared."
+msgstr "Filtre effacé."
+
+msgid "Folder changed."
+msgstr "Dossier modifié."
+
+msgid "Group created."
+msgstr "Groupe créé."
+
+msgid "Group deleted."
+msgstr "Groupe effacé."
+
+msgid "Group modified."
+msgstr "Groupe modifié."
+
+msgid "Groups deleted."
+msgstr "Groupes effacés."
+
+msgid "Header Changed."
+msgstr "En-tête modifié."
+
+msgid "Image changed."
+msgstr "Image modifiée."
+
+msgid "Image file format non supported."
+msgstr "Fichier d'image non reconnu."
+
+msgid "Install"
+msgstr "Installer"
+
+msgid "Item copied."
+msgstr "Élément copié."
+
+msgid "Items copied."
+msgstr "Éléments copiés."
+
+msgid "Item cut."
+msgstr "Élément coupé."
+
+msgid "Items cut."
+msgstr "Éléments coupés."
+
+msgid "Item deleted."
+msgstr "Élément supprimé."
+
+msgid "Item removed from clipboard."
+msgstr "Élément retiré du presse-papier."
+
+msgid "Items deleted."
+msgstr "Éléments supprimés"
+
+msgid "Items removed from clipboard."
+msgstr "Éléments retirés du presse-papier."
+
+msgid "Item pasted."
+msgstr "Élément collé."
+
+msgid "Items pasted."
+msgstr "Éléments collés."
+
+msgid "Item renamed."
+msgstr "Élément renommé."
+
+msgid "Items renamed."
+msgstr "Éléments renommés."
+
+msgid "Link changed."
+msgstr "Lien modifié."
+
+msgid "Local Roles changed."
+msgstr "Rôles locaux modifiés."
+
+msgid "Login success"
+msgstr "Connexion réussie"
+
+msgid "Member modified."
+msgstr "Membre modifié."
+
+msgid "Member created."
+msgstr "Membre créé."
+
+msgid "Member deleted."
+msgstr "Membre supprimé."
+
+msgid "Member registered."
+msgstr "Membre inscrit."
+
+msgid "Members deleted."
+msgstr "Membres supprimés."
+
+msgid "Members registered."
+msgstr "Membres inscrits."
+
+msgid "Metadata changed."
+msgstr "Métadonnées changées."
+
+msgid "News Item changed."
+msgstr "Actualité modifiée."
+
+msgid "No email sent : no recipient specified."
+msgstr "Pas d'e-mail envoyé : aucun destinataire spécifié."
+
+msgid "Nothing to change."
+msgstr "Aucune modification."
+
+msgid "Object created."
+msgstr "Objet créé."
+
+msgid "Object deleted."
+msgstr "Objet supprimé."
+
+msgid "Password changed."
+msgstr "Mot de passe modifié."
+
+msgid "Paste"
+msgstr "Coller"
+
+msgid "place holder for an image"
+msgstr "espace réservé pour une image"
+
+msgid "Please copy or cut one or more items to paste first."
+msgstr "Veuillez d'abord copier ou couper un ou plusieurs éléments à coller."
+
+msgid "Please select at least one member."
+msgstr "Veuillez sélectionner au moins un membre."
+
+msgid "Please select one ore more criteria first."
+msgstr "Veuillez sélectionner un ou plusieurs critères."
+
+msgid "Please select one or more groups before."
+msgstr "Veuillez sélectionner un ou plusieurs groupes."
+
+msgid "Please select one or more items first."
+msgstr "Veuillez sélectionner un ou plusieurs éléments."
+
+msgid "Please select one or more members."
+msgstr "Veuillez sélectionner un ou plusieurs membres."
+
+msgid "Please select a member first."
+msgstr "Veuillez sélectionner un membre."
+
+msgid "Registration rejected."
+msgstr "Inscription rejetée."
+
+msgid "Reinstall"
+msgstr "Réinstaller"
+
+msgid "Reply deleted."
+msgstr "Réponse supprimée."
+
+msgid "Required"
+msgstr "Requis"
+
+msgid "SEARCH"
+msgstr "RECHERCHE"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "Saved changes."
+msgstr "Modifications enregistrées."
+
+msgid "Start date is not valid."
+msgstr "La date de début n'est pas valide."
+
+msgid "Status changed."
+msgstr "État modifié."
+
+msgid "Success!"
+msgstr "Succès !"
+
+msgid "Syndication Disabled"
+msgstr "Diffusion désactivée."
+
+msgid "Syndication Enabled"
+msgstr "Diffusion activée."
+
+msgid "Syndication Not Allowed"
+msgstr "Diffusion non autorisée."
+
+msgid "Syndication Properties Updated."
+msgstr "Propriétés de diffusion mises à jour."
+
+msgid "Syndication is Disabled"
+msgstr "La diffusion est désactivée."
+
+msgid "The login name you selected is already in use or is not valid. Please choose another."
+msgstr "Le login est déjà utilisé ou n'est pas valide. Merci d'en choisir un autre."
+
+msgid "This resource is locked via webDAV."
+msgstr "Cette ressource est verrouillée par <em>webdav</em>."
+
+msgid "Transaction(s) undone"
+msgstr "Transaction(s) annulée(s)"
+
+msgid "Uninstall"
+msgstr "Déinstaller"
+
+msgid "You are here:"
+msgstr "Vous êtes ici :"
+
+msgid "You are not allowed to manage this role in this context."
+msgstr "Vous n'êtes pas autorisé à gérer ce rôle dans ce contexte."
+
+msgid "You must enter a title and body."
+msgstr "Vous devez ajouter un titre et un corps."
+
+msgid "You must enter a valid email address."
+msgstr "Vous devez entrer une adresse e-mail valide."
+
+msgid "next"
+msgstr "suivant"
+
+msgid "previous"
+msgstr "précédent"
+
+msgid "Warning: you should have selected only one member."
+msgstr "Attention : vous deviez sélectionner qu'un seul membre."
+
+msgid "Zip file imported and decompressed."
+msgstr "Fichier zip importé et décompressé."
+
+msgid "zoom in"
+msgstr "zoom avant"
+
+msgid "zoom out"
+msgstr "zoom arrière"

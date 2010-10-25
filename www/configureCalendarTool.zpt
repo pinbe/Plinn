@@ -1,0 +1,23 @@
+<tal:header tal:replace="structure here/manage_page_header">header</tal:header>
+<tal:tabs   tal:replace="structure here/manage_tabs">tabs</tal:tabs>
+<div i18n:domain="plinn">
+  <h3 i18n:translate="">Configure <code i18n:name="portal_calendar">portal_calendar</code> Tool</h3>
+  <form action="." method="get" tal:attributes="action here/absolute_url"
+      tal:define="indexes here/getCandidateIndexes ;
+      						dateIndexes here/getDateIndexes ;
+      						displayRange here/getDisplayRange ;
+      					  ">
+    <h4 i18n:translate="">Select date indexes</h4>
+    <select name="dateIndexes:list" size="7" multiple>
+      <option value="index" tal:repeat="index indexes" tal:attributes="value index ; selected python:index in dateIndexes" tal:content="index">index</option>
+    </select><br />
+    <h4 i18n:translate="">Select default time range displayed in calendar week view</h4>
+    <input type="text" name="displayRange:tokens" size="24" tal:attributes="value python:' '.join(map(lambda i : str(i/4), displayRange))"/>
+    <span i18n:translate="">(start and end time in hour)</span>
+    <br />
+    <input type="submit" name="configureTool:method" value="Change" i18n:attributes="value" />
+  </form>
+</div>
+<tal:footer tal:replace="structure here/manage_page_footer">footer</tal:footer>
+
+

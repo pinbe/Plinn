@@ -1,0 +1,376 @@
+/* 
+
+Date de creation : 2 juin 2004         
+ 
+E.N.S.M.P. - C.R.I. - Gilles Rosenbaum
+
+****************************************
+Version pour impression de gev_style.css
+****************************************
+
+*/
+
+/* <dtml-with base_properties> */
+
+table.TwoColumnForm {
+  border: solid 1pt black;
+  width: 80% }
+
+table.TwoColumnForm dl.FieldHelp {
+  margin: 0px }
+  
+table.TwoColumnForm dl.FieldHelp dd {
+  font-size : 90% ;
+  font-style : italic }
+  
+table.TwoColumnForm td.ListDefinition {
+  font-style: italic }
+  
+table.TwoColumnForm td.ListName {
+  color: #fff;
+  font-weight: bold;
+  background-color: #369;
+  vertical-align: middle }
+  
+table.TwoColumnForm th {
+  font-weight: bold;
+  text-align: right;
+  padding-right: 5px }
+  
+table.TwoColumnForm tr {
+  background-color: #ddd;
+  vertical-align: top }
+  
+table.TwoColumnForm tr td.TextField {
+  vertical-align: top;
+  padding-right: 10px;
+  padding-left: 10px }
+  
+table.TwoColumnForm tr th.TextField {
+  vertical-align: top }
+  
+.assign_global_roles {
+  border: solid 1px black }
+  
+.assign_global_roles td {
+  vertical-align: top;
+  padding-left: 10px }
+  
+.assign_global_roles td ul {
+  margin: 0px;
+  padding-left: 15px }
+  
+.assign_global_roles tr {
+  background-color: #ddd;
+  vertical-align: top }
+  
+.config {
+  background-color: #f0f0f0;
+  margin: 5px;
+  border: solid 1pt #ddd }
+  
+.config .info_message {
+  color: #369;
+  font-weight: 800 }
+  
+.config .tabs {
+  margin: 0px;
+  padding: 0px;
+  border-bottom: 1pt solid #669 }
+  
+.config .tabs a {
+  text-decoration: none }
+  
+.config .tabs a:active {
+  color: #369 }
+
+.config .tabs a:hover {
+  color: #59c }
+  
+.config .tabs a:link {
+  color: #369 }
+  
+.config .tabs a:visited {
+  color: #369 }
+  
+.config .tabs td {
+  padding-right: 5px;
+  padding-left: 5px;
+  border-style: solid;
+  border-width: 1px 2px 2px 1px;
+  border-color: #666 }
+  
+.config .tabs td.selected {
+  vertical-align: bottom;
+  margin: 0px;
+  padding: 0px 5px;
+  border: solid 0px #669 }
+  
+.config .tabs td.selected a  {
+  color: #59c;
+  font-weight: bold }
+
+.twins_list {
+  vertical-align: middle }
+  
+
+/* Boxes styles */
+
+.boxes_container {
+  padding-top:1em;
+}
+
+.boxes_container table {
+  width : 100%;
+  font-size : 9pt ;
+/*
+  font-size: &dtml-fontBaseSize;;
+*/
+}
+  
+.boxes_container a {  }
+  
+.boxes_container a:link,
+.boxes_container a:visited {
+  color : &dtml-linkColor;;
+}
+
+.boxes_container a:active {
+  color : #039 ;
+  border : thin solid #039 }
+
+.boxes_container a:hover {
+  color : #039 }
+
+.boxes_container th  {
+  background-color: &dtml-tabsBackgroundColor;;
+  color: &dtml-globalFontColor;;
+  border-bottom: &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+}
+
+.boxes_container ul {
+  margin : 0 ;
+  padding : 2px }
+  
+.boxes_container li  {
+  margin-left : 0 ;
+  color: &dtml-tabsFontColor;;
+  list-style-position : inside ;
+}
+
+.folder_object td,
+.global td,
+.workflow td,
+.tree_box td {
+  background-color: &dtml-contentBackgroundColor;;
+}
+
+.folder_object,
+.global,
+.workflow,
+.tree_box { 
+  border: &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+ }
+
+/* Calendar */
+
+/* month view*/
+.calendar_table {
+  border-collapse : collapse ;
+  text-align : left ;
+}
+
+.calendar_table ul {
+  margin : 0 ;
+  padding : 2px }
+  
+.calendar_table li {
+  margin-left : 0 ;
+  color: &dtml-tabsFontColor;;
+  list-style-position : inside ;
+  font-size : 9pt ;
+}
+
+
+.calendar_table div {
+   text-align : right ;
+ }
+
+.calendar_table th {
+  text-align : center ;
+  width : 14% ;
+}
+ 
+.calendar_table td {
+  border : 1px solid #000 ;
+}
+
+.calendar_table td.disabled {
+  border : none ;
+}
+
+.calendar_table td.today {
+  background-color : &dtml-topbarBackgroundColor;;
+}
+
+
+/*
+.cal_navigation {
+  margin-top : 1em ;
+}
+*/
+
+.cal_navigation .arrow a, .cal_navigation .arrow a:hover{
+  background-color : white ;
+}
+
+.cal_navigation td {
+  vertical-align : middle ;
+}
+
+.cal_navigation a {
+  padding : 0 3px ;
+  font-size: &dtml-fontSmallSize;;
+  background-color: &dtml-tabsBackgroundColor;;
+  color: &dtml-globalFontColor;;
+}
+
+.cal_navigation a.selected {
+  background-color: &dtml-tabsBorderColor;;
+  color: &dtml-tabsFontColor;;
+
+}
+
+.cal_navigation a:hover {
+  background-color: &dtml-tabsBorderColor;;
+  color: &dtml-tabsFontColor;;
+}
+
+/* week view */
+.week_table {
+  width : 100% ;
+  border-collapse : collapse ;
+  font-size : 9pt ;
+}
+
+.week_table th {
+  font-weight : normal ;
+  text-align : center ;
+  border-bottom : 1px solid #ccc ;
+}
+
+.week_table td {
+  border-left : 1px solid #ccc ;
+  border-right : 1px solid #ccc ;
+  padding : 0 ;
+}
+
+.week_table td.hourLabel {
+  border-left : 1px solid #fff ;
+/*  width : 5ex ;*/
+}
+
+.week_table div {
+  margin-top : -1px ;
+  padding : 0 ;
+  height : 15px ;
+  border-bottom : 1px solid #fff ;
+}
+
+.week_table .hour_row {
+  border-bottom : 1px solid #ccc ;
+}
+.week_table .half_hour_row {
+  border-bottom : 1px solid #e5e5e5 ;
+}
+
+.week_table .today {
+  background-color : #f0f0f0 ;
+}
+
+.week_table div.event {
+  position : absolute ;
+  border : 1px solid #ccc ;
+  background-color : white ;
+}
+
+.week_table div.event:hover {
+  border : 1px solid &dtml-tabsFontColor; ;
+  background-color : orange ;
+  z-index : 1 ;
+}
+/*
+.week_table ul {
+  margin : -1px 0 0 0 ;
+  padding : 0 ;
+  position : absolute ;
+}
+
+.week_table ul:hover {
+  background-color : #fff ;
+  border-top : 1px solid #909 ;
+  border-left : 1px solid #ccc ;
+  border-right : 1px solid #ccc ;
+  border-bottom : 1px solid #ccc ;
+  z-index : 1 ;
+}
+
+.week_table li  {
+  margin-left : 0 ;
+  color: &dtml-tabsFontColor;;
+  list-style-position : inside ;
+}
+
+.week_table td {
+  border-left : 1px solid #ccc ;
+  border-right : 1px solid #ccc ;
+  padding : 0 ;
+}
+
+.week_table div {
+  border : 1px solid green ;
+  height : 0.7em ;
+}
+
+.week_table th {
+  font-weight : normal ;
+  text-align : center ;
+  background-color : #fff ;
+  border-bottom : 1px solid #ccc ;
+}
+
+.week_table .today {
+  background-color : #f0f0f0 ;
+}
+
+
+.week_table .hour_row {
+  border-bottom : 1px solid #ccc ;
+}
+.week_table .half_hour_row {
+  border-bottom : 1px solid #e5e5e5 ;
+}
+
+.week_table td.hourLabel {
+  border : none ;
+  width : 4ex ;
+}
+
+.week_table td.hourLabel span {
+  position : absolute ;
+}
+*/
+
+/* Photo / Portfolio */
+.slide {
+  height : &dtml-slide_size;px ;
+  width : &dtml-slide_size;px ;
+  float : left ;
+  border : 1px solid black ;
+  margin-top : -1px ;
+  margin-left : -1px ;
+  text-align : center ;
+  background-color : #fff ;
+  overflow : auto ;
+}
+/* </dtml-with> */

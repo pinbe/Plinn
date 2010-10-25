@@ -1,0 +1,66 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+  </head>
+<body>
+  <div metal:fill-slot="header" tal:replace="nothing"/>
+  <div tal:omit-tag="" metal:fill-slot="main"
+      id="mainCell"
+      i18n:domain="plinn"
+      tal:define="b_start string:0;
+                  b_start request/b_start | b_start;
+		  brains python: here.portal_catalog(portal_type='News Item', sort_on='Date', sort_order='reverse', review_state='published');
+		  newsitems python:[b.getObject() for b in brains];
+		  Batch python:modules['Products.Plinn'].Batch;
+		  batch python:Batch(newsitems, 10, int(b_start), orphan=1);
+		  ListPortalMembers modules/Products/CMFCore/permissions/ListPortalMembers;
+		  checkPerm nocall:mtool/checkPermission">
+
+   <h1 i18n:translate="">News</h1>
+   <div tal:repeat="newsitem batch" tal:condition="newsitems" tal:omit-tag="">
+
+    <div class="newsItem">
+     <h2 class="newsTitle">
+      <img src="newsitem_icon.gif" alt="newsitem/Title" />
+      <a tal:attributes="href newsitem/absolute_url"
+         tal:content="newsitem/Title">Title</a>
+     </h2>
+ 
+     <p class="newsDescription"
+        tal:content="structure newsitem/Description">Description</p>
+ 
+     <ul class="newsAbout">
+      <li tal:condition="python:checkPerm(ListPortalMembers, portal_object)">
+       <span tal:omit-tag="" i18n:translate="">by:</span>    
+       <span class="news-creator"
+       				tal:define="creator python:mtool.getMemberById(newsitem.Creator())"
+       				tal:content="python:creator.getMemberFullName(nameBefore=0)">
+       </span>,
+      </li>
+      <li>
+       <span i18n:translate="at_(date)">at</span>
+       <span tal:replace="python: DateTime(newsitem.Date()).strftime(locale_date_fmt)">date</span>
+      </li>
+     </ul>
+     <ul class="newsFooter">
+      <li>
+       <a tal:attributes="href newsitem/absolute_url" 
+          i18n:translate="read_more">Read More</a>
+      </li>
+     </ul>
+    </div>
+   </div>
+
+   <div tal:condition="python:not(newsitems)">
+    <p class="Desktop" i18n:translate="">No news is good news!</p>
+   </div>
+   <!-- Navigation -->
+   <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+  </div>
+
+</body>
+</html>
+

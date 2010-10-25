@@ -1,0 +1,59 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal" metal:use-macro="container/main_template/macros/master">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <title>Topic edit template</title>
+  </head>
+
+  <body i18n:domain="plinn">
+  	<div metal:fill-slot="header">
+  		<div metal:use-macro="here/widgets/macros/generic_header"/>
+  	</div>
+    <div metal:fill-slot="main" tal:omit-tag="">
+      <form tal:define="criteria here/listCriteria" method="post"
+      			tal:condition="criteria"
+       			tal:attributes="action string:${here/absolute_url}/topic_edit_form" >
+       	<div tal:condition="options/showAcCriteria">
+	       	<span i18n:translate="" tal:omit-tag="">Reuse criteria from parent:</span>
+	       	<label><input type="radio" name="acquireCriteria:boolean" tal:attributes="checked here/acquireCriteria" value="True"/><span i18n:translate="" tal:omit-tag="">yes</span></label>
+	       	<label><input type="radio" name="acquireCriteria:boolean" tal:attributes="checked not:here/acquireCriteria" value="False"/><span i18n:translate="" tal:omit-tag="">no</span></label>
+	      </div>
+       	<span tal:repeat="criterion criteria" tal:omit-tag="">
+       		<span tal:define="editform string:criterion/${criterion/getEditForm}" tal:replace="structure python:path(editform)">
+       			criterion edit form
+       		</span>
+       	</span>
+       	<br />
+        <input type="submit" name="editCriteria" value="Save" i18n:attributes="value" />
+        <input type="submit" name="deleteCriteria" value="Remove selected" i18n:attributes="value" />
+      </form>
+      <form action="." method="post" tal:attributes="action string:${here/absolute_url}/topic_edit_form">
+        <h2 i18n:translate="">New criterion:</h2>
+        <table class="TwoColumnForm">
+          <tr>
+            <th i18n:translate="">Name:</th>
+            <td>
+              <select name="field" tal:define="fields here/listAvailableFields">
+                <option value="" tal:attributes="value field" tal:content="string:catalog_index_$field" tal:repeat="field fields" i18n:translate="">Field</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">Type:</th>
+            <td>
+              <select name="criterion_type" tal:define="types here/listCriteriaTypes">
+                <option value="" tal:attributes="value type/name" tal:content="type/name" tal:repeat="type types" i18n:translate="">Type</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><br/></td>
+            <td>
+              <input type="submit" name="addCriterion" value="Add" i18n:attributes="value" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+  <subscriber
+        for=".interfaces.IObjectPositionModified"
+        handler=".event_handlers.reindexObjectPosition"
+        />
+  <!--
+  <subscriber
+    for="Products.CMFCore.interfaces.IContentish
+         zope.component.interfaces.IObjectEvent"
+    handler=".event_handlers.handleContentishEvent"
+      />
+  -->
+  <subscriber
+    for="Products.CMFCore.interfaces.IContentish
+         zope.app.container.interfaces.IObjectRemovedEvent"
+    handler=".event_handlers.handleObjectRemoved"
+      />
+</configure>

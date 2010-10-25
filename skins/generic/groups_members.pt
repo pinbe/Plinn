@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Group members management</title>
+    <link href="../content/plinn_style.css" rel="stylesheet" media="screen" />
+  </head>
+
+  <body tal:omit-tag="" metal:fill-slot="main_no_tabs"
+        tal:define="requestedGroup	python:here.setAndGetSessionVar('requestedGroup', request.get('group', None), allowFalse=0);
+        						gtool						here/portal_groups ;
+        						group_prefix		here/acl_users/getGroupPrefix ;
+        						prefixLength		python:len(group_prefix) ;
+			        			template_url		python:'%s/%s' % (portal_url, template.id)"
+        i18n:domain="plinn">
+    <table metal:use-macro="here/gruf_macros/macros/gruf_settings">
+      <tr>
+        <td>Using gruf_setting macro from gruf_macros</td>
+      </tr>
+      <tr>
+        <td metal:fill-slot="form" tal:omit-tag="">
+          <table>
+            <tr>
+              <td>
+                <div metal:use-macro="here/gruf_macros/macros/gruf_tree">
+                  Groups tree from gruf_macros
+                </div>
+              </td>
+              <td>
+              <div tal:condition="requestedGroup" tal:omit-tag="">
+                <table tal:define="group python:gtool.getGroupById(requestedGroup)">
+                  <tr>
+                    <th><a name="assign_members"></a>
+                    	<span i18n:translate="">
+                      Members of "<span tal:replace="python:group.title or group.id[prefixLength:]" i18n:name="groupId">group id</span>"
+                      </span>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div metal:use-macro="here/gruf_macros/macros/assign_members">
+                        assign_members form grom gruf_macros
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th><a name="assign_groups"></a><span i18n:translate="" tal:omit-tag="">Groups of "<span tal:replace="python:group.title or group.id[prefixLength:]" i18n:name="groupId">group id</span>"
+                      </span>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div metal:use-macro="here/gruf_macros/macros/assign_groups">
+                        assign_group from gruf_macros
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+
+</html>

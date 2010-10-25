@@ -1,0 +1,22 @@
+<!-- <meta http-equiv="content-type" content="text/html;charset=UTF-8"/> -->
+<metal:block metal:define-macro="threadsDisplay">
+	<div tal:define="talkback here/talkback|nothing ;
+										rfo nocall:options/reply_for_ob|nothing;
+										rfo_depth python:rfo and rfo != here and len(rfo.talkback.parentsInThread()) or 0;
+										rfo_id python:rfo_depth and rfo.id or 'add_reply_form'"
+				class="Discussion">
+		<div tal:condition="talkback" tal:omit-tag="">
+			<div tal:condition="python: here.talkback.hasReplies(here)" tal:omit-tag="">
+				<h4 i18n:translate="" i18n:domain="plinn">Comments:</h4>
+  			<span metal:use-macro="here/talkback_tree/macros/tree">discussion tree</span>
+			</div>
+		</div>
+		<div tal:repeat="action actions/discussion|nothing" tal:condition="python:rfo != here" i18n:domain="plinn">
+		  <br />
+		  <a tal:attributes="href action/url" tal:content="action/title" i18n:translate="">Discussion action</a>
+		</div>
+		<div tal:condition="python:rfo == here" tal:omit-tag="">
+		  <div metal:use-macro="here/talkback_tree/macros/add_reply_form" tal:omit-tag="">Add comment form</div>
+		</div>
+	</div>
+</metal:block>

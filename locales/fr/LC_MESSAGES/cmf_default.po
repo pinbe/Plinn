@@ -1,0 +1,1190 @@
+# Gettext Message File for CMF.
+msgid ""
+msgstr ""
+"Project-Id-Version: CMF 1.5.5\n"
+"POT-Creation-Date: 2004-05-09 13:40+0200\n"
+"PO-Revision-Date: 2007-10-17 14:43+0200\n"
+"Last-Translator: Benoît PIN <pin@cri.ensmp.fr>\n"
+"Language-Team: CRI http://cri.ensmp.fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: fr\n"
+"Language-Name: French\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: cmf_default\n"
+"X-Is-Fallback-For: fr-fr, fr-be fr-ca fr-lu fr-mc fr-ch\n"
+
+msgid "${link} to change your password."
+msgstr "${link} pour changer votre mot de passe."
+
+msgid "${portal_title}: Membership reminder"
+msgstr "${portal_title} : Rappel de mot de passe"
+
+msgid "%Y/%m/%d at %I:%M:%S %p"
+msgstr "%d/%m/%Y à %H:%M:%S"
+
+msgid  "${month}&nbsp;/&nbsp;${day}&nbsp;/&nbsp;${year}&nbsp;&nbsp;${hour}&nbsp;:&nbsp;${minute}"
+msgstr "${day}&nbsp;/&nbsp;${month}&nbsp;/&nbsp;${year}&nbsp;&nbsp;${hour}&nbsp;:&nbsp;${minute}"
+
+msgid  "${month}/${day}/${year}&nbsp;&nbsp;${hour}:${minute}:${second}"
+msgstr "${day}/${month}/${year}&nbsp;&nbsp;${hour}:${minute}:${second}"
+
+
+msgid "${dayName}&nbsp;${monthName}&nbsp;${dayNumber}"
+msgstr "${dayName}&nbsp;${dayNumber}&nbsp;${monthName}"
+
+msgid "(No description)"
+msgstr "(Sans description)"
+
+msgid "-- any --"
+msgstr "-- tous --"
+
+msgid "Advanced search"
+msgstr "Recherche avancée"
+
+msgid "A <b>published</b> item is available to the general member base and anonymous visitors."
+msgstr "Un objet <em>publié</em> est accessible aux membres du site ainsi qu'aux visiteurs anonymes."
+
+msgid "A Contact Document describes a person."
+msgstr "Un contact contient la description d'une personne."
+
+msgid "A FAQ Document is editable through the web."
+msgstr "Une question fréquemment posée."
+
+msgid "A File Document is editable through the web."
+msgstr "Un fichier, éventuellement dans un format bureautique, en vue d'une conversion au format html."
+
+msgid "A Text Document is editable through the web."
+msgstr "Un document texte simple."
+
+msgid "A resource that this resource relies on may be encountering an error."
+msgstr "Une ressource utilisée par cette ressource a peut-être rencontré une erreur."
+
+msgid "Action performed"
+msgstr "Action effectuée"
+
+msgid "Add"
+msgstr "Ajouter"
+
+msgid "Add Content"
+msgstr "Ajouter"
+
+msgid "Add to favorites"
+msgstr "Ajouter aux favoris"
+
+msgid "Affected Item"
+msgstr "Élément affecté"
+
+msgid "Allow members to select their initial password"
+msgstr "Autoriser les membres à choisir leur mot de passe initial"
+
+msgid "An error was encountered while publishing this resource."
+msgstr "Une erreur a été produite lors de la publication de cette ressource."
+
+msgid "An item's status (also called its review state) determines who can see it. A <b>private</b> item can only be viewed by its Owner and by the site management. Only <b>published</b> items are available to the general member base and anonymous visitors. To make an item published, it has to be reviewed by one of the site's Reviewers. You can request that an item be reviewed by setting its status to <b>pending</b>."
+msgstr "L'état d'un document (également appelé son état de publication) détermine les personnes qui peuvent y accéder. Un document <em>privé</em> peut être vu uniquement par son propriétaire. Les documents publiés peuvent avoir une visibilité plus large qui dépend de la chaîne de validation. Si vous n'avez pas les droits de publication, vous pouvez tout de même faire passer vos documents dans l'état <em>en attente</em> en vue d'une publication accordée par un modérateur."
+
+msgid "Annotated URL."
+msgstr "Adresse internet commentée."
+
+msgid "Another way to control the visibility of an item is with its <b>effective date</b>. An item is not publicly available before its effective date, <em>even if its status is <b>published</b></em>."
+msgstr "Un autre moyen pour contrôler la visibilité d'un document consiste à paramétrer sa <em>date de mise en ligne</em>. Un document n'est pas publiquement accessible tant que la date de mise en ligne n'a pas été révolue, et cela même si le document est dans l'état <em>publié</em>."
+
+msgid "As a reviewer, you may search for items based on their review state. If you wish to constrain results to items in certain states, select them from this list."
+msgstr "En tant que validateur, vous pouvez rechercher des objets sur un critère d'état de validation. Si vous souhaitez contraindre la recherche à certains états, sélectionnez les dans la liste."
+
+msgid "Assign Roles"
+msgstr "Assigner"
+
+msgid "Assign local roles: Search Members"
+msgstr "Assigner des rôles locaux : recherche de membres"
+
+msgid "Assign local roles: Search Results"
+msgstr "Assigner des rôles locaux : résultats de la recherche"
+
+msgid "ascending sort"
+msgstr "tri croissant"
+
+msgid "at"
+msgstr "à"
+
+msgid "avis_demande"
+msgstr "avis demandé"
+
+msgid "Become a Member"
+msgstr "Devenir membre"
+
+msgid "Becoming a member gives you the ability to personalize the site and participate in the community."
+msgstr "Devenir membre vous donne la possibilité de personaliser le site et de participer à la communauté."
+
+msgid "Body"
+msgstr "Corps"
+
+msgid "Bold"
+msgstr "Gras"
+
+msgid "By"
+msgstr "Par"
+
+msgid "Calendar"
+msgstr "Calendrier"
+
+msgid "Can be embedded in Portal documents."
+msgstr "Peut être utilisée dans les documents du portail."
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Canned query for organizing content with up to date queries into the catalog."
+msgstr "Requête multicritères sur le moteur de recherche."
+
+msgid "Change"
+msgstr "Modifier"
+
+msgid "Change & Edit"
+msgstr "Valider et éditer le document"
+
+msgid "Change & View"
+msgstr "Valider et voir le document"
+
+msgid "Change password"
+msgstr "Changer le mot de passe"
+
+msgid "Change and View"
+msgstr "Valider"
+
+msgid "Change your Password"
+msgstr "Changer votre mot de passe"
+
+msgid "Channel Description:"
+msgstr "Description du canal :"
+
+msgid "Channel Properties"
+msgstr "Propriétés du canal :"
+
+msgid "Channel Title:"
+msgstr "Titre du canal :"
+
+msgid "Charset used to decode portal content strings. If empty, 'ascii' is used."
+msgstr "L'encodage est utilisé par le portail pour interpréter les textes des contenus. Si ce champ est laissé vide, c'est l'encodage 'ascii' qui sera utilisé."
+
+msgid "Check this box to have the password mailed."
+msgstr "Cochez cette case afin que votre mot de passe vous soit envoyé par mail."
+
+msgid "Clear View Filter"
+msgstr "Éffacer le filtre"
+
+msgid "Click here"
+msgstr "Cliquer ici"
+
+msgid "Click the button to log in immediately."
+msgstr "Cliquez sur le bouton pour vous connecter immédiatement."
+
+msgid "Close this form"
+msgstr "Fermer ce formulaire"
+
+msgid "Close View Filter"
+msgstr "Fermer le filtre"
+
+msgid "Comment"
+msgstr "Commenter"
+
+msgid "Comments"
+msgstr "Commentaires"
+
+msgid "Comments:"
+msgstr "Commentaires :"
+
+msgid "Configure the Portal"
+msgstr "Configurer le portail"
+
+msgid "Confirm new password"
+msgstr "Confirmation"
+
+msgid "Contain arbitrary downloadable files."
+msgstr "Contient n'importe quel fichier téléchargeable."
+
+msgid "Contain text that can be formatted using 'Structured Text.' It may also contain HTML, or \"plain\" text."
+msgstr "Contient du texte qui peut rester brut ou bien être formaté avec la syntaxe &laquo; texte structuré &raquo; ou encore utiliser du HTML."
+
+msgid "Container to put content in categories."
+msgstr "Conteneur pour classer les documents."
+
+msgid "Content"
+msgstr "Contenu"
+
+msgid "Content Item status history"
+msgstr "Historique des états du document"
+
+msgid "Content type"
+msgstr "Type"
+
+msgid "Content-type"
+msgstr "Type"
+
+msgid "Contents View Filter"
+msgstr "Filtre d'affichage"
+
+msgid "Contributors"
+msgstr "Contributeurs"
+
+msgid "Copy"
+msgstr "Copier"
+
+msgid "Created by"
+msgstr "Créé par"
+
+msgid "Creation Date"
+msgstr "Date de création"
+
+msgid "Creator"
+msgstr "Créateur"
+
+msgid "Creator:"
+msgstr "Créateur :"
+
+msgid "creator:"
+msgstr "créateur :"
+
+msgid "Criteria"
+msgstr "Critères"
+
+msgid "Current state"
+msgstr "État actuel"
+
+msgid "Current state:"
+msgstr "État actuel :"
+
+
+msgid "Currently assigned local roles"
+msgstr "Rôles locaux actuellement assignés"
+
+msgid "Cut"
+msgstr "Couper"
+
+msgid "Daily"
+msgstr "Quotidiennement"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Default"
+msgstr "Défaut"
+
+msgid "Default Syndication Properties"
+msgstr "Propriétés de diffusion par défaut"
+
+msgid "Default Value"
+msgstr "Valeur par défaut"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Desktop"
+msgstr "Bureau"
+
+msgid "Directories"
+msgstr "Annuaires"
+
+msgid "Disable Syndication"
+msgstr "Désactiver la diffusion"
+
+msgid "Discussion Item"
+msgstr "Commentaire"
+
+msgid "Document"
+msgstr "Document"
+
+msgid "Documents contain text that can be formatted using 'Structured Text.' They may also contain HTML, or &quot;plain&quot; text."
+msgstr "Un document contient un texte qui peut être formaté en utilisant du texte structuré, du texte brut ou encore du HTML."
+
+msgid "Domains"
+msgstr "Domaines"
+
+msgid "Don't forget to logout or exit your browser when you're done."
+msgstr "N'oubliez pas de vous déconnecter ou de fermer votre navigateur à la fin de la session."
+
+msgid "Don't panic!"
+msgstr "Pas de panique !"
+
+msgid "Download"
+msgstr "Télécharger"
+
+msgid "Download : &laquo;&nbsp;${file_title}&nbsp;&raquo;"
+msgstr "Télécharger : &laquo; ${file_title} &raquo;"
+
+msgid "Download File"
+msgstr "Télécharger le fichier"
+
+msgid "Earlier Transactions"
+msgstr "Transaction plus anciennes"
+
+msgid "Edit"
+msgstr "Éditer"
+
+msgid "Edit ${objectid}"
+msgstr "Éditer ${objectid}"
+
+msgid "Edit all metadata"
+msgstr "Éditer toutes les métadonnées"
+
+msgid "Edit standard metadata"
+msgstr "Éditer les métadonnées standard"
+
+msgid "Edit title and description"
+msgstr "Modifier le titre et la description"
+
+msgid "Effective Date"
+msgstr "Date de mise en ligne"
+
+msgid "Element"
+msgstr "Élément"
+
+msgid "Email Address"
+msgstr "Adresse e-mail"
+
+msgid "Email address"
+msgstr "Adresse e-mail"
+
+msgid "Enable Discussion?"
+msgstr "Autoriser les commentaires ?"
+
+msgid "Enable Syndication"
+msgstr "Activer la diffusion"
+
+msgid "Error Type: ${error_type}"
+msgstr "Nature de l'erreur : ${error_type}"
+
+msgid "Error Value: ${error_value}"
+msgstr "Valeur de l'erreur : ${error_value}"
+
+msgid "Event"
+msgstr "Événement"
+
+msgid "Events are objects for use in Calendar topical queries on the catalog."
+msgstr "Les événements sont les objets qui apparaissent dans le calendrier."
+
+msgid "Ever"
+msgstr "Toujours"
+
+msgid "Expiration Date"
+msgstr "Date d'expiration"
+
+msgid "External file"
+msgstr "Fichier externe"
+
+msgid "Favorite"
+msgstr "Favori"
+
+msgid "File"
+msgstr "Fichier"
+
+msgid "File Properties"
+msgstr "Propriétés du fichier"
+
+msgid "Filename"
+msgstr "Nom"
+
+msgid "Find new items since..."
+msgstr "Rechercher les éléments récents depuis..."
+
+msgid "First name"
+msgstr "Prénom"
+
+msgid "Folder"
+msgstr "Dossier"
+
+msgid "Folder contents"
+msgstr "Contenu du dossier"
+
+msgid "Folders"
+msgstr "Dossiers"
+
+msgid "For a simple text search, enter your search term here. Multiple words may be found by combining them with <b>AND</b> and <b>OR</b>. This will find text in items' contents, title and description."
+msgstr "Pour une recherche simple sur le texte, entrez un terme ici. Vous pouvez entrer plusieurs mots en les combinant avec <b>AND</b> ou <b>OR</b>. La recherche s'effectuera aussi bien dans le corps du texte, le titre et la description des documents."
+
+msgid "For more detailed information about the error, please refer to the HTML source for this page."
+msgstr "Pour des informations plus détaillées à propos de l'erreur, merci de vous référer au code HTML de cette page."
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Found ${count} ${item_s_match} '${text}'."
+msgstr "${count} ${item_s_match} « ${text} »"
+
+msgid "Found 1 item."
+msgstr "1 élément trouvé."
+
+msgid "Found ${count} items."
+msgstr "${count} éléments trouvés."
+
+msgid "Full Text"
+msgstr "Texte intégral"
+
+msgid "Generate and email members' initial password"
+msgstr "Générer et envoyer par e-mail les mots de passe initiaux des membres"
+
+msgid "Given Name"
+msgstr "Prénom"
+
+msgid "Guest"
+msgstr "Invité"
+
+msgid "Having trouble logging in? Make sure to enable cookies in your web browser."
+msgstr "Vous rencontrez des difficultés pour la connexion ? Vérifiez que votre navigateur accepte les cookies."
+
+msgid "Hourly"
+msgstr "Toutes les heures"
+
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié ?"
+
+msgid "ID:"
+msgstr "ID :"
+
+msgid "Identifier"
+msgstr "Identifiant"
+
+msgid "If the error persists please contact the site maintainer. Thank you for your patience."
+msgstr "Si l'erreur persiste, merci de contacter la maintenance du site. Merci de votre compréhension."
+
+msgid "If this will not work for you (for example, if you forget your member name or didn't enter your email address) send email to ${admin_email}."
+msgstr "Si cette procédure ne fonctionne pas, envoyez un e-mail à ${admin_email}."
+
+msgid "If you do not know what this field is for, leave it blank."
+msgstr "Si vous ne savez pas à quoi sert ce champs, laissez-le vide."
+
+msgid "If you wish to constrain results to items in certain states, select them from this list."
+msgstr "Si vous souhaitez contraindre la recherche à certains états, sélectionnez dans la liste."
+
+msgid "Image"
+msgstr "Image"
+
+msgid "Photos width"
+msgstr "Largeur des photos"
+
+msgid "immediately"
+msgstr "immédiatement"
+
+msgid "It does not cost any money to become a member and your email and other personal information will remain private."
+msgstr "Devenir membre est complètement gratuit. Votre e-mail ainsi que toutes vos données personnelles resteront privées."
+
+msgid "item"
+msgstr "élément"
+
+msgid "item matching"
+msgstr "élément correspond à"
+
+msgid "Item type"
+msgstr "Type"
+
+msgid "items"
+msgstr "éléments"
+
+msgid "items matching"
+msgstr "éléments correspondent à"
+
+msgid "Join"
+msgstr "S'inscrire"
+
+msgid "Just enter your username below, click <em>Send</em>, and your password will be mailed to you if you gave a valid email address when you signed on."
+msgstr "Entrez ci-dessous votre login et cliquez sur «&nbsp;Envoyer&nbsp;». Votre mot de passe vous sera immédiatement renvoyé par mail, dans la mesure où vous aviez entré une adresse valide, lors de votre inscription."
+
+msgid "Keywords"
+msgstr "Mot-clefs"
+
+msgid "Keywords describing the portal. Type one keyword (or expression) per line."
+msgstr "Mot-clefs décrivant le portail. Entrez un mot-clef (ou expression) par ligne."
+
+msgid "Language"
+msgstr "Langue"
+
+msgid "Last Modified Date"
+msgstr "Dernière modification"
+
+msgid "Last Modified"
+msgstr "Modifié le"
+
+msgid "Last name"
+msgstr "Nom"
+
+msgid "Last login"
+msgstr "Dernière connexion"
+
+msgid "Last modified"
+msgstr "Dernière modification"
+
+msgid "Last month"
+msgstr "Ce dernier mois"
+
+msgid "Last week"
+msgstr "Cette dernière semaine"
+
+msgid "Later Transactions"
+msgstr "Transactions plus récentes"
+
+msgid "Lead-in"
+msgstr "Chapô"
+
+msgid "Link"
+msgstr "Lien"
+
+msgid "Link to an intra-portal resource."
+msgstr "Lien vers un élément interne au portail."
+
+msgid "Link: ${link}"
+msgstr "Lien : ${link}"
+
+msgid "Listed"
+msgstr "Listé"
+
+msgid "Listed status"
+msgstr "État de listage"
+
+msgid "Listed?"
+msgstr "Listé ?"
+
+msgid "Local Roles"
+msgstr "Rôles locaux"
+
+msgid "Log in"
+msgstr "Connexion"
+
+msgid "Log out"
+msgstr "Déconnexion"
+
+msgid "Login"
+msgstr "Connexion"
+
+msgid " Login "
+msgstr "Connexion"
+
+msgid "Login Name"
+msgstr "Nom d'utilisateur"
+
+msgid "Login failure"
+msgstr "Échec durant la connexion"
+
+msgid "Login success"
+msgstr "Connexion réussie"
+
+msgid "Mail Password?"
+msgstr "Envoyer le mot de passe ?"
+
+msgid "Max Syndicated Items"
+msgstr "Nombre maximum d'objets diffusés"
+
+msgid "Member"
+msgstr "Membre"
+
+msgid "Member ID"
+msgstr "Login"
+
+msgid "Member Preferences"
+msgstr "Préférences"
+
+msgid "Memo"
+msgstr "Mémo"
+
+msgid "Metadata"
+msgstr "Métadonnées"
+
+msgid "Modified on"
+msgstr "Modifié le"
+
+msgid "Modify my entry"
+msgstr "Modifier ma fiche"
+
+msgid "Monthly"
+msgstr "Mensuellement"
+
+msgid "More..."
+msgstr "Plus..."
+
+msgid "Mosaic Document"
+msgstr "Document Mosaïque"
+
+msgid "My favorites"
+msgstr "Mes favoris"
+
+msgid "My stuff"
+msgstr "Mes documents"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "never"
+msgstr "jamais"
+
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+msgid "New..."
+msgstr "Ajouter..."
+
+msgid "News"
+msgstr "Actualités"
+
+msgid "News Item"
+msgstr "Actualité"
+
+msgid "No"
+msgstr "Non"
+
+msgid "No news is good news!"
+msgstr "Pas de nouvelle bonne nouvelle :-)"
+
+msgid "No news is no news."
+msgstr "Pas de nouvelle bonne nouvelle :-)"
+
+msgid "(No title)"
+msgstr "(Sans titre)"
+
+msgid "Off"
+msgstr "Désactiver"
+
+msgid "Ok"
+msgstr "Valider"
+
+msgid "On"
+msgstr "Activer"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Password (confirm)"
+msgstr "Confirmation"
+
+msgid "Password policy"
+msgstr "Option des mots de passe"
+
+msgid "Paste"
+msgstr "Coller"
+
+msgid "Portal default encoding"
+msgstr "Encodage par défaut"
+
+msgid "Portal 'From' address"
+msgstr "Champ «&nbsp;from&nbsp;» de l'adresse du portail"
+
+msgid "Portal 'From' name"
+msgstr "Nom de l'expéditeur"
+
+msgid "Portal Members"
+msgstr "Membres du portail"
+
+msgid "Portal description"
+msgstr "Description du portail"
+
+msgid "Portal title"
+msgstr "Titre du portail"
+
+msgid "Preferences"
+msgstr "Préférences"
+
+msgid "Preview"
+msgstr "Prévisualiser"
+
+msgid "Publish"
+msgstr "Publier"
+
+msgid "Publish ${objectid}"
+msgstr "Publier ${objectid}"
+
+msgid "Publish this item"
+msgstr "Publier ce document"
+
+msgid "Reconfigure Portal"
+msgstr "Reconfigurer le portail"
+
+msgid "Register"
+msgstr "S'enregistrer"
+
+msgid "Register Member"
+msgstr "Enregistrer un membre"
+
+msgid "Reject"
+msgstr "Rejeter"
+
+msgid "Reject ${objectid}"
+msgstr "Rejeter ${objectid}"
+
+msgid "Reject this item"
+msgstr "Rejeter ce document"
+
+msgid "Related Resources"
+msgstr "Liens"
+
+msgid "Remember my name."
+msgstr "Se souvenir de mon login"
+
+msgid "Rename"
+msgstr "Renommer"
+
+msgid "Rename Items"
+msgstr "Renommer des documents"
+
+msgid "Reply"
+msgstr "Commenter"
+
+msgid "Reply body"
+msgstr "Corps du texte"
+
+msgid "Resource Metadata"
+msgstr "Métadonnées de la ressource"
+
+msgid "Retract"
+msgstr "Retirer"
+
+msgid "Retract ${objectid}"
+msgstr "Retirer ${objectid}"
+
+msgid "Retract this item"
+msgstr "Retirer ce document"
+
+msgid "Return to homepage"
+msgstr "Retourner à la page d'accueil"
+
+msgid "Review Status"
+msgstr "État de validation"
+
+msgid "Reviewing history"
+msgstr "Historique"
+
+msgid "Rights"
+msgstr "Droits"
+
+msgid "Role to assign:"
+msgstr "Rôle à assigner"
+
+msgid "Role(s)"
+msgstr "Rôle(s)"
+
+msgid "SMTP server"
+msgstr "Serveur SMTP"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "Search"
+msgstr "Rechercher"
+
+msgid " Search "
+msgstr "Rechercher"
+
+msgid "Search ${title}"
+msgstr "Rechercher ${title}"
+
+msgid "Search inside ${title}"
+msgstr "Rechercher dans ${title}"
+
+msgid "Search Results"
+msgstr "Résultats de la recherche"
+
+msgid "Search Term"
+msgstr "Terme de recherche"
+
+msgid "Search by"
+msgstr "Rechercher par"
+
+msgid "Select Member(s) and a role to assign:"
+msgstr "Sélectionner le(s) membre(s) et un rôle à assigner :"
+
+msgid "Select one or more transactions below and then click on the &quot;Undo&quot; button to undo the transactions. Note that even though a transaction is shown below, you will not be able to undo it if later transactions modified objects that were modified by the transaction."
+msgstr "Sélectionnez une ou plusieurs transaction ci-dessous puis cliquez sur «&nbsp;Annuler&nbsp;».  Notez que l'annulation peut échouer s'il y a eu entre temps des transactions portants sur des objets concernés par l'annulation."
+
+msgid "Send"
+msgstr "Envoyer"
+
+msgid " Send "
+msgstr "Envoyer"
+
+msgid "Set Sorting as Default"
+msgstr "Définir ce tri par défaut"
+
+msgid "Set View Filter"
+msgstr "Définir un filtre d'affichage"
+
+msgid "Setting the 'Remember my name' option will set a cookie with your username, so that when you next log in, your user name will already be filled in for you."
+msgstr "L'option « Se souvenir de mon login » permet de le sauvegarder dans un cookie : vous n’aurez pas à le saisir de nouveau lors de votre prochaine visite."
+
+msgid "shared"
+msgstr "partagé"
+
+msgid "shared_and_pending"
+msgstr "partagé et en attente"
+
+msgid "Short text article with a title and an optional lead-in."
+msgstr "Article textuel court avec un titre et un chapô optionnel."
+
+msgid "Show Error Log Entry"
+msgstr "Afficher le compte-rendu de l'erreur"
+
+msgid "Site Error"
+msgstr "Erreur"
+
+msgid "Size"
+msgstr "Taille"
+
+msgid "Skin"
+msgstr "Habillage"
+
+msgid "Standard Resource Metadata"
+msgstr "Métadonnées standard"
+
+msgid "Status"
+msgstr "État"
+
+msgid "Status history"
+msgstr "Historique des états"
+
+msgid "Status:"
+msgstr "État :"
+
+msgid "Subject"
+msgstr "Sujet"
+
+msgid "Subject (Title)"
+msgstr "Sujet (titre)"
+
+msgid "Subject:"
+msgstr "Sujet :"
+
+msgid "Subtopics"
+msgstr "Sous thèmes"
+
+msgid "Success!"
+msgstr "Opération réussie"
+
+msgid "Sy Module Properties"
+msgstr "Propriétés du module de diffusion"
+
+msgid "Syndication"
+msgstr "Diffusion"
+
+msgid "Syndication is Disabled"
+msgstr "La diffusion est désactivée"
+
+msgid "Syndication is the process by which a site is able to share information out to other sites. When syndication is enabled, this folder items summary will be provided on <strong>RSS</strong> xml format at :"
+msgstr "La diffusion est le procédé utilisé par un site pour partager de l'information vers d'autres sites. Lorsque la diffusion est activée, un résumé du contenu de ce dossier sera disponible au format <em>RSS</em> (xml) à l'adresse :"
+
+msgid "Text body"
+msgstr "Corps de texte"
+
+msgid "Text editor"
+msgstr "Éditeur de texte"
+
+msgid "The URL may be incorrect."
+msgstr "L'url est peut-être erronée."
+
+msgid "The parameters passed to this resource may be incorrect."
+msgstr "Les paramètres envoyés à cette ressource sont peut-être incorrects."
+
+msgid "There are no items matching your specified criteria."
+msgstr "Aucun élément ne correspond aux critères de recherche."
+
+msgid "These users currently have local roles assigned in this folder:"
+msgstr "Ces utilisateurs ont actuellement les rôles locaux suivants :"
+
+msgid "This application's transactional feature allows you to easily undo changes made to the application's settings or data. You can revert the application to a &quot;snapshot&quot; of its state at a previous point in time."
+msgstr "Cette application est transactionnelle. Ce mécanisme permet une annulation facile des changements des paramètres ou des données. Il est possible de revenir sur un état du site à un instant précis."
+
+msgid "This describes the purpose of the website:"
+msgstr "Voici le but de ce site web :"
+
+msgid "This description is made available via syndicated content and elsewhere. It should be fairly brief."
+msgstr "Cette description est visible via les canaux de diffusion et partout ailleurs. Il est recommandé d'être concis."
+
+msgid "This is the size of the thumbnails in the photo album, in pixels."
+msgstr "C'est la taille, en pixels, utilisée pour les vignettes des albums photo."
+
+msgid "Thumbnails size"
+msgstr "Taille des vignettes"
+
+msgid "This form is used to set the portal configuration options."
+msgstr "Ce formulaire est utilisé pour configurer les options du portail."
+
+msgid "This is the first time that you've logged in to ${portal_title}. Before you start exploring you need to change your original password. This will ensure that the password we sent you via email cannot be used in a malicious manner."
+msgstr "C'est la première fois que vous vous connectez à ${portal_title}. Avant de commencer à naviguer, vous devez changer votre mot de passe initial. Cela vous assurera que le mot de passe, envoyé par mail, ne sera pas utilisé à votre insu, dans le cas où le message aurait été intercepté."
+
+msgid "This is the address of your local SMTP (out-going mail) server."
+msgstr "Ceci est l'adresse de votre serveur SMTP (courrier sortant)."
+
+msgid "This is the title which appears at the top of every portal page."
+msgstr "Ceci est le titre qui apparaîtra en haut de chaque page."
+
+msgid "This item has not had any status changes."
+msgstr "Cet objet n'a pas encore eu de changement d'état."
+
+msgid "This item is currently in ${status} status."
+msgstr "Ce document est actuellement dans l'état ${status}."
+
+msgid "This item is in ${status} state."
+msgstr "Ce document est dans l'état ${status}."
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "To find items by a particular user only, enter their username above. Note that you must enter their username <i>exactly</i>."
+msgstr "Pour trouver des objets pour un utilisateur particulier, entrez son nom ci-dessus. Vous devez le saisir de manière <em>exacte</em>."
+
+msgid "To find items by a particular user, enter one or more of his properties (login, name, email...)."
+msgstr "Pour trouver les éléments d'un utilisateur particulier, entrer une ou plusieurs de ses propriétés (login, nom, email...)."
+
+msgid "Topic"
+msgstr "Thème"
+
+msgid "Troubleshooting Suggestions"
+msgstr "Suggestions de dépannage"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Undo"
+msgstr "Annuler"
+
+msgid "Undo Transactions"
+msgstr "Annuler des transactions"
+
+msgid "Unlisted"
+msgstr "Non listé"
+
+msgid "Up to"
+msgstr "Remonter vers"
+
+msgid "UpdateBase"
+msgstr "Date de départ"
+
+msgid "UpdateFrequency"
+msgstr "Fréquence de mise à jour"
+
+msgid "UpdatePeriod"
+msgstr "Période de mise à jour"
+
+msgid "Upload"
+msgstr "Envoyer vers le serveur"
+
+msgid "Upload file"
+msgstr "Envoyer un fichier"
+
+msgid "Upload image"
+msgstr "Envoyer une image"
+
+msgid "Use this form to reject the publication of a content item and set its status to <b>Private</b>, thereby making it unavailable to other portal members and visitors."
+msgstr "Utilisez ce formulaire pour refuser la publication d'un contenu afin de le remettre dans l'état <em>privé</em>, de cette manière, il sera inaccessible aux membres et aux visiteurs du portail."
+
+msgid "Use this form to retract a content item by setting its status to <b>Private</b>, thereby making it unavailable to other portal members and visitors."
+msgstr "Utilisez ce formulaire pour retirer un contenu afin de le remettre dans l'état <em>privé</em>, de cette manière, il sera inaccessible aux membres et aux visiteurs du portail."
+
+msgid "User"
+msgstr "Utilisateur"
+
+msgid "User Name"
+msgstr "Nom"
+
+msgid "Username"
+msgstr "Login"
+
+msgid "Validate"
+msgstr "Valider"
+
+msgid "View"
+msgstr "Voir"
+
+msgid "Visit us at ${portal_url}"
+msgstr "Allez à l'url : ${portal_url}"
+
+msgid "Web Preview"
+msgstr "Aperçu web"
+
+msgid "Weekly"
+msgstr "Hebdomadairement"
+
+msgid "Welcome!"
+msgstr "Bienvenue !"
+
+msgid "Welcome. You are currently logged in."
+msgstr "Bienvenue ! Vous êtes maintenant connecté."
+
+msgid "When the portal generates mail, it uses this address as its (apparent) return address."
+msgstr "Lorsque le portail génère un mail, il utilise cette adresse de retour."
+
+msgid "When the portal generates mail, it uses this name as its (apparent) sender."
+msgstr "Lorsque le portail génère un mail, il utilise ce nom pour l'envoi."
+
+msgid "Wiki Page"
+msgstr "Page de wiki"
+
+msgid "Yearly"
+msgstr "Annuellement"
+
+msgid "Yes"
+msgstr "Oui"
+
+msgid "Yesterday"
+msgstr "Hier"
+
+msgid "You are already a member. You may use the <a href=\"personalize_form\">personalization form</a> to change your membership information."
+msgstr "Vous êtes déjà connecté en tant que membre. Vous pouvez utiliser le <a href=\"personalize_form\">formulaire des préférences</a> pour changer vos informations."
+
+msgid "You are logged in outside the portal. You may need to <a href=\"/manage_zmi_logout\">log out of the Zope management interface</a>."
+msgstr "Vous vous êtes connecté en dehors du portail. Vous devez vous déconnecter depuis <a href=\"/manage_zmi_logout\">l'interface d'administration de zope (ZMI)</a>."
+
+msgid "You are not currently logged in. Your username and or password may be incorrect. Your browser may also not be configured to accept HTTP cookies. If you need help please contact ${admin_email}."
+msgstr "Vous n'êtes pas encore connecté. Votre nom d'utilisateur ou votre mot de passe sont peut-être incorrects. Votre navigateur doit être configuré afin d'accepter les cookies. Si vous avez besoin d'aide, merci de contacter ${admin_email}."
+
+msgid "You can log on immediately by clicking"
+msgstr "Vous pouvez vous connecter immédiatement en cliquant"
+
+msgid "You can use this URL to log in:"
+msgstr "Vous pouvez utiliser ce lien pour vous connecter :"
+
+msgid "You have been logged out."
+msgstr "Vous avez été déconnecté."
+
+msgid "You have been registered as a member."
+msgstr "Vous avez été enregistré en tant que membre."
+
+msgid "You have been registered as a member of \"${portal_title}\", which allows you to personalize your view of the website and participate in the community."
+msgstr "Vous avez été enregistré en tant que membre de « ${portal_title} », ce qui vous permet de participer à la rédaction des contenus ainsi qu'à la communauté de ce site."
+
+msgid "You may also search the items' descriptions and titles specifically. Multiple words may be found by combining them with <b>AND</b> and <b>OR</b>."
+msgstr "Vous pouvez également chercher à partir des titres et des descriptions. Plusieurs mots peuvent être combinés avec des opérateurs <b>AND</b> et <b>OR</b>."
+
+msgid "You may find only recent items by selecting a time-frame."
+msgstr "Vous pouvez choisir de rechercher uniquement les éléments récents en sélectionnant la fourchette de temps."
+
+msgid "You may limit your results to particular kinds of items by selecting them above. To find all kinds of items, do not select anything."
+msgstr "Vous pouvez limiter les résultats à des types d'éléments particuliers en sélectionnant ci-dessus. Pour rechercher tout, ne rien sélectionner."
+
+msgid "You must enter a password."
+msgstr "Vous devez entrer un mot de passe."
+
+msgid "You must enter a valid name."
+msgstr "Vous devez entrer un login valide."
+
+msgid "You must submit a valid email address. This address will be used to send you a randomly-generated password. Once you have logged in with this password, you may change it to anything you like."
+msgstr "Vous devez entrer une adresse e-mail valide qui sera utilisée pour vous envoyer votre mot de passe généré automatiquement. Vous pourrez le changer dès votre première connexion."
+
+msgid "You will <i>not</i> show up on the public membership roster. Your Member folder will still be publicly accessible unless you change its security settings."
+msgstr "Vous ne serez pas dans la liste publique des membres. Néanmoins, votre dossier personnel pourra quand même disposer d'un accès public en changeant le paramétrage du partage."
+
+msgid "Your password and confirmation did not match. Please try again."
+msgstr "Le mot de passe et sa confirmation sont différents. Essayez à nouveau."
+
+msgid "You will receive an email shortly containing your password and instructions on how to activate your membership."
+msgstr "Vous allez recevoir sous peu un e-mail qui contiendra votre mot de passe ainsi que les instructions pour activer votre inscription."
+
+msgid "You will show up on the public membership roster."
+msgstr "Vous serez visible dans la liste publique des membres."
+
+
+msgid "Your member id and password are: Member ID: ${member_id} Password: ${password}"
+msgstr "Votre login et votre mot de passe sont :\nLogin: ${member_id}\nMot de passe: ${password}"
+
+msgid "Your password: ${password}"
+msgstr "Votre mot de passe : ${password}"
+
+msgid "Your password has been mailed. <br /> It should arrive in your mailbox momentarily."
+msgstr "Votre mot de passe vient d'être envoyé. <br /> Il devrait arriver dans votre messagerie d'un moment à l'autre."
+
+msgid "Your password must contain at least 5 characters."
+msgstr "Le mot de passe doit comporter au moins 5 caractères."
+
+msgid "Your registration request has been taken into account."
+msgstr "Votre demande d'inscription a été prise en compte."
+
+msgid "Your request will be reviewed soon by a portal administrator. You will receive an email containing your password and instructions on how to activate your membership when your registration will be approved."
+msgstr "Votre demande va bientôt être vérifiée par un administrateur du portail. Vous recevrez un e-mail contenant votre mot de passe et des instructions pour vous connectez dès que votre inscription aura été approuvée."
+
+msgid "Your request will be reviewed soon by a portal administrator. You will receive an email when your registration will be approved."
+msgstr "Votre demande va bientôt être vérifiée par un administrateur du portail. Vous recevrez un e-mail lorsque votre inscription aura été approuvée."
+
+msgid "${portal_title}: Your Membership Information"
+msgstr "${portal_title} : vos informations d'inscription"
+
+msgid "Be aware that this URL might wrap over two lines. If your browser shows an error message when you try to access the URL please make sure that you put in the complete string."
+msgstr "Notez que ce lien peut être découpé sur 2 lignes. Si votre navigateur affiche un message d'erreur lorsque vous essayez d'y accéder, vérifier bien qu'il n'y a pas eu de troncature"
+
+msgid "by"
+msgstr "par"
+
+msgid "by ${actor}"
+msgstr "par ${actor}"
+
+msgid "created"
+msgstr "créé"
+
+msgid "descending sort"
+msgstr "tri décroissant"
+
+msgid "here"
+msgstr "ici"
+
+msgid "home"
+msgstr "Accueil"
+
+msgid "html"
+msgstr "html"
+
+msgid "members"
+msgstr "Membres"
+
+msgid "news"
+msgstr "actualités"
+
+msgid "on"
+msgstr "à"
+
+msgid "pending"
+msgstr "en attente"
+
+msgid "plain text"
+msgstr "texte brut"
+
+msgid "Please use the form below to change your password."
+msgstr "Utilisez le formulaire ci-dessous pour changer votre mot de passe."
+
+msgid "Plinn Document"
+msgstr "Document Plinn"
+
+msgid "private"
+msgstr "privé"
+
+msgid "private_and_pending"
+msgstr "privé et en attente"
+
+msgid "publish"
+msgstr "publier"
+
+msgid "published"
+msgstr "publié"
+
+msgid "reject"
+msgstr "rejeter"
+
+msgid "Request made by IP ${ip} at ${time}"
+msgstr "Requête faite par l'IP ${ip} le ${time}"
+
+msgid "retract"
+msgstr "retirer"
+
+msgid "search"
+msgstr "Rechercher"
+
+msgid "structured-text"
+msgstr "texte structuré"
+
+msgid "Syndicate"
+msgstr "Diffuser"
+
+msgid "to"
+msgstr "à"

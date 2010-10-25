@@ -1,0 +1,24 @@
+<tal:header tal:replace="structure here/manage_page_header">header</tal:header>
+<tal:tabs   tal:replace="structure here/manage_tabs">tabs</tal:tabs>
+<div i18n:domain="plinn">
+  <h3 i18n:translate="">Configure <code i18n:name="portal_calendar">portal_registration</code> Tool</h3>
+  <br />
+  <h4 i18n:translate="">Select registration mode</h4>
+  <form action="." method="post" tal:attributes="action here/absolute_url">
+    <label><input type="radio" name="registration_mode" value="anonymous" tal:attributes="checked python:here.getMode() == 'anonymous'" /> <span i18n:translate="" tal:omit-tag="">Anonymous registration</span></label><br />
+    <label><input type="radio" name="registration_mode" value="manager" tal:attributes="checked python:here.getMode() == 'manager'"  /> <span i18n:translate="" tal:omit-tag="">Portal manager registration</span></label><br />
+    <div>
+	    <label><input type="radio" name="registration_mode" value="reviewed" tal:attributes="checked python:here.getMode() == 'reviewed'" /> <span i18n:translate="" tal:omit-tag="">Reviewed registration</span></label><br />
+	    <div style="margin-left : 1em">
+        <em i18n:translate="" >Workflow chain</em><br />
+        <input type="text" name="chain" size="50" value="workflow chain" tal:attributes="value here/getWfChain" />
+      </div>
+	  </div>
+	  <h5 style="color : red" i18n:translate=""
+				tal:condition="here/roleMappingMismatch">Role mapping mismatch : click Validate to solve this problem !</h5>
+    <input type="submit" name="configureTool:method" value="Validate" i18n:attributes="value" />
+  </form>
+</div>
+<tal:footer tal:replace="structure here/manage_page_footer">footer</tal:footer>
+
+

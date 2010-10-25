@@ -1,0 +1,20 @@
+<html metal:use-macro="here/main_template_view/macros/master">
+  <head>
+    <title>Favorite view</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <base href="" metal:fill-slot="base" tal:attributes="href python: here.absolute_url() + '/'" />
+  </head>
+<body>
+
+<div metal:fill-slot="main" i18n:domain="cmf_default">
+
+ <p i18n:translate="">Link: <a href=""
+              tal:attributes="href here/getRemoteUrl"
+              tal:content="here/getRemoteUrl"
+              i18n:name="link"
+           >/index_html</a></p>
+</div>
+
+</body>
+</html>
+

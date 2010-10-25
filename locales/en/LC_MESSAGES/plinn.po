@@ -1,0 +1,1858 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plinn 2.0\n"
+"POT-Creation-Date: Thu Dec  6 14:58:49 2007\n"
+"PO-Revision-Date: 2007-10-17 14:43+0200\n"
+"Last-Translator:  Benoît PIN\n"
+"Language-Team: CRI http://cri.ensmp.fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plinn\n"
+"X-Is-Fallback-For: en-us\n"
+
+#: profiles/default/actions.xml:102
+msgid "List"
+msgstr "List"
+
+#: profiles/default/actions.xml:11 skins/generic/gruf_macros.pt:250
+#: skins/generic/gruf_macros.pt:365
+msgid "Login"
+msgstr ""
+
+#: profiles/default/actions.xml:116
+msgid "Manage Boxes"
+msgstr ""
+
+#: profiles/default/actions.xml:127 skins/generic/send_email_form.pt:23
+msgid "Send an email"
+msgstr ""
+
+#: profiles/default/actions.xml:138
+msgid "Undo"
+msgstr ""
+
+#: profiles/default/actions.xml:149
+msgid "Configure Portal"
+msgstr ""
+
+#: profiles/default/actions.xml:176
+msgid "Add comment..."
+msgstr ""
+
+#: profiles/default/actions.xml:190
+msgid "Syndicate"
+msgstr ""
+
+#: profiles/default/actions.xml:22
+msgid "My stuff"
+msgstr ""
+
+#: profiles/default/actions.xml:33
+msgid "Add to favorites"
+msgstr ""
+
+#: profiles/default/actions.xml:44
+msgid "My favorites"
+msgstr ""
+
+#: profiles/default/actions.xml:55
+msgid "Preferences"
+msgstr ""
+
+#: profiles/default/actions.xml:66
+msgid "Log out"
+msgstr ""
+
+#: profiles/default/actions.xml:77
+msgid "Logged in"
+msgstr ""
+
+#: profiles/default/actions.xml:88
+msgid "Join"
+msgstr ""
+
+#: profiles/default/workflows/default_workflow/scripts/sendNotificationEmail.py:53
+#: profiles/default/workflows/folder_workflow/scripts/sendNotificationEmail.py:53
+#: profiles/default/workflows/portfolio_workflow/scripts/sendNotificationEmail.py:53
+msgid "Document state change notificaction"
+msgstr ""
+
+#: profiles/default/workflows/member_workflow/scripts/sendNotificationEmail.py:36
+msgid ""
+"\n"
+"You have been registered as a member of \"%(portal_title)s\", which\n"
+"allows you to personalize your view of the website and participate in\n"
+"the community.\n"
+msgstr ""
+
+#: profiles/default/workflows/member_workflow/scripts/sendNotificationEmail.py:44
+msgid ""
+"You will receive an other mail with your randomly-generated\n"
+"password. Once you have logged in with this password, you\n"
+"may change it to anything you like."
+msgstr ""
+
+#: profiles/default/workflows/member_workflow/scripts/sendNotificationEmail.py:56
+msgid "your registration has been accepted"
+msgstr ""
+
+#: skins/content/cal_calendar_view.pt:25
+msgid "Add a new event..."
+msgstr ""
+
+#: skins/content/cal_calendar_view.pt:32 skins/content/cal_calendar_view.pt:35
+msgid "Remove event..."
+msgstr ""
+
+#: skins/content/cal_calendar_view.pt:45
+msgid "The next click over an event will remove it!"
+msgstr ""
+
+#: skins/content/cal_calendar_view.pt:46
+msgid "Cancel delete mode"
+msgstr ""
+
+#: skins/content/content_info.pt:16 skins/content/file_info.pt:12
+#: skins/content/list_pending_contents.pt:31
+#: skins/custom_generic/talkback_tree.pt:65 skins/generic/gruf_macros.pt:51
+#: skins/generic/gruf_macros.pt:307 skins/generic/header_widgets.pt:18
+msgid "Title"
+msgstr ""
+
+#: skins/content/content_info.pt:20 skins/content/file_info.pt:20
+msgid "Created"
+msgstr ""
+
+#: skins/content/content_info.pt:24 skins/content/file_info.pt:24
+msgid "Modified"
+msgstr ""
+
+#: skins/content/content_info.pt:9 skins/content/file_info.pt:5
+msgid "Preview:"
+msgstr ""
+
+#: skins/content/dateCriterionResolvedDescription.py:17
+msgid "search from the beginning of the world until %s"
+msgstr ""
+
+#: skins/content/dateCriterionResolvedDescription.py:19
+msgid "search from %s and the end of the world"
+msgstr ""
+
+#: skins/content/dateCriterionResolvedDescription.py:21
+msgid "search between %s and %s"
+msgstr ""
+
+#: skins/content/file_info.pt:16
+msgid "Type"
+msgstr ""
+
+#: skins/content/file_preview.pt:15
+msgid "No preview available for this file"
+msgstr ""
+
+#: skins/content/list_pending_contents.pt:23
+msgid "Pending documents"
+msgstr ""
+
+#: skins/content/list_pending_contents.pt:37
+msgid "Submit by:"
+msgstr ""
+
+#: skins/content/list_pending_contents.pt:42 skins/generic/wf_macros.pt:16
+msgid "Date"
+msgstr ""
+
+#: skins/content/list_pending_contents.pt:52
+#: skins/content/topic_edit_template.pt:32
+#: skins/content/topic_edit_template.pt:40
+#: skins/custom_content/event_edit_template.pt:33
+#: skins/custom_content/event_view.pt:24
+#: skins/custom_content/friendlydatec_editform.pt:12
+#: skins/custom_content/friendlydatec_editform.pt:27
+#: skins/custom_content/friendlydatec_editform.pt:45
+#: skins/custom_content/listc_edit.pt:13 skins/custom_content/listc_edit.pt:26
+#: skins/custom_content/sic_edit.pt:10 skins/custom_content/sic_edit.pt:23
+#: skins/custom_content/sort_edit.pt:12 skins/custom_content/sort_edit.pt:23
+#: skins/custom_content/ssc_edit.pt:12 skins/custom_content/ssc_edit.pt:15
+#: skins/custom_content/topic_view.pt:25
+#: skins/custom_generic/talkback_tree.pt:15
+#: skins/custom_generic/talkback_tree.pt:16
+#: skins/custom_generic/talkback_tree.pt:36
+#: skins/custom_generic/viewThreadsAtBottom.pt:15
+#: skins/generic/calendar_macros.pt:26 skins/generic/calendar_macros.pt:30
+#: skins/generic/calendar_macros.pt:87 skins/generic/calendar_macros.pt:88
+#: skins/generic/gruf_macros.pt:32 skins/generic/gruf_macros.pt:93
+#: skins/generic/gruf_macros.pt:103 skins/generic/gruf_macros.pt:111
+#: skins/generic/gruf_macros.pt:455 skins/generic/gruf_macros.pt:456
+#: skins/generic/gruf_macros.pt:462 skins/generic/header_widgets.pt:189
+#: skins/generic/last_member_logs.pt:1 skins/generic/local_roles_macros.pt:18
+#: skins/generic/local_roles_macros.pt:39
+#: skins/generic/local_roles_macros.pt:44
+#: skins/generic/local_roles_macros.pt:84
+#: skins/generic/local_roles_macros.pt:99
+#: skins/generic/local_roles_macros.pt:122
+#: skins/generic/local_roles_macros.pt:126
+#: skins/generic/local_roles_macros.pt:160
+#: skins/generic/local_roles_macros.pt:174 skins/generic/send_email_form.pt:33
+#: skins/generic/send_email_form.pt:56 skins/generic/tabs.pt:25
+#: skins/generic/tabs.pt:42 skins/generic/wf_macros.pt:27
+msgid "${DYNAMIC_CONTENT}"
+msgstr ""
+
+#: skins/content/topic_edit_template.pt:12
+msgid "Reuse criteria from parent:"
+msgstr ""
+
+#: skins/content/topic_edit_template.pt:13
+msgid "yes"
+msgstr ""
+
+#: skins/content/topic_edit_template.pt:14
+msgid "no"
+msgstr ""
+
+#: skins/content/topic_edit_template.pt:22
+#: skins/custom_content/event_edit_template.pt:135
+msgid "Save"
+msgstr ""
+
+#: skins/content/topic_edit_template.pt:23 skins/generic/gruf_macros.pt:211
+#: skins/generic/gruf_macros.pt:235
+msgid "Remove selected"
+msgstr ""
+
+#: skins/content/topic_edit_template.pt:26
+msgid "New criterion:"
+msgstr ""
+
+#: skins/content/topic_edit_template.pt:29
+msgid "Name:"
+msgstr ""
+
+#: skins/content/topic_edit_template.pt:37
+msgid "Type:"
+msgstr ""
+
+#: skins/content/topic_edit_template.pt:47 skins/generic/gruf_macros.pt:288
+#: skins/generic/gruf_macros.pt:327
+msgid "Add"
+msgstr ""
+
+#: skins/custom_content/discussionitem_view.pt:23
+msgid "Above in thread:"
+msgstr ""
+
+#: skins/custom_content/event_edit_template.pt:115
+#: skins/custom_content/event_view.pt:53 skins/generic/gruf_macros.pt:57
+#: skins/generic/gruf_macros.pt:313 skins/generic/header_widgets.pt:24
+msgid "Description"
+msgstr ""
+
+#: skins/custom_content/event_edit_template.pt:121
+#: skins/custom_content/event_view.pt:29
+msgid "Event URL"
+msgstr ""
+
+#: skins/custom_content/event_edit_template.pt:20
+#: skins/custom_content/event_view.pt:7
+msgid "Event Name"
+msgstr ""
+
+#: skins/custom_content/event_edit_template.pt:24
+#: skins/custom_content/event_view.pt:23
+msgid "Event type"
+msgstr ""
+
+#: skins/custom_content/event_edit_template.pt:27
+#: skins/custom_content/event_view.pt:13
+msgid "Location"
+msgstr ""
+
+#: skins/custom_content/event_edit_template.pt:38
+#: skins/custom_content/event_view.pt:9
+msgid "Contact Name"
+msgstr ""
+
+#: skins/custom_content/event_edit_template.pt:44
+#: skins/custom_content/event_view.pt:15
+msgid "Contact Email"
+msgstr ""
+
+#: skins/custom_content/event_edit_template.pt:50
+#: skins/custom_content/event_view.pt:25
+msgid "Contact Phone"
+msgstr ""
+
+#: skins/custom_content/event_edit_template.pt:67
+msgid "Beginning"
+msgstr ""
+
+#: skins/custom_content/event_edit_template.pt:78
+#: skins/custom_content/event_edit_template.pt:103 skins/generic/widgets.pt:92
+msgid ""
+"${month}&nbsp;/&nbsp;${day}&nbsp;/&nbsp;${year}&nbsp;&nbsp;${hour}&nbsp;:"
+"&nbsp;${minute}"
+msgstr ""
+
+#: skins/custom_content/event_edit_template.pt:92
+msgid "End"
+msgstr ""
+
+#: skins/custom_content/event_view.pt:40
+msgid "Start Date"
+msgstr ""
+
+#: skins/custom_content/event_view.pt:45
+msgid "Stop Date"
+msgstr ""
+
+#: skins/custom_content/friendlydatec_editform.pt:14
+msgid "At the least:"
+msgstr ""
+
+#: skins/custom_content/friendlydatec_editform.pt:17
+msgid "At the most:"
+msgstr ""
+
+#: skins/custom_content/friendlydatec_editform.pt:20
+msgid "Within the day:"
+msgstr ""
+
+#. Default: "old"
+#: skins/custom_content/friendlydatec_editform.pt:37
+msgid "daterange_old"
+msgstr ""
+
+#. Default: "ahead"
+#: skins/custom_content/friendlydatec_editform.pt:40
+msgid "daterange_ahead"
+msgstr ""
+
+#: skins/custom_content/listc_edit.pt:16
+msgid "Operator:"
+msgstr ""
+
+#: skins/custom_content/listc_edit.pt:18
+msgid "or"
+msgstr ""
+
+#: skins/custom_content/listc_edit.pt:21
+#: skins/custom_generic/talkback_tree.pt:29
+msgid "and"
+msgstr ""
+
+#: skins/custom_content/sic_edit.pt:15
+msgid "Minimum"
+msgstr ""
+
+#: skins/custom_content/sic_edit.pt:18
+msgid "Maximum"
+msgstr ""
+
+#: skins/custom_content/sic_edit.pt:21
+msgid "Min/Max"
+msgstr ""
+
+#: skins/custom_content/sort_edit.pt:16
+msgid "Regular sort"
+msgstr ""
+
+#: skins/custom_content/sort_edit.pt:20
+msgid "Reversed sort"
+msgstr ""
+
+#: skins/custom_content/topic_view.pt:41
+msgid "No result"
+msgstr ""
+
+#: skins/custom_content/topic_view.pt:45
+msgid "Subtopics"
+msgstr ""
+
+#: skins/custom_content/topic_view.pt:48
+msgid "Topic"
+msgstr ""
+
+#: skins/custom_control/addtoFavorites.py:15
+msgid "Favorites"
+msgstr ""
+
+#: skins/custom_control/folder_bottom_control.py:17
+msgid "%d item moved to bottom.%d items moved to bottom."
+msgstr ""
+
+#: skins/custom_control/folder_down_control.py:18
+msgid "%d item moved down.%d items moved down."
+msgstr ""
+
+#: skins/custom_control/folder_top_control.py:17
+msgid "%d item moved to top.%d items moved to top."
+msgstr ""
+
+#: skins/custom_control/folder_up_control.py:17
+msgid "%d item moved up.%d items moved up."
+msgstr ""
+
+#: skins/custom_generic/folder_contents_template.pt:26
+msgid "Up"
+msgstr ""
+
+#: skins/custom_generic/folder_contents_template.pt:29
+msgid "Down"
+msgstr ""
+
+#. Default: "by"
+#: skins/custom_generic/folder_contents_template.pt:31
+msgid "move_by"
+msgstr ""
+
+#: skins/custom_generic/folder_contents_template.pt:39
+msgid "Top"
+msgstr ""
+
+#: skins/custom_generic/folder_contents_template.pt:41
+msgid "Bottom"
+msgstr ""
+
+#: skins/custom_generic/mail_password_template.py:30
+msgid "${portal_title}: Membership reminder"
+msgstr ""
+
+#: skins/custom_generic/mail_password_template.py:35
+#: skins/custom_generic/registered_notify_template.py:46
+msgid ""
+"Your member id and password are: Member ID: ${member_id} Password: "
+"${password}"
+msgstr ""
+
+#: skins/custom_generic/mail_password_template.py:37
+#: skins/custom_generic/registered_notify_template.py:48
+msgid "You can use this URL to log in:"
+msgstr ""
+
+#: skins/custom_generic/mail_password_template.py:45
+#: skins/custom_generic/registered_notify_template.py:56
+msgid ""
+"Be aware that this URL might wrap over two lines. If your browser shows an "
+"error message when you try to access the URL please make sure that you put "
+"in the complete string."
+msgstr ""
+
+#: skins/custom_generic/mail_password_template.py:48
+msgid "%Y/%m/%d at %I:%M:%S %p"
+msgstr ""
+
+#: skins/custom_generic/mail_password_template.py:50
+msgid "Request made by IP ${ip} at ${time}"
+msgstr ""
+
+#: skins/custom_generic/main_template_standard.pt:98
+msgid "Skip to content"
+msgstr ""
+
+#: skins/custom_generic/reconfig_template.pt:112
+msgid "Default ajax options"
+msgstr ""
+
+#: skins/custom_generic/reconfig_template.pt:116
+msgid "Enable handling of all clicks over links"
+msgstr ""
+
+#: skins/custom_generic/reconfig_template.pt:121
+msgid "Enable handling of all forms submissions"
+msgstr ""
+
+#: skins/custom_generic/registered_notify_template.py:30
+msgid "${portal_title}: Your Membership Information"
+msgstr ""
+
+#: skins/custom_generic/registered_notify_template.py:35
+msgid ""
+"You have been registered as a member of \"${portal_title}\", which allows "
+"you to personalize your view of the website and participate in the community."
+msgstr ""
+
+#: skins/custom_generic/registered_notify_template.py:39
+msgid "This describes the purpose of the website:"
+msgstr ""
+
+#: skins/custom_generic/registered_notify_template.py:44
+msgid "Visit us at ${portal_url}"
+msgstr ""
+
+#: skins/custom_generic/talkback_tree.pt:24
+msgid "by"
+msgstr ""
+
+#: skins/custom_generic/talkback_tree.pt:33
+msgid "unknown"
+msgstr ""
+
+#. Default: "at"
+#: skins/custom_generic/talkback_tree.pt:34 skins/generic/recent_news.pt:41
+msgid "at_(date)"
+msgstr ""
+
+#: skins/custom_generic/talkback_tree.pt:71
+msgid "Body"
+msgstr ""
+
+#: skins/custom_generic/talkback_tree.pt:79 skins/generic/gruf_macros.pt:77
+#: skins/generic/gruf_macros.pt:410 skins/generic/header_widgets.pt:32
+#: skins/generic/send_email_form.pt:70
+msgid "Validate"
+msgstr ""
+
+#: skins/custom_generic/talkback_tree.pt:82
+msgid "Cancel"
+msgstr ""
+
+#: skins/custom_generic/viewThreadsAtBottom.pt:9
+msgid "Comments:"
+msgstr ""
+
+#. Default: "Previous${number}"
+#: skins/generic/batch_macros.pt:21
+msgid "batch_previous_x_items"
+msgstr ""
+
+#. Default: "Next${number}items"
+#: skins/generic/batch_macros.pt:27
+msgid "batch_next_x_items"
+msgstr ""
+
+#: skins/generic/calendar_macros.pt:162 skins/generic/calendar_macros.pt:164
+msgid "Previous"
+msgstr ""
+
+#: skins/generic/calendar_macros.pt:167
+msgid "Week"
+msgstr ""
+
+#: skins/generic/calendar_macros.pt:169
+msgid "Month"
+msgstr ""
+
+#: skins/generic/calendar_macros.pt:174 skins/generic/calendar_macros.pt:176
+msgid "Next"
+msgstr ""
+
+#: skins/generic/calendar_macros.pt:79 skins/generic/calendar_macros.pt:82
+#: skins/generic/calendar_macros.pt:131 skins/generic/calendar_macros.pt:133
+msgid "Click to see hidden items"
+msgstr ""
+
+#: skins/generic/calendar_macros.pt:89
+msgid "${dayName}&nbsp;${monthName}&nbsp;${dayNumber}"
+msgstr ""
+
+#: skins/generic/content_depublish_form.pt:12
+msgid "Select the destination state"
+msgstr ""
+
+#: skins/generic/content_depublish_form.pt:15
+msgid "Private"
+msgstr ""
+
+#: skins/generic/content_depublish_form.pt:19
+msgid "Shared"
+msgstr ""
+
+#: skins/generic/content_depublish_form.pt:23
+msgid "Depublish"
+msgstr ""
+
+#: skins/generic/content_depublish_form.pt:5
+msgid "Depublish: \"${docTitle}\""
+msgstr ""
+
+#: skins/generic/content_depublish_form.pt:7
+msgid "depublish_transition_explanations"
+msgstr ""
+
+#: skins/generic/content_make_private_form.pt:10
+msgid "Make private: \"${docTitle}\""
+msgstr ""
+
+#. Default: "share_transition_explanations"
+#: skins/generic/content_make_private_form.pt:11
+msgid "make_private_transition_explanations"
+msgstr ""
+
+#: skins/generic/content_make_private_form.pt:16
+msgid "Make private"
+msgstr ""
+
+#: skins/generic/content_publish_form.pt:14
+#: skins/generic/content_reject_form.pt:13
+msgid "Notify by e-mail"
+msgstr ""
+
+#: skins/generic/content_publish_form.pt:23
+msgid "Publish"
+msgstr ""
+
+#: skins/generic/content_publish_form.pt:5
+msgid "Publish: \"${docTitle}\""
+msgstr ""
+
+#: skins/generic/content_publish_form.pt:7
+msgid "publish_transition_explanations"
+msgstr ""
+
+#: skins/generic/content_reject_form.pt:22 skins/generic/pending_members.pt:30
+msgid "Reject"
+msgstr ""
+
+#: skins/generic/content_reject_form.pt:5
+msgid "Reject: \"${objectid}\""
+msgstr ""
+
+#: skins/generic/content_reject_form.pt:6
+msgid "reject_transition_explanations"
+msgstr ""
+
+#: skins/generic/content_retract_form.pt:12
+msgid "Retract"
+msgstr ""
+
+#: skins/generic/content_retract_form.pt:5
+msgid "Retract: \"${objectid}\""
+msgstr ""
+
+#: skins/generic/content_retract_form.pt:6
+msgid "retract_transition_explanations"
+msgstr ""
+
+#: skins/generic/content_share_form.pt:10
+msgid "Share: \"${docTitle}\""
+msgstr ""
+
+#: skins/generic/content_share_form.pt:11
+msgid "share_transition_explanations"
+msgstr ""
+
+#: skins/generic/content_share_form.pt:16
+msgid "Share"
+msgstr ""
+
+#: skins/generic/content_submit_form.pt:12
+msgid "Submit"
+msgstr ""
+
+#: skins/generic/content_submit_form.pt:5
+msgid "Submit: \"${objectid}\" for Review."
+msgstr ""
+
+#: skins/generic/content_submit_form.pt:6
+msgid "submit_transition_explanations"
+msgstr ""
+
+#: skins/generic/default_home_page_content.pt:2
+msgid "Welcome to Plinn!"
+msgstr ""
+
+#: skins/generic/default_home_page_content.pt:3
+msgid "This is the default home page."
+msgstr ""
+
+#: skins/generic/default_home_page_content.pt:4
+#: skins/generic/default_member_content.pt:4
+msgid "To change the content just select \"Edit\" in the Tab bar on the top."
+msgstr ""
+
+#: skins/generic/default_member_content.pt:2
+msgid "Default page for ${memberFullName}"
+msgstr ""
+
+#: skins/generic/default_member_content.pt:3
+msgid ""
+"This is the default document created for you when you have been registered "
+"in this portal."
+msgstr ""
+
+#: skins/generic/groups_members.pt:35
+msgid "Members of \"${groupId}\""
+msgstr ""
+
+#: skins/generic/groups_members.pt:47
+msgid "Groups of \"${groupId}\""
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:105
+msgid "Remove"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:112
+msgid "Append"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:129 skins/generic/gruf_macros.pt:164
+msgid "Outside group"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:131 skins/generic/gruf_macros.pt:166
+msgid "Inside group"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:148 skins/generic/gruf_macros.pt:183
+msgid "None"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:197
+msgid "All members"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:210
+msgid "Edit"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:224
+msgid "All groups"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:247
+msgid "Add new member"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:25
+msgid "Group Tree"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:256 skins/generic/gruf_macros.pt:378
+#: skins/generic/last_member_logs.pt:1 skins/generic/pending_members.pt:13
+msgid "Name"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:262 skins/generic/gruf_macros.pt:384
+msgid "Given Name"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:268 skins/generic/gruf_macros.pt:390
+msgid "Password"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:274 skins/generic/gruf_macros.pt:396
+msgid "Confirm"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:280 skins/generic/gruf_macros.pt:402
+msgid "Email address"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:298
+msgid "Add new group"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:301
+msgid "Id"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:371
+msgid "Groups"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:373
+msgid "explicitly:"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:374
+msgid "implicitly:"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:415
+msgid "Tree view by this member"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:416
+msgid "Click here to see the tree viewed by this member &gt;&gt;"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:440
+msgid "collapse all"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:45
+msgid "Identifier"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:471
+msgid "&lt;&lt; Back to member properties"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:63 skins/generic/gruf_macros.pt:319
+msgid "Shared folder"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:66
+msgid "Open shared folder..."
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:69 skins/generic/gruf_macros.pt:321
+msgid "Create"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:90
+msgid "Implicit roles"
+msgstr ""
+
+#: skins/generic/gruf_macros.pt:98
+msgid "Explicit roles"
+msgstr ""
+
+#: skins/generic/header_widgets.pt:33
+msgid "Edit all metadata"
+msgstr ""
+
+#: skins/generic/last_member_logs.pt:1
+msgid "Last member login times"
+msgstr ""
+
+#: skins/generic/last_member_logs.pt:1
+msgid "Last login time"
+msgstr ""
+
+#: skins/generic/local_roles_macros.pt:160
+msgid "No more group available for the ${role} role in this folder"
+msgstr ""
+
+#: skins/generic/local_roles_macros.pt:174
+msgid "No group have got the ${role} role in this folder"
+msgstr ""
+
+#: skins/generic/local_roles_macros.pt:39
+#: skins/generic/local_roles_macros.pt:122
+msgid "Current Role: \"${current_role}\""
+msgstr ""
+
+#: skins/generic/local_roles_macros.pt:45
+#: skins/generic/local_roles_macros.pt:127
+msgid "ok"
+msgstr ""
+
+#: skins/generic/local_roles_macros.pt:66
+#: skins/generic/local_roles_macros.pt:148
+msgid "Haven't role"
+msgstr ""
+
+#: skins/generic/local_roles_macros.pt:72
+#: skins/generic/local_roles_macros.pt:150
+msgid "Have role"
+msgstr ""
+
+#: skins/generic/local_roles_macros.pt:84
+msgid "No more member available for the ${role} role in this folder"
+msgstr ""
+
+#: skins/generic/local_roles_macros.pt:99
+msgid "Nobody have got the ${role} role in this folder"
+msgstr ""
+
+#. Default: "%m/%d/%Y %Hh%M"
+#: skins/generic/locale_date_fmt.pt:1
+msgid "locale_date_fmt"
+msgstr ""
+
+#: skins/generic/main_template_macros.pt:108
+msgid "Exit boxes editing"
+msgstr ""
+
+#: skins/generic/pending_members.pt:14
+msgid "Email"
+msgstr ""
+
+#: skins/generic/pending_members.pt:35
+msgid "Register"
+msgstr ""
+
+#: skins/generic/pending_members.pt:9
+msgid "Review members registration"
+msgstr ""
+
+#: skins/generic/recent_news.pt:19
+msgid "News"
+msgstr ""
+
+#: skins/generic/recent_news.pt:34
+msgid "by:"
+msgstr ""
+
+#. Default: "Read More"
+#: skins/generic/recent_news.pt:47
+msgid "read_more"
+msgstr ""
+
+#: skins/generic/recent_news.pt:55
+msgid "No news is good news!"
+msgstr ""
+
+#: skins/generic/reject_member_form.pt:14
+msgid "From:"
+msgstr ""
+
+#: skins/generic/reject_member_form.pt:20
+msgid "To:"
+msgstr ""
+
+#: skins/generic/reject_member_form.pt:27 skins/generic/send_email_form.pt:87
+msgid "Subject:"
+msgstr ""
+
+#: skins/generic/reject_member_form.pt:31
+msgid "Membership request denied"
+msgstr ""
+
+#: skins/generic/reject_member_form.pt:35 skins/generic/send_email_form.pt:92
+msgid "Message body:"
+msgstr ""
+
+#: skins/generic/reject_member_form.pt:39
+msgid ""
+"I'm sorry to have to inform you that your request has been denied. Please "
+"contact the site administrator."
+msgstr ""
+
+#: skins/generic/reject_member_form.pt:45
+msgid "Send"
+msgstr ""
+
+#: skins/generic/reject_member_form.pt:9
+msgid "Reject registration of ${fullname}"
+msgstr ""
+
+#: skins/generic/send_email_form.pt:101
+msgid "Note: This message will be stored in content history."
+msgstr ""
+
+#: skins/generic/send_email_form.pt:27
+msgid "Recipients:"
+msgstr ""
+
+#: skins/generic/send_email_form.pt:38
+msgid "(as copy)"
+msgstr ""
+
+#: skins/generic/send_email_form.pt:53
+msgid "All (${nofpers} persons)"
+msgstr ""
+
+#: skins/generic/send_email_form.pt:60
+msgid "Show list"
+msgstr ""
+
+#: skins/generic/send_email_form.pt:70
+msgid "(not required)"
+msgstr ""
+
+#: skins/generic/send_email_form.pt:81
+msgid "Others (on address by line)"
+msgstr ""
+
+#: skins/generic/send_email_form.pt:98
+msgid "Send email"
+msgstr ""
+
+#: skins/generic/wf_macros.pt:17
+msgid "Actor"
+msgstr ""
+
+#: skins/generic/wf_macros.pt:18
+msgid "Action"
+msgstr ""
+
+#: skins/generic/wf_macros.pt:19
+msgid "Comments"
+msgstr ""
+
+#: skins/generic/wf_macros.pt:20
+msgid "Email sent to"
+msgstr ""
+
+#: skins/generic/wf_macros.pt:28
+msgid "(no comments)"
+msgstr ""
+
+#: skins/generic/wf_macros.pt:33
+msgid "(no email sent)"
+msgstr ""
+
+#: skins/generic/widgets.pt:32 skins/generic/widgets.pt:33
+msgid "Edit metadata"
+msgstr ""
+
+#: skins/generic/widgets.pt:53
+msgid "Clipboard"
+msgstr ""
+
+#: skins/generic/widgets.pt:59
+msgid "Delete"
+msgstr ""
+
+#: skins/generic/widgets.pt:60
+msgid "Empty"
+msgstr ""
+
+#: skins/generic/wysiwyg_support.pt:108
+msgid "Format"
+msgstr ""
+
+#: skins/generic/wysiwyg_support.pt:112
+msgid "Structured text"
+msgstr ""
+
+#: skins/generic/wysiwyg_support.pt:118
+msgid "HTML"
+msgstr ""
+
+#: skins/generic/wysiwyg_support.pt:124
+msgid "Plain text"
+msgstr ""
+
+# from plinn-manual
+msgid "${month}/${day}/${year}&nbsp;&nbsp;${hour}:${minute}:${second}"
+msgstr ""
+
+msgid "%s's Home"
+msgstr ""
+
+msgid "%s's front page"
+msgstr ""
+
+msgid "1 Day"
+msgstr ""
+
+msgid "2 Days"
+msgstr ""
+
+msgid "5 Days"
+msgstr ""
+
+msgid "1 Week"
+msgstr ""
+
+msgid "2 Weeks"
+msgstr ""
+
+msgid "1 Month"
+msgstr ""
+
+msgid "3 Months"
+msgstr ""
+
+msgid "6 Months"
+msgstr ""
+
+msgid "1 Year"
+msgstr ""
+
+msgid "2 years"
+msgstr ""
+
+msgid "Action Box Block"
+msgstr ""
+
+msgid "Action box settings"
+msgstr ""
+
+msgid "Activity block"
+msgstr ""
+
+msgid "Add a document..."
+msgstr ""
+
+msgid "Add an activity"
+msgstr ""
+
+msgid "Add node"
+msgstr ""
+
+msgid "Advanced search"
+msgstr ""
+
+msgid "Anonymous registration"
+msgstr ""
+
+msgid "Appointment"
+msgstr ""
+
+msgid "Append Roles"
+msgstr ""
+
+msgid "Append or remove groups"
+msgstr ""
+
+msgid "Append or remove members"
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+msgid "April_abbr"
+msgstr "Apr"
+
+msgid "Assign local roles: Search Members"
+msgstr ""
+
+msgid "Assign local roles: Search Results"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+msgid "August_abbr"
+msgstr "Aug"
+
+msgid "B"
+msgstr ""
+
+msgid "Backlinks"
+msgstr ""
+
+msgid "Base folder of members' folders"
+msgstr ""
+
+msgid "Box title:"
+msgstr ""
+
+msgid "Calendar View"
+msgstr ""
+
+msgid "catalog_index_allowedRolesAndUsers"
+msgstr "Allowed roles and users"
+
+msgid "catalog_index_created"
+msgstr "Creation date"
+
+msgid "catalog_index_Creator"
+msgstr "Creator"
+
+msgid "catalog_index_Date"
+msgstr "Date"
+
+msgid "catalog_index_DateTimeOriginal"
+msgstr "Date time original"
+
+msgid "catalog_index_Description"
+msgstr "Description"
+
+msgid "catalog_index_effective"
+msgstr "Effective date"
+
+msgid "catalog_index_expires"
+msgstr "Expiration date"
+
+msgid "catalog_index_getId"
+msgstr "Id"
+
+msgid "catalog_index_listCreators"
+msgstr "Creators"
+
+msgid "catalog_index_modified"
+msgstr "Modification date"
+
+msgid "catalog_index_path"
+msgstr "Relative url"
+
+msgid "catalog_index_portal_type"
+msgstr "Content type"
+
+msgid "catalog_index_review_state"
+msgstr "Review state"
+
+msgid "catalog_index_SearchableText"
+msgstr "Full text"
+
+msgid "catalog_index_Subject"
+msgstr "Subject"
+
+msgid "catalog_index_Title"
+msgstr "Title"
+
+msgid "Categories:"
+msgstr ""
+
+msgid "Change"
+msgstr ""
+
+msgid "Change image:"
+msgstr ""
+
+msgid "Click here to modify roles..."
+msgstr ""
+
+msgid "Click to get raw image"
+msgstr ""
+
+msgid "Click to see image full-size"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Collapse"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Configure ${portal_calendar} Tool"
+msgstr ""
+
+msgid "Container block"
+msgstr ""
+
+msgid "Contributor"
+msgstr ""
+
+msgid "Convention"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Create a mosaic document"
+msgstr ""
+
+msgid "Saved changes."
+msgstr ""
+
+msgid "Import a photo zipped file"
+msgstr ""
+
+msgid "send_email"
+msgstr ""
+
+msgid "Set Mapping"
+msgstr ""
+
+msgid "shared_submit"
+msgstr ""
+
+msgid "sort_by_index_created"
+msgstr "Created"
+
+msgid "sort_by_index_DateTimeOriginal"
+msgstr "Date Time Original"
+
+msgid "Criteria"
+msgstr ""
+
+msgid "coordonateur"
+msgstr ""
+
+msgid "Currently assigned local roles"
+msgstr ""
+
+msgid "DateTimeOriginal"
+msgstr ""
+
+msgid "Day"
+msgstr ""
+
+msgid "December"
+msgstr ""
+
+msgid "December_abbr"
+msgstr "Dec"
+
+msgid "demande_avis_tut"
+msgstr ""
+
+msgid "depublish"
+msgstr ""
+
+msgid "depublish_to_private"
+msgstr ""
+
+msgid "depublish_to_shared"
+msgstr ""
+
+msgid "Direct_publish"
+msgstr "Publish"
+
+msgid "Directories"
+msgstr ""
+
+msgid "Directory"
+msgstr ""
+
+msgid "Do you realy want to delete ?"
+msgstr ""
+
+msgid "confirm_layer_delete"
+msgstr "Do you realy want to delete \\\"Layer "
+
+msgid "eleve"
+msgstr ""
+
+msgid "Empty image: upload an image file in \"Edit\" tab."
+msgstr ""
+
+msgid "ExifImageWidth"
+msgstr ""
+
+msgid "ExifImageHeight"
+msgstr ""
+
+msgid "Expand"
+msgstr ""
+
+msgid "Export as zip"
+msgstr ""
+
+msgid "ExposureTime"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+msgid "February_abbr"
+msgstr "Feb"
+
+msgid "File"
+msgstr ""
+
+msgid "File Block"
+msgstr ""
+
+msgid "Filter (meta_type list) :"
+msgstr ""
+
+msgid "FNumber"
+msgstr ""
+
+msgid "FocalLength"
+msgstr ""
+
+msgid "Folder contents"
+msgstr ""
+
+msgid "Folders are created upon first login."
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+msgid "Friendly Date Criterion"
+msgstr ""
+
+msgid "Global actions"
+msgstr ""
+
+msgid "Group folder area"
+msgstr ""
+
+msgid "Group's roles settings"
+msgstr ""
+
+msgid "GroupManager"
+msgstr ""
+
+msgid "Height:"
+msgstr ""
+
+msgid "Image block"
+msgstr ""
+
+msgid "Implicitly member of groups"
+msgstr ""
+
+msgid "Import"
+msgstr ""
+
+msgid "Insert file"
+msgstr ""
+
+msgid "Insert image"
+msgstr ""
+
+msgid "Insert inside text"
+msgstr ""
+
+msgid "Insert new block:"
+msgstr ""
+
+msgid "Integer Criterion"
+msgstr ""
+
+msgid "ISOSpeedRatings"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+msgid "January_abbr"
+msgstr "Jan"
+
+msgid "July"
+msgstr ""
+
+msgid "July_abbr"
+msgstr "Jul"
+
+msgid "June"
+msgstr ""
+
+msgid "June_abbr"
+msgstr "Jun"
+
+msgid "KB"
+msgstr ""
+
+msgid "lang_iso"
+msgstr "en"
+
+msgid "Layer"
+msgstr ""
+
+msgid "Left boxes"
+msgstr ""
+
+msgid "List Criterion"
+msgstr ""
+
+msgid "List Folder"
+msgstr ""
+
+msgid "List parent folder"
+msgstr ""
+
+msgid "Listen"
+msgstr ""
+
+msgid "Loading progress..."
+msgstr ""
+
+msgid "Local Roles"
+msgstr ""
+
+msgid "MB"
+msgstr ""
+
+msgid "make_private"
+msgstr ""
+
+msgid "Manage Groups"
+msgstr ""
+
+msgid "Manage boxes"
+msgstr ""
+
+msgid "Manage group's datas"
+msgstr ""
+
+msgid "Manage group's members"
+msgstr ""
+
+msgid "Manage portal's groups"
+msgstr ""
+
+msgid "Manage portal's members"
+msgstr ""
+
+msgid "Manager"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "March_abbr"
+msgstr "Mar"
+
+msgid "May"
+msgstr ""
+
+msgid "May_abbr"
+msgstr "May"
+
+msgid "Meeting"
+msgstr ""
+
+msgid "Member"
+msgstr ""
+
+msgid "Members"
+msgstr ""
+
+msgid "Members folder id"
+msgstr ""
+
+msgid "Member of groups"
+msgstr ""
+
+msgid "Member properties"
+msgstr ""
+
+msgid "member_creation_area_explanations"
+msgstr ""
+
+msgid "member_creation_area_title"
+msgstr ""
+
+msgid "Membership role mappings"
+msgstr ""
+
+msgid "membership_role_mapping_explanations"
+msgstr ""
+
+msgid "Metadata"
+msgstr ""
+
+msgid "Sort Criterion"
+msgstr ""
+
+msgid "sort_by_index_modified"
+msgstr "Modified"
+
+msgid "Modify"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move left"
+msgstr ""
+
+msgid "Move right"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "New layer"
+msgstr ""
+
+msgid "News Item"
+msgstr ""
+
+msgid "No document"
+msgstr ""
+
+msgid "Node block"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "November_abbr"
+msgstr "Nov"
+
+msgid "Now"
+msgstr ""
+
+msgid "Number of br:"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+msgid "October_abbr"
+msgstr "Oct"
+
+msgid "Owner"
+msgstr ""
+
+msgid "person selected"
+msgstr ""
+
+msgid "persons selected"
+msgstr ""
+
+msgid "Play"
+msgstr ""
+
+msgid "Portal manager registration"
+msgstr ""
+
+msgid "Portal Role"
+msgstr ""
+
+msgid "Portlets"
+msgstr ""
+
+msgid "Preview..."
+msgstr ""
+
+msgid "private_submit"
+msgstr ""
+
+msgid "Properties of: ${memberFullName}"
+msgstr ""
+
+msgid "publish"
+msgstr ""
+
+msgid "Reader"
+msgstr ""
+
+msgid "Right boxes"
+msgstr ""
+
+msgid "Remove layer"
+msgstr ""
+
+msgid "Reply..."
+msgstr ""
+
+msgid "Represent a simple field-match for a string value."
+msgstr ""
+
+msgid "retract_to_private"
+msgstr ""
+
+msgid "retract_to_shared"
+msgstr ""
+
+msgid "Reviewed registration"
+msgstr ""
+
+msgid "Reviewer"
+msgstr ""
+
+msgid "Role(s)"
+msgstr ""
+
+msgid "Role mapping mismatch : click Validate to solve this problem !"
+msgstr ""
+
+msgid "Roles to assign:"
+msgstr ""
+
+msgid "Root object expression:"
+msgstr ""
+
+msgid "Sat"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Search by"
+msgstr ""
+
+msgid "Search Term"
+msgstr ""
+
+msgid "Section block"
+msgstr ""
+
+msgid "Select date indexes"
+msgstr ""
+
+msgid "Select default time range displayed in calendar week view"
+msgstr ""
+
+msgid "Select member area folder type to construct:"
+msgstr ""
+
+msgid "Select Member(s) and a role(s) to assign:"
+msgstr ""
+
+msgid "Select registration mode"
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "September_abbr"
+msgstr "Sept"
+
+msgid "Set Roles"
+msgstr ""
+
+msgid "share"
+msgstr ""
+
+msgid "Show layer"
+msgstr ""
+
+msgid "Slide show"
+msgstr ""
+
+msgid "Social Event"
+msgstr ""
+
+msgid "Sorry, no members matched your search."
+msgstr ""
+
+msgid "Source file:"
+msgstr ""
+
+msgid "Spacer block"
+msgstr ""
+
+msgid "(start and end time in hour)"
+msgstr ""
+
+msgid "Status history"
+msgstr ""
+
+msgid "Stop"
+msgstr ""
+
+msgid "String Criterion"
+msgstr ""
+
+msgid "Sun"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
+msgid "Text block"
+msgstr ""
+
+msgid "These users currently have local roles assigned in this folder:"
+msgstr ""
+
+msgid "This folder has to be in the same container as the membership tool."
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+msgid "Title :"
+msgstr ""
+
+msgid "Tree Box Block"
+msgstr ""
+
+msgid "Tree box settings"
+msgstr ""
+
+msgid "Tree viewed by: ${memberFullName}"
+msgstr ""
+
+msgid "Tue"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+msgid "Turn folder creation off"
+msgstr ""
+
+msgid "Turn folder creation on"
+msgstr ""
+
+msgid "Two images block"
+msgstr ""
+
+msgid "Upload"
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "User Folder-defined Role"
+msgstr ""
+
+msgid "UserManager"
+msgstr "User manager"
+
+msgid "Untitled-"
+msgstr ""
+
+msgid "Validate pending documents"
+msgstr ""
+
+msgid "Visitor"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "View history"
+msgstr ""
+
+msgid "View local roles"
+msgstr ""
+
+msgid "Wed"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""
+
+msgid "Width:"
+msgstr ""
+
+msgid "width / height:"
+msgstr ""
+
+msgid "Work"
+msgstr ""
+
+msgid "Workflow chain"
+msgstr ""
+
+msgid "You are not allowed to delete: "
+msgstr ""
+
+msgid "collaborator"
+msgstr ""
+
+msgid "collapse"
+msgstr ""
+
+msgid "expand"
+msgstr ""
+
+msgid "file type:"
+msgstr ""
+
+msgid "Hide layer"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "name"
+msgstr ""
+
+msgid "No Folders are created."
+msgstr ""
+
+msgid ""
+"Put a friendly interface on date range searches, like 'where effective date "
+"is less than 5 days old'."
+msgstr ""
+
+msgid "Represent a criterion which is a list of values (for an 'OR' search)."
+msgstr ""
+
+msgid ""
+"Represent a simple field-match for an integer value, including catalog range "
+"searches."
+msgstr ""
+
+msgid ""
+"Represent a mock criterion, to allow spelling the sort order and reversal "
+"items in a catalog query."
+msgstr ""
+
+msgid ""
+"WARNING: The current portal type is unknown. You must change the value to "
+"enable the member area creation."
+msgstr ""

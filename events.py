@@ -1,0 +1,56 @@
+# -*- coding: utf-8 -*-
+#######################################################################################
+#   Plinn - http://plinn.org                                                          #
+#   Copyright © 2009  Benoît PIN <benoit.pin@ensmp.fr>                                #
+#                                                                                     #
+#   This program is free software; you can redistribute it and/or                     #
+#   modify it under the terms of the GNU General Public License                       #
+#   as published by the Free Software Foundation; either version 2                    #
+#   of the License, or (at your option) any later version.                            #
+#                                                                                     #
+#   This program is distributed in the hope that it will be useful,                   #
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of                    #
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                     #
+#   GNU General Public License for more details.                                      #
+#                                                                                     #
+#   You should have received a copy of the GNU General Public License                 #
+#   along with this program; if not, write to the Free Software                       #
+#   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.   #
+#######################################################################################
+"""
+Plinn event definitions.
+
+$Id: events.py 1480 2009-03-19 19:15:52Z pin $
+$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/events.py $
+"""
+
+from zope.interface import implements
+from zope.component.interfaces import ObjectEvent
+from interfaces import IObjectPositionModified,\
+					   IZopeShutdownEvent
+
+
+class ObjectPositionModified(ObjectEvent) :
+	implements(IObjectPositionModified)
+	
+	def __init__(self, object, parent, position) :
+		super(ObjectPositionModified, self).__init__(object)
+		self.parent = parent
+		self.position = position
+
+class ZopeShutdownEvent(ObjectEvent) :
+	"Zope is shutting down gracefully"
+	implements(IZopeShutdownEvent)
+
+	def __init__(self, object, phase, time) :
+		self.object = object
+		self.phase = phase
+		self.time = time
+		self.__veto = False
+	
+	def setVeto(self) :
+		self.__veto = True
+	
+	@property
+	def veto(self) :
+		return self.__veto

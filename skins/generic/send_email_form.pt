@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Envoi de message</title>
+  </head>
+
+  <body tal:omit-tag="" metal:fill-slot="main" i18n:domain="plinn">
+    <div tal:replace="options/send_fields|nothing"></div>
+    <form action="." method="post" tal:attributes="action string:${here/absolute_url}/send_email">
+      <table tal:define="og 				python:options.get ;
+      									 expand			python:og('expand', '');
+      									 other_adr	python:og('other_adr', []);
+      									 batchM			python:og('batchM', here.valid_roles());
+      									 customized_batch python:og('customized_batch', {}) ;
+      									 subject		python:og('subject', '');
+      									 text_body	python:og('text_body', '');
+      									 send_fields python:og('send_fields', {});
+      									 wfid request/wfid|nothing;
+      									 "
+      			 class="send_email_form">
+        <tr>
+          <td>
+            <h1 i18n:translate="">Send an email</h1>
+          </td>
+        </tr>
+        <tr>
+        	<td i18n:translate="">Recipients:</td>
+        </tr>
+        <tr>
+        	<td>
+        		<div tal:repeat="roleAndMembers here/getRecipients">
+        			<fieldset tal:define="r python:roleAndMembers[0] ; mir python:roleAndMembers[1]">
+	              <legend tal:content="python:r" i18n:translate="">Role name</legend>
+
+              	<div metal:use-macro="template/macros/send_field_chooser">To CC CCi</div>
+
+              	<!-- <=10 -->
+	            	<div tal:repeat="m mir" tal:omit-tag="" tal:condition="python:len(mir) <= 10">
+	                <label tal:define="selectAll python:r in batchM">
+	                  <input type="checkbox"
+	                         tal:attributes="value m/id;
+	                                         name python:'customized_batch.%s:list:record' % r;
+	                                         checked python:selectAll or m.id in customized_batch.get(r,[])" />
+	                  <span tal:replace="python:m.getMemberFullName(nameBefore=0)">membre</span>
+	                  <span tal:condition="python:m == member" i18n:translate="">(as copy)</span>
+	                </label>
+	              </div>
+
+
+		            <!-- >10 -->
+	              <div tal:omit-tag="" tal:condition="python:len(mir) > 10">
+
+	              	<div tal:define="selectAll python:r in batchM or len(customized_batch.get(r,[])) == len(mir)"
+	              			 tal:omit-tag="">
+
+		              	<!-- condensed display -->
+		              	<div tal:condition="python:not expand == r" tal:omit-tag="">
+				              <label tal:condition="python:selectAll or not customized_batch.has_key(r)">
+				              	<input type="checkbox" name="batchM:list" value="role" tal:attributes="value r ; checked python:selectAll or r in batchM" />
+				              	<span i18n:translate="">All (<span i18n:name="nofpers" tal:replace="python:len(mir)">120</span> persons)</span>
+				              </label>
+				              <div tal:condition="python:not( selectAll or not customized_batch.has_key(r) )" tal:omit-tag="">
+				              	<span tal:replace="python:len(customized_batch[r])">n</span>/<span tal:replace="python:len(mir)">tot</span> <span i18n:translate="" tal:content="python:len(customized_batch[r])>1 and 'persons selected' or 'person selected'" tal:omit-tag="">persons selected</span>
+				              	<!-- hidden inputs -->
+				              	<input type="hidden" tal:attributes="value python:' '.join(customized_batch[r]) ; name python:'customized_batch.%s:tokens:record'%r" />
+				              </div>
+				              <input type="submit" value="Show list" name="expand.role" tal:attributes="name string:expand.${r}:record" i18n:attributes="value" />
+			              </div>
+
+			              <!-- collaped display -->
+			              <div tal:condition="python:expand == r" tal:omit-tag="">
+                      <select size="10" multiple="multiple" name="customized_batch.role:list:record" tal:condition="python:expand == r"
+			                				tal:attributes="name python:'customized_batch.%s:list:record' % r">
+			                	<option tal:repeat="m mir" tal:attributes="value m/id ; selected python:(not customized_batch.has_key(r)) and True or (m.id in customized_batch[r])" tal:content="python:m.getMemberFullName(nameBefore=1)" >PIN Beno&icirc;t</option>
+			                </select>
+			                <br />
+			                <input type="submit" value="Validate" i18n:attributes="value" name="collapse" /> <span i18n:translate="" tal:omit-tag="">(not required)</span>
+		                </div>
+	                </div>
+		            </div>
+	            </fieldset>
+	          </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          	<fieldset>
+              <legend i18n:translate="">Others (on address by line)</legend>
+              <textarea name="other_adr:lines" rows="3" cols="74" tal:content="python:'\n'.join(other_adr)"></textarea>
+            </fieldset>
+          </td>
+        </tr>
+        <tr>
+          <td><span i18n:translate="">Subject:</span><br />
+            <textarea name="subject" rows="1" cols="74" tal:content="subject"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td><span i18n:translate="">Message body:</span><br />
+            <textarea name="text_body" rows="18" cols="74" tal:content="text_body"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          	<input type="submit" value="Send email" i18n:attributes="value" />
+          	<div tal:condition="wfid">
+              <input type="hidden" name="wfid" tal:attributes="value wfid" /><br />
+              <em i18n:translate="">Note: This message will be stored in content history.</em>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
+
+<tal:block tal:replace="nothing">
+  <div style="float:right" metal:define-macro="send_field_chooser" i18n:domain="plinn">
+    <label>
+      <input type="radio" value="to"
+             tal:attributes="name python:'send_fields.%s:record' % r;
+                             checked python:(not send_fields.get(r) and True) or (send_fields.get(r) == 'to')" />
+      <span i18n:translate="mail_to" tal:omit-tag="">To</span>
+    </label>
+    <label>
+      <input type="radio" value="cc"
+             tal:attributes="name python:'send_fields.%s:record' % r;
+                             checked python:send_fields.get(r) == 'cc'" />
+      <span i18n:translate="mail_cc" tal:omit-tag="">CC</span>
+    </label>
+    <label>
+      <input type="radio" value="bcc"
+             tal:attributes="name python:'send_fields.%s:record' % r;
+                             checked python:send_fields.get(r) == 'bcc'" />
+      <span i18n:translate="mail_bcc" tal:omit-tag="">BCC</span>
+    </label>
+  </div>
+</tal:block>

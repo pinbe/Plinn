@@ -1,0 +1,48 @@
+<html metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <title>File Edit Form</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+  </head>
+
+  <body>
+    <div i18n:domain="cmf_default">
+      <div metal:fill-slot="header">
+        <div metal:use-macro="here/widgets/macros/generic_header">
+          generic_header
+        </div>
+      </div>
+
+      <div class="Desktop" metal:fill-slot="main">
+        <form action="file_edit_form" method="post" enctype="multipart/form-data" tal:attributes="action options/form/action">
+        	<input type="hidden" name="noAjax" value="1" />
+          <table class="FormLayout">
+            <tr>
+              <th i18n:translate="">Size</th>
+              <td tal:define="sizeHr python:here.sizehr(here.size)">
+              	<span tal:replace="sizeHr/value">12.34</span> <span tal:replace="sizeHr/unit">Ko</span>
+              </td>
+            </tr>
+            <tr>
+              <th i18n:translate="">Content type</th>
+              <td tal:content="here/Format">html/text</td>
+            </tr>
+            <tr>
+              <th i18n:translate="">Upload file</th>
+              <td>
+                <input type="file" name="file" size="35" />
+              </td>
+            </tr>
+            <tr>
+              <td><br /></td>
+              <td>
+                <input type="submit" name="change_and_view" value="Change and View" i18n:attributes="value" />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </body>
+
+</html>

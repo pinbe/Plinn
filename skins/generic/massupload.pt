@@ -1,0 +1,37 @@
+<html metal:use-macro="here/main_template/macros/master"
+      xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal">
+  <head>
+    <title>Jupload</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+  </head>
+  <body>
+    <div metal:fill-slot="main" tal:omit-tag="">
+      <applet code="wjhk.jupload2.JUploadApplet"
+          archive="wjhk.jupload.jar" width="640" height="450" alt=""
+          mayscript="true"
+          tal:attributes="archive string:${portal_url}/jupload/wjhk.jupload.jar">
+        <param name="postURL"
+            tal:attributes="value string:${here/absolute_url}/add_uploaded_content">
+        <param name="lookAndFeel" value="system"/>
+        <param name="serverProtocol" value="HTTP/1.1"/>
+        <param name="uploadPolicy" value="DefaultUploadPolicy" />
+        <param name="nbFilesPerRequest" value="1" />
+        <param name="formdata" value="authform"/>
+        <param name="showLogWindow" value="false"/>
+        <param name="debugLevel" value="0" />
+        <param name="filenameEncoding" value="utf-8"/>
+        plugin required.
+      </applet>
+      <br />
+      <form name="authform">
+        <input type="hidden" name="__ac" value=""/>
+      </form>
+      <script type="text/javascript">
+      // <!--
+        var auth = document.authform.elements.namedItem('__ac');
+        auth.setAttribute('value', unescape(document.cookie.match(/__ac="([^"]*)"/)[1]));
+      // -->
+      </script>
+    </div>
+  </body>
+</html>

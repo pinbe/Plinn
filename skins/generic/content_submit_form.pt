@@ -1,0 +1,20 @@
+<html metal:use-macro="here/transition_form/macros/master">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+<div metal:fill-slot="main" i18n:domain="plinn">
+
+<h2 i18n:translate="">Submit: "<span tal:replace="here/title_or_id" i18n:name="objectid">Item</span>" for Review.</h2>
+	<div i18n:translate="submit_transition_explanations">submit_transition_explanations</div>
+</div>
+
+<form action="dummy">
+    <div metal:fill-slot="form" i18n:domain="plinn">
+     <input type="hidden" name="workflow_action" value="submit" />
+     <input type="submit" value="Submit"
+            i18n:attributes="value" />
+    </div>
+</form>
+</body>
+</html>

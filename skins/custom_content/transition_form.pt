@@ -1,0 +1,56 @@
+<metal:block metal:define-macro="master">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+</head>
+<body i18n:domain="plinn">
+<div metal:fill-slot="main">
+<div class="Desktop"
+     tal:define="wtool here/portal_workflow;
+                 review_state python: wtool.getInfoFor(here, 'review_state')">
+
+<div metal:define-slot="main">
+	<h1 i18n:translate="">Transition of <span tal:replace="here/getId"
+                             i18n:name="objectid">Item</span>.</h1>
+
+	<p i18n:translate="">Transition description.</p>
+</div>
+<br />
+<form method="post" action="content_status_modify"
+      tal:attributes="action string:${here/absolute_url}/content_status_modify">
+ <table class="FormLayout">
+  <tr>
+   <th i18n:translate="">Current state:</th>
+   <td tal:content="review_state" i18n:translate="">Private</td>
+  </tr>
+  <tr>
+   <td valign="top" align="left" colspan="2">
+    <strong><em i18n:translate="">Comments</em></strong>
+    <br />
+    <textarea name="comment" cols="60" rows="5" style="width: 100%"></textarea>
+   </td>
+  </tr>
+  <tr>
+   <td colspan="2">
+		<input type="hidden" name="syncFragments:tokens" value="rightCell" />
+    <div metal:define-slot="form">
+     <input type="hidden" name="workflow_action" value="transition" />
+     <input type="submit" value="Transition" i18n:attributes="value" />
+    </div>
+   </td>
+  </tr>
+ </table>
+</form>
+<h2 i18n:translate="">Reviewing history</h2>
+<div metal:use-macro="here/wf_macros/macros/default_workflow">
+	default_workflow history
+</div>
+
+
+</div>
+</div>
+</body>
+</html>
+</metal:block>

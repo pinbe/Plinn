@@ -1,0 +1,24 @@
+<html metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <title>Local roles form</title>
+  </head>
+
+  <body metal:fill-slot="main" i18n:domain="plinn">
+    <table metal:use-macro="here/local_roles_macros/macros/local_roles_settings">
+      <tr>
+        <td>Using gruf_settings macro</td>
+      </tr>
+      <tr>
+        <td>
+          <div metal:fill-slot="form" tal:omit-tag="">
+           <div metal:use-macro="here/local_roles_macros/macros/assign_groups">Using assign_groups macro</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <p></p>
+  </body>
+
+</html>

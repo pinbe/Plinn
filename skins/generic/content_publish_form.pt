@@ -1,0 +1,30 @@
+<html metal:use-macro="here/transition_form/macros/master">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+</head>
+<body i18n:domain="plinn">
+<div metal:fill-slot="main">
+
+<h2 i18n:translate="">Publish: "<span tal:replace="here/title_or_id"
+                                    i18n:name="docTitle">Item</span>"</h2>
+	<div i18n:translate="publish_transition_explanations">publish_transition_explanations</div>
+</div>
+
+<form action="dummy">
+    <div metal:fill-slot="form">
+      <fieldset tal:define="creators python:[m for m in mtool.getMembers(here.listCreators()) if m != member]"
+      					tal:condition="creators">
+        <legend i18n:translate="">Notify by e-mail</legend>
+        <div tal:repeat="member creators" tal:omit-tag="">
+          <label>
+            <input type="checkbox" name="recipients:list" value="membre" tal:attributes="value member/id" checked="checked" />
+            <span tal:replace="member/getMemberFullName">membre</span>
+          </label><br/>
+        </div>
+      </fieldset>
+     <input type="hidden" name="workflow_action" value="publish" tal:attributes="value python:request.get('direct')==True and 'direct_publish' or 'publish'" />
+     <input type="submit" value="Publish" i18n:attributes="value" />
+    </div>
+</form>
+</body>
+</html>

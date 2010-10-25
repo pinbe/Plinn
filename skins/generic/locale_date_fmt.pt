@@ -1,0 +1,1 @@
+<span i18n:domain="plinn" i18n:translate="locale_date_fmt" tal:omit-tag="">%m/%d/%Y %Hh%M</span>

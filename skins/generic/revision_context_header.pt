@@ -1,0 +1,36 @@
+<meta http-equiv="content-type" content="text/html;charset=utf-8" tal:omit-tag="" />
+<div xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:metal="http://xml.zope.org/namespaces/metal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     i18n:domain="plinn">
+  <div class="revision_context">
+    <div i18n:translate="">
+      This is an old revision of this content, as edited by
+      <span i18n:name="user" tal:omit-tag="" tal:content="options/ctUser">Bob l'éponge</span> at
+      <span i18n:name="datetime" tal:omit-tag="" tal:content="options/ctTime">14:07, 8 january 2009</span>.
+    </div>
+    <form tal:attributes="action string:${options/currentOb/absolute_url}/restore_revision"
+          tal:condition="options/restorationAllowed"
+          method="post">
+      <input type="hidden" name="key" tal:attributes="value options/revCtx/current/key"/>
+      <input type="submit" name="restore" value="Restore this revision" i18n:attributes="value"/>
+    </form>
+    <div tal:define="baseUrl options/currentOb/absolute_url;
+                     previous options/revCtx/previous|nothing;
+                     next options/revCtx/next|nothing">
+      <span tal:condition="previous" tal:omit-tag="">
+        <a tal:attributes="href python:'%s/load_revision/%s?pos:int=%d' % (baseUrl,
+                                                                           previous['key'],
+                                                                           options['pos'] + 1)"
+           i18n:translate="">← previous revision</a> |
+      </span>
+      <a tal:attributes="href python:options['currentOb'].absolute_url()" i18n:translate="">current revision</a>
+      <span tal:condition="next"> |
+        <a tal:attributes="href python:'%s/load_revision/%s?pos:int=%d' % (baseUrl,
+                                                                           next['key'],
+                                                                           options['pos'] - 1)"
+           i18n:translate="">next revision →</a>
+      </span>
+    </div>
+  </div>
+</div>

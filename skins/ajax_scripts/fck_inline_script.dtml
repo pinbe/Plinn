@@ -1,0 +1,31 @@
+<script type="text/javascript">
+//<!--
+	__FCKeditorNS = null;
+	function initFCK(config) {
+		var oFCKeditor = new FCKeditor( config['fckId'], config['Width'], config['Height'] );
+		oFCKeditor.BasePath = config['BasePath'];
+		oFCKeditor.Config['CustomConfigurationsPath'] = config['CustomConfigurationsPath'];
+		oFCKeditor.Config['SkinPath'] = config['BasePath'] + 'editor/skins/silver/';
+		oFCKeditor.Config['contentPath'] = config['contentPath'];
+		oFCKeditor.ReplaceTextarea() ;
+		
+		var fckForm = document.getElementById(config['fckId']).form;
+		if ((AJAX_CONFIG & 2) == 2) {
+  		var formManager = new FormManager(fckForm, document.getElementById('mainCell'));
+  		formManager.onBeforeSubmit = function(manager) {
+  			var FCK = document.getElementById(config['fckId'] + '___Frame').contentWindow.FCK;
+  			FCK.UpdateLinkedField();
+  		};
+		}
+	}
+
+	initFCK(
+			{'BasePath': '&dtml-BasePath;', 
+			'CustomConfigurationsPath' : '&dtml-CustomConfigurationsPath;', 
+			'Width':'100%',
+			'Height':'500px',
+			'fckId': '&dtml-fckId;',
+			'contentPath': '&dtml-contentPath;'}
+			);
+//-->
+</script>

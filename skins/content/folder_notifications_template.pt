@@ -1,0 +1,27 @@
+<html metal:use-macro="here/main_template/macros/master"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+  <head>
+    <title>notification settings</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    
+  </head>
+  <body i18n:domain="plinn">
+    <div metal:fill-slot="header" tal:replace="nothing">header</div>
+    <div metal:fill-slot="main" tal:omit-tag="">
+      <h2>Souscrire aux notifications d'événements</h2>
+      <form tal:attributes="action string:${context/absolute_url}/folder_notifications_form">
+        <div tal:repeat="notification options/notifications">
+          <label>
+            <input type="checkbox"
+              tal:attributes="name string:${notification/interface}:boolean;
+                              checked notification/registered"/>
+            <span tal:replace="notification/title"></span>
+          </label>
+        </div>
+        <input type="submit" name="save" value="Save" i18n:attributes="value"/>
+      </form>
+    </div>
+  </body>
+</html>

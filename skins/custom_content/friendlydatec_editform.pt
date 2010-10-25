@@ -1,0 +1,50 @@
+<table class="TwoColumnForm" i18n:domain="plinn"
+			 tal:define="bgcolor here/base_properties/contentBackgroundColor"
+			 tal:attributes="style string:background-color:$bgcolor">
+  <tr>
+  	<td>
+      <input id="" type="checkbox" name="criterion_ids:list" value=""
+      			 tal:attributes="value here/getId; id string:cb_${here/getId}"/>
+      <input type="hidden" name="criteria.id:records" value="" tal:attributes="value here/getId"/>
+    </td>
+    <td>
+    	<fieldset>
+    		<legend tal:content="string:catalog_index_${here/Field}" i18n:translate="">Field name</legend>
+		    <select name="criteria.operation:records">
+		     <option value="min"
+		             tal:attributes="selected python:here.operation=='min'"
+		             i18n:translate="">At the least:</option>
+		     <option value="max"
+		             tal:attributes="selected python:here.operation=='max'"
+		             i18n:translate="">At the most:</option>
+		     <option value="within_day"
+		             tal:attributes="selected python:here.operation=='within_day'"
+		             i18n:translate="">Within the day:</option>
+		    </select>
+		
+		   <select name="criteria.value:records"
+		           tal:define="dateoptions here/defaultDateOptions">
+		     <option value=""
+		        tal:repeat="doption dateoptions"
+		        tal:attributes="value python:doption[0];
+		                        selected python:here.value == doption[0];
+		                       "
+		        tal:content="python:doption[1]"
+		        i18n:translate="">Date Option</option>
+		   </select>
+		
+		    <select name="criteria.daterange:records">
+		     <option value="old"
+		             tal:attributes="selected python:here.daterange == 'old'"
+		             i18n:translate="daterange_old">old</option>
+		     <option value="ahead"
+		             tal:attributes="selected python:here.daterange == 'ahead'"
+		             i18n:translate="daterange_ahead">ahead</option>
+		    </select>
+    		<dl class="FieldHelp">
+			    <dd tal:content="here/dateCriterionResolvedDescription|here/Description" i18n:translate="">Criterion description</dd>
+				</dl>
+    	</fieldset>
+    </td>
+  </tr>
+</table>

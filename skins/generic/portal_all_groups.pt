@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>All groups</title>
+  </head>
+
+  <body metal:fill-slot="main_no_tabs" tal:omit-tag="" i18n:domain="plinn">
+    <table metal:use-macro="here/gruf_macros/macros/gruf_settings">
+      <tr>
+        <td colspan="2">Using gruf_settings macro</td>
+      </tr>
+      <tr>
+        <td>
+          <table metal:fill-slot="form">
+            <tr>
+              <td><div metal:use-macro="here/gruf_macros/macros/all_groups">all_groups from gruf_macros</div></td>
+              <td><div metal:use-macro="here/gruf_macros/macros/add_group">add_group from gruf_macros</div></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+
+</html>

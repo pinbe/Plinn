@@ -1,0 +1,69 @@
+<html metal:use-macro="container/main_template_view/macros/master">
+  <head>
+    <title>event view</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+  </head>
+
+  <body>
+    <div metal:fill-slot="main" i18n:domain="plinn">
+                      <table class="FormLayout">
+                <tr>
+                    <th i18n:translate="" nowrap="nowrap">Event Name</th>
+                    <td nowrap="nowrap" tal:content="here/Title">Title</td>
+                    <th nowrap="nowrap" i18n:translate="">Contact Name</th>
+                    <td nowrap="nowrap" tal:content="here/contact_name">contact_name</td>
+                </tr>
+                <tr>
+                    <th nowrap="nowrap" i18n:translate="">Location</th>
+                    <td nowrap="nowrap" tal:content="here/location">location</td>
+                    <th nowrap="nowrap" i18n:translate="">Contact Email</th>
+                    <td nowrap="nowrap"                         tal:condition="here/contact_email">
+                        <a tal:attributes="href python:'mailto:' + here.contact_email"
+                        tal:content="here/contact_email"
+                        href="mailto:contact_email">contact_email</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th nowrap="nowrap" i18n:translate="">Event type</th>
+                    <td valign="top" nowrap="nowrap"><span tal:repeat="s here/Subject" tal:omit-tag=""><span tal:content="s" i18n:translate="" tal:omit-tag="">subject</span><span tal:condition="not:repeat/s/end" tal:omit-tag="">, </span></span></td>
+                    <th nowrap="nowrap" i18n:translate="">Contact Phone</th>
+                    <td nowrap="nowrap" tal:content="here/contact_phone">contact_phone</td>
+                </tr>
+                <tr tal:condition="here/event_url|nothing">
+                    <th nowrap="nowrap" i18n:translate="">Event URL</th>
+                    <td colspan="3" nowrap="nowrap"><a href="event_url"
+        tal:attributes="href here/event_url"
+        tal:content="here/event_url">event_url</a></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                    <hr>
+                    </td>
+                </tr>
+        <tr>
+                    <th nowrap="nowrap" i18n:translate="">Start Date</th>
+                    <td tal:content="python:here.start().strftime(locale_date_fmt)">
+                    start
+                    </td>
+
+                    <th nowrap="nowrap" i18n:translate=""> Stop Date </th>
+                    <td tal:content="python:here.end().strftime(locale_date_fmt)">
+                    end
+                    </td>
+                </tr>
+        <tr>
+                    <td colspan="4"><hr></td></tr>
+        <tr>
+                    <th i18n:translate="">Description</th>
+                    <td colspan="3"
+                        tal:content="here/Description">Description</td>
+                </tr>
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+                </table>
+
+    </div>
+    </body>
+
+</html>

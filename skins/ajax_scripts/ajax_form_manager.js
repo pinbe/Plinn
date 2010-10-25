@@ -1,0 +1,418 @@
+// (c) Benoît PIN 2006-2007
+// http://plinn.org
+// Licence GPL
+// $Id: ajax_form_manager.js 1470 2009-02-18 16:42:02Z pin $
+// $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/skins/ajax_scripts/ajax_form_manager.js $
+
+
+function FormManager(form, responseTextDest, lazy) {
+	if (form.elements.namedItem("noAjax")) return;
+	
+	this.form = form;
+	this.responseTextDest = responseTextDest;
+	this.lazy = lazy;
+	var thisManager = this;
+	this.form.onsubmit = function(evt) { thisManager.submit(evt); };
+	this.form.onclick = function(evt) { thisManager.click(evt); };
+	this.submitButton = null;
+	
+	/* raised on form submit */
+	this.onBeforeSubmit = null;
+	/* raised after xmlhttp response */
+	this.onResponseLoad = null;
+	/* raised when the responseText is added inside the main element.
+	 * (onResponseLoad may have the default value) */
+	this.onAfterPopulate = null; 
+	this.submitButton = null;
+	
+	if (this.lazy) {
+		this.fieldTagName;
+		this.liveFormField;
+		this.pendingEvent;
+		this.form.onclick = function(evt){
+			thisManager.replaceElementByField(evt);
+			thisManager.click(evt);
+		};
+		if (browser.isDOM2Event)
+			this.form.onfocus = this.form.onclick;
+		else if (browser.isIE6up)
+			this.form.onfocusin = this.form.onclick;
+		this.onResponseLoad = function(req){ thisManager.restoreField(req); };
+		this.lazyListeners = new Array();
+	}
+}
+	
+FormManager.prototype.submit = function(evt) {
+	var form = this.form;
+	var thisManager = this;
+
+	var bsMessage; // before submit message
+	if (!this.onBeforeSubmit) {
+		var onBeforeSubmit = form.elements.namedItem("onBeforeSubmit");
+		if (onBeforeSubmit) {
+			if (onBeforeSubmit.length)
+				onBeforeSubmit = onBeforeSubmit[0];
+			this.onBeforeSubmit = eval(onBeforeSubmit.value);
+			bsMessage = this.onBeforeSubmit(thisManager, evt);
+		}
+	}
+	else
+		bsMessage = this.onBeforeSubmit(thisManager, evt);
+	
+	if (bsMessage == 'cancelSubmit') {
+		try {disableDefault(evt);}
+		catch (e){}
+		return;
+	}
+
+	if (!this.onResponseLoad) {
+		var onResponseLoad = form.elements.namedItem("onResponseLoad");
+		if (onResponseLoad)
+			this.onResponseLoad = eval(onResponseLoad.value);
+		else
+			this.onResponseLoad = this.loadResponse;
+	}
+
+	var submitButton = this.submitButton;
+	var queryInfo = this.formData2QueryString();
+	var query = queryInfo['query'];
+	this.hasFile = queryInfo['hasFile'];
+	
+	
+	if (!this.onAfterPopulate) {
+		var onAfterPopulate = form.elements.namedItem("onAfterPopulate");
+		if (onAfterPopulate)
+			this.onAfterPopulate = onAfterPopulate.value;
+		else
+			this.onAfterPopulate = function() {};
+	}
+	
+	if (submitButton) {
+		query += submitButton.name + '=' + submitButton.value + '&';
+	}
+	
+	if (window.AJAX_CONFIG && (AJAX_CONFIG & 1 == 1)) {
+		if (form.method.toLowerCase() == 'post')
+			this._post(query);
+		else
+			this._get(query)
+	}
+	else
+		this._post(query);
+	
+	try {disableDefault(evt);}
+	catch (e){}
+};
+
+FormManager.prototype._post = function(query) {
+	// send form by XmlHttpRequest
+	query += "ajax=1";
+
+	var req = new XMLHttpRequest();
+	var thisManager = this;
+	req.onreadystatechange = function() {
+		switch (req.readyState) {
+			case 1 :
+				showProgressImage();
+				break;
+			case 4 :
+				hideProgressImage();
+				if (req.status == 200 || req.status == 204)
+					thisManager.onResponseLoad(req);
+				else
+					alert('Error: ' + req.status);
+		};
+	};
+	var url = this.form.action;
+	req.open("POST", url, true);
+	req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+	req.send(query);
+};
+
+FormManager.prototype._get = function(query) {
+	// send form by browser location
+	var url = this.form.action;
+	url += '?' + query
+	linkHandler.loadUrl(url);
+};
+
+
+FormManager.prototype.click = function(evt) {
+	var target = getTargetedObject(evt);
+	if(target.type == "submit" || target.type == "image") {
+		this.submitButton = target;
+		disablePropagation(evt);
+	}
+};
+
+FormManager.prototype.replaceElementByField = function(evt) {
+	evt = getEventObject(evt);
+	var ob = getTargetedObject(evt);
+	var eventType = evt.type;
+	if (eventType == 'focus' || eventType == 'focusin') {
+		if (this.liveFormField && ob.tagName != 'INPUT')
+			this.pendingEvent = [ob, 'click'];
+		return;
+	}
+	var fieldName = ob.getAttribute('id');
+	if (fieldName) {
+		this.fieldTagName = ob.tagName;
+		var tabIndex = ob.tabIndex;
+		var text;
+		if (ob.firstChild && ob.firstChild.className == 'hidden_value')
+		    text = ob.firstChild.innerHTML;
+		else
+		    text = ob.innerHTML;
+		disablePropagation(evt);
+		switch (ob.tagName) {
+			case 'SPAN' :
+				// create input element
+				var inputText = document.createElement("input");
+				inputText.setAttribute("type", "text");
+				text = text.replace(/\n/g, ' ');
+				text = text.replace(/\s+/g, ' ');
+				text = text.replace(/^ /, '');
+				text = text.replace(/ $/, '');
+				inputText.setAttribute("value", text);
+				var inputWidth = text.length / 1.9;
+				inputWidth = (inputWidth > 5) ? inputWidth : 5;
+				inputText.style.width = inputWidth + 'em';
+				//inputText.setAttribute("size", text.length);
+
+				// replacement
+				var parent = ob.parentNode;
+				parent.replaceChild(inputText, ob);
+
+				inputText.focus();
+				inputText.select();
+				inputText.setAttribute('name', fieldName);
+				inputText.tabIndex = tabIndex;
+				inputText.className = 'live_field';
+				this.liveFormField = inputText;
+				var thisManager = this;
+				this.lazyListeners.push({'element': inputText, 'eventName' : 'blur', 'handler': function(){ thisManager.submit();}});
+				this.lazyListeners.push({'element': inputText, 'eventName' : 'keypress', 'handler': function(evt){ thisManager._fitField(evt);}});
+				this._addLazyListeners();
+				break;
+
+			case 'DIV' :
+			case 'P' :
+				// create textarea
+				var ta = document.createElement('textarea');
+				ta.style.display = 'block';
+				ta.className = 'live_field';
+				text = text.replace(/^\s*/, '');
+				text = text.replace(/\s*$/, '');
+				ta.value = text;
+
+				// replacement
+				var parent = ob.parentNode;
+				parent.replaceChild(ta, ob);
+
+				ta.focus();
+				ta.select();
+				ta.setAttribute('name', fieldName);
+				ta.tabIndex = tabIndex;
+				this.liveFormField = ta;
+				var thisManager = this;
+				this.lazyListeners.push({'element': ta, 'eventName' : 'blur', 'handler': function(){ thisManager.submit();}});
+				this._addLazyListeners();
+				break;
+				
+				
+		};
+	}
+};
+
+FormManager.prototype._addLazyListeners = function() {
+	for (var i=0 ; i<this.lazyListeners.length ; i++) {
+		var handlerInfo = this.lazyListeners[i];
+		addListener(handlerInfo['element'], handlerInfo['eventName'], handlerInfo['handler']);
+	}
+};
+
+FormManager.prototype._removeLazyListeners = function() {
+	for (var i=0 ; i<this.lazyListeners.length ; i++) {
+		var handlerInfo = this.lazyListeners[i];
+		removeListener(handlerInfo['element'], handlerInfo['eventName'], handlerInfo['handler']);
+	}
+};
+
+
+FormManager.prototype.restoreField = function(req) {
+	var text;
+	var input = this.liveFormField;
+	if (req.status == 200) {
+		if (req.getResponseHeader('Content-Type').indexOf('text/xml') != -1) {
+			var out = '..........';
+			if (req.responseXML.documentElement.firstChild)
+				out = req.responseXML.documentElement.firstChild.nodeValue;
+			
+			switch (req.responseXML.documentElement.nodeName) {
+				case 'computedField':
+					text = out;
+					break;
+				case 'error':
+					this._removeLazyListeners();
+					alert(out);
+					this.pendingEvent = null;
+					input.focus();
+					this._addLazyListeners();
+					return false;
+					break;
+			}
+		}
+		else {
+			text = req.responseText;
+		}
+	}
+	else
+		text = '';
+	
+	if (!text.match(/\w/))
+		text = '..........';
+	
+	var field = document.createElement(this.fieldTagName);
+	field.innerHTML = text;
+	field.setAttribute('id', input.getAttribute('name'));
+	field.className = 'editable';
+	field.tabIndex = input.tabIndex;
+	
+	var parent = input.parentNode;
+	parent.replaceChild(field, input);
+	this.liveFormField = null;
+	
+	if (this.pendingEvent)
+		raiseMouseEvent(this.pendingEvent[0], this.pendingEvent[1]);
+	return true;
+};
+
+
+FormManager.prototype.formData2QueryString = function() {
+	// http://www.onlamp.com/pub/a/onlamp/2005/05/19/xmlhttprequest.html
+	var form = this.form;
+	var strSubmit = '', formElem, elements;
+	var hasFile = false;
+
+	if (!this.lazy)
+		elements = form.elements;
+	else {
+		elements = new Array();
+		var formElements = form.elements;
+		for (var i = 0; i < formElements.length; i++) {
+			formElem = formElements[i];
+			switch (formElem.type) {
+				case 'hidden':
+					elements.push(formElem);
+					break;
+				default :
+					if (formElem == this.liveFormField)
+						elements.push(formElem);
+			};
+		}
+	}
+	
+	for (var i = 0; i < elements.length; i++) {
+		formElem = elements[i];
+		switch (formElem.type) {
+			// text, select, hidden, password, textarea elements
+			case 'text':
+			case 'select-one':
+			case 'hidden':
+			case 'password':
+			case 'textarea':
+				strSubmit += formElem.name + '=' + encodeURIComponent(formElem.value) + '&';
+				break;
+			case 'radio':
+			case 'checkbox':
+				if (formElem.checked)
+					strSubmit += formElem.name + '=' + encodeURIComponent(formElem.value) + '&';
+				break;
+			case 'select-multiple':
+				var options = formElem.getElementsByTagName("OPTION"), option;
+				for (var j = 0 ; j < options.length ; j++) {
+					option = options[j];
+					if (option.selected)
+						strSubmit += formElem.name + '=' + encodeURIComponent(option.value) + '&';
+				}
+				break;
+			case 'file':
+				if (formElem.value)
+					hasFile = true;
+				break;
+		};
+	}
+	return {'query' : strSubmit, 'hasFile' : hasFile};
+};
+
+FormManager.prototype.loadResponse = function(req) {
+	if (req.getResponseHeader('Content-Type').indexOf('text/xml') != -1) {
+		switch(req.responseXML.documentElement.nodeName) {
+			case 'fragments' :
+				if (this.hasFile) {
+					var sb = this.submitButton;
+					if (sb) {
+						var h = document.createElement('input');
+						h.type = 'hidden';
+						h.name = sb.name;
+						h.value = sb.value;
+						this.form.appendChild(h);
+					}
+					
+					this.form.submit();
+					return;
+				}
+				var fragments = req.responseXML.documentElement.childNodes;
+				var fragment, dest, scripts;
+				for (var i=0 ; i<fragments.length ; i++) {
+					fragment = fragments[i];
+					if (fragment.nodeName == 'fragment') {
+						dest = document.getElementById(fragment.getAttribute('id'));
+						dest.innerHTML = fragment.firstChild.nodeValue;
+			
+						scripts = dest.getElementsByTagName('script');
+						for (var j=0 ; j < scripts.length ; j++)
+							globalScriptRegistry.loadScript(scripts[j]);
+					}
+				}
+				break;
+			case 'error':
+				alert(req.responseXML.documentElement.firstChild.nodeValue);
+				return;
+		}
+	}
+	else {
+		this.responseTextDest.innerHTML = req.responseText;
+		var scripts = this.responseTextDest.getElementsByTagName('script');
+		for (var j=0 ; j < scripts.length ; j++)
+			globalScriptRegistry.loadScript(scripts[j]);
+	}
+	
+	var onAfterPopulate = this.onAfterPopulate;
+	if (typeof(onAfterPopulate) == "string") {
+		if (window.console)
+			console.warn('Deprecation WARNING onAfterPopulate: ' + onAfterPopulate);
+		onAfterPopulate = eval(onAfterPopulate);
+	}
+	onAfterPopulate();
+};
+
+FormManager.prototype._fitField = function(evt) {
+	var ob = getTargetedObject(evt);
+	var inputWidth = ob.value.length / 1.9;
+	inputWidth = (inputWidth > 5) ? inputWidth : 5;
+	ob.style.width = inputWidth + 'em';
+};
+
+function initForms(baseElement, lazy) {
+	if (!baseElement)
+		baseElement = document;
+	var dest = document.getElementById("mainCell");
+	var forms = baseElement.getElementsByTagName("form");
+	var f;
+	for (var i = 0 ; i < forms.length ; i++ )
+		f = new FormManager(forms[i], dest, lazy);
+}
+
+
+//registerStartupFunction(initForms);

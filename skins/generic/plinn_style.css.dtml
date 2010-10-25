@@ -1,0 +1,610 @@
+/* <dtml-with base_properties> */
+
+img {
+  border:none;
+}
+
+input, textarea, select {
+  color: &dtml-inputFontColor;;
+}
+
+table.TwoColumnForm {
+	color: &dtml-twoColumnFormFontColor;;
+  background-color: &dtml-twoColumnFormBackground;;
+  padding : 4px ;
+}
+  
+table.TwoColumnForm td.ListDefinition {
+  font-style: italic }
+  
+table.TwoColumnForm td.ListName {
+  color: #fff;
+  font-weight: bold;
+  background-color: #369;
+  vertical-align: middle }
+  
+table.TwoColumnForm th {
+  font-weight: bold;
+  text-align: right;
+  padding-right: 5px }
+  
+table.TwoColumnForm tr {
+/*  background-color: #ddd;*/
+  vertical-align: top }
+  
+table.TwoColumnForm tr td.TextField {
+  vertical-align: top;
+  padding-right: 10px;
+  padding-left: 10px }
+
+dl.FieldHelp {
+  margin: 3px }
+  
+dl.FieldHelp dd {
+  font-size : 90% ;
+  font-style : italic }  
+
+table.TwoColumnForm tr th.TextField {
+  vertical-align: top }
+  
+table.FolderFactories th {
+  text-align : center ;
+}
+
+table.FolderFactories td.ListName {
+  color: &dtml-fontColor;;
+  font-weight: bold;
+  vertical-align: middle;
+  padding : 2px;
+}
+
+table.FolderFactories td.spacing {
+  height : 8px ;
+}
+
+table.assign_global_roles {
+  margin-top : 0.5em;
+  background-color: &dtml-twoColumnFormBackground;;
+  padding: 4px;
+}
+
+.assign_global_roles th {
+  padding-right: 5px;
+  vertical-align:top;
+}
+  
+.assign_global_roles td ul {
+  margin: 0px;
+  padding-left: 15px
+}
+  
+.config {
+  color: &dtml-configFontColor;;
+  background-color: &dtml-configBackgroundColor;;
+  padding: 5px }
+  
+.config .info_message {
+  color: &dtml-messageFontColor;;
+  font-weight: 800 }
+  
+.config .tabs {
+  margin: 0px;
+  padding: 0px;
+  border-bottom: 1pt solid #669 }
+
+.config a
+.config a:link,
+.config a:visited,
+.config a:active {
+	color : &dtml-specialLinkColor;;
+}
+
+.config a:hover {
+	color : &dtml-specialLinkHoverColor;;
+}
+
+.config .tabs a {
+	color : &dtml-tabsFontColor;;
+  text-decoration: none }
+  
+.config .tabs a:active {
+  color: &dtml-tabsFontColor;; }
+
+.config .tabs a:hover {
+  color: #59c }
+  
+.config .tabs a:link {
+  color: &dtml-tabsFontColor;; }
+  
+.config .tabs a:visited {
+  color: &dtml-tabsFontColor;; }
+  
+.config .tabs td {
+  padding-right: 5px;
+  padding-left: 5px;
+  border-style: solid;
+  border-width: 1px 2px 2px 1px;
+  border-color: #ccc;
+  text-align: center;
+}
+  
+.config .tabs td.selected {
+  vertical-align: bottom;
+  margin: 0px;
+  padding: 0px 5px;
+  background: #eee;
+  border: solid 1px #669;
+}
+  
+.config .tabs td.selected a  {
+  color: #000;
+  font-weight: bold }
+
+.twins_list {
+  vertical-align: middle }
+  
+.send_email_form label {
+  margin-right : 1em ;
+}
+
+
+/* Boxes styles */
+
+.boxes_container {
+  padding-top:1em;
+}
+
+.boxes_container table {
+  width : 100%;
+  font-size : 9pt ;
+  margin-bottom : 5px;
+}
+  
+.boxes_container img {
+	vertical-align:middle
+}
+  
+.boxes_container a:link,
+.boxes_container a:visited,
+.boxes_container a:active {
+  color : &dtml-linkColor;;
+}
+
+.boxes_container a:hover {
+  color : &dtml-linkHoverColor;;
+}
+
+.boxes_container th  {
+  background-color: &dtml-boxeHeaderBackgroundColor;;
+  color: &dtml-fontColor;;
+  border-bottom: &dtml-tabsBorderWidth; solid &dtml-boxesBorderColor;;
+}
+
+.boxes_container ul {
+  margin : 0 ;
+  padding : 2px }
+  
+.boxes_container li  {
+  margin-left : 0 ;
+  color: &dtml-bulletColor;;
+  list-style-position : inside ;
+  list-style-image : url(list_bullet.gif);
+}
+
+.tree_box table {
+  margin:0;
+}
+
+.folder_object,
+.global,
+.workflow,
+.tree_box,
+.supervision,
+.clipboard,
+.news_box { 
+  border: &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+}
+
+.news_box td.even {  background-color: &dtml-evenRowBackgroundColor;; }
+
+.news_box td.odd {  background-color: &dtml-oddRowBackgroundColor;; }
+
+
+/* Calendar */
+
+.remove .calendar_table a, .remove .week_table a {
+  color : red ;
+  cursor : crosshair ;
+}
+
+/* month view*/
+.calendar_table {
+  border-collapse : collapse ;
+  text-align : left ;
+}
+
+.calendar_table ul {
+  margin : 0 ;
+  padding : 2px }
+  
+.calendar_table li {
+  margin-left : 0 ;
+  color: &dtml-bulletColor;;
+  list-style-position : inside ;
+  font-size : 9pt ;
+}
+
+
+.calendar_table div {
+   text-align : right ;
+ }
+
+.calendar_table th {
+  text-align : center ;
+  width : 14% ;
+}
+ 
+.calendar_table td {
+  border : 1px solid &dtml-calGridBorderColor;
+}
+
+.calendar_table td.disabled {
+  border : none ;
+}
+
+.calendar_table td.today {
+  background-color : &dtml-todayBackgroundColor;;
+}
+
+.cal_navigation td {
+  vertical-align : middle ;
+}
+
+.cal_navigation a, .cal_navigation a:visited {
+  font-size: &dtml-fontSmallSize;;
+  background-color: &dtml-tabsBackgroundColor;;
+  color: &dtml-fontColor;;
+}
+
+.cal_navigation a.selected, .cal_navigation a.selected:visited {
+  background-color: &dtml-tabsBorderColor;;
+  color: &dtml-tabsFontColor;;
+
+}
+
+.cal_navigation a:hover {
+  background-color: &dtml-tabsBorderColor;;
+  color: &dtml-tabsFontColor;;
+}
+
+/* week view */
+.week_table {
+  width : 100% ;
+  border-collapse : collapse ;
+  font-size : 9pt ;
+}
+
+.week_table th {
+  font-weight : normal ;
+  text-align : center ;
+  border-bottom : 1px solid &dtml-calGridBorderColor; ;
+}
+
+.week_table td {
+  border-left : 1px solid &dtml-calGridBorderColor; ;
+  border-right : 1px solid &dtml-calGridBorderColor; ;
+  padding : 0 ;
+}
+
+.week_table td.hourLabel {
+  border-left : 1px solid &dtml-contentBackgroundColor; ;
+/*  width : 5ex ;*/
+}
+
+.week_table div {
+  margin-top : -1px ;
+  padding : 0 ;
+  height : 15px ;
+  border-bottom : 1px solid &dtml-contentBackgroundColor; ;
+}
+
+.week_table ul {
+  height : 15px ;
+  overflow : hidden ;
+  margin : 0 ;
+  padding : 0 ;
+  position : absolute ;
+}
+
+.week_table ul:hover {
+  height : auto ;
+  overflow : visible ;
+  background-color : #f0f0f0 ;
+  border-top : 1px solid &dtml-bulletColor; ;
+  border-left : 1px solid &dtml-contentBackgroundColor; ;
+  border-right : 1px solid &dtml-contentBackgroundColor; ;
+  border-bottom : 1px solid &dtml-contentBackgroundColor; ;
+  z-index : 1 ;
+}
+
+.week_table li  {
+  margin-left : 0 ;
+  color: &dtml-bulletColor;;
+  list-style-position : inside ;
+}
+
+.week_table .hour_row {
+  border-bottom : 1px solid &dtml-calGridBorderColor; ;
+}
+.week_table .half_hour_row {
+  border-bottom : 1px solid &dtml-calHalfGridBorderColor; ;
+}
+
+.week_table .today {
+  background-color : &dtml-todayBackgroundColor;;
+}
+
+.week_table div.event {
+  position : absolute ;
+  border : 1px solid #ccc ;
+  background-color : white ;
+}
+
+.week_table div.event:hover {
+  border : 1px solid &dtml-bulletColor; ;
+  z-index : 1 ;
+}
+
+/* Photo / Portfolio */
+
+/* Deprecated. TODO :remove */
+.photo_slide {
+  height : &dtml-slide_size;px ;
+  width : &dtml-slide_size;px ;
+  float : left ;
+  border : 1px solid black ;
+  margin-top : -1px;
+  margin-left : -1px;
+  text-align : center ;
+  overflow : hidden ;
+}
+
+.portfolio_slide {
+  height : &dtml-slide_size;px ;
+  width : &dtml-slide_size;px ;
+  float : left ;
+  border : 1px solid black ;
+  margin-top : -1px;
+  margin-left : -1px;
+  text-align : center ;
+  overflow : hidden ;
+  background-image: url(portfolio_icon.gif);
+  background-repeat: no-repeat;
+  background-position: 2px 2px;
+  background-color: &dtml-portfolioSlideBackgroundColor;;
+}
+
+.photo_slide a, .portfolio_slide a {
+  padding : 2px;
+}
+
+.exif_table th {
+  font-weight : bold ;
+  text-align : right ;
+}
+
+/* Plinn document */
+.plinn_document {
+  font-size : 14px;
+  background-color : transparent;
+}
+
+.plinn_document div {
+  overflow : visible;
+}
+
+.active_epoz {
+  border : 1px solid &dtml-linkColor;;
+  width : 99%;
+}
+
+.inactive_epoz {
+  border : 1px dashed &dtml-linkColor;;
+  width : 99%;
+}
+
+.hidden, .hidden_value {
+  visibility : hidden;
+  display : none;
+}
+
+.resize_handle {
+	position : absolute;
+	display : block;
+	right : 0;
+	bottom : 0;
+	visibility:hidden;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='&dtml-portal_url;/resize_handle.png');
+	line-height : 0; /* IE hack */
+	background-repeat : no-repeat;
+	width : 12px;
+	height : 12px;
+/*	cursor : se-resize;*/
+}
+
+.resize_handle[class] {
+	background-image : url(&dtml-portal_url;/resize_handle.png);
+}
+
+.rectangle_header {
+	position : absolute;
+	background : url(&dtml-portal_url;/degrad_rectangle_header.gif);
+	height : 11px;
+	width : 100%;
+	border: 1px solid #cbcbcb;
+	border-bottom : 1px solid #9f9f9f;
+	top : -13px;
+	left : -1px;
+	visibility:hidden;
+/*	cursor : move;*/
+}
+
+.rectangle_delimg {
+	margin-left:5px;
+}
+
+
+#ImageUploadForm, #FileUploadForm {
+  border : 1px solid #aaa;
+  position : absolute;
+	padding : 2px;
+	top : 29px;
+	left : -317px;
+  height : 130px;
+  width : 310px;
+  background : #ccc;
+  visibility : hidden;
+}
+
+/* Discussion */
+
+.reply_title {
+  font-weight : bold;
+}
+
+.reply_body {
+  padding : 5px 0 15px 20px;
+}
+.reply_body p {
+  margin:0;
+}
+
+
+.outline_in_reply_to {
+  border-left : 1em solid &dtml-outlineColor;;
+  border-bottom : 1px solid &dtml-outlineColor;;
+}
+
+.outline_new_reply {
+  border-left : 2px solid &dtml-outlineColor;;
+}
+
+/* batch drop */
+.dropPageTarget {
+  background : &dtml-highLightColor;;
+  padding : 0 0.5em;
+}
+
+/* clipboard */
+.clipboard td, .clipboard ul {
+	padding : 0;
+}
+
+
+.clipboard li {
+	padding-left : 5px;
+	list-style : none outside none;
+}
+
+.clipboard li.odd {
+	background-color : &dtml-oddRowBackgroundColor;;
+}
+
+.clipboard li.even {
+	background-color : &dtml-evenRowBackgroundColor;;
+}
+
+.clipboard input {
+	font-size : &dtml-fontSmallSize;;
+}
+
+.live_field {
+	border : 1px solid black;
+}
+
+.editable:hover {
+	background: #fff8aa;
+	cursor:text;
+	border-color: #666666 rgb(221, 221, 221) rgb(221, 221, 221) rgb(102, 102, 102);
+	border-style:solid;
+	border-width:2px;
+}
+
+/* Epoz */
+
+.EpozToolbar img, #EpozToolbar img {
+	border: 1px solid rgb(170, 170, 170);
+	background-color: rgb(204, 204, 204);
+	cursor: pointer;
+	margin-right: 1px;
+	margin-bottom: 1px;
+}
+
+#HeaderArea a
+#HeaderArea a:link,
+#HeaderArea a:visited,
+#HeaderArea a:active {
+	color : &dtml-specialLinkColor;;
+}
+
+#HeaderArea a:hover {
+	color : &dtml-specialLinkHoverColor;;
+}
+
+/* Mosaic document */
+table.input_form { border: none; border-spacing: 4px }
+table.input_form tr td { border: none }
+table.input_form tr th  { color: white; font-weight: 800; font-size: 13px; font-family: Arial, sans-serif; background-color: #69c; text-align: right; vertical-align: top; padding: 1px 10px 5px 5px }
+div.container_block_form { background-color: #f0f0f0; padding: 10px 5px; border: dotted 2px }
+div.slot_text { text-align: justify }
+form.block_form { border : 2px solid #d7d7d7; background-color : #fff }
+.mosaic_input { background-color: white }
+.move_table {background-color: #d7d7d7; text-align:right }
+
+/* completions */
+
+ul.completions {
+	border:1px solid black;
+	margin:0;
+	padding:0;
+	position:absolute;
+	background:#fff;
+	list-style:none;
+	cursor : pointer;
+}
+ul.completions li.selected {
+	background:&dtml-linkHoverColor;;
+}
+
+ul.completions li:hover {
+  background:&dtml-linkHoverColor;;
+}
+
+.comparison th {
+  background:#ddd;
+}
+.comparison .mid {
+  background:#f0f0f0;
+}
+.comparison .insert .left,
+.comparison .insert .right {
+  background:#dfd;
+}
+
+.comparison .replace .left,
+.comparison .replace .right {
+  background:#fe9;
+}
+
+.comparison .delete .left,
+.comparison .delete .right {
+  background:#fdd;
+}
+
+.revision_context {
+  border:1px solid &dtml-outlineColor;;
+  background: &dtml-configBackgroundColor;;
+  padding:0 0.5em;
+}
+
+/* </dtml-with> */

@@ -1,0 +1,20 @@
+<table class="TwoColumnForm" i18n:domain="plinn"
+			 tal:define="bgcolor here/base_properties/contentBackgroundColor"
+			 tal:attributes="style string:background-color:$bgcolor">
+  <tr>
+  	<td>
+      <input id="" type="checkbox" name="criterion_ids:list" value=""
+      			 tal:attributes="value here/getId; id string:cb_${here/getId}"/>
+      <input type="hidden" name="criteria.id:records" value="" tal:attributes="value here/getId"/>
+    </td>
+    <td>
+    	<fieldset>
+    		<legend tal:content="string:catalog_index_${here/Field}" i18n:translate="">Field name</legend>
+    		<input type="text" name="criteria.value:records" value="" size="40" tal:attributes="value here/value | nothing" />
+    		<dl class="FieldHelp">
+			    <dd tal:content="here/Description" i18n:translate="">Criterion description</dd>
+				</dl>
+    	</fieldset>
+    </td>
+  </tr>
+</table>

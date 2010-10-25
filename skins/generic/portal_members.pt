@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Portal members management</title>
+    <link href="../content/plinn_style.css" rel="stylesheet" media="screen"/>
+		<script metal:fill-slot="javascript_head_slot" type="text/javascript" tal:attributes="src here/directory_management_script.js/absolute_url"></script>
+  </head>
+
+  <body metal:fill-slot="main_no_tabs" i18n:domain="plinn" tal:omit-tag="">
+    <table metal:use-macro="here/gruf_macros/macros/gruf_settings">
+      <tr>
+        <td colspan="2">Using gruf_settings macro</td>
+      </tr>
+      <tr>
+        <td>
+          <table metal:fill-slot="form">
+            <tr>
+              <td><div metal:use-macro="here/gruf_macros/macros/all_members">all_members from gruf_macros</div></td>
+              <td id="MemberFormSlot"
+              		tal:define="macroName python:request.form.has_key('member_id') and request.form['macroName'] or 'add_member'">
+              	<div metal:use-macro="python:here.gruf_macros.macros[macroName]">add_member from gruf_macros</div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+
+</html>
