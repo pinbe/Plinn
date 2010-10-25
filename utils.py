@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #######################################################################################
 #   Plinn - http://plinn.org                                                          #
 #   Copyright (C) 2005-2007  Benoît PIN <benoit.pin@ensmp.fr>                         #
@@ -35,7 +36,7 @@ from Products.CMFCore.utils import getToolByName, getUtilityByInterfaceName
 from Products.CMFCore.exceptions import BadRequest
 from Products.Utf8Splitter.Utf8Splitter import Utf8Utils
 from Globals import REPLACEABLE, NOT_REPLACEABLE, UNIQUE
-from Products.PageTemplates.GlobalTranslationService import getGlobalTranslationService
+#from Products.PageTemplates.GlobalTranslationService import getGlobalTranslationService
 from zope.i18n.interfaces import IUserPreferredLanguages
 from zope.i18nmessageid import MessageFactory
 from zope.component.interfaces import ComponentLookupError
@@ -194,12 +195,14 @@ security.declarePublic('translate')
 def translate(message, context):
 	""" Translate i18n message.
 	"""
-	GTS = getGlobalTranslationService()
+	# TODO : localisation.
+	#GTS = getGlobalTranslationService()
 	if isinstance(message, Exception):
 		try:
 			message = message[0]
 		except (TypeError, IndexError):
 			pass
+	return message
 	return GTS.translate('plinn', message, context=context)
 
 security.declarePublic('desacc')
