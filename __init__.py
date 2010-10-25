@@ -103,6 +103,7 @@ validTags.update(VALID_TAGS)
 default_cmf_utils.NASTY_TAGS = {}
 default_cmf_utils.VALID_TAGS.update(validTags)
 
-# the plinn portal_calendar is a also a "SPECIAL PROVIDER"
-import Products.CMFCore.exportimport.actions
-Products.CMFCore.exportimport.actions._SPECIAL_PROVIDERS += ('portal_calendar',)
+# TODO : vérifier l'impact.
+# # the plinn portal_calendar is a also a "SPECIAL PROVIDER"
+# import Products.CMFCore.exportimport.actions
+# Products.CMFCore.exportimport.actions._SPECIAL_PROVIDERS += ('portal_calendar',)
