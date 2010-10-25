@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #######################################################################################
 #   Plinn - http://plinn.org                                                          #
 #   Copyright © 2005-2009  Benoît PIN <benoit.pin@ensmp.fr>                           #
