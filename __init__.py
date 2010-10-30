@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 #######################################################################################
-#   Plinn - http://plinn.org                                                          #
-#   Copyright (C) 2005-2007  Benoît PIN <benoit.pin@ensmp.fr>                         #
-#                                                                                     #
-#   This program is free software; you can redistribute it and/or                     #
-#   modify it under the terms of the GNU General Public License                       #
-#   as published by the Free Software Foundation; either version 2                    #
-#   of the License, or (at your option) any later version.                            #
-#                                                                                     #
-#   This program is distributed in the hope that it will be useful,                   #
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of                    #
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                     #
-#   GNU General Public License for more details.                                      #
-#                                                                                     #
-#   You should have received a copy of the GNU General Public License                 #
-#   along with this program; if not, write to the Free Software                       #
-#   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.   #
+#	Plinn - http://plinn.org														  #
+#	Copyright (C) 2005-2007	 Benoît PIN <benoit.pin@ensmp.fr>						  #
+#																					  #
+#	This program is free software; you can redistribute it and/or					  #
+#	modify it under the terms of the GNU General Public License						  #
+#	as published by the Free Software Foundation; either version 2					  #
+#	of the License, or (at your option) any later version.							  #
+#																					  #
+#	This program is distributed in the hope that it will be useful,					  #
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of					  #
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the					  #
+#	GNU General Public License for more details.									  #
+#																					  #
+#	You should have received a copy of the GNU General Public License				  #
+#	along with this program; if not, write to the Free Software						  #
+#	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.	  #
 #######################################################################################
 """ Plinn implementation of CMFCore.
 
@@ -103,7 +103,41 @@ validTags.update(VALID_TAGS)
 default_cmf_utils.NASTY_TAGS = {}
 default_cmf_utils.VALID_TAGS.update(validTags)
 
-# TODO : vérifier l'impact.
-# # the plinn portal_calendar is a also a "SPECIAL PROVIDER"
+# the plinn portal_calendar is a also a "SPECIAL PROVIDER"
+# TODO: vérifier l'impact
 # import Products.CMFCore.exportimport.actions
 # Products.CMFCore.exportimport.actions._SPECIAL_PROVIDERS += ('portal_calendar',)
+
+
+# monkey-patch de getIcon qui est foirasse dans CMF2.2 : 
+# les icônes ne s'affichent pas correctement dans la ZMI
+# lorqu'on y accède par un virtual host apache.
+from urllib import quote
+from Products.CMFCore.utils import getToolByName
+
+def getIcon(self, relative_to_portal=0):
+	"""
+	Using this method allows the content class
+	creator to grab icons on the fly instead of using a fixed
+	attribute on the class.
+	"""
+	ti = self.getTypeInfo()
+	if ti is not None:
+		icon = quote(ti.getIcon())
+		if icon:
+			if relative_to_portal:
+				return icon
+			else:
+				# Relative to REQUEST['BASEPATH1']
+				portal_url = getToolByName( self, 'portal_url' )
+				res = portal_url(relative=1) + '/' + icon
+				while res[:1] == '/':
+					res = res[1:]
+				return res
+	return 'misc_/OFSP/dtmldoc.gif'
+
+icon = getIcon	# For the ZMI
+
+from Products.CMFCore.DynamicType import DynamicType
+DynamicType.getIcon = getIcon
+DynamicType.icon = getIcon
