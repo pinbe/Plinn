@@ -1,0 +1,50 @@
+<html metal:use-macro="here/main_template/macros/master"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+  <head>
+    <title>flash viewer</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <!--
+    <metal:block metal:fill-slot="javascript_head_slot">
+      <script type="text/javascript" tal:attributes="src string:$portal_url/swfobject.js"></script>
+    </metal:block>
+    -->
+  </head>
+  <body>
+    <div metal:fill-slot="main" tal:omit-tag="">
+      <!--
+      <p id="audio_player"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</p>
+      <script type="text/javascript" src="http://kwak.fr/swfobject.js"></script>
+      <script type="text/javascript">
+      	var swf = new SWFObject('http://kwak.fr/mp3player.swf', 'playlist', '260', '140', '7');
+      	swf.addVariable('file','http://kwak.fr/Members/pinbe/Playlist/podcast.xml?all:boolean=True');
+      	swf.addVariable('displayheight','0');
+      	swf.addVariable('thumbsinplaylist', true);
+      	swf.write('audio_player');
+      </script>
+      <a href="itpc://kwak.fr/Members/pinbe/Playlist/podcast.xml?disable_cookie_login__=1"
+         title="Installer dans iTunes"
+         ><img src="http://kwak.fr/podcast_logo.gif" border="0" alt="Installer dans iTunes" width="70" height="22"/></a>
+      -->
+      
+      <p id="player_placeholder">
+        <a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.
+      </p>
+      
+      <script type="text/javascript" tal:attributes="src string:$portal_url/swfobject.js"></script>
+      <script type="text/javascript" tal:content="structure python:'''
+        var url = '%(url)s';
+        var so = new SWFObject(url,'%(id)s', %(width)s, %(height)s,'8');
+        so.addParam('allowfullscreen','true');
+        so.addVariable('height', %(width)s);
+        so.addVariable('width', %(height)s);
+        so.write('player_placeholder');
+        ''' % {'url' : '%s/index_html' % context.absolute_url(),
+               'id' : context.getId(),
+               'width' : options['width'],
+               'height' : options['height']}">
+      </script>
+    </div>
+  </body>
+</html>

@@ -522,9 +522,6 @@ msgstr ""
 msgid "New layer"
 msgstr ""
 
-msgid "News Item"
-msgstr ""
-
 msgid "No document"
 msgstr ""
 

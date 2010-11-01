@@ -8,12 +8,12 @@
 <div class="listingBar"
      metal:define-macro="navigation"
      tal:define="request request|here/request|container/request|nothing;
-                 form python:request.form.copy();
+                 form form|request/form/copy;
                  dummy python:form.has_key('ajax') and form.pop('ajax');
                  batch batch|nothing;
                  mq python:modules['ZTUtils'].make_query;
                  mpq python:lambda fv,pn=-1 : mq(fv, {batch.b_start_str : pn * (batch.size - batch.overlap) - batch.size}) ;
-                 url python:request.get('URL0');
+                 url python:options.get('batchBaseUrl', request.get('URL0'));
                  currentpage batch/pagenumber;"
      tal:attributes="id navBatchBarId|nothing"
      tal:condition="python: batch.next or  batch.previous"

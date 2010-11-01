@@ -19,13 +19,14 @@
 #######################################################################################
 """ Plinn portal folder implementation
 
-$Id: Folder.py 1459 2009-02-02 00:57:24Z pin $
+$Id: Folder.py 1539 2009-10-30 13:48:34Z pin $
 $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/Folder.py $
 """
 
 from OFS.CopySupport import CopyError, eNoData, _cb_decode, eInvalid, eNotFound,\
 							eNotSupported, sanity_check, cookie_path
 from App.Dialogs import MessageDialog
+from zExceptions import BadRequest
 import sys
 import warnings
 from cgi import escape
@@ -42,7 +43,9 @@ from zope.component.factory import Factory
 from Acquisition import aq_base, aq_inner, aq_parent
 
 from types import StringType
-from Products.CMFCore.permissions import ListFolderContents, View, ManageProperties, AddPortalFolders, AddPortalContent, ManagePortal
+from Products.CMFCore.permissions import ListFolderContents, View, ViewManagementScreens,\
+										 ManageProperties, AddPortalFolders, AddPortalContent,\
+										 ManagePortal, ModifyPortalContent
 from permissions import DeletePortalContents, DeleteObjects, DeleteOwnedObjects, SetLocalRoles, CheckMemberPermission
 from Products.CMFCore.utils import _checkPermission, getToolByName
 from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
@@ -53,6 +56,7 @@ from zope.interface import implements
 from Products.CMFCore.interfaces import IContentish
 
 from utils import _checkMemberPermission
+from utils import Message as _
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 
@@ -105,7 +109,7 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
 
 	security.declareProtected(DeletePortalContents, 'manage_delObjects')
 	def manage_delObjects(self, ids=[], REQUEST=None):
-		"""Delete a subordinate object.
+		"""Delete subordinate objects.
 		   A member can delete his owned contents (if he has the 'Delete Portal Contents' permission)
 		   without 'Delete objects' permission in this folder.
 		   Return skipped object ids.
@@ -133,7 +137,38 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
 				manage_tabs_message='Object(s) deleted.',
 				update_menu=1)
 		return notOwned
-				
+
+
+	security.declareProtected(AddPortalContent, 'manage_renameObjects')
+	def manage_renameObjects(self, ids=[], new_ids=[], REQUEST=None) :
+		""" Rename subordinate objects
+			A member can rename his owned contents if he has the 'Modify Portal Content' permission.
+			Returns skippend object ids.
+		"""
+		if len(ids) != len(new_ids):
+			raise BadRequest(_('Please rename each listed object.'))
+		
+		if _checkPermission(ViewManagementScreens, self) : # std zope perm
+			return super(PlinnFolder, self).manage_renameObjects(ids, new_ids, REQUEST)
+			
+		mtool = getToolByName(self, 'portal_membership')
+		authMember = mtool.getAuthenticatedMember()
+		skiped = []
+		for id, new_id in zip(ids, new_ids) :
+			if id == new_id : continue
+			
+			ob = self._getOb(id)
+			if authMember.allowed(ob, object_roles=['Owner'] ) and \
+			   _checkPermission(ModifyPortalContent, ob) :
+				self.manage_renameObject(id, new_id)
+			else :
+				skiped.append(id)
+		
+		if REQUEST is not None :
+			return self.manage_main(self, REQUEST, update_menu=1)
+
+		return skiped
+
 
 	security.declareProtected(ListFolderContents, 'listFolderContents')
 	def listFolderContents( self, contentFilter=None ):

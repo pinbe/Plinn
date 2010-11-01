@@ -103,22 +103,19 @@ table.assign_global_roles {
 	color : &dtml-specialLinkHoverColor;;
 }
 
-.config .tabs a {
-	color : &dtml-tabsFontColor;;
-  text-decoration: none }
-  
+.config .tabs a,
+.config .tabs a:link,
+.config .tabs a:visited,
 .config .tabs a:active {
-  color: &dtml-tabsFontColor;; }
+	color : &dtml-tabsFontColor;;
+  text-decoration: none
 
+}
+  
 .config .tabs a:hover {
-  color: #59c }
-  
-.config .tabs a:link {
-  color: &dtml-tabsFontColor;; }
-  
-.config .tabs a:visited {
-  color: &dtml-tabsFontColor;; }
-  
+  color: #59c
+}
+    
 .config .tabs td {
   padding-right: 5px;
   padding-left: 5px;
@@ -136,9 +133,13 @@ table.assign_global_roles {
   border: solid 1px #669;
 }
   
-.config .tabs td.selected a  {
+.config .tabs td.selected a,
+.config .tabs td.selected a:link,
+.config .tabs td.selected a:visited,
+.config .tabs td.selected a:active {
   color: #000;
-  font-weight: bold }
+  font-weight: bold
+}
 
 .twins_list {
   vertical-align: middle }

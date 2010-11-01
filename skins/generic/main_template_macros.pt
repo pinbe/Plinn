@@ -75,7 +75,7 @@ global specialCtxHeader options/specialCtxHeader|nothing"
 
 <div metal:define-macro="Breadcrumbs" tal:omit-tag="">
 	<span tal:content="here/absolute_url" id="BC_Object_URL" style="display:none"></span>
-  <span i18n:translate="">You are here:</span> <span tal:omit-tag="" tal:repeat="bc options/breadcrumbs|here/breadcrumbs"><a href="." tal:attributes="href bc/url" tal:content="python:bc['title'] or bc['id']">ID</a><span tal:condition="not: repeat/bc/end" tal:omit-tag=""> <img src="fleche_bc.gif" alt="/" height="14" width="11" tal:attributes="src string:${portal_url}/fleche_bc.gif" border="0" /> </span> </span>
+  <span i18n:translate="">You are here:</span> <span tal:omit-tag="" tal:repeat="bc options/breadcrumbs|here/breadcrumbs"><a href="." tal:attributes="href bc/url" tal:content="python:bc['title'] or bc['id']" tal:omit-tag="not:bc/url">ID</a><span tal:condition="not: repeat/bc/end" tal:omit-tag=""> <img src="fleche_bc.gif" alt="/" height="14" width="11" tal:attributes="src string:${portal_url}/fleche_bc.gif" border="0" /> </span> </span>
 </div>
 
 

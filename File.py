@@ -21,7 +21,7 @@
 	File. If exists, portal_transforms is called to extract text content, and publish
 	attachments.
 
-$Id: File.py 1261 2008-01-07 01:34:23Z pin $
+$Id: File.py 1549 2010-02-04 13:04:22Z pin $
 $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/File.py $
 """
 
@@ -33,6 +33,7 @@ from zope.component.factory import Factory
 from Products.CMFDefault.File import File as BaseFile
 from Products.CMFCore.permissions import View, ModifyPortalContent
 from Products.CMFCore.utils import getToolByName
+from swfheader import parse as parseswf
 
 class File(BaseFile) :
 	""" file class with portal_transforms support """
@@ -59,6 +60,32 @@ class File(BaseFile) :
 					return fileOb
 				
 			raise AttributeError, name
+	
+	def manage_upload(self,file='',REQUEST=None):
+		ret = super(File, self).manage_upload(file=file, REQUEST=REQUEST)
+
+		orig_name = OFS.Image.cookId('', '', file)[0]
+		if orig_name :
+			self.orig_name = orig_name
+
+		print self.absolute_url(), self.Format()
+		if self.Format() == 'application/x-shockwave-flash' :
+			if file :
+				try :
+					swfmetadata = parseswf(file)
+				except IOError :
+					swfmetadata = {'width':600, 'height':600}
+
+			for name in ('width', 'height') :
+				value = swfmetadata[name]
+				if self.hasProperty(name) :
+					self._updateProperty(name, value)
+				else :
+					self.manage_addProperty(name, value, 'int')
+		self.reindexObject()
+		return ret
+		
+		
 	
 	security.declareProtected(ModifyPortalContent, 'edit')
 	def edit(self, precondition='', file=''):

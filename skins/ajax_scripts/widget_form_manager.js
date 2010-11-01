@@ -1,18 +1,25 @@
 // © 2009 Benoît Pin
 // http://plinn.org
 // Licence GPL
-// $Id: widget_form_manager.js 1473 2009-03-06 17:02:21Z pin $
+// $Id: widget_form_manager.js 1535 2009-10-21 16:56:13Z pin $
 // $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/skins/ajax_scripts/widget_form_manager.js $
 
 var WidgetBasedFormManager;
 
 (function(){
-	WidgetBasedFormManager = function(widgets, editingArea, dataArea, dataAreaSpecs) {
+	WidgetBasedFormManager = function(widgets, editingArea, dataArea, dataAreaSpecs, afterShow) {
+		/* widgets : {'add':element, 'edit':element} element targets nodes to clone.
+		*  editingArea : surrounding element where form is
+		*  dataArea : element where data are
+		*  dataAreaSpecs : by default, param used to indicate the total number of columns
+		*  afterShow : function called after a widget insertion
+		*/
 		var thisWgtManager = this;
 		this.widgets = widgets;
 		this.openedWidget = null;
 		this.dataArea = dataArea;
 		this.dataAreaSpecs = dataAreaSpecs;
+		this.afterShow = afterShow;
 
 		var form = editingArea.getElementsByTagName('form')[0];
 		this.form = form;
@@ -33,6 +40,8 @@ var WidgetBasedFormManager;
 		dest.appendChild(wdgtCopy);
 		if (this.addButton)
 			this.addButton.style.visibility = 'hidden';
+		if (this.afterShow)
+			this.afterShow(this);
 	};
 	
 	WidgetBasedFormManager.prototype.showPopulatedWidget = function(dest, url) {
@@ -71,6 +80,8 @@ var WidgetBasedFormManager;
 			}
 		}
 		dest.appendChild(wdgtCopy);
+		if (this.afterShow)
+			this.afterShow(this);
 	};
 	
 	WidgetBasedFormManager.prototype.cancelWidget = function() {

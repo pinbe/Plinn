@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<object name="caching_policy_manager" meta_type="CMF Caching Policy Manager">
+ <caching-policy name="ie_ajax" enable_304s="False" etag_func=""
+    last_modified="True" max_age_secs="0" mtime_func="object/modified"
+    must_revalidate="True" no_cache="True" no_store="True"
+    no_transform="False"
+    predicate="python:request['HTTP_USER_AGENT'].lower().find('msie') != -1 and request.get('ajax')"
+    private="False" proxy_revalidate="False" public="False" vary=""/>
+ <caching-policy name="ie_use_macro" enable_304s="False" etag_func=""
+    last_modified="True" max_age_secs="0" mtime_func="object/modified"
+    must_revalidate="True" no_cache="True" no_store="True"
+    no_transform="False"
+    predicate="python:request['HTTP_USER_AGENT'].lower().find('msie') != -1 and view == 'use_macro'"
+    private="False" proxy_revalidate="False" public="False" vary=""/>
+ <caching-policy name="ie_plinnDocumentXMLBody" enable_304s="False"
+    etag_func="" last_modified="True" max_age_secs="0"
+    mtime_func="object/modified" must_revalidate="True" no_cache="True"
+    no_store="True" no_transform="False"
+    predicate="python:request['HTTP_USER_AGENT'].lower().find('msie') != -1 and view == 'XMLBody'"
+    private="False" proxy_revalidate="False" public="False" vary=""/>
+</object>

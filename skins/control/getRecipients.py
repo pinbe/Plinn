@@ -12,7 +12,7 @@ for role in roles :
 	for member in object.getAllMembersInRole(role) :
 		if (member.id not in recipientIds) and member.getProperty('email') :
 			membersInRole.append(member)
-			recipientIds.append(member.id)
+			recipientIds.append(member.getId())
 	if membersInRole :
 		rolesAndMembers.append( (role, membersInRole) )
 

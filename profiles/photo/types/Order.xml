@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<object name="Order" meta_type="Factory-based Type Information"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title">Order</property>
+ <property name="description"></property>
+ <property name="icon_expr">string:${portal_url}/text.gif</property>
+ <property name="content_meta_type">Print order</property>
+ <property name="product"></property>
+ <property name="factory">photoprint.order</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
+ <property name="immediate_view">object/edit</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types"/>
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="order_view"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="" link_target="" url_expr="string:${object_url}/order_view"
+    visible="True">
+  <permission value="View"/>
+ </action>
+</object>

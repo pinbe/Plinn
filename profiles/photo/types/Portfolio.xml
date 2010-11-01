@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<object name="Portfolio" meta_type="Factory-based Type Information"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title">Collection</property>
+ <property name="description">Folder for photo storage</property>
+ <property name="icon_expr">string:${portal_url}/portfolio_icon.gif</property>
+ <property name="content_meta_type">Portfolio</property>
+ <property name="product"></property>
+ <property name="factory">portfolio.portfolio</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
+ <property name="immediate_view">object/import</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="Photo"/>
+  <element value="Portfolio"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="portfolio_view"/>
+ <alias from="mkdir" to="createPortfolio"/>
+ <alias from="view" to="portfolio_view"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="" link_target="" url_expr="string:${object_url}/portfolio_view"
+    visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Slide show" action_id="noajax" category="object"
+    condition_expr="python:object.listNearestFolderContents(contentFilter={'portal_type' : 'Photo'})"
+    icon_expr="" link_target="" url_expr="string:${object_url}/slide_show"
+    visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Presentation" action_id="presentation" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/portfolio_presentation_form"
+    visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="List" action_id="folderContents" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_contents" visible="True">
+  <permission value="List folder contents"/>
+ </action>
+ <action title="Import" action_id="import" category="object" condition_expr=""
+    icon_expr="" link_target=""
+    url_expr="string:${object_url}/portfolio_edit_form" visible="True">
+  <permission value="Add portal content"/>
+ </action>
+ <action title="Share" action_id="localroles" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_localrole_form" visible="True">
+  <permission value="Set Local Roles"/>
+ </action>
+ <action title="Printing settings" action_id="printing_settings"
+    category="object" condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/photoprint_templates_edit_form"
+    visible="True">
+  <permission value="Manage print order template"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_contents" visible="False">
+  <permission value="Manage properties"/>
+ </action>
+ <action title="New..." action_id="new" category="object" condition_expr=""
+    icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_factories" visible="False">
+  <permission value="Add portal content"/>
+ </action>
+ <action title="Rename items" action_id="rename_items" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_rename_form" visible="False">
+  <permission value="Add portal content"/>
+ </action>
+ <action title="mkdir" action_id="mkdir" category="object" condition_expr=""
+    icon_expr="" link_target="" url_expr="string:createPortfolio"
+    visible="False">
+  <permission value="Add portal content"/>
+ </action>
+</object>

@@ -38,8 +38,6 @@ def encodeAdr(member) :
 sender = mtool.getAuthenticatedMember()
 sender = encodeAdr(sender)
 
-if other_adr :
-	recipients['to'].extend(other_adr)
 
 recipientsFormated = {'to':'', 'cc':'', 'bcc':''}
 for field, b in recipients.items() :
@@ -47,6 +45,13 @@ for field, b in recipients.items() :
 	formated = filter(None, formated)
 	formated = ', '.join(formated)
 	recipientsFormated[field] = formated
+
+if other_adr :
+	recipients['to'].extend(other_adr)
+	formated = ', '.join(other_adr)
+	to = ', '.join([recipientsFormated['to'], formated])
+	to = to.strip(', ')
+	recipientsFormated['to'] = to
 	
 recipientsHeader = []
 for field in ['to', 'cc', 'bcc'] :
@@ -68,7 +73,6 @@ MailHost.send( message.encode('utf-8') )
 if wfid is not None :
 	wtool = portal.portal_workflow
 	email_sent = reduce(lambda a, b : a+b, recipients.values())
-	email_sent.extend(other_adr)
 	wtool.doActionFor(context, 'send_email', wf_id=wfid,
 					  email_sent=email_sent,
 					  comment=text_body)

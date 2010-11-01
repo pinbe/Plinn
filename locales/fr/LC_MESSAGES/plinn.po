@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: $Date: Mon Jun 29 11:38:05 2009 $\n"
-"PO-Revision-Date: 2009-06-29 11:41+0200\n"
+"POT-Creation-Date: $Date: Fri Oct 30 14:42:26 2009 $\n"
+"PO-Revision-Date: 2009-10-30 14:43+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,10 @@ msgstr ""
 #: EmailNotification.py:38
 msgid "Object deleted"
 msgstr "Objet supprimé"
+
+#: Folder.py:149
+msgid "Please rename each listed object."
+msgstr "Veuillez renommer tous les éléments listés."
 
 #. Default: ""
 #: MembershipTool.py:401
@@ -71,7 +75,8 @@ msgid ""
 "the community.\n"
 msgstr ""
 "\n"
-"Vous venez d'être inscrit en tant que membre du portail « %(portal_title)s », ce qui vous permet de participer à la rédaction des contenus.\n"
+"Vous venez d'être inscrit en tant que membre du portail « %(portal_title)s », "
+"ce qui vous permet de participer à la rédaction des contenus.\n"
 
 #: profiles/default/workflows/member_workflow/scripts/sendNotificationEmail.py:43
 msgid ""
@@ -148,15 +153,15 @@ msgstr "Modifié"
 msgid "Preview:"
 msgstr "Aperçu :"
 
-#: skins/content/dateCriterionResolvedDescription.py:17
+#: skins/content/dateCriterionResolvedDescription.py:15
 msgid "search from the beginning of the world until %s"
 msgstr "recherche depuis la nuit des temps jusqu'au %s"
 
-#: skins/content/dateCriterionResolvedDescription.py:19
+#: skins/content/dateCriterionResolvedDescription.py:17
 msgid "search from %s and the end of the world"
 msgstr "recherche depuis le %s jusqu'à la fin du monde"
 
-#: skins/content/dateCriterionResolvedDescription.py:21
+#: skins/content/dateCriterionResolvedDescription.py:19
 msgid "search between %s and %s"
 msgstr "recherche entre le %s et le %s"
 
@@ -167,7 +172,7 @@ msgstr "Type"
 #: skins/content/folder_notifications_template.pt:23
 #: skins/content/topic_edit_template.pt:26
 #: skins/custom_content/event_edit_template.pt:135
-#: skins/generic/search_results_template.pt:86
+#: skins/generic/search_results_template.pt:87
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -221,7 +226,7 @@ msgstr "Ajouter"
 msgid "%(type)s restored."
 msgstr "%(type)s restauré."
 
-#: skins/control/save_search_as_topic.py:17
+#: skins/control/save_search_as_topic.py:20
 msgid "Topic added."
 msgstr "Thème ajouté."
 
@@ -361,15 +366,15 @@ msgstr "Tri normal"
 msgid "Reversed sort"
 msgstr "Tri inversé"
 
-#: skins/custom_content/topic_view.pt:42
+#: skins/custom_content/topic_view.pt:50
 msgid "No result"
 msgstr "Pas de résultat"
 
-#: skins/custom_content/topic_view.pt:46
+#: skins/custom_content/topic_view.pt:54
 msgid "Subtopics"
 msgstr "Sous-thèmes"
 
-#: skins/custom_content/topic_view.pt:49
+#: skins/custom_content/topic_view.pt:57
 msgid "Topic"
 msgstr "Thème"
 
@@ -400,6 +405,30 @@ msgstr "%d élément déplacé en bas.%d éléments déplacés en bas."
 #: skins/custom_control/folder_down_control.py:18
 msgid "%d item moved down.%d items moved down."
 msgstr "%d élément déplacé vers le bas.%d éléments déplacés vers le bas."
+
+#: skins/custom_control/folder_rename_control.py:13
+msgid "Item renamed."
+msgstr "Élément renommé."
+
+#: skins/custom_control/folder_rename_control.py:15
+msgid "Items renamed."
+msgstr "Éléments renommés."
+
+#: skins/custom_control/folder_rename_control.py:18
+msgid "This item has not been renamed: \"%s\""
+msgstr "Cet élément n'a pas été renommé : \"%s\""
+
+#: skins/custom_control/folder_rename_control.py:21
+msgid "These items have not been renamed: %s"
+msgstr "Ces éléments n'ont pas été renommés : %s"
+
+#: skins/custom_control/folder_rename_control.py:24
+msgid "Rename failed."
+msgstr "Renommage échoué."
+
+#: skins/custom_control/folder_rename_control.py:26
+msgid "Nothing to change."
+msgstr "Aucun changement."
 
 #: skins/custom_control/folder_top_control.py:17
 msgid "%d item moved to top.%d items moved to top."
@@ -1020,7 +1049,7 @@ msgstr "Inscrire"
 msgid "Review members registration"
 msgstr "Modérer l'inscription des membres"
 
-#: skins/generic/recent_news.pt:21
+#: skins/generic/recent_news.pt:21 skins/generic/widgets.pt:123
 msgid "News"
 msgstr "Actualités"
 
@@ -1096,7 +1125,7 @@ msgstr "révision actuelle"
 msgid "next revision →"
 msgstr "révision suivante →"
 
-#: skins/generic/search.py:82 skins/generic/search.py:86
+#: skins/generic/search.py:109 skins/generic/search.py:113
 msgid "ascending sort"
 msgstr "tri croissant"
 
@@ -1128,15 +1157,15 @@ msgstr "Dernière modification"
 msgid "(No title)"
 msgstr "(Sans titre)"
 
-#: skins/generic/search_results_template.pt:82
+#: skins/generic/search_results_template.pt:83
 msgid "Save this search as topic"
 msgstr "Enregistrer cette recherche dans un thème"
 
-#: skins/generic/search_results_template.pt:83
+#: skins/generic/search_results_template.pt:84
 msgid "Title:"
 msgstr "Titre :"
 
-#: skins/generic/search_results_template.pt:88
+#: skins/generic/search_results_template.pt:89
 msgid "There are no items matching your specified criteria."
 msgstr "Aucun élément ne correspond aux critères de recherche."
 
@@ -1191,6 +1220,10 @@ msgstr "(pas de commentaire)"
 #: skins/generic/wf_macros.pt:33
 msgid "(no email sent)"
 msgstr "(pas d'e-mail envoyé)"
+
+#: skins/generic/widgets.pt:128
+msgid "News Item"
+msgstr "Actualité"
 
 #: skins/generic/widgets.pt:32 skins/generic/widgets.pt:33
 msgid "Edit metadata"
@@ -1739,9 +1772,6 @@ msgstr "jamais"
 msgid "New layer"
 msgstr "Nouveau calque"
 
-msgid "News Item"
-msgstr "Actualité"
-
 msgid "No document"
 msgstr "Pas de document"
 
@@ -2045,8 +2075,8 @@ msgid ""
 "is less than 5 days old'."
 msgstr ""
 "Interface de recherche d'intervalle de date, permettant d'effectuer des "
-"recherches du type : « rechercher les éléments pour lesquels la date de "
-"mise en ligne n'excède pas 5 jours. »"
+"recherches du type : « rechercher les éléments pour lesquels la date de mise "
+"en ligne n'excède pas 5 jours. »"
 
 msgid "Represent a criterion which is a list of values (for an 'OR' search)."
 msgstr "Recherche par liste de valeurs (pour une recherche booléenne)."

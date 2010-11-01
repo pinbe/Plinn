@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_type="CMF Skins Tool" allow_any="False"
+   cookie_persistence="False" default_skin="Realis"
+   request_varname="portal_skin">
+ <object name="Images" meta_type="Filesystem Directory View"
+    directory="Products.CMFDefault:skins/Images"/>
+ <object name="custom" meta_type="Folder"/>
+ <object name="custom_content" meta_type="Filesystem Directory View"
+    directory="Products.Plinn:skins/custom_content"/>
+ <object name="custom_control" meta_type="Filesystem Directory View"
+    directory="Products.Plinn:skins/custom_control"/>
+ <object name="custom_generic" meta_type="Filesystem Directory View"
+    directory="Products.Plinn:skins/custom_generic"/>
+ <object name="cyberplus" meta_type="Filesystem Directory View"
+    directory="Products.cyberplus:skins"/>
+ <object name="epoz_core" meta_type="Filesystem Directory View"
+    directory="Products.Epoz:epoz/epoz_core"/>
+ <object name="epoz_i18n" meta_type="Filesystem Directory View"
+    directory="Products.Epoz:epoz/epoz_i18n"/>
+ <object name="epoz_images" meta_type="Filesystem Directory View"
+    directory="Products.Epoz:epoz/epoz_images"/>
+ <object name="fckeditor" meta_type="Filesystem Directory View"
+    directory="Products.FCKEditor:skins"/>
+ <object name="jscalendar" meta_type="Filesystem Directory View"
+    directory="Products.Plinn:skins/jscalendar"/>
+ <object name="mimetypes_icons" meta_type="Filesystem Directory View"
+    directory="Products.MimetypesRegistry:skins/mimetypes_icons"/>
+ <object name="mosaic_blocks" meta_type="Filesystem Directory View"
+    directory="Products.MosaicDocument:default_blocks"/>
+ <object name="mosaic_document" meta_type="Filesystem Directory View"
+    directory="Products.MosaicDocument:skins"/>
+ <object name="mosaic_slots" meta_type="Filesystem Directory View"
+    directory="Products.MosaicDocument:default_slots"/>
+ <object name="photoprint" meta_type="Filesystem Directory View"
+    directory="Products.photoprint:skins"/>
+ <object name="plinn_ajax" meta_type="Filesystem Directory View"
+    directory="Products.Plinn:skins/ajax_scripts"/>
+ <object name="plinn_content" meta_type="Filesystem Directory View"
+    directory="Products.Plinn:skins/content"/>
+ <object name="plinn_control" meta_type="Filesystem Directory View"
+    directory="Products.Plinn:skins/control"/>
+ <object name="plinn_document" meta_type="Filesystem Directory View"
+    directory="Products.PlinnDocument:skins"/>
+ <object name="plinn_generic" meta_type="Filesystem Directory View"
+    directory="Products.Plinn:skins/generic"/>
+ <object name="plinn_images" meta_type="Filesystem Directory View"
+    directory="Products.Plinn:skins/images"/>
+ <object name="portfolio" meta_type="Filesystem Directory View"
+    directory="Products.Portfolio:skins"/>
+ <object name="realis" meta_type="Filesystem Directory View"
+    directory="Products.realis:skins"/>
+ <object name="zpt_calendar" meta_type="Filesystem Directory View"
+    directory="Products.CMFCalendar:skins/zpt_calendar"/>
+ <object name="zpt_content" meta_type="Filesystem Directory View"
+    directory="Products.CMFDefault:skins/zpt_content"/>
+ <object name="zpt_control" meta_type="Filesystem Directory View"
+    directory="Products.CMFDefault:skins/zpt_control"/>
+ <object name="zpt_generic" meta_type="Filesystem Directory View"
+    directory="Products.CMFDefault:skins/zpt_generic"/>
+ <object name="zpt_topic" meta_type="Filesystem Directory View"
+    directory="Products.CMFTopic:skins/zpt_topic"/>
+ <skin-path name="Realis">
+  <layer name="custom"/>
+  <layer name="realis"/>
+  <layer name="photoprint"/>
+  <layer name="plinn_content"/>
+  <layer name="plinn_control"/>
+  <layer name="plinn_generic"/>
+  <layer name="plinn_ajax"/>
+  <layer name="plinn_images"/>
+  <layer name="custom_content"/>
+  <layer name="custom_control"/>
+  <layer name="custom_generic"/>
+  <layer name="portfolio"/>
+  <layer name="cyberplus"/>
+  <layer name="jscalendar"/>
+  <layer name="plinn_document"/>
+  <layer name="epoz_core"/>
+  <layer name="epoz_i18n"/>
+  <layer name="epoz_images"/>
+  <layer name="fckeditor"/>
+  <layer name="mosaic_document"/>
+  <layer name="mosaic_blocks"/>
+  <layer name="mosaic_slots"/>
+  <layer name="mimetypes_icons"/>
+  <layer name="zpt_topic"/>
+  <layer name="zpt_calendar"/>
+  <layer name="zpt_content"/>
+  <layer name="zpt_generic"/>
+  <layer name="zpt_control"/>
+  <layer name="Images"/>
+ </skin-path>
+</object>

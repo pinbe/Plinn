@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<object name="Order Folder" meta_type="Factory-based Type Information"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title">Order Folder</property>
+ <property name="description"></property>
+ <property name="icon_expr">string:${portal_url}/folder_icon.gif</property>
+ <property name="content_meta_type">Huge Plinn Folder</property>
+ <property name="product"></property>
+ <property name="factory">plinn.folder.huge</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
+ <property name="immediate_view">object/folderContents</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="Order"/>
+  <element value="Order Folder"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="order_list"/>
+ <alias from="mkdir" to="createHugePlinnFolder"/>
+ <alias from="view" to="folder_contents"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_contents" visible="False">
+  <permission value="View"/>
+ </action>
+ <action title="List" action_id="orderlist" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/order_list" visible="True">
+  <permission value="List print orders"/>
+ </action>
+ <action title="Share" action_id="localroles" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_localrole_form" visible="True">
+  <permission value="Set Local Roles"/>
+ </action>
+ <action title="New..." action_id="new" category="object" condition_expr=""
+    icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_factories" visible="False">
+  <permission value="Add portal content"/>
+ </action>
+ <action title="Rename items" action_id="rename_items" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_rename_form" visible="False">
+  <permission value="Add portal content"/>
+ </action>
+</object>

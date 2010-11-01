@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2\n"
-"POT-Creation-Date: $Date: Mon Jun 29 11:38:05 2009 $\n"
+"POT-Creation-Date: $Date: Fri Oct 30 14:42:26 2009 $\n"
 "Language-Team: Benoît Pin <benoit.pin@ensmp.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,6 +18,10 @@ msgstr ""
 
 #: EmailNotification.py:38
 msgid "Object deleted"
+msgstr ""
+
+#: Folder.py:149
+msgid "Please rename each listed object."
 msgstr ""
 
 #: MembershipTool.py:401
@@ -155,15 +159,15 @@ msgstr ""
 msgid "Preview:"
 msgstr ""
 
-#: skins/content/dateCriterionResolvedDescription.py:17
+#: skins/content/dateCriterionResolvedDescription.py:15
 msgid "search from the beginning of the world until %s"
 msgstr ""
 
-#: skins/content/dateCriterionResolvedDescription.py:19
+#: skins/content/dateCriterionResolvedDescription.py:17
 msgid "search from %s and the end of the world"
 msgstr ""
 
-#: skins/content/dateCriterionResolvedDescription.py:21
+#: skins/content/dateCriterionResolvedDescription.py:19
 msgid "search between %s and %s"
 msgstr ""
 
@@ -174,7 +178,7 @@ msgstr ""
 #: skins/content/folder_notifications_template.pt:23
 #: skins/content/topic_edit_template.pt:26
 #: skins/custom_content/event_edit_template.pt:135
-#: skins/generic/search_results_template.pt:86
+#: skins/generic/search_results_template.pt:87
 msgid "Save"
 msgstr ""
 
@@ -230,7 +234,7 @@ msgstr ""
 msgid "%(type)s restored."
 msgstr ""
 
-#: skins/control/save_search_as_topic.py:17
+#: skins/control/save_search_as_topic.py:20
 msgid "Topic added."
 msgstr ""
 
@@ -369,15 +373,15 @@ msgstr ""
 msgid "Reversed sort"
 msgstr ""
 
-#: skins/custom_content/topic_view.pt:42
+#: skins/custom_content/topic_view.pt:50
 msgid "No result"
 msgstr ""
 
-#: skins/custom_content/topic_view.pt:46
+#: skins/custom_content/topic_view.pt:54
 msgid "Subtopics"
 msgstr ""
 
-#: skins/custom_content/topic_view.pt:49
+#: skins/custom_content/topic_view.pt:57
 msgid "Topic"
 msgstr ""
 
@@ -408,6 +412,30 @@ msgstr ""
 
 #: skins/custom_control/folder_down_control.py:18
 msgid "%d item moved down.%d items moved down."
+msgstr ""
+
+#: skins/custom_control/folder_rename_control.py:13
+msgid "Item renamed."
+msgstr ""
+
+#: skins/custom_control/folder_rename_control.py:15
+msgid "Items renamed."
+msgstr ""
+
+#: skins/custom_control/folder_rename_control.py:18
+msgid "This item has not been renamed: \"%s\""
+msgstr ""
+
+#: skins/custom_control/folder_rename_control.py:21
+msgid "These items have not been renamed: %s"
+msgstr ""
+
+#: skins/custom_control/folder_rename_control.py:24
+msgid "Rename failed."
+msgstr ""
+
+#: skins/custom_control/folder_rename_control.py:26
+msgid "Nothing to change."
 msgstr ""
 
 #: skins/custom_control/folder_top_control.py:17
@@ -1021,6 +1049,7 @@ msgid "Review members registration"
 msgstr ""
 
 #: skins/generic/recent_news.pt:21
+#: skins/generic/widgets.pt:123
 msgid "News"
 msgstr ""
 
@@ -1091,8 +1120,8 @@ msgstr ""
 msgid "next revision \342\206\222"
 msgstr ""
 
-#: skins/generic/search.py:82
-#: skins/generic/search.py:86
+#: skins/generic/search.py:109
+#: skins/generic/search.py:113
 msgid "ascending sort"
 msgstr ""
 
@@ -1124,15 +1153,15 @@ msgstr ""
 msgid "(No title)"
 msgstr ""
 
-#: skins/generic/search_results_template.pt:82
+#: skins/generic/search_results_template.pt:83
 msgid "Save this search as topic"
 msgstr ""
 
-#: skins/generic/search_results_template.pt:83
+#: skins/generic/search_results_template.pt:84
 msgid "Title:"
 msgstr ""
 
-#: skins/generic/search_results_template.pt:88
+#: skins/generic/search_results_template.pt:89
 msgid "There are no items matching your specified criteria."
 msgstr ""
 
@@ -1186,6 +1215,10 @@ msgstr ""
 
 #: skins/generic/wf_macros.pt:33
 msgid "(no email sent)"
+msgstr ""
+
+#: skins/generic/widgets.pt:128
+msgid "News Item"
 msgstr ""
 
 #: skins/generic/widgets.pt:32
@@ -1731,9 +1764,6 @@ msgid "never"
 msgstr ""
 
 msgid "New layer"
-msgstr ""
-
-msgid "News Item"
 msgstr ""
 
 msgid "No document"

@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="portfolio_workflow"
+             title="Plinn folder workflow" description=""
+             state_variable="review_state"
+             initial_state="private" manager_bypass="0">
+ 
+ <permission>Add portal content</permission>
+ <permission>Change Images and Files</permission>
+ <permission>Delete Owned Objects</permission>
+ <permission>Delete objects</permission>
+ <permission>Manage properties</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <state state_id="pending" title="">
+  <exit-transition transition_id="publish"/>
+  <exit-transition transition_id="reject"/>
+  <exit-transition transition_id="retract"/>
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Change Images and Files"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="Delete Owned Objects"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="Manage properties" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Downloader</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="private" title="">
+  <exit-transition transition_id="direct_publish"/>
+  <exit-transition transition_id="submit"/>
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Change Images and Files"
+                  acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Delete Owned Objects"
+                  acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Manage properties" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Contributor</permission-role>
+   <permission-role>Downloader</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="published" title="">
+  <exit-transition transition_id="reject"/>
+  <exit-transition transition_id="retract"/>
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Change Images and Files"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Delete Owned Objects"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Manage properties" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="True">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="direct_publish"
+             title="Reviewer publishes content"
+             new_state="published" trigger="USER"
+             before_script="" after_script="">
+  <description>Reviewer can directly publish content  if he have de Owner role (not necessarily ownership)</description>
+  <action url="%(content_url)s/content_publish_form?direct:boolean=True"
+          category="workflow">Publish</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+   <guard-expression>python:user.allowed(here, ['Owner'])</guard-expression>
+  </guard>
+ </transition>
+ <transition transition_id="publish"
+             title="Reviewer publishes content"
+             new_state="published" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_publish_form"
+          category="workflow">Publish</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="reject"
+             title="Reviewer rejects submission"
+             new_state="private" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_reject_form"
+          category="workflow">Reject</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="retract"
+             title="Member retracts submission"
+             new_state="private" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_retract_form"
+          category="workflow">Retract</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-expression>python:not(here.portal_membership.checkPermission('Review portal content', here))</guard-expression>
+  </guard>
+ </transition>
+ <transition transition_id="submit"
+             title="Member requests publishing"
+             new_state="pending" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_submit_form"
+          category="workflow">Submit</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <variable variable_id="action" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The last transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The ID of the user who performed the last transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Comments about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="email_sent" for_catalog="False"
+           for_status="True" update_always="True">
+  <default>
+   
+   <expression>python:scripts.sendNotificationEmail(state_change) or state_change.kwargs.get('email_sent', [])</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False"
+           for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Time of the last transition</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <script script_id="sendNotificationEmail"
+         type="Script (Python)"
+         filename="workflows/portfolio_workflow/scripts/sendNotificationEmail.py"
+         module="" function=""/>
+</dc-workflow>

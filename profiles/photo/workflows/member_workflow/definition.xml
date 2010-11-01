@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="member_workflow"
+             title="Plinn member registration workflow"
+             description="" state_variable="review_state"
+             initial_state="m_initial" manager_bypass="0">
+ 
+ <state state_id="m_initial" title="">
+  <exit-transition transition_id="create"/>
+  <exit-transition transition_id="silent_register"/>
+ </state>
+ <state state_id="m_pending" title="">
+  <exit-transition transition_id="register"/>
+  <exit-transition transition_id="reject"/>
+ </state>
+ <state state_id="m_registered" title="">
+ </state>
+ <state state_id="m_rejected" title="">
+ </state>
+ <transition transition_id="create" title=""
+             new_state="m_pending" trigger="AUTOMATIC"
+             before_script="" after_script="">
+  
+  <guard>
+   <guard-expression>python:state_change.getPortal().portal_membership.isAnonymousUser()</guard-expression>
+  </guard>
+ </transition>
+ <transition transition_id="register"
+             title="Register member"
+             new_state="m_registered" trigger="USER"
+             before_script="before_register"
+             after_script="sendNotificationEmail">
+  
+  <guard>
+   <guard-permission>Manage Groups</guard-permission>
+   <guard-permission>Set Member Properties</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="reject"
+             title="Reviewer rejects registration"
+             new_state="" trigger="USER" before_script=""
+             after_script="after_reject">
+  
+  <guard>
+   <guard-permission>Manage Groups</guard-permission>
+   <guard-permission>Set Member Properties</guard-permission>
+   <guard-permission>Remove member</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="silent_register" title=""
+             new_state="m_registered" trigger="AUTOMATIC"
+             before_script="before_register" after_script="">
+  
+  <guard>
+   <guard-permission>Manage Groups</guard-permission>
+   <guard-permission>Set Member Properties</guard-permission>
+  </guard>
+ </transition>
+ <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer tasks</description>
+  <action url="%(portal_url)s/pending_members"
+          category="global">Membres en attente (%(count)d)</action>
+  <guard>
+   <guard-permission>Set Member Properties</guard-permission>
+  </guard>
+  <match name="review_state" values="m_pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The last transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The ID of the user who performed the last transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Comments about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False"
+           for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Time of the last transition</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <script script_id="after_reject" type="Script (Python)"
+         filename="workflows/member_workflow/scripts/after_reject.py"
+         module="" function=""/>
+ <script script_id="before_register" type="Script (Python)"
+         filename="workflows/member_workflow/scripts/before_register.py"
+         module="" function=""/>
+ <script script_id="sendNotificationEmail"
+         type="Script (Python)"
+         filename="workflows/member_workflow/scripts/sendNotificationEmail.py"
+         module="" function=""/>
+</dc-workflow>

@@ -40,9 +40,9 @@
 	            	<div tal:repeat="m mir" tal:omit-tag="" tal:condition="python:len(mir) <= 10">
 	                <label tal:define="selectAll python:r in batchM">
 	                  <input type="checkbox"
-	                         tal:attributes="value m/id;
+	                         tal:attributes="value m/getId;
 	                                         name python:'customized_batch.%s:list:record' % r;
-	                                         checked python:selectAll or m.id in customized_batch.get(r,[])" />
+	                                         checked python:selectAll or m.getId() in customized_batch.get(r,[])" />
 	                  <span tal:replace="python:m.getMemberFullName(nameBefore=0)">membre</span>
 	                  <span tal:condition="python:m == member" i18n:translate="">(as copy)</span>
 	                </label>
@@ -73,7 +73,7 @@
 			              <div tal:condition="python:expand == r" tal:omit-tag="">
                       <select size="10" multiple="multiple" name="customized_batch.role:list:record" tal:condition="python:expand == r"
 			                				tal:attributes="name python:'customized_batch.%s:list:record' % r">
-			                	<option tal:repeat="m mir" tal:attributes="value m/id ; selected python:(not customized_batch.has_key(r)) and True or (m.id in customized_batch[r])" tal:content="python:m.getMemberFullName(nameBefore=1)" >PIN Beno&icirc;t</option>
+			                	<option tal:repeat="m mir" tal:attributes="value m/getId ; selected python:(not customized_batch.has_key(r)) and True or (m.id in customized_batch[r])" tal:content="python:m.getMemberFullName(nameBefore=1)" >PIN Beno&icirc;t</option>
 			                </select>
 			                <br />
 			                <input type="submit" value="Validate" i18n:attributes="value" name="collapse" /> <span i18n:translate="" tal:omit-tag="">(not required)</span>

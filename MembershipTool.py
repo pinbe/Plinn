@@ -19,7 +19,7 @@
 #######################################################################################
 """ Plinn portal_membership
 
-$Id: MembershipTool.py 1524 2009-07-02 14:47:53Z pin $
+$Id: MembershipTool.py 1547 2010-01-05 16:24:22Z pin $
 $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/MembershipTool.py $
 """
 
@@ -390,31 +390,39 @@ class MembershipTool( BaseTool ):
 		f.setTitle(memberFullName)
 		info._finishConstruction(f)
 		
-		def _(message, context, expand=()) :
-			trmessage = decode(translate(message, context), context)
-			expand = tuple([decode(e, context) for e in expand])
-			return (trmessage % expand).encode('utf-8')
-					
-		# Create Member's home page.
-		addDocument( f
-					, 'index_html'
-					, title = _("%s's Home", self, (memberFullName,))
-					, description = _("%s's front page", self, (memberFullName,))
-					, text_format = "html"
-					, text = self.default_member_content(memberFullName=memberFullName).encode('utf-8')
-					)
-
-		# Grant Ownership and Owner role to Member
-		f.index_html.changeOwnership(user)
-		f.index_html.__ac_local_roles__ = None
-		f.index_html.manage_setLocalRoles(member_id, ['Owner'])
-
-		f.index_html._setPortalTypeName( 'Document' )
-
-		# Overcome an apparent catalog bug.
-		f.index_html.reindexObject()
-		wftool = getToolByName( f, 'portal_workflow' )
-		wftool.notifyCreated( f.index_html )
+		# Create Member's initial content.
+		if hasattr(self, 'createMemberContent') :
+			self.createMemberContent(member=user,
+									 member_id=member_id,
+									 member_folder=f)
+		else :
+			def _(message, context, expand=()) :
+				trmessage = decode(translate(message, context), context)
+				expand = tuple([decode(e, context) for e in expand])
+				return (trmessage % expand).encode('utf-8')
+						
+			# Create Member's home page.
+			addDocument( f
+						, 'index_html'
+						, title = _("%s's Home", self, (memberFullName,))
+						, description = _("%s's front page", self, (memberFullName,))
+						, text_format = "html"
+						, text = self.default_member_content(memberFullName=memberFullName).encode('utf-8')
+						)
+	
+			# Grant Ownership and Owner role to Member
+			f.index_html.changeOwnership(user)
+			f.index_html.__ac_local_roles__ = None
+			f.index_html.manage_setLocalRoles(member_id, ['Owner'])
+	
+			f.index_html._setPortalTypeName( 'Document' )
+	
+			# Overcome an apparent catalog bug.
+			f.index_html.reindexObject()
+			wftool = getToolByName( f, 'portal_workflow' )
+			wftool.notifyCreated( f.index_html )
+		
+		return f
 	
 
 	security.declareProtected(ListPortalMembers, 'looseSearchMembers')
