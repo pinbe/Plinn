@@ -33,7 +33,7 @@ from zope.component.factory import Factory
 from Products.CMFDefault.File import File as BaseFile
 from Products.CMFCore.permissions import View, ModifyPortalContent
 from Products.CMFCore.utils import getToolByName
-from swfheader import parse as parseswf
+from hexagonit.swfheader import parse as parseswf
 
 class File(BaseFile) :
 	""" file class with portal_transforms support """
