@@ -379,16 +379,15 @@ class MembershipTool( BaseTool ):
 		ttool = getToolByName(self, 'portal_types')
 		info = getattr(ttool, self.memberareaPortalType)
 		
-		f = info._constructInstance( members, member_id )
 		memberFullName = self.getMemberFullNameById(member_id, nameBefore = 0)
+		f = info._constructInstance( members, member_id, title=memberFullName )
 		
 		# Grant Ownership and Owner role to Member
 		f.changeOwnership(user)
 		f.__ac_local_roles__ = None
 		f.manage_setLocalRoles(member_id, ['Owner'])
 
-		f.setTitle(memberFullName)
-		info._finishConstruction(f)
+		f.reindexObjectSecurity()
 		
 		# Create Member's initial content.
 		if hasattr(self, 'createMemberContent') :
