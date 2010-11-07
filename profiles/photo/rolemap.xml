@@ -117,9 +117,6 @@
       <role name="Manager"/>
       <role name="Owner"/>
     </permission>
-    <permission name="Use Factories" acquire="True">
-      <role name="Manager"/>
-    </permission>
     <permission name="Use mailhost services" acquire="True">
       <role name="Manager"/>
       <role name="Member"/>
