@@ -1,8 +1,8 @@
 // © Benoît PIN 2006-2008
 // http://plinn.org
 // Licence GPL
-// $Id: growable_table.js 1473 2009-03-06 17:02:21Z pin $
-// $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/skins/ajax_scripts/growable_table.js $
+// 
+// 
 // GrowableTable: functions to edit quickly table form entries.
 
 function GrowableTable(tbody, fieldsDescription, submitExtName, skipFormManagerInit) {

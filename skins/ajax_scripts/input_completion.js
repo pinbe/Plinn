@@ -1,8 +1,8 @@
 // © Benoît PIN 2008
 // http://plinn.org
 // Licence GPL
-// $Id: input_completion.js 1409 2008-10-30 16:15:00Z pin $
-// $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/skins/ajax_scripts/input_completion.js $
+// 
+// 
 // Form completion utils
 
 // public names

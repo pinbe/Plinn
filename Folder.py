@@ -19,8 +19,8 @@
 #######################################################################################
 """ Plinn portal folder implementation
 
-$Id: Folder.py 1539 2009-10-30 13:48:34Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/Folder.py $
+
+
 """
 
 from OFS.CopySupport import CopyError, eNoData, _cb_decode, eInvalid, eNotFound,\

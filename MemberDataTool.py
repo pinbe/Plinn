@@ -19,8 +19,8 @@
 #######################################################################################
 """ Workflow aware MemberData to provide reviewed member registration.
 
-$Id: MemberDataTool.py 1316 2008-07-29 15:37:23Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/MemberDataTool.py $
+
+
 """
 
 from Globals import InitializeClass

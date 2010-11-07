@@ -1,8 +1,8 @@
 // © 2009 Benoît Pin
 // http://plinn.org
 // Licence GPL
-// $Id: widget_form_manager.js 1535 2009-10-21 16:56:13Z pin $
-// $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/skins/ajax_scripts/widget_form_manager.js $
+// 
+// 
 
 var WidgetBasedFormManager;
 

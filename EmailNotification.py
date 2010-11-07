@@ -20,8 +20,8 @@
 """
 Module to manage email notification settings.
 
-$Id: EmailNotification.py 1516 2009-06-29 14:12:14Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/EmailNotification.py $
+
+
 """
 from ExtensionClass import Base
 import Acquisition

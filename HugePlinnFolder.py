@@ -19,8 +19,8 @@
 #######################################################################################
 """ Plinn implementation of CMFBTree
 
-$Id: HugePlinnFolder.py 1459 2009-02-02 00:57:24Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/HugePlinnFolder.py $
+
+
 """
 
 

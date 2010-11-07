@@ -1,8 +1,8 @@
 // © Benoît PIN 2006-2009
 // http://plinn.org
 // Licence GPL
-// $Id: root_handlers.js 1467 2009-02-10 13:25:38Z pin $
-// $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/skins/ajax_scripts/root_handlers.js $
+// 
+// 
 
 /* Ajax for everything : if an click event has not been intercepted before */
 

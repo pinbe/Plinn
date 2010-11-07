@@ -20,8 +20,8 @@
 """
 Plinn event handlers.
 
-$Id: event_handlers.py 1517 2009-06-30 12:54:52Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/event_handlers.py $
+
+
 """
 from zope.app.container.interfaces import IObjectRemovedEvent
 from Products.CMFCore.utils import getToolByName

@@ -20,8 +20,8 @@
 """ Plinn registration tool: implements 3 modes to register members :
 	anonymous, manager, reviewed.
 
-$Id: RegistrationTool.py 1332 2008-07-31 12:09:28Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/RegistrationTool.py $
+
+
 """
 
 from Globals import InitializeClass, PersistentMapping

@@ -21,8 +21,8 @@
 	File. If exists, portal_transforms is called to extract text content, and publish
 	attachments.
 
-$Id: File.py 1549 2010-02-04 13:04:22Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/File.py $
+
+
 """
 
 from Globals import InitializeClass

@@ -1,8 +1,8 @@
 // (c) Benoît PIN 2006
 // http://plinn.org
 // Licence GPL
-// $Id: palette.js 1548 2010-01-09 09:28:53Z pin $
-// $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/skins/ajax_scripts/palette.js $
+// 
+// 
 
 
 function InspectorPalette(baseUrl, toggleButton, contentNode, onExpand, onCollapse) {

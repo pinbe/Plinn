@@ -1,7 +1,7 @@
 """ Plinn permissions
 
-$Id: permissions.py 1514 2009-06-26 02:03:59Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/permissions.py $
+
+
 """
 from AccessControl import Permissions
 from AccessControl import ModuleSecurityInfo

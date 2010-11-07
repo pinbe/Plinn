@@ -1,8 +1,8 @@
 // (c) Benoît PIN 2006-2009
 // http://plinn.org
 // Licence GPL
-// $Id: javascript_events_api.js 1535 2009-10-21 16:56:13Z pin $
-// $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/skins/ajax_scripts/javascript_events_api.js $
+// 
+// 
 // Meta functions for events management.
 
 var addListener; /* (ob, eventName, listenerFunction, group) add event listener eventName without "on" prefix.

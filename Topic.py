@@ -19,8 +19,8 @@
 #######################################################################################
 """ Plinn Topic
 
-$Id: Topic.py 1518 2009-07-01 14:55:37Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/Topic.py $
+
+
 """
 
 from Globals import InitializeClass

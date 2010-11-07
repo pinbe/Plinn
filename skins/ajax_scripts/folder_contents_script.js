@@ -1,8 +1,8 @@
 // (c) Benoît PIN 2006-2007
 // http://plinn.org
 // Licence GPL
-// $Id: folder_contents_script.js 1375 2008-09-12 12:29:12Z pin $
-// $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/skins/ajax_scripts/folder_contents_script.js $
+// 
+// 
 
 function getTargetRow(evt){
 	var target = getTargetedObject(evt);

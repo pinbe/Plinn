@@ -20,8 +20,8 @@
 """
 Adapters to plug specific contentish interfaces to historycal interface.
 
-$Id: HistoryAdapters.py 1516 2009-06-29 14:12:14Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/HistoryAdapters.py $
+
+
 """
 
 from Globals import InitializeClass

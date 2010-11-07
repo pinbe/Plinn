@@ -19,8 +19,8 @@
 #######################################################################################
 """ Plinn specific GenericSetup handlers
 
-$Id: setuphandlers.py 1333 2008-07-31 12:10:34Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/setuphandlers.py $
+
+
 """
 
 from Products.CMFCore.utils import getToolByName

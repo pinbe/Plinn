@@ -18,8 +18,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.   #
 #######################################################################################
 """
-$Id: GroupDataTool.py 1261 2008-01-07 01:34:23Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/GroupDataTool.py $
+
+
 """
 
 from Globals import InitializeClass

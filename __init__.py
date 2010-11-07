@@ -19,8 +19,8 @@
 #######################################################################################
 """ Plinn implementation of CMFCore.
 
-$Id: __init__.py 1530 2009-07-08 09:19:39Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/__init__.py $
+
+
 """
 
 import exceptions

@@ -19,8 +19,8 @@
 #######################################################################################
 """ Plinn calendar tool provides utilities to display content on a calendar layout
 
-$Id: CalendarTool.py 1360 2008-08-01 15:59:58Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/CalendarTool.py $
+
+
 """
 
 from Products.CMFCore.utils import UniqueObject, getToolByName

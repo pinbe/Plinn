@@ -20,8 +20,8 @@
 """
 Module to manage history of contents (comparisons, copy to present).
 
-$Id: ContentHistory.py 1450 2009-01-10 13:27:20Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/ContentHistory.py $
+
+
 """
 
 from Globals import InitializeClass

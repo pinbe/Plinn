@@ -19,8 +19,8 @@
 #######################################################################################
 """ Basic portal attachment management tool.
 
-$Id: AttachmentTool.py 1261 2008-01-07 01:34:23Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/AttachmentTool.py $
+
+
 """
 
 from AccessControl import ClassSecurityInfo

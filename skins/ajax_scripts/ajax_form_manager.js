@@ -1,8 +1,8 @@
 // (c) Benoît PIN 2006-2007
 // http://plinn.org
 // Licence GPL
-// $Id: ajax_form_manager.js 1470 2009-02-18 16:42:02Z pin $
-// $URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/skins/ajax_scripts/ajax_form_manager.js $
+// 
+// 
 
 
 function FormManager(form, responseTextDest, lazy) {

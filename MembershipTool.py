@@ -19,8 +19,8 @@
 #######################################################################################
 """ Plinn portal_membership
 
-$Id: MembershipTool.py 1547 2010-01-05 16:24:22Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/MembershipTool.py $
+
+
 """
 
 from AccessControl import ClassSecurityInfo, getSecurityManager

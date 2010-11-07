@@ -20,8 +20,8 @@
 """
 Plinn event interfaces.
 
-$Id: events.py 1480 2009-03-19 19:15:52Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/interfaces/events.py $
+
+
 """
 from zope.interface import Interface, Attribute
 

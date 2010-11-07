@@ -19,8 +19,8 @@
 #######################################################################################
 """ provides utilities to raise / handle zope server shutdown events
 
-$Id: shutdown_dispatcher.py 1480 2009-03-19 19:15:52Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/shutdown_dispatcher.py $
+
+
 """
 
 import asyncore

@@ -18,8 +18,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.   #
 #######################################################################################
 """ Plinn public utilities
-$Id: utils.py 1534 2009-09-07 11:05:57Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/utils.py $
+
+
 """
 
 import string

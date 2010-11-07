@@ -3,8 +3,8 @@
 ##
 """ Useful utilities function from the Plone project like Batch.
 
-$Id: PloneMisc.py 1502 2009-05-31 17:33:32Z pin $
-$URL: http://svn.cri.ensmp.fr/svn/Plinn/branches/CMF-2.1/PloneMisc.py $
+
+
 """
 
 
