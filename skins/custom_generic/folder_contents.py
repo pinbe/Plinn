@@ -174,7 +174,7 @@ items = context.listNearestFolderContents(contentFilter=filter)
 sort_dir = reverse and 'desc' or 'asc'
 sortFunc = key in ['Type', 'title_or_id'] and 'nocase' or 'cmp'
 items = sequence.sort( items, ((key, sortFunc, sort_dir),) )
-batch_obj = Batch(items, 20, b_start, orphan=0, quantumleap=1)
+batch_obj = Batch(items, context.default_batch_size, b_start, orphan=0, quantumleap=1)
 items = []
 i = 1
 display_delete_button = False

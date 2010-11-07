@@ -19,7 +19,7 @@
 			  						arrow python:test(sorted_dir=='up', 'arrowUp.gif', 'arrowDown.gif');
 							      sortedItems python: here.sort_folder_contents(items, sorted_field, sorted_dir);
                     Batch python:modules['Products.Plinn'].Batch;
-                    batch python:Batch(sortedItems, 50, request.get('b_start', 0), orphan=0)">
+                    batch python:Batch(sortedItems, here.default_batch_size, request.get('b_start', 0), orphan=0)">
     <h2 i18n:translate="">Pending documents</h2>
     <div metal:use-macro="here/batch_macros/macros/navigation">batch navigation</div>
     <table class="listing" cellspacing="0">

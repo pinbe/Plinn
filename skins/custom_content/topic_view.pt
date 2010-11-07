@@ -20,7 +20,7 @@
             b_start string:0;b_start request/b_start | b_start;
             results here/queryCatalog;
             Batch python:modules['Products.Plinn'].Batch;
-            global batch python:Batch(results, 20, int(b_start), orphan=1)" class="listing" cellspacing="0">
+            global batch python:Batch(results, here.default_batch_size, int(b_start), orphan=1)" class="listing" cellspacing="0">
           <tr>
             <td colspan="2"><span metal:use-macro="here/batch_macros/macros/navigation">batch navigation</span></td>
           </tr>
