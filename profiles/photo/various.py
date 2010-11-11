@@ -87,8 +87,8 @@ rb = site.global_settings.right_boxes
 addBlockOrSkip(rb, 'Action Box Block', 0, id='global_actions')
 rb.global_actions.saveBlock(boxTitle={'text' : translate('Global actions')}, categories={'text' : ['global']})
 addBlockOrSkip(rb, 'Action Box Block', 0, id='workflow_actions')
-#rb.workflow_actions.saveBlock(boxTitle={'text' : translate('Workflow')}, categories={'text' : ['workflow']})
-#doActionForOrSkip(rb, 'direct_publish')
+rb.workflow_actions.saveBlock(boxTitle={'text' : translate('Workflow')}, categories={'text' : ['workflow']})
+doActionForOrSkip(rb, 'direct_publish')
 
 # tools settings
 mtool = getToolByName(site, 'portal_membership')
@@ -100,6 +100,15 @@ gtool.setGroupWorkspaceType('Plinn Folder')
 
 caltool = getToolByName(site, 'portal_calendar')
 caltool.configureTool(['created', 'modified', 'DateTimeOriginal'], [9, 18])
+
+pimtool = getToolByName(site, 'portal_image_manipulation')
+pimtool.manage_addProduct['OFSP'].manage_addFolder('image')
+pimtool.manage_addProduct['OFSP'].manage_addFolder('tile')
+
+ctool = getToolByName(site, 'portal_catalog')
+ctool.manage_addProduct['ProxyIndex'].manage_addProxyIndex('position',
+        extra = { 'idx_type' : 'FieldIndex'
+                , 'value_expr' : 'python:object.getParentNode().getObjectPosition(object.getId())'})
 
 # Caches
 HTTPCache = site.HTTPCache
