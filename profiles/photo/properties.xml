@@ -39,4 +39,5 @@
  <property name="tiles_min_zoom" type="int">25</property>
  <property name="tiles_max_zoom" type="int">100</property>
  <property name="tiles_step_zoom" type="int">25</property>
+ <property name="default_batch_size" type="int">50</property>
 </site>
