@@ -39,6 +39,7 @@
  <import-step id="componentregistry" version="20061025-01"
               handler="Products.GenericSetup.components.importComponentRegistry"
               title="Local Component Registry">
+  <dependency step="toolset"/>
   
   
   
