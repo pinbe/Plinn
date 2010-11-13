@@ -102,13 +102,16 @@ caltool = getToolByName(site, 'portal_calendar')
 caltool.configureTool(['created', 'modified', 'DateTimeOriginal'], [9, 18])
 
 pimtool = getToolByName(site, 'portal_image_manipulation')
-pimtool.manage_addProduct['OFSP'].manage_addFolder('image')
-pimtool.manage_addProduct['OFSP'].manage_addFolder('tile')
+if not pimtool.hasObject('image') :
+	pimtool.manage_addProduct['OFSP'].manage_addFolder('image')
+if not pimtool.hasObject('tile') :
+	pimtool.manage_addProduct['OFSP'].manage_addFolder('tile')
 
 ctool = getToolByName(site, 'portal_catalog')
-ctool.manage_addProduct['ProxyIndex'].manage_addProxyIndex('position',
-        extra = { 'idx_type' : 'FieldIndex'
-                , 'value_expr' : 'python:object.getParentNode().getObjectPosition(object.getId())'})
+if not 'position' in ctool.indexes() :
+	ctool.manage_addProduct['ProxyIndex'].manage_addProxyIndex('position',
+	        extra = { 'idx_type' : 'FieldIndex'
+	                , 'value_expr' : 'python:object.getParentNode().getObjectPosition(object.getId())'})
 
 # Caches
 HTTPCache = site.HTTPCache
