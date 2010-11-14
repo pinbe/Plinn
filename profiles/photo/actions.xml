@@ -232,7 +232,7 @@
  </object>
  <object name="site_menu" meta_type="CMF Action Category">
   <property name="title"></property>
-  <object name="images" meta_type="CMF Action" i18n:domain="realis">
+  <object name="images" meta_type="CMF Action" i18n:domain="plinn">
    <property name="title" i18n:translate="">Images</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/Images</property>
@@ -243,8 +243,9 @@
    </property>
    <property name="visible">True</property>
   </object>
-  <object name="boutique" meta_type="CMF Action" i18n:domain="realis">
-   <property name="title" i18n:translate="">Boutique</property>
+  <!--
+  <object name="boutique" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">Shop</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/Boutique</property>
    <property name="icon_expr"></property>
@@ -254,7 +255,9 @@
    </property>
    <property name="visible">True</property>
   </object>
-  <object name="services" meta_type="CMF Action" i18n:domain="realis">
+  -->
+  <!--
+  <object name="services" meta_type="CMF Action" i18n:domain="plinn">
    <property name="title" i18n:translate="">Services</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/services</property>
@@ -265,10 +268,11 @@
    </property>
    <property name="visible">True</property>
   </object>
-  <object name="photographes" meta_type="CMF Action" i18n:domain="realis">
-   <property name="title" i18n:translate="">Photographes</property>
+  -->
+  <object name="photographes" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">Photographers</property>
    <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${portal_url}/photographes</property>
+   <property name="url_expr">string:${portal_url}/photographers</property>
    <property name="icon_expr"></property>
    <property name="available_expr"></property>
    <property name="permissions">
@@ -279,7 +283,7 @@
  </object>
  <object name="site_related" meta_type="CMF Action Category">
   <property name="title"></property>
-  <object name="credits" meta_type="CMF Action" i18n:domain="realis">
+  <object name="credits" meta_type="CMF Action" i18n:domain="plinn">
    <property name="title" i18n:translate="">Credits</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/credits</property>
@@ -288,10 +292,10 @@
    <property name="permissions">
     <element value="View"/>
    </property>
-   <property name="visible">False</property>
+   <property name="visible">True</property>
   </object>
-  <object name="about" meta_type="CMF Action">
-   <property name="title">À propos</property>
+  <object name="about" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">About</property>
    <property name="description">realis</property>
    <property name="url_expr">string:${portal_url}/about</property>
    <property name="icon_expr"></property>
@@ -301,7 +305,7 @@
    </property>
    <property name="visible">True</property>
   </object>
-  <object name="contact" meta_type="CMF Action" i18n:domain="realis">
+  <object name="contact" meta_type="CMF Action" i18n:domain="plinn">
    <property name="title" i18n:translate="">Contact</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/contact</property>
@@ -358,7 +362,7 @@
  </object>
  <object name="customer" meta_type="CMF Action Category">
   <property name="title"></property>
-  <object name="join" meta_type="CMF Action" i18n:domain="realis">
+  <object name="join" meta_type="CMF Action" i18n:domain="plinn">
    <property name="title" i18n:translate="">Join</property>
    <property name="description" i18n:translate=""></property>
    <property
@@ -370,7 +374,7 @@
    </property>
    <property name="visible">True</property>
   </object>
-  <object name="login" meta_type="CMF Action" i18n:domain="realis">
+  <object name="login" meta_type="CMF Action" i18n:domain="plinn">
    <property name="title" i18n:translate="">Login</property>
    <property name="description" i18n:translate=""></property>
    <property
