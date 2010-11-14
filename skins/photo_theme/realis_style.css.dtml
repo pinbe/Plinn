@@ -1,0 +1,169 @@
+/* <dtml-with base_properties>
+
+
+*/
+
+h1, h2, h3, h4, h5, h6 {
+	color:#fff
+}
+
+.ActionTitle {
+  color: #fff;
+}
+
+.ActionLink a:link,
+.ActionLink a:visited,
+.ActionLink a:active { 
+  color: #fff;
+}
+
+.ActionLink a:hover { color: #ef8e32}
+
+#NavBar a,
+#NavBar a:link,
+#NavBar a:visited,
+#NavBar a:active { 
+  color: #fff;
+}
+
+#NavBar a:hover {
+  color: #ef8e32;
+}
+
+#Footer {
+  color: #e6eadd;
+}
+
+#quicksearch, #quickuser {
+	padding:2px;
+	font-size: 90%;
+}
+
+#quicksearch {
+	float:left;
+}
+
+
+#quickuser {
+	float:right;
+}
+
+#quicksearch input {
+	/*height:16px;*/
+	vertical-align:middle;
+}
+
+#quicksearch span {
+	vertical-align:middle;
+}
+#quickuser span {
+	padding-top:5px;
+	vertical-align: middle;
+}
+
+body {
+	padding: 0 40px;
+}
+
+img {
+	border:0;
+}
+
+#search_bar {
+	padding: 1px 8px ;
+	color:#f0f0f0;
+	background: #707070;
+}
+#search_bar input {
+	font-size:90%;
+	background:#e4e4e4;
+	border: 1px solid #2d2d2d;
+}
+
+
+#Masthead {
+	padding:4px;
+}
+
+#site_menu {
+	float:left;
+	font-size:130%;
+	margin-left:2em;
+}
+
+#site_related {
+	font-size:90%;
+	float:right;
+}
+
+#mainCell {
+	padding:4px 0 0 0;
+}
+
+.contentTabs a,
+.contentTabs a:visited
+{
+  border-left : none;
+  border-top : none;
+  border-right : none;
+}
+
+#DesktopDescription {
+  font-size: &dtml-fontSmallSize;;
+  color: &dtml-descriptionColor;;
+}
+
+#Desktop {
+  padding: 0;
+}
+
+#DesktopTitle {
+  padding: 0;
+}
+
+.header {
+  padding: 0;
+}
+
+.boxes_container li {
+  list-style:square inside;
+}
+
+table.home {
+	background:#111;
+	font-size:95%;
+}
+table.home td {
+	margin:0;
+	padding:0;
+}
+
+.home_menu a {
+	background:#111;
+	color: &dtml-fontColor;;
+	display:block;
+	width: 186px;
+	height: 216px;
+	display:block;
+	text-align:center;
+	overflow:hidden;
+}
+
+.home_menu a:hover {
+	background:#222;
+}
+
+.home_menu a h3 {
+	color:#fff;
+}
+
+.home_menu a:hover h3 {
+	color:&dtml-linkHoverColor;;
+}
+
+.home_menu p {
+	font-weight:bold;
+	font-size:10px;
+}
+
+/* </dtml-with> */

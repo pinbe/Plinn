@@ -1,0 +1,42 @@
+<html metal:use-macro="here/main_template/macros/master"
+      xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal">
+  <head>
+    <title>Member albums' template</title>
+    <metal:block metal:fill-slot="javascript_head_slot">
+      
+    </metal:block>
+  </head>
+  <body>
+    <div metal:fill-slot="main_no_tabs" tal:omit-tag=""
+         tal:define="Batch python:modules['Products.Plinn'].Batch;
+                     b_start python:request.get('b_start',0);
+                     batch python:Batch(options['results'], 16, b_start, orphan=1, quantumleap=1);"
+         i18n:domain="portfolio">
+      <h2 i18n:translate="">My albums</h2>
+      <div tal:condition="not:batch" i18n:translate="">You don't have any album yet.</div>
+      <div tal:condition="batch">
+        <div metal:use-macro="here/batch_macros/macros/navigation">batch navigation</div>
+        <div class="portfolio_lightbox">
+          <a tal:repeat="brain batch"
+             tal:attributes="href brain/getURL">
+            <span tal:define="portfolio brain/getObject;
+                              sphoto portfolio/samplePhoto" tal:omit-tag="">
+              <span tal:condition="sphoto" tal:omit-tag="">
+                <img tal:attributes="src sphoto/src;
+                                     alt sphoto/alt;
+                                     height sphoto/height;
+                                     width sphoto/width;"/>
+              </span>
+              <span tal:condition="not:sphoto" tal:omit-tag="">
+                <img tal:attributes="src here/empty_portfolio.gif/absolute_url;
+                                     alt portfolio/title_or_id"/>
+              </span>
+              <h3 tal:content="portfolio/title_or_id">Portfolio title or id</h3>
+              <div tal:content="portfolio/Description"></div>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

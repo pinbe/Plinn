@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>tabs</title>
+    <link href="zpt_stylesheet.css" rel="stylesheet" media="screen" />
+    <link href="plinn_style.css" rel="stylesheet" media="screen" />
+  </head>
+
+  <body i18n:domain="plinn">
+
+    <div metal:define-macro="tabs"
+         tal:define="filteredActionsList python:[];
+                     dummy python:[ filteredActionsList.extend(l) for l in [ actions.get(key, []) for key in ['folder', 'object', 'workflow'] ] ]"
+         tal:condition="python:len(filteredActionsList) > 1" tal:omit-tag="">
+		<div metal:define-macro="standalone_tabs" tal:define="forceTab forceTab|nothing">
+      <ul class="contentTabs">
+        <li  class="selected" tal:replace="nothing">
+          <a href=".">View</a>
+        </li>
+        <li tal:repeat="action filteredActionsList"
+            tal:attributes="class python:( (forceTab == action['id']) or (request['URL0'].strip() == action['url'].strip() or request['URL0'].strip().split('/')[-1] == action['id']) ) and 'selected' or nothing">
+          <a href="#" tal:attributes="href action/url ; name action/id"
+             tal:content="action/title" i18n:translate="">Edit</a>
+        </li>
+      </ul>
+		</div>
+    </div>
+
+    <div metal:define-macro="additional_tabs"
+         tal:define="filteredActionsList python:actions.get('additional_tabs', [])"
+         tal:condition="filteredActionsList" tal:omit-tag="">
+    	<div metal:define-macro="standalone_additional_tabs" tal:define="forceTab forceTab|nothing">
+	      <ul class="additionalTabs">
+	        <li  class="selected" tal:replace="nothing">
+	          <a href=".">View</a>
+	        </li>
+	        <li tal:repeat="action filteredActionsList"
+	            tal:attributes="class python:( (forceTab == action['id']) or (request['URL0'].strip() == action['url'].strip() or request['URL0'].strip().split('/')[-1] == action['id']) ) and 'selected' or nothing">
+	          <a href="#" tal:attributes="href action/url ; name action/id"
+	             tal:content="action/title" i18n:translate="">Edit</a>
+	        </li>
+	      </ul>
+	    </div>
+    </div>
+    
+  </body>
+</html>

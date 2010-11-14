@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>folder contents macros</title>
+  </head>
+
+  <body i18n:domain="cmf_default" metal:define-macro="FolderListing"
+	 			tal:define="batch_dict options/batch;
+				 						batch batch_dict/batch_obj;
+				 						listColumnInfos batch_dict/listColumnInfos;
+				 						listItemInfos batch_dict/listItemInfos;"
+				tal:omit-tag="">
+    <div style="display:none">
+      <span id="FolderUrl" tal:content="here/absolute_url" >Folder url for script</span>
+      <span tal:condition="options/form/is_orderable" tal:omit-tag="">
+	      <span id="FirstItemPos" tal:content="python:listItemInfos[0]['position']">first batch item position</span>
+	      <span id="BatchNavigationSize" tal:content="batch/size"></span>
+	    </span>
+    </div>
+   	<!-- batch navigation -->
+    <div tal:define="navBatchBarId string:topNavBatchBar" tal:omit-tag="">
+      <span metal:use-macro="here/batch_macros/macros/navigation">batch navigation</span>
+    </div>
+    <table class="listing" cellspacing="0">
+			<thead id="FolderListingHeader">
+				<tr>
+					<th tal:attributes="width column_info/width; colspan column_info/colspan" tal:repeat="column_info listColumnInfos" nowrap="nowrap" >
+						<a href="." tal:attributes="href column_info/url" tal:content="column_info/title" i18n:translate="">Type</a>
+						<span  tal:repeat="img column_info/images" tal:omit-tag="">
+							<a tal:omit-tag="python:not img.has_key('href')"
+								 tal:attributes="href img/href|nothing ; title img/alt" i18n:attributes="title"
+								 ><img tal:attributes="src img/src ; alt img/alt ; id img/id|nothing" border="0" i18n:attributes="alt" /></a>
+						</span>
+					</th>
+					<td colspan="5" tal:replace="nothing"></td>
+				</tr>
+			</thead>
+			<tbody id="FolderListingBody">
+<tbody tal:repeat="item_info listItemInfos" tal:omit-tag="">
+		    <tr class="" tal:attributes="class python: (even and 'even') or 'odd'" tal:define="even repeat/item_info/even">
+		      <td><img src="." alt="lock" height="16" width="16" border="0"
+		               tal:condition="python:not isAnon and item_info['lock']"
+		               tal:attributes="src here/lock.gif/absolute_url"
+		               i18n:attributes="alt" /></td>
+		      <td>
+		        <input id="" type="checkbox" name="ids:list" value=""
+		               tal:attributes="value item_info/id; id item_info/checkbox" tal:condition="item_info/checkbox" />
+		      </td>
+		      <td>
+		        <a href="." tal:attributes="href item_info/url" tal:condition="item_info/icon">
+		          <img src="." alt="" tal:attributes="src item_info/icon; alt item_info/type" border="0" i18n:attributes="alt" />
+		        </a>
+		      </td>
+		      <td>
+		        <a href="." tal:attributes="href item_info/url" tal:define="tod item_info/title_or_id; id item_info/id">
+		          <span tal:replace="id">id</span>
+		          <span tal:condition="python:tod != id">
+		            • <span tal:replace="tod">title</span>
+		          </span>
+		        </a>
+		      </td>
+		      <td>
+		        <span tal:replace="item_info/modified">2001</span>
+		      </td>
+		      <td>
+		        <span tal:replace="item_info/position">1</span>
+		      </td>
+		    </tr>
+</tbody>
+	   	</tbody>
+    </table>
+    <!-- batch navigation -->
+    <div tal:define="navBatchBarId string:bottomNavBatchBar" tal:omit-tag="">
+      <span metal:use-macro="here/batch_macros/macros/navigation">batch navigation</span>
+    </div>
+		<script type="text/javascript">
+		//<!--
+			// variables for drag-and-drop ordered support
+			var ddEnabled = false
+			try {
+				var firstItemPos = parseInt(document.getElementById("FirstItemPos").innerHTML);
+				ddEnabled = true;
+			}
+			catch (e) {}
+
+			var topNavBatchBar		= document.getElementById("topNavBatchBar");
+			var bottomNavBatchBar	= document.getElementById("bottomNavBatchBar");
+			var listing = document.getElementById("FolderListingBody");
+
+			if (ddEnabled) {
+				var rows = listing.getElementsByTagName("TR")
+				for ( var i = 0 ; i < rows.length ; i++ )
+					rows[i].pos = i + firstItemPos;
+
+				var fDDcontroler = new FolderDDropControler(listing);
+				var topNavBatchBar		= document.getElementById("topNavBatchBar");
+				var bottomNavBatchBar	= document.getElementById("bottomNavBatchBar");
+				if (topNavBatchBar && bottomNavBatchBar) {
+					new DropTarget(topNavBatchBar, fDDcontroler);
+					new DropTarget(bottomNavBatchBar, fDDcontroler);
+				}
+			}
+
+
+			addListener(document.getElementById("FolderListingHeader"), "click", loadListing);
+			if (topNavBatchBar && bottomNavBatchBar) {
+				addListener(topNavBatchBar, "click", loadListing);
+				addListener(bottomNavBatchBar, "click", loadListing);
+			}
+
+		//-->
+		</script>
+  </body>
+
+</html>

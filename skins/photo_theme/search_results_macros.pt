@@ -1,0 +1,62 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal">
+  <head>
+    <title>Macros utilisées pour l'affichage des résultats</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  </head>
+  <body>
+    <div metal:use-macro="here/batch_macros/macros/navigation">batch navigation</div>
+    <table metal:define-macro="normal" class="listing" cellspacing="0">
+     <thead>
+      <tr>
+       <td width="16">&nbsp;</td>
+       <th i18n:translate="">Title</th>
+                    <th i18n:translate="">Creator</th>
+                    <th i18n:translate="">Type</th>
+       <th i18n:translate="">Date</th>
+      </tr>
+     </thead>
+     <tbody tal:repeat="result batch" tal:omit-tag="">
+      <tr tal:define="objURL result/getURL;
+      								oddrow repeat/result/odd"
+      		tal:attributes="class python:test(oddrow, 'even', 'odd')">
+       <td><a href=""
+         tal:condition="result/getIcon|nothing"
+             tal:attributes="href objURL"><img src="" border="0" alt="" title=""
+                 tal:define="alt result/Type"
+                 tal:attributes="src result/getIcon;
+                                 alt alt;
+                                 title alt" /></a></td>
+       <td><a href=""
+         tal:attributes="href objURL"><span
+             tal:condition="result/Title"
+                 tal:replace="result/Title">Title</span><span
+             tal:condition="not:result/Title"
+                 tal:omit-tag=""
+                 i18n:translate="">(No title)</span></a></td>
+                    <td tal:content="python:mtool.getMembers([result.Creator])[0].getMemberFullName(nameBefore=0)"
+                        tal:on-error="result/Creator"></td>
+                    <td tal:content="result/Type" i18n:translate="">Type</td>
+       <td tal:content="python:modules['DateTime'].DateTime(result.Date).strftime(locale_date_fmt)">Date</td>
+      </tr>
+      <tr>
+       <td>&nbsp;</td>
+       <td colspan="4"><em
+         tal:condition="result/Description"
+             tal:content="structure result/Description">Description</em><em
+         tal:condition="not:result/Description"
+             i18n:translate="">(No description)</em></td>
+      </tr>
+     </tbody>
+    </table>
+    
+    <div metal:define-macro="photo"
+         tal:define="slide_size python:portal_object.slide_size">
+      <div tal:define="contextInfo python:here.getPhotoBrainsInfos(batch, searchArgs);
+                       infos contextInfo/infos;
+                       features contextInfo/features"
+           tal:omit-tag="">
+        <div metal:use-macro="here/photo_layout_macros/macros/grid"></div>
+      </div>
+    </div>
+  </body>
+</html>
