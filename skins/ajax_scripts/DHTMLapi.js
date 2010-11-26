@@ -161,7 +161,9 @@ function getObjectLeft(obj)  {
 function getObjectTop(obj)  {
     var elem = getRawObject(obj);
     var result = 0;
-    if (document.defaultView) {
+    if (elem.offsetTop) {
+        result = elem.offsetTop;
+    } else if (document.defaultView) {
         var style = document.defaultView;
         var cssDecl = style.getComputedStyle(elem, "");
         result = cssDecl.getPropertyValue("top");
