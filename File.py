@@ -54,10 +54,10 @@ class File(BaseFile) :
 				if cacheTuple :
 					cacheData = cacheTuple[1]
 				
-				subObDict = cacheData.getSubObjects()
-				if subObDict.has_key(name) :
-					fileOb = OFS.Image.File(name, name, subObDict[name])
-					return fileOb
+					subObDict = cacheData.getSubObjects()
+					if subObDict.has_key(name) :
+						fileOb = OFS.Image.File(name, name, subObDict[name])
+						return fileOb
 				
 			raise AttributeError, name
 	
