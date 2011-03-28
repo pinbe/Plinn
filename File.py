@@ -30,22 +30,55 @@ from AccessControl import ClassSecurityInfo
 import OFS
 from zope.component.factory import Factory
 
-from Products.CMFDefault.File import File as BaseFile
+from Products.CMFDefault.File import File as CMFFile
+from Products.Photo.blobbases import File as BlobFile
+from Products.CMFDefault.DublinCore import DefaultDublinCoreImpl
 from Products.CMFCore.permissions import View, ModifyPortalContent
 from Products.CMFCore.utils import getToolByName
 from hexagonit.swfheader import parse as parseswf
 
-class File(BaseFile) :
+class File(BlobFile, CMFFile) :
+#class File(CMFFile) :
 	""" file class with portal_transforms support """
 	
 	security = ClassSecurityInfo()
 	
-	_properties = BaseFile._properties + ({'id':'orig_name', 'type':'string', 'mode':'w', 'label':"Original Name"},)
+	_properties = CMFFile._properties + ({'id':'orig_name', 'type':'string', 'mode':'w', 'label':"Original Name"},)
 	orig_name = ''
+
+	def __init__( self
+				, id
+				, title=''
+				, file=''
+				, content_type=''
+				, precondition=''
+				, subject=()
+				, description=''
+				, contributors=()
+				, effective_date=None
+				, expiration_date=None
+				, format=None
+				, language='en-US'
+				, rights=''
+				):
+		BlobFile.__init__(self, id, title, file, content_type=content_type, precondition=precondition)
+		self._setId(id)
+		#delattr(self, '__name__')
+        #
+		# If no file format has been passed in, rely on what OFS.Image.File
+		# detected. Unlike Images, which have code to try and pick the content
+		# type out of the binary data, File objects only provide the correct
+		# type if a "hint" in the form of a filename extension is given.
+		if format is None:
+			format = self.content_type 
+        
+		DefaultDublinCoreImpl.__init__( self, title, subject, description
+							   , contributors, effective_date, expiration_date
+							   , format, language, rights )
 
 
 	def __getattr__(self, name) :
-		try : return BaseFile.__getattr__(self, name)
+		try : return CMFFile.__getattr__(self, name)
 		except :
 			selfAttrs = self.__dict__
 			if selfAttrs.has_key('_v_transform_cache') :
@@ -92,7 +125,7 @@ class File(BaseFile) :
 		orig_name = OFS.Image.cookId('', '', file)[0]
 		if orig_name :
 			self.orig_name = orig_name
-		BaseFile.edit(self, precondition=precondition, file=file)
+		CMFFile.edit(self, precondition=precondition, file=file)
 		if hasattr(self, '_v_transform_cache') :
 			del self._v_transform_cache
 	
@@ -100,15 +133,18 @@ class File(BaseFile) :
 	security.declareProtected(View, 'SearchableText')
 	def SearchableText(self) :
 		""" Return full text"""
-		baseSearchableText = BaseFile.SearchableText(self)
+		baseSearchableText = CMFFile.SearchableText(self)
 		transformTool = getToolByName(self, 'portal_transforms', default=None)
 		if transformTool is None :
 			return baseSearchableText
 		else :
+			f = self.bdata.open()
+			orig = f.read()
 			datastream_text =  transformTool.convertTo('text/plain',
-														str(self.data),
+														orig,
 														mimetype = self.content_type
 														)
+			f.close()
 			full_text = ''
 			if datastream_text is not None :
 				full_text = datastream_text.getData()
@@ -123,12 +159,14 @@ class File(BaseFile) :
 			return ''
 		else :
 			filename = self.getId().replace(' ', '_')
+			f = self.bdata.open()
+			orig = f.read()
 			datastream = transformTool.convertTo('text/html',
-												str(self.data),
+												orig,
 												object=self,
 												mimetype = self.content_type,
 												filename = filename)
-
+			f.close()
 			if datastream is not None : return datastream.getData()
 			else : return ''
 
@@ -156,10 +194,12 @@ class File(BaseFile) :
 		"""
 		regTool = getToolByName(self, 'mimetypes_registry', default=None)
 		if regTool :
-			mime = regTool(str(self.data), mimetype=self.content_type)[2]
+			f = self.bdata.open()
+			mime = regTool(f, mimetype=self.content_type)[2]
+			f.close()
 			return mime.icon_path
 		else :
-			return BaseFile.getIcon(self, relative_to_portal=relative_to_portal)
+			return CMFFile.getIcon(self, relative_to_portal=relative_to_portal)
 
 
 InitializeClass(File)
