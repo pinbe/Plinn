@@ -1,6 +1,8 @@
 ##parameters=
 from Products.Plinn.utils import makeValidId
 form = context.REQUEST.form
+from Products.CMFCore.utils import getToolByName
+handler = getToolByName(context, 'portal_uidhandler')
 
 for k in form.keys() :
 	item = form[k]
@@ -15,6 +17,8 @@ if typeDic.has_key('id') :
 
 	context.invokeFactory( typeDic['type'], newid, title=title)
 	newOb = getattr(context, newid)
+	handler = getToolByName(context, 'portal_uidhandler')
+	handler.register(newOb)
 	ti = newOb.getTypeInfo()
 	immediate_view = ti.immediate_view
 
