@@ -114,7 +114,7 @@ tal:content="structure python:'''
       class="news_box" cellspacing="0"
       tal:define="ctool python:modules['Products.CMFCore.utils'].getToolByName(here, 'portal_catalog');
                   news python:ctool(portal_type='News Item'
-                                  , sort_on='Date'
+                                  , sort_on='modified'
                                   , sort_order='reverse'
                                   , review_state='published')[:5]"
       tal:condition="news"
@@ -127,7 +127,7 @@ tal:content="structure python:'''
           <a tal:attributes="href n/getURL ; title n/Description">
             <img border="0" alt="News Item" tal:attributes="src n/getIcon" i18n:attributes="alt" />
             <span tal:replace="n/Title|n/getId"></span>
-            <div tal:content="python:DateTime(n.Date).strftime(locale_date_fmt)"></div>
+            <div tal:content="python:DateTime(n.ModificationDate).strftime(locale_date_fmt)"></div>
           </a>
         </td>
       </tr>
