@@ -87,15 +87,17 @@ def capitalizeCompoundGivenName(givenName) :
 				
 			 
 def formatFullName(memberName, memberGivenName, memberId, nameBefore=1) :
-	memberFullName = ''
+	memberName = memberName.decode('utf-8')
+	memberGivenName = memberGivenName.decode('utf-8')
+	memberFullName = u''
 	if memberName and memberGivenName :
 		if nameBefore :
-			memberFullName = memberName.capitalize() + ' ' + capitalizeCompoundGivenName(memberGivenName)
+			memberFullName = memberName.upper() + ' ' + capitalizeCompoundGivenName(memberGivenName)
 		else :
-			memberFullName = capitalizeCompoundGivenName(memberGivenName) + ' ' + memberName.capitalize() 
+			memberFullName = capitalizeCompoundGivenName(memberGivenName) + ' ' + memberName.upper() 
 		
 	elif memberName and not memberGivenName :
-		memberFullName = memberName.capitalize()
+		memberFullName = memberName.upper()
 		
 	elif not memberName and memberGivenName :
 		memberFullName = capitalizeCompoundGivenName(memberGivenName)
@@ -103,7 +105,7 @@ def formatFullName(memberName, memberGivenName, memberId, nameBefore=1) :
 	else :
 		memberFullName = memberId
 	
-	return memberFullName
+	return memberFullName.encode('utf-8')
 
 # from OFS.ObjectManager #63
 bad_url_chars = re.compile(r'[^a-zA-Z0-9-_~,.$\(\)@]')
