@@ -164,4 +164,12 @@ table.home td {
 	font-size:10px;
 }
 
+/* FCK overloads */
+
+.SC_Item, .SC_ItemSelected
+{
+    background-color: &dtml-backgroundColor;
+}
+
+
 /* </dtml-with> */
