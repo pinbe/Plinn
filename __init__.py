@@ -96,7 +96,7 @@ validTags = default_cmf_utils.NASTY_TAGS.copy()
 for tag in validTags.keys() :
 	validTags[tag] = 1
 
-VALID_TAGS = {'font': 1}
+VALID_TAGS = {'font': 1, 'param' : 1}
 
 validTags.update(VALID_TAGS)
 
