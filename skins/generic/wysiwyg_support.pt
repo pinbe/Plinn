@@ -1,101 +1,36 @@
 <html i18n:domain="plinn">
 
 <div metal:define-macro="wysiwygEditorBox"
-		 tal:define="editor editor|nothing;
-								 editor python: editor or here.portal_membership.getAuthenticatedMember().getProperty('wysiwyg_editor');"
 		 tal:omit-tag="">
 
-	<div tal:condition="python:editor=='Epoz'" tal:omit-tag="">
-    <script type="text/javascript" tal:attributes="src python:'%s/%s?charset=%s' % (portal_url, 'epoz_multilingual.js', here.default_charset)"></script>
-    <script type="text/javascript" tal:attributes="src here/vcXMLRPC.js/absolute_url"></script>
-    <script type="text/javascript" tal:attributes="src here/epoz_script_main.js/absolute_url"></script>
-    <script type="text/javascript" tal:attributes="src here/epoz_redirect.js/absolute_url"></script>
-    <script type="text/javascript" tal:attributes="src here/epoz_plinn.js/absolute_url"></script>
-		<script type="text/javascript">
-		// <!--
-			_resetEpoz();
-		// -->
-		</script>
-		<div tal:define="pss modules/Products/PythonScripts/standard;
-										 text_format python: getattr(here,'text_format','html');
-										 is_stx python:text_format=='structured-text';
-										 is_ptx python:text_format=='plain';                    
-										 base_props here/base_properties;
-										 defaultStyle string:width: 99%;; height: 450px;; margin-top: 2px;; border: 1px solid #8cacbb;;;
-										 style style|defaultStyle;
-										 data python:(is_stx and pss.structured_text(inputvalue)) or (is_ptx and pss.newline_to_br(inputvalue)) or inputvalue"
-				 tal:omit-tag="">
-			<div id="EpozToolbar" tal:attributes="id nothing" style="display:none">
-				<div metal:define-macro="epoz_toolbox" i18n:domain="epoz" class="EpozToolbar">
-					<select id="formatblock" onchange="SelectFormat(this)" style="margin-bottom: 2px ; display:block">
-						<option value="" i18n:translate="">Normal</option>
-						<option value="<p>" i18n:translate="">Paragraph</option>
-						<option value="<h1>" i18n:translate="">Heading1</option>
-						<option value="<h2>" i18n:translate="">Heading2</option>
-						<option value="<h3>" i18n:translate="">Heading3</option>
-						<option value="<h4>" i18n:translate="">Heading4</option>
-						<option value="<h5>" i18n:translate="">Heading5</option>
-						<option value="<h6>" i18n:translate="">Heading6</option>
-						<option value="<pre>" i18n:translate="">Formatted</option>
-					</select>
-					<img  tal:attributes="src here/epoz_button_bold.gif/absolute_url" width="23" height="22" alt="Bold" title="Bold" onclick="FormatText('bold', '');" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_italic.gif/absolute_url" width="23" height="22" alt="Italic" title="Italic" onclick="FormatText('italic', '');" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_underline.gif/absolute_url" width="23" height="22" alt="Underline" title="Underline" onclick="FormatText('underline', '');" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_strikethrough.gif/absolute_url" width="23" height="22" alt="Strikethrough" title="Strikethrough" onclick="FormatText('strikethrough', '');" i18n:attributes="alt ; title"
-				/>&nbsp;<img  tal:attributes="src here/epoz_button_subscript.gif/absolute_url" width="23" height="22" alt="Subscript" title="Subscript" onclick="FormatText('subscript', '');" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_superscript.gif/absolute_url" width="23" height="22" alt="Superscript" title="Superscript" onclick="FormatText('superscript', '');" i18n:attributes="alt ; title"
-				/>&nbsp;<img  tal:attributes="src here/epoz_button_unformat.gif/absolute_url" width="23" height="22" alt="RemoveFormat" title="RemoveFormat" onclick="FormatText('removeformat', '');" i18n:attributes="alt ; title"
-				/>&nbsp;<img  tal:attributes="src here/epoz_button_textcolor.gif/absolute_url" width="23" height="22" alt="TextColor" title="TextColor" onclick="SetTextColor();" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_bgcolor.gif/absolute_url" width="23" height="22" alt="BackColor" title="BackColor" onclick="SetBackColor();" i18n:attributes="alt ; title"
-				/>&nbsp;<img  tal:attributes="src here/epoz_button_left_just.gif/absolute_url" width="23" height="22" alt="AlignLeft" title="AlignLeft" onclick="FormatText('justifyleft', '');" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_centre.gif/absolute_url" width="23" height="22" alt="Center" title="Center" onclick="FormatText('justifycenter', '');" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_right_just.gif/absolute_url" width="23" height="22" alt="AlignRight" title="AlignRight" onclick="FormatText('justifyright', '');" i18n:attributes="alt ; title"
-				/>&nbsp;<img  tal:attributes="src here/epoz_button_numbered_list.gif/absolute_url" width="23" height="22" alt="OrderedList" title="OrderedList" onclick="FormatText('insertorderedlist', '');" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_list.gif/absolute_url" width="23" height="22" alt="UnorderedList" title="UnorderedList" onclick="FormatText('insertunorderedlist', '');" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_outdent.gif/absolute_url" width="23" height="22" alt="Outdent" title="Outdent" onclick="FormatText('outdent', '');" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_indent.gif/absolute_url" width="23" height="22" alt="Indent" title="Indent" onclick="FormatText('indent', '');" i18n:attributes="alt ; title"
-				/>&nbsp;<img  tal:attributes="src here/epoz_button_hyperlink.gif/absolute_url" width="23" height="22" alt="InsertLink" title="InsertLink" onclick="CreateLink();" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_anchor.gif/absolute_url" width="23" height="22" alt="InsertAnchor" title="InsertAnchor" onclick="CreateAnchor();" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_image.gif/absolute_url" width="23" height="22" alt="InsertImage" title="InsertImage" onclick="CreateImage();" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_hr.gif/absolute_url" width="23" height="22" alt="InsertRule" title="InsertRule" onclick="FormatText('inserthorizontalrule', '');" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_table.gif/absolute_url" width="23" height="22" alt="InsertTable" title="InsertTable" i18n:attributes="alt ; title" onclick="window.open('epoz_script_table.html','EpozTable','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=220,height=220')"
-				/>&nbsp;<img  tal:attributes="src here/epoz_button_undo.gif/absolute_url" width="23" height="22" alt="Undo" title="Undo" onclick="FormatText('undo', '');" i18n:attributes="alt ; title"
-				/><img  tal:attributes="src here/epoz_button_redo.gif/absolute_url" width="23" height="22" alt="Redo" title="Redo" onclick="FormatText('redo', '');" i18n:attributes="alt ; title"
-				/>
-				</div>
-	
-				<iframe frameborder="0" onload="initEpozWidget(this);"
-							  tal:attributes="src python:portal_url+ '/epoz_blank_iframe.html?charset=utf-8&css=zpt_stylesheet.css&customcss=plinn_style.css&pageurl=' + here.absolute_url(); style style">
-				</iframe>
 
-			</div><textarea  tal:attributes="id inputname ; name inputname ; style string:display: none;; $style" tal:content="data">
-			</textarea><div style="margin: 0px ; display:none"><input style="margin: 0px; width: 10px; height: 10px;" type="checkbox" onclick="redirectAndSwitchViewMode(this);" />&nbsp;<span style="font-size: 10px;">HTML</span></div>
-			<input type="hidden" name="onBeforeSubmit" value="SyncEpoz" />
-			<noscript>
-				<textarea tal:attributes="name inputname ; style style" tal:content="data"></textarea>
-			</noscript>
-		</div>
-  </div><!-- End wysiwyg code -->
-
-  <div tal:condition="python:editor in ['None', 'FCK']" tal:omit-tag="">
-	  <textarea cols="80" rows="25"
-	            tal:content="inputvalue"
-	            tal:define="defaultStyle string:width: 99%;; height: 450px;; margin-top: 2px;; border: 1px solid #8cacbb;;;
-										 			style style|defaultStyle;"
-	            tal:attributes="name inputname;
-															id inputname;
-	                            rows rows|default;
-	                            cols cols|default;
-	                            style style"></textarea>
-		<div tal:condition="python:editor=='FCK'">
-			<script type="text/javascript" tal:attributes="src here/fckeditor.js/absolute_url"></script>
-	    <script type="text/javascript"
-							tal:replace="structure python:here.fck_inline_script(BasePath=here.absolute_url() + '/',
-																																	 CustomConfigurationsPath=portal_url + '/fckconfigPlinn.js',
-																																	 fckId=inputname,
-																																	 contentPath=here.absolute_url(relative=1))"></script>
-		</div>
-	</div>
+  <textarea cols="80" rows="25"
+            tal:content="inputvalue"
+            tal:define="defaultStyle string:width: 99%;; height: 450px;; margin-top: 2px;; border: 1px solid #8cacbb;;;
+  								 			style style|defaultStyle;"
+            tal:attributes="name inputname;
+  													id inputname;
+                            rows rows|default;
+                            cols cols|default;
+                            style style"></textarea>
+  <div>
+    <script type="text/javascript" tal:attributes="src string:$portal_url/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" tal:content="structure python:'''
+      CKEDITOR.replace('%(inputname)s');
+      CKEDITOR.instances['%(inputname)s'].contentPath = '%(contentPath)s';
+      (function(){
+      var ckForm = document.getElementById('%(inputname)s').form;
+  		if ((AJAX_CONFIG & 2) == 2) {
+    		var formManager = new FormManager(ckForm, document.getElementById('mainCell'));
+    		formManager.onBeforeSubmit = function(manager) {
+    			var editor = CKEDITOR.instances['%(inputname)s'];
+    			editor.updateElement();
+    		};
+  		}
+		  })();
+      ''' % {'inputname' : inputname, 'contentPath' : here.absolute_url(relative=1)}">
+    </script>
+  </div>
 </div>
 
 	<div metal:define-macro="textFormatSelector"
