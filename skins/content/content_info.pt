@@ -2,7 +2,7 @@
 		 tal:define="locale_date_fmt here/locale_date_fmt;
 								 portal_url here/portal_url;
 								 ti here/getTypeInfo;
-								 icon ti/content_icon">
+								 icon ti/getIcon">
 	<table class="finder_preview">
 		<tr>
 			<td colspan="2">
