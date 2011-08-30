@@ -50,7 +50,7 @@ class ContentHistory(Base, Acquisition.Implicit) :
 	def listEntries(self, first=0, last=20):
 		oid = self._content._p_oid
 		db = self._content._p_jar.db()
-		r = db.history(oid, None, last)
+		r = db.history(oid, size=last)
 
 		if r is None:
 			# storage doesn't support history
