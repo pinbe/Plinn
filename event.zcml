@@ -13,7 +13,7 @@
   -->
   <subscriber
     for="Products.CMFCore.interfaces.IContentish
-         zope.app.container.interfaces.IObjectRemovedEvent"
+         zope.container.interfaces.IObjectRemovedEvent"
     handler=".event_handlers.handleObjectRemoved"
       />
 </configure>
