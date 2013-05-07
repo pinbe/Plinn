@@ -22,13 +22,18 @@
 
 
 """
-
+from AccessControl.interfaces import IUser
+from Products.CMFCore.interfaces import IMemberDataTool
 from Globals import InitializeClass
 from Acquisition import aq_inner, aq_parent, aq_base
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.MemberDataTool import MemberDataTool as BaseTool
 from Products.CMFCore.MemberDataTool import MemberData as BaseData
-from Products.CMFCore.MemberDataTool import CleanupTemp
+from Products.CMFCore.MemberDataTool import MemberAdapter as BaseMemberAdapter
+from zope.component import adapts
+from zope.interface import implements
+from Products.CMFCore.interfaces import IMember
+# from Products.CMFCore.MemberDataTool import CleanupTemp
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
 from Products.CMFCore.DynamicType import DynamicType
@@ -53,20 +58,20 @@ class MemberDataTool (BaseTool):
 		self._setProperty('wysiwyg_editor', 'FCK', 'string')
 		self._setProperty('photo_width', 800, 'int')
 
-	security.declarePrivate('wrapUser')
-	def wrapUser(self, u):
-		'''
-		If possible, returns the Member object that corresponds
-		to the given User object.
-		'''
-		id = u.getId()
-		members = self._members
-		if not id in members:
-			base = aq_base(self)
-			members[id] = MemberData(base, id)
-		# Return a wrapper with self as containment and
-		# the user as context.
-		return members[id].__of__(self).__of__(u)
+#	security.declarePrivate('wrapUser')
+#	def wrapUser(self, u):
+#		'''
+#		If possible, returns the Member object that corresponds
+#		to the given User object.
+#		'''
+#		id = u.getId()
+#		members = self._members
+#		if not id in members:
+#			base = aq_base(self)
+#			members[id] = MemberData(base, id)
+#		# Return a wrapper with self as containment and
+#		# the user as context.
+#		return members[id].__of__(self).__of__(u)
 
 #	security.declarePrivate('wrapUser')
 #	def wrapUser(self, u):
@@ -107,6 +112,32 @@ class MemberDataTool (BaseTool):
 				return self.wrapUser(self.acl_users.getUser(name))
 
 InitializeClass(MemberDataTool)
+
+
+class MemberAdapter(BaseMemberAdapter):
+
+	"""Member data adapter.
+	"""
+
+	adapts(IUser, IMemberDataTool)
+	implements(IMember)
+
+	security = ClassSecurityInfo()
+	
+	def __init__(self, user, tool):
+		super(MemberAdapter, self).__init__(user, tool)
+		self.id = self.getId()
+
+	security.declarePublic('getMemberFullName')
+	def getMemberFullName(self, nameBefore=1) :
+		""" Return the best full name representation """
+		memberName = self.getProperty('name', default='')
+		memberGivenName = self.getProperty('given_name', default='')
+		memberId = self.getId()
+		return formatFullName(memberName, memberGivenName, memberId, nameBefore=nameBefore)
+    
+
+InitializeClass(MemberAdapter)
 
 
 class MemberData (BaseData, DynamicType, CMFCatalogAware):
