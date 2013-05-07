@@ -4,4 +4,10 @@
         provides="Products.PageTemplates.interfaces.IUnicodeEncodingConflictResolver"
         component="Products.PageTemplates.unicodeconflictresolver.ReplacingUnicodeEncodingConflictResolver"
         />
+    <adapter
+        for="AccessControl.interfaces.IUser
+             Products.CMFCore.interfaces.IMemberDataTool"
+        provides="Products.CMFCore.interfaces.IMember"
+        factory="Products.Plinn.MemberDataTool.MemberAdapter"
+        />
 </configure>
