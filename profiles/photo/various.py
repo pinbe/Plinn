@@ -60,11 +60,11 @@ def doActionForOrSkip(*args, **kw) :
 	except WorkflowException : pass
 	
 # home page
-constructOrSkip(  'Document', site, 'index_html'
-				, title =	translate('Home')
-				, text_format='html'
-				, text=site.default_home_page_content())
-doActionForOrSkip(site.index_html, 'direct_publish')
+# constructOrSkip(  'Document', site, 'index_html'
+# 				, title =	translate('Home')
+# 				, text_format='html'
+# 				, text=site.default_home_page_content())
+# doActionForOrSkip(site.index_html, 'direct_publish')
 
 # default folders
 constructOrSkip('Plinn Folder', site, 'Members', title =	translate('Members'))
