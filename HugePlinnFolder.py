@@ -30,7 +30,11 @@ from BTrees.IOBTree import IOBTree
 from BTrees.OIBTree import OIBTree
 from Folder import PlinnFolder
 from zope.event import notify
-from zope.app.container.contained import notifyContainerModified
+try :
+	from zope.app.container.contained import notifyContainerModified
+except ImportError :
+	## Zope-2.13 compat
+	from zope.container.contained import notifyContainerModified
 from events import ObjectPositionModified
 from zope.component.factory import Factory
 from Products.CMFCore.permissions import AddPortalFolders, \
