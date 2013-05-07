@@ -243,7 +243,7 @@ class MembershipTool( BaseTool ):
 				return userid
 			memberName = getattr(member, 'name', '')
 			memberGivenName = getattr(member, 'given_name', '')
-			memberId = member.id
+			memberId = member.getId()
 			memberFullName = formatFullName(memberName, memberGivenName, memberId, nameBefore = nameBefore)
 			
 		return memberFullName
