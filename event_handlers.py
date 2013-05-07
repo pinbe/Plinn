@@ -23,7 +23,7 @@ Plinn event handlers.
 
 
 """
-from zope.app.container.interfaces import IObjectRemovedEvent
+from zope.container.interfaces import IObjectRemovedEvent
 from Products.CMFCore.utils import getToolByName
 from Products.Plinn.utils import getAdapterByInterface
 from quopri import encodestring
