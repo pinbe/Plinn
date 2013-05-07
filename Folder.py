@@ -35,8 +35,13 @@ from ZODB.POSException import ConflictError
 import OFS.subscribers
 from zope.event import notify
 from zope.lifecycleevent import ObjectCopiedEvent
-# from zope.app.container.contained import ObjectMovedEvent
-# from zope.app.container.contained import notifyContainerModified
+try :
+	from zope.app.container.contained import notifyContainerModified
+	from zope.app.container.contained import ObjectMovedEvent
+except ImportError :
+	## Zope-2.13 compat
+	from zope.container.contained import notifyContainerModified
+	from zope.container.contained import ObjectMovedEvent
 from OFS.event import ObjectClonedEvent
 from OFS.event import ObjectWillBeMovedEvent
 from zope.component.factory import Factory
