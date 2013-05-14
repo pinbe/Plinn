@@ -189,7 +189,7 @@ table.assign_global_roles {
   margin-left : 0 ;
   color: &dtml-bulletColor;;
   list-style-position : inside ;
-  list-style-image : url(list_bullet.gif);
+  list-style-image : url(&dtml-portal_url;/list_bullet.png);
 }
 
 .tree_box table {
