@@ -32,10 +32,12 @@ from Products.CMFCore.MemberDataTool import MemberDataTool as BaseTool
 from Products.CMFCore.MemberDataTool import MemberData as BaseData
 from Products.CMFCore.MemberDataTool import MemberAdapter as BaseMemberAdapter
 from zope.component import adapts
+from zope.component import getUtility
 from zope.interface import implements
 from Products.CMFCore.interfaces import IMember
+from Products.CMFCore.interfaces import IRegistrationTool
 # from Products.CMFCore.MemberDataTool import CleanupTemp
-from Products.CMFCore.utils import getToolByName
+#from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
 from Products.CMFCore.DynamicType import DynamicType
 from utils import formatFullName
@@ -107,7 +109,47 @@ class MemberAdapter(BaseMemberAdapter, SimpleItem, DynamicType, CMFCatalogAware)
 	def setMemberProperties(self, mapping):
 		super(MemberAdapter, self).setMemberProperties(mapping)
 		self.reindexObject()
+
+	security.declareProtected(SetMemberPassword, 'setMemberPassword')
+	def setMemberPassword(self, password, domains=None) :
+		""" set member password """
+
+		registration = getUtility(IRegistrationTool)
+		failMessage = registration.testPasswordValidity(password)
+		if failMessage is not None :
+			raise ValueError(failMessage)
+
+		self.setSecurityProfile(password=password, domains=domains)
+
+	security.declarePrivate('manage_beforeDelete')
+	def manage_beforeDelete(self) :
+		""" uncatalog object """
+		self.unindexObject()
     
+	def _setPortalTypeName(self, pt) :
+		""" Static Dynamic Type ;-) """
+		pass
+
+	# user object interface
+	# overloads to make methods not publishable
+
+	def getUserName(self):
+		return super(MemberAdapter, self).getUserName()
+
+	def getId(self):
+		return super(MemberAdapter, self).getId()
+
+	def getRoles(self):
+		return super(MemberAdapter, self).getRoles()
+
+	def getRolesInContext(self, object):
+		return super(MemberAdapter, self).getRolesInContext(object)
+
+	def getDomains(self):
+		return super(MemberAdapter, self).getDomains()
+
+	def has_role(self, roles, object=None):
+		return super(MemberAdapter, self).has_role(roles, object=None)
 
 InitializeClass(MemberAdapter)
 
@@ -119,21 +161,21 @@ class MemberData (BaseData, DynamicType, CMFCatalogAware):
 	portal_type = 'Member Data'
 
 	security = ClassSecurityInfo()
-
-	security.declareProtected(SetMemberPassword, 'setMemberPassword')
-	def setMemberPassword(self, password, domains=None) :
-		""" set member password """
-
-		registration = getToolByName(self, 'portal_registration', None)
-		if registration:
-			failMessage = registration.testPasswordValidity(password)
-			if failMessage is not None:
-				raise 'Bad Request', failMessage
-				
-		user_folder = self.acl_users
-		self.setSecurityProfile(password=password, domains=domains)
-		if user_folder.meta_type == 'Group User Folder' :
-			self.changePassword(password)
+# migré
+#	security.declareProtected(SetMemberPassword, 'setMemberPassword')
+#	def setMemberPassword(self, password, domains=None) :
+#		""" set member password """
+#
+#		registration = getToolByName(self, 'portal_registration', None)
+#		if registration:
+#			failMessage = registration.testPasswordValidity(password)
+#			if failMessage is not None:
+#				raise 'Bad Request', failMessage
+#				
+#		user_folder = self.acl_users
+#		self.setSecurityProfile(password=password, domains=domains)
+#		if user_folder.meta_type == 'Group User Folder' :
+#			self.changePassword(password)
 	
 	
 	#XXX restore the previous implementation for GRUF 2 I'll remove that later...
@@ -171,35 +213,38 @@ class MemberData (BaseData, DynamicType, CMFCatalogAware):
 #		BaseData.setMemberProperties(self, mapping)
 #		self.reindexObject()
 
-	security.declarePrivate('manage_beforeDelete')
-	def manage_beforeDelete(self) :
-		""" uncatalog object """
-		self.unindexObject()
+# migré
+#	security.declarePrivate('manage_beforeDelete')
+#	def manage_beforeDelete(self) :
+#		""" uncatalog object """
+#		self.unindexObject()
 
-	def _setPortalTypeName(self, pt) :
-		""" Static Dynamic Type ;-) """
-		pass
+# migré
+#	def _setPortalTypeName(self, pt) :
+#		""" Static Dynamic Type ;-) """
+#		pass
 
-	# user object interface
-	# overloads to make methods not publishable
-	
-	def getUserName(self):
-		return BaseData.getUserName(self)
-
-	def getId(self):
-		return BaseData.getId(self)
-
-	def getRoles(self):
-		return BaseData.getRoles(self)
-
-	def getRolesInContext(self, object):
-		return BaseData.getRolesInContext(self, object)
-
-	def getDomains(self):
-		return BaseData.getDomains(self)
-
-	def has_role(self, roles, object=None):
-		return BaseData.has_role(self, roles, object=None)
+# migré
+#	# user object interface
+#	# overloads to make methods not publishable
+#	
+#	def getUserName(self):
+#		return BaseData.getUserName(self)
+#
+#	def getId(self):
+#		return BaseData.getId(self)
+#
+#	def getRoles(self):
+#		return BaseData.getRoles(self)
+#
+#	def getRolesInContext(self, object):
+#		return BaseData.getRolesInContext(self, object)
+#
+#	def getDomains(self):
+#		return BaseData.getDomains(self)
+#
+#	def has_role(self, roles, object=None):
+#		return BaseData.has_role(self, roles, object=None)
 
 
 
