@@ -101,6 +101,12 @@ class MemberAdapter(BaseMemberAdapter, SimpleItem, DynamicType, CMFCatalogAware)
 	def getMemberSortableFormat(self) :
 		""" Return a specific format of full name for alphabetical sorting """
 		return self.getMemberFullName(nameBefore = 1).lower()
+	
+	# security overload
+	security.declareProtected(SetMemberProperties, 'setMemberProperties')
+	def setMemberProperties(self, mapping):
+		super(MemberAdapter, self).setMemberProperties(mapping)
+		self.reindexObject()
     
 
 InitializeClass(MemberAdapter)
@@ -144,24 +150,26 @@ class MemberData (BaseData, DynamicType, CMFCatalogAware):
 		if domains is not None:
 			u.domains = domains
 
+# migré
+#	def getMemberFullName(self, nameBefore=1) :
+#		""" Return the best full name representation """
+#		memberName = self.getProperty('name', default='')
+#		memberGivenName = self.getProperty('given_name', default='')
+#		memberId = self.getProperty('id', default='')
+#		return formatFullName(memberName, memberGivenName, memberId, nameBefore=nameBefore)
 
-	def getMemberFullName(self, nameBefore=1) :
-		""" Return the best full name representation """
-		memberName = self.getProperty('name', default='')
-		memberGivenName = self.getProperty('given_name', default='')
-		memberId = self.getProperty('id', default='')
-		return formatFullName(memberName, memberGivenName, memberId, nameBefore=nameBefore)
-
-	def getMemberSortableFormat(self) :
-		""" Return a specific format of full name for alphabetical sorting """
-		return self.getMemberFullName(nameBefore = 1).lower()
+# migré
+#	def getMemberSortableFormat(self) :
+#		""" Return a specific format of full name for alphabetical sorting """
+#		return self.getMemberFullName(nameBefore = 1).lower()
 
 
-	## overload default security declaration
-	security.declareProtected(SetMemberProperties, 'setMemberProperties')
-	def setMemberProperties(self, mapping):
-		BaseData.setMemberProperties(self, mapping)
-		self.reindexObject()
+# migré
+#	## overload default security declaration
+#	security.declareProtected(SetMemberProperties, 'setMemberProperties')
+#	def setMemberProperties(self, mapping):
+#		BaseData.setMemberProperties(self, mapping)
+#		self.reindexObject()
 
 	security.declarePrivate('manage_beforeDelete')
 	def manage_beforeDelete(self) :

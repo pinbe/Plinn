@@ -377,13 +377,13 @@
           <tr>
 	          <th nowrap="nowrap" i18n:translate="">Name</th>
 	          <td>
-	            <input type="text" name="name" size="40" tal:attributes="value selectedMember/name" />
+	            <input type="text" name="name" size="40" tal:attributes="value python:selectedMember.getProperty('name')" />
 	          </td>
 	        </tr>
           <tr>
 	          <th nowrap="nowrap" i18n:translate="">Given Name</th>
 	          <td>
-	            <input type="text" name="given_name" size="40" tal:attributes="value selectedMember/given_name" />
+	            <input type="text" name="given_name" size="40" tal:attributes="value python:selectedMember.getProperty('given_name')" />
 	          </td>
 	        </tr>
 	        <tr>
@@ -401,7 +401,7 @@
 	        <tr>
 	          <th nowrap="nowrap" i18n:translate="">Email address</th>
 	          <td>
-	            <input type="text" name="email" size="40" tal:attributes="value selectedMember/email" />
+	            <input type="text" name="email" size="40" tal:attributes="value python:selectedMember.getProperty('email')" />
 	          </td>
 	        </tr>
 	        <tr>
