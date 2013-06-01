@@ -27,6 +27,7 @@ from Products.CMFCore.interfaces import IMemberDataTool
 from Globals import InitializeClass
 from Acquisition import aq_inner, aq_parent, aq_base
 from AccessControl import ClassSecurityInfo
+from OFS.SimpleItem import SimpleItem
 from Products.CMFCore.MemberDataTool import MemberDataTool as BaseTool
 from Products.CMFCore.MemberDataTool import MemberData as BaseData
 from Products.CMFCore.MemberDataTool import MemberAdapter as BaseMemberAdapter
@@ -57,52 +58,11 @@ class MemberDataTool (BaseTool):
 		self._setProperty('given_name', '', 'string')
 		self._setProperty('wysiwyg_editor', 'FCK', 'string')
 		self._setProperty('photo_width', 800, 'int')
-
-#	security.declarePrivate('wrapUser')
-#	def wrapUser(self, u):
-#		'''
-#		If possible, returns the Member object that corresponds
-#		to the given User object.
-#		'''
-#		id = u.getId()
-#		members = self._members
-#		if not id in members:
-#			base = aq_base(self)
-#			members[id] = MemberData(base, id)
-#		# Return a wrapper with self as containment and
-#		# the user as context.
-#		return members[id].__of__(self).__of__(u)
-
-#	security.declarePrivate('wrapUser')
-#	def wrapUser(self, u):
-#		"""
-#		If possible, returns the Member object that corresponds
-#		to the given User object.
-#		"""
-#		id = u.getId()
-#		members = self._members
-#		if not members.has_key(id):
-#			# Get a temporary member that might be
-#			# registered later via registerMemberData().
-#			temps = self._v_temps
-#			if temps is not None and temps.has_key(id):
-#				m = temps[id]
-#			else:
-#				base = aq_base(self)
-#				m = MemberData(base, id)
-#				if temps is None:
-#					self._v_temps = {id:m}
-#					if hasattr(self, 'REQUEST'):
-#						# No REQUEST during tests.
-#						self.REQUEST._hold(CleanupTemp(self))
-#				else:
-#					temps[id] = m
-#		else:
-#			m = members[id]
-#		# Return a wrapper with self as containment and
-#		# the user as context.
-#		return m.__of__(self).__of__(u)
-
+	
+	def wrapUser(self, u) :
+	    wu = super(MemberDataTool, self).wrapUser(u)
+	    return wu.__of__(self).__of__(u)
+    
 
 	def __bobo_traverse__(self, REQUEST, name):
 		if hasattr(self,name):
@@ -114,13 +74,15 @@ class MemberDataTool (BaseTool):
 InitializeClass(MemberDataTool)
 
 
-class MemberAdapter(BaseMemberAdapter):
+class MemberAdapter(BaseMemberAdapter, SimpleItem, DynamicType, CMFCatalogAware):
 
 	"""Member data adapter.
 	"""
 
 	adapts(IUser, IMemberDataTool)
 	implements(IMember)
+	
+	portal_type = 'Member Data'
 
 	security = ClassSecurityInfo()
 	
@@ -135,6 +97,10 @@ class MemberAdapter(BaseMemberAdapter):
 		memberGivenName = self.getProperty('given_name', default='')
 		memberId = self.getId()
 		return formatFullName(memberName, memberGivenName, memberId, nameBefore=nameBefore)
+
+	def getMemberSortableFormat(self) :
+		""" Return a specific format of full name for alphabetical sorting """
+		return self.getMemberFullName(nameBefore = 1).lower()
     
 
 InitializeClass(MemberAdapter)
