@@ -77,26 +77,26 @@ class MembershipTool( BaseTool ):
 	memberareaPortalType = 'Folder'
 	
 
-	security.declareProtected(SetOwnPassword, 'setPassword')
-	def setPassword(self, password, domains=None):
-		'''Allows the authenticated member to set his/her own password.
-		'''
-		user_folder = self.__getPUS()
-		if user_folder.meta_type == 'Group User Folder' :
-			registration = getToolByName(self, 'portal_registration', None)
-			if not self.isAnonymousUser():
-				member = self.getAuthenticatedMember()
-				if registration:
-					failMessage = registration.testPasswordValidity(password)
-					if failMessage is not None:
-						raise 'Bad Request', failMessage
-				member.setSecurityProfile(password=password, domains=domains)
-				member.changePassword(password)
-			else:
-				raise 'Bad Request', 'Not logged in.'
-			
-		else :
-			BaseTool.setPassword(self, password, domains=None)
+#	security.declareProtected(SetOwnPassword, 'setPassword')
+#	def setPassword(self, password, domains=None):
+#		'''Allows the authenticated member to set his/her own password.
+#		'''
+#		user_folder = self.__getPUS()
+#		if user_folder.meta_type == 'Group User Folder' :
+#			registration = getToolByName(self, 'portal_registration', None)
+#			if not self.isAnonymousUser():
+#				member = self.getAuthenticatedMember()
+#				if registration:
+#					failMessage = registration.testPasswordValidity(password)
+#					if failMessage is not None:
+#						raise 'Bad Request', failMessage
+#				member.setSecurityProfile(password=password, domains=domains)
+#				member.changePassword(password)
+#			else:
+#				raise 'Bad Request', 'Not logged in.'
+#			
+#		else :
+#			BaseTool.setPassword(self, password, domains=None)
 
 
 

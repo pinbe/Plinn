@@ -40,6 +40,7 @@ from Products.CMFCore.interfaces import IRegistrationTool
 #from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
 from Products.CMFCore.DynamicType import DynamicType
+from Products.CMFCore.exceptions import BadRequest
 from utils import formatFullName
 from permissions import SetMemberProperties, SetMemberPassword
 
@@ -117,9 +118,22 @@ class MemberAdapter(BaseMemberAdapter, SimpleItem, DynamicType, CMFCatalogAware)
 		registration = getUtility(IRegistrationTool)
 		failMessage = registration.testPasswordValidity(password)
 		if failMessage is not None :
-			raise ValueError(failMessage)
+			raise BadRequest(failMessage)
 
 		self.setSecurityProfile(password=password, domains=domains)
+
+	security.declarePrivate('setSecurityProfile')
+	def setSecurityProfile(self, password=None, roles=None, domains=None):
+		"""Set the user's basic security profile"""
+		u = self.getUser()
+		# This is really hackish.  The Zope User API needs methods
+		# for performing these functions.
+		if password is not None:
+			u.setPassword(password)
+		if roles is not None:
+			u.setRoles(roles)
+		if domains is not None:
+			u.setDomains(domains)
 
 	security.declarePrivate('manage_beforeDelete')
 	def manage_beforeDelete(self) :
@@ -177,20 +191,21 @@ class MemberData (BaseData, DynamicType, CMFCatalogAware):
 #		if user_folder.meta_type == 'Group User Folder' :
 #			self.changePassword(password)
 	
-	
+
+#migré	
 	#XXX restore the previous implementation for GRUF 2 I'll remove that later...
-	security.declarePrivate('setSecurityProfile')
-	def setSecurityProfile(self, password=None, roles=None, domains=None):
-		"""Set the user's basic security profile"""
-		u = self.getUser()
-		# This is really hackish.  The Zope User API needs methods
-		# for performing these functions.
-		if password is not None:
-			u.__ = password
-		if roles is not None:
-			u.roles = roles
-		if domains is not None:
-			u.domains = domains
+#	security.declarePrivate('setSecurityProfile')
+#	def setSecurityProfile(self, password=None, roles=None, domains=None):
+#		"""Set the user's basic security profile"""
+#		u = self.getUser()
+#		# This is really hackish.  The Zope User API needs methods
+#		# for performing these functions.
+#		if password is not None:
+#			u.__ = password
+#		if roles is not None:
+#			u.roles = roles
+#		if domains is not None:
+#			u.domains = domains
 
 # migré
 #	def getMemberFullName(self, nameBefore=1) :
