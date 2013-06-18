@@ -51,6 +51,8 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
 	
 	security = ClassSecurityInfo()
 	
+	__getitem__ = PlinnFolder.__getitem__
+	
 	def __init__(self, id, title='') :
 		PlinnFolder.__init__(self, id, title)
 		BTreeFolder2Base.__init__(self, id)
