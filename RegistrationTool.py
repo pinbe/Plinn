@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #######################################################################################
 #   Plinn - http://plinn.org                                                          #
-#   Copyright (C) 2005-2007  Benoît PIN <benoit.pin@ensmp.fr>                         #
+#   © 2005-2013  Benoît PIN <pin@cri.ensmp.fr>                                        #
 #                                                                                     #
 #   This program is free software; you can redistribute it and/or                     #
 #   modify it under the terms of the GNU General Public License                       #
@@ -17,7 +17,7 @@
 #   along with this program; if not, write to the Free Software                       #
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.   #
 #######################################################################################
-""" Plinn registration tool: implements 3 modes to register members :
+""" Plinn registration tool: implements 3 modes to register members:
 	anonymous, manager, reviewed.
 
 
@@ -29,11 +29,16 @@ from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from Products.CMFDefault.RegistrationTool import RegistrationTool as BaseRegistrationTool
 from AccessControl import ClassSecurityInfo, ModuleSecurityInfo
 from AccessControl.Permission import Permission
+from BTrees.OOBTree import OOBTree
 from Products.CMFCore.permissions import ManagePortal, AddPortalMember
 from Products.CMFCore.exceptions import AccessControl_Unauthorized
 from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.utils import getUtilityByInterfaceName
 from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
+from Products.Plinn.utils import Message as _
+from DateTime import DateTime
 from types import TupleType, ListType
+from uuid import uuid4
 
 security = ModuleSecurityInfo('Products.Plinn.RegistrationTool')
 MODE_ANONYMOUS = 'anonymous'
@@ -72,6 +77,7 @@ class RegistrationTool(BaseRegistrationTool) :
 	def __init__(self) :
 		self._mode = MODE_ANONYMOUS
 		self._chain = ''
+		self._passwordResetRequests = OOBTree()
 	
 	security.declareProtected(ManagePortal, 'configureTool')
 	def configureTool(self, registration_mode, chain, REQUEST=None) :
@@ -183,5 +189,52 @@ class RegistrationTool(BaseRegistrationTool) :
 		""" notify member creation """
 		member.notifyWorkflowCreated()
 		member.indexObject()
+	
+
+	security.declarePublic('requestPasswordReset')
+	def requestPasswordReset(self, userid):
+		""" add uuid / (userid, expiration) pair and return uuid """
+		self.clearExpiredPasswordResetRequests()
+		mtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IMembershipTool')
+		if mtool.getMemberById(userid) :
+			uuid = str(uuid4())
+			self._passwordResetRequests[uuid] = (userid, DateTime() + 1)
+			return uuid
+	
+	security.declarePrivate('clearExpiredPasswordResetRequests')
+	def clearExpiredPasswordResetRequests(self):
+		now = DateTime()
+		for uuid, record in self._passwordResetRequest.items() :
+			userid, date = record
+			if date < now :
+				del self._passwordResetRequests[uuid]
+	
+	
+	security.declarePublic('resetPassword')
+	def resetPassword(self, userid, uuid, password, confirm) :
+		record = self._passwordResetRequests.get(uuid)
+		if not record :
+			return _('Invalid reset password request.')
+		
+		recUserid, expiration = record
+		
+		if recUserid != userid :
+			return _('Invalid userid.')
+		
+		if expiration < now :
+			self.clearExpiredPasswordResetRequests()
+			return _('Your reset password request has expired. You can ask a new one.')
+		
+		msg = self.testPasswordValidity(password, confirm=confirm)
+		if not msg : # None if everything ok. Err message otherwise.
+			mtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IMembershipTool')
+			member = mtool.getMemberById(userid)
+			if member :
+				member.setSecurityProfile(password=password)
+				del self._passwordResetRequests[uuid]
+				return _('Password successfully resetted.')
+			else :
+				return _('"%s" username not found.') % userid
+			
 		
 InitializeClass(RegistrationTool)
