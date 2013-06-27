@@ -33,6 +33,7 @@ from cgi import escape
 from OFS import Moniker
 from ZODB.POSException import ConflictError
 import OFS.subscribers
+from webdav.NullResource import NullResource
 from zope.event import notify
 from zope.lifecycleevent import ObjectCopiedEvent
 try :
@@ -81,6 +82,18 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
 	def __init__( self, id, title='' ) :
 		PortalFolder.__init__(self, id)
 		DefaultDublinCoreImpl.__init__(self, title = title)
+	
+    def __getitem__(self, key):
+        if key in self:
+            return self._getOb(key, None)
+        request = getattr(self, 'REQUEST', None)
+        if not isinstance(request, (str, NoneType)):
+            method=request.get('REQUEST_METHOD', 'GET')
+            if (request.maybe_webdav_client and
+                method not in ('GET', 'POST')):
+                return NullResource(self, key, request).__of__(self)
+        raise KeyError, key
+    
 		
 	security.declarePublic('allowedContentTypes')
 	def allowedContentTypes(self):
