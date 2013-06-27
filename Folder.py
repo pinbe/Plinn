@@ -48,7 +48,7 @@ from OFS.event import ObjectWillBeMovedEvent
 from zope.component.factory import Factory
 from Acquisition import aq_base, aq_inner, aq_parent
 
-from types import StringType
+from types import StringType, NoneType
 from Products.CMFCore.permissions import ListFolderContents, View, ViewManagementScreens,\
                                          ManageProperties, AddPortalFolders, AddPortalContent,\
                                          ManagePortal, ModifyPortalContent
@@ -63,6 +63,7 @@ from Products.CMFCore.interfaces import IContentish
 
 from utils import _checkMemberPermission
 from utils import Message as _
+from utils import makeValidId
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 
@@ -91,7 +92,8 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
             method=request.get('REQUEST_METHOD', 'GET')
             if (request.maybe_webdav_client and
                 method not in ('GET', 'POST')):
-                return NullResource(self, key, request).__of__(self)
+                id = makeValidId(self, key)
+                return NullResource(self, id, request).__of__(self)
         raise KeyError, key
     
         
