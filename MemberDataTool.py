@@ -154,7 +154,8 @@ class MemberAdapter(BaseMemberAdapter, SimpleItem, DynamicType, CMFCatalogAware)
 		return super(MemberAdapter, self).getId()
 
 	def getRoles(self):
-		return super(MemberAdapter, self).getRoles()
+		return self._user.aq_inner.getRoles()
+		# return super(MemberAdapter, self).getRoles()
 
 	def getRolesInContext(self, object):
 		return super(MemberAdapter, self).getRolesInContext(object)
