@@ -17,8 +17,8 @@
     directory="Products.Epoz:epoz/epoz_i18n"/>
  <object name="epoz_images" meta_type="Filesystem Directory View"
     directory="Products.Epoz:epoz/epoz_images"/>
- <object name="fckeditor" meta_type="Filesystem Directory View"
-    directory="Products.FCKEditor:skins"/>
+ <object name="ckeditor" meta_type="Filesystem Directory View"
+    directory="Products.ckeditor:skins"/>
  <object name="jscalendar" meta_type="Filesystem Directory View"
     directory="Products.Plinn:skins/jscalendar"/>
  <object name="mimetypes_icons" meta_type="Filesystem Directory View"
@@ -68,7 +68,7 @@
   <layer name="epoz_core"/>
   <layer name="epoz_i18n"/>
   <layer name="epoz_images"/>
-  <layer name="fckeditor"/>
+  <layer name="ckeditor"/>
   <layer name="mosaic_document"/>
   <layer name="mosaic_blocks"/>
   <layer name="mosaic_slots"/>
