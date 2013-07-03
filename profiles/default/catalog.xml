@@ -18,7 +18,7 @@
   <property name="index_naive_time_as_local">True</property>
  </index>
  <index name="DateTimeOriginal" meta_type="DateIndex">
-  <property name="index_naive_time_as_local">False</property>
+  <property name="index_naive_time_as_local">True</property>
  </index>
  <index name="Description" meta_type="ZCTextIndex">
   <indexed_attr value="Description"/>
@@ -44,6 +44,9 @@
  <index name="allowedRolesAndUsers" meta_type="KeywordIndex">
   <indexed_attr value="allowedRolesAndUsers"/>
  </index>
+ <index name="cmf_uid" meta_type="FieldIndex">
+  <indexed_attr value="cmf_uid"/>
+ </index>
  <index name="created" meta_type="DateIndex">
   <property name="index_naive_time_as_local">True</property>
  </index>
@@ -68,18 +71,27 @@
  <index name="getMemberSortableFormat" meta_type="FieldIndex">
   <indexed_attr value="getMemberSortableFormat"/>
  </index>
+ <index name="hiddenForAnonymous" meta_type="FieldIndex">
+  <indexed_attr value="hiddenForAnonymous"/>
+ </index>
  <index name="in_reply_to" meta_type="FieldIndex">
   <indexed_attr value="in_reply_to"/>
  </index>
  <index name="listCreators" meta_type="KeywordIndex">
   <indexed_attr value="listCreators"/>
  </index>
+ <index name="meta_type" meta_type="FieldIndex">
+  <indexed_attr value="meta_type"/>
+ </index>
  <index name="modified" meta_type="DateIndex">
   <property name="index_naive_time_as_local">True</property>
  </index>
- <index name="path" meta_type="PathIndex"/>
+ <index name="path" meta_type="ExtendedPathIndex"/>
  <index name="portal_type" meta_type="FieldIndex">
   <indexed_attr value="portal_type"/>
+ </index>
+ <index name="position" meta_type="FieldIndex">
+  <indexed_attr value="position"/>
  </index>
  <index name="review_state" meta_type="FieldIndex">
   <indexed_attr value="review_state"/>
@@ -87,9 +99,12 @@
  <index name="start" meta_type="DateIndex">
   <property name="index_naive_time_as_local">True</property>
  </index>
+ <index name="tiles_available" meta_type="FieldIndex">
+  <indexed_attr value="tiles_available"/>
+ </index>
  <column value="CreationDate"/>
+ <column value="Creator"/>
  <column value="Date"/>
- <column value="DateTimeOriginal"/>
  <column value="Description"/>
  <column value="EffectiveDate"/>
  <column value="ExpirationDate"/>
@@ -97,6 +112,7 @@
  <column value="Subject"/>
  <column value="Title"/>
  <column value="Type"/>
+ <column value="cmf_uid"/>
  <column value="created"/>
  <column value="effective"/>
  <column value="end"/>
@@ -105,9 +121,12 @@
  <column value="getId"/>
  <column value="getMemberFullName"/>
  <column value="getMemberSortableFormat"/>
+ <column value="getThumbnailSize"/>
+ <column value="hiddenForAnonymous"/>
  <column value="listCreators"/>
  <column value="modified"/>
  <column value="portal_type"/>
+ <column value="position"/>
  <column value="review_state"/>
  <column value="start"/>
 </object>

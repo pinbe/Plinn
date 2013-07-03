@@ -269,16 +269,10 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
         """ query catalog and returns brains of contents.
             Requires ExtendedPathIndex
         """
-        #ctool = getToolByName(self, 'portal_catalog')
         ctool = getUtilityByInterfaceName('Products.CMFCore.interfaces.ICatalogTool')
-        #print ctool.absolute_url()
         contentFilter['path'] = {'query':'/'.join(self.getPhysicalPath()),
                                 'depth':1}
-        try :
-            return ctool(sort_on='position', **contentFilter)
-        except :
-            return ctool(**contentFilter)
-    
+        return ctool(sort_on='position', **contentFilter)    
 
     security.declarePublic('synContentValues')
     def synContentValues(self):

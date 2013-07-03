@@ -10,4 +10,9 @@
         provides="Products.CMFCore.interfaces.IMember"
         factory="Products.Plinn.MemberDataTool.MemberAdapter"
         />
+    <adapter
+        for="Products.CMFCore.interfaces.ICatalogAware
+             Products.CMFCore.interfaces.ICatalogTool"
+        provides="Products.CMFCore.interfaces.IIndexableObject"
+        factory=".catalog_adapters.PlinnIndexableObjectWrapper" />
 </configure>
