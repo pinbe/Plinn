@@ -54,6 +54,7 @@ from Products.CMFCore.permissions import ListFolderContents, View, ViewManagemen
                                          ManagePortal, ModifyPortalContent
 from permissions import DeletePortalContents, DeleteObjects, DeleteOwnedObjects, SetLocalRoles, CheckMemberPermission
 from Products.CMFCore.utils import _checkPermission, getToolByName
+from Products.CMFCore.utils import getUtilityByInterfaceName
 from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
 from Products.CMFCore.PortalFolder import PortalFolder, ContentFilter
 from Products.CMFDefault.DublinCore import DefaultDublinCoreImpl
@@ -268,10 +269,15 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
         """ query catalog and returns brains of contents.
             Requires ExtendedPathIndex
         """
-        ctool = getToolByName(self, 'portal_catalog')
+        #ctool = getToolByName(self, 'portal_catalog')
+        ctool = getUtilityByInterfaceName('Products.CMFCore.interfaces.ICatalogTool')
+        #print ctool.absolute_url()
         contentFilter['path'] = {'query':'/'.join(self.getPhysicalPath()),
                                 'depth':1}
-        return ctool(sort_on='position', **contentFilter)
+        try :
+            return ctool(sort_on='position', **contentFilter)
+        except :
+            return ctool(**contentFilter)
     
 
     security.declarePublic('synContentValues')
