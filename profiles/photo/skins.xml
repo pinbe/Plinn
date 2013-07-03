@@ -49,8 +49,6 @@
     directory="Products.Plinn:skins/photo_theme"/>
  <object name="portfolio" meta_type="Filesystem Directory View"
     directory="Products.Portfolio:skins"/>
- <object name="realis" meta_type="Filesystem Directory View"
-    directory="Products.realis:skins"/>
  <object name="zpt_calendar" meta_type="Filesystem Directory View"
     directory="Products.CMFCalendar:skins/zpt_calendar"/>
  <object name="zpt_content" meta_type="Filesystem Directory View"
