@@ -1,0 +1,9 @@
+/* global_plinn_style.css */
+<dtml-var global_plinn_style.css>
+
+/* personalisation pour l'éditeur
+<dtml-with base_properties> */
+body {
+	padding: 0 0.2em;
+}
+/* </dtml-with> */
