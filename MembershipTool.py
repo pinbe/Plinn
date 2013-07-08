@@ -74,7 +74,7 @@ class MembershipTool( BaseTool ):
 	security.declareProtected(ListPortalMembers, 'getMemberById')
 	
 	
-	memberareaPortalType = 'Folder'
+	memberareaPortalType = 'Huge Plinn Folder'
 	
 
 #	security.declareProtected(SetOwnPassword, 'setPassword')

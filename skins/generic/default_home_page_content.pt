@@ -1,5 +1,0 @@
-<div i18n:domain="plinn" tal:omit-tag="">
-<h1 i18n:translate="">Welcome to Plinn!</h1>
-<p i18n:translate="">This is the default home page.</p>
-<p i18n:translate="">To change the content just select "Edit" in the Tab bar on the top.</p>
-</div>

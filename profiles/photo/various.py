@@ -10,11 +10,8 @@
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.exceptions import BadRequest
 from Products.Plinn.exceptions import WorkflowException
-# TODO : CMF-2.1 compat
-#from Products.PlacelessTranslationService.MessageID import MessageIDFactory
-#_ = MessageIDFactory('plinn')
-translate = lambda msg : msg
-#---
+from Products.Plinn.utils import translate as i18ntranslate
+translate = lambda msg : i18ntranslate(msg, context)
 
 
 # constructs misc objects
@@ -60,14 +57,19 @@ def doActionForOrSkip(*args, **kw) :
 	except WorkflowException : pass
 	
 # home page
-# constructOrSkip(  'Document', site, 'index_html'
-# 				, title =	translate('Home')
-# 				, text_format='html'
-# 				, text=site.default_home_page_content())
-# doActionForOrSkip(site.index_html, 'direct_publish')
+text=[]
+text.append('<h1>%s</h1>' % translate('Welcome to Plinn!'))
+text.append('<p>%s</p>' % translate('This is the default home page.'))
+text.append('<p>%s</p>' % translate('To change the content just select "Edit" in the Tab bar on the top.'))
+text = '\n'.join(text)
+constructOrSkip(  'Document', site, 'index_html'
+				, title =	translate('Home')
+				, text_format='html'
+				, text=text)
+doActionForOrSkip(site.index_html, 'direct_publish')
 
 # default folders
-constructOrSkip('Plinn Folder', site, 'Members', title =	translate('Members'))
+constructOrSkip('Huge Plinn Folder', site, 'Members', title =	translate('Members'))
 #constructOrSkip('Plinn Folder', site, 'global_settings', title = translate('Portlets'))
 if not hasattr(site, 'global_settings') :
 	site.manage_addProduct['OFSP'].manage_addFolder('global_settings')
