@@ -3,7 +3,8 @@
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title">Spacer Slot</property>
  <property name="description">Spacer Slot for Mosaic Document</property>
- <property name="icon_expr">string:${portal_url}/mosaic_tool/spacer_icon.gif</property>
+ <property
+    name="icon_expr">string:${portal_url}/mosaic_tool/spacer_icon.gif</property>
  <property name="content_meta_type">Spacer Slot</property>
  <property name="product">MosaicDocument</property>
  <property name="factory">addSpacerSlot</property>

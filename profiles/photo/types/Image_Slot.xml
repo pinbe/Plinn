@@ -3,7 +3,8 @@
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title">Image Slot</property>
  <property name="description">Image Slot for Mosaic Document</property>
- <property name="icon_expr">string:${portal_url}/mosaic_tool/photo_icon.gif</property>
+ <property
+    name="icon_expr">string:${portal_url}/mosaic_tool/photo_icon.gif</property>
  <property name="content_meta_type">Image Slot</property>
  <property name="product">MosaicDocument</property>
  <property name="factory">addImageSlot</property>
