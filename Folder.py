@@ -33,7 +33,6 @@ from cgi import escape
 from OFS import Moniker
 from ZODB.POSException import ConflictError
 import OFS.subscribers
-from webdav.NullResource import NullResource
 from zope.event import notify
 from zope.lifecycleevent import ObjectCopiedEvent
 try :
@@ -84,20 +83,7 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
     def __init__( self, id, title='' ) :
         PortalFolder.__init__(self, id)
         DefaultDublinCoreImpl.__init__(self, title = title)
-    
-    def __getitem__(self, key):
-        if key in self:
-            return self._getOb(key, None)
-        request = getattr(self, 'REQUEST', None)
-        if not isinstance(request, (str, NoneType)):
-            method=request.get('REQUEST_METHOD', 'GET')
-            if (request.maybe_webdav_client and
-                method not in ('GET', 'POST')):
-                id = makeValidId(self, key)
-                return NullResource(self, id, request).__of__(self)
-        raise KeyError, key
-    
-        
+            
     security.declarePublic('allowedContentTypes')
     def allowedContentTypes(self):
         """
@@ -295,6 +281,15 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
         if REQUEST is not None:
             return self.folder_contents( # XXX: ick!
                 self, REQUEST, portal_status_message="Folder added")
+    
+    
+    security.declareProtected(AddPortalContent, 'put_upload')
+    def put_upload(self, REQUEST, RESPONSE):
+        """ Upload a content thru webdav put method.
+            The default behavior (NullRessource.PUT + PortalFolder.PUT_factory)
+            disallow files names with '_' at the begining.
+        """
+        pass
 
     
 #   ## overload to maintain ownership if authenticated user has 'Manage portal' permission
