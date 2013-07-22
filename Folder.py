@@ -321,7 +321,12 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
         if typ is None:
             typ, enc=guess_content_type(validId, body)
 
-        ob = self.PUT_factory(validId, typ, body)
+        if self.checkIdAvailable(validId) :
+            ob = self.PUT_factory(validId, typ, body)
+            self._setObject(validId, ob)
+            ob = self._getOb(validId)
+        else :
+            ob = self._getOb(validId)
 
         # We call _verifyObjectPaste with verify_src=0, to see if the
         # user can create this type of object (and we don't need to
@@ -333,11 +338,8 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
                     (ob.__class__, repr(self), sys.exc_info()[1],)
              raise Unauthorized, sMsg
 
-        # Delegate actual PUT handling to the new object,
-        # SDS: But just *after* it has been stored.
-        self._setObject(validId, ob)
-        ob = self._getOb(validId)
         ob.PUT(REQUEST, RESPONSE)
+        ob.orig_name = fileName
 
         RESPONSE.setStatus(201)
         RESPONSE.setBody('')
