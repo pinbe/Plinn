@@ -27,6 +27,7 @@ from OFS.CopySupport import CopyError, eNoData, _cb_decode, eInvalid, eNotFound,
                             eNotSupported, sanity_check, cookie_path
 from App.Dialogs import MessageDialog
 from zExceptions import BadRequest
+from zExceptions import Unauthorized
 import sys
 import warnings
 from cgi import escape
@@ -66,6 +67,11 @@ from utils import Message as _
 from utils import makeValidId
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
+from ZServer import LARGE_FILE_THRESHOLD
+from webdav.interfaces import IWriteLock
+from webdav.common import Locked
+from webdav.common import PreconditionFailed
+from zope.contenttype import guess_content_type
 
 
 class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
@@ -289,7 +295,53 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
             The default behavior (NullRessource.PUT + PortalFolder.PUT_factory)
             disallow files names with '_' at the begining.
         """
-        pass
+
+        self.dav__init(REQUEST, RESPONSE)
+
+        fileName = REQUEST.getHeader('X-File-Name', '')
+        validId = makeValidId(self, fileName, allow_dup=True)
+
+        ifhdr = REQUEST.get_header('If', '')
+        if self.wl_isLocked():
+            if ifhdr:
+                self.dav__simpleifhandler(REQUEST, RESPONSE, col=1)
+            else:
+                raise Locked
+        elif ifhdr:
+            raise PreconditionFailed
+
+        if int(REQUEST.get('CONTENT_LENGTH') or 0) > LARGE_FILE_THRESHOLD:
+            file = REQUEST['BODYFILE']
+            body = file.read(LARGE_FILE_THRESHOLD)
+            file.seek(0)
+        else:
+            body = REQUEST.get('BODY', '')
+
+        typ=REQUEST.get_header('content-type', None)
+        if typ is None:
+            typ, enc=guess_content_type(validId, body)
+
+        ob = self.PUT_factory(validId, typ, body)
+
+        # We call _verifyObjectPaste with verify_src=0, to see if the
+        # user can create this type of object (and we don't need to
+        # check the clipboard.
+        try:
+            self._verifyObjectPaste(ob.__of__(self), 0)
+        except CopyError:
+             sMsg = 'Unable to create object of class %s in %s: %s' % \
+                    (ob.__class__, repr(self), sys.exc_info()[1],)
+             raise Unauthorized, sMsg
+
+        # Delegate actual PUT handling to the new object,
+        # SDS: But just *after* it has been stored.
+        self._setObject(validId, ob)
+        ob = self._getOb(validId)
+        ob.PUT(REQUEST, RESPONSE)
+
+        RESPONSE.setStatus(201)
+        RESPONSE.setBody('')
+        return RESPONSE
 
     
 #   ## overload to maintain ownership if authenticated user has 'Manage portal' permission
