@@ -325,7 +325,9 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
             ob = self.PUT_factory(validId, typ, body)
             self._setObject(validId, ob)
             ob = self._getOb(validId)
+            httpRespCode = 201
         else :
+            httpRespCode = 200
             ob = self._getOb(validId)
 
         # We call _verifyObjectPaste with verify_src=0, to see if the
@@ -340,10 +342,13 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
 
         ob.PUT(REQUEST, RESPONSE)
         ob.orig_name = fileName
-
-        RESPONSE.setStatus(201)
-        RESPONSE.setBody('')
-        return RESPONSE
+        
+        
+        ti = ob.getTypeInfo()
+        method_id = ti.queryMethodID('jsupload_snippet')
+        meth = method_id and getattr(ob, method_id) or (lambda : 'Not implemented')
+        RESPONSE.setStatus(httpRespCode)
+        return '<![CDATA[%s]]>' % meth()
 
     
 #   ## overload to maintain ownership if authenticated user has 'Manage portal' permission
