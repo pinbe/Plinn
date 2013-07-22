@@ -348,6 +348,7 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
         method_id = ti.queryMethodID('jsupload_snippet')
         meth = method_id and getattr(ob, method_id) or (lambda : 'Not implemented')
         RESPONSE.setStatus(httpRespCode)
+        RESPONSE.setHeader('Content-Type', 'text/xml;;charset=utf-8')
         return '<![CDATA[%s]]>' % meth()
 
     
