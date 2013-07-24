@@ -4,8 +4,11 @@
 // 
 // 
 
+var FormManager;
 
-function FormManager(form, responseTextDest, lazy) {
+(function(){
+	
+FormManager = function(form, responseTextDest, lazy) {
 	if (form.elements.namedItem("noAjax")) {return;}
 	
 	this.form = form;
@@ -39,7 +42,7 @@ function FormManager(form, responseTextDest, lazy) {
 		this.onResponseLoad = function(req){ thisManager.restoreField(req); };
 		this.lazyListeners = [];
 	}
-}
+};
 	
 FormManager.prototype.submit = function(evt) {
 	var form = this.form;
@@ -447,5 +450,4 @@ function initForms(baseElement, lazy) {
 	}
 }
 
-
-//registerStartupFunction(initForms);
+}());
