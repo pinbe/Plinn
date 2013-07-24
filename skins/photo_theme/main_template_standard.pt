@@ -114,7 +114,7 @@
 
             <td id="mainCell" width="85%">
 
-              <div class="DesktopStatusBar" tal:condition="request/portal_status_message|nothing">
+              <div id="DesktopStatusBar" tal:condition="request/portal_status_message|nothing">
                 <img src="info.gif" alt="Information" tal:attributes="src here/info.gif/absolute_url" i18n:attributes="alt" />
                 <span tal:content="request/portal_status_message" i18n:translate="">Status message.</span>
               </div>

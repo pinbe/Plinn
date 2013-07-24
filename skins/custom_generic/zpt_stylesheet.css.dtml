@@ -215,7 +215,7 @@ textarea {
 
    
 /* Status messages */
-.DesktopStatusBar  {
+#DesktopStatusBar, .DesktopStatusBar  {
   background-color: &dtml-messageBackgroundColor;;
   border: 1px solid &dtml-messageBorderColor;;
   color: &dtml-messageFontColor;;
@@ -226,7 +226,7 @@ textarea {
   vertical-align: middle;
 }
 
-.DesktopStatusBar img {
+#DesktopStatusBar img, .DesktopStatusBar img {
   vertical-align: middle; 
 }
 
