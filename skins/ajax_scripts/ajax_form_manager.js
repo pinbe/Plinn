@@ -429,6 +429,14 @@ FormManager.prototype.loadResponse = function(req) {
 		onAfterPopulate = eval(onAfterPopulate);
 	}
 	onAfterPopulate();
+	this.scrollToPortalMessage();
+};
+
+FormManager.prototype.scrollToPortalMessage = function() {
+	var psm = document.getElementById('DesktopStatusBar');
+	var msgOffset = psm.offsetTop;
+	smoothScroll(window.scrollY, msgOffset);
+	shake(psm, 10, 1000);
 };
 
 FormManager.prototype._fitField = function(evt) {
@@ -448,6 +456,71 @@ function initForms(baseElement, lazy) {
 	for (i = 0 ; i < forms.length ; i++ ) {
 		f = new FormManager(forms[i], dest, lazy);
 	}
+}
+
+function smoothScroll(from, to) {
+	var intervalId;
+	var step = 25;
+	var pos = from;
+	var dir;
+	if (to > from) {
+		dir = 1;
+	}
+	else {
+		dir = -1;
+	}
+
+	var jump = function() {
+		window.scroll(0, pos);
+		pos = pos + step * dir;
+		if ((dir === 1 && pos >= to) ||
+			(dir === -1 && pos <= to)) {
+			window.clearInterval(intervalId);
+			window.scroll(0, to);
+		}
+	}
+	intervalId = window.setInterval(jump, 10);
+}
+
+/* adapted from http://xahlee.info/js/js_shake_box.html */
+function shake(e, distance, time) {
+    // Handle arguments
+    if (!time) time = 500;
+    if (!distance) distance = 5;
+
+    // Save the original style of e, Make e relatively positioned, Note the animation start time, Start the animation
+    var originalStyle = e.style.cssText;
+    e.style.position = "relative";
+    var start = (new Date()).getTime();
+    animate();
+
+    // This function checks the elapsed time and updates the position of e.
+    // If the animation is complete, it restores e to its original state.
+    // Otherwise, it updates e's position and schedules itself to run again.
+    function animate() {
+        var now = (new Date()).getTime();
+        // Get current time
+        var elapsed = now-start;
+        // How long since we started
+        var fraction = elapsed/time;
+        // What fraction of total time?
+        if (fraction < 1) {
+            // If the animation is not yet complete
+            // Compute the x position of e as a function of animation
+            // completion fraction. We use a sinusoidal function, and multiply
+            // the completion fraction by 4pi, so that it shakes back and
+            // forth twice.
+            var x = distance * Math.sin(fraction*8*Math.PI);
+            e.style.left = x + "px";
+            // Try to run again in 25ms or at the end of the total time.
+            // We're aiming for a smooth 40 frames/second animation.
+            setTimeout(animate, Math.min(25, time-elapsed));
+        }
+        else {
+            // Otherwise, the animation is complete
+            e.style.cssText = originalStyle // Restore the original style
+        }
+    }
 }
 
 }());
