@@ -478,7 +478,7 @@ function smoothScroll(from, to) {
 			window.clearInterval(intervalId);
 			window.scroll(0, to);
 		}
-	}
+	};
 	intervalId = window.setInterval(jump, 10);
 }
 
@@ -518,7 +518,7 @@ function shake(e, distance, time) {
         }
         else {
             // Otherwise, the animation is complete
-            e.style.cssText = originalStyle // Restore the original style
+            e.style.cssText = originalStyle; // Restore the original style
         }
     }
 }
