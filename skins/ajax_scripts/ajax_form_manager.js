@@ -6,7 +6,7 @@
 
 
 function FormManager(form, responseTextDest, lazy) {
-	if (form.elements.namedItem("noAjax")) return;
+	if (form.elements.namedItem("noAjax")) {return;}
 	
 	this.form = form;
 	this.responseTextDest = responseTextDest;
@@ -26,19 +26,18 @@ function FormManager(form, responseTextDest, lazy) {
 	this.submitButton = null;
 	
 	if (this.lazy) {
-		this.fieldTagName;
-		this.liveFormField;
-		this.pendingEvent;
 		this.form.onclick = function(evt){
 			thisManager.replaceElementByField(evt);
 			thisManager.click(evt);
 		};
-		if (browser.isDOM2Event)
+		if (browser.isDOM2Event) {
 			this.form.onfocus = this.form.onclick;
-		else if (browser.isIE6up)
+		}
+		else if (browser.isIE6up) {
 			this.form.onfocusin = this.form.onclick;
+		}
 		this.onResponseLoad = function(req){ thisManager.restoreField(req); };
-		this.lazyListeners = new Array();
+		this.lazyListeners = [];
 	}
 }
 	
@@ -50,16 +49,18 @@ FormManager.prototype.submit = function(evt) {
 	if (!this.onBeforeSubmit) {
 		var onBeforeSubmit = form.elements.namedItem("onBeforeSubmit");
 		if (onBeforeSubmit) {
-			if (onBeforeSubmit.length)
+			if (onBeforeSubmit.length) {
 				onBeforeSubmit = onBeforeSubmit[0];
+			}
 			this.onBeforeSubmit = eval(onBeforeSubmit.value);
 			bsMessage = this.onBeforeSubmit(thisManager, evt);
 		}
 	}
-	else
+	else {
 		bsMessage = this.onBeforeSubmit(thisManager, evt);
+	}
 	
-	if (bsMessage == 'cancelSubmit') {
+	if (bsMessage === 'cancelSubmit') {
 		try {disableDefault(evt);}
 		catch (e){}
 		return;
@@ -67,41 +68,48 @@ FormManager.prototype.submit = function(evt) {
 
 	if (!this.onResponseLoad) {
 		var onResponseLoad = form.elements.namedItem("onResponseLoad");
-		if (onResponseLoad)
+		if (onResponseLoad) {
 			this.onResponseLoad = eval(onResponseLoad.value);
-		else
+		}
+		else {
 			this.onResponseLoad = this.loadResponse;
+		}
 	}
 
 	var submitButton = this.submitButton;
 	var queryInfo = this.formData2QueryString();
-	var query = queryInfo['query'];
-	this.hasFile = queryInfo['hasFile'];
+	var query = queryInfo.query;
+	this.hasFile = queryInfo.hasFile;
 	
 	
 	if (!this.onAfterPopulate) {
 		var onAfterPopulate = form.elements.namedItem("onAfterPopulate");
-		if (onAfterPopulate)
+		if (onAfterPopulate) {
 			this.onAfterPopulate = onAfterPopulate.value;
-		else
+		}
+		else {
 			this.onAfterPopulate = function() {};
+		}
 	}
 	
 	if (submitButton) {
 		query += submitButton.name + '=' + submitButton.value + '&';
 	}
 	
-	if (window.AJAX_CONFIG && (AJAX_CONFIG & 1 == 1)) {
-		if (form.method.toLowerCase() == 'post')
+	if (window.AJAX_CONFIG && (AJAX_CONFIG & 1 === 1)) {
+		if (form.method.toLowerCase() === 'post') {
 			this._post(query);
-		else
-			this._get(query)
+		}
+		else {
+			this._get(query);
+		}
 	}
-	else
+	else {
 		this._post(query);
+	}
 	
 	try {disableDefault(evt);}
-	catch (e){}
+	catch (e2){}
 };
 
 FormManager.prototype._post = function(query) {
@@ -117,11 +125,14 @@ FormManager.prototype._post = function(query) {
 				break;
 			case 4 :
 				hideProgressImage();
-				if (req.status == 200 || req.status == 204)
+				if (req.status === 200 || req.status === 204) {
 					thisManager.onResponseLoad(req);
-				else
+				}
+				else {
 					alert('Error: ' + req.status);
-		};
+				}
+				break;
+		}
 	};
 	var url = this.form.action;
 	req.open("POST", url, true);
@@ -132,14 +143,14 @@ FormManager.prototype._post = function(query) {
 FormManager.prototype._get = function(query) {
 	// send form by browser location
 	var url = this.form.action;
-	url += '?' + query
+	url += '?' + query;
 	linkHandler.loadUrl(url);
 };
 
 
 FormManager.prototype.click = function(evt) {
 	var target = getTargetedObject(evt);
-	if(target.type == "submit" || target.type == "image") {
+	if(target.type === "submit" || target.type === "image") {
 		this.submitButton = target;
 		disablePropagation(evt);
 	}
@@ -149,9 +160,10 @@ FormManager.prototype.replaceElementByField = function(evt) {
 	evt = getEventObject(evt);
 	var ob = getTargetedObject(evt);
 	var eventType = evt.type;
-	if (eventType == 'focus' || eventType == 'focusin') {
-		if (this.liveFormField && ob.tagName != 'INPUT')
+	if (eventType === 'focus' || eventType === 'focusin') {
+		if (this.liveFormField && ob.tagName !== 'INPUT') {
 			this.pendingEvent = [ob, 'click'];
+		}
 		return;
 	}
 	var fieldName = ob.getAttribute('id');
@@ -159,11 +171,15 @@ FormManager.prototype.replaceElementByField = function(evt) {
 		this.fieldTagName = ob.tagName;
 		var tabIndex = ob.tabIndex;
 		var text;
-		if (ob.firstChild && ob.firstChild.className == 'hidden_value')
+		if (ob.firstChild && ob.firstChild.className === 'hidden_value') {
 		    text = ob.firstChild.innerHTML;
-		else
+		}
+		else {
 		    text = ob.innerHTML;
+		}
 		disablePropagation(evt);
+		var parent;
+		thisManager = this;
 		switch (ob.tagName) {
 			case 'SPAN' :
 				// create input element
@@ -180,7 +196,7 @@ FormManager.prototype.replaceElementByField = function(evt) {
 				//inputText.setAttribute("size", text.length);
 
 				// replacement
-				var parent = ob.parentNode;
+				parent = ob.parentNode;
 				parent.replaceChild(inputText, ob);
 
 				inputText.focus();
@@ -189,7 +205,6 @@ FormManager.prototype.replaceElementByField = function(evt) {
 				inputText.tabIndex = tabIndex;
 				inputText.className = 'live_field';
 				this.liveFormField = inputText;
-				var thisManager = this;
 				this.lazyListeners.push({'element': inputText, 'eventName' : 'blur', 'handler': function(){ thisManager.submit();}});
 				this.lazyListeners.push({'element': inputText, 'eventName' : 'keypress', 'handler': function(evt){ thisManager._fitField(evt);}});
 				this._addLazyListeners();
@@ -206,7 +221,7 @@ FormManager.prototype.replaceElementByField = function(evt) {
 				ta.value = text;
 
 				// replacement
-				var parent = ob.parentNode;
+				parent = ob.parentNode;
 				parent.replaceChild(ta, ob);
 
 				ta.focus();
@@ -214,27 +229,26 @@ FormManager.prototype.replaceElementByField = function(evt) {
 				ta.setAttribute('name', fieldName);
 				ta.tabIndex = tabIndex;
 				this.liveFormField = ta;
-				var thisManager = this;
 				this.lazyListeners.push({'element': ta, 'eventName' : 'blur', 'handler': function(){ thisManager.submit();}});
 				this._addLazyListeners();
 				break;
-				
-				
-		};
+		}
 	}
 };
 
 FormManager.prototype._addLazyListeners = function() {
-	for (var i=0 ; i<this.lazyListeners.length ; i++) {
-		var handlerInfo = this.lazyListeners[i];
-		addListener(handlerInfo['element'], handlerInfo['eventName'], handlerInfo['handler']);
+	var i, handlerInfo;
+	for (i=0 ; i<this.lazyListeners.length ; i++) {
+		handlerInfo = this.lazyListeners[i];
+		addListener(handlerInfo.element, handlerInfo.eventName, handlerInfo.handler);
 	}
 };
 
 FormManager.prototype._removeLazyListeners = function() {
-	for (var i=0 ; i<this.lazyListeners.length ; i++) {
-		var handlerInfo = this.lazyListeners[i];
-		removeListener(handlerInfo['element'], handlerInfo['eventName'], handlerInfo['handler']);
+	var i, handlerInfo;
+	for (i=0 ; i<this.lazyListeners.length ; i++) {
+		handlerInfo = this.lazyListeners[i];
+		removeListener(handlerInfo.element, handlerInfo.eventName, handlerInfo.handler);
 	}
 };
 
@@ -242,11 +256,12 @@ FormManager.prototype._removeLazyListeners = function() {
 FormManager.prototype.restoreField = function(req) {
 	var text;
 	var input = this.liveFormField;
-	if (req.status == 200) {
-		if (req.getResponseHeader('Content-Type').indexOf('text/xml') != -1) {
+	if (req.status === 200) {
+		if (req.getResponseHeader('Content-Type').indexOf('text/xml') !== -1) {
 			var out = '..........';
-			if (req.responseXML.documentElement.firstChild)
+			if (req.responseXML.documentElement.firstChild) {
 				out = req.responseXML.documentElement.firstChild.nodeValue;
+			}
 			
 			switch (req.responseXML.documentElement.nodeName) {
 				case 'computedField':
@@ -259,18 +274,19 @@ FormManager.prototype.restoreField = function(req) {
 					input.focus();
 					this._addLazyListeners();
 					return false;
-					break;
 			}
 		}
 		else {
 			text = req.responseText;
 		}
 	}
-	else
+	else {
 		text = '';
+	}
 	
-	if (!text.match(/\w/))
+	if (!text.match(/\w/)) {
 		text = '..........';
+	}
 	
 	var field = document.createElement(this.fieldTagName);
 	field.innerHTML = text;
@@ -282,8 +298,9 @@ FormManager.prototype.restoreField = function(req) {
 	parent.replaceChild(field, input);
 	this.liveFormField = null;
 	
-	if (this.pendingEvent)
+	if (this.pendingEvent) {
 		raiseMouseEvent(this.pendingEvent[0], this.pendingEvent[1]);
+	}
 	return true;
 };
 
@@ -293,26 +310,29 @@ FormManager.prototype.formData2QueryString = function() {
 	var form = this.form;
 	var strSubmit = '', formElem, elements;
 	var hasFile = false;
+	var i;
 
-	if (!this.lazy)
+	if (!this.lazy) {
 		elements = form.elements;
+	}
 	else {
-		elements = new Array();
+		elements = [];
 		var formElements = form.elements;
-		for (var i = 0; i < formElements.length; i++) {
+		for (i = 0; i < formElements.length; i++) {
 			formElem = formElements[i];
 			switch (formElem.type) {
 				case 'hidden':
 					elements.push(formElem);
 					break;
 				default :
-					if (formElem == this.liveFormField)
+					if (formElem === this.liveFormField) {
 						elements.push(formElem);
-			};
+					}
+			}
 		}
 	}
-	
-	for (var i = 0; i < elements.length; i++) {
+
+	for (i = 0; i < elements.length; i++) {
 		formElem = elements[i];
 		switch (formElem.type) {
 			// text, select, hidden, password, textarea elements
@@ -325,28 +345,33 @@ FormManager.prototype.formData2QueryString = function() {
 				break;
 			case 'radio':
 			case 'checkbox':
-				if (formElem.checked)
+				if (formElem.checked) {
 					strSubmit += formElem.name + '=' + encodeURIComponent(formElem.value) + '&';
+				}
 				break;
 			case 'select-multiple':
 				var options = formElem.getElementsByTagName("OPTION"), option;
-				for (var j = 0 ; j < options.length ; j++) {
+				var j;
+				for (j = 0 ; j < options.length ; j++) {
 					option = options[j];
-					if (option.selected)
+					if (option.selected) {
 						strSubmit += formElem.name + '=' + encodeURIComponent(option.value) + '&';
+					}
 				}
 				break;
 			case 'file':
-				if (formElem.value)
+				if (formElem.value) {
 					hasFile = true;
+				}
 				break;
-		};
+		}
 	}
 	return {'query' : strSubmit, 'hasFile' : hasFile};
 };
 
 FormManager.prototype.loadResponse = function(req) {
-	if (req.getResponseHeader('Content-Type').indexOf('text/xml') != -1) {
+	var scripts;
+	if (req.getResponseHeader('Content-Type').indexOf('text/xml') !== -1) {
 		switch(req.responseXML.documentElement.nodeName) {
 			case 'fragments' :
 				if (this.hasFile) {
@@ -363,16 +388,19 @@ FormManager.prototype.loadResponse = function(req) {
 					return;
 				}
 				var fragments = req.responseXML.documentElement.childNodes;
-				var fragment, dest, scripts;
-				for (var i=0 ; i<fragments.length ; i++) {
+				var fragment, dest;
+				var i;
+				for (i=0 ; i<fragments.length ; i++) {
 					fragment = fragments[i];
-					if (fragment.nodeName == 'fragment') {
+					if (fragment.nodeName === 'fragment') {
 						dest = document.getElementById(fragment.getAttribute('id'));
 						dest.innerHTML = fragment.firstChild.nodeValue;
 			
 						scripts = dest.getElementsByTagName('script');
-						for (var j=0 ; j < scripts.length ; j++)
+						var j;
+						for (j=0 ; j < scripts.length ; j++) {
 							globalScriptRegistry.loadScript(scripts[j]);
+						}
 					}
 				}
 				break;
@@ -383,15 +411,18 @@ FormManager.prototype.loadResponse = function(req) {
 	}
 	else {
 		this.responseTextDest.innerHTML = req.responseText;
-		var scripts = this.responseTextDest.getElementsByTagName('script');
-		for (var j=0 ; j < scripts.length ; j++)
-			globalScriptRegistry.loadScript(scripts[j]);
+		scripts = this.responseTextDest.getElementsByTagName('script');
+		var k;
+		for (k=0 ; k < scripts.length ; k++) {
+			globalScriptRegistry.loadScript(scripts[k]);
+		}
 	}
 	
 	var onAfterPopulate = this.onAfterPopulate;
-	if (typeof(onAfterPopulate) == "string") {
-		if (window.console)
+	if (typeof(onAfterPopulate) === "string") {
+		if (window.console) {
 			console.warn('Deprecation WARNING onAfterPopulate: ' + onAfterPopulate);
+		}
 		onAfterPopulate = eval(onAfterPopulate);
 	}
 	onAfterPopulate();
@@ -405,13 +436,15 @@ FormManager.prototype._fitField = function(evt) {
 };
 
 function initForms(baseElement, lazy) {
-	if (!baseElement)
+	if (!baseElement) {
 		baseElement = document;
+	}
 	var dest = document.getElementById("mainCell");
 	var forms = baseElement.getElementsByTagName("form");
-	var f;
-	for (var i = 0 ; i < forms.length ; i++ )
+	var f, i;
+	for (i = 0 ; i < forms.length ; i++ ) {
 		f = new FormManager(forms[i], dest, lazy);
+	}
 }
 
 
