@@ -45,9 +45,9 @@
             </tr>
           </table>
         </form>
-        <!-- <p>
+        <p>
           <a href="" tal:attributes="href string:${here/portal_url}/request_password_reset_form" i18n:translate="">Forgot your password?</a>
-        </p> -->
+        </p>
         <p i18n:translate="">
           Having trouble logging in? Make sure to enable cookies in your web
           browser.
