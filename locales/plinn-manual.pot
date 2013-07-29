@@ -411,9 +411,6 @@ msgstr ""
 msgid "Listen"
 msgstr ""
 
-msgid "Loading progress..."
-msgstr ""
-
 msgid "Local Roles"
 msgstr ""
 
