@@ -18,7 +18,7 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.   #
 #######################################################################################
 """ Plinn registration tool: implements 3 modes to register members:
-	anonymous, manager, reviewed.
+    anonymous, manager, reviewed.
 
 
 
@@ -60,181 +60,181 @@ security.declarePublic('DEFAULT_MEMBER_GROUP')
 
 class RegistrationTool(BaseRegistrationTool) :
 
-	""" Create and modify users by making calls to portal_membership.
-	"""
-	
-	meta_type = "Plinn Registration Tool"
-	
-	manage_options = ({'label' : 'Registration mode', 'action' : 'manage_regmode'}, ) + \
-						BaseRegistrationTool.manage_options
-	
-	security = ClassSecurityInfo()
-	
-	security.declareProtected( ManagePortal, 'manage_regmode' )
-	manage_regmode = PageTemplateFile('www/configureRegistrationTool', globals(),
-										__name__='manage_regmode')
+    """ Create and modify users by making calls to portal_membership.
+    """
+    
+    meta_type = "Plinn Registration Tool"
+    
+    manage_options = ({'label' : 'Registration mode', 'action' : 'manage_regmode'}, ) + \
+                        BaseRegistrationTool.manage_options
+    
+    security = ClassSecurityInfo()
+    
+    security.declareProtected( ManagePortal, 'manage_regmode' )
+    manage_regmode = PageTemplateFile('www/configureRegistrationTool', globals(),
+                                        __name__='manage_regmode')
 
-	def __init__(self) :
-		self._mode = MODE_ANONYMOUS
-		self._chain = ''
-		self._passwordResetRequests = OOBTree()
-	
-	security.declareProtected(ManagePortal, 'configureTool')
-	def configureTool(self, registration_mode, chain, REQUEST=None) :
-		""" """
-		
-		if registration_mode not in MODES :
-			raise ValueError, "Unknown mode: " + registration_mode
-		else :
-			self._mode = registration_mode
-			self._updatePortalRoleMappingForMode(registration_mode)
-		
-		wtool = getToolByName(self, 'portal_workflow')
+    def __init__(self) :
+        self._mode = MODE_ANONYMOUS
+        self._chain = ''
+        self._passwordResetRequests = OOBTree()
+    
+    security.declareProtected(ManagePortal, 'configureTool')
+    def configureTool(self, registration_mode, chain, REQUEST=None) :
+        """ """
+        
+        if registration_mode not in MODES :
+            raise ValueError, "Unknown mode: " + registration_mode
+        else :
+            self._mode = registration_mode
+            self._updatePortalRoleMappingForMode(registration_mode)
+        
+        wtool = getToolByName(self, 'portal_workflow')
 
-		if registration_mode == MODE_REVIEWED :
-			if not hasattr(wtool, '_chains_by_type') :
-				wtool._chains_by_type = PersistentMapping()
-			wfids = []
-			chain = chain.strip()
-			
-			if chain == '(Default)' :
-				try : del wtool._chains_by_type['Member Data']
-				except KeyError : pass
-				self._chain = chain
-			else :
-				for wfid in chain.replace(',', ' ').split(' ') :
-					if wfid :
-						if not wtool.getWorkflowById(wfid) :
-							raise ValueError, '"%s" is not a workflow ID.' % wfid
-						wfids.append(wfid)
-	
-				wtool._chains_by_type['Member Data'] = tuple(wfids)
-				self._chain = ', '.join(wfids)
-		else :
-			wtool._chains_by_type['Member Data'] = tuple()
-		
-		if REQUEST :
-			REQUEST.RESPONSE.redirect(self.absolute_url() + '/manage_regmode?manage_tabs_message=Saved changes.')
+        if registration_mode == MODE_REVIEWED :
+            if not hasattr(wtool, '_chains_by_type') :
+                wtool._chains_by_type = PersistentMapping()
+            wfids = []
+            chain = chain.strip()
+            
+            if chain == '(Default)' :
+                try : del wtool._chains_by_type['Member Data']
+                except KeyError : pass
+                self._chain = chain
+            else :
+                for wfid in chain.replace(',', ' ').split(' ') :
+                    if wfid :
+                        if not wtool.getWorkflowById(wfid) :
+                            raise ValueError, '"%s" is not a workflow ID.' % wfid
+                        wfids.append(wfid)
+    
+                wtool._chains_by_type['Member Data'] = tuple(wfids)
+                self._chain = ', '.join(wfids)
+        else :
+            wtool._chains_by_type['Member Data'] = tuple()
+        
+        if REQUEST :
+            REQUEST.RESPONSE.redirect(self.absolute_url() + '/manage_regmode?manage_tabs_message=Saved changes.')
 
-	def _updatePortalRoleMappingForMode(self, mode) :
-	
-		urlTool = getToolByName(self, 'portal_url')
-		portal = urlTool.getPortalObject()
-	
-		if mode in [MODE_ANONYMOUS, MODE_REVIEWED] :
-			portal.manage_permission(AddPortalMember, roles = ['Anonymous', 'Manager'], acquire=1)
-		elif mode == MODE_MANAGER :
-			portal.manage_permission(AddPortalMember, roles = ['Manager', 'UserManager'], acquire=0)
-	
-	security.declarePublic('getMode')
-	def getMode(self) :
-		# """ return current mode """
-		return self._mode[:]
-	
-	security.declarePublic('getWfId')
-	def getWfChain(self) :
-		# """ return current workflow id """
-		return self._chain
-	
-	security.declarePublic('roleMappingMismatch')
-	def roleMappingMismatch(self) :
-		# """ test if the role mapping is correct for the currrent mode """
-		
-		mode = self._mode
-		urlTool = getToolByName(self, 'portal_url')
-		portal = urlTool.getPortalObject()
-				
-		def rolesOfAddPortalMemberPerm() :
-			p=Permission(AddPortalMember, [], portal)
-			return p.getRoles()
-		
-		if mode in [MODE_ANONYMOUS, MODE_REVIEWED] :
-			if 'Anonymous' in rolesOfAddPortalMemberPerm() : return False
-			
-		elif mode == MODE_MANAGER :
-			roles = rolesOfAddPortalMemberPerm()
-			if 'Manager' in roles or 'UserManager' in roles and len(roles) == 1 and type(roles) == TupleType :
-				return False
-		
-		return True
+    def _updatePortalRoleMappingForMode(self, mode) :
+    
+        urlTool = getToolByName(self, 'portal_url')
+        portal = urlTool.getPortalObject()
+    
+        if mode in [MODE_ANONYMOUS, MODE_REVIEWED] :
+            portal.manage_permission(AddPortalMember, roles = ['Anonymous', 'Manager'], acquire=1)
+        elif mode == MODE_MANAGER :
+            portal.manage_permission(AddPortalMember, roles = ['Manager', 'UserManager'], acquire=0)
+    
+    security.declarePublic('getMode')
+    def getMode(self) :
+        # """ return current mode """
+        return self._mode[:]
+    
+    security.declarePublic('getWfId')
+    def getWfChain(self) :
+        # """ return current workflow id """
+        return self._chain
+    
+    security.declarePublic('roleMappingMismatch')
+    def roleMappingMismatch(self) :
+        # """ test if the role mapping is correct for the currrent mode """
+        
+        mode = self._mode
+        urlTool = getToolByName(self, 'portal_url')
+        portal = urlTool.getPortalObject()
+                
+        def rolesOfAddPortalMemberPerm() :
+            p=Permission(AddPortalMember, [], portal)
+            return p.getRoles()
+        
+        if mode in [MODE_ANONYMOUS, MODE_REVIEWED] :
+            if 'Anonymous' in rolesOfAddPortalMemberPerm() : return False
+            
+        elif mode == MODE_MANAGER :
+            roles = rolesOfAddPortalMemberPerm()
+            if 'Manager' in roles or 'UserManager' in roles and len(roles) == 1 and type(roles) == TupleType :
+                return False
+        
+        return True
 
-	security.declareProtected(AddPortalMember, 'addMember')
-	def addMember(self, id, password, roles=(), groups=(DEFAULT_MEMBER_GROUP,), domains='', properties=None) :
-		""" Idem CMFCore but without default role """
-		BaseRegistrationTool.addMember(self, id, password, roles=roles,
-									   domains=domains, properties=properties)
+    security.declareProtected(AddPortalMember, 'addMember')
+    def addMember(self, id, password, roles=(), groups=(DEFAULT_MEMBER_GROUP,), domains='', properties=None) :
+        """ Idem CMFCore but without default role """
+        BaseRegistrationTool.addMember(self, id, password, roles=roles,
+                                       domains=domains, properties=properties)
 
-		if self.getMode() in [MODE_ANONYMOUS, MODE_MANAGER] :
-			gtool = getToolByName(self, 'portal_groups')
-			mtool = getToolByName(self, 'portal_membership')
-			utool = getToolByName(self, 'portal_url')
-			portal = utool.getPortalObject()
-			isGrpManager = mtool.checkPermission(ManageGroups, portal) ## TODO : CMF2.1 compat
-			aclu = self.aq_inner.acl_users
+        if self.getMode() in [MODE_ANONYMOUS, MODE_MANAGER] :
+            gtool = getToolByName(self, 'portal_groups')
+            mtool = getToolByName(self, 'portal_membership')
+            utool = getToolByName(self, 'portal_url')
+            portal = utool.getPortalObject()
+            isGrpManager = mtool.checkPermission(ManageGroups, portal) ## TODO : CMF2.1 compat
+            aclu = self.aq_inner.acl_users
 
-			for gid in groups:
-				g = gtool.getGroupById(gid)
-				if not isGrpManager :				
-					if gid != DEFAULT_MEMBER_GROUP:
-						raise AccessControl_Unauthorized, 'You are not allowed to join arbitrary group.'
+            for gid in groups:
+                g = gtool.getGroupById(gid)
+                if not isGrpManager :               
+                    if gid != DEFAULT_MEMBER_GROUP:
+                        raise AccessControl_Unauthorized, 'You are not allowed to join arbitrary group.'
 
-				if g is None :
-					gtool.addGroup(gid)
-				aclu.changeUser(aclu.getGroupPrefix() +gid, roles=['Member', ])
-				g = gtool.getGroupById(gid)
-				g.addMember(id)
+                if g is None :
+                    gtool.addGroup(gid)
+                aclu.changeUser(aclu.getGroupPrefix() +gid, roles=['Member', ])
+                g = gtool.getGroupById(gid)
+                g.addMember(id)
 
 
-	def afterAdd(self, member, id, password, properties):
-		""" notify member creation """
-		member.notifyWorkflowCreated()
-		member.indexObject()
-	
+    def afterAdd(self, member, id, password, properties):
+        """ notify member creation """
+        member.notifyWorkflowCreated()
+        member.indexObject()
+    
 
-	security.declarePublic('requestPasswordReset')
-	def requestPasswordReset(self, userid):
-		""" add uuid / (userid, expiration) pair and return uuid """
-		self.clearExpiredPasswordResetRequests()
-		mtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IMembershipTool')
-		if mtool.getMemberById(userid) :
-			uuid = str(uuid4())
-			self._passwordResetRequests[uuid] = (userid, DateTime() + 1)
-			return uuid
-	
-	security.declarePrivate('clearExpiredPasswordResetRequests')
-	def clearExpiredPasswordResetRequests(self):
-		now = DateTime()
-		for uuid, record in self._passwordResetRequests.items() :
-			userid, date = record
-			if date < now :
-				del self._passwordResetRequests[uuid]
-	
-	
-	security.declarePublic('resetPassword')
-	def resetPassword(self, userid, uuid, password, confirm) :
-		record = self._passwordResetRequests.get(uuid)
-		if not record :
-			return _('Invalid reset password request.')
-		
-		recUserid, expiration = record
-		
-		if recUserid != userid :
-			return _('Invalid userid.')
-		
-		if expiration < now :
-			self.clearExpiredPasswordResetRequests()
-			return _('Your reset password request has expired. You can ask a new one.')
-		
-		msg = self.testPasswordValidity(password, confirm=confirm)
-		if not msg : # None if everything ok. Err message otherwise.
-			mtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IMembershipTool')
-			member = mtool.getMemberById(userid)
-			if member :
-				member.setSecurityProfile(password=password)
-				del self._passwordResetRequests[uuid]
-				return _('Password successfully resetted.')
-			else :
-				return _('"%s" username not found.') % userid
-			
-		
+    security.declarePublic('requestPasswordReset')
+    def requestPasswordReset(self, userid):
+        """ add uuid / (userid, expiration) pair and return uuid """
+        self.clearExpiredPasswordResetRequests()
+        mtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IMembershipTool')
+        if mtool.getMemberById(userid) :
+            uuid = str(uuid4())
+            self._passwordResetRequests[uuid] = (userid, DateTime() + 1)
+            return uuid
+    
+    security.declarePrivate('clearExpiredPasswordResetRequests')
+    def clearExpiredPasswordResetRequests(self):
+        now = DateTime()
+        for uuid, record in self._passwordResetRequests.items() :
+            userid, date = record
+            if date < now :
+                del self._passwordResetRequests[uuid]
+    
+    
+    security.declarePublic('resetPassword')
+    def resetPassword(self, userid, uuid, password, confirm) :
+        record = self._passwordResetRequests.get(uuid)
+        if not record :
+            return _('Invalid reset password request.')
+        
+        recUserid, expiration = record
+        
+        if recUserid != userid :
+            return _('Invalid userid.')
+        
+        if expiration < now :
+            self.clearExpiredPasswordResetRequests()
+            return _('Your reset password request has expired. You can ask a new one.')
+        
+        msg = self.testPasswordValidity(password, confirm=confirm)
+        if not msg : # None if everything ok. Err message otherwise.
+            mtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IMembershipTool')
+            member = mtool.getMemberById(userid)
+            if member :
+                member.setSecurityProfile(password=password)
+                del self._passwordResetRequests[uuid]
+                return _('Password successfully resetted.')
+            else :
+                return _('"%s" username not found.') % userid
+            
+        
 InitializeClass(RegistrationTool)
