@@ -204,7 +204,7 @@ class RegistrationTool(BaseRegistrationTool) :
 	security.declarePrivate('clearExpiredPasswordResetRequests')
 	def clearExpiredPasswordResetRequests(self):
 		now = DateTime()
-		for uuid, record in self._passwordResetRequest.items() :
+		for uuid, record in self._passwordResetRequests.items() :
 			userid, date = record
 			if date < now :
 				del self._passwordResetRequests[uuid]
