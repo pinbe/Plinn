@@ -196,10 +196,17 @@ class RegistrationTool(BaseRegistrationTool) :
         """ add uuid / (userid, expiration) pair and return uuid """
         self.clearExpiredPasswordResetRequests()
         mtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IMembershipTool')
-        if mtool.getMemberById(userid) :
+        member = mtool.getMemberById(userid)
+        if member :
             uuid = str(uuid4())
             self._passwordResetRequests[uuid] = (userid, DateTime() + 1)
-            return uuid
+            mailhost = getUtilityByInterfaceName('Products.MailHost.interfaces.IMailHost')
+            ptool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IPropertiesTool')
+            utool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IURLTool')
+            sender = ptool.getProperty('email_from_address')
+            to = member.getProperty('email')
+            message = self.echange_mail_template(From=sender,
+                                                 To=to)
     
     security.declarePrivate('clearExpiredPasswordResetRequests')
     def clearExpiredPasswordResetRequests(self):
