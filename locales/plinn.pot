@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Wed Jul 31 12:38:09 2013\n"
+"POT-Creation-Date: Wed Jul 31 16:55:00 2013\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -39,23 +39,27 @@ msgstr ""
 msgid "%s's front page"
 msgstr ""
 
-#: n/RegistrationTool.py:230
+#: n/RegistrationTool.py:217
+msgid "How to reset your password on the %s website"
+msgstr ""
+
+#: n/RegistrationTool.py:232
 msgid "Unknown user name. Please retry."
 msgstr ""
 
-#: n/RegistrationTool.py:245
+#: n/RegistrationTool.py:247
 msgid "Invalid reset password request."
 msgstr ""
 
-#: n/RegistrationTool.py:251
+#: n/RegistrationTool.py:253
 msgid "Your reset password request has expired. You can ask a new one."
 msgstr ""
 
-#: n/RegistrationTool.py:260
+#: n/RegistrationTool.py:262
 msgid "Password successfully resetted."
 msgstr ""
 
-#: n/RegistrationTool.py:262
+#: n/RegistrationTool.py:264
 msgid "\"%s\" username not found."
 msgstr ""
 
@@ -1017,6 +1021,18 @@ msgstr ""
 msgid "Exit boxes editing"
 msgstr ""
 
+#: n/skins/generic/password_reset_mail_temlate.pt:1
+msgid "Hi ${fullname},"
+msgstr ""
+
+#: n/skins/generic/password_reset_mail_temlate.pt:4
+msgid "You have asked to change your password."
+msgstr ""
+
+#: n/skins/generic/password_reset_mail_temlate.pt:5
+msgid "Please"
+msgstr ""
+
 #: n/skins/generic/password_reset_template.pt:13
 msgid "Password resetting"
 msgstr ""
@@ -1089,7 +1105,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: n/skins/generic/request_password_reset_form.py:10
+#: n/skins/generic/request_password_reset_form.py:12
 msgid "Request for resetting password sent to your contact email."
 msgstr ""
 

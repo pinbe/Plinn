@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Wed Jul 31 12:38:09 2013\n"
-"PO-Revision-Date: 2013-07-31 12:42+0200\n"
+"POT-Creation-Date: Wed Jul 31 16:55:00 2013\n"
+"PO-Revision-Date: 2013-07-31 16:58+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -32,25 +32,29 @@ msgstr "Accueil : %s"
 msgid "%s's front page"
 msgstr "Page d'accueil de %s"
 
-#: n/RegistrationTool.py:230
+#: n/RegistrationTool.py:217
+msgid "How to reset your password on the %s website"
+msgstr "Comment réinitialiser votre mot de passe sur le site %s"
+
+#: n/RegistrationTool.py:232
 msgid "Unknown user name. Please retry."
 msgstr "Nom d'utilisateur inconnu. Veuillez réessayer."
 
-#: n/RegistrationTool.py:245
+#: n/RegistrationTool.py:247
 msgid "Invalid reset password request."
 msgstr "Demande de réinitialisation de mot de passe invalide."
 
-#: n/RegistrationTool.py:251
+#: n/RegistrationTool.py:253
 msgid "Your reset password request has expired. You can ask a new one."
 msgstr ""
 "Votre demande de réinitialisation de mot de passe a expiré. Vous pouvez en "
 "demander une nouvelle."
 
-#: n/RegistrationTool.py:260
+#: n/RegistrationTool.py:262
 msgid "Password successfully resetted."
 msgstr "Mot de passe correctement réinitialisé."
 
-#: n/RegistrationTool.py:262
+#: n/RegistrationTool.py:264
 msgid "\"%s\" username not found."
 msgstr "Nom : « %s » non trouvé."
 
@@ -1031,13 +1035,27 @@ msgstr "Coller"
 msgid "Exit boxes editing"
 msgstr "Quitter l'édition des boîtes"
 
+#: n/skins/generic/password_reset_mail_temlate.pt:1
+msgid "Hi ${fullname},"
+msgstr "Bonjour ${fullname},"
+
+#: n/skins/generic/password_reset_mail_temlate.pt:4
+msgid "You have asked to change your password."
+msgstr "Vous avez demandé de changer de mot de passe."
+
+#: n/skins/generic/password_reset_mail_temlate.pt:5
+msgid "Please"
+msgstr ""
+
 #: n/skins/generic/password_reset_template.pt:13
 msgid "Password resetting"
 msgstr "Réinitialisation du mot de passe"
 
 #: n/skins/generic/password_reset_template.pt:18
 msgid "Please enter a new password and clic on \"Validate\" button."
-msgstr "Veuillez entrer un nouveau mot de passe puis cliquer sur le bouton « Valider »."
+msgstr ""
+"Veuillez entrer un nouveau mot de passe puis cliquer sur le bouton "
+"« Valider »."
 
 #: n/skins/generic/pending_members.pt:9
 msgid "Review members registration"
@@ -1106,9 +1124,11 @@ msgstr ""
 msgid "Send"
 msgstr "Envoyer"
 
-#: n/skins/generic/request_password_reset_form.py:10
+#: n/skins/generic/request_password_reset_form.py:12
 msgid "Request for resetting password sent to your contact email."
-msgstr "Requête pour réinitialisation de mot de passe envoyée à votre adresse email de contact."
+msgstr ""
+"Requête pour réinitialisation de mot de passe envoyée à votre adresse email "
+"de contact."
 
 #: n/skins/generic/request_password_reset_template.pt:11
 msgid "Password reset"
