@@ -36,6 +36,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.utils import getUtilityByInterfaceName
 from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
 from Products.Plinn.utils import Message as _
+from Products.Plinn.utils import translate
 from Products.Plinn.utils import encodeQuopriEmail
 from DateTime import DateTime
 from types import TupleType, ListType
@@ -213,7 +214,8 @@ class RegistrationTool(BaseRegistrationTool) :
             mailhost = portal.MailHost
             sender = encodeQuopriEmail(ptool.getProperty('email_from_name'), ptool.getProperty('email_from_address'))
             to = encodeQuopriEmail(member.getMemberFullName(nameBefore=0), member.getProperty('email'))
-            subject = "=?utf-8?q?%s?=" % encodestring('Password reset')
+            subject = translate(_('How to reset your password on the %s website')) % ptool.getProperty('title')
+            subject = "=?utf-8?q?%s?=" % encodestring(subject)
             lines = []
             pr = lines.append
             pr('%s/password_reset_form/%s' % (utool(), uuid))
