@@ -234,16 +234,13 @@ class RegistrationTool(BaseRegistrationTool) :
     
     
     security.declarePublic('resetPassword')
-    def resetPassword(self, userid, uuid, password, confirm) :
+    def resetPassword(self, uuid, password, confirm) :
         record = self._passwordResetRequests.get(uuid)
         if not record :
             return _('Invalid reset password request.')
         
-        recUserid, expiration = record
-        
-        if recUserid != userid :
-            return _('Invalid userid.')
-        
+        userid, expiration = record
+        now = DateTime()
         if expiration < now :
             self.clearExpiredPasswordResetRequests()
             return _('Your reset password request has expired. You can ask a new one.')
