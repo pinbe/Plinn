@@ -225,6 +225,9 @@ class RegistrationTool(BaseRegistrationTool) :
                                                  charset = 'UTF-8',
                                                  body=body)
             mailhost.send(message)
+            return
+        
+        return _('Unknown user name. Please retry.')
     
     security.declarePrivate('clearExpiredPasswordResetRequests')
     def clearExpiredPasswordResetRequests(self):
