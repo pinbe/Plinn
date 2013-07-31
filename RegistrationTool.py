@@ -36,9 +36,11 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.utils import getUtilityByInterfaceName
 from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
 from Products.Plinn.utils import Message as _
+from Products.Plinn.utils import encodeQuopriEmail
 from DateTime import DateTime
 from types import TupleType, ListType
 from uuid import uuid4
+from quopri import encodestring
 
 security = ModuleSecurityInfo('Products.Plinn.RegistrationTool')
 MODE_ANONYMOUS = 'anonymous'
@@ -200,13 +202,27 @@ class RegistrationTool(BaseRegistrationTool) :
         if member :
             uuid = str(uuid4())
             self._passwordResetRequests[uuid] = (userid, DateTime() + 1)
-            mailhost = getUtilityByInterfaceName('Products.MailHost.interfaces.IMailHost')
-            ptool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IPropertiesTool')
             utool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IURLTool')
-            sender = ptool.getProperty('email_from_address')
-            to = member.getProperty('email')
+            ptool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IPropertiesTool')
+            # fuck : mailhost récupéré avec getUtilityByInterfaceName n'est pas correctement
+            # wrappé. Un « unrestrictedTraverse » ne marche pas.
+            # mailhost = getUtilityByInterfaceName('Products.MailHost.interfaces.IMailHost')
+            portal = utool.getPortalObject()
+            mailhost = portal.MailHost
+            sender = encodeQuopriEmail(ptool.getProperty('email_from_name'), ptool.getProperty('email_from_address'))
+            to = encodeQuopriEmail(member.getMemberFullName(nameBefore=0), member.getProperty('email'))
+            subject = "=?utf-8?q?%s?=" % encodestring('Password reset')
+            lines = []
+            pr = lines.append
+            pr('%s/password_reset_form/%s' % (utool(), uuid))
+            body = '\n'.join(lines)
             message = self.echange_mail_template(From=sender,
-                                                 To=to)
+                                                 To=to,
+                                                 Subject=subject,
+                                                 ContentType = 'text/plain',
+                                                 charset = 'UTF-8',
+                                                 body=body)
+            mailhost.send(message)
     
     security.declarePrivate('clearExpiredPasswordResetRequests')
     def clearExpiredPasswordResetRequests(self):

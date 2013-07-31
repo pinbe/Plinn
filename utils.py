@@ -27,6 +27,7 @@ import re
 from types import StringType
 from random import randrange
 from Acquisition import aq_base
+from quopri import encodestring
 from AccessControl.PermissionRole import rolesForPermissionOn
 from AccessControl import ModuleSecurityInfo
 from AccessControl import getSecurityManager
@@ -250,6 +251,11 @@ def getAdapterByInterface(ob, dotted_name, default=_marker) :
         return adapter.__of__(ob)
     else :
         return default
+
+def encodeQuopriEmail(name, email) :
+    qpName = encodestring(name).replace('=\n', '')
+    return '''"=?utf-8?q?%s?=" <%s>''' % (qpName, email)
+
 
 def _sudo(func, userid=None) :
     """
