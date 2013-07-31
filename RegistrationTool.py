@@ -201,6 +201,8 @@ class RegistrationTool(BaseRegistrationTool) :
         member = mtool.getMemberById(userid)
         if member :
             uuid = str(uuid4())
+            while self._passwordResetRequests.has_key(uuid) :
+                uuid = str(uuid4())
             self._passwordResetRequests[uuid] = (userid, DateTime() + 1)
             utool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IURLTool')
             ptool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IPropertiesTool')
