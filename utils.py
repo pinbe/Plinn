@@ -28,6 +28,7 @@ from types import StringType
 from random import randrange
 from Acquisition import aq_base
 from quopri import encodestring
+from zope.globalrequest import getRequest
 from AccessControl.PermissionRole import rolesForPermissionOn
 from AccessControl import ModuleSecurityInfo
 from AccessControl import getSecurityManager
@@ -195,7 +196,7 @@ security.declarePublic('Message')
 Message = MessageFactory('plinn')
 
 security.declarePublic('translate')
-def translate(message, context):
+def translate(message, context=None):
     """ Translate i18n message.
     """
     if isinstance(message, Exception):
@@ -203,7 +204,11 @@ def translate(message, context):
             message = message[0]
         except (TypeError, IndexError):
             pass
-    return i18ntranslate(message, domain='plinn', context=context.REQUEST)
+    if not context :
+        request = getRequest()
+    else :
+        request = context.REQUEST
+    return i18ntranslate(message, domain='plinn', context=request)
 
 security.declarePublic('desacc')
 desacc = Utf8Utils.desacc
