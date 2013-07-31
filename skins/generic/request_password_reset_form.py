@@ -1,6 +1,8 @@
 ##parameters=userid='', requestReset='', ajax=''
 from Products.CMFCore.utils import getUtilityByInterfaceName
-from Products.Plinn.utils import Message as _
+from Products.Plinn.utils import translate
+
+_ = lambda msg : translate(msg, context)
 utool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IURLTool')
 rtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IRegistrationTool')
 

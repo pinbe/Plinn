@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Mon Jul 29 14:16:13 2013\n"
-"PO-Revision-Date: 2013-07-29 15:16+0200\n"
+"POT-Creation-Date: Wed Jul 31 12:38:09 2013\n"
+"PO-Revision-Date: 2013-07-31 12:42+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -32,23 +32,25 @@ msgstr "Accueil : %s"
 msgid "%s's front page"
 msgstr "Page d'accueil de %s"
 
-#: n/RegistrationTool.py:217
+#: n/RegistrationTool.py:230
+msgid "Unknown user name. Please retry."
+msgstr "Nom d'utilisateur inconnu. Veuillez réessayer."
+
+#: n/RegistrationTool.py:245
 msgid "Invalid reset password request."
 msgstr "Demande de réinitialisation de mot de passe invalide."
 
-#: n/RegistrationTool.py:222
-msgid "Invalid userid."
-msgstr "Login invalide."
-
-#: n/RegistrationTool.py:226
+#: n/RegistrationTool.py:251
 msgid "Your reset password request has expired. You can ask a new one."
-msgstr "Votre demande de réinitialisation de mot de passe a expiré. Vous pouvez en demander une nouvelle."
+msgstr ""
+"Votre demande de réinitialisation de mot de passe a expiré. Vous pouvez en "
+"demander une nouvelle."
 
-#: n/RegistrationTool.py:235
+#: n/RegistrationTool.py:260
 msgid "Password successfully resetted."
 msgstr "Mot de passe correctement réinitialisé."
 
-#: n/RegistrationTool.py:237
+#: n/RegistrationTool.py:262
 msgid "\"%s\" username not found."
 msgstr "Nom : « %s » non trouvé."
 
@@ -575,6 +577,7 @@ msgstr "Corps"
 #: n/skins/custom_generic/talkback_tree.pt:82
 #: n/skins/generic/gruf_macros.pt:77 n/skins/generic/gruf_macros.pt:410
 #: n/skins/generic/header_widgets.pt:32 n/skins/generic/header_widgets.pt:173
+#: n/skins/generic/password_reset_template.pt:39
 #: n/skins/generic/send_email_form.pt:79
 msgid "Validate"
 msgstr "Valider"
@@ -847,10 +850,12 @@ msgid "Given Name"
 msgstr "Prénom"
 
 #: n/skins/generic/gruf_macros.pt:268 n/skins/generic/gruf_macros.pt:390
+#: n/skins/generic/password_reset_template.pt:25
 msgid "Password"
 msgstr "Mot de passe"
 
 #: n/skins/generic/gruf_macros.pt:274 n/skins/generic/gruf_macros.pt:396
+#: n/skins/generic/password_reset_template.pt:31
 msgid "Confirm"
 msgstr "Confirmation"
 
@@ -1026,6 +1031,14 @@ msgstr "Coller"
 msgid "Exit boxes editing"
 msgstr "Quitter l'édition des boîtes"
 
+#: n/skins/generic/password_reset_template.pt:13
+msgid "Password resetting"
+msgstr "Réinitialisation du mot de passe"
+
+#: n/skins/generic/password_reset_template.pt:18
+msgid "Please enter a new password and clic on \"Validate\" button."
+msgstr "Veuillez entrer un nouveau mot de passe puis cliquer sur le bouton « Valider »."
+
 #: n/skins/generic/pending_members.pt:9
 msgid "Review members registration"
 msgstr "Modérer l'inscription des membres"
@@ -1093,24 +1106,33 @@ msgstr ""
 msgid "Send"
 msgstr "Envoyer"
 
-#: n/skins/generic/request_password_reset_form.pt:11
+#: n/skins/generic/request_password_reset_form.py:10
+msgid "Request for resetting password sent to your contact email."
+msgstr "Requête pour réinitialisation de mot de passe envoyée à votre adresse email de contact."
+
+#: n/skins/generic/request_password_reset_template.pt:11
 msgid "Password reset"
 msgstr "Réinitialisation de mot de passe"
 
-#: n/skins/generic/request_password_reset_form.pt:12
+#: n/skins/generic/request_password_reset_template.pt:12
 msgid ""
 "Enter your username below and click on the \"Send\" button. You will receive "
 "an email with a link to reset your password."
-msgstr "Entrez votre login ci-dessous et cliquez sur « Envoyer ». Vous recevrez un email contenant un lien pour réinitialiser votre mot de passe."
+msgstr ""
+"Entrez votre login ci-dessous et cliquez sur « Envoyer ». Vous recevrez un "
+"email contenant un lien pour réinitialiser votre mot de passe."
 
-#: n/skins/generic/request_password_reset_form.pt:18
+#: n/skins/generic/request_password_reset_template.pt:18
 msgid ""
 "If this will not work for you (for example, if you forget your username or "
 "didn't enter your email address) send email to ${admin_email}."
-msgstr "Si cela ne marche pas dans votre cas (par exemple si vous avez oublié votre login ou si vous n'aviez pas entré une adresse email), vous pouvez envoyer un email à ${admin_email}."
+msgstr ""
+"Si cela ne marche pas dans votre cas (par exemple si vous avez oublié votre "
+"login ou si vous n'aviez pas entré une adresse email), vous pouvez envoyer "
+"un email à ${admin_email}."
 
 #. Default: "Send"
-#: n/skins/generic/request_password_reset_form.pt:25
+#: n/skins/generic/request_password_reset_template.pt:25
 msgid " Send "
 msgstr " Envoyer "
 
@@ -2170,6 +2192,9 @@ msgstr "Cc"
 
 msgid "mail_bcc"
 msgstr "Cci"
+
+#~ msgid "Invalid userid."
+#~ msgstr "Login invalide."
 
 #~ msgid "List"
 #~ msgstr "Lister"
