@@ -261,6 +261,29 @@ def encodeQuopriEmail(name, email) :
     qpName = encodestring(name).replace('=\n', '')
     return '''"=?utf-8?q?%s?=" <%s>''' % (qpName, email)
 
+def encodeMailHeader(content) :
+    s = encodestring(content).replace('=\n', '')
+    s = s.replace('_', '=5F')
+    s = s.replace(' ', '_')
+
+    lines = []
+    STEP = 50
+    start = 0
+    stop = STEP
+    part = s[start:stop]
+    lines.append(part)
+
+    while len(part) == STEP:
+        start = start + STEP
+        stop = stop + STEP
+        part = s[start:stop]
+        lines.append(part)
+    
+    lines = [' =?utf-8?Q?%s?=' % part for part in lines]
+    s = '\n'.join(lines)
+    s = s.strip()
+    return s
+
 
 def _sudo(func, userid=None) :
     """
