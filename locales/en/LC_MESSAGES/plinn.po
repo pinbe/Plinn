@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Thu Aug  1 11:47:35 2013\n"
+"POT-Creation-Date: Thu Aug  1 14:40:48 2013\n"
 "PO-Revision-Date: 2007-10-17 14:43+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -999,30 +999,30 @@ msgstr ""
 msgid "Exit boxes editing"
 msgstr ""
 
-#: n/skins/generic/password_reset_mail_temlate.pt:1
-msgid "Hi ${fullname},"
+#: n/skins/generic/password_reset_mail.py:4
+msgid "Hi %(fullName)s,"
 msgstr ""
 
-#: n/skins/generic/password_reset_mail_temlate.pt:4
+#: n/skins/generic/password_reset_mail.py:6
 msgid "You have asked to change your password."
 msgstr ""
 
-#: n/skins/generic/password_reset_mail_temlate.pt:6
+#: n/skins/generic/password_reset_mail.py:8
 msgid ""
-"To get back into your account on the ${siteName} website, you'll need to "
+"To get back into your account on the %(siteName)s website, you'll need to "
 "create a new password."
 msgstr ""
 
-#: n/skins/generic/password_reset_mail_temlate.pt:7
+#: n/skins/generic/password_reset_mail.py:9
 msgid "It's easy:"
 msgstr ""
 
-#: n/skins/generic/password_reset_mail_temlate.pt:8
-msgid "— Click the link below to open a browser window."
+#: n/skins/generic/password_reset_mail.py:10
+msgid "Click the link below to open a browser window."
 msgstr ""
 
-#: n/skins/generic/password_reset_mail_temlate.pt:9
-msgid "— Fill the form with your new password."
+#: n/skins/generic/password_reset_mail.py:11
+msgid "Fill the form with your new password."
 msgstr ""
 
 #: n/skins/generic/password_reset_template.pt:13

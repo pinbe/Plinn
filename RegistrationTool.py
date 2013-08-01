@@ -38,10 +38,10 @@ from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
 from Products.Plinn.utils import Message as _
 from Products.Plinn.utils import translate
 from Products.Plinn.utils import encodeQuopriEmail
+from Products.Plinn.utils import encodeMailHeader
 from DateTime import DateTime
 from types import TupleType, ListType
 from uuid import uuid4
-from quopri import encodestring
 
 security = ModuleSecurityInfo('Products.Plinn.RegistrationTool')
 MODE_ANONYMOUS = 'anonymous'
@@ -215,11 +215,11 @@ class RegistrationTool(BaseRegistrationTool) :
             sender = encodeQuopriEmail(ptool.getProperty('email_from_name'), ptool.getProperty('email_from_address'))
             to = encodeQuopriEmail(member.getMemberFullName(nameBefore=0), member.getProperty('email'))
             subject = translate(_('How to reset your password on the %s website')) % ptool.getProperty('title')
-            subject = "=?utf-8?q?%s?=" % encodestring(subject)
-            body = self.password_reset_mail_template(fullName=member.getMemberFullName(nameBefore=0),
-                                                     siteName=ptool.getProperty('title'),
-                                                     resetPasswordUrl='%s/password_reset_form/%s' % (utool(), uuid)
-                                                     )
+            subject = encodeMailHeader(subject)
+            options = {'fullName' : member.getMemberFullName(nameBefore=0),
+                       'siteName' : ptool.getProperty('title'),
+                       'resetPasswordUrl' : '%s/password_reset_form/%s' % (utool(), uuid)}
+            body = self.password_reset_mail(options)
             message = self.echange_mail_template(From=sender,
                                                  To=to,
                                                  Subject=subject,
