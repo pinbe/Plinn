@@ -216,10 +216,10 @@ class RegistrationTool(BaseRegistrationTool) :
             to = encodeQuopriEmail(member.getMemberFullName(nameBefore=0), member.getProperty('email'))
             subject = translate(_('How to reset your password on the %s website')) % ptool.getProperty('title')
             subject = "=?utf-8?q?%s?=" % encodestring(subject)
-            lines = []
-            pr = lines.append
-            pr('%s/password_reset_form/%s' % (utool(), uuid))
-            body = '\n'.join(lines)
+            body = self.password_reset_mail_template(fullName=member.getMemberFullName(nameBefore=0),
+                                                     siteName=ptool.getProperty('title'),
+                                                     resetPasswordUrl='%s/password_reset_form/%s' % (utool(), uuid)
+                                                     )
             message = self.echange_mail_template(From=sender,
                                                  To=to,
                                                  Subject=subject,
