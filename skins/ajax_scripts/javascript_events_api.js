@@ -61,11 +61,11 @@ function _build_addListener() {
 	var common = function(ob, eventName, listenerFunction, group) {
 		_browserSpecific(ob, eventName, listenerFunction);
 		if (group) {
-			if(!__groupListeners[group])
-				__groupListeners[group] = new Array();
+			if(!__groupListeners[group]) {
+				__groupListeners[group] = [];}
 			__groupListeners[group].push([ob, eventName, listenerFunction]);
 		}
-	}
+	};
 	return common;
 }
 
@@ -74,33 +74,33 @@ function _build_removeListener() {
 		var _ie_removeListener = function(ob, eventName, listenerFunction) {
 			eventName = "on" + eventName;
 			ob.detachEvent(eventName, listenerFunction);
-		}
+		};
 		return _ie_removeListener;
 	}
 	else if (browser.isDOM2Event) {
 		var _dom2_removeListener = function(ob, eventName, listenerFunction) {
 			ob.removeEventListener(eventName, listenerFunction, false); // only bubbling events :-(
-		}
+		};
 		return _dom2_removeListener;
 	}
 }
 
 removeGroupListeners = function(group) {
 	var listeners = __groupListeners[group];
-	var l;
-	for (var i=0 ; i<listeners.length ; i++){
+	var l, i;
+	for (i=0 ; i<listeners.length ; i++){
 		l = listeners[i];
-		removeListener(l[0], l[1], l[2])
+		removeListener(l[0], l[1], l[2]);
 	}
 	__groupListeners[group] = null;
 		
-}
+};
 
 function  _build_raiseMouseEvent() {
 	if (browser.isIE55 || browser.isIE6up) {
 		var _ie_raiseMouseEvent = function(ob, eventName) {
 			ob.fireEvent("on" + eventName);
-		}
+		};
 		return _ie_raiseMouseEvent;
 	}
 	else if (browser.isDOM2Event) {
@@ -108,7 +108,7 @@ function  _build_raiseMouseEvent() {
 			var event = document.createEvent("MouseEvents");
 			event.initEvent(eventName, true, true);
 			ob.dispatchEvent(event);
-		}
+		};
 		return _dom2_raiseMouseEvent;
 	}
 }
@@ -117,18 +117,18 @@ function _build_getTargetedObject(){
 	if (browser.isIE55 || browser.isIE6up) {
 		var _ie_getTargetedObject = function() {
 			return window.event.srcElement;
-		}
+		};
 		return _ie_getTargetedObject;
 	}
 	else if (browser.isDOM2Event) {
 		var _appleWebKit_getTargetedeObject = function(evt) {
 			var target = evt.target;
 			// is it really safe ?...
-			return (target.nodeType == 3) ? target.parentNode : target;
-		}
+			return (target.nodeType === 3) ? target.parentNode : target;
+		};
 		var _dom2_getTargetedObject = function(evt) {
-			return evt.target
-		}
+			return evt.target;
+		};
 		return (browser.isAppleWebKit) ? _appleWebKit_getTargetedeObject : _dom2_getTargetedObject;
 	}
 }
@@ -137,13 +137,13 @@ function _build_getEventObject(){
 	if (browser.isIE) {
 		var _ie_getEventObject = function() {
 			return window.event;
-		}
+		};
 		return _ie_getEventObject;
 	}
 	else if (browser.isDOM2Event) {
 		var _dom2_getEventObject = function(evt) {
 			return evt;
-		}
+		};
 		return _dom2_getEventObject;
 	}
 }
@@ -153,13 +153,13 @@ function _build_disableDefault(){
 	if (browser.isIE55 || browser.isIE6up) {
 		var _ie_disableDefault = function() {
 			window.event.returnValue = false;
-		}
+		};
 		return _ie_disableDefault;
 	}
 	else if (browser.isDOM2Event) {
 		var _dom2_disableDefault = function(evt) {
 			evt.preventDefault();
-		}
+		};
 		return _dom2_disableDefault;
 	}
 }
@@ -168,19 +168,19 @@ function _build_disablePropagation() {
 	if (browser.isIE55 || browser.isIE6up) {
 		var _ie_disablePropagation = function() {
 			window.event.cancelBubble = true;
-		}
+		};
 		return _ie_disablePropagation;
 	}
 	else if (browser.isDOM2Event) {
 		var _dom2_disablePropagation = function(evt) {
 			evt.stopPropagation();
-		}
+		};
 		return _dom2_disablePropagation;
 	}
 }
 
-function _build_getWindowWidth() {
-	if (window.innerWidth != undefined){
+function _build_getWindowWidth() {
+	if (window.innerWidth !== undefined){
 		return function(){
 			return window.innerWidth;
 			};
@@ -193,7 +193,7 @@ function _build_getWindowWidth() {
 }
 
 function _build_getWindowHeight() {
-	if (window.innerHeight != undefined) {
+	if (window.innerHeight !== undefined) {
 		return function(){
 			return window.innerHeight;
 		};
@@ -214,7 +214,7 @@ function _build_clearSelection() {
 	else {
 		return function() {
 			window.getSelection().removeAllRanges();
-		}
+		};
 	}
 }
 
@@ -233,22 +233,21 @@ getCopyOfNode = function(node) {
 	
 			var e = document.createElement(node.nodeName);
 
-			var attribute;
-			for(var i=0 ; i<attributes.length ; i++) {
+			var attribute, i;
+			for(i=0 ; i<attributes.length ; i++) {
 				attribute = attributes[i];
 				_setAttribute(e, attribute.name, attribute.value);
 			}
 			
-			for(var i=0 ; i<childs.length ; i++)
-				e.appendChild(getCopyOfNode(childs[i]));
+			for(i=0 ; i<childs.length ; i++) {
+				e.appendChild(getCopyOfNode(childs[i]));}
 			
 			return e;
-			break;
+
 		case TEXT_NODE:
 			return document.createTextNode(node.nodeValue);
-			break;
 	}
-}
+};
 
 if (browser.isIE) {
 	_setAttribute = function(e, name, value) {
@@ -264,36 +263,38 @@ if (browser.isIE) {
 				loadCssText(e, value);
 				break;
 			default:
-				if (name.slice(0,2) == 'on') // event handler
-					e[name] = function(){eval(value);};
-				else
-					e.setAttribute(name, value);
+				if (name.slice(0,2) === 'on') { // event handler
+					// A browser normaly eval text code attached to a onXyz attribute. Not IE.
+					/*jslint evil: true */
+					e[name] = function(){eval(value);};}
+				else {
+					e.setAttribute(name, value);}
 		}
 	};
 	var reCompoundPropName = /^\s*([^\-]+)\-([a-z])([a-z]+)\s*$/;
-	function _capitalizeCssPropName(s, g1, g2, g3) { // gN args match above regexp groups 
-		if(g2)
-			return g1 + g2.toUpperCase() + g3;
-		else
-			return s;
-	}
+	var _capitalizeCssPropName = function (s, g1, g2, g3) { // gN args match above regexp groups 
+		if(g2) {
+			return g1 + g2.toUpperCase() + g3;}
+		else {
+			return s;}
+	};
 
-	function loadCssText(e, cssText) {
+	var loadCssText = function (e, cssText) {
 		var pairs = cssText.split(';');
-		var pair, name, value;
+		var pair, name, value, i;
 		var style = e.style;
-		for (var i= 0; i < pairs.length; i++) {
+		for (i= 0; i < pairs.length; i++) {
 			pair = pairs[i].split(':');
-			if (pair.length != 2)
-				continue;
-			name = _capitalizeCssPropName(pair[0]);
-			value = pair[1];
-			style[name] = value;
+			if (pair.length === 2) {
+				name = _capitalizeCssPropName(pair[0]);
+				value = pair[1];
+				style[name] = value;
+			}
 		}
-	}
+	};
 }
 else {
 	_setAttribute = function(e, name, value) {e.setAttribute(name, value);};
 }
 
-})();
+}());
