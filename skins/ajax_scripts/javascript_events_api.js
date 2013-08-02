@@ -26,6 +26,7 @@ var getCopyOfNode; /* (node) returns a clone of the given node.
 						* the node came from a foreign document (eg. XmlHttpRequest xml reponse)
 						* to inject HMTL code inside tags where innerHtml is read only (IE)
 					*/
+var copyPrototype; // (descendant, parent) lightwheight javascript inheritance
 
 (function(){
 
@@ -296,5 +297,20 @@ if (browser.isIE) {
 else {
 	_setAttribute = function(e, name, value) {e.setAttribute(name, value);};
 }
+
+/* 
+* http://www.sitepoint.com/blogs/2006/01/17/javascript-inheritance/
+*/
+
+var copyPrototype = function (descendant, parent) { 
+	var sConstructor = parent.toString(); 
+	var aMatch = sConstructor.match( /\s*function (.*)\(/ );
+	if ( aMatch !== null ) { descendant.prototype[aMatch[1]] = parent; }
+	var m;
+	for (m in parent.prototype) {
+		if (parent.prototype.hasOwnProperty(m)) {
+			descendant.prototype[m] = parent.prototype[m]; }
+	}
+};
 
 }());
