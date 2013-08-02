@@ -23,7 +23,7 @@ if passwordChanged :
                    {'name' : '__ac_password',   'value' : form['password']},
                    {'name' : 'noAjax',          'value' : '1'})
     target = utool()
-    buttons = ({'name': 'login', 'value': _('Login')},)
+    buttons = ({'name': 'login', 'value': _(' Login ')},)
 else :
     hidden_vars = []
     target = '%s/password_reset_form/%s' % (utool(), uuid)

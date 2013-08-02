@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Fri Aug  2 10:09:29 2013\n"
+"POT-Creation-Date: Fri Aug  2 10:33:47 2013\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -858,7 +858,6 @@ msgstr ""
 
 #: n/skins/generic/gruf_macros.pt:250
 #: n/skins/generic/gruf_macros.pt:365
-#: n/skins/generic/password_reset_form.py:26
 msgid "Login"
 msgstr ""
 
@@ -1061,6 +1060,10 @@ msgstr ""
 #: n/skins/generic/main_template_macros.pt:109
 #: n/skins/photo_theme/main_template_macros.pt:110
 msgid "Exit boxes editing"
+msgstr ""
+
+#: n/skins/generic/password_reset_form.py:26
+msgid " Login "
 msgstr ""
 
 #: n/skins/generic/password_reset_mail.py:4

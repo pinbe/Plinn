@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Fri Aug  2 10:08:44 2013\n"
-"PO-Revision-Date: 2013-08-02 10:10+0200\n"
+"POT-Creation-Date: Fri Aug  2 10:33:47 2013\n"
+"PO-Revision-Date: 2013-08-02 10:29+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -474,7 +474,9 @@ msgstr ""
 #: n/skins/custom_generic/logged_in_template.pt:17
 msgid ""
 "If you have forgotten your password, you can reset it by going to this page:"
-msgstr "Si vous avez oublié votre mot de passe, vous pouvez le réinitialiser en allant sur cette page :"
+msgstr ""
+"Si vous avez oublié votre mot de passe, vous pouvez le réinitialiser en "
+"allant sur cette page :"
 
 #: n/skins/custom_generic/logged_in_template.pt:21
 msgid "password resetting"
@@ -894,7 +896,6 @@ msgid "Add new member"
 msgstr "Nouveau membre"
 
 #: n/skins/generic/gruf_macros.pt:250 n/skins/generic/gruf_macros.pt:365
-#: n/skins/generic/password_reset_form.py:26
 msgid "Login"
 msgstr "Login"
 
@@ -1089,6 +1090,10 @@ msgstr "Coller"
 #: n/skins/photo_theme/main_template_macros.pt:110
 msgid "Exit boxes editing"
 msgstr "Quitter l'édition des boîtes"
+
+#: n/skins/generic/password_reset_form.py:26
+msgid " Login "
+msgstr "Connexion"
 
 #: n/skins/generic/password_reset_mail.py:4
 msgid "Hi %(fullName)s,"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Fri Aug  2 10:08:44 2013\n"
+"POT-Creation-Date: Fri Aug  2 10:33:47 2013\n"
 "PO-Revision-Date: 2007-10-17 14:43+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -851,7 +851,6 @@ msgid "Add new member"
 msgstr ""
 
 #: n/skins/generic/gruf_macros.pt:250 n/skins/generic/gruf_macros.pt:365
-#: n/skins/generic/password_reset_form.py:26
 msgid "Login"
 msgstr ""
 
@@ -1045,6 +1044,10 @@ msgstr ""
 #: n/skins/generic/main_template_macros.pt:109
 #: n/skins/photo_theme/main_template_macros.pt:110
 msgid "Exit boxes editing"
+msgstr ""
+
+#: n/skins/generic/password_reset_form.py:26
+msgid " Login "
 msgstr ""
 
 #: n/skins/generic/password_reset_mail.py:4
