@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Thu Aug  1 14:40:48 2013\n"
+"POT-Creation-Date: Fri Aug  2 09:38:06 2013\n"
 "PO-Revision-Date: 2007-10-17 14:43+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -49,7 +49,7 @@ msgid "Your reset password request has expired. You can ask a new one."
 msgstr ""
 
 #: n/RegistrationTool.py:262
-msgid "Password successfully resetted."
+msgid "Password successfully reset."
 msgstr ""
 
 #: n/RegistrationTool.py:264
@@ -563,7 +563,7 @@ msgstr ""
 #: n/skins/custom_generic/talkback_tree.pt:82
 #: n/skins/generic/gruf_macros.pt:77 n/skins/generic/gruf_macros.pt:410
 #: n/skins/generic/header_widgets.pt:32 n/skins/generic/header_widgets.pt:173
-#: n/skins/generic/password_reset_template.pt:39
+#: n/skins/generic/password_reset_form.py:30
 #: n/skins/generic/send_email_form.pt:79
 msgid "Validate"
 msgstr ""
@@ -804,6 +804,7 @@ msgid "Add new member"
 msgstr ""
 
 #: n/skins/generic/gruf_macros.pt:250 n/skins/generic/gruf_macros.pt:365
+#: n/skins/generic/password_reset_form.py:26
 msgid "Login"
 msgstr ""
 
@@ -818,12 +819,12 @@ msgid "Given Name"
 msgstr ""
 
 #: n/skins/generic/gruf_macros.pt:268 n/skins/generic/gruf_macros.pt:390
-#: n/skins/generic/password_reset_template.pt:25
+#: n/skins/generic/password_reset_template.pt:28
 msgid "Password"
 msgstr ""
 
 #: n/skins/generic/gruf_macros.pt:274 n/skins/generic/gruf_macros.pt:396
-#: n/skins/generic/password_reset_template.pt:31
+#: n/skins/generic/password_reset_template.pt:34
 msgid "Confirm"
 msgstr ""
 
@@ -1025,12 +1026,22 @@ msgstr ""
 msgid "Fill the form with your new password."
 msgstr ""
 
-#: n/skins/generic/password_reset_template.pt:13
+#: n/skins/generic/password_reset_template.pt:16
 msgid "Password resetting"
 msgstr ""
 
-#: n/skins/generic/password_reset_template.pt:18
+#: n/skins/generic/password_reset_template.pt:21
 msgid "Please enter a new password and clic on \"Validate\" button."
+msgstr ""
+
+#: n/skins/generic/password_reset_template.pt:49
+msgid "Password changed"
+msgstr ""
+
+#: n/skins/generic/password_reset_template.pt:50
+msgid ""
+"Your password has been successfully reset. You can log in immediately by "
+"clicking the \"Login\" button."
 msgstr ""
 
 #: n/skins/generic/pending_members.pt:9
