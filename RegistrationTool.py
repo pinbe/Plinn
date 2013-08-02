@@ -244,13 +244,13 @@ class RegistrationTool(BaseRegistrationTool) :
     def resetPassword(self, uuid, password, confirm) :
         record = self._passwordResetRequests.get(uuid)
         if not record :
-            return _('Invalid reset password request.')
+            return None, _('Invalid reset password request.')
         
         userid, expiration = record
         now = DateTime()
         if expiration < now :
             self.clearExpiredPasswordResetRequests()
-            return _('Your reset password request has expired. You can ask a new one.')
+            return None, _('Your reset password request has expired. You can ask a new one.')
         
         msg = self.testPasswordValidity(password, confirm=confirm)
         if not msg : # None if everything ok. Err message otherwise.
@@ -259,9 +259,9 @@ class RegistrationTool(BaseRegistrationTool) :
             if member :
                 member.setSecurityProfile(password=password)
                 del self._passwordResetRequests[uuid]
-                return _('Password successfully resetted.')
+                return  userid, _('Password successfully reset.')
             else :
-                return _('"%s" username not found.') % userid
+                return None, _('"%s" username not found.') % userid
             
         
 InitializeClass(RegistrationTool)
