@@ -3,18 +3,24 @@
   <head>
     <title>Logged in template</title>
   </head>
-  <body i18n:domain="cmf_default">
-    <div metal:fill-slot="main_no_tabs" tal:omit-tag="">
+  <body i18n:domain="plinn">
+    <div metal:fill-slot="main_no_tabs" id="Desktop">
       <div tal:condition="options/is_anon" tal:omit-tag="">
         <h1 class="DesktopTitle" i18n:translate="">Login failure</h1>
 
-        <p class="Desktop" i18n:translate="">You are not currently logged in. Your
-          username and or password may be incorrect. Your browser may also not be
-          configured to accept HTTP cookies. If you need help please contact
-           <a href="mailto:admin@here.com" title="Email Admin"
-              tal:attributes="href string:mailto:${options/admin_email}"
-              tal:content="options/admin_email"
-              i18n:name="admin_email">Email Admin</a>.
+        <p i18n:translate="">
+          You are not currently logged in. Your username and or password may
+          be incorrect. Your browser may also not be configured to accept
+          cookies.
+        </p>
+        <p>
+          <span i18n:translate="">
+            If you have forgotten your password, you can reset it by going to
+            this page:
+          </span>
+          <a href="#"
+            tal:attributes="href string:$portal_url/request_password_reset_form"
+            i18n:translate="">password resetting</a>.
         </p>
         
       </div>
@@ -22,14 +28,14 @@
       <div tal:condition="options/changePassword|nothing" tal:omit-tag="">
        <h1 class="DesktopTitle" i18n:translate="">Welcome!</h1>
 
-       <p class="Desktop" i18n:translate="">
+       <p i18n:translate="">
           This is the first time that you've logged in to
           <span tal:replace="portal_title" i18n:name="portal_title">Here</span>.
           Before you start exploring you need to change your original password.
           This will ensure that the password we sent you via email cannot be
           used in a malicious manner.</p>
 
-       <p class="Desktop" i18n:translate="">
+       <p i18n:translate="">
           Please use the form below to change your password.</p>
 
        <form action="change_password" method="post"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Fri Aug  2 09:38:06 2013\n"
+"POT-Creation-Date: Fri Aug  2 10:08:44 2013\n"
 "PO-Revision-Date: 2007-10-17 14:43+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -440,6 +440,7 @@ msgid "Bottom"
 msgstr ""
 
 #: n/skins/custom_generic/logged_in.py:28
+#: n/skins/custom_generic/logged_in_template.pt:9
 msgid "Login failure"
 msgstr ""
 
@@ -449,6 +450,52 @@ msgstr ""
 #: n/skins/photo_theme/homepage_dispatcher.py:24
 #: n/skins/photo_theme/homepage_dispatcher.py:27
 msgid "Login success"
+msgstr ""
+
+#: n/skins/custom_generic/logged_in_template.pt:11
+msgid ""
+"You are not currently logged in. Your username and or password may be "
+"incorrect. Your browser may also not be configured to accept cookies."
+msgstr ""
+
+#: n/skins/custom_generic/logged_in_template.pt:17
+msgid ""
+"If you have forgotten your password, you can reset it by going to this page:"
+msgstr ""
+
+#: n/skins/custom_generic/logged_in_template.pt:21
+msgid "password resetting"
+msgstr ""
+
+#: n/skins/custom_generic/logged_in_template.pt:29
+msgid "Welcome!"
+msgstr ""
+
+#: n/skins/custom_generic/logged_in_template.pt:33
+msgid ""
+"This is the first time that you've logged in to ${portal_title}. Before you "
+"start exploring you need to change your original password. This will ensure "
+"that the password we sent you via email cannot be used in a malicious manner."
+msgstr ""
+
+#: n/skins/custom_generic/logged_in_template.pt:38
+msgid "Please use the form below to change your password."
+msgstr ""
+
+#: n/skins/custom_generic/logged_in_template.pt:53
+msgid "Username"
+msgstr ""
+
+#: n/skins/custom_generic/logged_in_template.pt:58
+msgid "New password"
+msgstr ""
+
+#: n/skins/custom_generic/logged_in_template.pt:63
+msgid "Confirm new password"
+msgstr ""
+
+#: n/skins/custom_generic/logged_in_template.pt:70
+msgid "Change password"
 msgstr ""
 
 #: n/skins/custom_generic/mail_password_template.py:30

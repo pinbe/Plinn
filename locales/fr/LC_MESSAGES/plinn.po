@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Fri Aug  2 09:38:06 2013\n"
-"PO-Revision-Date: 2013-08-02 09:38+0200\n"
+"POT-Creation-Date: Fri Aug  2 10:08:44 2013\n"
+"PO-Revision-Date: 2013-08-02 10:10+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -450,6 +450,7 @@ msgid "Bottom"
 msgstr "Dernier"
 
 #: n/skins/custom_generic/logged_in.py:28
+#: n/skins/custom_generic/logged_in_template.pt:9
 msgid "Login failure"
 msgstr "Échec de la connexion"
 
@@ -460,6 +461,59 @@ msgstr "Échec de la connexion"
 #: n/skins/photo_theme/homepage_dispatcher.py:27
 msgid "Login success"
 msgstr "Connexion réussie"
+
+#: n/skins/custom_generic/logged_in_template.pt:11
+msgid ""
+"You are not currently logged in. Your username and or password may be "
+"incorrect. Your browser may also not be configured to accept cookies."
+msgstr ""
+"Vous n'êtes pas encore connecté. Votre nom d'utilisateur ou votre mot de "
+"passe sont peut-être incorrects. Votre navigateur doit être configuré afin "
+"d'accepter les cookies."
+
+#: n/skins/custom_generic/logged_in_template.pt:17
+msgid ""
+"If you have forgotten your password, you can reset it by going to this page:"
+msgstr "Si vous avez oublié votre mot de passe, vous pouvez le réinitialiser en allant sur cette page :"
+
+#: n/skins/custom_generic/logged_in_template.pt:21
+msgid "password resetting"
+msgstr "réinitialisation de mot de passe"
+
+#: n/skins/custom_generic/logged_in_template.pt:29
+msgid "Welcome!"
+msgstr "Bienvenue !"
+
+#: n/skins/custom_generic/logged_in_template.pt:33
+msgid ""
+"This is the first time that you've logged in to ${portal_title}. Before you "
+"start exploring you need to change your original password. This will ensure "
+"that the password we sent you via email cannot be used in a malicious manner."
+msgstr ""
+"C'est la première fois que vous vous connectez à ${portal_title}. Avant de "
+"commencer à naviguer, vous devez changer votre mot de passe initial. Cela "
+"vous assurera que le mot de passe, envoyé par mail, ne sera pas utilisé à "
+"votre insu, dans le cas où le message aurait été intercepté."
+
+#: n/skins/custom_generic/logged_in_template.pt:38
+msgid "Please use the form below to change your password."
+msgstr "Utilisez le formulaire ci-dessous pour changer votre mot de passe."
+
+#: n/skins/custom_generic/logged_in_template.pt:53
+msgid "Username"
+msgstr "Login"
+
+#: n/skins/custom_generic/logged_in_template.pt:58
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: n/skins/custom_generic/logged_in_template.pt:63
+msgid "Confirm new password"
+msgstr "Confirmation"
+
+#: n/skins/custom_generic/logged_in_template.pt:70
+msgid "Change password"
+msgstr "Changer le mot de passe"
 
 #: n/skins/custom_generic/mail_password_template.py:30
 msgid "${portal_title}: Membership reminder"
@@ -1082,7 +1136,9 @@ msgstr "Mot de passe changé"
 msgid ""
 "Your password has been successfully reset. You can log in immediately by "
 "clicking the \"Login\" button."
-msgstr "Votre mot de passe a été correctement réinitialisé. Vous pouvez à présent vous connecter en cliquant sur le bouton « Connexion »."
+msgstr ""
+"Votre mot de passe a été correctement réinitialisé. Vous pouvez à présent "
+"vous connecter en cliquant sur le bouton « Connexion »."
 
 #: n/skins/generic/pending_members.pt:9
 msgid "Review members registration"
