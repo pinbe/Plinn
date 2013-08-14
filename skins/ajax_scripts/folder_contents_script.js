@@ -4,6 +4,12 @@
 // 
 // 
 
+var FolderDDropControler;
+var DropTarget;
+var loadListing;
+
+(function(){
+
 function getTargetRow(evt){
 	var target = getTargetedObject(evt);
 	while (target.nodeName != "TR")
@@ -11,7 +17,7 @@ function getTargetRow(evt){
 	return target;
 }
 
-function FolderDDropControler(listing) {
+FolderDDropControler = function(listing) {
 	this.folderUrl = document.getElementById("FolderUrl").innerHTML;
 	this.targetRow = null;
 	this.lastOverPosition = null;
@@ -136,7 +142,7 @@ FolderDDropControler.prototype.reset = function() {
 
 
 
-function DropTarget(node, folderDDControler) {
+DropTarget = function(node, folderDDControler) {
 	this.folderDDControler = folderDDControler;
 	this.batchSize = parseInt(document.getElementById("BatchNavigationSize").innerHTML);
 	var thisControler = this;
@@ -196,7 +202,7 @@ DropTarget.prototype.highlightTarget = function(evt){
 
 
 
-function loadListing(evt) {
+loadListing = function(evt) {
 	var target = getTargetedObject(evt);
 	disableDefault(evt);
 	disablePropagation(evt);
@@ -233,3 +239,5 @@ function loadListing(evt) {
 	}
 	return false;
 }
+
+}());
