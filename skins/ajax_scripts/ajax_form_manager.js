@@ -55,6 +55,7 @@ FormManager.prototype.submit = function(evt) {
 			if (onBeforeSubmit.length) {
 				onBeforeSubmit = onBeforeSubmit[0];
 			}
+			/*jslint evil: true */
 			this.onBeforeSubmit = eval(onBeforeSubmit.value);
 			bsMessage = this.onBeforeSubmit(thisManager, evt);
 		}
@@ -99,7 +100,7 @@ FormManager.prototype.submit = function(evt) {
 		query += submitButton.name + '=' + submitButton.value + '&';
 	}
 	
-	if (window.AJAX_CONFIG && (AJAX_CONFIG & 1 === 1)) {
+	if (window.AJAX_CONFIG && ((AJAX_CONFIG & 1) === 1)) {
 		if (form.method.toLowerCase() === 'post') {
 			this._post(query);
 		}
@@ -422,21 +423,17 @@ FormManager.prototype.loadResponse = function(req) {
 	}
 	
 	var onAfterPopulate = this.onAfterPopulate;
-	if (typeof(onAfterPopulate) === "string") {
-		if (window.console) {
-			console.warn('Deprecation WARNING onAfterPopulate: ' + onAfterPopulate);
-		}
-		onAfterPopulate = eval(onAfterPopulate);
-	}
 	onAfterPopulate();
 	this.scrollToPortalMessage();
 };
 
 FormManager.prototype.scrollToPortalMessage = function() {
 	var psm = document.getElementById('DesktopStatusBar');
-	var msgOffset = psm.offsetTop;
-	smoothScroll(window.scrollY, msgOffset);
-	shake(psm, 10, 1000);
+	if (psm) {
+		var msgOffset = psm.offsetTop;
+		smoothScroll(window.scrollY, msgOffset);
+		shake(psm, 10, 1000);
+	}
 };
 
 FormManager.prototype._fitField = function(evt) {
@@ -485,14 +482,13 @@ function smoothScroll(from, to) {
 /* adapted from http://xahlee.info/js/js_shake_box.html */
 function shake(e, distance, time) {
     // Handle arguments
-    if (!time) time = 500;
-    if (!distance) distance = 5;
+    if (!time) { time = 500; }
+    if (!distance) { distance = 5; }
 
     // Save the original style of e, Make e relatively positioned, Note the animation start time, Start the animation
     var originalStyle = e.style.cssText;
     e.style.position = "relative";
     var start = (new Date()).getTime();
-    animate();
 
     // This function checks the elapsed time and updates the position of e.
     // If the animation is complete, it restores e to its original state.
@@ -521,6 +517,7 @@ function shake(e, distance, time) {
             e.style.cssText = originalStyle; // Restore the original style
         }
     }
+    animate();
 }
 
 }());
