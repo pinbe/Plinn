@@ -241,10 +241,7 @@ class MembershipTool( BaseTool ):
 			member = self.getMemberById(userid)
 			if not member :
 				return userid
-			memberName = getattr(member, 'name', '')
-			memberGivenName = getattr(member, 'given_name', '')
-			memberId = member.getId()
-			memberFullName = formatFullName(memberName, memberGivenName, memberId, nameBefore = nameBefore)
+			memberFullName = member.getMemberFullName(nameBefore=nameBefore)
 			
 		return memberFullName
 	
