@@ -1,8 +1,8 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <dc-workflow workflow_id="order_workflow"
              title="Order workflow" description=""
              state_variable="review_state"
-             initial_state="recorded" manager_bypass="0">
+             initial_state="recorded" manager_bypass="False">
  <instance-creation-conditions>
    <guard>
     <guard-role>Authenticated</guard-role>
@@ -37,18 +37,55 @@
  </state>
  <state state_id="done" title="">
   <exit-transition transition_id="notify_sent"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Delete Owned Objects"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Manage properties" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
  </state>
  <state state_id="paid" title="">
   <exit-transition transition_id="get_printing_list"/>
   <exit-transition transition_id="notify_done"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Delete Owned Objects"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Manage properties" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
  </state>
  <state state_id="recorded" title="">
-  <exit-transition transition_id="auto_accept_payment"/>
-  <exit-transition transition_id="auto_cancel_order"/>
-  <exit-transition transition_id="auto_refuse_payment"/>
-  <exit-transition transition_id="auto_transaction_failed"/>
   <exit-transition transition_id="cancel"/>
   <exit-transition transition_id="manual_payment"/>
+  <exit-transition transition_id="paypal_pay"/>
   <permission-map name="Access contents information"
                   acquired="False">
    <permission-role>Manager</permission-role>
@@ -73,49 +110,54 @@
   </permission-map>
  </state>
  <state state_id="refused" title="">
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Delete Owned Objects"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Manage properties" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
  </state>
  <state state_id="sent" title="">
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Delete Owned Objects"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Manage properties" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
  </state>
- <transition transition_id="auto_accept_payment"
-             title="Accept payment" new_state="paid"
-             trigger="USER" before_script="" after_script="">
-  <description>Payment accepted by the bank</description>
-  
-  <guard>
-   <guard-expression>nothing</guard-expression>
-  </guard>
- </transition>
- <transition transition_id="auto_cancel_order"
-             title="Cancel order" new_state=""
-             trigger="USER" before_script="" after_script="">
-  <description>The customer has canceled the order from payement site.</description>
-  
-  <guard>
-   <guard-expression>nothing</guard-expression>
-  </guard>
- </transition>
- <transition transition_id="auto_refuse_payment"
-             title="Refuse payment" new_state="refused"
-             trigger="USER" before_script="" after_script="">
-  <description>Payment refused by the bank.</description>
-  
-  <guard>
-   <guard-expression>nothing</guard-expression>
-  </guard>
- </transition>
- <transition transition_id="auto_transaction_failed"
-             title="" new_state="" trigger="USER"
-             before_script="" after_script="">
-  
-  <guard>
-   <guard-expression>nothing</guard-expression>
-  </guard>
- </transition>
  <transition transition_id="cancel" title=""
              new_state="canceled" trigger="USER"
              before_script="" after_script="relistCopies">
   <action url="%(content_url)s/order_cancel_form"
-          category="workflow">Cancel</action>
+          category="workflow" icon="">Cancel</action>
   <guard>
    <guard-permission>Manage print orders</guard-permission>
   </guard>
@@ -124,7 +166,7 @@
              new_state="" trigger="USER" before_script=""
              after_script="">
   <action url="%(object_url)s/order_printing_list"
-          category="workflow">Printing list</action>
+          category="workflow" icon="">Printing list</action>
   <guard>
    <guard-permission>Manage print orders</guard-permission>
   </guard>
@@ -133,7 +175,7 @@
              new_state="paid" trigger="USER"
              before_script="" after_script="">
   <action url="%(content_url)s/order_manual_payment_form"
-          category="workflow">Manual payment</action>
+          category="workflow" icon="">Manual payment</action>
   <guard>
    <guard-permission>Manage print orders</guard-permission>
   </guard>
@@ -142,7 +184,7 @@
              new_state="done" trigger="USER"
              before_script="" after_script="">
   <action url="%(content_url)s/order_notify_done_form"
-          category="workflow">Notify done</action>
+          category="workflow" icon="">Notify done</action>
   <guard>
    <guard-permission>Manage print orders</guard-permission>
   </guard>
@@ -151,9 +193,17 @@
              new_state="sent" trigger="USER"
              before_script="" after_script="">
   <action url="%(content_url)s/order_notify_sent_form"
-          category="workflow">Notify sent</action>
+          category="workflow" icon="">Notify sent</action>
   <guard>
    <guard-permission>Manage print orders</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="paypal_pay" title=""
+             new_state="paid" trigger="USER"
+             before_script="" after_script="">
+  
+  <guard>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <variable variable_id="action" for_catalog="False"

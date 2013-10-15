@@ -21,6 +21,7 @@
   </type>
   <type type_id="Image Slot"/>
   <type type_id="List Slot"/>
+  <type type_id="Member Data"/>
   <type type_id="Order">
    <bound-workflow workflow_id="order_workflow"/>
   </type>
