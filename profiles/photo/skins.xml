@@ -11,8 +11,6 @@
     directory="Products.Plinn:skins/custom_control"/>
  <object name="custom_generic" meta_type="Filesystem Directory View"
     directory="Products.Plinn:skins/custom_generic"/>
- <object name="cyberplus" meta_type="Filesystem Directory View"
-    directory="Products.cyberplus:skins"/>
  <object name="epoz_core" meta_type="Filesystem Directory View"
     directory="Products.Epoz:epoz/epoz_core"/>
  <object name="epoz_i18n" meta_type="Filesystem Directory View"
