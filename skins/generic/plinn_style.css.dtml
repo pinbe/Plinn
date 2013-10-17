@@ -176,9 +176,8 @@ table.assign_global_roles {
 }
 
 .boxes_container th  {
-  background-color: &dtml-boxeHeaderBackgroundColor;;
   color: &dtml-fontColor;;
-  border-bottom: &dtml-tabsBorderWidth; solid &dtml-boxesBorderColor;;
+  border-bottom: thin dotted &dtml-boxesBorderColor;;
 }
 
 .boxes_container ul {
@@ -204,6 +203,7 @@ table.assign_global_roles {
 .clipboard,
 .news_box { 
   border: &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+  border-radius:7px;
 }
 
 .news_box td.even {  background-color: &dtml-evenRowBackgroundColor;; }

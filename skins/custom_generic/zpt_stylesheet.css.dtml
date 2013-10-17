@@ -245,8 +245,7 @@ textarea {
 }
 
 .contentTabs a,
-.contentTabs a:visited
-{
+.contentTabs a:visited {
   background-color: &dtml-tabsBackgroundColor;;
   color: &dtml-tabsFontColor;;
   margin-right: 0.5em;
@@ -254,6 +253,7 @@ textarea {
   border-left : 1px dashed &dtml-tabsBorderColor;;
   border-top : 1px dashed &dtml-tabsBorderColor;;
   border-right : 1px dashed &dtml-tabsBorderColor;;
+  border-radius:7px 7px 0 0;
 }
 
 .contentTabs a:hover, .contentTabs a:active {
