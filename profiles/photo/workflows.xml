@@ -26,7 +26,7 @@
   </type>
   <type type_id="Order Folder"/>
   <type type_id="Photo"/>
-  <type type_id="Plinn Folder">
+  <type type_id="Huge Plinn Folder">
    <bound-workflow workflow_id="folder_workflow"/>
   </type>
   <type type_id="Portfolio">

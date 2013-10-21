@@ -421,7 +421,7 @@
 				 class="boxes_container"
 				 tal:define="selectedMember python:here.portal_membership.getMemberById(request.member_id);
 				 						 treeRoot   portal_object;
-                     treeDict   python:here.make_nav_tree(rootObject=treeRoot, filtered_meta_types=['Plinn Folder', 'Portfolio', 'Topic'], userid=request.member_id );
+                     treeDict   python:here.make_nav_tree(rootObject=treeRoot, filtered_meta_types=['Huge Plinn Folder', 'Portfolio', 'Topic'], userid=request.member_id );
                      tree       treeDict/tree;
                      rows       treeDict/rows;
                      height			tree/height;

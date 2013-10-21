@@ -20,7 +20,7 @@
   <element value="News Item"/>
   <element value="Order Folder"/>
   <element value="Plinn Document"/>
-  <element value="Plinn Folder"/>
+  <element value="Huge Plinn Folder"/>
   <element value="Portfolio"/>
   <element value="Topic"/>
  </property>

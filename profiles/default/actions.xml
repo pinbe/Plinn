@@ -211,7 +211,7 @@
    <property name="url_expr">string:${folder_url}/calendar_view</property>
    <property name="icon_expr"></property>
    <property
-      name="available_expr">python:member and folder is object and object.portal_type in ['Plinn Folder', 'Portfolio']</property>
+      name="available_expr">python:member and folder is object and object.portal_type in ['Huge Plinn Folder', 'Portfolio']</property>
    <property name="permissions">
     <element value="List folder contents"/>
    </property>

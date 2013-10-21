@@ -1,5 +1,5 @@
 ##parameters=
-folderishTypes = ['Plinn Folder', 'Calendar', 'Portfolio']
+folderishTypes = ['Huge Plinn Folder', 'Calendar', 'Portfolio']
 ttool = context.portal_types
 allFtis = ttool.listTypeInfo()
 

@@ -18,7 +18,7 @@
   <type type_id="Image Slot"/>
   <type type_id="List Slot"/>
   <type type_id="Photo"/>
-  <type type_id="Plinn Folder">
+  <type type_id="Huge Plinn Folder">
    <bound-workflow workflow_id="folder_workflow"/>
   </type>
   <type type_id="Portfolio">

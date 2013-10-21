@@ -70,7 +70,7 @@ doActionForOrSkip(site.index_html, 'direct_publish')
 
 # default folders
 constructOrSkip('Huge Plinn Folder', site, 'Members', title =	translate('Members'))
-#constructOrSkip('Plinn Folder', site, 'global_settings', title = translate('Portlets'))
+#constructOrSkip('Huge Plinn Folder', site, 'global_settings', title = translate('Portlets'))
 if not hasattr(site, 'global_settings') :
 	site.manage_addProduct['OFSP'].manage_addFolder('global_settings')
 if not site.global_settings.hasProperty('noIndex'):
@@ -80,7 +80,7 @@ if not site.global_settings.hasProperty('noIndex'):
 constructOrSkip('Mosaic Document', site.global_settings, 'left_boxes', title=translate('Left boxes'))
 lb = site.global_settings.left_boxes
 addBlockOrSkip(lb, 'Tree Box Block', 0, id='nav_tree')
-lb.nav_tree.saveBlock(filteredMetaTypes={'text' : ['Plinn Folder', 'Portfolio', 'Topic']})
+lb.nav_tree.saveBlock(filteredMetaTypes={'text' : ['Huge Plinn Folder', 'Portfolio', 'Topic']})
 doActionForOrSkip(lb, 'direct_publish')
 
 # right boxes
@@ -97,8 +97,8 @@ mtool = getToolByName(site, 'portal_membership')
 mtool.setMemberAreaPortalType('Huge Plinn Folder')
 
 gtool = getToolByName(site, 'portal_groups')
-gtool.setGroupWorkspaceContainerType('Plinn Folder')
-gtool.setGroupWorkspaceType('Plinn Folder')
+gtool.setGroupWorkspaceContainerType('Huge Plinn Folder')
+gtool.setGroupWorkspaceType('Huge Plinn Folder')
 
 caltool = getToolByName(site, 'portal_calendar')
 caltool.configureTool(['created', 'modified', 'DateTimeOriginal'], [9, 18])

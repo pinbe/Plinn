@@ -12,7 +12,7 @@ ttool = portal.portal_types
 homeFolder = portal.portal_membership.getHomeFolder()
 
 if not hasattr(homeFolder, 'Favorites'):
-	ttool.constructContent( 'Plinn Folder', homeFolder, 'Favorites', title=str(_('Favorites')) )
+	ttool.constructContent( 'Huge Plinn Folder', homeFolder, 'Favorites', title=str(_('Favorites')) )
 
 targetFolder = getattr( homeFolder, 'Favorites' )
 new_id='fav_' + str(int( context.ZopeTime()))
