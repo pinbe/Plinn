@@ -94,7 +94,7 @@ doActionForOrSkip(rb, 'direct_publish')
 
 # tools settings
 mtool = getToolByName(site, 'portal_membership')
-mtool.setMemberAreaPortalType('Plinn Folder')
+mtool.setMemberAreaPortalType('Huge Plinn Folder')
 
 gtool = getToolByName(site, 'portal_groups')
 gtool.setGroupWorkspaceContainerType('Plinn Folder')
