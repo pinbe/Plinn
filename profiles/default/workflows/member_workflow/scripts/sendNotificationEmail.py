@@ -59,6 +59,6 @@ message = context.echange_mail_template(  From = sender
 										)
 
 
-MailHost.send( message.encode('utf-8') )
+MailHost.send( message )
 if portal.getProperty('validate_email') :
 	rtool.mailPassword(member.getId(), context.REQUEST)

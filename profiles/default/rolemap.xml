@@ -4,6 +4,7 @@
     <role name="Anonymous"/>
     <role name="Authenticated"/>
     <role name="Contributor"/>
+    <role name="Downloader"/>
     <role name="Manager"/>
     <role name="Member"/>
     <role name="Owner"/>
@@ -14,6 +15,9 @@
   <permissions>
     <permission name="Add Groups" acquire="True">
       <role name="UserManager"/>
+    </permission>
+    <permission name="Add Lightbox" acquire="True">
+      <role name="Owner"/>
     </permission>
     <permission name="Add portal content" acquire="True">
       <role name="Contributor"/>
@@ -30,8 +34,8 @@
       <role name="Owner"/>
     </permission>
     <permission name="Add portal member" acquire="False">
-      <role name="Anonymous"/>
       <role name="Manager"/>
+      <role name="UserManager"/>
     </permission>
     <permission name="Change Images and Files"
                 acquire="True">
@@ -59,6 +63,7 @@
     <permission name="List folder contents" acquire="True">
       <role name="Anonymous"/>
       <role name="Contributor"/>
+      <role name="Downloader"/>
       <role name="Reader"/>
     </permission>
     <permission name="List portal members" acquire="True">
@@ -115,15 +120,13 @@
       <role name="Manager"/>
       <role name="Owner"/>
     </permission>
-    <permission name="Use Factories" acquire="True">
-      <role name="Manager"/>
-    </permission>
     <permission name="Use mailhost services" acquire="True">
       <role name="Manager"/>
       <role name="Member"/>
     </permission>
     <permission name="View" acquire="True">
       <role name="Contributor"/>
+      <role name="Downloader"/>
       <role name="Owner"/>
       <role name="Reader"/>
     </permission>
@@ -137,6 +140,13 @@
                 acquire="True">
       <role name="Manager"/>
       <role name="Owner"/>
+    </permission>
+    <permission name="View raw image" acquire="True">
+      <role name="Downloader"/>
+    </permission>
+    <permission name="WebDAV access" acquire="False">
+      <role name="Downloader"/>
+      <role name="Manager"/>
     </permission>
   </permissions>
 </rolemap>

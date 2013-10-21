@@ -1,10 +1,9 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <dc-workflow workflow_id="member_workflow"
              title="Plinn member registration workflow"
              description="" state_variable="review_state"
              initial_state="m_initial"
              manager_bypass="False">
- 
  <state state_id="m_initial" title="">
   <exit-transition transition_id="create"/>
   <exit-transition transition_id="silent_register"/>
@@ -59,7 +58,7 @@
  <worklist worklist_id="reviewer_queue" title="">
   <description>Reviewer tasks</description>
   <action url="%(portal_url)s/pending_members"
-          category="global">Membres en attente (%(count)d)</action>
+          category="global" icon="">Membres en attente (%(count)d)</action>
   <guard>
    <guard-permission>Set Member Properties</guard-permission>
   </guard>

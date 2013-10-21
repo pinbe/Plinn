@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dc-workflow workflow_id="default_workflow"
-             title="Plinn default workflow" description=""
+<dc-workflow workflow_id="order_workflow"
+             title="Order workflow" description=""
              state_variable="review_state"
-             initial_state="private" manager_bypass="False">
+             initial_state="recorded" manager_bypass="False">
+ <instance-creation-conditions>
+   <guard>
+    <guard-role>Authenticated</guard-role>
+   </guard>
+ </instance-creation-conditions>
  <permission>Access contents information</permission>
- <permission>Change portal events</permission>
- <permission>Change portal topics</permission>
  <permission>Delete Owned Objects</permission>
  <permission>Manage properties</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <state state_id="pending" title="Waiting for reviewer">
-  <exit-transition transition_id="publish"/>
-  <exit-transition transition_id="reject"/>
-  <exit-transition transition_id="retract"/>
+ <state state_id="canceled" title="">
   <permission-map name="Access contents information"
-                  acquired="True">
-   <permission-role>Manager</permission-role>
-  </permission-map>
-  <permission-map name="Change portal events"
                   acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
-  </permission-map>
-  <permission-map name="Change portal topics"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
+   <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="Delete Owned Objects"
                   acquired="False">
@@ -34,80 +25,95 @@
   </permission-map>
   <permission-map name="Manage properties" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
   </permission-map>
   <permission-map name="Modify portal content"
                   acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
-   <permission-role>Contributor</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
   </permission-map>
  </state>
- <state state_id="private"
-        title="Non-visible and editable only by owner">
-  <exit-transition transition_id="direct_publish"/>
-  <exit-transition transition_id="submit"/>
+ <state state_id="done" title="">
+  <exit-transition transition_id="notify_sent"/>
   <permission-map name="Access contents information"
                   acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-  </permission-map>
-  <permission-map name="Change portal events"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-  </permission-map>
-  <permission-map name="Change portal topics"
-                  acquired="False">
-   <permission-role>Contributor</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="Delete Owned Objects"
                   acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="Manage properties" acquired="False">
-   <permission-role>Contributor</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="paid" title="">
+  <exit-transition transition_id="get_printing_list"/>
+  <exit-transition transition_id="notify_done"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Delete Owned Objects"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Manage properties" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="recorded" title="">
+  <exit-transition transition_id="cancel"/>
+  <exit-transition transition_id="manual_payment"/>
+  <exit-transition transition_id="paypal_pay"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Delete Owned Objects"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Manage properties" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="Modify portal content"
                   acquired="False">
-   <permission-role>Contributor</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
-   <permission-role>Contributor</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
   </permission-map>
  </state>
- <state state_id="published" title="Public">
-  <exit-transition transition_id="reject"/>
-  <exit-transition transition_id="retract"/>
+ <state state_id="refused" title="">
   <permission-map name="Access contents information"
-                  acquired="True">
-   <permission-role>Manager</permission-role>
-  </permission-map>
-  <permission-map name="Change portal events"
                   acquired="False">
    <permission-role>Manager</permission-role>
-  </permission-map>
-  <permission-map name="Change portal topics"
-                  acquired="False">
-   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="Delete Owned Objects"
                   acquired="False">
@@ -120,73 +126,86 @@
                   acquired="False">
    <permission-role>Manager</permission-role>
   </permission-map>
-  <permission-map name="View" acquired="True">
-   <permission-role>Anonymous</permission-role>
+  <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
   </permission-map>
  </state>
- <transition transition_id="direct_publish"
-             title="Reviewer publishes content"
-             new_state="published" trigger="USER"
-             before_script="" after_script="">
-  <description>Reviewer can directly publish content  if he have de Owner role (not necessarily ownership)</description>
-  <action url="%(content_url)s/content_publish_form?direct:boolean=True"
-          category="workflow" icon="">Publish</action>
+ <state state_id="sent" title="">
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Delete Owned Objects"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Manage properties" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="cancel" title=""
+             new_state="canceled" trigger="USER"
+             before_script="" after_script="relistCopies">
+  <action url="%(content_url)s/order_cancel_form"
+          category="workflow" icon="">Cancel</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
-   <guard-expression>python:user.allowed(here, ['Owner'])</guard-expression>
+   <guard-permission>Manage print orders</guard-permission>
   </guard>
  </transition>
- <transition transition_id="publish"
-             title="Reviewer publishes content"
-             new_state="published" trigger="USER"
-             before_script="" after_script="">
-  <action url="%(content_url)s/content_publish_form"
-          category="workflow" icon="">Publish</action>
+ <transition transition_id="get_printing_list" title=""
+             new_state="" trigger="USER" before_script=""
+             after_script="">
+  <action url="%(object_url)s/order_printing_list"
+          category="workflow" icon="">Printing list</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
+   <guard-permission>Manage print orders</guard-permission>
   </guard>
  </transition>
- <transition transition_id="reject"
-             title="Reviewer rejects submission"
-             new_state="private" trigger="USER"
+ <transition transition_id="manual_payment" title=""
+             new_state="paid" trigger="USER"
              before_script="" after_script="">
-  <action url="%(content_url)s/content_reject_form"
-          category="workflow" icon="">Reject</action>
+  <action url="%(content_url)s/order_manual_payment_form"
+          category="workflow" icon="">Manual payment</action>
   <guard>
-   <guard-permission>Review portal content</guard-permission>
+   <guard-permission>Manage print orders</guard-permission>
   </guard>
  </transition>
- <transition transition_id="retract"
-             title="Member retracts submission"
-             new_state="private" trigger="USER"
+ <transition transition_id="notify_done" title=""
+             new_state="done" trigger="USER"
              before_script="" after_script="">
-  <action url="%(content_url)s/content_retract_form"
-          category="workflow" icon="">Retract</action>
+  <action url="%(content_url)s/order_notify_done_form"
+          category="workflow" icon="">Notify done</action>
   <guard>
-   <guard-permission>Request review</guard-permission>
-   <guard-expression>python:not(here.portal_membership.checkPermission('Review portal content', here))</guard-expression>
+   <guard-permission>Manage print orders</guard-permission>
   </guard>
  </transition>
- <transition transition_id="submit"
-             title="Member requests publishing"
-             new_state="pending" trigger="USER"
+ <transition transition_id="notify_sent" title=""
+             new_state="sent" trigger="USER"
              before_script="" after_script="">
-  <action url="%(content_url)s/content_submit_form"
-          category="workflow" icon="">Submit</action>
+  <action url="%(content_url)s/order_notify_sent_form"
+          category="workflow" icon="">Notify sent</action>
   <guard>
-   <guard-permission>Request review</guard-permission>
+   <guard-permission>Manage print orders</guard-permission>
   </guard>
  </transition>
- <worklist worklist_id="reviewer_queue" title="">
-  <description>Reviewer tasks</description>
-  <action url="%(portal_url)s/list_pending_contents"
-          category="global" icon="">Pending (%(count)d)</action>
+ <transition transition_id="paypal_pay" title=""
+             new_state="paid" trigger="USER"
+             before_script="" after_script="">
+  
   <guard>
-   <guard-expression>here/havePendingContents</guard-expression>
+   <guard-role>Owner</guard-role>
   </guard>
-  <match name="review_state" values="pending"/>
- </worklist>
+ </transition>
  <variable variable_id="action" for_catalog="False"
            for_status="True" update_always="True">
   <description>The last transition</description>
@@ -248,8 +267,29 @@
   <guard>
   </guard>
  </variable>
+ <variable variable_id="tracking_number" for_catalog="False"
+           for_status="True" update_always="False">
+  <default>
+   
+   
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="tracking_url" for_catalog="False"
+           for_status="True" update_always="False">
+  <default>
+   
+   
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <script script_id="relistCopies" type="Script (Python)"
+         filename="workflows/order_workflow/scripts/relistCopies.py"
+         module="" function=""/>
  <script script_id="sendNotificationEmail"
          type="Script (Python)"
-         filename="workflows/default_workflow/scripts/sendNotificationEmail.py"
+         filename="workflows/order_workflow/scripts/sendNotificationEmail.py"
          module="" function=""/>
 </dc-workflow>

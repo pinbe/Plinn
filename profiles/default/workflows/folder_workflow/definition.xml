@@ -1,9 +1,8 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <dc-workflow workflow_id="folder_workflow"
              title="Plinn folder workflow" description=""
              state_variable="review_state"
              initial_state="private" manager_bypass="False">
- 
  <permission>Manage properties</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
@@ -11,7 +10,6 @@
   <exit-transition transition_id="publish"/>
   <exit-transition transition_id="reject"/>
   <exit-transition transition_id="retract"/>
-  <exit-transition transition_id="send_email"/>
   <permission-map name="Manage properties" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Reviewer</permission-role>
@@ -31,7 +29,6 @@
  </state>
  <state state_id="private" title="">
   <exit-transition transition_id="direct_publish"/>
-  <exit-transition transition_id="send_email"/>
   <exit-transition transition_id="submit"/>
   <permission-map name="Manage properties" acquired="False">
    <permission-role>Contributor</permission-role>
@@ -54,7 +51,6 @@
  <state state_id="published" title="">
   <exit-transition transition_id="reject"/>
   <exit-transition transition_id="retract"/>
-  <exit-transition transition_id="send_email"/>
   <permission-map name="Manage properties" acquired="False">
    <permission-role>Manager</permission-role>
   </permission-map>
@@ -72,7 +68,7 @@
              before_script="" after_script="">
   <description>Reviewer can directly publish content  if he have de Owner role (not necessarily ownership)</description>
   <action url="%(content_url)s/content_publish_form?direct:boolean=True"
-          category="workflow">Publish</action>
+          category="workflow" icon="">Publish</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
    <guard-expression>python:user.allowed(here, ['Owner'])</guard-expression>
@@ -83,7 +79,7 @@
              new_state="published" trigger="USER"
              before_script="" after_script="">
   <action url="%(content_url)s/content_publish_form"
-          category="workflow">Publish</action>
+          category="workflow" icon="">Publish</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>
@@ -93,7 +89,7 @@
              new_state="private" trigger="USER"
              before_script="" after_script="">
   <action url="%(content_url)s/content_reject_form"
-          category="workflow">Reject</action>
+          category="workflow" icon="">Reject</action>
   <guard>
    <guard-permission>Review portal content</guard-permission>
   </guard>
@@ -103,20 +99,10 @@
              new_state="private" trigger="USER"
              before_script="" after_script="">
   <action url="%(content_url)s/content_retract_form"
-          category="workflow">Retract</action>
+          category="workflow" icon="">Retract</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-expression>python:not(here.portal_membership.checkPermission('Review portal content', here))</guard-expression>
-  </guard>
- </transition>
- <transition transition_id="send_email" title=""
-             new_state="" trigger="USER" before_script=""
-             after_script="">
-  <action url="%(content_url)s/send_email_form?wfid=folder_workflow"
-          category="workflow">Send an email</action>
-  <guard>
-   <guard-permission>View</guard-permission>
-   <guard-role>Member</guard-role>
   </guard>
  </transition>
  <transition transition_id="submit"
@@ -124,7 +110,7 @@
              new_state="pending" trigger="USER"
              before_script="" after_script="">
   <action url="%(content_url)s/content_submit_form"
-          category="workflow">Submit</action>
+          category="workflow" icon="">Submit</action>
   <guard>
    <guard-permission>Request review</guard-permission>
   </guard>

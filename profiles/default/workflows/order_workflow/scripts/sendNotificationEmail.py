@@ -7,11 +7,8 @@
 ##parameters=sci
 ##title=
 ##
-#TODO : translate messages
-#from Products.PlacelessTranslationService.MessageID import MessageIDFactory
-#_ = MessageIDFactory('plinn')
-_ = lambda x : lambda : x
-
+from Products.photoprint.utils import translate
+_ = lambda msg : translate(msg, context)
 portal = context.portal_url.getPortalObject()
 
 mtool = portal.portal_membership
@@ -41,21 +38,35 @@ mto = ', '.join(recipientsFormated)
 if mto[-2:] == ', ' :
 	mto = mto[:-2]
 
-footer = """
-------------
-Document : %s
-""" % object.absolute_url()
+subject = sci.kwargs.get('subject', '')
+
+body = []
+pr = body.append
+pr(sci.kwargs.get('comment', ''))
+
+pr('')
+
+trNumber = sci.kwargs.get('tracking_number', '')
+if trNumber :
+	pr(_('Tracking number').encode('utf-8') + ' ' + trNumber)
+
+trUrl = sci.kwargs.get('tracking_url', '')
+if trUrl :
+	pr(_('Tracking url').encode('utf-8') + ' ' + trUrl)
+
+body = '\n'.join(body)
+
 
 
 message = context.echange_mail_template(  From = sender
 										, To = mto
-										, Subject = "=?utf-8?q?%s?=" % encodestring(portal.Title() + " : " + _("Document state change notificaction")()).replace('=\n', '')
+										, Subject = "=?utf-8?q?%s?=" % encodestring(subject).replace('=\n', '')
 										, ContentType = 'text/plain'
 										, charset = 'UTF-8'
-										, body=sci.kwargs.get('comment', '')
-										, footer=footer)
+										, body=body
+										)
 
 
-MailHost.send( message )
+MailHost.send( message.encode('utf-8') )
 
 return recipients

@@ -29,6 +29,8 @@
     directory="Products.MosaicDocument:skins"/>
  <object name="mosaic_slots" meta_type="Filesystem Directory View"
     directory="Products.MosaicDocument:default_slots"/>
+ <object name="photoprint" meta_type="Filesystem Directory View"
+    directory="Products.photoprint:skins"/>
  <object name="plinn_ajax" meta_type="Filesystem Directory View"
     directory="Products.Plinn:skins/ajax_scripts"/>
  <object name="plinn_content" meta_type="Filesystem Directory View"
@@ -55,6 +57,7 @@
     directory="Products.CMFCalendar:skins/zpt_calendar"/>
  <skin-path name="Plinn Basic">
   <layer name="custom"/>
+  <layer name="photoprint"/>
   <layer name="plinn_content"/>
   <layer name="plinn_control"/>
   <layer name="plinn_generic"/>

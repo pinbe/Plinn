@@ -4,6 +4,7 @@
  <object name="default_workflow" meta_type="Workflow"/>
  <object name="folder_workflow" meta_type="Workflow"/>
  <object name="member_workflow" meta_type="Workflow"/>
+ <object name="order_workflow" meta_type="Workflow"/>
  <object name="portfolio_workflow" meta_type="Workflow"/>
  <bindings>
   <default>
@@ -15,8 +16,15 @@
   </type>
   <type type_id="Discussion Item"/>
   <type type_id="File Slot"/>
+  <type type_id="Huge Plinn Folder">
+   <bound-workflow workflow_id="folder_workflow"/>
+  </type>
   <type type_id="Image Slot"/>
   <type type_id="List Slot"/>
+  <type type_id="Order">
+   <bound-workflow workflow_id="order_workflow"/>
+  </type>
+  <type type_id="Order Folder"/>
   <type type_id="Photo"/>
   <type type_id="Huge Plinn Folder">
    <bound-workflow workflow_id="folder_workflow"/>

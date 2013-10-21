@@ -17,6 +17,10 @@
   <argument value="image"/>
   <argument value=""/>
  </predicate>
+ <predicate name="photo_extensions" content_type_name="Photo"
+    predicate_type="extension">
+  <argument value="jpg,jpeg,JPG,JPEG"/>
+ </predicate>
  <predicate name="file" content_type_name="File" predicate_type="major_minor">
   <argument value="application"/>
   <argument value=""/>

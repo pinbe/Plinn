@@ -3,10 +3,13 @@
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title">Text Slot</property>
  <property name="description">Text Slot for Mosaic Document</property>
- <property name="content_icon">mosaic_tool/txt_icon.gif</property>
+ <property
+    name="icon_expr">string:${portal_url}/mosaic_tool/txt_icon.gif</property>
  <property name="content_meta_type">Text Slot</property>
  <property name="product">MosaicDocument</property>
  <property name="factory">addStringSlot</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>
  <property name="filter_content_types">True</property>
@@ -15,11 +18,13 @@
  <alias from="(Default)" to="slot_text_view"/>
  <alias from="view" to="slot_text_view"/>
  <action title="View" action_id="view" category="object" condition_expr=""
-    url_expr="string:slot_text_view" visible="True">
+    icon_expr="" link_target="" url_expr="string:slot_text_view"
+    visible="True">
   <permission value="View"/>
  </action>
  <action title="Edit" action_id="edit" category="object" condition_expr=""
-    url_expr="string:slot_text_form" visible="True">
+    icon_expr="" link_target="" url_expr="string:slot_text_form"
+    visible="True">
   <permission value="Modify portal content"/>
  </action>
 </object>

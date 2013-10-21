@@ -56,6 +56,6 @@ message = context.echange_mail_template(  From = sender
 										, footer=footer)
 
 
-MailHost.send( message.encode('utf-8') )
+MailHost.send( message )
 
 return recipients

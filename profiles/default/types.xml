@@ -11,10 +11,13 @@
  <object name="File Slot" meta_type="Factory-based Type Information"/>
  <object name="Huge Plinn Folder" meta_type="Factory-based Type Information"/>
  <object name="Image Slot" meta_type="Factory-based Type Information"/>
+ <object name="Lightbox" meta_type="Factory-based Type Information"/>
  <object name="Link" meta_type="Factory-based Type Information"/>
  <object name="List Slot" meta_type="Factory-based Type Information"/>
  <object name="Mosaic Document" meta_type="Factory-based Type Information"/>
  <object name="News Item" meta_type="Factory-based Type Information"/>
+ <object name="Order" meta_type="Factory-based Type Information"/>
+ <object name="Order Folder" meta_type="Factory-based Type Information"/>
  <object name="Photo" meta_type="Factory-based Type Information"/>
  <object name="Plinn Document" meta_type="Factory-based Type Information"/>
  <object name="Plinn Folder" meta_type="Factory-based Type Information"/>

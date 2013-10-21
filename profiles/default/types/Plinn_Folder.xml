@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
-<object name="Plinn Folder" meta_type="Factory-based Type Information"
+<object name="Huge Plinn Folder" meta_type="Factory-based Type Information"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title">Folder</property>
  <property
     name="description">Container to put content in categories.</property>
- <property name="content_icon">folder_icon.gif</property>
+ <property name="icon_expr">string:${portal_url}/folder_icon.gif</property>
  <property name="content_meta_type">Plinn Folder</property>
  <property name="product"></property>
  <property name="factory">plinn.folder.normal</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
  <property name="immediate_view">object/folderContents</property>
  <property name="global_allow">True</property>
  <property name="filter_content_types">True</property>
@@ -17,7 +19,7 @@
   <element value="File"/>
   <element value="News Item"/>
   <element value="Plinn Document"/>
-  <element value="Plinn Folder"/>
+  <element value="Huge Plinn Folder"/>
   <element value="Portfolio"/>
   <element value="Topic"/>
  </property>
@@ -26,44 +28,33 @@
  <alias from="mkdir" to="createPlinnFolder"/>
  <alias from="view" to="folder_contents"/>
  <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="" link_target=""
     url_expr="string:${object_url}/folder_contents" visible="False">
   <permission value="View"/>
  </action>
  <action title="List" action_id="folderContents" category="object"
-    condition_expr="" url_expr="string:${object_url}/folder_contents"
-    visible="True">
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_contents" visible="True">
   <permission value="List folder contents"/>
  </action>
  <action title="Edit" action_id="edit" category="object" condition_expr=""
+    icon_expr="" link_target=""
     url_expr="string:${object_url}/folder_contents" visible="False">
   <permission value="Manage properties"/>
  </action>
- <action title="Import" action_id="import" category="object" condition_expr=""
-    url_expr="string:${object_url}/massupload" visible="True">
-  <permission value="Add portal content"/>
- </action>
  <action title="Share" action_id="localroles" category="object"
-    condition_expr="" url_expr="string:${object_url}/folder_localrole_form"
-    visible="True">
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_localrole_form" visible="True">
   <permission value="Set Local Roles"/>
  </action>
- <action title="Notifications" action_id="folder_notifications"
-    category="object" condition_expr=""
-    url_expr="string:${object_url}/folder_notifications_form" visible="True">
-  <permission value="Subscribe Notification"/>
- </action>
- <action title="History" action_id="changes" category="object"
-    condition_expr="" url_expr="string:${object_url}/changes_history"
-    visible="True">
-  <permission value="View History"/>
- </action>
  <action title="New..." action_id="new" category="object" condition_expr=""
+    icon_expr="" link_target=""
     url_expr="string:${object_url}/folder_factories" visible="False">
   <permission value="Add portal content"/>
  </action>
  <action title="Rename items" action_id="rename_items" category="object"
-    condition_expr="" url_expr="string:${object_url}/folder_rename_form"
-    visible="False">
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_rename_form" visible="False">
   <permission value="Add portal content"/>
  </action>
 </object>

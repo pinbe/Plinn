@@ -26,12 +26,16 @@
            class="Products.Plinn.GroupDataTool.GroupDataTool"/>
  <required tool_id="portal_groups"
            class="Products.Plinn.GroupsTool.GroupsTool"/>
+ <required tool_id="portal_image_manipulation"
+           class="Products.Portfolio.ImageManipulationTool.ImageManipulationTool"/>
  <required tool_id="portal_memberdata"
            class="Products.Plinn.MemberDataTool.MemberDataTool"/>
  <required tool_id="portal_membership"
            class="Products.Plinn.MembershipTool.MembershipTool"/>
  <required tool_id="portal_metadata"
            class="Products.CMFDefault.MetadataTool.MetadataTool"/>
+ <required tool_id="portal_photo_print"
+           class="Products.photoprint.tool.PhotoPrintTool"/>
  <required tool_id="portal_properties"
            class="Products.CMFDefault.PropertiesTool.PropertiesTool"/>
  <required tool_id="portal_registration"
