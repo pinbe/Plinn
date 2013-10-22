@@ -386,39 +386,6 @@ class MembershipTool( BaseTool ):
         f.manage_setLocalRoles(member_id, ['Owner'])
 
         f.reindexObjectSecurity()
-        
-        # Create Member's initial content.
-        if hasattr(self, 'createMemberContent') :
-            self.createMemberContent(member=user,
-                                     member_id=member_id,
-                                     member_folder=f)
-        else :
-            def _(message, context, expand=()) :
-                trmessage = decode(translate(message, context), context)
-                expand = tuple([decode(e, context) for e in expand])
-                return (trmessage % expand).encode('utf-8')
-                        
-            # Create Member's home page.
-            addDocument( f
-                        , 'index_html'
-                        , title = _("%s's Home", self, (memberFullName,))
-                        , description = _("%s's front page", self, (memberFullName,))
-                        , text_format = "html"
-                        , text = self.default_member_content(memberFullName=memberFullName).encode('utf-8')
-                        )
-    
-            # Grant Ownership and Owner role to Member
-            f.index_html.changeOwnership(user)
-            f.index_html.__ac_local_roles__ = None
-            f.index_html.manage_setLocalRoles(member_id, ['Owner'])
-    
-            f.index_html._setPortalTypeName( 'Document' )
-    
-            # Overcome an apparent catalog bug.
-            f.index_html.reindexObject()
-            wftool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IWorkflowTool')
-            wftool.notifyCreated( f.index_html )
-        
         return f
     
 
