@@ -35,7 +35,8 @@ from Products.CMFDefault.MembershipTool import MembershipTool as BaseTool
 from Products.CMFCore.permissions import View, ListPortalMembers, ManagePortal, SetOwnPassword, ChangePermissions
 from permissions import RemoveMember, SetLocalRoles, CheckMemberPermission
 from utils import _checkMemberPermission
-from Products.CMFCore.utils import getToolByName, _checkPermission, _getAuthenticatedUser
+from Products.CMFCore.utils import _checkPermission, _getAuthenticatedUser
+from Products.CMFCore.utils import getUtilityByInterfaceName
 from utils import formatFullName, translate
 from Products.CMFDefault.utils import decode
 from Products.CMFDefault.Document import addDocument
@@ -268,21 +269,21 @@ class MembershipTool( BaseTool ):
 
     security.declareProtected(ListPortalMembers, 'getMembersMetadata')
     def getMembersMetadata(self, users) :
-        """ return metadatas from portal_catalog """
+        """ return metadata from portal_catalog """
         userDict = {}
         for u in users : userDict[u] = True
-        ctool = getToolByName(self, 'portal_catalog')
+        ctool = getUtilityByInterfaceName('Products.CMFCore.interfaces.ICatalogTool')
         memberBrains = ctool(portal_type='Member Data', sort_on='getMemberSortableFormat')
         memberList = []
         complementList = []
         
         if users :
             for mb in memberBrains :
-                metadatas = {'id' : mb.getId, 'fullname' : mb.getMemberFullName}
+                metadata = {'id' : mb.getId, 'fullname' : mb.getMemberFullName}
                 if userDict.has_key(mb.getId) :
-                    memberList.append(metadatas)
+                    memberList.append(metadata)
                 else :
-                    complementList.append(metadatas)
+                    complementList.append(metadata)
         else :
             complementList = [{'id' : mb.getId, 'fullname' : mb.getMemberFullName} for mb in memberBrains]
 
@@ -295,7 +296,7 @@ class MembershipTool( BaseTool ):
         """ remove member
         """
         # TODO : remove member document ?
-        mdtool = getToolByName(self, 'portal_memberdata')
+        mdtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IMemberDataTool')
         for m in self.getMembers(memberIds) :
             m.manage_beforeDelete()
             mdtool.deleteMemberData(m.getId())
@@ -307,7 +308,7 @@ class MembershipTool( BaseTool ):
     security.declareProtected(ManagePortal, 'setMemberAreaPortalType')
     def setMemberAreaPortalType(self, member_folder_portal_type):
         """ Set member area portal type to construct."""
-        ttool = getToolByName(self, 'portal_types')
+        ttool = getUtilityByInterfaceName('Products.CMFCore.interfaces.ITypesTool')
         if member_folder_portal_type not in ttool.objectIds() :
             raise ValueError, "Unknown portal type : %s" % str(member_folder_portal_type)
         
@@ -373,7 +374,7 @@ class MembershipTool( BaseTool ):
         if hasattr( aq_base(members), member_id ):
             return None
             
-        ttool = getToolByName(self, 'portal_types')
+        ttool = getUtilityByInterfaceName('Products.CMFCore.interfaces.ITypesTool')
         info = getattr(ttool, self.memberareaPortalType)
         
         memberFullName = self.getMemberFullNameById(member_id, nameBefore = 0)
@@ -415,7 +416,7 @@ class MembershipTool( BaseTool ):
     
             # Overcome an apparent catalog bug.
             f.index_html.reindexObject()
-            wftool = getToolByName( f, 'portal_workflow' )
+            wftool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IWorkflowTool')
             wftool.notifyCreated( f.index_html )
         
         return f
@@ -428,7 +429,7 @@ class MembershipTool( BaseTool ):
         words = searchString.strip().split()
         words = [word.lower() for word in words]
         
-        mdtool = getToolByName(self, 'portal_memberdata')
+        mdtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IMemberDataTool')
         mdProperties = mdtool.propertyIds()
         searchableProperties = [ p['id'] for p in mdtool.propertyMap() if p['type'] == 'string' ] + ['id']
         try : searchableProperties.remove('portal_skin')
