@@ -27,7 +27,7 @@ for m in misc :
 	except : pass
 
 if site.acl_users.Users.acl_users.encrypt_passwords :
-	site.acl_users.Users.acl_users.manage_setUserFolderProperties(encrypt_passwords=False)
+	site.acl_users.Users.acl_users.manage_setUserFolderProperties(encrypt_passwords=True)
 
 
 # configure mosaicTool
