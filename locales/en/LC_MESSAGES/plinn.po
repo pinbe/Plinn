@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Tue Oct 22 18:24:30 2013\n"
+"POT-Creation-Date: Tue Oct 22 18:30:26 2013\n"
 "PO-Revision-Date: 2007-10-17 14:43+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -2215,6 +2215,12 @@ msgid "mail_cc"
 msgstr ""
 
 msgid "mail_bcc"
+msgstr ""
+
+msgid "Welcome to Plinn!"
+msgstr ""
+
+msgid "This is the default home page."
 msgstr ""
 
 #~ msgid "List"

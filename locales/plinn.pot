@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Tue Oct 22 18:24:30 2013\n"
+"POT-Creation-Date: Tue Oct 22 18:30:26 2013\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -2226,4 +2226,10 @@ msgid "mail_cc"
 msgstr ""
 
 msgid "mail_bcc"
+msgstr ""
+
+msgid "Welcome to Plinn!"
+msgstr ""
+
+msgid "This is the default home page."
 msgstr ""

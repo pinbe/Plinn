@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Tue Oct 22 18:24:30 2013\n"
+"POT-Creation-Date: Tue Oct 22 18:30:26 2013\n"
 "PO-Revision-Date: 2013-08-02 10:29+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -2294,6 +2294,12 @@ msgstr "Cc"
 msgid "mail_bcc"
 msgstr "Cci"
 
+msgid "Welcome to Plinn!"
+msgstr "Bienvenue sur Plinn !"
+
+msgid "This is the default home page."
+msgstr "Ceci est la page d'accueil par défaut."
+
 #~ msgid "%s's Home"
 #~ msgstr "Accueil : %s"
 
@@ -2356,12 +2362,6 @@ msgstr "Cci"
 
 #~ msgid "Preview:"
 #~ msgstr "Aperçu :"
-
-#~ msgid "Welcome to Plinn!"
-#~ msgstr "Bienvenue sur Plinn !"
-
-#~ msgid "This is the default home page."
-#~ msgstr "Ceci est la page d'accueil par défaut."
 
 #~ msgid ""
 #~ "You have been registered as a member of \"%(portal_title)s\", which\n"

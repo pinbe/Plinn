@@ -867,3 +867,9 @@ msgstr ""
 
 msgid "mail_bcc"
 msgstr ""
+
+msgid "Welcome to Plinn!"
+msgstr ""
+
+msgid "This is the default home page."
+msgstr ""
