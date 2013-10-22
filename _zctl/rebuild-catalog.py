@@ -5,11 +5,6 @@ from zope.site.hooks import setSite
 from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
 import transaction
 
-# portal = app.realismc
-# setSite(portal)
-# ctool = portal.portal_catalog
-# 
-# errorLog = open('/home/zope/checkcontents-errors.log', 'w')
 count = 0
 
 def checkContents(ob) :
