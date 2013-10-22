@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Fri Aug  2 10:33:47 2013\n"
+"POT-Creation-Date: Tue Oct 22 18:24:30 2013\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -29,14 +29,6 @@ msgstr ""
 
 #: n/Folder.py:162
 msgid "Please rename each listed object."
-msgstr ""
-
-#: n/MembershipTool.py:406
-msgid "%s's Home"
-msgstr ""
-
-#: n/MembershipTool.py:407
-msgid "%s's front page"
 msgstr ""
 
 #: n/RegistrationTool.py:217
@@ -94,10 +86,12 @@ msgstr ""
 msgid "your registration has been accepted"
 msgstr ""
 
+#: n/profiles/default/workflows/order_workflow/scripts/sendNotificationEmail.py:51
 #: n/profiles/photo/workflows/order_workflow/scripts/sendNotificationEmail.py:51
 msgid "Tracking number"
 msgstr ""
 
+#: n/profiles/default/workflows/order_workflow/scripts/sendNotificationEmail.py:55
 #: n/profiles/photo/workflows/order_workflow/scripts/sendNotificationEmail.py:55
 msgid "Tracking url"
 msgstr ""
@@ -428,24 +422,24 @@ msgstr ""
 msgid "%d item moved up.%d items moved up."
 msgstr ""
 
-#: n/skins/custom_generic/folder_contents_template.pt:26
+#: n/skins/custom_generic/folder_contents_template.pt:29
 msgid "Up"
 msgstr ""
 
-#: n/skins/custom_generic/folder_contents_template.pt:29
+#: n/skins/custom_generic/folder_contents_template.pt:32
 msgid "Down"
 msgstr ""
 
-#: n/skins/custom_generic/folder_contents_template.pt:31
+#: n/skins/custom_generic/folder_contents_template.pt:34
 #. Default: "by"
 msgid "move_by"
 msgstr ""
 
-#: n/skins/custom_generic/folder_contents_template.pt:39
+#: n/skins/custom_generic/folder_contents_template.pt:42
 msgid "Top"
 msgstr ""
 
-#: n/skins/custom_generic/folder_contents_template.pt:41
+#: n/skins/custom_generic/folder_contents_template.pt:44
 msgid "Bottom"
 msgstr ""
 
@@ -455,10 +449,9 @@ msgid "Login failure"
 msgstr ""
 
 #: n/skins/custom_generic/logged_in.py:50
-#: n/skins/photo_theme/homepage_dispatcher.py:13
-#: n/skins/photo_theme/homepage_dispatcher.py:16
-#: n/skins/photo_theme/homepage_dispatcher.py:24
-#: n/skins/photo_theme/homepage_dispatcher.py:27
+#: n/skins/photo_theme/homepage_dispatcher.py:14
+#: n/skins/photo_theme/homepage_dispatcher.py:17
+#: n/skins/photo_theme/homepage_dispatcher.py:30
 msgid "Login success"
 msgstr ""
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Fri Aug  2 10:33:47 2013\n"
+"POT-Creation-Date: Tue Oct 22 18:24:30 2013\n"
 "PO-Revision-Date: 2013-08-02 10:29+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -23,14 +23,6 @@ msgstr "Objet supprimé"
 #: n/Folder.py:162
 msgid "Please rename each listed object."
 msgstr "Veuillez renommer tous les éléments listés."
-
-#: n/MembershipTool.py:406
-msgid "%s's Home"
-msgstr "Accueil : %s"
-
-#: n/MembershipTool.py:407
-msgid "%s's front page"
-msgstr "Page d'accueil de %s"
 
 #: n/RegistrationTool.py:217
 msgid "How to reset your password on the %s website"
@@ -95,10 +87,12 @@ msgstr ""
 msgid "your registration has been accepted"
 msgstr "votre inscription a été acceptée"
 
+#: n/profiles/default/workflows/order_workflow/scripts/sendNotificationEmail.py:51
 #: n/profiles/photo/workflows/order_workflow/scripts/sendNotificationEmail.py:51
 msgid "Tracking number"
 msgstr "Numéro de suivi"
 
+#: n/profiles/default/workflows/order_workflow/scripts/sendNotificationEmail.py:55
 #: n/profiles/photo/workflows/order_workflow/scripts/sendNotificationEmail.py:55
 msgid "Tracking url"
 msgstr "Url de suivi"
@@ -428,24 +422,24 @@ msgstr "%d élément déplacé en haut.%d éléments déplacés en haut."
 msgid "%d item moved up.%d items moved up."
 msgstr "%d élément déplacé vers le haut.%d éléments déplacés vers le haut."
 
-#: n/skins/custom_generic/folder_contents_template.pt:26
+#: n/skins/custom_generic/folder_contents_template.pt:29
 msgid "Up"
 msgstr "Haut"
 
-#: n/skins/custom_generic/folder_contents_template.pt:29
+#: n/skins/custom_generic/folder_contents_template.pt:32
 msgid "Down"
 msgstr "Bas"
 
 #. Default: "by"
-#: n/skins/custom_generic/folder_contents_template.pt:31
+#: n/skins/custom_generic/folder_contents_template.pt:34
 msgid "move_by"
 msgstr "de"
 
-#: n/skins/custom_generic/folder_contents_template.pt:39
+#: n/skins/custom_generic/folder_contents_template.pt:42
 msgid "Top"
 msgstr "Premier"
 
-#: n/skins/custom_generic/folder_contents_template.pt:41
+#: n/skins/custom_generic/folder_contents_template.pt:44
 msgid "Bottom"
 msgstr "Dernier"
 
@@ -455,10 +449,9 @@ msgid "Login failure"
 msgstr "Échec de la connexion"
 
 #: n/skins/custom_generic/logged_in.py:50
-#: n/skins/photo_theme/homepage_dispatcher.py:13
-#: n/skins/photo_theme/homepage_dispatcher.py:16
-#: n/skins/photo_theme/homepage_dispatcher.py:24
-#: n/skins/photo_theme/homepage_dispatcher.py:27
+#: n/skins/photo_theme/homepage_dispatcher.py:14
+#: n/skins/photo_theme/homepage_dispatcher.py:17
+#: n/skins/photo_theme/homepage_dispatcher.py:30
 msgid "Login success"
 msgstr "Connexion réussie"
 
@@ -2300,6 +2293,12 @@ msgstr "Cc"
 
 msgid "mail_bcc"
 msgstr "Cci"
+
+#~ msgid "%s's Home"
+#~ msgstr "Accueil : %s"
+
+#~ msgid "%s's front page"
+#~ msgstr "Page d'accueil de %s"
 
 #~ msgid ""
 #~ "Your password has been successfully reset. You can log in immediately by "
