@@ -11,6 +11,7 @@
    <property name="title" i18n:translate="">Login</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/login_form</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr">not: member</property>
    <property name="permissions">
@@ -23,6 +24,7 @@
    <property name="description" i18n:translate=""></property>
    <property
       name="url_expr">string:${portal/portal_membership/getHomeUrl}/folder_contents</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property
       name="available_expr">python: member and portal.portal_membership.getHomeFolder()</property>
@@ -35,6 +37,7 @@
    <property name="title" i18n:translate="">Add to favorites</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${object_url}/addtoFavorites</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property
       name="available_expr">portal/portal_membership/getHomeFolder</property>
@@ -48,6 +51,7 @@
    <property name="description" i18n:translate=""></property>
    <property
       name="url_expr">string:${portal/portal_membership/getHomeUrl}/Favorites/folder_contents</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property
       name="available_expr">python: member and hasattr(portal.portal_membership.getHomeFolder(), "Favorites")</property>
@@ -60,6 +64,7 @@
    <property name="title" i18n:translate="">Preferences</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/personalize_form</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr">member</property>
    <property name="permissions">
@@ -71,6 +76,7 @@
    <property name="title" i18n:translate="">Log out</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/logout?noajax=1</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr">member</property>
    <property name="permissions">
@@ -82,6 +88,7 @@
    <property name="title" i18n:translate="">Logged in</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/index_html</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr"></property>
    <property name="permissions">
@@ -93,6 +100,7 @@
    <property name="title" i18n:translate="">Join</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/join_form</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr">not: member</property>
    <property name="permissions">
@@ -107,6 +115,7 @@
    <property name="title" i18n:translate="">List</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${folder_url}/folder_contents</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property
       name="available_expr">python:member and folder is not object and object.portal_type !='Event'</property>
@@ -123,6 +132,7 @@
    <property name="description" i18n:translate=""></property>
    <property
       name="url_expr">string:${portal_url}/manage_boxes?noajax=1</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr"></property>
    <property name="permissions">
@@ -134,6 +144,7 @@
    <property name="title" i18n:translate="">Send an email</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${object_url}/send_email_form</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr">member</property>
    <property name="permissions">
@@ -145,6 +156,7 @@
    <property name="title" i18n:translate="">Undo</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/undo_form</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr">member</property>
    <property name="permissions">
@@ -156,6 +168,7 @@
    <property name="title" i18n:translate="">Configure Portal</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/reconfig_form</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr"></property>
    <property name="permissions">
@@ -167,6 +180,7 @@
    <property name="title" i18n:translate="">Directory</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/groups_members</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr"></property>
    <property name="permissions">
@@ -182,6 +196,7 @@
    <property name="description" i18n:translate=""></property>
    <property
       name="url_expr">string:${object_url}/discussion_reply_form</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property
       name="available_expr">python: object is not None and object.meta_type != 'Discussion Item' and portal.portal_discussion.isDiscussionAllowedFor(object)</property>
@@ -197,6 +212,7 @@
    <property name="title" i18n:translate="">Syndicate</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${folder_url}/synPropertiesForm</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property
       name="available_expr">python: folder is object and portal.portal_syndication.isSiteSyndicationAllowed()</property>
@@ -209,6 +225,7 @@
    <property name="title" i18n:translate="">Calendar View</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${folder_url}/calendar_view</property>
+   <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property
       name="available_expr">python:member and folder is object and object.portal_type in ['Huge Plinn Folder', 'Portfolio']</property>

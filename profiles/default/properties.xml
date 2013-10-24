@@ -30,8 +30,7 @@
   <element value="end"/>
   <element value="start"/>
  </property>
- <property name="keywords" type="lines">
- </property>
+ <property name="keywords" type="lines"/>
  <property name="ajax_config" type="int">2</property>
  <property name="copyright_notice"
     type="string"></property>

@@ -4,6 +4,8 @@
    request_varname="portal_skin">
  <object name="Images" meta_type="Filesystem Directory View"
     directory="Products.CMFDefault:skins/Images"/>
+ <object name="ckeditor" meta_type="Filesystem Directory View"
+    directory="Products.ckeditor:skins"/>
  <object name="custom" meta_type="Folder"/>
  <object name="custom_content" meta_type="Filesystem Directory View"
     directory="Products.Plinn:skins/custom_content"/>
@@ -17,8 +19,6 @@
     directory="Products.Epoz:epoz/epoz_i18n"/>
  <object name="epoz_images" meta_type="Filesystem Directory View"
     directory="Products.Epoz:epoz/epoz_images"/>
- <object name="ckeditor" meta_type="Filesystem Directory View"
-    directory="Products.ckeditor:skins"/>
  <object name="jscalendar" meta_type="Filesystem Directory View"
     directory="Products.Plinn:skins/jscalendar"/>
  <object name="mimetypes_icons" meta_type="Filesystem Directory View"
@@ -45,6 +45,8 @@
     directory="Products.Plinn:skins/images"/>
  <object name="portfolio" meta_type="Filesystem Directory View"
     directory="Products.Portfolio:skins"/>
+ <object name="zpt_calendar" meta_type="Filesystem Directory View"
+    directory="Products.CMFCalendar:skins/zpt_calendar"/>
  <object name="zpt_content" meta_type="Filesystem Directory View"
     directory="Products.CMFDefault:skins/zpt_content"/>
  <object name="zpt_control" meta_type="Filesystem Directory View"
@@ -53,8 +55,6 @@
     directory="Products.CMFDefault:skins/zpt_generic"/>
  <object name="zpt_topic" meta_type="Filesystem Directory View"
     directory="Products.CMFTopic:skins/zpt_topic"/>
- <object name="zpt_calendar" meta_type="Filesystem Directory View"
-    directory="Products.CMFCalendar:skins/zpt_calendar"/>
  <skin-path name="Plinn Basic">
   <layer name="custom"/>
   <layer name="photoprint"/>

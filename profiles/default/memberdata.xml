@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="portal_memberdata" meta_type="Plinn Member Data Tool">
+ <property name="email"></property>
+ <property name="portal_skin"></property>
+ <property name="listed">False</property>
+ <property name="login_time">1970/01/01 00:00:00 UTC</property>
+ <property name="last_login_time">1970/01/01 00:00:00 UTC</property>
+ <property name="fullname"></property>
+ <property name="name" type="string"></property>
+ <property name="given_name" type="string"></property>
+ <property name="photo_width" type="int">800</property>
+</object>
