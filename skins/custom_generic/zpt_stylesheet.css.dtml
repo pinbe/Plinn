@@ -139,6 +139,7 @@ textarea {
 
 #Masthead td {
   vertical-align: middle;
+  padding:0;
 }
 
 #PortalLogo  {
@@ -194,11 +195,11 @@ textarea {
 .ActionLink a:link,
 .ActionLink a:visited,
 .ActionLink a:active { 
-  color: &dtml-linkColor;;
+  color: &dtml-specialLinkColor;;
   text-decoration: none 
 }
 
-.ActionLink a:hover { color: &dtml-linkHoverColor;}
+.ActionLink a:hover { color: &dtml-specialLinkHoverColor;}
 
 
 /* Breadcrumbs + Search form */  
@@ -372,11 +373,11 @@ textarea {
 .listing a:link,
 .listing a:visited,
 .listing a:active { 
-  color: &dtml-specialLinkColor;;
+  color: &dtml-linkColor;;
 }
 
 .listing th a:hover {
-	color: &dtml-specialLinkHoverColor;;
+	color: &dtml-linkHoverColor;;
 }
 
 .listing td {
@@ -407,11 +408,11 @@ textarea {
 .listingBar a:link,
 .listingBar a:visited,
 .listingBar a:active {
-	color : &dtml-specialLinkColor;;
+	color : &dtml-linkColor;;
 }
 
 .listingBar a:hover {
-	color : &dtml-specialLinkHoverColor;;
+	color : &dtml-linkHoverColor;;
 }
 
 .listingBar a.previous {

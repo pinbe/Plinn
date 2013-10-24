@@ -3,3 +3,6 @@
 
 /* plinn_style.css */
 <dtml-var plinn_style.css>
+
+/* Portfolio */
+<dtml-var portfolio_style.css>

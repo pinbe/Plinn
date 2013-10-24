@@ -96,11 +96,11 @@ table.assign_global_roles {
 .config a:link,
 .config a:visited,
 .config a:active {
-	color : &dtml-specialLinkColor;;
+	color : &dtml-linkColor;;
 }
 
 .config a:hover {
-	color : &dtml-specialLinkHoverColor;;
+	color : &dtml-linkHoverColor;;
 }
 
 .config .tabs a,
@@ -185,10 +185,9 @@ table.assign_global_roles {
   padding : 2px }
   
 .boxes_container li  {
-  margin-left : 0 ;
+  margin-left : 0.5em ;
   color: &dtml-bulletColor;;
-  list-style-position : inside ;
-  list-style-image : url(&dtml-portal_url;/list_bullet.png);
+  list-style:none;
 }
 
 .tree_box table {
@@ -539,17 +538,6 @@ table.assign_global_roles {
 	cursor: pointer;
 	margin-right: 1px;
 	margin-bottom: 1px;
-}
-
-#HeaderArea a
-#HeaderArea a:link,
-#HeaderArea a:visited,
-#HeaderArea a:active {
-	color : &dtml-specialLinkColor;;
-}
-
-#HeaderArea a:hover {
-	color : &dtml-specialLinkHoverColor;;
 }
 
 /* Mosaic document */
