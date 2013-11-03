@@ -28,6 +28,8 @@ import exceptions
 from Products.CMFCore import utils as core_cmf_utils
 from Products.CMFDefault import utils as default_cmf_utils
 from Products.CMFCore.permissions import AddPortalContent
+from Products.CMFCore.FSFile import FSFile
+from Products.CMFCore.DirectoryView import registerFileExtension
 import File, Folder, HugePlinnFolder, Topic
 import MembershipTool
 import MemberDataTool
@@ -65,6 +67,10 @@ methods = {
 'popCP' : popCP,
 'popCP__roles__' : None
 }
+
+# register font extensions
+registerFileExtension('ttf', FSFile)
+registerFileExtension('eot', FSFile)
 
 def initialize(registrar) :
 	
