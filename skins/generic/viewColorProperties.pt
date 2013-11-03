@@ -12,7 +12,7 @@
   									colorProps python:[ p for p in strProps if p['id'].lower().find('color') >=0 or (p['default_value'].startswith('#') and p['default_value'][1:].isalnum()  ) ]"
   			tal:omit-tag="">
 		<h1>Color table</h1>
-    <table width="180" border="1" cellspacing="2" cellpadding="0">
+    <table border="1" cellspacing="2" cellpadding="0">
       <tr tal:repeat="prop colorProps">
         <th tal:content="prop/id">color name</th>
         <td tal:content="prop/default_value">#fde</td>
