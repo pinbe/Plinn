@@ -5,6 +5,5 @@
 <dtml-with base_properties> */
 body {
 	background: &dtml-contentBackgroundColor;;
-	line-height:2em;
 }
 /* </dtml-with> */
