@@ -33,32 +33,4 @@
   </div>
 </div>
 
-	<div metal:define-macro="textFormatSelector"
-			 tal:define="wysiwyg python: here.portal_membership.getAuthenticatedMember().getProperty('wysiwyg_editor')!='None';
-			 						 text_format python: getattr(here,'text_format','html')"
-			 tal:omit-tag="" i18n:domain="plinn">
-		<input type="hidden" name="text_format" value="html" tal:condition="wysiwyg" />
-		
-		<div tal:condition="not: wysiwyg">
-			<label i18n:translate="">Format</label><br/>
-			<label>
-				<input type="radio" name="text_format" value="structured-text"
-							 tal:attributes="checked python:test(text_format=='structured-text', 1, None);" />
-				<span i18n:translate="" tal:omit-tag="">Structured text</span>
-			</label><br />
-		
-			<label>
-				<input type="radio" name="text_format" value="html"
-							 tal:attributes="checked python:test(text_format=='html', 1, None)" />
-				<span i18n:translate="" tal:omit-tag="">HTML</span>
-			</label><br />
-		
-			<label>
-				<input type="radio" name="text_format" value="plain"
-							 tal:attributes="checked python:test(text_format=='plain', 1, None);" />
-				<span i18n:translate="" tal:omit-tag="">Plain text</span>
-			</label>
-		</div>
-	</div>
-
 </html>

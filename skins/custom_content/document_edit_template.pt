@@ -27,13 +27,6 @@
                   </div>
                 </td>
               </tr>
-              <tr>
-                <td colspan="2">
-                  <div metal:use-macro="here/wysiwyg_support/macros/textFormatSelector">
-                    Format box, if needed
-                  </div>
-                </td>
-              </tr>
               <!--
               <tr>
                 <th nowrap="nowrap" i18n:translate="">External file</th>
