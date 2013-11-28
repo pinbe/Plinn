@@ -16,9 +16,11 @@
   <div>
     <script type="text/javascript" tal:attributes="src string:$portal_url/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" tal:content="structure python:'''
-      CKEDITOR.replace('%(inputname)s');
-      CKEDITOR.instances['%(inputname)s'].contentPath = '%(contentPath)s';
       (function(){
+      CKEDITOR.replace('%(inputname)s');
+      var ck = CKEDITOR.instances['%(inputname)s'];
+      ck.contentPath = '%(contentPath)s';
+      ck.config.baseHref = '%(baseHref)s';
       var ckForm = document.getElementById('%(inputname)s').form;
   		if ((AJAX_CONFIG & 2) == 2) {
     		var formManager = new FormManager(ckForm, document.getElementById('mainCell'));
@@ -28,7 +30,9 @@
     		};
   		}
 		  })();
-      ''' % {'inputname' : inputname, 'contentPath' : here.absolute_url(relative=1)}">
+      ''' % {'inputname' : inputname,
+             'contentPath' : here.absolute_url(relative=1),
+             'baseHref' : here.absolute_url()+'/'}">
     </script>
   </div>
 </div>
