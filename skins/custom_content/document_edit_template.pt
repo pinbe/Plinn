@@ -1,51 +1,29 @@
-<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="here/main_template/macros/master">
-
+<html metal:use-macro="here/main_template/macros/master" xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://namespaces.zope.org/i18n" xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal">
   <head>
     <title>Document edit form</title>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <link href="zpt_stylesheet.css" rel="stylesheet" media="screen"/>
   </head>
-
   <body>
-    <div i18n:domain="cmf_default">
-      <div metal:fill-slot="header">
-        <div metal:use-macro="here/widgets/macros/generic_header">
-          generic_header macro
-        </div>
+    <div metal:fill-slot="header">
+      <div metal:use-macro="here/widgets/macros/generic_header">
+        generic_header macro
       </div>
-      <div id="Desktop">
-        <div metal:fill-slot="main">
-          <form action="document_edit_form" method="post" enctype="multipart/form-data"
-          			tal:attributes="action string:${here/absolute_url}/document_edit_form">
-            <table class="FormLayout">
-              <tr>
-                <td class="TextField" colspan="2" i18n:translate="">
-                  <div tal:define="inputname string:text; formname string:edit_form; inputvalue here/text" tal:omit-tag="">
-                    <div metal:use-macro="here/wysiwyg_support/macros/wysiwygEditorBox">
-                      Wysiwig Code
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <!--
-              <tr>
-                <th nowrap="nowrap" i18n:translate="">External file</th>
-                <td width="100%">
-                  <input type="file" name="file" size="25" />
-                </td>
-              </tr>
-              -->
-              <tr>
-              	<td><br /></td>
-                <td width="100%">
-                  <input type="submit" name="change_and_view" value="Change and View" i18n:attributes="value" />
-                </td>
-              </tr>
-            </table>
-          </form>
-        </div>
+    </div>
+    <div id="Desktop">
+      <div metal:fill-slot="main">
+        <form action="document_edit_form" method="post" enctype="multipart/form-data" tal:attributes="action string:${here/absolute_url}/document_edit_form">
+          <div tal:define="inputname string:text; formname string:edit_form; inputvalue here/text" tal:omit-tag="">
+            <div metal:use-macro="here/wysiwyg_support/macros/wysiwygEditorBox">
+              Wysiwig Code
+            </div>
+          </div>
+          <div>
+            <br/>
+            <input type="submit" name="change_and_view" value="Save" i18n:domain="plinn" i18n:attributes="value"/>
+          </div>
+        </form>
       </div>
     </div>
   </body>
-
 </html>
