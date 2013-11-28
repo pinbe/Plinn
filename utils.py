@@ -94,12 +94,12 @@ def formatFullName(memberName, memberGivenName, memberId, nameBefore=1) :
     memberFullName = u''
     if memberName and memberGivenName :
         if nameBefore :
-            memberFullName = memberName.upper() + ' ' + capitalizeCompoundGivenName(memberGivenName)
+            memberFullName = memberName.capitalize() + ' ' + capitalizeCompoundGivenName(memberGivenName)
         else :
-            memberFullName = capitalizeCompoundGivenName(memberGivenName) + ' ' + memberName.upper() 
+            memberFullName = capitalizeCompoundGivenName(memberGivenName) + ' ' + memberName.capitalize() 
         
     elif memberName and not memberGivenName :
-        memberFullName = memberName.upper()
+        memberFullName = memberName.capitalize()
         
     elif not memberName and memberGivenName :
         memberFullName = capitalizeCompoundGivenName(memberGivenName)
