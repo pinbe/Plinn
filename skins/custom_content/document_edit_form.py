@@ -11,13 +11,13 @@ if text and same_type(text, []) :
 if change and \
 		context.validateTextFile(**form) and \
 		context.validateHTML(**form) and \
-		context.document_edit_control(**form) and \
+		context.document_edit_control(text=form.get('text'), text_format='html') and \
 		context.setRedirect(context, 'object/edit', **{'ajax':ajax}):
 	return
 elif change_and_view and \
 		context.validateTextFile(**form) and \
 		context.validateHTML(**form) and \
-		context.document_edit_control(**form) and \
+		context.document_edit_control(text=form.get('text'), text_format='html') and \
 		context.setRedirect(context, 'object/view', **{'ajax':ajax}):
 	return
 
