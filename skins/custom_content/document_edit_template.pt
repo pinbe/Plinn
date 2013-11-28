@@ -1,10 +1,10 @@
-<html metal:use-macro="here/main_template/macros/master" xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://namespaces.zope.org/i18n" xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal">
+<html metal:use-macro="here/main_template/macros/master">
   <head>
     <title>Document edit form</title>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <link href="zpt_stylesheet.css" rel="stylesheet" media="screen"/>
   </head>
-  <body>
+  <body i18n:domain="plinn">
     <div metal:fill-slot="header">
       <div metal:use-macro="here/widgets/macros/generic_header">
         generic_header macro
@@ -20,7 +20,7 @@
           </div>
           <div>
             <br/>
-            <input type="submit" name="change_and_view" value="Save" i18n:domain="plinn" i18n:attributes="value"/>
+            <input type="submit" name="change_and_view" value="Save" i18n:attributes="value"/>
           </div>
         </form>
       </div>
