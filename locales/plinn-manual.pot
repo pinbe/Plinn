@@ -873,3 +873,6 @@ msgstr ""
 
 msgid "This is the default home page."
 msgstr ""
+
+msgid "Huge Folder"
+msgstr ""

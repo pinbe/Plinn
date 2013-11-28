@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Tue Oct 22 18:30:26 2013\n"
-"PO-Revision-Date: 2007-10-17 14:43+0200\n"
+"POT-Creation-Date: Thu Nov 28 13:09:25 2013\n"
+"PO-Revision-Date: 2013-11-28 13:12+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -524,22 +524,22 @@ msgstr ""
 msgid "Request made by IP ${ip} at ${time}"
 msgstr ""
 
-#: n/skins/custom_generic/main_template_standard.pt:95
-#: n/skins/photo_theme/main_template_standard.pt:96
+#: n/skins/custom_generic/main_template_standard.pt:96
+#: n/skins/photo_theme/main_template_standard.pt:97
 msgid "Skip to content"
 msgstr ""
 
-#: n/skins/custom_generic/main_template_standard.pt:110
+#: n/skins/custom_generic/main_template_standard.pt:111
 #: n/skins/custom_generic/talkback_tree.pt:63
 #: n/skins/generic/main_template_ajax.pt:12
-#: n/skins/photo_theme/main_template_standard.pt:118
+#: n/skins/photo_theme/main_template_standard.pt:119
 msgid "Information"
 msgstr ""
 
-#: n/skins/custom_generic/main_template_standard.pt:111
+#: n/skins/custom_generic/main_template_standard.pt:112
 #: n/skins/custom_generic/talkback_tree.pt:64
 #: n/skins/generic/main_template_ajax.pt:13 n/skins/generic/widgets.pt:17
-#: n/skins/photo_theme/main_template_standard.pt:119
+#: n/skins/photo_theme/main_template_standard.pt:120
 #: n/skins/photo_theme/search_results_macros.pt:38
 msgid "${DYNAMIC_CONTENT}"
 msgstr ""
@@ -951,7 +951,7 @@ msgstr ""
 msgid "Expiration Date"
 msgstr ""
 
-#: n/skins/generic/header_widgets.pt:147 n/skins/generic/wysiwyg_support.pt:43
+#: n/skins/generic/header_widgets.pt:147
 msgid "Format"
 msgstr ""
 
@@ -1300,18 +1300,6 @@ msgstr ""
 
 #: n/skins/generic/widgets.pt:128
 msgid "News Item"
-msgstr ""
-
-#: n/skins/generic/wysiwyg_support.pt:47
-msgid "Structured text"
-msgstr ""
-
-#: n/skins/generic/wysiwyg_support.pt:53
-msgid "HTML"
-msgstr ""
-
-#: n/skins/generic/wysiwyg_support.pt:59
-msgid "Plain text"
 msgstr ""
 
 #: n/skins/photo_theme/logout.py:15
@@ -2222,6 +2210,9 @@ msgstr ""
 
 msgid "This is the default home page."
 msgstr ""
+
+msgid "Huge Folder"
+msgstr "Folder"
 
 #~ msgid "List"
 #~ msgstr "List"
