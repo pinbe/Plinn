@@ -10,7 +10,7 @@
       <div tal:condition="python: not(here.portal_membership.checkPermission('Access contents information', here))">
         <span tal:define="dummy here/unauthRedirect"/>
       </div>
-      <form action="." method="post" tal:attributes="action string:${here/absolute_url}/add_content">
+      <form tal:attributes="action string:${here/absolute_url}/add_content" method="post" id="factories_form">
         <table cellspacing="0" tal:define="ucn here/getUntitledContentName" class="FolderFactories">
           <tr>
             <th><br/></th>
@@ -40,6 +40,29 @@
           </div>
         </table>
       </form>
+      <script type="text/javascript" charset="utf-8">
+        (function(){
+          var fform = document.getElementById('factories_form');
+          var fm = new FormManager(fform);
+          var submitButton;
+          fm.onBeforeSubmit = function(self, evt) {
+            self.submitButton = submitButton;
+          };
+          var id2type = /(^[^\.]+)\.id:record$/;
+          function trackFocus(evt) {
+            var input = getTargetedObject(evt);
+            var matches = id2type.exec(input.name);
+            if (matches && matches.length == 2)
+              submitButton = fform.elements[matches[1] + '.type:record'];
+          }
+          var e;
+          for (var i = 0 ; i < fform.elements.length ; i++) {
+            e = fform.elements[i];
+            if (e.type==='text')
+              addListener(e, 'focus', trackFocus);
+          }
+        }());
+      </script>
     </div>
   </body>
 </html>
