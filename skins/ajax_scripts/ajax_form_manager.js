@@ -17,7 +17,6 @@ FormManager = function(form, responseTextDest, lazy) {
 	var thisManager = this;
 	this.form.onsubmit = function(evt) { thisManager.submit(evt); };
 	this.form.onclick = function(evt) { thisManager.click(evt); };
-	this.submitButton = null;
 	
 	/* raised on form submit */
 	this.onBeforeSubmit = null;
