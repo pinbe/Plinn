@@ -1,4 +1,4 @@
-// © Benoît PIN 2006-2009
+// © Benoît PIN 2006-2013
 // http://plinn.org
 // Licence GPL
 // 
@@ -12,57 +12,10 @@ var AjaxLinkHandler;
 
 var reProtocol = /^\s*[a-z]+:/;
 
-AjaxLinkHandler = function(locationPollInterval) {
-	var thisHandler = this;
-	this.previousHash = '#' + location.href;
-	location.hash = location.href;
-	setInterval(function(){thisHandler.checkLocation();}, locationPollInterval)
-	addListener(document.body, 'click', function(evt){thisHandler.handleClick(evt);});
-	if (browser.isIE55 || browser.isIE6up) {
-		var ie_historyFrm = document.createElement('iframe');
-		ie_historyFrm.setAttribute('src', portal_url() + '/scrape_ie_history');
-		with (ie_historyFrm.style) {
-			border="0";
-			width="1px";
-			height="1px";
-			position="absolute";
-			bottom="0";
-			right="0";
-			visibility="visible";
-		}
-		document.body.appendChild(ie_historyFrm);
-		this.historyFrame = ie_historyFrm;
-	}
-};
-
-AjaxLinkHandler.prototype.checkLocation = function() {
-	if ((this.previousHash != location.hash) && location.hash) {
-		var rawUrl = unescape(location.hash.slice(1));
-		
-		var urlHash = rawUrl.split('#');
-		var url = urlHash[0];
-		var hash = urlHash[1];
-		
-		var ajaxParams='ajax=1&_browserObjectUrl=' + escape(absolute_url());
-		var urlQueryStart = url.indexOf('?');
-		if (urlQueryStart != -1)
-			url += '&' + ajaxParams;
-		else
-			url += '?' + ajaxParams;
-
-		try {
-			var fi = new FragmentImporter(url);
-			if (hash) {
-				var thisHandler = this;
-				fi.onAfterPopulate = function(){thisHandler.loadHash('#' + hash);};
-			}
-			fi.load(rawUrl);
-		}
-		catch (e) {
-			window.location.href = rawUrl;
-		}
-	}
-	this.previousHash = location.hash;
+AjaxLinkHandler = function() {
+	var self = this;
+	addListener(document.body, 'click', function(evt){self.handleClick(evt);});
+    addListener(window, 'popstate', function(evt){self.handlePopState(evt);});
 };
 
 AjaxLinkHandler.prototype.handleClick = function(evt){
@@ -73,16 +26,7 @@ AjaxLinkHandler.prototype.handleClick = function(evt){
 			return;
 	}
 	target.blur();
-	// prevent click glitches from IE :((
-	if (browser.isIE55 || browser.isIE6up) {
-		if (_disableRootClickHandler)
-			return;
-		else {
-			_disableRootClickHandler = true;
-			setTimeout("_disableRootClickHandler=false", 100);
-		}
-	}
-	
+
 	if (target.target)
 		return;
 		
@@ -99,40 +43,39 @@ AjaxLinkHandler.prototype.handleClick = function(evt){
 		url = absolute_url() + '/' + target.getAttribute('href', 2);
 	
 	if (!url) return;
+
+    var query = target.search;
+    if ((query && query.search("noajax=1") != -1) || target.name == 'noajax')
+        return;
+    
+    disableDefault(evt);
+    this.loadUrl(url);
+};
+
+AjaxLinkHandler.prototype.handlePopState = function (evt, extra) {
+    if (evt.state)
+        this.loadUrl(evt.state, true);
+};
+
+AjaxLinkHandler.prototype.loadUrl = function(url, noPush) {
+    var rawUrl = url;
+    var ajaxParams='ajax=1&_browserObjectUrl=' + escape(absolute_url());
+	var urlQueryStart = url.indexOf('?');
+	if (urlQueryStart != -1)
+		url += '&' + ajaxParams;
+	else
+		url += '?' + ajaxParams;
 	
-	if (browser.isGecko)
-		url = encodeURIComponent(url);
-	var query = target.search;
-	if ((query && query.search("noajax=1") != -1) || target.name == 'noajax')
+	try {
+		var fi = new FragmentImporter(url);
+		fi.load();
+	}
+	catch (e) {
+		window.location.href = rawUrl;
 		return;
-	
-	disableDefault(evt);
-	this.loadUrl(url);
-};
-
-if (browser.isIE55 || browser.isIE6up) {
-	AjaxLinkHandler.prototype.loadUrl = function(url) {
-		if (location.hash.slice(1) == url)
-			url += '#'
-		this.historyFrame.contentWindow.location.search = '?url=' + escape(url);
-		location.hash = escape(url);
-	};
-}
-else {
-	AjaxLinkHandler.prototype.loadUrl = function(url) {
-		if (location.hash.slice(1) == url)
-			url += '#'
-		location.hash = escape(url);
-	};	
-}
-
-AjaxLinkHandler.prototype.loadHash = function(hash) {
-	this.previousHash = hash;
-	location.hash = hash;
-};
-
-AjaxLinkHandler.prototype.ie_loadHistory = function(url) {
-	location.hash = escape(url);
+	}
+	if (!noPush)
+	    history.pushState(rawUrl, '', rawUrl)
 };
 
 function ajaxSubmitFormHandler(evt) {
@@ -144,20 +87,15 @@ function ajaxSubmitFormHandler(evt) {
 			if (form.nodeName == 'FORM') {
 				var fm = new FormManager(form, document.getElementById("mainCell"));
 				fm.submitButton = target;
-				//disableDefault(evt);
 				break;
 			}
 		}
 	}
-	
 }
 
 function _addRootHandlers() {
-	if ((AJAX_CONFIG & 1) == 1) {
+	if ((AJAX_CONFIG & 1) == 1 && history.pushState !== undefined) {
 		window.linkHandler = new AjaxLinkHandler(200);
-	    if (browser.isIE55 || browser.isIE6up) {
-	    	_disableRootClickHandler = false;
-	    }
 	}
 	if ((AJAX_CONFIG & 2) == 2) {
 		addListener(document, 'click', ajaxSubmitFormHandler);
