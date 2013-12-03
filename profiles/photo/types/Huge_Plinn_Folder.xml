@@ -17,12 +17,9 @@
   <element value="Calendar"/>
   <element value="Document"/>
   <element value="File"/>
-  <element value="Link"/>
-  <element value="Mosaic Document"/>
+  <element value="Huge Plinn Folder"/>
   <element value="News Item"/>
   <element value="Plinn Document"/>
-  <element value="Huge Plinn Folder"/>
-  <element value="Huge Plinn Folder"/>
   <element value="Portfolio"/>
   <element value="Topic"/>
  </property>
