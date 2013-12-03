@@ -7,6 +7,7 @@
 var FolderDDropControler;
 var DropTarget;
 var loadListing;
+var DDFolderUploader;
 
 (function(){
 
@@ -239,5 +240,66 @@ loadListing = function(evt) {
 	}
 	return false;
 }
+
+DDFolderUploader = function(dropbox, uploadUrl, listing) {
+	DDFileUploaderBase.apply(this, [dropbox, uploadUrl]);
+	this.listing = listing;
+	var thead = listing;
+	do {
+		thead = thead.previousSibling;
+	} while (thead.tagName !== 'THEAD')
+
+	var cells = thead.getElementsByTagName('th');
+	var cell;
+	this.tableSpan = 0;
+	for (var i = 0 ; i < cells.length ; i++) {
+		cell = cells[i];
+		this.tableSpan += cell.getAttribute('colspan') ? Number(cell.getAttribute('colspan')) : 1;
+	}
+	var lastRow = listing.lastChild;
+	while(lastRow && lastRow.tagName !== 'TR') {
+		lastRow = lastRow.previousSibling;
+	}
+	this.lastRowClassName = lastRow ? lastRow.className : 'even';
+};
+
+copyPrototype(DDFolderUploader, DDFileUploaderBase);
+
+
+DDFolderUploader.prototype.createRow = function(file) {
+	var row = document.createElement('tr');
+	row.file = file;
+	row.className = this.lastRowClassName === 'even' ? 'odd' : 'even';
+	this.lastRowClassName = row.className;
+	var td = document.createElement('td');
+	td.setAttribute('colspan', this.tableSpan);
+	td.innerHTML = file.name;
+	row.appendChild(td);
+	this.listing.appendChild(row);
+	return row;
+};
+
+// Methods about upload
+DDFolderUploader.prototype.handleFiles = function(files) {
+	var file, i, row;
+	for (i = 0; i < files.length; i++) {
+		file = files[i];
+		row = this.createRow(file);
+		this.uploadQueuePush(row);
+	}
+};
+
+DDFolderUploader.prototype.beforeUpload = function(item) {
+	// To be implemented by decendant.
+};
+
+DDFolderUploader.prototype.uploadCompleteHandlerCB = function(req) {
+	// To be implemented by descendant.
+};
+
+DDFolderUploader.prototype.progressHandlerCB = function(progress) {
+	// To be implemented by descendant.
+	// 0 <= progress <= 1
+};
 
 }());

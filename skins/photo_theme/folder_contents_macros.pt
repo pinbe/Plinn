@@ -77,7 +77,7 @@
       <span metal:use-macro="here/batch_macros/macros/navigation">batch navigation</span>
     </div>
 		<script type="text/javascript">
-		//<!--
+		(function(){
 			// variables for drag-and-drop ordered support
 			var ddEnabled = false
 			try {
@@ -110,8 +110,11 @@
 				addListener(topNavBatchBar, "click", loadListing);
 				addListener(bottomNavBatchBar, "click", loadListing);
 			}
+			
+			var uploadUrl = absolute_url() + '/put_upload';
+      // new DDFolderUploader(document.getElementById('ForematterCell'), uploadUrl, listing);
 
-		//-->
+		}());
 		</script>
   </body>
 
