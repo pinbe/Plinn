@@ -343,13 +343,19 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
         ob.PUT(REQUEST, RESPONSE)
         ob.orig_name = fileName
         
-        
+        # get method from ob created / refreshed
         ti = ob.getTypeInfo()
         method_id = ti.queryMethodID('jsupload_snippet')
-        meth = method_id and getattr(ob, method_id) or (lambda : 'Not implemented')
+        meth = getattr(ob, method_id) if method_id else None
+        if not meth :
+            # get method from container that receive uploaded content
+            ti = self.getTypeInfo()
+            method_id = ti.queryMethodID('jsupload_snippet')
+            meth = getattr(self, method_id) if method_id else lambda : 'Not implemented'
+
         RESPONSE.setStatus(httpRespCode)
         RESPONSE.setHeader('Content-Type', 'text/xml;;charset=utf-8')
-        return '<fragment>%s</fragment>' % meth().strip()
+        return '<fragment>%s</fragment>' % meth(ob).strip()
 
     
 #   ## overload to maintain ownership if authenticated user has 'Manage portal' permission
