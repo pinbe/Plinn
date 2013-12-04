@@ -1,0 +1,5 @@
+<metal:block metal:use-macro="here/main_template_macros/macros/global_defines"/>
+<tal:block tal:define="listItemInfos options/listItemInfos">
+  <div metal:use-macro="here/folder_contents_macros/macros/itemListing"/>
+</tal:block>
+<tal:block tal:define="global dummy python:request.RESPONSE.setHeader('Content-Type', 'text/xml;;charset=utf-8')" />

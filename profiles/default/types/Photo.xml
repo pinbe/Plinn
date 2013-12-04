@@ -16,6 +16,7 @@
  <property name="allow_discussion">False</property>
  <alias from="(Default)" to="photo_view"/>
  <alias from="info" to="photo_info"/>
+ <alias from="jsupload_snippet" to="photo_gridthumbnail"/>
  <alias from="view" to="photo_view"/>
  <action title="View" action_id="view" category="object" condition_expr=""
     icon_expr="" link_target="" url_expr="string:${object_url}/photo_view"

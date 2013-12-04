@@ -290,11 +290,23 @@ DDFolderUploader.prototype.handleFiles = function(files) {
 };
 
 DDFolderUploader.prototype.beforeUpload = function(item) {
+  this.uploadedItem = item;
 	// To be implemented by decendant.
 };
 
 DDFolderUploader.prototype.uploadCompleteHandlerCB = function(req) {
-	// To be implemented by descendant.
+	var item = this.uploadedItem;
+	var row = getCopyOfNode(req.responseXML.documentElement.firstChild);
+  row.className = item.className;
+
+	if (req.status === 200) {
+		// update
+    console.log('todo');
+	}
+	else if(req.status === 201) {
+		// creation
+		this.listing.replaceChild(row, item);
+	}
 };
 
 DDFolderUploader.prototype.progressHandlerCB = function(progress) {

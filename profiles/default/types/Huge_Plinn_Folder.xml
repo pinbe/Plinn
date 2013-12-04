@@ -17,17 +17,15 @@
   <element value="Calendar"/>
   <element value="Document"/>
   <element value="File"/>
-  <element value="Link"/>
-  <element value="Mosaic Document"/>
+  <element value="Huge Plinn Folder"/>
   <element value="News Item"/>
   <element value="Plinn Document"/>
-  <element value="Huge Plinn Folder"/>
-  <element value="Huge Plinn Folder"/>
   <element value="Portfolio"/>
   <element value="Topic"/>
  </property>
  <property name="allow_discussion">False</property>
  <alias from="(Default)" to="folder_contents"/>
+ <alias from="jsupload_snippet" to="folder_jsupload_snippet"/>
  <alias from="mkdir" to="createHugePlinnFolder"/>
  <alias from="view" to="folder_contents"/>
  <action title="View" action_id="view" category="object" condition_expr=""
