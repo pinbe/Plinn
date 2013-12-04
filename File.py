@@ -101,7 +101,6 @@ class File(BlobFile, CMFFile) :
 		if orig_name :
 			self.orig_name = orig_name
 
-		print self.absolute_url(), self.Format()
 		if self.Format() == 'application/x-shockwave-flash' :
 			if file :
 				try :
