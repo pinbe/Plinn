@@ -349,7 +349,7 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
         meth = method_id and getattr(ob, method_id) or (lambda : 'Not implemented')
         RESPONSE.setStatus(httpRespCode)
         RESPONSE.setHeader('Content-Type', 'text/xml;;charset=utf-8')
-        return '<fragment>%s></fragment>' % meth().strip()
+        return '<fragment>%s</fragment>' % meth().strip()
 
     
 #   ## overload to maintain ownership if authenticated user has 'Manage portal' permission
