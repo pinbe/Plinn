@@ -323,9 +323,13 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
             typ, enc=guess_content_type(validId, body)
 
         if self.checkIdAvailable(validId) :
-            ob = self.PUT_factory(validId, typ, body)
-            self._setObject(validId, ob)
-            ob = self._getOb(validId)
+            try :
+                ob = self.PUT_factory(validId, typ, body)
+                self._setObject(validId, ob)
+                ob = self._getOb(validId)
+            except ValueError : # maybe "Disallowed subobject type". Fallback to file type.
+                validId = self.invokeFactory('File', validId)
+                ob = self._getOb(validId)
             if IDublinCore.providedBy(ob) :
                 ob.editMetadata(title=fileName,
                                 format=typ)
