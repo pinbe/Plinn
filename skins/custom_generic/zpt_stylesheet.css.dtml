@@ -390,7 +390,18 @@ textarea {
 }
 .listing .even {
   background-color: &dtml-evenRowBackgroundColor;;
-} 
+}
+
+.listing span.upload-progress {
+  display: block;
+  position:absolute;
+  background:#ef8e32;
+  height:4px;
+  border-radius:2px;
+  width:0;
+  top:3px;
+}
+
 
 /* Batched navigation */
 

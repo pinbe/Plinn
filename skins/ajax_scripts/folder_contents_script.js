@@ -244,6 +244,7 @@ loadListing = function(evt) {
 DDFolderUploader = function(dropbox, uploadUrl, listing) {
 	DDFileUploaderBase.apply(this, [dropbox, uploadUrl]);
 	this.listing = listing;
+	this.progressBarMaxSize = listing.clientWidth;
 	var thead = listing;
 	do {
 		thead = thead.previousSibling;
@@ -273,9 +274,19 @@ DDFolderUploader.prototype.createRow = function(file) {
 	this.lastRowClassName = row.className;
 	var td = document.createElement('td');
 	td.setAttribute('colspan', this.tableSpan);
-	td.innerHTML = file.name;
+	var relSpan = document.createElement('span');
+	relSpan.style.position = 'relative';
+	td.appendChild(relSpan);
+	var progressBar = document.createElement('span');
+	progressBar.className = 'upload-progress';
+	row.progressBar = progressBar;
+	relSpan.appendChild(progressBar);
+	var fileNameSpan = document.createElement('span');
+	fileNameSpan.innerHTML = file.name;
+	td.appendChild(fileNameSpan);
 	row.appendChild(td);
 	this.listing.appendChild(row);
+	this.progressBarMaxSize = row.clientWidth;
 	return row;
 };
 
@@ -290,28 +301,31 @@ DDFolderUploader.prototype.handleFiles = function(files) {
 };
 
 DDFolderUploader.prototype.beforeUpload = function(item) {
-  this.uploadedItem = item;
-	// To be implemented by decendant.
+  	this.uploadedItem = item;
+	this.progressBar = item.progressBar;
 };
 
 DDFolderUploader.prototype.uploadCompleteHandlerCB = function(req) {
 	var item = this.uploadedItem;
 	var row = getCopyOfNode(req.responseXML.documentElement.firstChild);
-  row.className = item.className;
+  	row.className = item.className;
 
 	if (req.status === 200) {
 		// update
-    console.log('todo');
+    	console.log('todo');
 	}
 	else if(req.status === 201) {
 		// creation
 		this.listing.replaceChild(row, item);
+		this.progressBarMaxSize = row.clientWidth;
 	}
 };
 
 DDFolderUploader.prototype.progressHandlerCB = function(progress) {
-	// To be implemented by descendant.
 	// 0 <= progress <= 1
+	var size = this.progressBarMaxSize * progress;
+	size = Math.round(size);
+	this.progressBar.style.width = size + 'px';
 };
 
 }());
