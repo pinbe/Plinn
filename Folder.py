@@ -58,6 +58,7 @@ from Products.CMFCore.utils import _checkPermission, getToolByName
 from Products.CMFCore.utils import getUtilityByInterfaceName
 from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
 from Products.CMFCore.PortalFolder import PortalFolder, ContentFilter
+from Products.CMFCore.interfaces import IDublinCore
 from Products.CMFDefault.DublinCore import DefaultDublinCoreImpl
 
 from zope.interface import implements
@@ -325,6 +326,9 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
             ob = self.PUT_factory(validId, typ, body)
             self._setObject(validId, ob)
             ob = self._getOb(validId)
+            if IDublinCore.providedBy(ob) :
+                ob.editMetadata(title=fileName,
+                                format=typ)
             httpRespCode = 201
         else :
             httpRespCode = 200
