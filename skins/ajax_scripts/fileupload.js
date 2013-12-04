@@ -68,7 +68,7 @@ DDFileUploaderBase.prototype.upload = function(item) {
 
 	req.open("PUT", this.uploadUrl);
 	req.setRequestHeader("Content-Type", file.type);
-	req.setRequestHeader("X-File-Name", file.name);
+	req.setRequestHeader("X-File-Name", encodeURI(file.name));
 	addListener(reader, 'load',
 		function(evt){
 			try {

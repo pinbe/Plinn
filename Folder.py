@@ -31,6 +31,7 @@ from zExceptions import Unauthorized
 import sys
 import warnings
 from cgi import escape
+from urllib import unquote
 from OFS import Moniker
 from ZODB.POSException import ConflictError
 import OFS.subscribers
@@ -297,8 +298,7 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
         """
 
         self.dav__init(REQUEST, RESPONSE)
-
-        fileName = REQUEST.getHeader('X-File-Name', '')
+        fileName = unquote(REQUEST.getHeader('X-File-Name', ''))
         validId = makeValidId(self, fileName, allow_dup=True)
 
         ifhdr = REQUEST.get_header('If', '')
