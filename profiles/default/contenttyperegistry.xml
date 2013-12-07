@@ -25,4 +25,9 @@
   <argument value="application"/>
   <argument value=""/>
  </predicate>
+ <predicate name="other" content_type_name="File"
+    predicate_type="major_minor">
+  <argument value=""/>
+  <argument value=""/>
+ </predicate>
 </object>
