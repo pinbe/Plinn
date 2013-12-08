@@ -215,7 +215,8 @@ options['form'] = { 'action': target,
 					'listHiddenVarInfos': tuple(hidden_vars),
 					'listButtonInfos': tuple(buttons),
 					'is_orderable': is_orderable,
-					'is_sortable': is_sortable }
+					'is_sortable': is_sortable,
+					'items_add_allowed': items_add_allowed }
 if not ajax and is_orderable :
 	deltas = range( 1, min(5, length) ) + range(5, length, 5)
 	options['form']['listDeltas'] = tuple(deltas)
