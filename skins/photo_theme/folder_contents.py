@@ -15,6 +15,7 @@ from Products.CMFDefault.utils import html_marshal
 
 mtool = getToolByName(script, 'portal_membership')
 checkPermission = mtool.checkPermission
+isAnon = mtool.isAnonymousUser()
 utool = getToolByName(script, 'portal_url')
 portal_url = utool()
 
@@ -94,11 +95,7 @@ elif (key, reverse) == context.getDefaultSorting():
 else:
 	is_default = 0
 
-columns = ( {'key': 'Lock',
-			 'title': '',
-			 'width': '16',
-			 'colspan': None}
-			, {'key': 'Type',
+columns = ( {'key': 'Type',
 			 'title': 'Type',
 			 'width': None,
 			 'colspan': '2'}
@@ -110,10 +107,6 @@ columns = ( {'key': 'Lock',
 			 'title': 'Last Modified',
 			 'width': None,
 			 'colspan': None}
-            # , {'key': 'position',
-            #  'title': 'Position',
-            #  'width': None,
-            #  'colspan': None }
 			)
 
 for column in columns:	
@@ -161,18 +154,13 @@ sortFunc = key in ['Type'] and 'nocase' or 'cmp'
 items = sequence.sort( items, ((key, sortFunc, sort_dir),) )
 batch_obj = Batch(items, context.default_batch_size, b_start, orphan=0, quantumleap=1)
 items = []
-display_delete_button = True # TODO : à revoir
+display_delete_button = not isAnon # TODO : à revoir
 for item in batch_obj:
 	item_icon = item.getIcon
 	item_id = item.getId
 	item_url = item.getURL()
-	#try : item_delete_allowed = context.objectIdCanBeDeleted(item_id)
-	#except : item_delete_allowed = checkPermission(DeleteObjects, context) # std zope perm
-	#if not display_delete_button :
-	#	display_delete_button = item_delete_allowed
 	items.append(
-		{'lock' : False,
-		 'checkbox': True,
+		{'checkbox': not isAnon,
 		 'icon': item_icon and ( '%s/%s' % (portal_url, item_icon) ) or '',
 		 'id': item_id,
 		 'modified': item.modified.strftime(locale_date_fmt),

@@ -41,10 +41,6 @@
       <tbody id="FolderListingBody">
 <tbody tal:repeat="item_info listItemInfos" tal:omit-tag="" metal:define-macro="itemListing">
         <tr class="" tal:attributes="class python: (even and 'even') or 'odd'" tal:define="even repeat/item_info/even">
-          <td><img src="." alt="lock" height="16" width="16" border="0"
-                   tal:condition="python:not isAnon and item_info['lock']"
-                   tal:attributes="src here/lock.gif/absolute_url"
-                   i18n:attributes="alt" /></td>
           <td>
             <input id="" type="checkbox" name="ids:list" value=""
                    tal:attributes="value item_info/id; id item_info/checkbox" tal:condition="item_info/checkbox" />
