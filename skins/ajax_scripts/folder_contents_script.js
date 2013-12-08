@@ -27,6 +27,7 @@ FolderDDropControler = function(listing, firstItemPos) {
 	this.listing = listing;
 	this.firstItemPos = firstItemPos;
 	this._updatePositions();
+	this.lastCBChecked = undefined;
 	var thisControler = this;
 	this.listing.onmousedown	= function(evt) {thisControler.drag(evt);};
 	this.listing.onmouseover	= function(evt) {thisControler.moveRow(evt);};
@@ -120,7 +121,7 @@ FolderDDropControler.prototype.drop =  function(evt){
 					   String(this.lastOverPosition - 1 + trim);
 
 			// reinitialize positions
-			this._updatePositions()
+			this._updatePositions();
 
 			// send request				
 			var req = new XMLHttpRequest();
@@ -142,8 +143,37 @@ FolderDDropControler.prototype.disableClickAfterDrop = function(evt) {
 };
 
 FolderDDropControler.prototype.selectCBRange = function(evt) {
+	var target = getTargetedObject(evt);
+	if (target.tagName === 'INPUT' && target.type === 'checkbox') {
+		evt = getEventObject(evt);
+		var shift = evt.shiftKey;
+		if (shift && this.lastCBChecked) {
+			var from = this.getCBIndex(this.lastCBChecked);
+			var to = this.getCBIndex(target);
+			var rows = this.listing.getElementsByTagName('TR');
+			var start = Math.min(from, to);
+			var stop = Math.max(from, to);
+			var i;
+			for (i=start ; i<stop ; i++ ) {
+				rows[i].getElementsByTagName('INPUT')[0].checked = true;
+			}
+		}
+		else if (target.checked) {
+			this.lastCBChecked = target;
+		}
+		else {
+			this.lastCBChecked = undefined;
+		}
+	}
 };
 
+FolderDDropControler.prototype.getCBIndex = function(cb) {
+	var row = cb.parentNode;
+	while(row.tagName !== 'TR') {
+		row = row.parentNode;
+	}
+	return row.pos - this.firstItemPos;
+};
 
 FolderDDropControler.prototype.reset = function() {
 	this.targetRow = null;
