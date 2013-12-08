@@ -18,7 +18,7 @@ function getTargetRow(evt){
 	return target;
 }
 
-FolderDDropControler = function(listing, firstItemPos) {
+FolderDDropControler = function(listing, orderable, firstItemPos) {
 	this.folderUrl = document.getElementById("FolderUrl").innerHTML;
 	this.targetRow = null;
 	this.lastOverPosition = null;
@@ -29,10 +29,12 @@ FolderDDropControler = function(listing, firstItemPos) {
 	this._updatePositions();
 	this.lastCBChecked = undefined;
 	var thisControler = this;
-	this.listing.onmousedown	= function(evt) {thisControler.drag(evt);};
-	this.listing.onmouseover	= function(evt) {thisControler.moveRow(evt);};
-	this.listing.onmouseup		= function(evt) {thisControler.drop(evt);};
-	addListener(this.listing, 'click', function(evt) {thisControler.disableClickAfterDrop(evt);});
+	if (orderable) {
+		this.listing.onmousedown	= function(evt) {thisControler.drag(evt);};
+		this.listing.onmouseover	= function(evt) {thisControler.moveRow(evt);};
+		this.listing.onmouseup		= function(evt) {thisControler.drop(evt);};
+		addListener(this.listing, 'click', function(evt) {thisControler.disableClickAfterDrop(evt);});
+	}
 	addListener(this.listing, 'click', function(evt) {thisControler.selectCBRange(evt);});
 	
 	if (browser.isIE) {

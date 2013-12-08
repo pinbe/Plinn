@@ -75,37 +75,29 @@
     </div>
     <script type="text/javascript">
 		(function(){
-			// variables for drag-and-drop ordered support
-			var ddEnabled = false
-			try {
-				var firstItemPos = parseInt(document.getElementById("FirstItemPos").innerHTML);
-				ddEnabled = true;
-			}
-			catch (e) {}
-
-			var topNavBatchBar		= document.getElementById("topNavBatchBar");
-			var bottomNavBatchBar	= document.getElementById("bottomNavBatchBar");
+			// ordering / selecting
+			var firsItemPosElement = document.getElementById('FirstItemPos');
 			var listing = document.getElementById("FolderListingBody");
-
-			if (ddEnabled) {
-				var fDDcontroler = new FolderDDropControler(listing, firstItemPos);
-				var topNavBatchBar		= document.getElementById("topNavBatchBar");
-				var bottomNavBatchBar	= document.getElementById("bottomNavBatchBar");
+			var orderable = firsItemPosElement ? true : false;
+			var firstItemPos = orderable ? parseInt(firsItemPosElement.innerHTML, 10) : 1;
+			var fDDcontroler = new FolderDDropControler(listing, orderable, firstItemPos);
+			var topNavBatchBar, bottomNavBatchBar;
+			if (orderable) {
+				topNavBatchBar = document.getElementById("topNavBatchBar");
+				bottomNavBatchBar = document.getElementById("bottomNavBatchBar");
 				if (topNavBatchBar && bottomNavBatchBar) {
 					new DropTarget(topNavBatchBar, fDDcontroler);
 					new DropTarget(bottomNavBatchBar, fDDcontroler);
 				}
 			}
-
-
 			addListener(document.getElementById("FolderListingHeader"), "click", loadListing);
 			if (topNavBatchBar && bottomNavBatchBar) {
 				addListener(topNavBatchBar, "click", loadListing);
 				addListener(bottomNavBatchBar, "click", loadListing);
 			}
-			
+			// upload by drag and drop
 			var uploadUrl = absolute_url() + '/put_upload';
-      new DDFolderUploader(document.getElementById('ForematterCell'), uploadUrl, listing);
+			new DDFolderUploader(document.getElementById('ForematterCell'), uploadUrl, listing);
 
 		}());
     </script>
