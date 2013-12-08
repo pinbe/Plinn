@@ -91,11 +91,7 @@
 			var listing = document.getElementById("FolderListingBody");
 
 			if (ddEnabled) {
-				var rows = listing.getElementsByTagName("TR")
-				for ( var i = 0 ; i < rows.length ; i++ )
-					rows[i].pos = i + firstItemPos;
-
-				var fDDcontroler = new FolderDDropControler(listing);
+				var fDDcontroler = new FolderDDropControler(listing, firstItemPos);
 				var topNavBatchBar		= document.getElementById("topNavBatchBar");
 				var bottomNavBatchBar	= document.getElementById("bottomNavBatchBar");
 				if (topNavBatchBar && bottomNavBatchBar) {

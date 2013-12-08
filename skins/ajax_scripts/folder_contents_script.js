@@ -18,15 +18,15 @@ function getTargetRow(evt){
 	return target;
 }
 
-FolderDDropControler = function(listing) {
+FolderDDropControler = function(listing, firstItemPos) {
 	this.folderUrl = document.getElementById("FolderUrl").innerHTML;
 	this.targetRow = null;
 	this.lastOverPosition = null;
 	this.prevDirUp = null;
 	this.noOver = true;
 	this.listing = listing;
-	this.checkboxes = undefined;
-	this._updateCBIndex();
+	this.firstItemPos = firstItemPos;
+	this._updatePositions();
 	var thisControler = this;
 	this.listing.onmousedown	= function(evt) {thisControler.drag(evt);};
 	this.listing.onmouseover	= function(evt) {thisControler.moveRow(evt);};
@@ -39,18 +39,12 @@ FolderDDropControler = function(listing) {
 	}
 };
 
-FolderDDropControler.prototype._updateCBIndex = function() {
-	var cbs = this.listing.getElementsByTagName('INPUT');
-	var index = 0;
-	var cb, i;
-	this.checkboxes = [];
-	for (i=0 ; i < cbs.length ; i++) {
-		cb = cbs[i];
-		if (cb.type === 'checkbox') {
-			cb.position = index++;
-			this.checkboxes[cb.position] = cb;
-		}
-	}
+FolderDDropControler.prototype._updatePositions = function() {
+	var rows = this.listing.getElementsByTagName("TR");
+	var i;
+	for (i=0 ; i < rows.length ; i++ ) {
+		rows[i].pos = i + this.firstItemPos; }
+
 };
 
 FolderDDropControler.prototype.drag =  function(evt){
