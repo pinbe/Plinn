@@ -16,7 +16,7 @@
     <div style="display:none">
       <span id="FolderUrl" tal:content="here/absolute_url" >Folder url for script</span>
       <span tal:condition="options/form/is_orderable" tal:omit-tag="">
-	      <span id="FirstItemPos" tal:content="python:listItemInfos[0]['position']">first batch item position</span>
+	      <span id="FirstItemPos" tal:content="batch_dict/firstItemPos">first batch item position</span>
 	      <span id="BatchNavigationSize" tal:content="batch/size"></span>
 	    </span>
     </div>
@@ -64,9 +64,6 @@
 		      </td>
 		      <td>
 		        <span tal:replace="item_info/modified">2001</span>
-		      </td>
-		      <td>
-		        <span tal:replace="item_info/position">1</span>
 		      </td>
 		    </tr>
 </tbody>

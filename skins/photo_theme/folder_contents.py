@@ -110,10 +110,10 @@ columns = ( {'key': 'Lock',
 			 'title': 'Last Modified',
 			 'width': None,
 			 'colspan': None}
-			, {'key': 'position',
-			 'title': 'Position',
-			 'width': None,
-			 'colspan': None }
+            # , {'key': 'position',
+            #  'title': 'Position',
+            #  'width': None,
+            #  'colspan': None }
 			)
 
 for column in columns:	
@@ -161,13 +161,10 @@ sortFunc = key in ['Type'] and 'nocase' or 'cmp'
 items = sequence.sort( items, ((key, sortFunc, sort_dir),) )
 batch_obj = Batch(items, context.default_batch_size, b_start, orphan=0, quantumleap=1)
 items = []
-i = 1
-display_delete_button = True # TODO : à revoirs
+display_delete_button = True # TODO : à revoir
 for item in batch_obj:
 	item_icon = item.getIcon
 	item_id = item.getId
-	item_position = key == 'position' and str(b_start + i) or '...'
-	i += 1
 	item_url = item.getURL()
 	#try : item_delete_allowed = context.objectIdCanBeDeleted(item_id)
 	#except : item_delete_allowed = checkPermission(DeleteObjects, context) # std zope perm
@@ -179,13 +176,13 @@ for item in batch_obj:
 		 'icon': item_icon and ( '%s/%s' % (portal_url, item_icon) ) or '',
 		 'id': item_id,
 		 'modified': item.modified.strftime(locale_date_fmt),
-		 'position': item_position,
 		 'title_or_id': item.Title or item_id,
 		 'type': item.Type or None,
 		 'url': item_url } )
 
 options['batch'] = { 'listColumnInfos': tuple(columns),
 					 'listItemInfos': tuple(items),
+					 'firstItemPos' : b_start + 1,
 					 'sort_key' : key,
 					 'sort_dir' : sort_dir,
 					 'batch_obj': batch_obj }
@@ -229,4 +226,3 @@ if template and macro :
 	return context.use_macro(**options)
 else :
 	return context.folder_contents_template(**options)
-
