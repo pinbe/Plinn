@@ -41,10 +41,15 @@ FolderDDropControler = function(listing, firstItemPos) {
 
 FolderDDropControler.prototype._updatePositions = function() {
 	var rows = this.listing.getElementsByTagName("TR");
-	var i;
+	var i, row;
 	for (i=0 ; i < rows.length ; i++ ) {
-		rows[i].pos = i + this.firstItemPos; }
-
+		row = rows[i];
+		row.pos = i + this.firstItemPos;
+		if (i % 2 === 0) {
+			row.className = "even"; }
+		else {
+			row.className = "odd"; }
+	}
 };
 
 FolderDDropControler.prototype.drag =  function(evt){
@@ -115,16 +120,7 @@ FolderDDropControler.prototype.drop =  function(evt){
 					   String(this.lastOverPosition - 1 + trim);
 
 			// reinitialize positions
-			var rows = this.listing.getElementsByTagName("TR"), row;
-			var i;
-			for (i = 0 ; i < rows.length ; i++) {
-				row = rows[i];
-				row.pos = i+1;
-				if (i % 2 === 0){
-					row.className = "even";}
-				else{
-					row.className = "odd";}
-			}
+			this._updatePositions()
 
 			// send request				
 			var req = new XMLHttpRequest();
