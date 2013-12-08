@@ -29,7 +29,8 @@ FolderDDropControler = function(listing) {
 	this.listing.onmousedown	= function(evt) {thisControler.drag(evt);};
 	this.listing.onmouseover	= function(evt) {thisControler.moveRow(evt);};
 	this.listing.onmouseup		= function(evt) {thisControler.drop(evt);};
-	this.listing.onclick		= function(evt) {thisControler.disableClickAfterDrop(evt);};
+	addListener(this.listing, 'click', function(evt) {thisControler.disableClickAfterDrop(evt);});
+	addListener(this.listing, 'click', function(evt) {thisControler.selectCBRange(evt);});
 	
 	if (browser.isIE) {
 		this.listing.ondragstart = function() { window.event.returnValue = false;};
@@ -133,6 +134,10 @@ FolderDDropControler.prototype.disableClickAfterDrop = function(evt) {
 	}
 	this.reset();
 };
+
+FolderDDropControler.prototype.selectCBRange = function(evt) {
+};
+
 
 FolderDDropControler.prototype.reset = function() {
 	this.targetRow = null;
