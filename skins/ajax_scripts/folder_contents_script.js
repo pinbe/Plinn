@@ -13,8 +13,8 @@ var DDFolderUploader;
 
 function getTargetRow(evt){
 	var target = getTargetedObject(evt);
-	while (target.nodeName != "TR")
-		target = target.parentNode;
+	while (target.nodeName !== "TR") {
+		target = target.parentNode; }
 	return target;
 }
 
@@ -26,7 +26,7 @@ FolderDDropControler = function(listing) {
 	this.noOver = true;
 	this.listing = listing;
 	this.checkboxes = undefined;
-	this._updateCBIndex;
+	this._updateCBIndex();
 	var thisControler = this;
 	this.listing.onmousedown	= function(evt) {thisControler.drag(evt);};
 	this.listing.onmouseover	= function(evt) {thisControler.moveRow(evt);};
@@ -37,14 +37,14 @@ FolderDDropControler = function(listing) {
 	if (browser.isIE) {
 		this.listing.ondragstart = function() { window.event.returnValue = false;};
 	}
-}
+};
 
 FolderDDropControler.prototype._updateCBIndex = function() {
 	var cbs = this.listing.getElementsByTagName('INPUT');
 	var index = 0;
-	var cb;
+	var cb, i;
 	this.checkboxes = [];
-	for (var i=0 ; i < cbs.length ; i++) {
+	for (i=0 ; i < cbs.length ; i++) {
 		cb = cbs[i];
 		if (cb.type === 'checkbox') {
 			cb.position = index++;
@@ -55,10 +55,10 @@ FolderDDropControler.prototype._updateCBIndex = function() {
 
 FolderDDropControler.prototype.drag =  function(evt){
 	var target = getTargetedObject(evt);
-	if (target.nodeName == "INPUT") return true;
+	if (target.nodeName === "INPUT") { return true; }
 	disableDefault(evt);
 	var targetRow = getTargetRow(evt);
-	targetRow.style.backgroundColor = base_properties["highLightColor"];
+	targetRow.style.backgroundColor = base_properties.highLightColor;
 	this.listing.style.cursor = "move";
 	this.targetRow = targetRow;
 	this.lastOverPosition = targetRow.pos;
@@ -66,13 +66,13 @@ FolderDDropControler.prototype.drag =  function(evt){
 
 FolderDDropControler.prototype.moveRow =  function(evt){
 	var targetRow = this.targetRow;
-	if (targetRow != null) {
+	if (targetRow !== null) {
 		this.noOver = false;
-		if (browser.isIE) document.selection.clear();
+		if (browser.isIE) {document.selection.clear();}
 		var overRow = getTargetRow(evt);
 
-	 	if (overRow.pos == targetRow.pos) return;
- 	
+		if (overRow.pos === targetRow.pos) {return;}
+
 		if (this.lastOverPosition < overRow.pos) { // move up
 			this.listing.insertBefore(targetRow, overRow.nextSibling);
 			this.prevDirUp = true;
@@ -98,45 +98,45 @@ FolderDDropControler.prototype.moveRow =  function(evt){
 
 FolderDDropControler.prototype.drop =  function(evt){
 	var targetRow = this.targetRow;
-	if (targetRow != null) {
+	if (targetRow !== null) {
 		targetRow.style.backgroundColor="";
 		this.listing.style.cursor = "";
+		var thisControler = this;
 		if (this.noOver) {
-			var thisControler = this;
 			setTimeout(function(){thisControler.reset();}, 50);
 			return;
 		}
-		if (this.lastOverPosition != null) {
+		if (this.lastOverPosition !== null) {
 			// get new object position.
 			var trim = 0;
-			if (targetRow.pos < this.lastOverPosition && !this.prevDirUp)
-				trim = -1;
-			else if (targetRow.pos > this.lastOverPosition && this.prevDirUp)
-				trim = 1;
+			if (targetRow.pos < this.lastOverPosition && !this.prevDirUp) {
+				trim = -1; }
+			else if (targetRow.pos > this.lastOverPosition && this.prevDirUp) {
+				trim = 1; }
 		
 			// construct url
-	  		var object_id = targetRow.getElementsByTagName("INPUT")[0].getAttribute("value");
-	  		var url = this.folderUrl + "/moveObjectIdToPosition";
-	  		var form ="object_id=" + object_id + "&position:int=" +
-	  				   String(this.lastOverPosition - 1 + trim);
+			var object_id = targetRow.getElementsByTagName("INPUT")[0].getAttribute("value");
+			var url = this.folderUrl + "/moveObjectIdToPosition";
+			var form ="object_id=" + object_id + "&position:int=" +
+					   String(this.lastOverPosition - 1 + trim);
 
 			// reinitialize positions
 			var rows = this.listing.getElementsByTagName("TR"), row;
-			for (var i = 0 ; i < rows.length ; i++) {
+			var i;
+			for (i = 0 ; i < rows.length ; i++) {
 				row = rows[i];
 				row.pos = i+1;
-	  			if (i % 2 == 0)
-	  				row.className = "even";
-	  			else
-	  				row.className = "odd";
-	  		}
+				if (i % 2 === 0){
+					row.className = "even";}
+				else{
+					row.className = "odd";}
+			}
 
-			// send request	    		
+			// send request				
 			var req = new XMLHttpRequest();
 			req.open("POST", url, true);
 			req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 			req.send(form);
-			var thisControler = this;
 			setTimeout(function(){thisControler.reset();}, 50);
 		}
 	}
@@ -160,42 +160,42 @@ FolderDDropControler.prototype.reset = function() {
 	this.lastOverPosition = null;
 	this.prevDirUp = null;
 	this.noOver = true;
-}
+};
 
 
 
 DropTarget = function(node, folderDDControler) {
 	this.folderDDControler = folderDDControler;
-	this.batchSize = parseInt(document.getElementById("BatchNavigationSize").innerHTML);
+	this.batchSize = parseInt(document.getElementById("BatchNavigationSize").innerHTML, 10);
 	var thisControler = this;
 	node.onmouseup = function(evt){thisControler.drop(evt);};
 	node.onmouseover = function(evt) {thisControler.highlightTarget(evt);};
 	node.onmouseout = function(evt) {
 		var target = getTargetedObject(evt);
-		if (target.nodeName == "A" && target.className == "dropPageTarget")
-			target.className = "";
+		if (target.nodeName === "A" && target.className === "dropPageTarget"){
+			target.className = "";}
 	};
-}
+};
 
 DropTarget.prototype.drop = function(evt) {
 	var target = getTargetedObject(evt);
-	if (target.nodeName == "A" &&
-		target.className != "previous" && 
-		target.className != "next") {
-		var pageNumber = parseInt(target.innerHTML);
+	if (target.nodeName === "A" &&
+		target.className !== "previous" && 
+		target.className !== "next") {
+		var pageNumber = parseInt(target.innerHTML, 10);
 		var targetRow = this.folderDDControler.targetRow;
 		if ( !isNaN(pageNumber) && targetRow) {
 			this.folderDDControler.reset();
-    		var object_id = targetRow.getElementsByTagName("INPUT")[0].getAttribute("value");
-    		var url = this.folderDDControler.folderUrl + "/moveObjectIdToPosition";
-    		var form ="object_id=" + object_id + "&position:int=" + String(this.batchSize * (pageNumber-1));
+			var object_id = targetRow.getElementsByTagName("INPUT")[0].getAttribute("value");
+			var url = this.folderDDControler.folderUrl + "/moveObjectIdToPosition";
+			var form ="object_id=" + object_id + "&position:int=" + String(this.batchSize * (pageNumber-1));
 			// send request
 			var req = new XMLHttpRequest();
 			req.open("POST", url, true);
 			req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 			req.send(form);
 			req.onreadystatechange = function() {
-				if (req.readyState == 4) {
+				if (req.readyState === 4) {
 					switch (req.status) {
 						case 200:
 						case 204:
@@ -204,7 +204,7 @@ DropTarget.prototype.drop = function(evt) {
 							break;
 						default:
 							alert('Error: ' + req.status);
-					};
+					}
 				}
 			};
 		}
@@ -212,13 +212,13 @@ DropTarget.prototype.drop = function(evt) {
 };
 
 DropTarget.prototype.highlightTarget = function(evt){
-	if (browser.isIE) document.selection.clear();
+	if (browser.isIE) {document.selection.clear();}
 	var target = getTargetedObject(evt);
 	if (this.folderDDControler.targetRow &&
-		target.nodeName == "A" &&
-		target.className != "previous" &&
-		target.className != "next")
-		target.className = "dropPageTarget";
+		target.nodeName === "A" &&
+		target.className !== "previous" &&
+		target.className !== "next"){
+		target.className = "dropPageTarget";}
 };
 
 
@@ -228,18 +228,19 @@ loadListing = function(evt) {
 	var target = getTargetedObject(evt);
 	disableDefault(evt);
 	disablePropagation(evt);
+	var url;
 	switch (target.nodeName) {
 		case "A" :
-			var parts = target.href.split('?')
-			var url = parts[0];
+			var parts = target.href.split('?');
+			url = parts[0];
 			var query = '';
-			if (parts.length == 2)
-				query = parts[1];
+			if (parts.length === 2){
+				query = parts[1];}
 			
 			var urlParts = url.split("/");
-			var url = urlParts.slice(0,urlParts.length-1).join("/");
-			if (query.search("template") == -1)
-				query += "&template=folder_contents_macros&macro=FolderListing&fragmentId=FolderListing";
+			url = urlParts.slice(0,urlParts.length-1).join("/");
+			if (query.search("template") === -1){
+				query += "&template=folder_contents_macros&macro=FolderListing&fragmentId=FolderListing";}
 			url = url + "/folder_contents?" + query;
 			
 			var fi = new FragmentImporter(url);
@@ -247,9 +248,9 @@ loadListing = function(evt) {
 			break;
 
 		case "IMG" :
-			if (target.id == 'SetSortingAsDefault') {
+			if (target.id === 'SetSortingAsDefault') {
 				var parent = target.parentNode;
-				var url = parent.href;
+				url = parent.href;
 				url = url.replace("folder_contents", "folder_sort_control");
 				parent.parentNode.removeChild(parent);
 				
@@ -260,7 +261,7 @@ loadListing = function(evt) {
 			break;
 	}
 	return false;
-}
+};
 
 DDFolderUploader = function(dropbox, uploadUrl, listing) {
 	DDFileUploaderBase.apply(this, [dropbox, uploadUrl]);
@@ -269,12 +270,12 @@ DDFolderUploader = function(dropbox, uploadUrl, listing) {
 	var thead = listing;
 	do {
 		thead = thead.previousSibling;
-	} while (thead.tagName !== 'THEAD')
+	} while (thead.tagName !== 'THEAD');
 
 	var cells = thead.getElementsByTagName('th');
-	var cell;
+	var cell, i;
 	this.tableSpan = 0;
-	for (var i = 0 ; i < cells.length ; i++) {
+	for (i=0 ; i < cells.length ; i++) {
 		cell = cells[i];
 		this.tableSpan += cell.getAttribute('colspan') ? Number(cell.getAttribute('colspan')) : 1;
 	}
@@ -322,18 +323,18 @@ DDFolderUploader.prototype.handleFiles = function(files) {
 };
 
 DDFolderUploader.prototype.beforeUpload = function(item) {
-  	this.uploadedItem = item;
+	this.uploadedItem = item;
 	this.progressBar = item.progressBar;
 };
 
 DDFolderUploader.prototype.uploadCompleteHandlerCB = function(req) {
 	var item = this.uploadedItem;
 	var row = getCopyOfNode(req.responseXML.documentElement.firstChild);
-  	row.className = item.className;
+	row.className = item.className;
 
 	if (req.status === 200) {
 		// update
-    	console.log('todo');
+		console.log('todo');
 	}
 	else if(req.status === 201) {
 		// creation
