@@ -25,6 +25,8 @@ FolderDDropControler = function(listing) {
 	this.prevDirUp = null;
 	this.noOver = true;
 	this.listing = listing;
+	this.checkboxes = undefined;
+	this._updateCBIndex;
 	var thisControler = this;
 	this.listing.onmousedown	= function(evt) {thisControler.drag(evt);};
 	this.listing.onmouseover	= function(evt) {thisControler.moveRow(evt);};
@@ -36,6 +38,20 @@ FolderDDropControler = function(listing) {
 		this.listing.ondragstart = function() { window.event.returnValue = false;};
 	}
 }
+
+FolderDDropControler.prototype._updateCBIndex = function() {
+	var cbs = this.listing.getElementsByTagName('INPUT');
+	var index = 0;
+	var cb;
+	this.checkboxes = [];
+	for (var i=0 ; i < cbs.length ; i++) {
+		cb = cbs[i];
+		if (cb.type === 'checkbox') {
+			cb.position = index++;
+			this.checkboxes[cb.position] = cb;
+		}
+	}
+};
 
 FolderDDropControler.prototype.drag =  function(evt){
 	var target = getTargetedObject(evt);
