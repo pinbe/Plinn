@@ -98,7 +98,7 @@
 		(function(){
 			// upload by drag and drop
 			var uploadUrl = absolute_url() + '/put_upload';
-			new DDFolderUploader(document.getElementById('ForematterCell'), uploadUrl, document.getElementById("FolderListingBody"));
+			new DDFolderUploader(document.getElementById('Desktop'), uploadUrl, document.getElementById("FolderListingBody"));
 		}());
     </script>
   </body>
