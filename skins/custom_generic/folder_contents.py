@@ -1,4 +1,4 @@
-##parameters=b_start=0, key='', reverse=0, ids=(), items_copy='', items_cut='', items_delete='', items_new='', items_paste='', items_rename='', items_up='', items_down='', items_top='', items_bottom='', items_sort='', template='', macro='', ajax='',**others
+##parameters=b_start=0, key='', reverse=0, ids=(), items_copy='', items_cut='', items_delete='', items_new='', items_paste='', items_rename='', items_up='', items_down='', items_top='', items_bottom='', items_sort='', template='', macro='', ajax=''
 ##
 from Products.Plinn.PloneMisc import Batch
 from DateTime import DateTime
@@ -15,6 +15,7 @@ from Products.CMFDefault.utils import html_marshal
 
 mtool = getToolByName(script, 'portal_membership')
 checkPermission = mtool.checkPermission
+isAnon = mtool.isAnonymousUser()
 utool = getToolByName(script, 'portal_url')
 portal_url = utool()
 
@@ -84,21 +85,6 @@ items_add_allowed = checkPermission(AddPortalContent, context)
 upitems_list_allowed = checkPermission(ListFolderContents, context, 'aq_parent')
 manage_props_allowed = checkPermission(ManageProperties, context)
 
-# information pour remonter au dossier parent
-up_info = {}
-if upitems_list_allowed:
-	up_obj = context.aq_parent
-	if hasattr(up_obj, 'portal_url'):
-		up_url = up_obj.getActionInfo('object/folderContents')['url']
-		up_info = { 'icon': '%s/UpFolder_icon.gif' % portal_url,
-					'id': up_obj.getId(),
-					'url': up_url }
-	else:
-		up_info = { 'icon': '',
-					'id': 'Root',
-					'url': '' }
-options['up_info'] = up_info
-
 target = context.getActionInfo(default_target)['url']
 
 if not key:
@@ -109,15 +95,11 @@ elif (key, reverse) == context.getDefaultSorting():
 else:
 	is_default = 0
 
-columns = ( {'key': 'Lock',
-			 'title': '',
-			 'width': '16',
-			 'colspan': None}
-			, {'key': 'Type',
+columns = ( {'key': 'Type',
 			 'title': 'Type',
 			 'width': None,
 			 'colspan': '2'}
-			, {'key': 'title_or_id',
+			, {'key': 'id',
 			 'title': 'Name',
 			 'width': None,
 			 'colspan': None}
@@ -125,10 +107,6 @@ columns = ( {'key': 'Lock',
 			 'title': 'Last Modified',
 			 'width': None,
 			 'colspan': None}
-			, {'key': 'position',
-			 'title': 'Position',
-			 'width': None,
-			 'colspan': None }
 			)
 
 for column in columns:	
@@ -170,37 +148,29 @@ for column in columns:
 context.filterCookie()
 folderfilter = context.REQUEST.get('folderfilter', '')
 filter = context.decodeFolderFilter(folderfilter)
-items = context.listNearestFolderContents(contentFilter=filter)
+items = context.listCatalogedContents(contentFilter=filter)
 sort_dir = reverse and 'desc' or 'asc'
-sortFunc = key in ['Type', 'title_or_id'] and 'nocase' or 'cmp'
+sortFunc = key in ['Type'] and 'nocase' or 'cmp'
 items = sequence.sort( items, ((key, sortFunc, sort_dir),) )
 batch_obj = Batch(items, context.default_batch_size, b_start, orphan=0, quantumleap=1)
 items = []
-i = 1
-display_delete_button = False
+display_delete_button = not isAnon # TODO : à revoir
 for item in batch_obj:
-	item_icon = item.getIcon(1)
-	item_id = item.getId()
-	item_position = key == 'position' and str(b_start + i) or '...'
-	i += 1
-	item_url = item.absolute_url()
-	try : item_delete_allowed = context.objectIdCanBeDeleted(item_id)
-	except : item_delete_allowed = checkPermission(DeleteObjects, context) # std zope perm
-	if not display_delete_button :
-		display_delete_button = item_delete_allowed
+	item_icon = item.getIcon
+	item_id = item.getId
+	item_url = item.getURL()
 	items.append(
-		{'lock' : not checkPermission(ModifyPortalContent, item),
-		 'checkbox': item_delete_allowed and ('cb_%s' % item_id) or '',
+		{'checkbox': not isAnon,
 		 'icon': item_icon and ( '%s/%s' % (portal_url, item_icon) ) or '',
 		 'id': item_id,
-		 'modified': item.modified().strftime(locale_date_fmt),
-		 'position': item_position,
-		 'title_or_id': item.title_or_id(),
-		 'type': item.Type() or None,
+		 'modified': item.modified.strftime(locale_date_fmt),
+		 'title_or_id': item.Title or item_id,
+		 'type': item.Type or None,
 		 'url': item_url } )
 
 options['batch'] = { 'listColumnInfos': tuple(columns),
 					 'listItemInfos': tuple(items),
+					 'firstItemPos' : b_start + 1,
 					 'sort_key' : key,
 					 'sort_dir' : sort_dir,
 					 'batch_obj': batch_obj }
@@ -233,7 +203,8 @@ options['form'] = { 'action': target,
 					'listHiddenVarInfos': tuple(hidden_vars),
 					'listButtonInfos': tuple(buttons),
 					'is_orderable': is_orderable,
-					'is_sortable': is_sortable }
+					'is_sortable': is_sortable,
+					'items_add_allowed': items_add_allowed }
 if not ajax and is_orderable :
 	deltas = range( 1, min(5, length) ) + range(5, length, 5)
 	options['form']['listDeltas'] = tuple(deltas)
@@ -243,6 +214,4 @@ if template and macro :
 	options['macro'] = macro
 	return context.use_macro(**options)
 else :
-	options.update(others)
 	return context.folder_contents_template(**options)
-
