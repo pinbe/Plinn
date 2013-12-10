@@ -359,7 +359,7 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
             # get method from container that receive uploaded content
             ti = self.getTypeInfo()
             method_id = ti.queryMethodID('jsupload_snippet')
-            meth = getattr(self, method_id) if method_id else lambda : 'Not implemented'
+            meth = getattr(self, method_id) if method_id else lambda ob : 'Not implemented'
 
         RESPONSE.setStatus(httpRespCode)
         RESPONSE.setHeader('Content-Type', 'text/xml;;charset=utf-8')
