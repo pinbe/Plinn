@@ -9,3 +9,4 @@ from Folder import PlinnFolder
 CMFPortalFolder.listFolderContents = PlinnFolder.listFolderContents.im_func
 CMFPortalFolder.listNearestFolderContents = PlinnFolder.listNearestFolderContents.im_func
 CMFPortalFolder.listCatalogedContents = PlinnFolder.listCatalogedContents.im_func
+CMFPortalFolder.put_upload = PlinnFolder.put_upload.im_func
