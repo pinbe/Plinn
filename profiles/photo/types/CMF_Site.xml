@@ -24,6 +24,7 @@
  </property>
  <property name="allow_discussion">False</property>
  <alias from="(Default)" to="index_html"/>
+ <alias from="jsupload_snippet" to="folder_jsupload_snippet"/>
  <alias from="mkdir" to="createPlinnFolder"/>
  <alias from="view" to="index_html"/>
  <action title="View" action_id="view" category="object" condition_expr=""
