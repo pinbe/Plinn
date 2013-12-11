@@ -121,6 +121,7 @@
               </div>
 
               <a name="documentContent"></a>
+              <div metal:define-slot="body" tal:omit-tag="">
               <div metal:define-slot="main_no_tabs" tal:omit-tag="">
                 <div tal:condition="specialCtxHeader" tal:content="structure specialCtxHeader">special context header</div>
                 <div id="ContentTabs" tal:condition="not:specialCtxHeader">
@@ -155,6 +156,7 @@
                   </div>
                   <div metal:define-slot="footer" tal:replace="nothing">footer slot</div>
                 </div>
+              </div>
               </div>
 
             </td>
