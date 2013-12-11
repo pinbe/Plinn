@@ -26,3 +26,8 @@ cmfPortalFolderSecurity.declareProtected(AddPortalContent, 'put_upload')
 CMFPortalFolder.put_upload = PlinnFolder.put_upload.im_func
 
 cmfPortalFolderSecurity.apply(CMFPortalFolder)
+
+
+from Products.CMFDefault.formlib.form import _EditFormMixin
+from patch_impl import _setRedirect
+_EditFormMixin._setRedirect = _setRedirect
