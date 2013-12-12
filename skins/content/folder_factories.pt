@@ -46,7 +46,7 @@
           var fm = new FormManager(fform);
           var submitButton;
           fm.onBeforeSubmit = function(self, evt) {
-            if (!fm.submitButton && submitButton)
+            if (submitButton)
               self.submitButton = submitButton;
           };
           var id2type = /(^[^\.]+)\.id:record$/;
