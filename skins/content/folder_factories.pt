@@ -46,7 +46,8 @@
           var fm = new FormManager(fform);
           var submitButton;
           fm.onBeforeSubmit = function(self, evt) {
-            self.submitButton = submitButton;
+            if (!fm.submitButton && submitButton)
+              self.submitButton = submitButton;
           };
           var id2type = /(^[^\.]+)\.id:record$/;
           function trackFocus(evt) {
