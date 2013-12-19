@@ -35,7 +35,7 @@ def checkContents(ob) :
             checkContents(v)
 
 
-parser = ArgumentParser(description="Deflate blobs backup set.")
+parser = ArgumentParser(description="Rebuild entire catalog by walking contents tree.")
 parser.add_argument('portal_path')
 parser.add_argument('--error-log', help='Error log file. Default: ~/catalog-rebuild-error.log',
                     default='~/catalog-rebuild-error.log', required=False, dest='errorLogPath')
