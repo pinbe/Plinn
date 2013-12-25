@@ -1,4 +1,4 @@
-##parameters=b_start=0, key='', reverse=0, ids=(), new_ids=(), rename='', cancel='', ajax=''
+##parameters=ids=[], items=[], rename='', cancel='', ajax=''
 ##
 from Products.CMFCore.utils import getToolByName
 from Products.CMFDefault.utils import html_marshal
@@ -8,42 +8,36 @@ portal_url = utool()
 
 
 form = context.REQUEST.form
-default_kw = {'b_start': b_start, 'key': key, 'reverse': reverse}
-if ajax :
-	default_kw.update({'ajax' : ajax})
 if rename and \
 		context.folder_rename_control(**form) and \
-		context.setRedirect(context, 'object/folderContents', **default_kw):
+		context.setRedirect(context, 'object/folderContents', **form):
 	return
 elif cancel and \
-		context.setRedirect(context, 'object/folderContents', **default_kw):
+		context.setRedirect(context, 'object/folderContents', **form):
 	return
 
-
 options = {}
-
 c = context.aq_explicit
-raw_items = [ getattr(c, id) for id in ids if hasattr(c, id) ]
-raw_items = [ item for item in raw_items if item.cb_isMoveable() ]
-items = []
-for item in raw_items:
-	item_icon = item.getIcon(1)
-	items.append( { 'icon': item_icon and ( '%s/%s' % (portal_url, item_icon) ) or '',
-					'id': item.getId(),
-					'title': item.Title(),
-					'type': item.Type() or None } )
-options['batch'] = { 'listItemInfos': tuple(items) }
 
-target = context.getActionInfo('object/rename_items')['url']
-hidden_vars = []
-default_kw.pop('ajax', None)
-for name, value in html_marshal(**default_kw):
-	hidden_vars.append( {'name': name, 'value': value} )
+if not ids :
+    ids = [i['id'] for i in items]
+itemInfos = []
+for id in ids :
+    if hasattr(c, id) :
+        item = getattr(c, id)
+        if item.cb_isMoveable() :
+          item_icon = item.getIcon(1)
+          itemInfos.append( { 'icon': item_icon and ( '%s/%s' % (portal_url, item_icon) ) or '',
+                              'id': item.getId(),
+                              'title': item.Title(),
+                              'type': item.Type() or None } )
+
+options['batch'] = { 'listItemInfos': itemInfos }
+action = context.getActionInfo('object/rename_items')['url']
 buttons = []
 buttons.append( {'name': 'rename', 'value': 'Rename'} )
 buttons.append( {'name': 'cancel', 'value': 'Cancel'} )
-options['form'] = { 'action': target,
-					'listHiddenVarInfos': tuple(hidden_vars),
-					'listButtonInfos': tuple(buttons) }
+options['form'] = {'action': action,
+                   'listButtonInfos': tuple(buttons)}
 
 return context.folder_rename_template(**options)
