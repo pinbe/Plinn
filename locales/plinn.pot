@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Thu Nov 28 13:09:25 2013\n"
+"POT-Creation-Date: Sun Jan 19 10:49:52 2014\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -27,31 +27,31 @@ msgstr ""
 msgid "Object deleted"
 msgstr ""
 
-#: n/Folder.py:162
+#: n/Folder.py:164
 msgid "Please rename each listed object."
 msgstr ""
 
-#: n/RegistrationTool.py:217
+#: n/RegistrationTool.py:228
 msgid "How to reset your password on the %s website"
 msgstr ""
 
-#: n/RegistrationTool.py:232
+#: n/RegistrationTool.py:243
 msgid "Unknown user name. Please retry."
 msgstr ""
 
-#: n/RegistrationTool.py:247
+#: n/RegistrationTool.py:258
 msgid "Invalid reset password request."
 msgstr ""
 
-#: n/RegistrationTool.py:253
+#: n/RegistrationTool.py:264
 msgid "Your reset password request has expired. You can ask a new one."
 msgstr ""
 
-#: n/RegistrationTool.py:262
+#: n/RegistrationTool.py:273
 msgid "Password successfully reset."
 msgstr ""
 
-#: n/RegistrationTool.py:264
+#: n/RegistrationTool.py:275
 msgid "\"%s\" username not found."
 msgstr ""
 
@@ -151,8 +151,24 @@ msgstr ""
 msgid "search between %s and %s"
 msgstr ""
 
+#: n/skins/content/folder_factories.pt:18
+#: n/skins/generic/gruf_macros.pt:256
+#: n/skins/generic/gruf_macros.pt:378
+#: n/skins/generic/last_member_logs.pt:23
+#: n/skins/generic/pending_members.pt:13
+msgid "Name"
+msgstr ""
+
+#: n/skins/content/folder_factories.pt:34
+#: n/skins/content/topic_edit_template.pt:51
+#: n/skins/generic/gruf_macros.pt:288
+#: n/skins/generic/gruf_macros.pt:327
+msgid "Add"
+msgstr ""
+
 #: n/skins/content/folder_notifications_template.pt:23
 #: n/skins/content/topic_edit_template.pt:26
+#: n/skins/custom_content/document_edit_template.pt:23
 #: n/skins/custom_content/event_edit_template.pt:135
 #: n/skins/generic/search_results_template.pt:87
 msgid "Save"
@@ -198,12 +214,6 @@ msgstr ""
 
 #: n/skins/content/topic_edit_template.pt:41
 msgid "Type:"
-msgstr ""
-
-#: n/skins/content/topic_edit_template.pt:51
-#: n/skins/generic/gruf_macros.pt:288
-#: n/skins/generic/gruf_macros.pt:327
-msgid "Add"
 msgstr ""
 
 #: n/skins/control/restore_revision.py:9
@@ -390,27 +400,29 @@ msgstr ""
 msgid "%d item moved down.%d items moved down."
 msgstr ""
 
-#: n/skins/custom_control/folder_rename_control.py:13
+#: n/skins/custom_control/folder_rename_control.py:24
+#: n/skins/custom_control/folder_rename_control.py:42
 msgid "Item renamed."
 msgstr ""
 
-#: n/skins/custom_control/folder_rename_control.py:15
+#: n/skins/custom_control/folder_rename_control.py:26
+#: n/skins/custom_control/folder_rename_control.py:44
 msgid "Items renamed."
 msgstr ""
 
-#: n/skins/custom_control/folder_rename_control.py:18
+#: n/skins/custom_control/folder_rename_control.py:29
 msgid "This item has not been renamed: \"%s\""
 msgstr ""
 
-#: n/skins/custom_control/folder_rename_control.py:21
+#: n/skins/custom_control/folder_rename_control.py:32
 msgid "These items have not been renamed: %s"
 msgstr ""
 
-#: n/skins/custom_control/folder_rename_control.py:24
+#: n/skins/custom_control/folder_rename_control.py:35
 msgid "Rename failed."
 msgstr ""
 
-#: n/skins/custom_control/folder_rename_control.py:26
+#: n/skins/custom_control/folder_rename_control.py:39
 msgid "Nothing to change."
 msgstr ""
 
@@ -441,6 +453,14 @@ msgstr ""
 
 #: n/skins/custom_generic/folder_contents_template.pt:44
 msgid "Bottom"
+msgstr ""
+
+#: n/skins/custom_generic/folder_rename_template.pt:6
+msgid "Rename Items"
+msgstr ""
+
+#: n/skins/custom_generic/folder_rename_template.pt:16
+msgid "URL"
 msgstr ""
 
 #: n/skins/custom_generic/logged_in.py:28
@@ -493,6 +513,47 @@ msgstr ""
 
 #: n/skins/custom_generic/logged_in_template.pt:70
 msgid "Change password"
+msgstr ""
+
+#: n/skins/custom_generic/login_form.pt:11
+msgid "Log in"
+msgstr ""
+
+#: n/skins/custom_generic/login_form.pt:22
+#. Default: "Login"
+msgid "user_name"
+msgstr ""
+
+#: n/skins/custom_generic/login_form.pt:28
+#: n/skins/generic/gruf_macros.pt:268
+#: n/skins/generic/gruf_macros.pt:390
+#: n/skins/generic/password_reset_template.pt:28
+msgid "Password"
+msgstr ""
+
+#: n/skins/custom_generic/login_form.pt:37
+msgid "Remember my name."
+msgstr ""
+
+#: n/skins/custom_generic/login_form.pt:43
+#: n/skins/generic/password_reset_form.py:26
+msgid " Login "
+msgstr ""
+
+#: n/skins/custom_generic/login_form.pt:49
+msgid "Forgot your login or password?"
+msgstr ""
+
+#: n/skins/custom_generic/login_form.pt:51
+msgid "Having trouble logging in? Make sure to enable cookies in your web browser."
+msgstr ""
+
+#: n/skins/custom_generic/login_form.pt:55
+msgid "Don't forget to logout or exit your browser when you're done."
+msgstr ""
+
+#: n/skins/custom_generic/login_form.pt:58
+msgid "Setting the 'Remember my name' option will set a cookie with your username, so that when you next log in, your user name will already be filled in for you."
 msgstr ""
 
 #: n/skins/custom_generic/mail_password_template.py:30
@@ -854,22 +915,9 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: n/skins/generic/gruf_macros.pt:256
-#: n/skins/generic/gruf_macros.pt:378
-#: n/skins/generic/last_member_logs.pt:23
-#: n/skins/generic/pending_members.pt:13
-msgid "Name"
-msgstr ""
-
 #: n/skins/generic/gruf_macros.pt:262
 #: n/skins/generic/gruf_macros.pt:384
 msgid "Given Name"
-msgstr ""
-
-#: n/skins/generic/gruf_macros.pt:268
-#: n/skins/generic/gruf_macros.pt:390
-#: n/skins/generic/password_reset_template.pt:28
-msgid "Password"
 msgstr ""
 
 #: n/skins/generic/gruf_macros.pt:274
@@ -1054,10 +1102,6 @@ msgstr ""
 msgid "Exit boxes editing"
 msgstr ""
 
-#: n/skins/generic/password_reset_form.py:26
-msgid " Login "
-msgstr ""
-
 #: n/skins/generic/password_reset_mail.py:4
 msgid "Hi %(fullName)s,"
 msgstr ""
@@ -1171,14 +1215,14 @@ msgid "Password reset"
 msgstr ""
 
 #: n/skins/generic/request_password_reset_template.pt:12
-msgid "Enter your username below and click on the \"Send\" button. You will receive an email with a link to reset your password."
+msgid "Enter your email or your username below and click on the \"Send\" button. You will receive an email with a link to reset your password."
 msgstr ""
 
-#: n/skins/generic/request_password_reset_template.pt:18
+#: n/skins/generic/request_password_reset_template.pt:19
 msgid "If this will not work for you (for example, if you forget your username or didn't enter your email address) send email to ${admin_email}."
 msgstr ""
 
-#: n/skins/generic/request_password_reset_template.pt:25
+#: n/skins/generic/request_password_reset_template.pt:26
 #. Default: "Send"
 msgid " Send "
 msgstr ""

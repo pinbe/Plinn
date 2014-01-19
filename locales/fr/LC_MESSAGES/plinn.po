@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Thu Nov 28 13:09:25 2013\n"
-"PO-Revision-Date: 2013-08-02 10:29+0200\n"
+"POT-Creation-Date: Sun Jan 19 10:49:52 2014\n"
+"PO-Revision-Date: 2014-01-19 10:51+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -20,33 +20,33 @@ msgstr ""
 msgid "Object deleted"
 msgstr "Objet supprimé"
 
-#: n/Folder.py:162
+#: n/Folder.py:164
 msgid "Please rename each listed object."
 msgstr "Veuillez renommer tous les éléments listés."
 
-#: n/RegistrationTool.py:217
+#: n/RegistrationTool.py:228
 msgid "How to reset your password on the %s website"
 msgstr "Comment réinitialiser votre mot de passe sur le site %s"
 
-#: n/RegistrationTool.py:232
+#: n/RegistrationTool.py:243
 msgid "Unknown user name. Please retry."
 msgstr "Nom d'utilisateur inconnu. Veuillez réessayer."
 
-#: n/RegistrationTool.py:247
+#: n/RegistrationTool.py:258
 msgid "Invalid reset password request."
 msgstr "Demande de réinitialisation de mot de passe invalide."
 
-#: n/RegistrationTool.py:253
+#: n/RegistrationTool.py:264
 msgid "Your reset password request has expired. You can ask a new one."
 msgstr ""
 "Votre demande de réinitialisation de mot de passe a expiré. Vous pouvez en "
 "demander une nouvelle."
 
-#: n/RegistrationTool.py:262
+#: n/RegistrationTool.py:273
 msgid "Password successfully reset."
 msgstr "Mot de passe correctement réinitialisé."
 
-#: n/RegistrationTool.py:264
+#: n/RegistrationTool.py:275
 msgid "\"%s\" username not found."
 msgstr "Nom : « %s » non trouvé."
 
@@ -68,9 +68,8 @@ msgid ""
 "the community.\n"
 msgstr ""
 "\n"
-"Vous venez d'être inscrit en tant que membre du portail "
-"« %(portal_title)s », ce qui vous permet de participer à la rédaction des "
-"contenus.\n"
+"Vous venez d'être inscrit en tant que membre du portail « %(portal_title)"
+"s », ce qui vous permet de participer à la rédaction des contenus.\n"
 
 #: n/profiles/default/workflows/member_workflow/scripts/sendNotificationEmail.py:43
 #: n/profiles/photo/workflows/member_workflow/scripts/sendNotificationEmail.py:43
@@ -151,8 +150,21 @@ msgstr "recherche depuis le %s jusqu'à la fin du monde"
 msgid "search between %s and %s"
 msgstr "recherche entre le %s et le %s"
 
+#: n/skins/content/folder_factories.pt:18 n/skins/generic/gruf_macros.pt:256
+#: n/skins/generic/gruf_macros.pt:378 n/skins/generic/last_member_logs.pt:23
+#: n/skins/generic/pending_members.pt:13
+msgid "Name"
+msgstr "Nom"
+
+#: n/skins/content/folder_factories.pt:34
+#: n/skins/content/topic_edit_template.pt:51
+#: n/skins/generic/gruf_macros.pt:288 n/skins/generic/gruf_macros.pt:327
+msgid "Add"
+msgstr "Ajouter"
+
 #: n/skins/content/folder_notifications_template.pt:23
 #: n/skins/content/topic_edit_template.pt:26
+#: n/skins/custom_content/document_edit_template.pt:23
 #: n/skins/custom_content/event_edit_template.pt:135
 #: n/skins/generic/search_results_template.pt:87
 msgid "Save"
@@ -198,11 +210,6 @@ msgstr "Nom :"
 #: n/skins/content/topic_edit_template.pt:41
 msgid "Type:"
 msgstr "Type :"
-
-#: n/skins/content/topic_edit_template.pt:51
-#: n/skins/generic/gruf_macros.pt:288 n/skins/generic/gruf_macros.pt:327
-msgid "Add"
-msgstr "Ajouter"
 
 #: n/skins/control/restore_revision.py:9
 msgid "%(type)s restored."
@@ -390,27 +397,29 @@ msgstr "%d élément déplacé en bas.%d éléments déplacés en bas."
 msgid "%d item moved down.%d items moved down."
 msgstr "%d élément déplacé vers le bas.%d éléments déplacés vers le bas."
 
-#: n/skins/custom_control/folder_rename_control.py:13
+#: n/skins/custom_control/folder_rename_control.py:24
+#: n/skins/custom_control/folder_rename_control.py:42
 msgid "Item renamed."
 msgstr "Élément renommé."
 
-#: n/skins/custom_control/folder_rename_control.py:15
+#: n/skins/custom_control/folder_rename_control.py:26
+#: n/skins/custom_control/folder_rename_control.py:44
 msgid "Items renamed."
 msgstr "Éléments renommés."
 
-#: n/skins/custom_control/folder_rename_control.py:18
+#: n/skins/custom_control/folder_rename_control.py:29
 msgid "This item has not been renamed: \"%s\""
 msgstr "Cet élément n'a pas été renommé : \"%s\""
 
-#: n/skins/custom_control/folder_rename_control.py:21
+#: n/skins/custom_control/folder_rename_control.py:32
 msgid "These items have not been renamed: %s"
 msgstr "Ces éléments n'ont pas été renommés : %s"
 
-#: n/skins/custom_control/folder_rename_control.py:24
+#: n/skins/custom_control/folder_rename_control.py:35
 msgid "Rename failed."
 msgstr "Renommage échoué."
 
-#: n/skins/custom_control/folder_rename_control.py:26
+#: n/skins/custom_control/folder_rename_control.py:39
 msgid "Nothing to change."
 msgstr "Aucun changement."
 
@@ -442,6 +451,14 @@ msgstr "Premier"
 #: n/skins/custom_generic/folder_contents_template.pt:44
 msgid "Bottom"
 msgstr "Dernier"
+
+#: n/skins/custom_generic/folder_rename_template.pt:6
+msgid "Rename Items"
+msgstr "Renommer des éléments"
+
+#: n/skins/custom_generic/folder_rename_template.pt:16
+msgid "URL"
+msgstr "URL"
 
 #: n/skins/custom_generic/logged_in.py:28
 #: n/skins/custom_generic/logged_in_template.pt:9
@@ -509,6 +526,57 @@ msgstr "Confirmation"
 #: n/skins/custom_generic/logged_in_template.pt:70
 msgid "Change password"
 msgstr "Changer le mot de passe"
+
+#: n/skins/custom_generic/login_form.pt:11
+msgid "Log in"
+msgstr "Connexion"
+
+#. Default: "Login"
+#: n/skins/custom_generic/login_form.pt:22
+msgid "user_name"
+msgstr "Login"
+
+#: n/skins/custom_generic/login_form.pt:28 n/skins/generic/gruf_macros.pt:268
+#: n/skins/generic/gruf_macros.pt:390
+#: n/skins/generic/password_reset_template.pt:28
+msgid "Password"
+msgstr "Mot de passe"
+
+#: n/skins/custom_generic/login_form.pt:37
+msgid "Remember my name."
+msgstr "Se souvenir de mon login."
+
+#: n/skins/custom_generic/login_form.pt:43
+#: n/skins/generic/password_reset_form.py:26
+msgid " Login "
+msgstr "Connexion"
+
+#: n/skins/custom_generic/login_form.pt:49
+msgid "Forgot your login or password?"
+msgstr "Login ou mot de passe oublié ?"
+
+#: n/skins/custom_generic/login_form.pt:51
+msgid ""
+"Having trouble logging in? Make sure to enable cookies in your web browser."
+msgstr ""
+"Vous rencontrez des difficultés pour la connexion ? Vérifiez que votre "
+"navigateur accepte les cookies."
+
+#: n/skins/custom_generic/login_form.pt:55
+msgid "Don't forget to logout or exit your browser when you're done."
+msgstr ""
+"N'oubliez pas de vous déconnecter ou de fermer votre navigateur à la fin de "
+"la session."
+
+#: n/skins/custom_generic/login_form.pt:58
+msgid ""
+"Setting the 'Remember my name' option will set a cookie with your username, "
+"so that when you next log in, your user name will already be filled in for "
+"you."
+msgstr ""
+"L'option « Se souvenir de mon login » permet de le sauvegarder dans un "
+"cookie : vous n’aurez pas à le saisir de nouveau lors de votre prochaine "
+"visite."
 
 #: n/skins/custom_generic/mail_password_template.py:30
 msgid "${portal_title}: Membership reminder"
@@ -892,20 +960,9 @@ msgstr "Nouveau membre"
 msgid "Login"
 msgstr "Login"
 
-#: n/skins/generic/gruf_macros.pt:256 n/skins/generic/gruf_macros.pt:378
-#: n/skins/generic/last_member_logs.pt:23
-#: n/skins/generic/pending_members.pt:13
-msgid "Name"
-msgstr "Nom"
-
 #: n/skins/generic/gruf_macros.pt:262 n/skins/generic/gruf_macros.pt:384
 msgid "Given Name"
 msgstr "Prénom"
-
-#: n/skins/generic/gruf_macros.pt:268 n/skins/generic/gruf_macros.pt:390
-#: n/skins/generic/password_reset_template.pt:28
-msgid "Password"
-msgstr "Mot de passe"
 
 #: n/skins/generic/gruf_macros.pt:274 n/skins/generic/gruf_macros.pt:396
 #: n/skins/generic/password_reset_template.pt:34
@@ -1084,10 +1141,6 @@ msgstr "Coller"
 msgid "Exit boxes editing"
 msgstr "Quitter l'édition des boîtes"
 
-#: n/skins/generic/password_reset_form.py:26
-msgid " Login "
-msgstr "Connexion"
-
 #: n/skins/generic/password_reset_mail.py:4
 msgid "Hi %(fullName)s,"
 msgstr "Bonjour %(fullName)s,"
@@ -1217,13 +1270,11 @@ msgstr "Réinitialisation de mot de passe"
 
 #: n/skins/generic/request_password_reset_template.pt:12
 msgid ""
-"Enter your username below and click on the \"Send\" button. You will receive "
-"an email with a link to reset your password."
-msgstr ""
-"Entrez votre login ci-dessous et cliquez sur « Envoyer ». Vous recevrez un "
-"email contenant un lien pour réinitialiser votre mot de passe."
+"Enter your email or your username below and click on the \"Send\" button. "
+"You will receive an email with a link to reset your password."
+msgstr "Entrez votre email ou votre login ci-dessous et cliquez sur « Envoyer ». Vous recevrez un email contenant un lien pour réinitialiser votre mot de passe."
 
-#: n/skins/generic/request_password_reset_template.pt:18
+#: n/skins/generic/request_password_reset_template.pt:19
 msgid ""
 "If this will not work for you (for example, if you forget your username or "
 "didn't enter your email address) send email to ${admin_email}."
@@ -1233,7 +1284,7 @@ msgstr ""
 "un email à ${admin_email}."
 
 #. Default: "Send"
-#: n/skins/generic/request_password_reset_template.pt:25
+#: n/skins/generic/request_password_reset_template.pt:26
 msgid " Send "
 msgstr " Envoyer "
 
@@ -2290,6 +2341,16 @@ msgstr "Ceci est la page d'accueil par défaut."
 
 msgid "Huge Folder"
 msgstr "Dossier"
+
+#~ msgid ""
+#~ "Enter your username below and click on the \"Send\" button. You will "
+#~ "receive an email with a link to reset your password."
+#~ msgstr ""
+#~ "Entrez votre login ci-dessous et cliquez sur « Envoyer ». Vous recevrez "
+#~ "un email contenant un lien pour réinitialiser votre mot de passe."
+
+#~ msgid "Forgot your password?"
+#~ msgstr "Mot de passe oublié ?"
 
 #~ msgid "Structured text"
 #~ msgstr "Texte structuré"

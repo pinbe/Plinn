@@ -32,8 +32,10 @@ from AccessControl.Permission import Permission
 from BTrees.OOBTree import OOBTree
 from Products.CMFCore.permissions import ManagePortal, AddPortalMember
 from Products.CMFCore.exceptions import AccessControl_Unauthorized
+from Products.CMFDefault.exceptions import EmailAddressInvalid
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.utils import getUtilityByInterfaceName
+from Products.CMFDefault.utils import checkEmailAddress
 from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
 from Products.Plinn.utils import Message as _
 from Products.Plinn.utils import translate
@@ -200,6 +202,15 @@ class RegistrationTool(BaseRegistrationTool) :
         self.clearExpiredPasswordResetRequests()
         mtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IMembershipTool')
         member = mtool.getMemberById(userid)
+        if not member :
+            try :
+                checkEmailAddress(userid)
+                member = mtool.searchMembers('email', userid)
+                if member :
+                    userid = member[0]['username']
+                    member = mtool.getMemberById(userid)
+            except EmailAddressInvalid :
+                pass
         if member :
             uuid = str(uuid4())
             while self._passwordResetRequests.has_key(uuid) :
