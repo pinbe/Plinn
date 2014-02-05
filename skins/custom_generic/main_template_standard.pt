@@ -158,7 +158,7 @@
             </td>
           </tr>
         </table>
-        <div id="Footer" tal:content="python:getattr(portal_object, 'copyright_notice','') or '© Benoît Pin — École des mines de Paris 2006-2009'">© Benoît Pin — École des mines de Paris 2006-2009</div>
+        <div id="Footer" tal:content="python:getattr(portal_object, 'copyright_notice','') or '© 2006-2014 MINES ParisTech – Benoît Pin'">© notice</div>
       </div>
       <div metal:use-macro="here/widgets/macros/debug">
         DEBUG Information
