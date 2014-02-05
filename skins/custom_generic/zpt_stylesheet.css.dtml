@@ -1,6 +1,5 @@
 /* <dtml-with base_properties> */
 
-html,
 body {  
   background-color: &dtml-backgroundColor;;
   color: &dtml-fontColor;;
