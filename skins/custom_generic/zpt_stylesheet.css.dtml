@@ -1,11 +1,14 @@
 /* <dtml-with base_properties> */
 
+html,
 body {  
   background-color: &dtml-backgroundColor;;
   color: &dtml-fontColor;;
   font-family: &dtml-fontFamily;;
   font-size : &dtml-fontBaseSize;;
-  margin: 0 }
+  margin: 0;
+  padding: 0;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: &dtml-headingFontFamily;;
@@ -354,7 +357,11 @@ textarea {
   color: &dtml-fontColor;;
   font-size: 80%;
   text-align: center;
-  padding : 3px;
+  padding : 3px 0;
+	position:absolute;
+	bottom:0;
+	width:100%;
+	height:1em;
 }
 
 /* Folder contents */
