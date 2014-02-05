@@ -40,7 +40,7 @@ global specialCtxHeader options/specialCtxHeader|nothing"
 <div metal:define-macro="top_bar">
 	<table id="Masthead" cellspacing="0" border="0">
 		<tr>
-			<td id="PortalLogo"><a href="#" tal:attributes="href string:${portal_url}?noajax=1; title portal_object/title_or_id"><img src="logo.gif" tal:define="logo here/logo.gif" tal:attributes="src logo/absolute_url; alt portal_object/title_or_id; height logo/height; width logo/width" /></a></td>
+			<td id="PortalLogo"><a href="#" tal:attributes="href string:${portal_url}?noajax=1; title portal_object/title_or_id"><img src="logo.gif" tal:define="logo here/logo.png" tal:attributes="src logo/absolute_url; alt portal_object/title_or_id; height logo/height; width logo/width" /></a></td>
 			<!-- nav_bar / search_form -->
 			<td id="NavBar" align="right" i18n:domain="cmf_default">
 				<form action="search" method="get" tal:attributes="action string:${portal_url}/search">
