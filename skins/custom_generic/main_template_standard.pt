@@ -83,7 +83,7 @@
     </head>
 
     <body>
-      <div id="main_wrapper">
+      <div id="main-wrapper">
         <span style="display:none">
           <span id="Portal_URL" tal:content="portal_url"></span>
           <span id="ajax_config"  tal:content="python:request.get('ajaxConfig', request.SESSION.get('ajaxConfig', portal_object.getProperty('ajax_config')))"></span>
