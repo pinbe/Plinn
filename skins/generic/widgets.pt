@@ -48,7 +48,11 @@
 			</script>
     </div>
     
-    <div metal:define-macro="clipboard" tal:condition="python:not request.SESSION.get('editBoxes')" tal:omit-tag="" i18n:domain="plinn" tal:on-error="python:here.emptyClipboard(empty=True,ajax=True) and None">
+    <div metal:define-macro="clipboard"
+         tal:condition="python:not request.SESSION.get('editBoxes')"
+         tal:omit-tag=""
+         i18n:domain="plinn"
+         tal:on-error="python:here.emptyClipboard(empty=True,ajax=True) and None">
     	<table tal:condition="clip" class="clipboard" cellspacing="0" tal:define="clip here/getCPInfoList">
     		<tr><th i18n:translate="">Clipboard</th></tr>
     		<tr><td>
@@ -56,10 +60,8 @@
 	    			<ul>
 							<li tal:repeat="item clip" tal:attributes="class python:repeat['item'].odd() and 'odd' or 'even'"><input type="checkbox" name="indexes:int:list" tal:attributes="value repeat/item/index"/><a tal:attributes="href item/url ; title item/title"><img tal:attributes="src item/icon ; alt item/type ; height item/height ; width item/width" border="0" /> <span tal:replace="item/title">Title</span></a></li>
 						</ul>
-						<!--
-						<input type="submit" name="delete" value="Delete" i18n:attributes="value" style="float:left"/>
-						<input type="submit" name="empty" value="Empty" i18n:attributes="value" style="float:right" />
-  					-->
+            <input type="submit" name="delete" value="Delete" i18n:attributes="value" style="float:left"/>
+            <input type="submit" name="empty" value="Empty" i18n:attributes="value" style="float:right" />
 					</form>
 				</td></tr>
 			</table>

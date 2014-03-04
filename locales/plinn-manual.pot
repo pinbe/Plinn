@@ -240,9 +240,6 @@ msgstr ""
 msgid "December_abbr"
 msgstr ""
 
-msgid "Delete"
-msgstr ""
-
 msgid "depublish"
 msgstr ""
 

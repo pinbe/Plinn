@@ -38,7 +38,6 @@ import GroupDataTool
 import RegistrationTool
 import CalendarTool
 import AttachmentTool
-#from shutdown_dispatcher import ZopeShutdownDispatcher
 
 from PloneMisc import IndexIterator, Batch
 from utils import  getCPInfo, popCP
@@ -61,13 +60,6 @@ tools = ( MembershipTool.MembershipTool
 		, AttachmentTool.AttachmentTool
 		)
 
-methods = {
-'getCPInfo': getCPInfo,
-'getCPInfo__roles__': None,
-'popCP' : popCP,
-'popCP__roles__' : None
-}
-
 # register font extensions
 registerFileExtension('ttf', FSFile)
 registerFileExtension('eot', FSFile)
@@ -78,8 +70,6 @@ def initialize(registrar) :
 	allow_module('Products.Plinn.PloneMisc')
 	allow_class(IndexIterator)
 	allow_class(Batch)
-	app = registrar._ProductContext__app
-	#ZopeShutdownDispatcher(registrar._ProductContext__app)
 	
 	core_cmf_utils.ContentInit(
 	'Plinn',

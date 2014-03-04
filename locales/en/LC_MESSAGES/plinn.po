@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Sun Jan 19 10:49:52 2014\n"
+"POT-Creation-Date: Tue Mar  4 15:13:49 2014\n"
 "PO-Revision-Date: 2013-11-28 13:12+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -262,7 +262,7 @@ msgstr ""
 
 #: n/skins/custom_content/event_edit_template.pt:78
 #: n/skins/custom_content/event_edit_template.pt:103
-#: n/skins/generic/widgets.pt:94
+#: n/skins/generic/widgets.pt:96
 msgid ""
 "${month}&nbsp;/&nbsp;${day}&nbsp;/&nbsp;${year}&nbsp;&nbsp;${hour}&nbsp;:"
 "&nbsp;${minute}"
@@ -584,11 +584,6 @@ msgstr ""
 
 #: n/skins/custom_generic/mail_password_template.py:50
 msgid "Request made by IP ${ip} at ${time}"
-msgstr ""
-
-#: n/skins/custom_generic/main_template_standard.pt:96
-#: n/skins/photo_theme/main_template_standard.pt:97
-msgid "Skip to content"
 msgstr ""
 
 #: n/skins/custom_generic/main_template_standard.pt:111
@@ -1071,21 +1066,21 @@ msgstr ""
 msgid "locale_date_fmt"
 msgstr ""
 
-#: n/skins/generic/main_template_macros.pt:78
+#: n/skins/generic/main_template_macros.pt:80
 #: n/skins/photo_theme/main_template_macros.pt:91
 msgid "You are here:"
 msgstr ""
 
-#: n/skins/generic/main_template_macros.pt:91
-#: n/skins/generic/main_template_macros.pt:94
-#: n/skins/generic/main_template_macros.pt:112
-#: n/skins/generic/main_template_macros.pt:113
+#: n/skins/generic/main_template_macros.pt:93
+#: n/skins/generic/main_template_macros.pt:96
+#: n/skins/generic/main_template_macros.pt:114
+#: n/skins/generic/main_template_macros.pt:115
 #: n/skins/photo_theme/main_template_macros.pt:100
 #: n/skins/photo_theme/main_template_macros.pt:113
 msgid "Paste"
 msgstr ""
 
-#: n/skins/generic/main_template_macros.pt:109
+#: n/skins/generic/main_template_macros.pt:111
 #: n/skins/photo_theme/main_template_macros.pt:110
 msgid "Exit boxes editing"
 msgstr ""
@@ -1146,7 +1141,7 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: n/skins/generic/recent_news.pt:21 n/skins/generic/widgets.pt:123
+#: n/skins/generic/recent_news.pt:21 n/skins/generic/widgets.pt:125
 msgid "News"
 msgstr ""
 
@@ -1341,11 +1336,19 @@ msgstr ""
 msgid "Edit metadata"
 msgstr ""
 
-#: n/skins/generic/widgets.pt:53
+#: n/skins/generic/widgets.pt:57
 msgid "Clipboard"
 msgstr ""
 
-#: n/skins/generic/widgets.pt:128
+#: n/skins/generic/widgets.pt:63
+msgid "Delete"
+msgstr ""
+
+#: n/skins/generic/widgets.pt:64
+msgid "Empty"
+msgstr ""
+
+#: n/skins/generic/widgets.pt:130
 msgid "News Item"
 msgstr ""
 
@@ -1355,6 +1358,10 @@ msgstr ""
 
 #: n/skins/photo_theme/main_template_macros.pt:55
 msgid "Loading progress..."
+msgstr ""
+
+#: n/skins/photo_theme/main_template_standard.pt:97
+msgid "Skip to content"
 msgstr ""
 
 #: n/skins/photo_theme/realis_main_macros.pt:28
@@ -1625,9 +1632,6 @@ msgstr ""
 
 msgid "December_abbr"
 msgstr "Dec"
-
-msgid "Delete"
-msgstr ""
 
 msgid "depublish"
 msgstr ""

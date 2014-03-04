@@ -10,6 +10,7 @@ from Products.CMFCore.permissions import ListFolderContents, View, ViewManagemen
 
 from Products.CMFCore.PortalFolder import PortalFolder as CMFPortalFolder
 from Folder import PlinnFolder
+from utils import getCPInfo, popCP
 
 cmfPortalFolderSecurity = ClassSecurityInfo()
 
@@ -24,6 +25,12 @@ CMFPortalFolder.listCatalogedContents = PlinnFolder.listCatalogedContents.im_fun
 
 cmfPortalFolderSecurity.declareProtected(AddPortalContent, 'put_upload')
 CMFPortalFolder.put_upload = PlinnFolder.put_upload.im_func
+
+cmfPortalFolderSecurity.declarePublic('getCPInfo')
+CMFPortalFolder.getCPInfo = getCPInfo
+
+cmfPortalFolderSecurity.declarePublic('getCP')
+CMFPortalFolder.popCP = popCP
 
 cmfPortalFolderSecurity.apply(CMFPortalFolder)
 
