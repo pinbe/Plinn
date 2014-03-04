@@ -40,8 +40,6 @@ import CalendarTool
 import AttachmentTool
 
 from PloneMisc import IndexIterator, Batch
-from utils import  getCPInfo, popCP
-
 import patch
 
 from AccessControl import allow_module, allow_class
