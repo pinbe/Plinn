@@ -165,7 +165,11 @@ def _checkMemberPermission(userid, permission, obj, StringType = type('')):
     return 0
     
 def getCPInfo(self) :
-    try: cp = _cb_decode(self.REQUEST['__cp'])
+    if self.REQUEST.RESPONSE.cookies.has_key('__cp') :
+        cp = self.REQUEST.RESPONSE.cookies['__cp']['value']
+    else :
+        cp = self.REQUEST.get('__cp')
+    try: cp = _cb_decode(cp)
     except: return None
     return cp
 

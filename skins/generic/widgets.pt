@@ -50,9 +50,9 @@
     
     <div metal:define-macro="clipboard"
          tal:condition="python:not request.SESSION.get('editBoxes')"
-         tal:omit-tag=""
          i18n:domain="plinn"
-         tal:on-error="python:here.emptyClipboard(empty=True,ajax=True) and None">
+         tal:on-error="python:here.emptyClipboard(empty=True,ajax=True) and None"
+         id="clipboard">
     	<table tal:condition="clip" class="clipboard" cellspacing="0" tal:define="clip here/getCPInfoList">
     		<tr><th i18n:translate="">Clipboard</th></tr>
     		<tr><td>

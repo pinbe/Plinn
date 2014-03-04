@@ -21,4 +21,8 @@ if not ajax:
 		   '?' + make_query(portal_status_message=message)
 	response.redirect(redirUrl)
 else :
-	return "..."
+    options={}
+    options['template'] = 'widgets'
+    options['macro'] = 'clipboard'
+    options['fragmentId'] = 'clipboard'
+    return context.use_macro(**options)

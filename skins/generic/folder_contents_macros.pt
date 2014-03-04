@@ -70,6 +70,7 @@
       <span metal:use-macro="here/batch_macros/macros/navigation">batch navigation</span>
     </div>
     <script type="text/javascript">
+    <!--
 		(function(){
 			// ordering / selecting
 			var firsItemPosElement = document.getElementById('FirstItemPos');
@@ -93,6 +94,7 @@
 			}
 
 		}());
+    // -->
     </script>
     <script type="text/javascript" tal:condition="options/form/items_add_allowed">
 		(function(){
