@@ -78,8 +78,8 @@ class AttachmentTool( UniqueObject, SimpleItem):
 		id = makeValidId(attachments, title)
 		
 		if typeName == 'Photo':
-			thumbSize = {'thumb_height'	: portal.getProperty('thumb_height', 128),
-						 'thumb_width'	: portal.getProperty('thumb_width', 128)}
+			thumbSize = {'thumb_height'	: portal.getProperty('thumb_size', 128),
+						 'thumb_width'	: portal.getProperty('thumb_size', 128)}
 			fileOb = Photo(id, title, file, **thumbSize)
 		elif typeName == 'File' :
 			fileOb = File(id, title, '')

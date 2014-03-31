@@ -6,17 +6,9 @@
  <property name="email_from_address"
     type="string">postmaster@localhost</property>
  <property name="email_from_name" type="string"></property>
- <property name="thumb_height" type="int">192</property>
- <property name="thumb_width" type="int">192</property>
- <property name="available_editors" type="lines">
-  <element value="None"/>
-  <element value="Epoz"/>
-  <element value="FCK"/>
- </property>
  <property name="enable_permalink" type="boolean">True</property>
  <property name="default_language" type="string">fr</property>
  <property name="validate_email" type="boolean">False</property>
- <property name="slide_size" type="int">222</property>
  <property name="untitled_content_form" type="string">Untitled-</property>
  <property name="default_charset" type="string">utf-8</property>
  <property name="management_page_charset" type="string">utf-8</property>
@@ -34,6 +26,8 @@
  <property name="ajax_config" type="int">2</property>
  <property name="copyright_notice"
     type="string"></property>
+ <property name="thumb_size" type="int">192</property>
+ <property name="slide_size" type="int">222</property>
  <property name="tiles_background_color" type="string">#ffffff</property>
  <property name="tiles_min_zoom" type="int">25</property>
  <property name="tiles_max_zoom" type="int">100</property>
