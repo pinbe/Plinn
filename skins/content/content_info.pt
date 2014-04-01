@@ -1,26 +1,27 @@
-<div tal:define="locale_date_fmt string:%m/%d/%Y %Hh%M;
+<div i18n:domain="plinn"
+		 tal:define="locale_date_fmt here/locale_date_fmt;
 								 portal_url here/portal_url;
 								 ti here/getTypeInfo;
 								 icon ti/getIcon">
 	<table class="finder_preview">
 		<tr>
 			<td colspan="2">
-				<div>Preview:</div>
+				<div i18n:translate="">Preview:</div>
 				<div class="thumbnail">
 					<img tal:attributes="src python:portal_url + '/' + icon.replace('.gif', '.thumb.gif'); alt here/title_or_id" width="128" height="128"/>
 				</div>
 			</td>
 		</tr>
 		<tr>
-			<th>Title</th>
+			<th i18n:translate="">Title</th>
 			<td tal:content="here/title_or_id">File title</td>
 		</tr>
 		<tr>
-			<th>Created</th>
+			<th i18n:translate="">Created</th>
 			<td tal:content="python:here.created().strftime(locale_date_fmt)">creation date</td>
 		</tr>
 		<tr>
-			<th>Modified</th>
+			<th i18n:translate="">Modified</th>
 			<td tal:content="python:here.modified().strftime(locale_date_fmt)">modification date</td>
 		</tr>
 	</table>

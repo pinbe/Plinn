@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Tue Mar  4 15:13:49 2014\n"
+"POT-Creation-Date: Tue Apr  1 16:10:35 2014\n"
 "PO-Revision-Date: 2014-01-19 10:51+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -138,6 +138,18 @@ msgstr "Comparer"
 #: n/skins/content/changes_history_template.pt:72
 msgid "Please select one revision per column to compare."
 msgstr "Veuillez sélectionner une révision par colonne pour comparer."
+
+#: n/skins/content/content_info.pt:9 n/skins/content/file_info.pt:5
+msgid "Preview:"
+msgstr "Aperçu :"
+
+#: n/skins/content/content_info.pt:20 n/skins/content/file_info.pt:20
+msgid "Created"
+msgstr "Créé"
+
+#: n/skins/content/content_info.pt:24 n/skins/content/file_info.pt:24
+msgid "Modified"
+msgstr "Modifié"
 
 #: n/skins/content/dateCriterionResolvedDescription.py:15
 msgid "search from the beginning of the world until %s"
@@ -2422,15 +2434,6 @@ msgstr "Dossier"
 
 #~ msgid "Calendar View"
 #~ msgstr "Calendrier"
-
-#~ msgid "Created"
-#~ msgstr "Créé"
-
-#~ msgid "Modified"
-#~ msgstr "Modifié"
-
-#~ msgid "Preview:"
-#~ msgstr "Aperçu :"
 
 #~ msgid ""
 #~ "You have been registered as a member of \"%(portal_title)s\", which\n"

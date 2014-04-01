@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Tue Mar  4 15:14:36 2014\n"
+"POT-Creation-Date: Tue Apr  1 16:10:35 2014\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -137,6 +137,21 @@ msgstr ""
 
 #: n/skins/content/changes_history_template.pt:72
 msgid "Please select one revision per column to compare."
+msgstr ""
+
+#: n/skins/content/content_info.pt:9
+#: n/skins/content/file_info.pt:5
+msgid "Preview:"
+msgstr ""
+
+#: n/skins/content/content_info.pt:20
+#: n/skins/content/file_info.pt:20
+msgid "Created"
+msgstr ""
+
+#: n/skins/content/content_info.pt:24
+#: n/skins/content/file_info.pt:24
+msgid "Modified"
 msgstr ""
 
 #: n/skins/content/dateCriterionResolvedDescription.py:15
