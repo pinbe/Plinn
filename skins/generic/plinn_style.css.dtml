@@ -596,4 +596,9 @@ ul.completions li:hover {
   padding:0 0.5em;
 }
 
+/* ckeditor */
+a.cke_path_item, a.cke_path_empty {
+  color: #4c4c4c;
+}
+
 /* </dtml-with> */
