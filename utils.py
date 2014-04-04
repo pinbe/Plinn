@@ -261,10 +261,12 @@ def getAdapterByInterface(ob, dotted_name, default=_marker) :
     else :
         return default
 
+security.declarePublic('encodeQuopriEmail')
 def encodeQuopriEmail(name, email) :
     qpName = encodestring(name).replace('=\n', '')
     return '''"=?utf-8?q?%s?=" <%s>''' % (qpName, email)
 
+security.declarePublic('encodeMailHeader')
 def encodeMailHeader(content) :
     s = encodestring(content).replace('=\n', '')
     s = s.replace('_', '=5F')
