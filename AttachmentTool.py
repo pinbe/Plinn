@@ -30,6 +30,7 @@ from OFS.SimpleItem import SimpleItem
 from OFS.Folder import Folder
 from OFS.Image import File, cookId
 from zExceptions import Unauthorized
+from zExceptions import BadRequest
 from Products.Photo import Photo
 from Products.CMFCore.utils import UniqueObject, getToolByName, getUtilityByInterfaceName
 from Products.CMFCore.permissions import ModifyPortalContent
@@ -113,6 +114,16 @@ class AttachmentContainer (Folder):
     
     def __init__(self):
         self.id = 'attachments'
+
+    security.declarePrivate('checkIdAvailable')
+    def checkIdAvailable(self, id):
+        try:
+            self._checkId(id)
+        except BadRequest:
+            return False
+        else:
+            return True
+
 
     security.declareProtected(ModifyPortalContent, 'put_upload')
     def put_upload(self, REQUEST, RESPONSE):
