@@ -20,9 +20,9 @@ if change and \
 elif change_and_view and \
         context.validateTextFile(**form) and \
         context.validateHTML(**form) and \
-        context.document_edit_control(text=form.get('text'), text_format='html') and \
-        context.setRedirect(context, 'object/view', **{'ajax':ajax}):
-    return
+        context.document_edit_control(text=form.get('text'), text_format='html') :
+    attachments.removeUnusedAttachments(context.EditableBody())
+    return context.setRedirect(context, 'object/view', **{'ajax':ajax})
 
 
 options = {}

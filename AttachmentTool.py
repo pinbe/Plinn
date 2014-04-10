@@ -28,7 +28,8 @@ from Acquisition import aq_base
 from Globals import InitializeClass
 from OFS.SimpleItem import SimpleItem
 from OFS.Folder import Folder
-from OFS.Image import File, cookId
+from OFS.Image import cookId
+from Products.Photo.blobbases import File
 from zExceptions import Unauthorized
 from zExceptions import BadRequest
 from Products.Photo import Photo
@@ -45,7 +46,9 @@ from webdav.common import Locked
 from webdav.common import PreconditionFailed
 from zope.contenttype import guess_content_type
 
-
+from libxml2 import HTML_PARSE_RECOVER, HTML_PARSE_NOERROR, HTML_PARSE_NOWARNING
+from libxml2 import htmlReadDoc
+PARSE_OPTIONS = HTML_PARSE_RECOVER + HTML_PARSE_NOERROR + HTML_PARSE_NOWARNING
 
 class AttachmentTool( UniqueObject, SimpleItem):
     """ Links attachment objects to contents.
@@ -185,7 +188,7 @@ class AttachmentContainer (Folder):
         ob.PUT(REQUEST, RESPONSE)
         RESPONSE.setStatus(httpRespCode)
         RESPONSE.setHeader('Content-Type', 'text/xml;;charset=utf-8')
-        if ob.meta_type == 'File' :
+        if ob.meta_type == 'Blob File' :
             return '<element id="%s" title="%s"/>' % (ob.getId(), escape(ob.title_or_id()))
         elif ob.meta_type == 'Photo' :
             width, height = ob.getResizedImageSize(size=(310, 310))
@@ -195,6 +198,27 @@ class AttachmentContainer (Folder):
                  'width' : width,
                  'height' : height
                  }
+    
+    security.declareProtected(ModifyPortalContent, 'removeUnusedAttachments')
+    def removeUnusedAttachments(self, html) :
+        html = '<div>%s</div>' % html
+        doc = htmlReadDoc(html, '', None, PARSE_OPTIONS)
+        used = {}
 
+        hrefs = doc.xpathEval('//a/@href')
+        for href in [a.get_content() for a in hrefs] :
+            if href.startswith('attachments/') :
+                used[href[len('attachments/'):]] = True
+
+        srcs = doc.xpathEval('//img/@src')
+        for src in [a.get_content() for a in srcs] :
+            if src.startswith('attachments/') :
+                parts = src.split('/')
+                if len(parts) >=2 :
+                    used[parts[1]] = True
+        
+        unused = [id for id in self.objectIds() if not used.has_key(id)]
+        if unused :
+            self.manage_delObjects(unused)
 
 InitializeClass(AttachmentContainer)
