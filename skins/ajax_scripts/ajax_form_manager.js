@@ -175,10 +175,10 @@ FormManager.prototype.replaceElementByField = function(evt) {
 		var tabIndex = ob.tabIndex;
 		var text;
 		if (ob.firstChild && ob.firstChild.className === 'hidden_value') {
-		    text = ob.firstChild.innerHTML;
+			text = ob.firstChild.innerHTML;
 		}
 		else {
-		    text = ob.innerHTML;
+			text = ob.innerHTML;
 		}
 		disablePropagation(evt);
 		var parent;
@@ -424,7 +424,7 @@ FormManager.prototype.loadResponse = function(req) {
 	var onAfterPopulate = this.onAfterPopulate;
 	onAfterPopulate();
 	this.scrollToPortalMessage();
-  history.pushState(absolute_url(), document.title, absolute_url());
+	history.pushState(absolute_url(), document.title, absolute_url());
 };
 
 FormManager.prototype.scrollToPortalMessage = function() {
@@ -481,43 +481,43 @@ function smoothScroll(from, to) {
 
 /* adapted from http://xahlee.info/js/js_shake_box.html */
 function shake(e, distance, time) {
-    // Handle arguments
-    if (!time) { time = 500; }
-    if (!distance) { distance = 5; }
+	// Handle arguments
+	if (!time) { time = 500; }
+	if (!distance) { distance = 5; }
 
-    // Save the original style of e, Make e relatively positioned, Note the animation start time, Start the animation
-    var originalStyle = e.style.cssText;
-    e.style.position = "relative";
-    var start = (new Date()).getTime();
+	// Save the original style of e, Make e relatively positioned, Note the animation start time, Start the animation
+	var originalStyle = e.style.cssText;
+	e.style.position = "relative";
+	var start = (new Date()).getTime();
 
-    // This function checks the elapsed time and updates the position of e.
-    // If the animation is complete, it restores e to its original state.
-    // Otherwise, it updates e's position and schedules itself to run again.
-    function animate() {
-        var now = (new Date()).getTime();
-        // Get current time
-        var elapsed = now-start;
-        // How long since we started
-        var fraction = elapsed/time;
-        // What fraction of total time?
-        if (fraction < 1) {
-            // If the animation is not yet complete
-            // Compute the x position of e as a function of animation
-            // completion fraction. We use a sinusoidal function, and multiply
-            // the completion fraction by 4pi, so that it shakes back and
-            // forth twice.
-            var x = distance * Math.sin(fraction*8*Math.PI);
-            e.style.left = x + "px";
-            // Try to run again in 25ms or at the end of the total time.
-            // We're aiming for a smooth 40 frames/second animation.
-            setTimeout(animate, Math.min(25, time-elapsed));
-        }
-        else {
-            // Otherwise, the animation is complete
-            e.style.cssText = originalStyle; // Restore the original style
-        }
-    }
-    animate();
+	// This function checks the elapsed time and updates the position of e.
+	// If the animation is complete, it restores e to its original state.
+	// Otherwise, it updates e's position and schedules itself to run again.
+	function animate() {
+		var now = (new Date()).getTime();
+		// Get current time
+		var elapsed = now-start;
+		// How long since we started
+		var fraction = elapsed/time;
+		// What fraction of total time?
+		if (fraction < 1) {
+			// If the animation is not yet complete
+			// Compute the x position of e as a function of animation
+			// completion fraction. We use a sinusoidal function, and multiply
+			// the completion fraction by 4pi, so that it shakes back and
+			// forth twice.
+			var x = distance * Math.sin(fraction*8*Math.PI);
+			e.style.left = x + "px";
+			// Try to run again in 25ms or at the end of the total time.
+			// We're aiming for a smooth 40 frames/second animation.
+			setTimeout(animate, Math.min(25, time-elapsed));
+		}
+		else {
+			// Otherwise, the animation is complete
+			e.style.cssText = originalStyle; // Restore the original style
+		}
+	}
+	animate();
 }
 
 }());
