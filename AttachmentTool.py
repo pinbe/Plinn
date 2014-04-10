@@ -185,7 +185,16 @@ class AttachmentContainer (Folder):
         ob.PUT(REQUEST, RESPONSE)
         RESPONSE.setStatus(httpRespCode)
         RESPONSE.setHeader('Content-Type', 'text/xml;;charset=utf-8')
-        return '<element id="%s" title="%s"/>' % (ob.getId(), escape(ob.title_or_id()))
+        if ob.meta_type == 'File' :
+            return '<element id="%s" title="%s"/>' % (ob.getId(), escape(ob.title_or_id()))
+        elif ob.meta_type == 'Photo' :
+            width, height = ob.getResizedImageSize(size=(310, 310))
+            return '<element src="%(src)s" title="%(title)s" width="%(width)d" height="%(height)d"/>' % \
+                {'src' : 'attachments/%s/getResizedImage?size=%d_%d' % (ob.getId(), width, height),
+                 'title' : escape(ob.title_or_id()),
+                 'width' : width,
+                 'height' : height
+                 }
 
 
 InitializeClass(AttachmentContainer)
