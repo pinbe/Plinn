@@ -391,19 +391,26 @@ FormManager.prototype.loadResponse = function(req) {
 					return;
 				}
 				var fragments = req.responseXML.documentElement.childNodes;
-				var fragment, dest;
-				var i;
-				for (i=0 ; i<fragments.length ; i++) {
-					fragment = fragments[i];
-					if (fragment.nodeName === 'fragment') {
-						dest = document.getElementById(fragment.getAttribute('id'));
-						dest.innerHTML = fragment.firstChild.nodeValue;
-			
-						scripts = dest.getElementsByTagName('script');
-						var j;
-						for (j=0 ; j < scripts.length ; j++) {
-							globalScriptRegistry.loadScript(scripts[j]);
-						}
+				var element, dest, i, j;
+				for (i=0 ; i < fragments.length ; i++) {
+					element = fragments[i];
+					switch (element.nodeName) {
+						case 'fragment' :
+							dest = document.getElementById(element.getAttribute('id'));
+							if(dest) {
+								dest.innerHTML = element.firstChild.nodeValue;
+								scripts = dest.getElementsByTagName('script');
+								for (j=0 ; j < scripts.length ; j++) {
+									globalScriptRegistry.loadScript(scripts[j]); }
+							}
+							break;
+						case 'base' :
+							var headBase = document.getElementsByTagName('base');
+							if (headBase.length) {
+								headBase[0].setAttribute('href', element.getAttribute('href'));
+								console.info('set base href:', headBase[0].href);
+							}
+							break;
 					}
 				}
 				break;
