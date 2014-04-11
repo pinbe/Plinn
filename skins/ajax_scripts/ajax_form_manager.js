@@ -406,8 +406,13 @@ FormManager.prototype.loadResponse = function(req) {
 							break;
 						case 'base' :
 							var headBase = document.getElementsByTagName('base');
-							if (headBase.length) {
+							if (headBase.length > 0) {
 								headBase[0].setAttribute('href', element.getAttribute('href'));
+							}
+							else {
+								headBase = document.createElement('base');
+								headBase.setAttribute('href', element.getAttribute('href'));
+								document.head.appendChild(headBase);
 							}
 							break;
 					}
