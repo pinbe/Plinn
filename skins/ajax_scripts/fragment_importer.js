@@ -92,7 +92,6 @@ FragmentImporter.prototype.populateBaseElement = function(req) {
 					var headBase = document.getElementsByTagName('base');
 					if (headBase.length) {
 						headBase[0].setAttribute('href', element.getAttribute('href'));
-						console.info('set base href:', headBase[0].href);
 					}
 					break;
 			}
