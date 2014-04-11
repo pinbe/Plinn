@@ -1,9 +1,8 @@
 <fragments metal:define-macro="master">
   <metal:block use-macro="here/main_template_macros/macros/global_defines"/>
   <tal:block define="global dummy python:request.RESPONSE.setHeader('Content-Type', 'text/xml;;charset=utf-8')"/>
-
+<base tal:omit-tag="" metal:define-slot="base" />
 <fragment id="mainCell"><span tal:replace="structure string:&lt;![CDATA[" />
-  <base tal:omit-tag="" metal:define-slot="base" />
   <link metal:define-slot="css_slot" tal:replace="nothing" />
 
   <div id="Object_URL" tal:content="here/absolute_url" style="display:none"></div>
