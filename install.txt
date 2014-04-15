@@ -1,1 +1,14 @@
-Products.CMFDefault Products.CMFActionIcons Products.CMFCalendar Products.CMFTopic Products.CMFUid Products.DCWorkflow Products.MimetypesRegistry Products.PortalTransforms hexagonit.swfheader zope.mkzeoinstance zope.globalrequest
+Installation Zope2 et des dépendances Plinn
+
+€ virtualenv-2.7 --system-site-packages zope-2.13
+€ cd zope-2.13
+€ . bin/activate
+
+€ pip install -r zope-2.13.22-plinn-deps-installed.txt
+
+sinon :
+
+€ pip install pytz
+€ pip install -i http://download.zope.org/Zope2/index/2.13.22 Zope2
+
+€ pip install Products.CMFDefault==2.3.0-beta2 Products.CMFActionIcons==2.1.3 Products.CMFCalendar==2.3.0-beta Products.CMFTopic==2.3.0-beta Products.CMFUid==2.3.0-beta Products.DCWorkflow==2.3.0-beta Products.MimetypesRegistry Products.PortalTransforms hexagonit.swfheader zope.mkzeoinstance zope.globalrequest
