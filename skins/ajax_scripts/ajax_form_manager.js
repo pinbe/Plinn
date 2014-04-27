@@ -435,7 +435,8 @@ FormManager.prototype.loadResponse = function(req) {
 	var onAfterPopulate = this.onAfterPopulate;
 	onAfterPopulate();
 	this.scrollToPortalMessage();
-	history.pushState(absolute_url(), document.title, absolute_url());
+	var url = this.form.action;
+	history.pushState(url, document.title, url);
 };
 
 FormManager.prototype.scrollToPortalMessage = function() {
