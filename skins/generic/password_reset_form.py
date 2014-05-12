@@ -27,7 +27,7 @@ if passwordChanged :
 else :
     hidden_vars = []
     target = '%s/password_reset_form/%s' % (utool(), uuid)
-    buttons = ({'name': 'validate', 'value': _('Validate')},)
+    buttons = ({'name': 'validate', 'value': _('Update Password')},)
 
 options['form'] = { 'action': target,
                     'listButtonInfos': tuple(buttons),

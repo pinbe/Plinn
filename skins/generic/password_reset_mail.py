@@ -3,7 +3,7 @@ from Products.Plinn.utils import translate as _
 
 print _('Hi %(fullName)s,')
 print
-print _('You have asked to change your password.')
+print _('You recently asked to reset your password.')
 
 print _("To get back into your account on the %(siteName)s website, you'll need to create a new password.")
 print _("It's easy:")

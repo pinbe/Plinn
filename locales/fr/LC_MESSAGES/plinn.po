@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Tue Apr  1 16:10:35 2014\n"
-"PO-Revision-Date: 2014-01-19 10:51+0100\n"
+"POT-Creation-Date: Mon May 12 23:42:25 2014\n"
+"PO-Revision-Date: 2014-05-12 23:42+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -43,8 +43,8 @@ msgstr ""
 "demander une nouvelle."
 
 #: n/RegistrationTool.py:273
-msgid "Password successfully reset."
-msgstr "Mot de passe correctement réinitialisé."
+msgid "Password successfully updated."
+msgstr "Mot de passe correctement mis à jour."
 
 #: n/RegistrationTool.py:275
 msgid "\"%s\" username not found."
@@ -551,7 +551,6 @@ msgstr "Login"
 
 #: n/skins/custom_generic/login_form.pt:28 n/skins/generic/gruf_macros.pt:268
 #: n/skins/generic/gruf_macros.pt:390
-#: n/skins/generic/password_reset_template.pt:28
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -631,14 +630,14 @@ msgstr "Requête faîte par l'IP ${ip} à ${time}"
 
 #: n/skins/custom_generic/main_template_standard.pt:111
 #: n/skins/custom_generic/talkback_tree.pt:63
-#: n/skins/generic/main_template_ajax.pt:12
+#: n/skins/generic/main_template_ajax.pt:11
 #: n/skins/photo_theme/main_template_standard.pt:119
 msgid "Information"
 msgstr "Information"
 
 #: n/skins/custom_generic/main_template_standard.pt:112
 #: n/skins/custom_generic/talkback_tree.pt:64
-#: n/skins/generic/main_template_ajax.pt:13 n/skins/generic/widgets.pt:17
+#: n/skins/generic/main_template_ajax.pt:12 n/skins/generic/widgets.pt:17
 #: n/skins/photo_theme/main_template_standard.pt:120
 #: n/skins/photo_theme/search_results_macros.pt:38
 msgid "${DYNAMIC_CONTENT}"
@@ -706,7 +705,6 @@ msgstr "Corps"
 #: n/skins/custom_generic/talkback_tree.pt:82
 #: n/skins/generic/gruf_macros.pt:77 n/skins/generic/gruf_macros.pt:410
 #: n/skins/generic/header_widgets.pt:32 n/skins/generic/header_widgets.pt:173
-#: n/skins/generic/password_reset_form.py:30
 #: n/skins/generic/send_email_form.pt:79
 msgid "Validate"
 msgstr "Valider"
@@ -973,7 +971,6 @@ msgid "Given Name"
 msgstr "Prénom"
 
 #: n/skins/generic/gruf_macros.pt:274 n/skins/generic/gruf_macros.pt:396
-#: n/skins/generic/password_reset_template.pt:34
 msgid "Confirm"
 msgstr "Confirmation"
 
@@ -1149,13 +1146,17 @@ msgstr "Coller"
 msgid "Exit boxes editing"
 msgstr "Quitter l'édition des boîtes"
 
+#: n/skins/generic/password_reset_form.py:30
+msgid "Update Password"
+msgstr "Mettre à jour le mot de passe"
+
 #: n/skins/generic/password_reset_mail.py:4
 msgid "Hi %(fullName)s,"
 msgstr "Bonjour %(fullName)s,"
 
 #: n/skins/generic/password_reset_mail.py:6
-msgid "You have asked to change your password."
-msgstr "Vous avez demandé de changer de mot de passe."
+msgid "You recently asked to reset your password."
+msgstr "Vous avez récemment demandé de réinitialiser votre mot de passe."
 
 #: n/skins/generic/password_reset_mail.py:8
 msgid ""
@@ -1182,10 +1183,16 @@ msgid "Password resetting"
 msgstr "Réinitialisation du mot de passe"
 
 #: n/skins/generic/password_reset_template.pt:21
-msgid "Please enter a new password and clic on \"Validate\" button."
-msgstr ""
-"Veuillez entrer un nouveau mot de passe puis cliquer sur le bouton "
-"« Valider »."
+msgid "Please choose a new password."
+msgstr "Veuillez choisir un nouveau mot de passe."
+
+#: n/skins/generic/password_reset_template.pt:28
+msgid "New Password"
+msgstr "Nouveau mot de passe"
+
+#: n/skins/generic/password_reset_template.pt:34
+msgid "Confirm New Password"
+msgstr "Confirmer le nouveau mot de passe"
 
 #: n/skins/generic/password_reset_template.pt:49
 msgid "Password changed"
@@ -1278,24 +1285,26 @@ msgstr "Réinitialisation de mot de passe"
 
 #: n/skins/generic/request_password_reset_template.pt:12
 msgid ""
-"Enter your email or your username below and click on the \"Send\" button. "
-"You will receive an email with a link to reset your password."
+"Enter your email or your login below and click on the \"Send\" button. For "
+"security reasons, we store your password encrypted, and cannot mail it to "
+"you. You will receive an email with a link to reset your password."
 msgstr ""
 "Entrez votre email ou votre login ci-dessous et cliquez sur « Envoyer ». "
-"Vous recevrez un email contenant un lien pour réinitialiser votre mot de "
-"passe."
+"Pour des raisons de sécurité, nous conservons votre mot de passe sous forme "
+"cryptée : nous ne pouvons donc pas vous l'envoyer. Vous recevrez un email "
+"contenant un lien pour réinitialiser votre mot de passe.\""
 
-#: n/skins/generic/request_password_reset_template.pt:19
+#: n/skins/generic/request_password_reset_template.pt:21
 msgid ""
-"If this will not work for you (for example, if you forget your username or "
-"didn't enter your email address) send email to ${admin_email}."
+"If this will not work for you (for example, if you forgot your login or your "
+"email address has changed), contact us at ${admin_email}."
 msgstr ""
-"Si cela ne marche pas dans votre cas (par exemple si vous avez oublié votre "
-"login ou si vous n'aviez pas entré une adresse email), vous pouvez envoyer "
-"un email à ${admin_email}."
+"Si cela ne marche pas dans votre cas (par exemple, si vous avez oublié votre "
+"login ou si votre adresse mail a changé), contactez-nous à l'adresse "
+"suivante : ${admin_email}"
 
 #. Default: "Send"
-#: n/skins/generic/request_password_reset_template.pt:26
+#: n/skins/generic/request_password_reset_template.pt:27
 msgid " Send "
 msgstr " Envoyer "
 
@@ -2361,6 +2370,33 @@ msgstr "Ceci est la page d'accueil par défaut."
 
 msgid "Huge Folder"
 msgstr "Dossier"
+
+#~ msgid "Password successfully reset."
+#~ msgstr "Mot de passe correctement réinitialisé."
+
+#~ msgid "You have asked to change your password."
+#~ msgstr "Vous avez demandé de changer de mot de passe."
+
+#~ msgid "Please enter a new password and clic on \"Validate\" button."
+#~ msgstr ""
+#~ "Veuillez entrer un nouveau mot de passe puis cliquer sur le bouton "
+#~ "« Valider »."
+
+#~ msgid ""
+#~ "Enter your email or your username below and click on the \"Send\" button. "
+#~ "You will receive an email with a link to reset your password."
+#~ msgstr ""
+#~ "Entrez votre email ou votre login ci-dessous et cliquez sur « Envoyer ». "
+#~ "Vous recevrez un email contenant un lien pour réinitialiser votre mot de "
+#~ "passe."
+
+#~ msgid ""
+#~ "If this will not work for you (for example, if you forget your username "
+#~ "or didn't enter your email address) send email to ${admin_email}."
+#~ msgstr ""
+#~ "Si cela ne marche pas dans votre cas (par exemple si vous avez oublié "
+#~ "votre login ou si vous n'aviez pas entré une adresse email), vous pouvez "
+#~ "envoyer un email à ${admin_email}."
 
 #~ msgid ""
 #~ "Enter your username below and click on the \"Send\" button. You will "

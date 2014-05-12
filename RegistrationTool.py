@@ -270,7 +270,7 @@ class RegistrationTool(BaseRegistrationTool) :
             if member :
                 member.setSecurityProfile(password=password)
                 del self._passwordResetRequests[uuid]
-                return  userid, _('Password successfully reset.')
+                return  userid, _('Password successfully updated.')
             else :
                 return None, _('"%s" username not found.') % userid
             

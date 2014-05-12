@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Tue Apr  1 16:10:35 2014\n"
+"POT-Creation-Date: Mon May 12 23:42:25 2014\n"
 "PO-Revision-Date: 2013-11-28 13:12+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -41,7 +41,7 @@ msgid "Your reset password request has expired. You can ask a new one."
 msgstr ""
 
 #: n/RegistrationTool.py:273
-msgid "Password successfully reset."
+msgid "Password successfully updated."
 msgstr ""
 
 #: n/RegistrationTool.py:275
@@ -532,7 +532,6 @@ msgstr ""
 
 #: n/skins/custom_generic/login_form.pt:28 n/skins/generic/gruf_macros.pt:268
 #: n/skins/generic/gruf_macros.pt:390
-#: n/skins/generic/password_reset_template.pt:28
 msgid "Password"
 msgstr ""
 
@@ -600,14 +599,14 @@ msgstr ""
 
 #: n/skins/custom_generic/main_template_standard.pt:111
 #: n/skins/custom_generic/talkback_tree.pt:63
-#: n/skins/generic/main_template_ajax.pt:12
+#: n/skins/generic/main_template_ajax.pt:11
 #: n/skins/photo_theme/main_template_standard.pt:119
 msgid "Information"
 msgstr ""
 
 #: n/skins/custom_generic/main_template_standard.pt:112
 #: n/skins/custom_generic/talkback_tree.pt:64
-#: n/skins/generic/main_template_ajax.pt:13 n/skins/generic/widgets.pt:17
+#: n/skins/generic/main_template_ajax.pt:12 n/skins/generic/widgets.pt:17
 #: n/skins/photo_theme/main_template_standard.pt:120
 #: n/skins/photo_theme/search_results_macros.pt:38
 msgid "${DYNAMIC_CONTENT}"
@@ -672,7 +671,6 @@ msgstr ""
 #: n/skins/custom_generic/talkback_tree.pt:82
 #: n/skins/generic/gruf_macros.pt:77 n/skins/generic/gruf_macros.pt:410
 #: n/skins/generic/header_widgets.pt:32 n/skins/generic/header_widgets.pt:173
-#: n/skins/generic/password_reset_form.py:30
 #: n/skins/generic/send_email_form.pt:79
 msgid "Validate"
 msgstr ""
@@ -921,7 +919,6 @@ msgid "Given Name"
 msgstr ""
 
 #: n/skins/generic/gruf_macros.pt:274 n/skins/generic/gruf_macros.pt:396
-#: n/skins/generic/password_reset_template.pt:34
 msgid "Confirm"
 msgstr ""
 
@@ -1097,12 +1094,16 @@ msgstr ""
 msgid "Exit boxes editing"
 msgstr ""
 
+#: n/skins/generic/password_reset_form.py:30
+msgid "Update Password"
+msgstr ""
+
 #: n/skins/generic/password_reset_mail.py:4
 msgid "Hi %(fullName)s,"
 msgstr ""
 
 #: n/skins/generic/password_reset_mail.py:6
-msgid "You have asked to change your password."
+msgid "You recently asked to reset your password."
 msgstr ""
 
 #: n/skins/generic/password_reset_mail.py:8
@@ -1128,7 +1129,15 @@ msgid "Password resetting"
 msgstr ""
 
 #: n/skins/generic/password_reset_template.pt:21
-msgid "Please enter a new password and clic on \"Validate\" button."
+msgid "Please choose a new password."
+msgstr ""
+
+#: n/skins/generic/password_reset_template.pt:28
+msgid "New Password"
+msgstr ""
+
+#: n/skins/generic/password_reset_template.pt:34
+msgid "Confirm New Password"
 msgstr ""
 
 #: n/skins/generic/password_reset_template.pt:49
@@ -1216,18 +1225,19 @@ msgstr ""
 
 #: n/skins/generic/request_password_reset_template.pt:12
 msgid ""
-"Enter your email or your username below and click on the \"Send\" button. "
-"You will receive an email with a link to reset your password."
+"Enter your email or your login below and click on the \"Send\" button. For "
+"security reasons, we store your password encrypted, and cannot mail it to "
+"you. You will receive an email with a link to reset your password."
 msgstr ""
 
-#: n/skins/generic/request_password_reset_template.pt:19
+#: n/skins/generic/request_password_reset_template.pt:21
 msgid ""
-"If this will not work for you (for example, if you forget your username or "
-"didn't enter your email address) send email to ${admin_email}."
+"If this will not work for you (for example, if you forgot your login or your "
+"email address has changed), contact us at ${admin_email}."
 msgstr ""
 
 #. Default: "Send"
-#: n/skins/generic/request_password_reset_template.pt:26
+#: n/skins/generic/request_password_reset_template.pt:27
 msgid " Send "
 msgstr ""
 
