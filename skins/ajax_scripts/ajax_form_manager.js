@@ -8,12 +8,13 @@ var FormManager;
 
 (function(){
 	
-FormManager = function(form, responseTextDest, lazy) {
+FormManager = function(form, responseTextDest, lazy, noHistory) {
 	if (form.elements.namedItem("noAjax")) {return;}
 	
 	this.form = form;
 	this.responseTextDest = responseTextDest;
 	this.lazy = lazy;
+	this.noHistory = noHistory;
 	var thisManager = this;
 	this.form.onsubmit = function(evt) { thisManager.submit(evt); };
 	this.form.onclick = function(evt) { thisManager.click(evt); };
@@ -436,7 +437,7 @@ FormManager.prototype.loadResponse = function(req) {
 	onAfterPopulate();
 	this.scrollToPortalMessage();
 	var url = this.form.action;
-	history.pushState(url, document.title, url);
+	if (!this.noHistory){ history.pushState(url, document.title, url); }
 };
 
 FormManager.prototype.scrollToPortalMessage = function() {
