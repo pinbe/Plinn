@@ -44,7 +44,7 @@ function buildMetaFunctions() {
 	clearSelection = _build_clearSelection();
 }
 
-__groupListeners = {};
+var __groupListeners = {};
 
 function _build_addListener() {
 	var _browserSpecific;
