@@ -58,9 +58,10 @@ tools = ( MembershipTool.MembershipTool
 		, AttachmentTool.AttachmentTool
 		)
 
-# register font extensions
+# register files extensions
 registerFileExtension('ttf', FSFile)
 registerFileExtension('eot', FSFile)
+registerFileExtension('cur', FSFile)
 
 def initialize(registrar) :
 	
