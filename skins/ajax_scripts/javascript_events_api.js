@@ -48,13 +48,13 @@ var __groupListeners = {};
 
 function _build_addListener() {
 	var _browserSpecific;
-	if (browser.isIE55 || browser.isIE6up) {
+	if (!browser.isDOM2Event) {
 		_browserSpecific = function(ob, eventName, listenerFunction) {
 			eventName = "on" + eventName;
 			ob.attachEvent(eventName, listenerFunction);
 		};
 	}
-	else if (browser.isDOM2Event) {
+	else {
 		_browserSpecific = function(ob, eventName, listenerFunction) {
 			ob.addEventListener(eventName, listenerFunction, false); // only bubbling events :-(
 		};
@@ -71,14 +71,14 @@ function _build_addListener() {
 }
 
 function _build_removeListener() {
-	if (browser.isIE55 || browser.isIE6up) {
+	if (!browser.isDOM2Event) {
 		var _ie_removeListener = function(ob, eventName, listenerFunction) {
 			eventName = "on" + eventName;
 			ob.detachEvent(eventName, listenerFunction);
 		};
 		return _ie_removeListener;
 	}
-	else if (browser.isDOM2Event) {
+	else {
 		var _dom2_removeListener = function(ob, eventName, listenerFunction) {
 			ob.removeEventListener(eventName, listenerFunction, false); // only bubbling events :-(
 		};
@@ -98,13 +98,13 @@ removeGroupListeners = function(group) {
 };
 
 function  _build_raiseMouseEvent() {
-	if (browser.isIE55 || browser.isIE6up) {
+	if (!browser.isDOM2Event) {
 		var _ie_raiseMouseEvent = function(ob, eventName) {
 			ob.fireEvent("on" + eventName);
 		};
 		return _ie_raiseMouseEvent;
 	}
-	else if (browser.isDOM2Event) {
+	else {
 		var _dom2_raiseMouseEvent = function(ob, eventName) {
 			var event = document.createEvent("MouseEvents");
 			event.initEvent(eventName, true, true);
@@ -115,13 +115,13 @@ function  _build_raiseMouseEvent() {
 }
 
 function _build_getTargetedObject(){
-	if (browser.isIE55 || browser.isIE6up) {
+	if (!browser.isDOM2Event) {
 		var _ie_getTargetedObject = function() {
 			return window.event.srcElement;
 		};
 		return _ie_getTargetedObject;
 	}
-	else if (browser.isDOM2Event) {
+	else {
 		var _appleWebKit_getTargetedeObject = function(evt) {
 			var target = evt.target;
 			// is it really safe ?...
@@ -135,13 +135,13 @@ function _build_getTargetedObject(){
 }
 
 function _build_getEventObject(){
-	if (browser.isIE) {
+	if (!browser.isDOM2Event) {
 		var _ie_getEventObject = function() {
 			return window.event;
 		};
 		return _ie_getEventObject;
 	}
-	else if (browser.isDOM2Event) {
+	else {
 		var _dom2_getEventObject = function(evt) {
 			return evt;
 		};
@@ -151,13 +151,13 @@ function _build_getEventObject(){
 
 
 function _build_disableDefault(){
-	if (browser.isIE55 || browser.isIE6up) {
+	if (!browser.isDOM2Event) {
 		var _ie_disableDefault = function() {
 			window.event.returnValue = false;
 		};
 		return _ie_disableDefault;
 	}
-	else if (browser.isDOM2Event) {
+	else {
 		var _dom2_disableDefault = function(evt) {
 			evt.preventDefault();
 		};
@@ -166,13 +166,13 @@ function _build_disableDefault(){
 }
 
 function _build_disablePropagation() {
-	if (browser.isIE55 || browser.isIE6up) {
+	if (!browser.isDOM2Event) {
 		var _ie_disablePropagation = function() {
 			window.event.cancelBubble = true;
 		};
 		return _ie_disablePropagation;
 	}
-	else if (browser.isDOM2Event) {
+	else {
 		var _dom2_disablePropagation = function(evt) {
 			evt.stopPropagation();
 		};
