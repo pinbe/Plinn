@@ -37,7 +37,7 @@ FolderDDropControler = function(listing, orderable, firstItemPos) {
 	}
 	addListener(this.listing, 'click', function(evt) {thisControler.selectCBRange(evt);});
 	
-	if (browser.isIE) {
+	if (browser.isIE10max) {
 		this.listing.ondragstart = function() { window.event.returnValue = false;};
 	}
 };
@@ -70,7 +70,7 @@ FolderDDropControler.prototype.moveRow =  function(evt){
 	var targetRow = this.targetRow;
 	if (targetRow !== null) {
 		this.noOver = false;
-		if (browser.isIE) {document.selection.clear();}
+		if (browser.isIE10max) {document.selection.clear();}
 		var overRow = getTargetRow(evt);
 
 		if (overRow.pos === targetRow.pos) {return;}
@@ -234,7 +234,7 @@ DropTarget.prototype.drop = function(evt) {
 };
 
 DropTarget.prototype.highlightTarget = function(evt){
-	if (browser.isIE) {document.selection.clear();}
+	if (browser.isIE10max) {document.selection.clear();}
 	var target = getTargetedObject(evt);
 	if (this.folderDDControler.targetRow &&
 		target.nodeName === "A" &&
