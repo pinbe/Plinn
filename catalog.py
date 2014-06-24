@@ -111,24 +111,20 @@ class DelegatedCatalog(Catalog) :
         Catalog.__init__(self, brains=brains)
         self.zcat = zcat
     
-    def getDelegatedIndexes(self) :
-        return ('Title', 'Description', 'SearchableText') # <= TODO virer cette ligne
-        return self.zcat.delegatedIndexes
-    
     def delegateSearch(self, query, plan) :
         '''
         retours faux : 
         None signifie : pas de délégation, il faut continuer à interroger les autres index.
         IISet() vide : pas de résultat lors de la délégation, on peut arrêter la recherche.
         '''
-        indexes = set(plan).intersection(set(self.getDelegatedIndexes()))
+        indexes = set(plan).intersection(set(self.zcat.delegatedIndexes))
+        if not indexes :
+            return None
         delegatedQuery = {}
         for i in indexes :
             delegatedQuery[i] = query.pop(i)
             plan.remove(i)
-        if not delegatedQuery :
-            return None
-        c = SolrConnection('http://localhost:8983/solr')
+        c = SolrConnection(self.zcat.solr_url)
         q =' AND '.join(['%s:"%s"' % item for item in delegatedQuery.items()])
         resp = c.query(q, fields='id', rows=len(self))
         c.close()
