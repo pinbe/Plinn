@@ -11,6 +11,13 @@ from Products.ZCatalog.Catalog import Catalog
 import transaction
 from solr import *
 
+# imports for Catalog class
+from Products.PluginIndexes.interfaces import ILimitedResultIndex
+from Products.ZCatalog.Lazy import LazyMap, LazyCat, LazyValues
+from BTrees.IIBTree import intersection, IISet
+from BTrees.IIBTree import weightedIntersection
+import warnings
+
 class SolrTransactionHook :
     ''' commit solr couplé sur le commit de la ZODB '''
     def __init__(self, connection) :
