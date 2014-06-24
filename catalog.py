@@ -41,7 +41,7 @@ class CatalogTool(BaseCatalogTool) :
     
     def __init__(self, idxs=[]) :
         super(CatalogTool, self).__init__()
-        self._catalog = DelegatedCatalog()
+        self._catalog = DelegatedCatalog(self)
         self.solr_url = 'http://localhost:8983/solr'
         self.delegatedIndexes = ('Title', 'Description', 'SearchableText')
     
@@ -107,6 +107,32 @@ InitializeClass(CatalogTool)
 class DelegatedCatalog(Catalog) :
     '''C'est ici qu'on délègue effectivement à Solr '''
     
+    def __init__(self, zcat, brains=None) :
+        Catalog.__init__(self, brains=brains)
+        self.zcat = zcat
+    
+    def getDelegatedIndexes(self) :
+        return ('Title', 'Description', 'SearchableText') # <= TODO virer cette ligne
+        return self.zcat.delegatedIndexes
+    
+    def delegateSearch(self, query, plan) :
+        '''
+        retours faux : 
+        None signifie : pas de délégation, il faut continue à interroger les autres index
+        IISet() vide : pas de résultat lors de la délégation, on peut arrêter la recherche.
+        '''
+        indexes = set(plan).intersection(set(self.getDelegatedIndexes()))
+        delegatedQuery = {}
+        for i in indexes :
+            delegatedQuery[i] = query.pop(i)
+            plan.remove(i)
+        if not delegatedQuery :
+            return None
+        c = SolrConnection('http://localhost:8983/solr')
+        q =' AND '.join(['%s:"%s"' % item for item in delegatedQuery.items()])
+        resp = c.query(q, fields='id')
+        return IISet(filter(None, [self.uids.get(r['id']) for r in resp.results])) 
+    
     def search(self, query, sort_index=None, reverse=0, limit=None, merge=1):
         """Iterate through the indexes, applying the query to each one. If
         merge is true then return a lazy result set (sorted if appropriate)
@@ -136,6 +162,11 @@ class DelegatedCatalog(Catalog) :
         plan = cr.plan()
         if not plan:
             plan = self._sorted_search_indexes(query)
+        
+        # délégation
+        rs = self.delegateSearch(query, plan)
+        if rs is not None and not rs :
+            return LazyCat([])
 
         indexes = self.indexes.keys()
         for i in plan:
