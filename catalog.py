@@ -118,7 +118,7 @@ class DelegatedCatalog(Catalog) :
     def delegateSearch(self, query, plan) :
         '''
         retours faux : 
-        None signifie : pas de délégation, il faut continue à interroger les autres index
+        None signifie : pas de délégation, il faut continuer à interroger les autres index.
         IISet() vide : pas de résultat lors de la délégation, on peut arrêter la recherche.
         '''
         indexes = set(plan).intersection(set(self.getDelegatedIndexes()))
@@ -130,7 +130,8 @@ class DelegatedCatalog(Catalog) :
             return None
         c = SolrConnection('http://localhost:8983/solr')
         q =' AND '.join(['%s:"%s"' % item for item in delegatedQuery.items()])
-        resp = c.query(q, fields='id')
+        resp = c.query(q, fields='id', rows=len(self))
+        c.close()
         return IISet(filter(None, [self.uids.get(r['id']) for r in resp.results])) 
     
     def search(self, query, sort_index=None, reverse=0, limit=None, merge=1):
