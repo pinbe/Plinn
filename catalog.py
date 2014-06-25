@@ -31,7 +31,7 @@ class SolrTransactionHook :
             self.connection.close()
 
 class CatalogTool(BaseCatalogTool) :
-    meta_type = 'Legivoc Catalog'
+    meta_type = 'Plinn Catalog'
     security = ClassSecurityInfo()
     manage_options = (BaseCatalogTool.manage_options[:5] +
                       ({'label' : 'Solr', 'action' : 'manage_solr'},) +
