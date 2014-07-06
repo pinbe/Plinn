@@ -20,16 +20,16 @@
      i18n:domain="plinn">
 
     <a href="" class="previous"
-    	 tal:define="p batch/previous | nothing"
-			 tal:attributes="href python: '%s?%s' % (url , mq( form, {batch.b_start_str:p.first} ))"
-			 tal:condition="p">
-       &laquo;&nbsp;<span i18n:translate="batch_previous_x_items" tal:omit-tag="">Previous<span i18n:name="number" tal:content="p/length" tal:omit-tag="">n</span></span>
+       tal:define="p batch/previous | nothing"
+       tal:attributes="href python: '%s?%s' % (url , mq( form, {batch.b_start_str:p.first} ))"
+       tal:condition="p">
+       « <span i18n:translate="batch_previous_x_items" tal:omit-tag="">previous <span i18n:name="number" tal:content="p/length" tal:omit-tag="">n</span></span>
     </a>
     <a href="" class="next"
        tal:define="n batch/next | nothing"
        tal:condition="n"
     	 tal:attributes="href python: '%s?%s' % (url , mq( form, {batch.b_start_str:n.first} ))">
-       <span i18n:translate="batch_next_x_items" tal:omit-tag="">Next<span i18n:name="number" tal:content="n/length">n</span>items</span>&nbsp;&raquo;
+       <span i18n:translate="batch_next_x_items" tal:omit-tag="">next <span i18n:name="number" tal:content="n/length">n</span></span> »
     </a>
 
     <span tal:condition="python: 1 not in batch.navlist">
