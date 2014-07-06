@@ -28,7 +28,7 @@
  <action title="Slide show" action_id="noajax" category="object"
     condition_expr="python:object.listNearestFolderContents(contentFilter={'portal_type' : 'Photo'})"
     icon_expr="" link_target="" url_expr="string:${object_url}/slide_show"
-    visible="True">
+    visible="False">
   <permission value="View"/>
  </action>
  <action title="Presentation" action_id="presentation" category="object"
@@ -40,7 +40,7 @@
  <action title="List" action_id="folderContents" category="object"
     condition_expr="" icon_expr="" link_target=""
     url_expr="string:${object_url}/folder_contents" visible="True">
-  <permission value="List folder contents"/>
+  <permission value="Modify portal content"/>
  </action>
  <action title="Share" action_id="localroles" category="object"
     condition_expr="" icon_expr="" link_target=""
