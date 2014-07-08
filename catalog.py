@@ -18,17 +18,21 @@ from BTrees.IIBTree import intersection, IISet
 from BTrees.IIBTree import weightedIntersection
 import warnings
 
+_VOLATILE_SOLR_NAME = '_v_solrConnection'
+
 class SolrTransactionHook :
     ''' commit solr couplé sur le commit de la ZODB '''
-    def __init__(self, connection) :
-        self.connection = connection
+    def __init__(self, context) :
+        self.context = context
     
     def __call__(self, status) :
+        con = getattr(self.context, _VOLATILE_SOLR_NAME)
         if status :
-            self.connection.commit()
-            self.connection.close()
+            con.commit()
+            con.close()
         else :
-            self.connection.close()
+            con.close()
+        delattr(self.context, _VOLATILE_SOLR_NAME)
 
 class CatalogTool(BaseCatalogTool) :
     meta_type = 'Plinn Catalog'
@@ -44,6 +48,14 @@ class CatalogTool(BaseCatalogTool) :
         self._catalog = DelegatedCatalog(self)
         self.solr_url = 'http://localhost:8983/solr'
         self.delegatedIndexes = ('Title', 'Description', 'SearchableText')
+    
+    def _getSolrConnection(self) :
+        if not hasattr(self, _VOLATILE_SOLR_NAME) :
+            con = SolrConnection(self.solr_url)
+            setattr(self, _VOLATILE_SOLR_NAME, con)
+            txn = transaction.get()
+            txn.addAfterCommitHook(SolrTransactionHook(self))
+        return getattr(self, _VOLATILE_SOLR_NAME)
     
     security.declarePrivate('solrAdd')
     def solrAdd(self, object, idxs=[], uid=None) :
@@ -61,10 +73,8 @@ class CatalogTool(BaseCatalogTool) :
         for name in idxs :
             attr = getattr(w, name, '')
             data[name] = attr() if callable(attr) else attr
-        c = SolrConnection(self.solr_url)
+        c = self._getSolrConnection()
         c.add(**data)
-        txn = transaction.get()
-        txn.addAfterCommitHook(SolrTransactionHook(c))
     
     
     # PortalCatalog api overloads
@@ -95,11 +105,9 @@ class CatalogTool(BaseCatalogTool) :
         """Remove from catalog.
         """
         super(CatalogTool, self).unindexObject(object)
-        c = SolrConnection(self.solr_url)
+        c = self._getSolrConnection()
         url = self.__url(object)
         c.delete(id=url)
-        txn = transaction.get()
-        txn.addAfterCommitHook(SolrTransactionHook(c))
         
 InitializeClass(CatalogTool)
 
