@@ -266,7 +266,9 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
         ctool = getUtilityByInterfaceName('Products.CMFCore.interfaces.ICatalogTool')
         contentFilter['path'] = {'query':'/'.join(self.getPhysicalPath()),
                                 'depth':1}
-        return ctool(sort_on='position', **contentFilter)    
+        if not contentFilter.has_key('sort_on') :
+            contentFilter['sort_index'] = 'position'
+        return ctool(**contentFilter)    
 
     security.declarePublic('synContentValues')
     def synContentValues(self):
