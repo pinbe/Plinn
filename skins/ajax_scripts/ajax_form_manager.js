@@ -1,4 +1,4 @@
-// (c) Benoît PIN 2006-2007
+// (c) Benoît PIN 2006-2014
 // http://plinn.org
 // Licence GPL
 // 

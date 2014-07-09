@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #######################################################################################
 #   Plinn - http://plinn.org                                                          #
-#   Copyright (C) 2005-2007  Benoît PIN <benoit.pin@ensmp.fr>                         #
+#   Copyright (C) 2005-2014  Benoît Pin <benoit.pin@ensmp.fr>                         #
 #                                                                                     #
 #   This program is free software; you can redistribute it and/or                     #
 #   modify it under the terms of the GNU General Public License                       #
