@@ -27,6 +27,9 @@ var getCopyOfNode; /* (node) returns a clone of the given node.
 						* to inject HMTL code inside tags where innerHtml is read only (IE)
 					*/
 var copyPrototype; // (descendant, parent) lightwheight javascript inheritance
+if (!history.pushState) {
+    history.pushState = function(){};
+}
 
 (function(){
 
