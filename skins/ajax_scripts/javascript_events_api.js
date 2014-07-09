@@ -26,6 +26,7 @@ var getCopyOfNode; /* (node) returns a clone of the given node.
 						* the node came from a foreign document (eg. XmlHttpRequest xml reponse)
 						* to inject HMTL code inside tags where innerHtml is read only (IE)
 					*/
+
 var copyPrototype; // (descendant, parent) lightwheight javascript inheritance
 if (!history.pushState) {
     history.pushState = function(){};
@@ -222,8 +223,18 @@ function _build_clearSelection() {
 	}
 }
 
-
 buildMetaFunctions();
+
+addListener(window, 'load', function(evt) {
+    // html5 facade
+    if (!document.body.classList) {
+        var nop = function(){};
+        var fakeDOMTokenList = {'length':0, 'item':nop, 'contains':nop, 'add':nop, 'remove':nop, 'toggle':nop}
+        Element.prototype.classList = fakeDOMTokenList;
+    }
+});
+
+
 
 var ELEMENT_NODE = 1;
 var TEXT_NODE = 3;
