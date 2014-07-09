@@ -22,17 +22,20 @@ _VOLATILE_SOLR_NAME = '_v_solrConnection'
 
 class SolrTransactionHook :
     ''' commit solr couplé sur le commit de la ZODB '''
-    def __init__(self, context) :
+    def __init__(self, context, con) :
         self.context = context
+        self.con = con
     
     def __call__(self, status) :
-        con = getattr(self.context, _VOLATILE_SOLR_NAME)
         if status :
-            con.commit()
-            con.close()
+            self.con.commit()
+            self.con.close()
         else :
-            con.close()
-        delattr(self.context, _VOLATILE_SOLR_NAME)
+            self.con.close()
+        try :
+            delattr(self.context, _VOLATILE_SOLR_NAME)
+        except AttributeError :
+            pass
 
 class CatalogTool(BaseCatalogTool) :
     meta_type = 'Plinn Catalog'
@@ -54,7 +57,7 @@ class CatalogTool(BaseCatalogTool) :
             con = SolrConnection(self.solr_url)
             setattr(self, _VOLATILE_SOLR_NAME, con)
             txn = transaction.get()
-            txn.addAfterCommitHook(SolrTransactionHook(self))
+            txn.addAfterCommitHook(SolrTransactionHook(self, con))
         return getattr(self, _VOLATILE_SOLR_NAME)
     
     security.declarePrivate('solrAdd')
