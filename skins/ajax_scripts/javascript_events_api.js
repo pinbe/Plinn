@@ -45,6 +45,8 @@ function buildMetaFunctions() {
 	disablePropagation = _build_disablePropagation();
 	getWindowWidth = _build_getWindowWidth();
 	getWindowHeight = _build_getWindowHeight();
+	getWindowScrollX = _build_getWindowScrollX();
+	getWindowScrollY = _build_getWindowScrollY();
 	clearSelection = _build_clearSelection();
 }
 
@@ -206,6 +208,32 @@ function _build_getWindowHeight() {
 	else {
 		return function(){
 			return document.documentElement.clientHeight;
+		};
+	}
+}
+
+function _build_getWindowScrollX() {
+	if (window.scrollX !== undefined) {
+		return function(){
+			return window.scrollX;
+		};
+	}
+	else {
+		return function(){
+			return document.body.scrollLeft;
+		};
+	}
+}
+
+function _build_getWindowScrollY() {
+	if (window.scrollY !== undefined) {
+		return function(){
+			return window.scrollY;
+		};
+	}
+	else {
+		return function(){
+			return document.body.scrollTop;
 		};
 	}
 }
