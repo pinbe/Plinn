@@ -6,7 +6,7 @@
 // Meta functions for events management.
 
 var addListener; /* (ob, eventName, listenerFunction, group) add event listener eventName without "on" prefix.
-				 *  optionally, listeners can be grouped to make removing convenient.
+				 *	optionally, listeners can be grouped to make removing convenient.
 				 */
 var removeListener; // (ob, eventName, listenerFunction, group) remove event listener.
 var removeGroupListeners; // (group) remove all listeners in group.
@@ -29,7 +29,7 @@ var getCopyOfNode; /* (node) returns a clone of the given node.
 
 var copyPrototype; // (descendant, parent) lightwheight javascript inheritance
 if (!history.pushState) {
-    history.pushState = function(){};
+	history.pushState = function(){};
 }
 
 (function(){
@@ -226,12 +226,12 @@ function _build_clearSelection() {
 buildMetaFunctions();
 
 addListener(window, 'load', function(evt) {
-    // html5 facade
-    if (!document.body.classList) {
-        var nop = function(){};
-        var fakeDOMTokenList = {'length':0, 'item':nop, 'contains':nop, 'add':nop, 'remove':nop, 'toggle':nop};
-        Element.prototype.classList = fakeDOMTokenList;
-    }
+	// html5 facade
+	if (!document.body.classList) {
+		var nop = function(){};
+		var fakeDOMTokenList = {'length':0, 'item':nop, 'contains':nop, 'add':nop, 'remove':nop, 'toggle':nop};
+		Element.prototype.classList = fakeDOMTokenList;
+	}
 });
 
 
