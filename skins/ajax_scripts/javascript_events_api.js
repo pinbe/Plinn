@@ -220,7 +220,7 @@ function _build_getWindowScrollX() {
 	}
 	else {
 		return function(){
-			return document.body.scrollLeft;
+			return document.documentElement.scrollLeft;
 		};
 	}
 }
@@ -233,7 +233,7 @@ function _build_getWindowScrollY() {
 	}
 	else {
 		return function(){
-			return document.body.scrollTop;
+			return document.documentElement.scrollTop;
 		};
 	}
 }
