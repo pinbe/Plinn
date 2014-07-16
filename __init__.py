@@ -38,7 +38,11 @@ import GroupDataTool
 import RegistrationTool
 import CalendarTool
 import AttachmentTool
-import catalog
+try :
+    import catalog
+    __solr_ok = True
+except ImportError :
+    __solr_ok = False
 
 from PloneMisc import IndexIterator, Batch
 import patch
@@ -57,8 +61,9 @@ tools = ( MembershipTool.MembershipTool
         , RegistrationTool.RegistrationTool
         , CalendarTool.CalendarTool
         , AttachmentTool.AttachmentTool
-        , catalog.CatalogTool
         )
+if __solr_ok :
+    tools += (catalog.CatalogTool,)
 
 # register files extensions
 registerFileExtension('ttf', FSFile)
