@@ -16,4 +16,11 @@
       description="Profile for a photo based Plinn site."
       for="Products.CMFCore.interfaces.ISiteRoot"
       />
+  <genericsetup:registerProfile
+    name="solr"
+    title="Solr catalog"
+    description="Delegates text indexing to Solr search engine."
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    for="Products.CMFCore.interfaces.ISiteRoot"
+    />
 </configure>

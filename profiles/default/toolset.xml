@@ -19,7 +19,7 @@
  <required tool_id="portal_calendar"
            class="Products.Plinn.CalendarTool.CalendarTool"/>
  <required tool_id="portal_catalog"
-           class="Products.Plinn.catalog.CatalogTool"/>
+           class="Products.CMFCore.CatalogTool.CatalogTool"/>
  <required tool_id="portal_discussion"
            class="Products.CMFDefault.DiscussionTool.DiscussionTool"/>
  <required tool_id="portal_groupdata"
