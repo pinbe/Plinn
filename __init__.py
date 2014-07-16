@@ -38,6 +38,7 @@ import GroupDataTool
 import RegistrationTool
 import CalendarTool
 import AttachmentTool
+import catalog
 
 from PloneMisc import IndexIterator, Batch
 import patch
@@ -56,6 +57,7 @@ tools = ( MembershipTool.MembershipTool
 		, RegistrationTool.RegistrationTool
 		, CalendarTool.CalendarTool
 		, AttachmentTool.AttachmentTool
+		, catalog.CatalogTool
 		)
 
 # register files extensions
