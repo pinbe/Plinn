@@ -43,7 +43,7 @@ class CatalogTool(BaseCatalogTool) :
     manage_options = (BaseCatalogTool.manage_options[:5] +
                       ({'label' : 'Solr', 'action' : 'manage_solr'},) +
                       BaseCatalogTool.manage_options[5:])
-    manage_solr = PageTemplateFile('www/manage_solr', globals(), __name__='manage_solr')
+    manage_solr = PageTemplateFile('www/manage_solr.pt', globals(), __name__='manage_solr')
     
     
     

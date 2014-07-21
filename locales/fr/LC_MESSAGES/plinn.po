@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Mon May 12 23:42:25 2014\n"
-"PO-Revision-Date: 2014-05-12 23:42+0200\n"
+"POT-Creation-Date: Mon Jul 21 16:31:27 2014\n"
+"PO-Revision-Date: 2014-07-21 16:33+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -179,7 +179,7 @@ msgstr "Ajouter"
 #: n/skins/content/topic_edit_template.pt:26
 #: n/skins/custom_content/document_edit_template.pt:23
 #: n/skins/custom_content/event_edit_template.pt:135
-#: n/skins/generic/search_results_template.pt:87
+#: n/skins/generic/search_results_template.pt:87 n/www/manage_solr.pt:13
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -717,12 +717,12 @@ msgstr "Annuler"
 msgid "Comments:"
 msgstr "Commentaires :"
 
-#. Default: "Previous${number}"
+#. Default: "previous ${number}"
 #: n/skins/generic/batch_macros.pt:26
 msgid "batch_previous_x_items"
 msgstr "${number} précédents"
 
-#. Default: "Next${number}items"
+#. Default: "next ${number}"
 #: n/skins/generic/batch_macros.pt:32
 msgid "batch_next_x_items"
 msgstr "${number} suivants"
@@ -1482,6 +1482,14 @@ msgstr "(Sans titre)"
 #: n/skins/photo_theme/search_results_macros.pt:45
 msgid "(No description)"
 msgstr "(Sans description)"
+
+#: n/www/manage_solr.pt:4
+msgid "Configure Solr delegated indexes"
+msgstr "Configurer les index délégués à Solr"
+
+#: n/www/manage_solr.pt:5
+msgid "Enter names of indexes to delegate to Solr. One per line."
+msgstr "Entrer les noms des index à déléguer à Solr. Un par ligne."
 
 msgid "${month}/${day}/${year}&nbsp;&nbsp;${hour}:${minute}:${second}"
 msgstr "${day}/${month}/${year}&nbsp;&nbsp;${hour}:${minute}:${second}"

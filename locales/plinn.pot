@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Mon May 12 23:42:25 2014\n"
+"POT-Creation-Date: Mon Jul 21 16:31:27 2014\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -115,11 +115,11 @@ msgid "Cancel delete mode"
 msgstr ""
 
 #: n/skins/content/changes_history_template.pt:24
-msgid "« later revisions"
+msgid "\302\253 later revisions"
 msgstr ""
 
 #: n/skins/content/changes_history_template.pt:28
-msgid "earlier revisions »"
+msgid "earlier revisions \302\273"
 msgstr ""
 
 #: n/skins/content/changes_history_template.pt:37
@@ -186,6 +186,7 @@ msgstr ""
 #: n/skins/custom_content/document_edit_template.pt:23
 #: n/skins/custom_content/event_edit_template.pt:135
 #: n/skins/generic/search_results_template.pt:87
+#: n/www/manage_solr.pt:13
 msgid "Save"
 msgstr ""
 
@@ -687,12 +688,12 @@ msgid "Comments:"
 msgstr ""
 
 #: n/skins/generic/batch_macros.pt:26
-#. Default: "Previous${number}"
+#. Default: "previous ${number}"
 msgid "batch_previous_x_items"
 msgstr ""
 
 #: n/skins/generic/batch_macros.pt:32
-#. Default: "Next${number}items"
+#. Default: "next ${number}"
 msgid "batch_next_x_items"
 msgstr ""
 
@@ -1255,7 +1256,7 @@ msgid "Restore this revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:22
-msgid "← previous revision"
+msgid "\342\206\220 previous revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:27
@@ -1263,7 +1264,7 @@ msgid "current revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:29
-msgid "next revision →"
+msgid "next revision \342\206\222"
 msgstr ""
 
 #: n/skins/generic/search.py:109
@@ -1418,6 +1419,14 @@ msgstr ""
 
 #: n/skins/photo_theme/search_results_macros.pt:45
 msgid "(No description)"
+msgstr ""
+
+#: n/www/manage_solr.pt:4
+msgid "Configure Solr delegated indexes"
+msgstr ""
+
+#: n/www/manage_solr.pt:5
+msgid "Enter names of indexes to delegate to Solr. One per line."
 msgstr ""
 
 # from plinn-manual
