@@ -5,7 +5,7 @@ from Products.CMFCore.interfaces import IIndexableObject
 from Products.CMFCore.CatalogTool import CatalogTool as BaseCatalogTool
 from Products.CMFCore.CatalogTool import IndexableObjectWrapper
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
-from Products.CMFCore.permissions import ModifyPortalContent
+from Products.CMFCore.permissions import ModifyPortalContent, ManagePortal
 from zope.component import queryMultiAdapter
 from Products.ZCatalog.Catalog import Catalog
 import transaction
@@ -43,7 +43,8 @@ class CatalogTool(BaseCatalogTool) :
     manage_options = (BaseCatalogTool.manage_options[:5] +
                       ({'label' : 'Solr', 'action' : 'manage_solr'},) +
                       BaseCatalogTool.manage_options[5:])
-    manage_solr = PageTemplateFile('www/manage_solr', globals())
+    manage_solr = PageTemplateFile('www/manage_solr', globals(), __name__='manage_solr')
+    
     
     
     def __init__(self, idxs=[]) :
@@ -51,6 +52,18 @@ class CatalogTool(BaseCatalogTool) :
         self._catalog = DelegatedCatalog(self)
         self.solr_url = 'http://localhost:8983/solr'
         self.delegatedIndexes = ('Title', 'Description', 'SearchableText')
+    
+    security.declarePublic('getDelegatedIndexes')
+    def getDelegatedIndexes(self) :
+        """ read the method name """
+        return self.delegatedIndexes
+    
+    security.declareProtected(ManagePortal, 'setDelegatedIndexes')
+    def setDelegatedIndexes(self, indexes, REQUEST=None) :
+        """setDelegatedIndexes documentation"""
+        self.delegatedIndexes = tuple([i.strip() for i in indexes if i.strip()])
+        if REQUEST :
+            REQUEST.RESPONSE.redirect(self.absolute_url() + '/manage_solr?manage_tabs_message=Saved changes.')
     
     def _getSolrConnection(self) :
         if not hasattr(self, _VOLATILE_SOLR_NAME) :
