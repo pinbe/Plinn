@@ -1,0 +1,26 @@
+// {
+//     name: 'Name displayed in the Styles drop-down list',
+//     element: 'HTML element name (for example "span")',
+//     styles: {
+//         'css-style1': 'desired value',
+//         'css-style2': 'desired value',
+//         ...
+//     }
+//     attributes: {
+//         'attribute-name1': 'desired value',
+//         'attribute-name2': 'desired value',
+//         ...
+//     }
+// }
+//The name and element values are required, while other values are optional.
+
+CKEDITOR.stylesSet.add( 'plinn_styles', [
+    { name: 'Coins arrondis',
+      element: 'div',
+      attributes : {'class' : 'news_box'}
+    },
+    { name: 'cellule arrondie',
+      element: 'td',
+      attributes : {'class' : 'news_box'}
+    },
+]);
