@@ -63,3 +63,5 @@ boxeHeaderBackgroundColor:string=#fff
 
 twoColumnFormFontColor:string=#000
 twoColumnFormBackground:string=#ddd
+
+borderRadius:int=7

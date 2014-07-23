@@ -1,0 +1,7 @@
+/* <dtml-with base_properties> */
+
+.rounded-corners {
+	border-radius: &dtml-borderRadius;px;
+}
+
+/*</dtml-with> */

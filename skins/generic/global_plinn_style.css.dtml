@@ -4,5 +4,8 @@
 /* plinn_style.css */
 <dtml-var plinn_style.css>
 
+/* content_style.css */
+<dtml-var content_style.css>
+
 /* Portfolio */
 <dtml-var portfolio_style.css>
