@@ -230,7 +230,7 @@ def getPreferredLanguages(context):
 security.declarePublic('getBestTranslationLanguage')
 def getBestTranslationLanguage(langs, context):
     """ returns best translation language according
-        availables languages (param langs)
+        to available languages (param langs)
         and user preferences (retrieves by context)
     """
     request = getattr(context, 'REQUEST', None)
