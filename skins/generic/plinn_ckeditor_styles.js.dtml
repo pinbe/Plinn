@@ -1,31 +1,11 @@
-// {
-//     name: 'Name displayed in the Styles drop-down list',
-//     element: 'HTML element name (for example "span")',
-//     styles: {
-//         'css-style1': 'desired value',
-//         'css-style2': 'desired value',
-//         ...
-//     }
-//     attributes: {
-//         'attribute-name1': 'desired value',
-//         'attribute-name2': 'desired value',
-//         ...
-//     }
-// }
-//The name and element values are required, while other values are optional.
-
 CKEDITOR.stylesSet.add( 'plinn_styles', [
-    { name: 'Bloc arrondi',
-      element: 'div',
-      attributes : {'class' : 'rounded-corners'}
+    { name : 'Arrondis',
+	  className : 'rounded-corners'
     },
-    { name: 'Cellule arrondie',
-      element: 'td',
-      attributes : {'class' : 'rounded-corners'}
+    { name : 'Bordure standard',
+	  className : 'std-border'
     },
-    { name: 'Image arrondie',
-      element: 'img',
-      attributes : {'class' : 'rounded-corners'}
-    },
-
+	{ name : 'Fond coloré',
+	  className : 'std-background'
+  	},
 ]);
