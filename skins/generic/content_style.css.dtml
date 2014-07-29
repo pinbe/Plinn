@@ -4,4 +4,13 @@
 	border-radius: &dtml-borderRadius;px;
 }
 
+.std-border {
+  border: &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+}
+
+.std-background {
+  padding: &dtml-borderRadius;px;
+  background: &dtml-backgroundColor;;
+}
+
 /*</dtml-with> */
