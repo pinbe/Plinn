@@ -1,11 +1,18 @@
-CKEDITOR.stylesSet.add( 'plinn_styles', [
-    { name : 'Arrondis',
-	  className : 'rounded-corners'
-    },
-    { name : 'Bordure standard',
-	  className : 'std-border'
-    },
-	{ name : 'Fond coloré',
-	  className : 'std-background'
-  	},
-]);
+CKEDITOR.stylesSet.add('plinn_styles', [
+	{
+		name: 'Arrondis',
+		className: 'rounded-corners'
+	},
+	{
+		name: 'Bordure standard',
+		className: 'std-border'
+	},
+	{
+		name: 'Fond coloré',
+		className: 'std-background'
+	},
+	{
+		name: 'Focus',
+		className: 'std-focusbox'
+	}]
+);
