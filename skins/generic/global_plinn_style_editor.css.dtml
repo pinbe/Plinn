@@ -4,6 +4,6 @@
 /* personalisation pour l'éditeur
 <dtml-with base_properties> */
 body {
-	background: &dtml-contentBackgroundColor;;
+/*  background: &dtml-contentBackgroundColor;;*/
 }
 /* </dtml-with> */
