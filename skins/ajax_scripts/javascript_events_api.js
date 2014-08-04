@@ -292,7 +292,7 @@ getCopyOfNode = function(node) {
 	}
 };
 
-if (browser.isIE) {
+if (browser.isIE10max) {
 	_setAttribute = function(e, name, value) {
 		// workarround IE lack of dom implementation.
 		switch(name.toLowerCase()) {
@@ -315,9 +315,10 @@ if (browser.isIE) {
 		}
 	};
 	var reCompoundPropName = /^\s*([^\-]+)\-([a-z])([a-z]+)\s*$/;
-	var _capitalizeCssPropName = function (s, g1, g2, g3) { // gN args match above regexp groups 
-		if(g2) {
-			return g1 + g2.toUpperCase() + g3;}
+	var _capitalizeCssPropName = function (s) {
+		var g = reCompoundPropName.exec(s);
+		if(g) {
+			return g[1] + g[2].toUpperCase() + g[3];}
 		else {
 			return s;}
 	};
