@@ -17,7 +17,6 @@
   background: &dtml-tabsBorderColor;;
   color: &dtml-tabsFontColor;;
   padding: &dtml-borderRadius;px;
-  border-radius: &dtml-borderRadius;px;
 }
 
 /*</dtml-with> */
