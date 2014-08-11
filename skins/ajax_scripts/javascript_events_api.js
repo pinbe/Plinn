@@ -292,7 +292,7 @@ getCopyOfNode = function(node) {
 	}
 };
 
-if (browser.isIE10max) {
+if (browser.isIE7max) {
 	_setAttribute = function(e, name, value) {
 		// workarround IE lack of dom implementation.
 		switch(name.toLowerCase()) {
