@@ -255,11 +255,14 @@ buildMetaFunctions();
 
 addListener(window, 'load', function(evt) {
 	// html5 facade
-	if (!document.body.classList) {
-		var nop = function(){};
-		var fakeDOMTokenList = {'length':0, 'item':nop, 'contains':nop, 'add':nop, 'remove':nop, 'toggle':nop};
-		Element.prototype.classList = fakeDOMTokenList;
+	try {
+		if (!document.body.classList) {
+			var nop = function(){};
+			var fakeDOMTokenList = {'length':0, 'item':nop, 'contains':nop, 'add':nop, 'remove':nop, 'toggle':nop};
+			Element.prototype.classList = fakeDOMTokenList;
+		}
 	}
+	catch (e) {}
 });
 
 
