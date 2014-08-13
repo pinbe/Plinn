@@ -74,17 +74,10 @@ class CatalogTool(BaseCatalogTool) :
         return getattr(self, _VOLATILE_SOLR_NAME)
     
     security.declarePrivate('solrAdd')
-    def solrAdd(self, object, idxs=[], uid=None) :
-        if IIndexableObject.providedBy(object):
-            w = object
-        else:
-            w = queryMultiAdapter( (object, self), IIndexableObject )
-            if w is None:
-                # BBB
-                w = IndexableObjectWrapper(object, self)
-        
-        uid = uid if uid else self.__url(object)
-        idxs = idxs if idxs !=[] else self.delegatedIndexes
+    def solrAdd(self, w, uid, idxs) :
+        idxs = idxs if idxs else self.delegatedIndexes
+        # Filter out delegated indexes
+        idxs = [i for i in idxs if i in self.delegatedIndexes]
         data = {'id' : uid}
         for name in idxs :
             attr = getattr(w, name, '')
@@ -92,29 +85,45 @@ class CatalogTool(BaseCatalogTool) :
         c = self._getSolrConnection()
         c.add(**data)
     
-    
     # PortalCatalog api overloads
-    security.declareProtected(ModifyPortalContent, 'indexObject')
-    def indexObject(self, object) :
-        """ Add to catalog and send to Solr """
-        super(CatalogTool, self).indexObject(object)
-        self.solrAdd(object)
-
-    security.declarePrivate('reindexObject')
-    def reindexObject(self, object, idxs=[], update_metadata=1, uid=None):
-        super(CatalogTool, self).reindexObject(object,
-                                               idxs=idxs,
-                                               update_metadata=update_metadata,
-                                               uid=uid)
-        if idxs != []:
+    def catalog_object(self, obj, uid=None, idxs=None, update_metadata=1,
+                       pghandler=None):
+        # Wraps the object with workflow and accessibility
+        # information just before cataloging.
+        if IIndexableObject.providedBy(obj):
+            w = obj
+        else:
+            w = queryMultiAdapter( (obj, self), IIndexableObject )
+            if w is None:
+                # BBB
+                w = IndexableObjectWrapper(obj, self)
+        
+        idxs_ = idxs
+        if idxs:
             # Filter out invalid indexes.
             valid_indexes = self._catalog.indexes.keys()
-            idxs = [i for i in idxs if i in valid_indexes and i in self.delegatedIndexes]
-        else :
-            idxs = self.delegatedIndexes
+            idxs_ = [i for i in idxs if i in valid_indexes]
+        
+        super(CatalogTool, self).catalog_object(w, uid, idxs_, update_metadata, pghandler)
+        self.solrAdd(w, uid, idxs)
+    
+    security.declarePrivate('reindexObject')
+    def reindexObject(self, object, idxs=[], update_metadata=1, uid=None):
+        """Update catalog after object data has changed.
 
-        if idxs :
-            self.solrAdd(object, idxs=idxs, uid=uid)
+        The optional idxs argument is a list of specific indexes
+        to update (all of them by default).
+
+        The update_metadata flag controls whether the object's
+        metadata record is updated as well.
+
+        If a non-None uid is passed, it will be used as the catalog uid
+        for the object instead of its physical path.
+        """
+        if uid is None:
+            uid = self.__url(object)
+
+        self.catalog_object(object, uid, idxs, update_metadata)
     
     security.declarePrivate('unindexObject')
     def unindexObject(self, object):
