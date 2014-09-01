@@ -295,7 +295,7 @@
   </object>
   <object name="about" meta_type="CMF Action" i18n:domain="plinn">
    <property name="title" i18n:translate="">About</property>
-   <property name="description">realis</property>
+   <property name="description"></property>
    <property name="url_expr">string:${portal_url}/about</property>
    <property name="icon_expr"></property>
    <property name="available_expr"></property>

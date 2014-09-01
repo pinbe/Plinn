@@ -1,6 +1,6 @@
 ##parameters=add=''
 from Products.CMFCore.utils import getToolByName
-from Products.realis.utils import translate
+from Products.Plinn.utils import translate
 from ZTUtils import make_query as mq
 _ = lambda msg : translate(msg, context)
 ptool = getToolByName(script, 'portal_properties')

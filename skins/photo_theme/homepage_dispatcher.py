@@ -17,14 +17,4 @@ if came_from :
 		came_from = '%s?%s&%s' % (url, qs, mq(portal_status_message=_('Login success')))
 	return resp.redirect(came_from)
 
-# else :
-#   from Products.realis.utils import searchContentsWithLocalRolesForAuthenticatedUser as search
-#   results = search(context, portal_type='Portfolio')
-#   if results :
-#       atool = getToolByName(context, 'portal_actions')
-#       return context.setRedirect(atool, 'user/my_albums', portal_status_message=_('Login success'))
-#   else :
-#       utool = getToolByName(context, 'portal_url')
-#       return resp.redirect('%s?%s' % (utool(), mq(portal_status_message=_('Login success'))))
-
 return resp.redirect('%s?%s' % (utool(), mq(portal_status_message=_('Login success'))))
