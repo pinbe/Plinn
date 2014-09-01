@@ -1,0 +1,33 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal">
+  <head>
+    <title>photo theme macros</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  </head>
+  <body>
+    <div metal:define-macro="search_bar"
+         style="vertical-align:middle">
+      <form action="search" method="get" tal:attributes="action string:${portal_url}/search">
+        <div id="quicksearch" i18n:domain="cmf_default">
+          <span i18n:translate="" tal:omit-tag="">Search</span>
+          <input name="SearchableText" type="text" size="16" />
+          <input name="portal_type:list" type="hidden" value="Photo" />
+          <input type="image" tal:attributes="src string:${portal_url}/topic_icon.gif"
+                 width="16" height="16" alt="Search" i18n:attributes="alt"/>
+          <!--
+            <a tal:attributes="href string:${portal_url}/search_form" i18n:translate="">Advanced search</a>
+          -->
+        </div>
+      </form>
+      <div id="quickuser">
+          <span tal:define="uname python: (isAnon and [''] or [member.getMemberFullName(nameBefore=0)])[0]" tal:content="uname" style="font-weight:bold">bob</span>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <span tal:repeat="action user_actions">
+          <a href="#" tal:attributes="href action/url" tal:content="action/title">Login</a>
+          <span tal:condition="not: repeat/action/end" tal:omit-tag=""> | </span>
+          </span>
+          <span tal:condition="nothing"><a href="join_form" i18n:translate="">Join</a></span>
+      </div>
+      <br clear="all"/>
+    </div>
+  </body>
+</html>

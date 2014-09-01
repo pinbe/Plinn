@@ -97,7 +97,7 @@
       <a href="#documentContent" i18n:translate="" i18n:domain="plinn" class="hidden">Skip to content</a>
       <div metal:use-macro="main_macros/top_bar">Top bar</div>
       <div id="search_bar">
-        <div metal:use-macro="here/realis_main_macros/macros/search_bar">Barre de recherche réalis</div>
+        <div metal:use-macro="here/photo_main_macros/macros/search_bar">Barre de recherche réalis</div>
       </div>
       <div id="Breadcrumbs"><div metal:use-macro="main_macros/Breadcrumbs">Breadcrumbs</div></div>
 
