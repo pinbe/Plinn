@@ -319,4 +319,20 @@ def _sudo(func, userid=None) :
         raise e
 
     return ret
+
+security.declarePublic('searchContentsWithLocalRolesForAuthenticatedUser')
+def searchContentsWithLocalRolesForAuthenticatedUser(**kw):
+    mtool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IMembershipTool')
+    ctool = getUtilityByInterfaceName('Products.CMFCore.interfaces.ICatalogTool')
+    member = mtool.getAuthenticatedMember()
+    userid = member.getId()
+    userAndGroups = ['user:%s' % userid]
     
+    getGroups = getattr(member, 'getGroups', None)
+    if getGroups is not None :
+        for group in getGroups():
+            userAndGroups.append('user:'+group)
+    
+    kw[ 'allowedRolesAndUsers' ] = userAndGroups
+    
+    return ctool.unrestrictedSearchResults(**kw)
