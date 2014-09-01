@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Mon Jul 21 16:31:27 2014\n"
+"POT-Creation-Date: Mon Sep  1 20:46:10 2014\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -115,11 +115,11 @@ msgid "Cancel delete mode"
 msgstr ""
 
 #: n/skins/content/changes_history_template.pt:24
-msgid "\302\253 later revisions"
+msgid "« later revisions"
 msgstr ""
 
 #: n/skins/content/changes_history_template.pt:28
-msgid "earlier revisions \302\273"
+msgid "earlier revisions »"
 msgstr ""
 
 #: n/skins/content/changes_history_template.pt:37
@@ -487,7 +487,7 @@ msgstr ""
 #: n/skins/custom_generic/logged_in.py:50
 #: n/skins/photo_theme/homepage_dispatcher.py:14
 #: n/skins/photo_theme/homepage_dispatcher.py:17
-#: n/skins/photo_theme/homepage_dispatcher.py:30
+#: n/skins/photo_theme/homepage_dispatcher.py:20
 msgid "Login success"
 msgstr ""
 
@@ -1256,7 +1256,7 @@ msgid "Restore this revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:22
-msgid "\342\206\220 previous revision"
+msgid "← previous revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:27
@@ -1264,7 +1264,7 @@ msgid "current revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:29
-msgid "next revision \342\206\222"
+msgid "next revision →"
 msgstr ""
 
 #: n/skins/generic/search.py:109
@@ -1393,7 +1393,7 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: n/skins/photo_theme/realis_main_macros.pt:28
+#: n/skins/photo_theme/photo_main_macros.pt:28
 msgid "Join"
 msgstr ""
 

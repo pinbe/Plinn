@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Mon Jul 21 16:31:27 2014\n"
+"POT-Creation-Date: Mon Sep  1 20:46:10 2014\n"
 "PO-Revision-Date: 2013-11-28 13:12+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -471,7 +471,7 @@ msgstr ""
 #: n/skins/custom_generic/logged_in.py:50
 #: n/skins/photo_theme/homepage_dispatcher.py:14
 #: n/skins/photo_theme/homepage_dispatcher.py:17
-#: n/skins/photo_theme/homepage_dispatcher.py:30
+#: n/skins/photo_theme/homepage_dispatcher.py:20
 msgid "Login success"
 msgstr ""
 
@@ -1386,7 +1386,7 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: n/skins/photo_theme/realis_main_macros.pt:28
+#: n/skins/photo_theme/photo_main_macros.pt:28
 msgid "Join"
 msgstr ""
 
