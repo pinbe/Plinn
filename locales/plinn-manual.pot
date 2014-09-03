@@ -54,9 +54,6 @@ msgstr ""
 msgid "Advanced search"
 msgstr ""
 
-msgid "Anonymous registration"
-msgstr ""
-
 msgid "Appointment"
 msgstr ""
 
@@ -178,9 +175,6 @@ msgid "Collapse"
 msgstr ""
 
 msgid "Comment"
-msgstr ""
-
-msgid "Configure ${portal_calendar} Tool"
 msgstr ""
 
 msgid "Container block"
@@ -552,9 +546,6 @@ msgstr ""
 msgid "Play"
 msgstr ""
 
-msgid "Portal manager registration"
-msgstr ""
-
 msgid "Portal Role"
 msgstr ""
 
@@ -594,16 +585,10 @@ msgstr ""
 msgid "retract_to_shared"
 msgstr ""
 
-msgid "Reviewed registration"
-msgstr ""
-
 msgid "Reviewer"
 msgstr ""
 
 msgid "Role(s)"
-msgstr ""
-
-msgid "Role mapping mismatch : click Validate to solve this problem !"
 msgstr ""
 
 msgid "Roles to assign:"
@@ -640,9 +625,6 @@ msgid "Select member area folder type to construct:"
 msgstr ""
 
 msgid "Select Member(s) and a role(s) to assign:"
-msgstr ""
-
-msgid "Select registration mode"
 msgstr ""
 
 msgid "September"
@@ -779,9 +761,6 @@ msgid "width / height:"
 msgstr ""
 
 msgid "Work"
-msgstr ""
-
-msgid "Workflow chain"
 msgstr ""
 
 msgid "You are not allowed to delete: "

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Mon Sep  1 20:46:10 2014\n"
+"POT-Creation-Date: Wed Sep  3 22:19:34 2014\n"
 "PO-Revision-Date: 2013-11-28 13:12+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -24,27 +24,27 @@ msgstr ""
 msgid "Please rename each listed object."
 msgstr ""
 
-#: n/RegistrationTool.py:228
+#: n/RegistrationTool.py:231
 msgid "How to reset your password on the %s website"
 msgstr ""
 
-#: n/RegistrationTool.py:243
+#: n/RegistrationTool.py:246
 msgid "Unknown user name. Please retry."
 msgstr ""
 
-#: n/RegistrationTool.py:258
+#: n/RegistrationTool.py:261
 msgid "Invalid reset password request."
 msgstr ""
 
-#: n/RegistrationTool.py:264
+#: n/RegistrationTool.py:267
 msgid "Your reset password request has expired. You can ask a new one."
 msgstr ""
 
-#: n/RegistrationTool.py:273
+#: n/RegistrationTool.py:276
 msgid "Password successfully updated."
 msgstr ""
 
-#: n/RegistrationTool.py:275
+#: n/RegistrationTool.py:278
 msgid "\"%s\" username not found."
 msgstr ""
 
@@ -471,7 +471,8 @@ msgstr ""
 #: n/skins/custom_generic/logged_in.py:50
 #: n/skins/photo_theme/homepage_dispatcher.py:14
 #: n/skins/photo_theme/homepage_dispatcher.py:17
-#: n/skins/photo_theme/homepage_dispatcher.py:20
+#: n/skins/photo_theme/homepage_dispatcher.py:25
+#: n/skins/photo_theme/homepage_dispatcher.py:28
 msgid "Login success"
 msgstr ""
 
@@ -671,7 +672,7 @@ msgstr ""
 #: n/skins/custom_generic/talkback_tree.pt:82
 #: n/skins/generic/gruf_macros.pt:77 n/skins/generic/gruf_macros.pt:410
 #: n/skins/generic/header_widgets.pt:32 n/skins/generic/header_widgets.pt:173
-#: n/skins/generic/send_email_form.pt:79
+#: n/skins/generic/send_email_form.pt:79 n/www/configureRegistrationTool.pt:43
 msgid "Validate"
 msgstr ""
 
@@ -1414,6 +1415,38 @@ msgstr ""
 msgid "(No description)"
 msgstr ""
 
+#: n/www/configureRegistrationTool.pt:4
+msgid "Configure ${portal_calendar} Tool"
+msgstr ""
+
+#: n/www/configureRegistrationTool.pt:6
+msgid "Select registration mode"
+msgstr ""
+
+#: n/www/configureRegistrationTool.pt:11
+msgid "Anonymous registration"
+msgstr ""
+
+#: n/www/configureRegistrationTool.pt:17
+msgid "Anonymous registration with password"
+msgstr ""
+
+#: n/www/configureRegistrationTool.pt:23
+msgid "Portal manager registration"
+msgstr ""
+
+#: n/www/configureRegistrationTool.pt:30
+msgid "Reviewed registration"
+msgstr ""
+
+#: n/www/configureRegistrationTool.pt:34
+msgid "Workflow chain"
+msgstr ""
+
+#: n/www/configureRegistrationTool.pt:39
+msgid "Role mapping mismatch : click Validate to solve this problem !"
+msgstr ""
+
 #: n/www/manage_solr.pt:4
 msgid "Configure Solr delegated indexes"
 msgstr ""
@@ -1475,9 +1508,6 @@ msgid "Add node"
 msgstr ""
 
 msgid "Advanced search"
-msgstr ""
-
-msgid "Anonymous registration"
 msgstr ""
 
 msgid "Appointment"
@@ -1601,9 +1631,6 @@ msgid "Collapse"
 msgstr ""
 
 msgid "Comment"
-msgstr ""
-
-msgid "Configure ${portal_calendar} Tool"
 msgstr ""
 
 msgid "Container block"
@@ -1975,9 +2002,6 @@ msgstr ""
 msgid "Play"
 msgstr ""
 
-msgid "Portal manager registration"
-msgstr ""
-
 msgid "Portal Role"
 msgstr ""
 
@@ -2017,16 +2041,10 @@ msgstr ""
 msgid "retract_to_shared"
 msgstr ""
 
-msgid "Reviewed registration"
-msgstr ""
-
 msgid "Reviewer"
 msgstr ""
 
 msgid "Role(s)"
-msgstr ""
-
-msgid "Role mapping mismatch : click Validate to solve this problem !"
 msgstr ""
 
 msgid "Roles to assign:"
@@ -2063,9 +2081,6 @@ msgid "Select member area folder type to construct:"
 msgstr ""
 
 msgid "Select Member(s) and a role(s) to assign:"
-msgstr ""
-
-msgid "Select registration mode"
 msgstr ""
 
 msgid "September"
@@ -2201,9 +2216,6 @@ msgid "width / height:"
 msgstr ""
 
 msgid "Work"
-msgstr ""
-
-msgid "Workflow chain"
 msgstr ""
 
 msgid "You are not allowed to delete: "

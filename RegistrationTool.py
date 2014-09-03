@@ -49,13 +49,16 @@ security = ModuleSecurityInfo('Products.Plinn.RegistrationTool')
 MODE_ANONYMOUS = 'anonymous'
 security.declarePublic('MODE_ANONYMOUS')
 
+MODE_PASS_ANONYMOUS = 'pass_anonymous'
+security.declarePublic('MODE_PASS_ANONYMOUS')
+
 MODE_MANAGER = 'manager'
 security.declarePublic('MODE_MANAGER')
 
 MODE_REVIEWED = 'reviewed'
 security.declarePublic('MODE_REVIEWED')
 
-MODES = [MODE_ANONYMOUS, MODE_MANAGER, MODE_REVIEWED]
+MODES = [MODE_ANONYMOUS, MODE_PASS_ANONYMOUS, MODE_MANAGER, MODE_REVIEWED]
 security.declarePublic('MODES')
 
 DEFAULT_MEMBER_GROUP = 'members'
@@ -126,7 +129,7 @@ class RegistrationTool(BaseRegistrationTool) :
         urlTool = getToolByName(self, 'portal_url')
         portal = urlTool.getPortalObject()
     
-        if mode in [MODE_ANONYMOUS, MODE_REVIEWED] :
+        if mode in [MODE_ANONYMOUS, MODE_PASS_ANONYMOUS, MODE_REVIEWED] :
             portal.manage_permission(AddPortalMember, roles = ['Anonymous', 'Manager'], acquire=1)
         elif mode == MODE_MANAGER :
             portal.manage_permission(AddPortalMember, roles = ['Manager', 'UserManager'], acquire=0)
@@ -153,7 +156,7 @@ class RegistrationTool(BaseRegistrationTool) :
             p=Permission(AddPortalMember, [], portal)
             return p.getRoles()
         
-        if mode in [MODE_ANONYMOUS, MODE_REVIEWED] :
+        if mode in [MODE_ANONYMOUS, MODE_PASS_ANONYMOUS, MODE_REVIEWED] :
             if 'Anonymous' in rolesOfAddPortalMemberPerm() : return False
             
         elif mode == MODE_MANAGER :

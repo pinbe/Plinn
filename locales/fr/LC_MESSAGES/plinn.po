@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Mon Sep  1 20:46:10 2014\n"
-"PO-Revision-Date: 2014-07-21 16:33+0200\n"
+"POT-Creation-Date: Wed Sep  3 22:19:34 2014\n"
+"PO-Revision-Date: 2014-09-03 22:22+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -24,29 +24,29 @@ msgstr "Objet supprimé"
 msgid "Please rename each listed object."
 msgstr "Veuillez renommer tous les éléments listés."
 
-#: n/RegistrationTool.py:228
+#: n/RegistrationTool.py:231
 msgid "How to reset your password on the %s website"
 msgstr "Comment réinitialiser votre mot de passe sur le site %s"
 
-#: n/RegistrationTool.py:243
+#: n/RegistrationTool.py:246
 msgid "Unknown user name. Please retry."
 msgstr "Nom d'utilisateur inconnu. Veuillez réessayer."
 
-#: n/RegistrationTool.py:258
+#: n/RegistrationTool.py:261
 msgid "Invalid reset password request."
 msgstr "Demande de réinitialisation de mot de passe invalide."
 
-#: n/RegistrationTool.py:264
+#: n/RegistrationTool.py:267
 msgid "Your reset password request has expired. You can ask a new one."
 msgstr ""
 "Votre demande de réinitialisation de mot de passe a expiré. Vous pouvez en "
 "demander une nouvelle."
 
-#: n/RegistrationTool.py:273
+#: n/RegistrationTool.py:276
 msgid "Password successfully updated."
 msgstr "Mot de passe correctement mis à jour."
 
-#: n/RegistrationTool.py:275
+#: n/RegistrationTool.py:278
 msgid "\"%s\" username not found."
 msgstr "Nom : « %s » non trouvé."
 
@@ -481,7 +481,8 @@ msgstr "Échec de la connexion"
 #: n/skins/custom_generic/logged_in.py:50
 #: n/skins/photo_theme/homepage_dispatcher.py:14
 #: n/skins/photo_theme/homepage_dispatcher.py:17
-#: n/skins/photo_theme/homepage_dispatcher.py:20
+#: n/skins/photo_theme/homepage_dispatcher.py:25
+#: n/skins/photo_theme/homepage_dispatcher.py:28
 msgid "Login success"
 msgstr "Connexion réussie"
 
@@ -705,7 +706,7 @@ msgstr "Corps"
 #: n/skins/custom_generic/talkback_tree.pt:82
 #: n/skins/generic/gruf_macros.pt:77 n/skins/generic/gruf_macros.pt:410
 #: n/skins/generic/header_widgets.pt:32 n/skins/generic/header_widgets.pt:173
-#: n/skins/generic/send_email_form.pt:79
+#: n/skins/generic/send_email_form.pt:79 n/www/configureRegistrationTool.pt:43
 msgid "Validate"
 msgstr "Valider"
 
@@ -1483,6 +1484,40 @@ msgstr "(Sans titre)"
 msgid "(No description)"
 msgstr "(Sans description)"
 
+#: n/www/configureRegistrationTool.pt:4
+msgid "Configure ${portal_calendar} Tool"
+msgstr "Configurer l'outil ${portal_calendar}"
+
+#: n/www/configureRegistrationTool.pt:6
+msgid "Select registration mode"
+msgstr "Sélectionner le mode d'inscription"
+
+#: n/www/configureRegistrationTool.pt:11
+msgid "Anonymous registration"
+msgstr "Inscription anonyme"
+
+#: n/www/configureRegistrationTool.pt:17
+msgid "Anonymous registration with password"
+msgstr "Inscription anonyme avec mot de passe"
+
+#: n/www/configureRegistrationTool.pt:23
+msgid "Portal manager registration"
+msgstr "Inscription par l'administrateur"
+
+#: n/www/configureRegistrationTool.pt:30
+msgid "Reviewed registration"
+msgstr "Inscription modérée"
+
+#: n/www/configureRegistrationTool.pt:34
+msgid "Workflow chain"
+msgstr "Séquence de workflow"
+
+#: n/www/configureRegistrationTool.pt:39
+msgid "Role mapping mismatch : click Validate to solve this problem !"
+msgstr ""
+"Paramétrage des rôles non concordant, cliquer sur Valider pour résoudre le "
+"problème !"
+
 #: n/www/manage_solr.pt:4
 msgid "Configure Solr delegated indexes"
 msgstr "Configurer les index délégués à Solr"
@@ -1544,9 +1579,6 @@ msgstr "Ajouter un nœud"
 
 msgid "Advanced search"
 msgstr "Recherche avancée"
-
-msgid "Anonymous registration"
-msgstr "Inscription anonyme"
 
 msgid "Appointment"
 msgstr "Rendez-vous"
@@ -1670,9 +1702,6 @@ msgstr "Condenser"
 
 msgid "Comment"
 msgstr "Commenter"
-
-msgid "Configure ${portal_calendar} Tool"
-msgstr "Configurer l'outil ${portal_calendar}"
 
 msgid "Container block"
 msgstr "Conteneur"
@@ -2048,9 +2077,6 @@ msgstr "personnes sélectionnées"
 msgid "Play"
 msgstr "Lecture"
 
-msgid "Portal manager registration"
-msgstr "Inscription par l'administrateur"
-
 msgid "Portal Role"
 msgstr "Rôle du portail"
 
@@ -2090,19 +2116,11 @@ msgstr "retirer"
 msgid "retract_to_shared"
 msgstr "retirer"
 
-msgid "Reviewed registration"
-msgstr "Inscription modérée"
-
 msgid "Reviewer"
 msgstr "Modérateur"
 
 msgid "Role(s)"
 msgstr "Rôle(s)"
-
-msgid "Role mapping mismatch : click Validate to solve this problem !"
-msgstr ""
-"Paramétrage des rôles non concordant, cliquer sur Valider pour résoudre le "
-"problème !"
 
 msgid "Roles to assign:"
 msgstr "Rôles à assigner"
@@ -2139,9 +2157,6 @@ msgstr "Sélectionner le type de dossier à construire :"
 
 msgid "Select Member(s) and a role(s) to assign:"
 msgstr "Sélectionner le(s) membre(s) et le(s) rôle(s) à assigner :"
-
-msgid "Select registration mode"
-msgstr "Sélectionner le mode d'inscription"
 
 msgid "September"
 msgstr "Septembre"
@@ -2279,9 +2294,6 @@ msgstr "larg. / haut. :"
 
 msgid "Work"
 msgstr "Travail"
-
-msgid "Workflow chain"
-msgstr "Séquence de workflow"
 
 msgid "You are not allowed to delete: "
 msgstr "Vous n'êtes pas autorisé à supprimer : "
