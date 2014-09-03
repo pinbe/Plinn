@@ -169,14 +169,34 @@ class RegistrationTool(BaseRegistrationTool) :
     security.declareProtected(AddPortalMember, 'addMember')
     def addMember(self, id, password, roles=(), groups=(DEFAULT_MEMBER_GROUP,), domains='', properties=None) :
         """ Idem CMFCore but without default role """
-        BaseRegistrationTool.addMember(self, id, password, roles=roles,
-                                       domains=domains, properties=properties)
 
-        if self.getMode() in [MODE_ANONYMOUS, MODE_MANAGER] :
+        if self.getMode() != MODE_REVIEWED :
             gtool = getToolByName(self, 'portal_groups')
             mtool = getToolByName(self, 'portal_membership')
             utool = getToolByName(self, 'portal_url')
             portal = utool.getPortalObject()
+            
+            if self.getMode() == MODE_PASS_ANONYMOUS :
+                private_collections = portal.get('private_collections')
+                if not private_collections :
+                    raise AccessControl_Unauthorized()
+                    return
+                data = private_collections.data
+                lines = filter(None, [l.strip() for l in data.split('\n')])
+                assert len(lines) % 3 == 0
+                collecInfos = {}
+                for i in xrange(0, len(lines), 3) :
+                    collecInfos[lines[i]] = {'pw' : lines[i+1],
+                                             'path' : lines[i+2]}
+                if not (collecInfos.has_key(properties.get('collection_id')) and \
+                    collecInfos[properties.get('collection_id')]['pw'] == properties.get('collection_password')) :
+                    raise AccessControl_Unauthorized('Wrong primary credentials')
+                    return
+            
+            
+            BaseRegistrationTool.addMember(self, id, password, roles=roles,
+                                           domains=domains, properties=properties)
+
             isGrpManager = mtool.checkPermission(ManageGroups, portal) ## TODO : CMF2.1 compat
             aclu = self.aq_inner.acl_users
 
@@ -191,6 +211,9 @@ class RegistrationTool(BaseRegistrationTool) :
                 aclu.changeUser(aclu.getGroupPrefix() +gid, roles=['Member', ])
                 g = gtool.getGroupById(gid)
                 g.addMember(id)
+        else :
+            BaseRegistrationTool.addMember(self, id, password, roles=roles,
+                                           domains=domains, properties=properties)
 
 
     def afterAdd(self, member, id, password, properties):
