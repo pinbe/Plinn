@@ -7,7 +7,7 @@
 <div metal:fill-slot="header">
   <div metal:use-macro="here/widgets/macros/generic_header">generic_header</div>
 </div>
-<div metal:fill-slot="main" i18n:domain="cmf_default">
+<div metal:fill-slot="main" i18n:domain="plinn">
 <div class="Desktop">
 <div class="Link">
 

@@ -7,7 +7,7 @@
     <title>folder contents macros</title>
   </head>
 
-  <body i18n:domain="cmf_default" metal:define-macro="FolderListing"
+  <body i18n:domain="plinn" metal:define-macro="FolderListing"
         tal:define="batch_dict options/batch;
                     batch batch_dict/batch_obj;
                     listColumnInfos batch_dict/listColumnInfos;

@@ -70,7 +70,7 @@ global specialCtxHeader options/specialCtxHeader|nothing"
 
   
 <div tal:define="uname python: (isAnon and [''] or [member.getMemberFullName(nameBefore=0)])[0]" metal:define-macro="user_menu_bar">
-	<table id="MemberActionsBox" border="0" cellspacing="0" i18n:domain="cmf_default">
+	<table id="MemberActionsBox" border="0" cellspacing="0" i18n:domain="plinn">
 		<tr>
 			<td class="ActionTitle" tal:content="uname">Guest</td>
 			<td><img tal:attributes="src here/loading_progress.gif/absolute_url" width="82" height="7" id="loading_progress" alt="Loading progress..." i18n:attributes="alt" style="display:none" /></td>

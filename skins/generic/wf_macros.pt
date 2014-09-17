@@ -35,7 +35,7 @@
           </tr>
         </div>
       </table>
-      <em i18n:translate="" i18n:domain="cmf_default" tal:condition="not:review_history">This item has not had any status changes.</em>
+      <em i18n:translate="" i18n:domain="plinn" tal:condition="not:review_history">This item has not had any status changes.</em>
     </div>
 
   </body>

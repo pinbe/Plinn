@@ -5,7 +5,7 @@
     <base href="" metal:fill-slot="base" tal:attributes="href python: here.absolute_url() + '/'" />
   </head>
   <body>
-    <div metal:fill-slot="main" i18n:domain="cmf_default">
+    <div metal:fill-slot="main" i18n:domain="plinn">
 
      <p i18n:translate="">Link: <a href=""
                   tal:attributes="href here/remote_url"

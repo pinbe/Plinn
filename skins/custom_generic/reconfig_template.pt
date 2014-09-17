@@ -2,7 +2,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 </head>
-<body metal:fill-slot="main_no_tabs" i18n:domain="cmf_default" tal:omit-tag="" tal:define="form options/form">
+<body metal:fill-slot="main_no_tabs" i18n:domain="plinn" tal:omit-tag="" tal:define="form options/form">
 
 <h1 i18n:translate="">Configure the Portal</h1>
 

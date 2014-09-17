@@ -14,7 +14,7 @@
         Document Description goes here.
       </div>
     </div>
-    <div metal:define-macro="index_content" i18n:domain="cmf_default">
+    <div metal:define-macro="index_content" i18n:domain="plinn">
       <div tal:define="auth_filter nocall: modules/ZTUtils/LazyFilter;
                    types python:here.getTypeInfo().allowed_content_types ;
                    raw_items python: here.contentValues(filter={'portal_type': types } );
@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    <div metal:define-macro="index_links" i18n:domain="cmf_default">
+    <div metal:define-macro="index_links" i18n:domain="plinn">
       <div tal:define="auth_filter nocall: modules/ZTUtils/LazyFilter;
                    default_types python:( 'Link', 'Favorite', 'Topic');
                    types types | here/show_link_types | default_types;
@@ -65,7 +65,7 @@
         </div>
       </div>
     </div>
-    <div metal:define-macro="index_folders" i18n:domain="cmf_default">
+    <div metal:define-macro="index_folders" i18n:domain="plinn">
       <div tal:define="auth_filter nocall: modules/ZTUtils/LazyFilter;
                    default_types python:( 'Folder',);
                    types types | here/show_folder_types | default_types;
@@ -91,7 +91,7 @@
         </div>
       </div>
     </div>
-    <div metal:define-macro="news_box" i18n:domain="cmf_default">
+    <div metal:define-macro="news_box" i18n:domain="plinn">
       <table class="NewsItems" width="100%" border="0" cellspacing="0" cellpadding="0">
         <tbody tal:define="news python: here.portal_catalog( meta_type='News Item', sort_on='Date', sort_order='reverse', review_state='published');
                     Batch python:modules['ZTUtils'].Batch;

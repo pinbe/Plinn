@@ -8,7 +8,7 @@
     </metal:block>
   </head>
   <body>
-    <div metal:fill-slot="main_no_tabs" i18n:domain="cmf_default">
+    <div metal:fill-slot="main_no_tabs" i18n:domain="plinn">
       <div class="Desktop">
 
       <h2 i18n:translate="">Search Results</h2>

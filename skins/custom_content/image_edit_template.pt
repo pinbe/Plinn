@@ -9,7 +9,7 @@
         generic_header macro
       </div>
     </div>
-    <div metal:fill-slot="main" i18n:domain="cmf_default" tal:define="form options/form" tal:omit-tag="">
+    <div metal:fill-slot="main" i18n:domain="plinn" tal:define="form options/form" tal:omit-tag="">
       <div class="Desktop">
         <form action="image_edit_form" method="post" enctype="multipart/form-data" tal:attributes="action form/action">
           <table class="FormLayout">

@@ -6,7 +6,7 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
   </head>
   <body>
-    <div metal:fill-slot="main" i18n:domain="cmf_default">
+    <div metal:fill-slot="main" i18n:domain="plinn">
       <h2 i18n:translate="">File Properties</h2>
       <table>
         <tr>

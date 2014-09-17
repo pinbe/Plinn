@@ -5,7 +5,7 @@
 <body>
 
 
-<metal:slot metal:fill-slot="main_no_tabs" i18n:domain="cmf_default"
+<metal:slot metal:fill-slot="main_no_tabs" i18n:domain="plinn"
    tal:define="form options/form">
 <h1 tal:content="options/title" i18n:translate="">Become a member</h1>
 <div class="Desktop">

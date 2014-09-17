@@ -42,7 +42,7 @@ global specialCtxHeader options/specialCtxHeader|nothing"
 		<tr>
 			<td id="PortalLogo"><a href="#" tal:attributes="href string:${portal_url}?noajax=1; title portal_object/title_or_id"><img src="logo.gif" tal:define="logo here/logo.png" tal:attributes="src logo/absolute_url; alt portal_object/title_or_id; height logo/height; width logo/width" /></a></td>
 			<!-- nav_bar / search_form -->
-			<td id="NavBar" align="right" i18n:domain="cmf_default"
+			<td id="NavBar" align="right" i18n:domain="plinn"
           tal:condition="not:isAnon">
 				<form action="search" method="get" tal:attributes="action string:${portal_url}/search">
 					<table>
@@ -59,7 +59,7 @@ global specialCtxHeader options/specialCtxHeader|nothing"
   
 <div id="user_menu_bar" metal:define-macro="user_menu_bar"
      tal:define="uname python: (isAnon and [''] or [member.getMemberFullName(nameBefore=0)])[0]">
-	<table id="MemberActionsBox" border="0" cellspacing="0" i18n:domain="cmf_default">
+	<table id="MemberActionsBox" border="0" cellspacing="0" i18n:domain="plinn">
 		<tr>
 			<td class="ActionTitle" tal:content="uname">Guest</td>
 			<td><img tal:attributes="src here/loading_progress.gif/absolute_url" width="82" height="7" id="loading_progress" alt="Loading progress..." i18n:attributes="alt" style="display:none" /></td>

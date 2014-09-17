@@ -13,7 +13,7 @@
     <div tal:define="hideContentByLine python:1" metal:fill-slot="header">
       <div metal:use-macro="here/widgets/macros/generic_header">generic_header</div>
     </div>
-    <div metal:fill-slot="main" i18n:domain="cmf_default" tal:omit-tag=""
+    <div metal:fill-slot="main" i18n:domain="plinn" tal:omit-tag=""
     		 tal:define="form options/form">
       <form method="post" tal:attributes="action string:${here/absolute_url}/folder_contents">
 	      <div id="FolderListing">

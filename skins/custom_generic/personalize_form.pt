@@ -4,7 +4,7 @@
   </head>
 
   <body>
-    <div metal:fill-slot="main_no_tabs" i18n:domain="cmf_default">
+    <div metal:fill-slot="main_no_tabs" i18n:domain="plinn">
       <div tal:define="purl here/portal_url;
                   mtool here/portal_membership;
                   member mtool/getAuthenticatedMember;

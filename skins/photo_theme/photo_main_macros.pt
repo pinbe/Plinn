@@ -7,7 +7,7 @@
     <div metal:define-macro="search_bar"
          style="vertical-align:middle">
       <form action="search" method="get" tal:attributes="action string:${portal_url}/search">
-        <div id="quicksearch" i18n:domain="cmf_default">
+        <div id="quicksearch" i18n:domain="plinn">
           <span i18n:translate="" tal:omit-tag="">Search</span>
           <input name="SearchableText" type="text" size="16" />
           <input name="portal_type:list" type="hidden" value="Photo" />

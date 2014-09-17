@@ -6,7 +6,7 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
   </head>
   <body>
-    <div metal:fill-slot="main_no_tabs" i18n:domain="cmf_default">
+    <div metal:fill-slot="main_no_tabs" i18n:domain="plinn">
       <div class="Desktop">
         <h1 i18n:translate="">Search inside <span tal:replace="here/Title"
             i18n:name="title">portal</span></h1>

@@ -7,7 +7,7 @@
   </head>
 
   <body>
-    <div i18n:domain="cmf_default">
+    <div i18n:domain="plinn">
       <div metal:fill-slot="header">
         <div metal:use-macro="here/widgets/macros/generic_header">
           generic_header macro
