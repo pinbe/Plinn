@@ -42,6 +42,16 @@
                 </td>
               </tr>
               <tr>
+                <th i18n:translate="">Preferred languages</th>
+                <td>
+                  <input type="text" name="preferred_languages:tokens"
+                         tal:attributes="value python:' '.join(member.getProperty('preferred_languages', []))"/>
+                  <dl class="FieldHelp">
+                    <dd i18n:translate="">Please enter language codes separated by spaces.</dd>
+                  </dl>
+                </td>
+              </tr>
+              <tr>
                 <td><br /></td>
                 <td>
                   <br />

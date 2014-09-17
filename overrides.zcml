@@ -15,4 +15,10 @@
              Products.CMFCore.interfaces.ICatalogTool"
         provides="Products.CMFCore.interfaces.IIndexableObject"
         factory=".catalog_adapters.PlinnIndexableObjectWrapper" />
+    <adapter
+        for="zope.publisher.interfaces.http.IHTTPRequest"
+        provides="zope.i18n.interfaces.IUserPreferredLanguages"
+        factory=".userlanguages.AuthenticatedUserLanguages"
+        />
+    
 </configure>
