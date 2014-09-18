@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Wed Sep  3 22:20:58 2014\n"
+"POT-Creation-Date: Wed Sep 17 16:54:05 2014\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -31,27 +31,27 @@ msgstr ""
 msgid "Please rename each listed object."
 msgstr ""
 
-#: n/RegistrationTool.py:231
+#: n/RegistrationTool.py:254
 msgid "How to reset your password on the %s website"
 msgstr ""
 
-#: n/RegistrationTool.py:246
+#: n/RegistrationTool.py:269
 msgid "Unknown user name. Please retry."
 msgstr ""
 
-#: n/RegistrationTool.py:261
+#: n/RegistrationTool.py:284
 msgid "Invalid reset password request."
 msgstr ""
 
-#: n/RegistrationTool.py:267
+#: n/RegistrationTool.py:290
 msgid "Your reset password request has expired. You can ask a new one."
 msgstr ""
 
-#: n/RegistrationTool.py:276
+#: n/RegistrationTool.py:299
 msgid "Password successfully updated."
 msgstr ""
 
-#: n/RegistrationTool.py:278
+#: n/RegistrationTool.py:301
 msgid "\"%s\" username not found."
 msgstr ""
 
@@ -166,7 +166,58 @@ msgstr ""
 msgid "search between %s and %s"
 msgstr ""
 
+#: n/skins/content/file_view_template.pt:10
+msgid "File Properties"
+msgstr ""
+
+#: n/skins/content/file_view_template.pt:13
+#: n/skins/custom_content/file_edit_template.pt:21
+msgid "Size"
+msgstr ""
+
+#: n/skins/content/file_view_template.pt:21
+msgid "Content-type"
+msgstr ""
+
+#: n/skins/content/file_view_template.pt:39
+msgid "Download File"
+msgstr ""
+
+#: n/skins/content/file_view_template.pt:42
+msgid "Web Preview"
+msgstr ""
+
+#: n/skins/content/file_view_template.pt:47
+msgid "Download : &laquo;&nbsp;${file_title}&nbsp;&raquo;"
+msgstr ""
+
+#: n/skins/content/file_view_template.pt:50
+msgid "Preview"
+msgstr ""
+
+#: n/skins/content/folder_edit_form.pt:29
+#: n/skins/custom_content/event_edit_template.pt:115
+#: n/skins/custom_content/event_view.pt:57
+#: n/skins/generic/gruf_macros.pt:57
+#: n/skins/generic/gruf_macros.pt:313
+#: n/skins/generic/header_widgets.pt:24
+#: n/skins/generic/header_widgets.pt:85
+#: n/skins/generic/search_form.pt:36
+msgid "Description"
+msgstr ""
+
+#: n/skins/content/folder_edit_form.pt:41
+#. Default: "Change"
+msgid " Change "
+msgstr ""
+
+#: n/skins/content/folder_edit_form.pt:43
+#. Default: "Change and View"
+msgid " Change and View "
+msgstr ""
+
 #: n/skins/content/folder_factories.pt:18
+#: n/skins/custom_generic/personalize_form.pt:27
 #: n/skins/generic/gruf_macros.pt:256
 #: n/skins/generic/gruf_macros.pt:378
 #: n/skins/generic/last_member_logs.pt:23
@@ -298,15 +349,6 @@ msgstr ""
 msgid "End"
 msgstr ""
 
-#: n/skins/custom_content/event_edit_template.pt:115
-#: n/skins/custom_content/event_view.pt:57
-#: n/skins/generic/gruf_macros.pt:57
-#: n/skins/generic/gruf_macros.pt:313
-#: n/skins/generic/header_widgets.pt:24
-#: n/skins/generic/header_widgets.pt:85
-msgid "Description"
-msgstr ""
-
 #: n/skins/custom_content/event_edit_template.pt:121
 #: n/skins/custom_content/event_view.pt:33
 msgid "Event URL"
@@ -318,6 +360,24 @@ msgstr ""
 
 #: n/skins/custom_content/event_view.pt:49
 msgid "Stop Date"
+msgstr ""
+
+#: n/skins/custom_content/favorite_view.pt:11
+#: n/skins/custom_content/link_view.pt:10
+msgid "Link: ${link}"
+msgstr ""
+
+#: n/skins/custom_content/file_edit_template.pt:27
+msgid "Content type"
+msgstr ""
+
+#: n/skins/custom_content/file_edit_template.pt:31
+msgid "Upload file"
+msgstr ""
+
+#: n/skins/custom_content/file_edit_template.pt:39
+#: n/skins/custom_content/newsitem_edit_template.pt:43
+msgid "Change and View"
 msgstr ""
 
 #: n/skins/custom_content/friendlydatec_editform.pt:14
@@ -342,6 +402,15 @@ msgstr ""
 msgid "daterange_ahead"
 msgstr ""
 
+#: n/skins/custom_content/image_edit_template.pt:17
+msgid "Upload image"
+msgstr ""
+
+#: n/skins/custom_content/link_edit_template.pt:18
+#: n/skins/custom_generic/folder_rename_template.pt:16
+msgid "URL"
+msgstr ""
+
 #: n/skins/custom_content/listc_edit.pt:16
 msgid "Operator:"
 msgstr ""
@@ -353,6 +422,10 @@ msgstr ""
 #: n/skins/custom_content/listc_edit.pt:21
 #: n/skins/custom_generic/talkback_tree.pt:32
 msgid "and"
+msgstr ""
+
+#: n/skins/custom_content/newsitem_edit_template.pt:26
+msgid "<div> Wysiwig Code </div>"
 msgstr ""
 
 #: n/skins/custom_content/sic_edit.pt:15
@@ -475,8 +548,109 @@ msgstr ""
 msgid "Rename Items"
 msgstr ""
 
-#: n/skins/custom_generic/folder_rename_template.pt:16
-msgid "URL"
+#: n/skins/custom_generic/index_html_utils.pt:24
+msgid "Content"
+msgstr ""
+
+#: n/skins/custom_generic/index_html_utils.pt:50
+msgid "Related Resources"
+msgstr ""
+
+#: n/skins/custom_generic/index_html_utils.pt:76
+msgid "Folders"
+msgstr ""
+
+#: n/skins/custom_generic/index_html_utils.pt:104
+#: n/skins/generic/recent_news.pt:21
+#: n/skins/generic/widgets.pt:125
+msgid "News"
+msgstr ""
+
+#: n/skins/custom_generic/index_html_utils.pt:114
+msgid "No news is no news."
+msgstr ""
+
+#: n/skins/custom_generic/index_html_utils.pt:120
+msgid "More..."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:14
+msgid "You are already a member. You may use the <a href=\"personalize_form\">personalization form</a> to change your membership information."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:20
+msgid "You have been registered as a member."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:22
+msgid "You will receive an email shortly containing your password and instructions on how to activate your membership."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:27
+msgid "Click the button to log in immediately."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:40
+msgid "Your registration request has been taken into account."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:42
+msgid "Your request will be reviewed soon by a portal administrator. You will receive an email containing your password and instructions on how to activate your membership when your registration will be approved."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:48
+msgid "Your request will be reviewed soon by a portal administrator. You will receive an email when your registration will be approved."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:52
+msgid "Return to homepage"
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:57
+msgid "Becoming a member gives you the ability to personalize the site and participate in the community."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:60
+msgid "It does not cost any money to become a member and your email and other personal information will remain private."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:63
+msgid "You must submit a valid email address. This address will be used to send you a randomly-generated password. Once you have logged in with this password, you may change it to anything you like."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:74
+msgid "Member ID"
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:81
+msgid "First name"
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:87
+msgid "Last name"
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:93
+msgid "Email Address"
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:100
+#: n/skins/custom_generic/login_form.pt:28
+#: n/skins/generic/gruf_macros.pt:268
+#: n/skins/generic/gruf_macros.pt:390
+msgid "Password"
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:106
+msgid "Password (confirm)"
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:112
+msgid "Mail Password?"
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:116
+msgid "Check this box to have the password mailed."
 msgstr ""
 
 #: n/skins/custom_generic/logged_in.py:28
@@ -517,19 +691,26 @@ msgid "Please use the form below to change your password."
 msgstr ""
 
 #: n/skins/custom_generic/logged_in_template.pt:53
+#: n/skins/custom_generic/password_form.pt:18
 msgid "Username"
 msgstr ""
 
 #: n/skins/custom_generic/logged_in_template.pt:58
+#: n/skins/custom_generic/password_form.pt:23
 msgid "New password"
 msgstr ""
 
 #: n/skins/custom_generic/logged_in_template.pt:63
+#: n/skins/custom_generic/password_form.pt:28
 msgid "Confirm new password"
 msgstr ""
 
 #: n/skins/custom_generic/logged_in_template.pt:70
 msgid "Change password"
+msgstr ""
+
+#: n/skins/custom_generic/logged_out.pt:12
+msgid "You are logged in outside the portal. You may need to <a href=\"/manage_zmi_logout\">log out of the Zope management interface</a>."
 msgstr ""
 
 #: n/skins/custom_generic/login_form.pt:11
@@ -539,12 +720,6 @@ msgstr ""
 #: n/skins/custom_generic/login_form.pt:22
 #. Default: "Login"
 msgid "user_name"
-msgstr ""
-
-#: n/skins/custom_generic/login_form.pt:28
-#: n/skins/generic/gruf_macros.pt:268
-#: n/skins/generic/gruf_macros.pt:390
-msgid "Password"
 msgstr ""
 
 #: n/skins/custom_generic/login_form.pt:37
@@ -570,6 +745,28 @@ msgstr ""
 
 #: n/skins/custom_generic/login_form.pt:58
 msgid "Setting the 'Remember my name' option will set a cookie with your username, so that when you next log in, your user name will already be filled in for you."
+msgstr ""
+
+#: n/skins/custom_generic/mail_password_form.pt:14
+msgid "Don't panic!"
+msgstr ""
+
+#: n/skins/custom_generic/mail_password_form.pt:16
+msgid "Just enter your username below, click <em>Send</em>, and your password will be mailed to you if you gave a valid email address when you signed on."
+msgstr ""
+
+#: n/skins/custom_generic/mail_password_form.pt:22
+msgid "If this will not work for you (for example, if you forget your member name or didn't enter your email address) send email to ${admin_email}."
+msgstr ""
+
+#: n/skins/custom_generic/mail_password_form.pt:31
+#: n/skins/generic/request_password_reset_template.pt:27
+#. Default: "Send"
+msgid " Send "
+msgstr ""
+
+#: n/skins/custom_generic/mail_password_response.pt:9
+msgid "Your password has been mailed. <br /> It should arrive in your mailbox momentarily."
 msgstr ""
 
 #: n/skins/custom_generic/mail_password_template.py:30
@@ -617,12 +814,137 @@ msgstr ""
 msgid "${DYNAMIC_CONTENT}"
 msgstr ""
 
+#: n/skins/custom_generic/password_form.pt:8
+msgid "Change your Password"
+msgstr ""
+
+#: n/skins/custom_generic/password_form.pt:35
+#: n/skins/custom_generic/personalize_form.pt:58
+msgid "Change"
+msgstr ""
+
+#: n/skins/custom_generic/personalize_form.pt:21
+msgid "Member Preferences"
+msgstr ""
+
+#: n/skins/custom_generic/personalize_form.pt:23
+msgid "${link} to change your password."
+msgstr ""
+
+#: n/skins/custom_generic/personalize_form.pt:23
+msgid "Click here"
+msgstr ""
+
+#: n/skins/custom_generic/personalize_form.pt:33
+#: n/skins/generic/gruf_macros.pt:262
+#: n/skins/generic/gruf_macros.pt:384
+msgid "Given Name"
+msgstr ""
+
+#: n/skins/custom_generic/personalize_form.pt:39
+#: n/skins/generic/gruf_macros.pt:280
+#: n/skins/generic/gruf_macros.pt:402
+msgid "Email address"
+msgstr ""
+
+#: n/skins/custom_generic/personalize_form.pt:45
+msgid "Preferred languages"
+msgstr ""
+
+#: n/skins/custom_generic/personalize_form.pt:50
+msgid "Please enter language codes separated by spaces."
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:7
+msgid "Configure the Portal"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:11
+msgid "This form is used to set the portal configuration options."
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:17
+msgid "Portal 'From' name"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:22
+msgid "When the portal generates mail, it uses this name as its (apparent) sender."
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:28
+msgid "Portal 'From' address"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:33
+msgid "When the portal generates mail, it uses this address as its (apparent) return address."
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:39
+msgid "SMTP server"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:44
+msgid "This is the address of your local SMTP (out-going mail) server."
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:50
+msgid "Portal title"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:54
+msgid "This is the title which appears at the top of every portal page."
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:60
+msgid "Portal description"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:64
+msgid "This description is made available via syndicated content and elsewhere. It should be fairly brief."
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:70
+msgid "Keywords"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:74
+msgid "Keywords describing the portal. Type one keyword (or expression) per line."
+msgstr ""
+
 #: n/skins/custom_generic/reconfig_template.pt:79
 msgid "Copyright notice"
 msgstr ""
 
 #: n/skins/custom_generic/reconfig_template.pt:83
 msgid "Copyright notice displayed on the portal footer."
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:88
+msgid "Password policy"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:92
+msgid "Generate and email members' initial password"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:97
+msgid "Allow members to select their initial password"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:102
+msgid "Portal default encoding"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:107
+msgid "Charset used to decode portal content strings. If empty, 'ascii' is used."
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:113
+msgid "Thumbnails size"
+msgstr ""
+
+#: n/skins/custom_generic/reconfig_template.pt:119
+msgid "This is the size of the thumbnails in the photo album, in pixels."
 msgstr ""
 
 #: n/skins/custom_generic/reconfig_template.pt:124
@@ -677,12 +999,40 @@ msgstr ""
 #: n/skins/generic/header_widgets.pt:32
 #: n/skins/generic/header_widgets.pt:173
 #: n/skins/generic/send_email_form.pt:79
-#: n/www/configureRegistrationTool.pt:43
 msgid "Validate"
 msgstr ""
 
 #: n/skins/custom_generic/talkback_tree.pt:85
 msgid "Cancel"
+msgstr ""
+
+#: n/skins/custom_generic/undo_form.pt:25
+msgid "Undo Transactions"
+msgstr ""
+
+#: n/skins/custom_generic/undo_form.pt:27
+msgid "This application's transactional feature allows you to easily undo changes made to the application's settings or data. You can revert the application to a &quot;snapshot&quot; of its state at a previous point in time."
+msgstr ""
+
+#: n/skins/custom_generic/undo_form.pt:34
+msgid "Select one or more transactions below and then click on the &quot;Undo&quot; button to undo the transactions. Note that even though a transaction is shown below, you will not be able to undo it if later transactions modified objects that were modified by the transaction."
+msgstr ""
+
+#: n/skins/custom_generic/undo_form.pt:51
+#: n/skins/custom_generic/undo_form.pt:99
+msgid "Undo"
+msgstr ""
+
+#: n/skins/custom_generic/undo_form.pt:52
+msgid "Action performed"
+msgstr ""
+
+#: n/skins/custom_generic/undo_form.pt:53
+msgid "Affected Item"
+msgstr ""
+
+#: n/skins/custom_generic/undo_form.pt:54
+msgid "By"
 msgstr ""
 
 #: n/skins/custom_generic/viewThreadsAtBottom.pt:10
@@ -726,6 +1076,18 @@ msgstr ""
 #: n/skins/generic/calendar_macros.pt:171
 #: n/skins/generic/calendar_macros.pt:173
 msgid "Next"
+msgstr ""
+
+#: n/skins/generic/content_byline.pt:14
+msgid "Modified on"
+msgstr ""
+
+#: n/skins/generic/content_byline.pt:14
+msgid "at"
+msgstr ""
+
+#: n/skins/generic/content_byline.pt:14
+msgid "creator:"
 msgstr ""
 
 #: n/skins/generic/content_depublish_form.pt:8
@@ -926,19 +1288,9 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: n/skins/generic/gruf_macros.pt:262
-#: n/skins/generic/gruf_macros.pt:384
-msgid "Given Name"
-msgstr ""
-
 #: n/skins/generic/gruf_macros.pt:274
 #: n/skins/generic/gruf_macros.pt:396
 msgid "Confirm"
-msgstr ""
-
-#: n/skins/generic/gruf_macros.pt:280
-#: n/skins/generic/gruf_macros.pt:402
-msgid "Email address"
 msgstr ""
 
 #: n/skins/generic/gruf_macros.pt:298
@@ -1091,6 +1443,16 @@ msgstr ""
 msgid "locale_date_fmt"
 msgstr ""
 
+#: n/skins/generic/main_template_macros.pt:49
+#: n/skins/photo_theme/photo_main_macros.pt:11
+#: n/skins/photo_theme/photo_main_macros.pt:14
+msgid "Search"
+msgstr ""
+
+#: n/skins/generic/main_template_macros.pt:50
+msgid "Advanced search"
+msgstr ""
+
 #: n/skins/generic/main_template_macros.pt:80
 #: n/skins/photo_theme/main_template_macros.pt:91
 msgid "You are here:"
@@ -1176,11 +1538,6 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: n/skins/generic/recent_news.pt:21
-#: n/skins/generic/widgets.pt:125
-msgid "News"
-msgstr ""
-
 #: n/skins/generic/recent_news.pt:36
 msgid "by:"
 msgstr ""
@@ -1244,11 +1601,6 @@ msgstr ""
 msgid "If this will not work for you (for example, if you forgot your login or your email address has changed), contact us at ${admin_email}."
 msgstr ""
 
-#: n/skins/generic/request_password_reset_template.pt:27
-#. Default: "Send"
-msgid " Send "
-msgstr ""
-
 #: n/skins/generic/revision_context_header.pt:10
 msgid "This is an old revision of this content, as edited by ${user} at ${datetime}."
 msgstr ""
@@ -1258,7 +1610,7 @@ msgid "Restore this revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:22
-msgid "← previous revision"
+msgid "\342\206\220 previous revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:27
@@ -1266,7 +1618,7 @@ msgid "current revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:29
-msgid "next revision →"
+msgid "next revision \342\206\222"
 msgstr ""
 
 #: n/skins/generic/search.py:109
@@ -1274,19 +1626,109 @@ msgstr ""
 msgid "ascending sort"
 msgstr ""
 
+#: n/skins/generic/search_form.pt:11
+msgid "Search inside ${title}"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:16
+msgid "Full Text"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:20
+msgid "For a simple text search, enter your search term here. Multiple words may be found by combining them with <b>AND</b> and <b>OR</b>. This will find text in items' contents, title and description."
+msgstr ""
+
+#: n/skins/generic/search_form.pt:40
+msgid "You may also search the items' descriptions and titles specifically. Multiple words may be found by combining them with <b>AND</b> and <b>OR</b>."
+msgstr ""
+
+#: n/skins/generic/search_form.pt:49
+msgid "Review Status"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:52
+#: n/skins/generic/search_form.pt:90
+msgid "-- any --"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:55
+msgid "private"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:56
+msgid "pending"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:57
+msgid "published"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:60
+msgid "If you wish to constrain results to items in certain states, select them from this list."
+msgstr ""
+
+#: n/skins/generic/search_form.pt:68
+msgid "Find new items since..."
+msgstr ""
+
+#: n/skins/generic/search_form.pt:71
+msgid "Ever"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:72
+msgid "Last login"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:75
+msgid "Yesterday"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:76
+msgid "Last week"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:77
+msgid "Last month"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:80
+msgid "You may find only recent items by selecting a time-frame."
+msgstr ""
+
+#: n/skins/generic/search_form.pt:87
+msgid "Item type"
+msgstr ""
+
+#: n/skins/generic/search_form.pt:99
+msgid "You may limit your results to particular kinds of items by selecting them above. To find all kinds of items, do not select anything."
+msgstr ""
+
+#: n/skins/generic/search_form.pt:112
+msgid "To find items by a particular user, enter one or more of his properties (login, name, email...)."
+msgstr ""
+
+#: n/skins/generic/search_form.pt:124
+#. Default: "Search"
+msgid " Search "
+msgstr ""
+
 #: n/skins/generic/search_results_template.pt:16
+#: n/skins/photo_theme/search.pt:14
 msgid "Search Results"
 msgstr ""
 
 #: n/skins/generic/search_results_template.pt:23
+#: n/skins/photo_theme/search.pt:33
 msgid "Found ${count} ${item_s_match} '${text}'."
 msgstr ""
 
 #: n/skins/generic/search_results_template.pt:27
+#: n/skins/photo_theme/search.pt:38
 msgid "Found 1 item."
 msgstr ""
 
 #: n/skins/generic/search_results_template.pt:28
+#: n/skins/photo_theme/search.pt:39
 msgid "Found ${count} items."
 msgstr ""
 
@@ -1303,6 +1745,7 @@ msgid "Title:"
 msgstr ""
 
 #: n/skins/generic/search_results_template.pt:89
+#: n/skins/photo_theme/search.pt:45
 msgid "There are no items matching your specified criteria."
 msgstr ""
 
@@ -1342,6 +1785,54 @@ msgstr ""
 msgid "Note: This message will be stored in content history."
 msgstr ""
 
+#: n/skins/generic/standard_error_message.pt:16
+msgid "Site Error"
+msgstr ""
+
+#: n/skins/generic/standard_error_message.pt:18
+msgid "An error was encountered while publishing this resource."
+msgstr ""
+
+#: n/skins/generic/standard_error_message.pt:23
+msgid "Error Type: ${error_type}"
+msgstr ""
+
+#: n/skins/generic/standard_error_message.pt:27
+msgid "Error Value: ${error_value}"
+msgstr ""
+
+#: n/skins/generic/standard_error_message.pt:34
+msgid "Troubleshooting Suggestions"
+msgstr ""
+
+#: n/skins/generic/standard_error_message.pt:41
+msgid "This resource may be trying to reference a nonexistent object or variable <strong>${error_value}</strong>."
+msgstr ""
+
+#: n/skins/generic/standard_error_message.pt:44
+msgid "The URL may be incorrect."
+msgstr ""
+
+#: n/skins/generic/standard_error_message.pt:45
+msgid "The parameters passed to this resource may be incorrect."
+msgstr ""
+
+#: n/skins/generic/standard_error_message.pt:47
+msgid "A resource that this resource relies on may be encountering an error."
+msgstr ""
+
+#: n/skins/generic/standard_error_message.pt:51
+msgid "For more detailed information about the error, please refer to the HTML source for this page."
+msgstr ""
+
+#: n/skins/generic/standard_error_message.pt:55
+msgid "If the error persists please contact the site maintainer. Thank you for your patience."
+msgstr ""
+
+#: n/skins/generic/standard_error_message.pt:64
+msgid "Show Error Log Entry"
+msgstr ""
+
 #: n/skins/generic/wf_macros.pt:17
 msgid "Actor"
 msgstr ""
@@ -1360,6 +1851,10 @@ msgstr ""
 
 #: n/skins/generic/wf_macros.pt:33
 msgid "(no email sent)"
+msgstr ""
+
+#: n/skins/generic/wf_macros.pt:38
+msgid "This item has not had any status changes."
 msgstr ""
 
 #: n/skins/generic/widgets.pt:32
@@ -1423,38 +1918,6 @@ msgstr ""
 msgid "(No description)"
 msgstr ""
 
-#: n/www/configureRegistrationTool.pt:4
-msgid "Configure ${portal_calendar} Tool"
-msgstr ""
-
-#: n/www/configureRegistrationTool.pt:6
-msgid "Select registration mode"
-msgstr ""
-
-#: n/www/configureRegistrationTool.pt:11
-msgid "Anonymous registration"
-msgstr ""
-
-#: n/www/configureRegistrationTool.pt:17
-msgid "Anonymous registration with password"
-msgstr ""
-
-#: n/www/configureRegistrationTool.pt:23
-msgid "Portal manager registration"
-msgstr ""
-
-#: n/www/configureRegistrationTool.pt:30
-msgid "Reviewed registration"
-msgstr ""
-
-#: n/www/configureRegistrationTool.pt:34
-msgid "Workflow chain"
-msgstr ""
-
-#: n/www/configureRegistrationTool.pt:39
-msgid "Role mapping mismatch : click Validate to solve this problem !"
-msgstr ""
-
 #: n/www/manage_solr.pt:4
 msgid "Configure Solr delegated indexes"
 msgstr ""
@@ -1514,9 +1977,6 @@ msgid "Add an activity"
 msgstr ""
 
 msgid "Add node"
-msgstr ""
-
-msgid "Advanced search"
 msgstr ""
 
 msgid "Appointment"
@@ -1616,9 +2076,6 @@ msgid "catalog_index_Title"
 msgstr ""
 
 msgid "Categories:"
-msgstr ""
-
-msgid "Change"
 msgstr ""
 
 msgid "Change image:"
@@ -2068,12 +2525,6 @@ msgstr ""
 msgid "Saturday"
 msgstr ""
 
-msgid "Search"
-msgstr ""
-
-msgid "Search by"
-msgstr ""
-
 msgid "Search Term"
 msgstr ""
 
@@ -2286,12 +2737,6 @@ msgid "approved"
 msgstr ""
 
 msgid "Disapprove"
-msgstr ""
-
-msgid "pending"
-msgstr ""
-
-msgid "private"
 msgstr ""
 
 msgid "items matching"

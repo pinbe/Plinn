@@ -51,9 +51,6 @@ msgstr ""
 msgid "Add node"
 msgstr ""
 
-msgid "Advanced search"
-msgstr ""
-
 msgid "Appointment"
 msgstr ""
 
@@ -151,9 +148,6 @@ msgid "catalog_index_Title"
 msgstr ""
 
 msgid "Categories:"
-msgstr ""
-
-msgid "Change"
 msgstr ""
 
 msgid "Change image:"
@@ -603,12 +597,6 @@ msgstr ""
 msgid "Saturday"
 msgstr ""
 
-msgid "Search"
-msgstr ""
-
-msgid "Search by"
-msgstr ""
-
 msgid "Search Term"
 msgstr ""
 
@@ -821,12 +809,6 @@ msgid "approved"
 msgstr ""
 
 msgid "Disapprove"
-msgstr ""
-
-msgid "pending"
-msgstr ""
-
-msgid "private"
 msgstr ""
 
 msgid "items matching"
