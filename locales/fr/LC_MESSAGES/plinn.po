@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
 "POT-Creation-Date: Wed Sep 17 16:54:01 2014\n"
-"PO-Revision-Date: 2014-09-18 11:19+0200\n"
+"PO-Revision-Date: 2014-09-18 14:45+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -913,7 +913,7 @@ msgstr "Ce formulaire est utilisé pour configurer les options du portail."
 
 #: n/skins/custom_generic/reconfig_template.pt:17
 msgid "Portal 'From' name"
-msgstr "Champ « from » de l'adresse du portail"
+msgstr "Nom d'expéditeur"
 
 #: n/skins/custom_generic/reconfig_template.pt:22
 msgid ""
@@ -922,7 +922,7 @@ msgstr "Lorsque le portail envoie un mail, il utilise ce nom pour l'expéditeur.
 
 #: n/skins/custom_generic/reconfig_template.pt:28
 msgid "Portal 'From' address"
-msgstr "Champ « from » de l'adresse du portail"
+msgstr "Email d'expéditeur"
 
 #: n/skins/custom_generic/reconfig_template.pt:33
 msgid ""
