@@ -94,21 +94,10 @@ def initialize(registrar) :
 
 # Monkey...
 # all tags are good !
-validTags = default_cmf_utils.NASTY_TAGS.copy()
-for tag in validTags.keys() :
-    validTags[tag] = 1
-
-VALID_TAGS = {'font': 1,
-              'param' : 1,
-              'iframe' : 1,
-              'form' : 1,
-              'input' : 1,
-              'textarea' : 1}
-
-validTags.update(VALID_TAGS)
-
+class YesDict(dict):
+    def has_key(self, k) : return True
 default_cmf_utils.NASTY_TAGS = {}
-default_cmf_utils.VALID_TAGS.update(validTags)
+default_cmf_utils.VALID_TAGS = YesDict()
 
 # the plinn portal_calendar is a also a "SPECIAL PROVIDER"
 # TODO: vérifier l'impact
