@@ -10,5 +10,5 @@ class AuthenticatedUserLanguages(BrowserLanguages):
             return super(AuthenticatedUserLanguages, self).getPreferredLanguages()
         else :
             m = mtool.getAuthenticatedMember()
-            userLangs = m.getProperty('preferred_languages', [])
+            userLangs = m.getProperty('preferred_languages', [])[:]
             return userLangs or super(AuthenticatedUserLanguages, self).getPreferredLanguages()
