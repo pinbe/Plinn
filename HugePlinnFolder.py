@@ -138,6 +138,8 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
     def moveObjectsAfter(self, ids, targetId, suppress_events=False):
         assert targetId not in ids
 
+        # id2pos = dict(self._id2pos_index).copy()
+        # pos2id = dict(self._pos2id_index).copy()
         id2pos = self._id2pos_index
         pos2id = self._pos2id_index
         targetPos = id2pos[targetId]
@@ -150,8 +152,8 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
         id2posUpdate = {}
         pos2idUpdate = {}
 
-        # moved before the firt item position
         if targetPos < minMovedPos :
+            # selection moved before the first item position
             for i, id in enumerate(ids) :
                 pos = i + targetPos + 1
                 id2posUpdate[id] = pos
@@ -167,9 +169,18 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
             print "déposé entre la première et la dernière de la sélection"
             raise NotImplementedError()
         else :
-            print minMovedPos, maxMovedPos, targetPos
-            print "déposé après la dernière"
-            raise NotImplementedError()
+            # selection moved after the last item position
+            pos = minMovedPos
+            for id in IndexIterator(pos2id, targetPos, start=minMovedPos+1) :
+                id2posUpdate[id] = pos
+                pos2idUpdate[pos] = id
+                pos += 1
+            
+            pos = targetPos - len(ids) + 1
+            for id in ids :
+                id2posUpdate[id] = pos
+                pos2idUpdate[pos] = id
+                pos +=1
         
         id2pos.update(id2posUpdate)
         pos2id.update(pos2idUpdate)
@@ -178,6 +189,7 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
         for pos in xrange(len(self)) :
             assert pos2id.has_key(pos)
             assert id2pos.has_key(pos2id[pos])
+        
         if not suppress_events :
             for id, pos in id2posUpdate.items() :
                 notify(ObjectPositionModified(self[id], self, pos))
