@@ -11,15 +11,7 @@ if text and same_type(text, []) :
     # and an other from <noscript> tag
     form.update({'text' : text[1]}) 
 
-if change and \
-        context.validateTextFile(**form) and \
-        context.validateHTML(**form) and \
-        context.document_edit_control(text=form.get('text'), text_format='html') and \
-        context.setRedirect(context, 'object/edit', **{'ajax':ajax}):
-    return
-elif change_and_view and \
-        context.validateTextFile(**form) and \
-        context.validateHTML(**form) and \
+if change_and_view and \
         context.document_edit_control(text=form.get('text'), text_format='html') :
     attachments.removeUnusedAttachments(context.EditableBody())
     return context.setRedirect(context, 'object/view', **{'ajax':ajax})
