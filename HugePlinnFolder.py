@@ -138,8 +138,6 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
     def moveObjectsAfter(self, ids, targetId, suppress_events=False):
         assert targetId not in ids
 
-        # id2pos = dict(self._id2pos_index).copy()
-        # pos2id = dict(self._pos2id_index).copy()
         id2pos = self._id2pos_index
         pos2id = self._pos2id_index
         targetPos = id2pos[targetId]
@@ -165,9 +163,24 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
                 pos2idUpdate[pos] = id
             
         elif targetPos > minMovedPos and targetPos < maxMovedPos :
-            print minMovedPos, maxMovedPos, targetPos
-            print "déposé entre la première et la dernière de la sélection"
-            raise NotImplementedError()
+            # selection moved between the first and last item positions
+            pos = minMovedPos
+            # move items placed between the first item position and the target position
+            for id in IndexIterator(pos2id, minMovedPos+1, targetPos) :
+                id2posUpdate[id] = pos
+                pos2idUpdate[pos] = id
+                pos += 1
+            # move selected items
+            for id in ids :
+                id2posUpdate[id] = pos
+                pos2idUpdate[pos] = id
+                pos += 1
+            # move items positioned between the target position and the moved item max position
+            for id in IndexIterator(pos2id, targetPos+1, maxMovedPos) :
+                id2posUpdate[id] = pos
+                pos2idUpdate[pos] = id
+                pos += 1
+
         else :
             # selection moved after the last item position
             pos = minMovedPos
@@ -184,12 +197,7 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
         
         id2pos.update(id2posUpdate)
         pos2id.update(pos2idUpdate)
-        
-        # just for debug
-        for pos in xrange(len(self)) :
-            assert pos2id.has_key(pos)
-            assert id2pos.has_key(pos2id[pos])
-        
+
         if not suppress_events :
             for id, pos in id2posUpdate.items() :
                 notify(ObjectPositionModified(self[id], self, pos))
