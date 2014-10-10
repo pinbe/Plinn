@@ -159,7 +159,7 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
                 id2posUpdate[id] = pos
                 pos2idUpdate[pos] = id
 
-            for id in IndexIterator(pos2id, maxMovedPos, start=targetPos+1):
+            for id in IndexIterator(pos2id, targetPos+1, maxMovedPos):
                 pos = pos + 1
                 id2posUpdate[id] = pos
                 pos2idUpdate[pos] = id
@@ -171,7 +171,7 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
         else :
             # selection moved after the last item position
             pos = minMovedPos
-            for id in IndexIterator(pos2id, targetPos, start=minMovedPos+1) :
+            for id in IndexIterator(pos2id, minMovedPos+1, targetPos) :
                 id2posUpdate[id] = pos
                 pos2idUpdate[pos] = id
                 pos += 1
@@ -206,24 +206,20 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
 
 
 class IndexIterator :
-    def __init__(self, d, maxPos, start=0, length=None) :
+    def __init__(self, d, start, stop) :
         self.d = d
         self.pos = start
-        self.maxPos = maxPos
-        self.length = length
-        self.fetchedValuesCpt = 0
+        self.stop = stop
     
     def __iter__(self) :
         return self
     
     def next(self) :
         try :
-            if self.pos > self.maxPos or \
-                 self.fetchedValuesCpt == self.length:
+            if self.pos > self.stop :
                 raise StopIteration
             v = self.d[self.pos]
             self.pos = self.pos + 1
-            self.fetchedValuesCpt = self.fetchedValuesCpt + 1
             return v
         except KeyError :
             self.pos = self.pos + 1
