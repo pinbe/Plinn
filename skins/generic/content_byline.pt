@@ -1,20 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-		<title>Content by line</title>
-	</head>
-	<body i18n:domain="plinn">
-		<div id="ContentByLine" metal:define-macro="byline"
-				 tal:define="creator here/Creator;
-										 creatorFullName python:mtool.getMemberFullNameById(creator, nameBefore=0) ;
-										 date python:here.modified();
-										 modificationDate python:date.strftime('%d/%m/%Y');
-										 modificationTime python:date.strftime('%Hh%M')"
-         i18n:translate="">
-         Modified on <span tal:replace="modificationDate" i18n:name="date">Today</span>
-         at <span tal:replace="modificationTime" i18n:name="time">Hour</span> – creator:
-         <span tal:replace="creatorFullName" i18n:name="creator">Creator</span>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Content by line</title>
+  </head>
+  <body i18n:domain="plinn"> 
+    <div id="ContentByLine" metal:define-macro="byline"
+         tal:define="creator here/Creator;
+                     creatorFullName python:mtool.getMemberFullNameById(creator, nameBefore=0) ;
+                     date python:here.modified();
+                     modificationDate python:date.strftime('%d/%m/%Y');
+                     modificationTime python:date.strftime('%Hh%M')"
+         i18n:translate="byline">
+      modified on <span tal:replace="modificationDate" i18n:name="date">Today</span>
+      at <span tal:replace="modificationTime" i18n:name="time">Hour</span> – creator:
+      <span tal:replace="creatorFullName" i18n:name="creator">Creator</span>
     </div>
-	</body>
+  </body>
 </html>

@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Tue Oct 14 13:32:49 2014\n"
+"POT-Creation-Date: Tue Oct 14 14:23:35 2014\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -1079,7 +1079,8 @@ msgid "Next"
 msgstr ""
 
 #: n/skins/generic/content_byline.pt:17
-msgid "Modified on ${date} at ${time} – creator: ${creator}"
+#. Default: "modified on ${date} at ${time} – creator: ${creator}"
+msgid "byline"
 msgstr ""
 
 #: n/skins/generic/content_depublish_form.pt:8

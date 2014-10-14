@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Tue Oct 14 13:32:49 2014\n"
+"POT-Creation-Date: Tue Oct 14 14:23:35 2014\n"
 "PO-Revision-Date: 2014-10-14 13:37+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -1183,9 +1183,10 @@ msgstr "Mois"
 msgid "Next"
 msgstr "Suivant"
 
+#. Default: "modified on ${date} at ${time} – creator: ${creator}"
 #: n/skins/generic/content_byline.pt:17
-msgid "Modified on ${date} at ${time} – creator: ${creator}"
-msgstr "Modifié le ${date} à ${time} – créateur : ${creator}"
+msgid "byline"
+msgstr "modifié le ${date} à ${time} – créateur : ${creator}"
 
 #: n/skins/generic/content_depublish_form.pt:8
 msgid "Depublish: \"${docTitle}\""
@@ -2943,6 +2944,9 @@ msgstr "Ceci est la page d'accueil par défaut."
 
 msgid "Huge Folder"
 msgstr "Dossier"
+
+#~ msgid "Modified on ${date} at ${time} – creator: ${creator}"
+#~ msgstr "Modifié le ${date} à ${time} – créateur : ${creator}"
 
 #~ msgid "Modified on"
 #~ msgstr "Modifié le"
