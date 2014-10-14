@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Wed Sep 17 16:54:05 2014\n"
+"POT-Creation-Date: Tue Oct 14 13:32:49 2014\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -1078,16 +1078,8 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: n/skins/generic/content_byline.pt:14
-msgid "Modified on"
-msgstr ""
-
-#: n/skins/generic/content_byline.pt:14
-msgid "at"
-msgstr ""
-
-#: n/skins/generic/content_byline.pt:14
-msgid "creator:"
+#: n/skins/generic/content_byline.pt:17
+msgid "Modified on ${date} at ${time} – creator: ${creator}"
 msgstr ""
 
 #: n/skins/generic/content_depublish_form.pt:8
@@ -1610,7 +1602,7 @@ msgid "Restore this revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:22
-msgid "\342\206\220 previous revision"
+msgid "← previous revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:27
@@ -1618,7 +1610,7 @@ msgid "current revision"
 msgstr ""
 
 #: n/skins/generic/revision_context_header.pt:29
-msgid "next revision \342\206\222"
+msgid "next revision →"
 msgstr ""
 
 #: n/skins/generic/search.py:109

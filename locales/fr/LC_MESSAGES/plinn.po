@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Wed Sep 17 16:54:01 2014\n"
-"PO-Revision-Date: 2014-09-18 14:45+0200\n"
+"POT-Creation-Date: Tue Oct 14 13:32:49 2014\n"
+"PO-Revision-Date: 2014-10-14 13:37+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -571,7 +571,10 @@ msgstr "Plus…"
 msgid ""
 "You are already a member. You may use the <a href=\"personalize_form"
 "\">personalization form</a> to change your membership information."
-msgstr "Vous êtes déjà connecté en tant que membre. Vous pouvez utiliser le <a href=\"personalize_form\">formulaire des préférences</a> pour changer vos informations."
+msgstr ""
+"Vous êtes déjà connecté en tant que membre. Vous pouvez utiliser le <a href="
+"\"personalize_form\">formulaire des préférences</a> pour changer vos "
+"informations."
 
 #: n/skins/custom_generic/join_template.pt:20
 msgid "You have been registered as a member."
@@ -581,7 +584,9 @@ msgstr "Vous avez été enregistré en tant que membre."
 msgid ""
 "You will receive an email shortly containing your password and instructions "
 "on how to activate your membership."
-msgstr "Vous allez recevoir sous peu un e-mail qui contiendra votre mot de passe ainsi que les instructions pour activer votre inscription."
+msgstr ""
+"Vous allez recevoir sous peu un e-mail qui contiendra votre mot de passe "
+"ainsi que les instructions pour activer votre inscription."
 
 #: n/skins/custom_generic/join_template.pt:27
 msgid "Click the button to log in immediately."
@@ -596,13 +601,18 @@ msgid ""
 "Your request will be reviewed soon by a portal administrator. You will "
 "receive an email containing your password and instructions on how to "
 "activate your membership when your registration will be approved."
-msgstr "Votre demande va bientôt être vérifiée par un administrateur du portail. Vous recevrez un e-mail contenant votre mot de passe et des instructions pour vous connectez dès que votre inscription aura été approuvée."
+msgstr ""
+"Votre demande va bientôt être vérifiée par un administrateur du portail. "
+"Vous recevrez un e-mail contenant votre mot de passe et des instructions "
+"pour vous connectez dès que votre inscription aura été approuvée."
 
 #: n/skins/custom_generic/join_template.pt:48
 msgid ""
 "Your request will be reviewed soon by a portal administrator. You will "
 "receive an email when your registration will be approved."
-msgstr "Votre demande va bientôt être vérifiée par un administrateur du portail. Vous recevrez un e-mail lorsque votre inscription aura été approuvée."
+msgstr ""
+"Votre demande va bientôt être vérifiée par un administrateur du portail. "
+"Vous recevrez un e-mail lorsque votre inscription aura été approuvée."
 
 #: n/skins/custom_generic/join_template.pt:52
 msgid "Return to homepage"
@@ -612,20 +622,27 @@ msgstr "Retour à la page d'accueil"
 msgid ""
 "Becoming a member gives you the ability to personalize the site and "
 "participate in the community."
-msgstr "Devenir membre vous donne la possibilité de personaliser le site et de participer à la communauté."
+msgstr ""
+"Devenir membre vous donne la possibilité de personaliser le site et de "
+"participer à la communauté."
 
 #: n/skins/custom_generic/join_template.pt:60
 msgid ""
 "It does not cost any money to become a member and your email and other "
 "personal information will remain private."
-msgstr "Devenir membre est complètement gratuit. Votre e-mail ainsi que toutes vos données personnelles resteront privées."
+msgstr ""
+"Devenir membre est complètement gratuit. Votre e-mail ainsi que toutes vos "
+"données personnelles resteront privées."
 
 #: n/skins/custom_generic/join_template.pt:63
 msgid ""
 "You must submit a valid email address. This address will be used to send you "
 "a randomly-generated password. Once you have logged in with this password, "
 "you may change it to anything you like."
-msgstr "Vous devez entrer une adresse e-mail valide qui sera utilisée pour vous envoyer votre mot de passe généré automatiquement. Vous pourrez le changer dès votre première connexion."
+msgstr ""
+"Vous devez entrer une adresse e-mail valide qui sera utilisée pour vous "
+"envoyer votre mot de passe généré automatiquement. Vous pourrez le changer "
+"dès votre première connexion."
 
 #: n/skins/custom_generic/join_template.pt:74
 msgid "Member ID"
@@ -659,7 +676,8 @@ msgstr "Envoyer le mot de passe ?"
 
 #: n/skins/custom_generic/join_template.pt:116
 msgid "Check this box to have the password mailed."
-msgstr "Cochez cette case afin que votre mot de passe vous soit envoyé par mail."
+msgstr ""
+"Cochez cette case afin que votre mot de passe vous soit envoyé par mail."
 
 #: n/skins/custom_generic/logged_in.py:28
 #: n/skins/custom_generic/logged_in_template.pt:9
@@ -736,7 +754,10 @@ msgstr "Changer le mot de passe"
 msgid ""
 "You are logged in outside the portal. You may need to <a href=\"/"
 "manage_zmi_logout\">log out of the Zope management interface</a>."
-msgstr "Vous vous êtes connecté en dehors du portail. Vous devez vous déconnecter depuis <a href=\"/manage_zmi_logout\">l'interface d'administration de zope (ZMI)</a>."
+msgstr ""
+"Vous vous êtes connecté en dehors du portail. Vous devez vous déconnecter "
+"depuis <a href=\"/manage_zmi_logout\">l'interface d'administration de zope "
+"(ZMI)</a>."
 
 #: n/skins/custom_generic/login_form.pt:11
 msgid "Log in"
@@ -791,13 +812,17 @@ msgstr "Pas de panique !"
 msgid ""
 "Just enter your username below, click <em>Send</em>, and your password will "
 "be mailed to you if you gave a valid email address when you signed on."
-msgstr "Entrez ci-dessous votre login et cliquez sur « Envoyer ». Votre mot de passe vous sera immédiatement envoyé par mail, dans la mesure où vous aviez entré une adresse valide, lors de votre inscription."
+msgstr ""
+"Entrez ci-dessous votre login et cliquez sur « Envoyer ». Votre mot de passe "
+"vous sera immédiatement envoyé par mail, dans la mesure où vous aviez entré "
+"une adresse valide, lors de votre inscription."
 
 #: n/skins/custom_generic/mail_password_form.pt:22
 msgid ""
 "If this will not work for you (for example, if you forget your member name "
 "or didn't enter your email address) send email to ${admin_email}."
-msgstr "Si cette procédure ne fonctionne pas, envoyez un e-mail à ${admin_email}."
+msgstr ""
+"Si cette procédure ne fonctionne pas, envoyez un e-mail à ${admin_email}."
 
 #. Default: "Send"
 #: n/skins/custom_generic/mail_password_form.pt:31
@@ -809,7 +834,9 @@ msgstr " Envoyer "
 msgid ""
 "Your password has been mailed. <br /> It should arrive in your mailbox "
 "momentarily."
-msgstr "Votre mot de passe vient d'être envoyé. <br /> Il devrait arriver dans votre messagerie d'un moment à l'autre."
+msgstr ""
+"Votre mot de passe vient d'être envoyé. <br /> Il devrait arriver dans votre "
+"messagerie d'un moment à l'autre."
 
 #: n/skins/custom_generic/mail_password_template.py:30
 msgid "${portal_title}: Membership reminder"
@@ -918,7 +945,8 @@ msgstr "Nom d'expéditeur"
 #: n/skins/custom_generic/reconfig_template.pt:22
 msgid ""
 "When the portal generates mail, it uses this name as its (apparent) sender."
-msgstr "Lorsque le portail envoie un mail, il utilise ce nom pour l'expéditeur."
+msgstr ""
+"Lorsque le portail envoie un mail, il utilise ce nom pour l'expéditeur."
 
 #: n/skins/custom_generic/reconfig_template.pt:28
 msgid "Portal 'From' address"
@@ -928,7 +956,8 @@ msgstr "Email d'expéditeur"
 msgid ""
 "When the portal generates mail, it uses this address as its (apparent) "
 "return address."
-msgstr "Lorsque le portail envoie un mail, il utilise cette adresse d'expédition."
+msgstr ""
+"Lorsque le portail envoie un mail, il utilise cette adresse d'expédition."
 
 #: n/skins/custom_generic/reconfig_template.pt:39
 msgid "SMTP server"
@@ -954,7 +983,9 @@ msgstr "Description du portail"
 msgid ""
 "This description is made available via syndicated content and elsewhere. It "
 "should be fairly brief."
-msgstr "Cette description est visible via les canaux de diffusion et partout ailleurs. Il est recommandé d'être concis."
+msgstr ""
+"Cette description est visible via les canaux de diffusion et partout "
+"ailleurs. Il est recommandé d'être concis."
 
 #: n/skins/custom_generic/reconfig_template.pt:70
 msgid "Keywords"
@@ -963,7 +994,8 @@ msgstr "Mots clés"
 #: n/skins/custom_generic/reconfig_template.pt:74
 msgid ""
 "Keywords describing the portal. Type one keyword (or expression) per line."
-msgstr "Mots clés décrivant le portail. Entrez un mot (ou expression) par ligne."
+msgstr ""
+"Mots clés décrivant le portail. Entrez un mot (ou expression) par ligne."
 
 #: n/skins/custom_generic/reconfig_template.pt:79
 msgid "Copyright notice"
@@ -992,7 +1024,9 @@ msgstr "Encodage par défaut du portail"
 #: n/skins/custom_generic/reconfig_template.pt:107
 msgid ""
 "Charset used to decode portal content strings. If empty, 'ascii' is used."
-msgstr "Encodage utilisé par le portail pour décoder les textes des contenus. Si ce champ est laissé vide, c'est l'encodage ascii qui sera utilisé."
+msgstr ""
+"Encodage utilisé par le portail pour décoder les textes des contenus. Si ce "
+"champ est laissé vide, c'est l'encodage ascii qui sera utilisé."
 
 #: n/skins/custom_generic/reconfig_template.pt:113
 msgid "Thumbnails size"
@@ -1000,7 +1034,8 @@ msgstr "Taille des vignettes"
 
 #: n/skins/custom_generic/reconfig_template.pt:119
 msgid "This is the size of the thumbnails in the photo album, in pixels."
-msgstr "C'est la taille, en pixels, utilisée pour les vignettes des albums photo."
+msgstr ""
+"C'est la taille, en pixels, utilisée pour les vignettes des albums photo."
 
 #: n/skins/custom_generic/reconfig_template.pt:124
 msgid "Default ajax options"
@@ -1073,7 +1108,10 @@ msgid ""
 "This application's transactional feature allows you to easily undo changes "
 "made to the application's settings or data. You can revert the application "
 "to a &quot;snapshot&quot; of its state at a previous point in time."
-msgstr "Cette application est transactionnelle. Cette caractéristique permet l'annulation facile des changements, afin de revenir à un état du site à un instant précis."
+msgstr ""
+"Cette application est transactionnelle. Cette caractéristique permet "
+"l'annulation facile des changements, afin de revenir à un état du site à un "
+"instant précis."
 
 #: n/skins/custom_generic/undo_form.pt:34
 msgid ""
@@ -1081,7 +1119,10 @@ msgid ""
 "button to undo the transactions. Note that even though a transaction is "
 "shown below, you will not be able to undo it if later transactions modified "
 "objects that were modified by the transaction."
-msgstr "Sélectionnez une ou plusieurs transaction ci-dessous puis cliquez sur « Annuler ».  Notez que l'annulation peut échouer s'il y a eu, entre temps, des transactions portants sur des objets concernés par l'annulation."
+msgstr ""
+"Sélectionnez une ou plusieurs transaction ci-dessous puis cliquez sur "
+"« Annuler ».  Notez que l'annulation peut échouer s'il y a eu, entre temps, "
+"des transactions portants sur des objets concernés par l'annulation."
 
 #: n/skins/custom_generic/undo_form.pt:51
 #: n/skins/custom_generic/undo_form.pt:99
@@ -1142,17 +1183,9 @@ msgstr "Mois"
 msgid "Next"
 msgstr "Suivant"
 
-#: n/skins/generic/content_byline.pt:14
-msgid "Modified on"
-msgstr "Modifié le"
-
-#: n/skins/generic/content_byline.pt:14
-msgid "at"
-msgstr "à"
-
-#: n/skins/generic/content_byline.pt:14
-msgid "creator:"
-msgstr "créateur :"
+#: n/skins/generic/content_byline.pt:17
+msgid "Modified on ${date} at ${time} – creator: ${creator}"
+msgstr "Modifié le ${date} à ${time} – créateur : ${creator}"
 
 #: n/skins/generic/content_depublish_form.pt:8
 msgid "Depublish: \"${docTitle}\""
@@ -1740,13 +1773,20 @@ msgid ""
 "For a simple text search, enter your search term here. Multiple words may be "
 "found by combining them with <b>AND</b> and <b>OR</b>. This will find text "
 "in items' contents, title and description."
-msgstr "Pour une recherche simple sur le texte, entrez un terme ici. Vous pouvez entrer plusieurs mots en les combinant avec <b>AND</b> ou <b>OR</b>. La recherche s'effectuera aussi bien dans le corps du texte, le titre et la description des documents."
+msgstr ""
+"Pour une recherche simple sur le texte, entrez un terme ici. Vous pouvez "
+"entrer plusieurs mots en les combinant avec <b>AND</b> ou <b>OR</b>. La "
+"recherche s'effectuera aussi bien dans le corps du texte, le titre et la "
+"description des documents."
 
 #: n/skins/generic/search_form.pt:40
 msgid ""
 "You may also search the items' descriptions and titles specifically. "
 "Multiple words may be found by combining them with <b>AND</b> and <b>OR</b>."
-msgstr "Vous pouvez également chercher à partir des titres et des descriptions. Plusieurs mots peuvent être combinés avec des opérateurs <b>AND</b> et <b>OR</b>."
+msgstr ""
+"Vous pouvez également chercher à partir des titres et des descriptions. "
+"Plusieurs mots peuvent être combinés avec des opérateurs <b>AND</b> et "
+"<b>OR</b>."
 
 #: n/skins/generic/search_form.pt:49
 msgid "Review Status"
@@ -1772,7 +1812,9 @@ msgstr "publié"
 msgid ""
 "If you wish to constrain results to items in certain states, select them "
 "from this list."
-msgstr "Si vous souhaitez contraindre la recherche à certains états, sélectionnez dans la liste."
+msgstr ""
+"Si vous souhaitez contraindre la recherche à certains états, sélectionnez "
+"dans la liste."
 
 #: n/skins/generic/search_form.pt:68
 msgid "Find new items since..."
@@ -1800,7 +1842,9 @@ msgstr "Ce dernier mois"
 
 #: n/skins/generic/search_form.pt:80
 msgid "You may find only recent items by selecting a time-frame."
-msgstr "Vous pouvez choisir de rechercher uniquement les éléments récents en sélectionnant la fourchette de temps."
+msgstr ""
+"Vous pouvez choisir de rechercher uniquement les éléments récents en "
+"sélectionnant la fourchette de temps."
 
 #: n/skins/generic/search_form.pt:87
 msgid "Item type"
@@ -1810,13 +1854,17 @@ msgstr "Type"
 msgid ""
 "You may limit your results to particular kinds of items by selecting them "
 "above. To find all kinds of items, do not select anything."
-msgstr "Vous pouvez limiter les résultats à des types d'éléments particuliers en sélectionnant ci-dessus. Pour rechercher tout, ne rien sélectionner."
+msgstr ""
+"Vous pouvez limiter les résultats à des types d'éléments particuliers en "
+"sélectionnant ci-dessus. Pour rechercher tout, ne rien sélectionner."
 
 #: n/skins/generic/search_form.pt:112
 msgid ""
 "To find items by a particular user, enter one or more of his properties "
 "(login, name, email...)."
-msgstr "Pour trouver les éléments d'un utilisateur particulier, entrer une ou plusieurs de ses propriétés (login, nom, email…)."
+msgstr ""
+"Pour trouver les éléments d'un utilisateur particulier, entrer une ou "
+"plusieurs de ses propriétés (login, nom, email…)."
 
 #. Default: "Search"
 #: n/skins/generic/search_form.pt:124
@@ -1920,7 +1968,9 @@ msgstr "Suggestions de dépannage"
 msgid ""
 "This resource may be trying to reference a nonexistent object or variable "
 "<strong>${error_value}</strong>."
-msgstr "Cette ressource essaye peut-être d'accéder à un élément ou une variable inexistant <strong>${error_value}</strong>."
+msgstr ""
+"Cette ressource essaye peut-être d'accéder à un élément ou une variable "
+"inexistant <strong>${error_value}</strong>."
 
 #: n/skins/generic/standard_error_message.pt:44
 msgid "The URL may be incorrect."
@@ -1932,19 +1982,24 @@ msgstr "Les paramètres envoyés à cette ressource sont peut-être incorrects."
 
 #: n/skins/generic/standard_error_message.pt:47
 msgid "A resource that this resource relies on may be encountering an error."
-msgstr "Une ressource utilisée par cette ressource a peut-être rencontré une erreur."
+msgstr ""
+"Une ressource utilisée par cette ressource a peut-être rencontré une erreur."
 
 #: n/skins/generic/standard_error_message.pt:51
 msgid ""
 "For more detailed information about the error, please refer to the HTML "
 "source for this page."
-msgstr "Pour des informations plus détaillées à propos de l'erreur, merci de vous référer au code HTML de cette page."
+msgstr ""
+"Pour des informations plus détaillées à propos de l'erreur, merci de vous "
+"référer au code HTML de cette page."
 
 #: n/skins/generic/standard_error_message.pt:55
 msgid ""
 "If the error persists please contact the site maintainer. Thank you for your "
 "patience."
-msgstr "Si l'erreur persiste, merci de contacter la maintenance du site. Merci de votre compréhension."
+msgstr ""
+"Si l'erreur persiste, merci de contacter la maintenance du site. Merci de "
+"votre compréhension."
 
 #: n/skins/generic/standard_error_message.pt:64
 msgid "Show Error Log Entry"
@@ -2888,6 +2943,15 @@ msgstr "Ceci est la page d'accueil par défaut."
 
 msgid "Huge Folder"
 msgstr "Dossier"
+
+#~ msgid "Modified on"
+#~ msgstr "Modifié le"
+
+#~ msgid "at"
+#~ msgstr "à"
+
+#~ msgid "creator:"
+#~ msgstr "créateur :"
 
 #~ msgid "Configure ${portal_calendar} Tool"
 #~ msgstr "Configurer l'outil ${portal_calendar}"

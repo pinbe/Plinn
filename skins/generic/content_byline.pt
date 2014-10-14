@@ -10,8 +10,11 @@
 										 creatorFullName python:mtool.getMemberFullNameById(creator, nameBefore=0) ;
 										 date python:here.modified();
 										 modificationDate python:date.strftime('%d/%m/%Y');
-										 modificationTime python:date.strftime('%Hh%M')">
-			<span tal:omit-tag="" i18n:translate="">Modified on</span> <span tal:replace="modificationDate">Today</span> <span tal:omit-tag="" i18n:translate="">at</span> <span tal:replace="modificationTime">Hour</span> – <span tal:omit-tag="" i18n:translate="">creator: </span> <span tal:content="creatorFullName">Creator</span>
+										 modificationTime python:date.strftime('%Hh%M')"
+         i18n:translate="">
+         Modified on <span tal:replace="modificationDate" i18n:name="date">Today</span>
+         at <span tal:replace="modificationTime" i18n:name="time">Hour</span> – creator:
+         <span tal:replace="creatorFullName" i18n:name="creator">Creator</span>
     </div>
 	</body>
 </html>
