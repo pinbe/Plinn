@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Tue Oct 14 14:23:35 2014\n"
+"POT-Creation-Date: Tue Oct 14 14:34:37 2014\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -217,6 +217,7 @@ msgid " Change and View "
 msgstr ""
 
 #: n/skins/content/folder_factories.pt:18
+#: n/skins/custom_generic/folder_contents.py:103
 #: n/skins/custom_generic/personalize_form.pt:27
 #: n/skins/generic/gruf_macros.pt:256
 #: n/skins/generic/gruf_macros.pt:378
@@ -521,6 +522,19 @@ msgstr ""
 
 #: n/skins/custom_control/folder_up_control.py:17
 msgid "%d item moved up.%d items moved up."
+msgstr ""
+
+#: n/skins/custom_generic/folder_contents.py:99
+#: n/skins/photo_theme/search_results_macros.pt:14
+msgid "Type"
+msgstr ""
+
+#: n/skins/custom_generic/folder_contents.py:107
+msgid "Last Modified"
+msgstr ""
+
+#: n/skins/custom_generic/folder_contents.py:117
+msgid "Set Sorting as Default"
 msgstr ""
 
 #: n/skins/custom_generic/folder_contents_template.pt:29
@@ -1893,10 +1907,6 @@ msgstr ""
 
 #: n/skins/photo_theme/search_results_macros.pt:13
 msgid "Creator"
-msgstr ""
-
-#: n/skins/photo_theme/search_results_macros.pt:14
-msgid "Type"
 msgstr ""
 
 #: n/skins/photo_theme/search_results_macros.pt:15

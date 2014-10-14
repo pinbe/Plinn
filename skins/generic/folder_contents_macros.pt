@@ -28,7 +28,7 @@
       <thead id="FolderListingHeader">
         <tr>
           <th tal:attributes="width column_info/width; colspan column_info/colspan" tal:repeat="column_info listColumnInfos" nowrap="nowrap" >
-            <a href="." tal:attributes="href column_info/url" tal:content="column_info/title" i18n:translate="">Type</a>
+            <a href="." tal:attributes="href column_info/url" tal:content="column_info/title">Type</a>
             <span  tal:repeat="img column_info/images" tal:omit-tag="">
               <a tal:omit-tag="python:not img.has_key('href')"
                  tal:attributes="href img/href|nothing ; title img/alt" i18n:attributes="title"

@@ -11,7 +11,7 @@ from Products.CMFDefault.permissions import ListFolderContents
 from Products.CMFDefault.permissions import ManageProperties
 from Products.CMFDefault.permissions import ViewManagementScreens
 from Products.CMFDefault.permissions import ModifyPortalContent
-from Products.CMFDefault.utils import html_marshal
+from Products.CMFDefault.utils import html_marshal, Message as _
 
 mtool = getToolByName(script, 'portal_membership')
 checkPermission = mtool.checkPermission
@@ -96,15 +96,15 @@ else:
     is_default = 0
 
 columns = ( {'key': 'Type',
-             'title': 'Type',
+             'title': _('Type'),
              'width': None,
              'colspan': '2'}
             , {'key': 'id',
-             'title': 'Name',
+             'title': _('Name'),
              'width': None,
              'colspan': None}
             , {'key': 'modified',
-             'title': 'Last Modified',
+             'title': _('Last Modified'),
              'width': None,
              'colspan': None}
             )
@@ -114,7 +114,7 @@ for column in columns:
     if key == column['key'] :
         if not is_default and manage_props_allowed :
             images.append( {'src' : getattr(context, 'set_default_sorting.gif').absolute_url(),
-                            'alt' : 'Set Sorting as Default',
+                            'alt' : _('Set Sorting as Default'),
                             'id'     : 'SetSortingAsDefault',
                             'href': '%s?%s' % (target, make_query(items_sort=True,
                                                                   key=key,
