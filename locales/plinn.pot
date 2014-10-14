@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Tue Oct 14 14:34:37 2014\n"
+"POT-Creation-Date: Tue Oct 14 15:55:50 2014\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -2765,3 +2765,16 @@ msgstr ""
 
 msgid "Huge Folder"
 msgstr ""
+
+msgid "List"
+msgstr ""
+
+msgid "Properties"
+msgstr ""
+
+msgid "Directory"
+msgstr ""
+
+msgid "Configure portal"
+msgstr ""
+

@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Tue Oct 14 14:34:37 2014\n"
-"PO-Revision-Date: 2014-10-14 14:39+0200\n"
+"POT-Creation-Date: Tue Oct 14 15:55:50 2014\n"
+"PO-Revision-Date: 2014-10-14 15:56+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
 "Language: \n"
@@ -2920,6 +2920,18 @@ msgstr "This is the default home page."
 
 msgid "Huge Folder"
 msgstr "Huge Folder"
+
+msgid "List"
+msgstr "List"
+
+msgid "Properties"
+msgstr "Properties"
+
+msgid "Directory"
+msgstr "Directory"
+
+msgid "Configure portal"
+msgstr "Configure portal"
 
 #~ msgid "Modified on ${date} at ${time} – creator: ${creator}"
 #~ msgstr "Modified on ${date} at ${time} – creator: ${creator}"
