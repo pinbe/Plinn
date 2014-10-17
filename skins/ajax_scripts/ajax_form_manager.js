@@ -100,16 +100,11 @@ FormManager.prototype.submit = function(evt) {
 		query += submitButton.name + '=' + submitButton.value + '&';
 	}
 	
-	if (window.AJAX_CONFIG && ((AJAX_CONFIG & 1) === 1)) {
-		if (form.method.toLowerCase() === 'post') {
-			this._post(query);
-		}
-		else {
-			this._get(query);
-		}
+	if (form.method.toLowerCase() === 'post') {
+		this._post(query);
 	}
 	else {
-		this._post(query);
+		this._get(query);
 	}
 	
 	try {disableDefault(evt);}
@@ -145,10 +140,9 @@ FormManager.prototype._post = function(query) {
 };
 
 FormManager.prototype._get = function(query) {
-	// send form by browser location
 	var url = this.form.action;
 	url += '?' + query;
-	linkHandler.loadUrl(url);
+	AjaxLinkHandler.loadUrl(url);
 };
 
 
