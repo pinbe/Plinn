@@ -142,7 +142,7 @@ FormManager.prototype._post = function(query) {
 FormManager.prototype._get = function(query) {
 	var url = this.form.action;
 	url += '?' + query;
-	AjaxLinkHandler.loadUrl(url);
+	AjaxLinkHandler.prototype.loadUrl(url);
 };
 
 
