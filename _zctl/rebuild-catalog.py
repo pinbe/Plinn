@@ -6,9 +6,11 @@ from Products.CMFCore.CMFCatalogAware import CMFCatalogAware
 import transaction
 
 count = 0
+errorLog = None
 
 def checkContents(ob) :
     global count
+    global errorLog
     try :
         print ob.absolute_url()
     except Exception, e:
@@ -18,7 +20,8 @@ def checkContents(ob) :
         print >> errorLog
     
     if isinstance(aq_base(ob), CMFCatalogAware) :
-        assert ob._getCatalogTool()
+        ctool = ob._getCatalogTool()
+        assert ctool
         try :
             ctool.indexObject(ob)
             count = count + 1
@@ -35,23 +38,37 @@ def checkContents(ob) :
             checkContents(v)
 
 
-parser = ArgumentParser(description="Rebuild entire catalog by walking contents tree.")
-parser.add_argument('portal_path')
-parser.add_argument('--error-log', help='Error log file. Default: ~/catalog-rebuild-error.log',
-                    default='~/catalog-rebuild-error.log', required=False, dest='errorLogPath')
+def indexMemberdata(portal) :
+    mtool = portal.portal_membership
+    ctool = portal.portal_catalog
+    for m in mtool.getOtherMembers([]) :
+        ctool.indexObject(m)
 
-args = parser.parse_args()
-portal = app.unrestrictedTraverse(args.portal_path)
-setSite(portal)
-ctool = portal.portal_catalog
-errorLogPath = os.path.expanduser(args.errorLogPath)
-errorLog = open(errorLogPath, 'w')
+def main(path) :
+    portal = app.unrestrictedTraverse(path)
+    setSite(portal)
+    errorLogPath = os.path.expanduser(args.errorLogPath)
+    global errorLog
+    errorLog = open(errorLogPath, 'w')
 
-try :
-    checkContents(portal)
-    transaction.commit()
-    print count
-    print 'Done.'
-finally :
-    errorLog.close()
+    try :
+        checkContents(portal)
+        transaction.commit()
+        indexMemberdata(portal)
+        transaction.commit()
+        print count
+        print 'Done.'
+    finally :
+        errorLog.close()
+    
+
+
+if __name__ == '__main__':
+    parser = ArgumentParser(description="Rebuild entire catalog by walking contents tree.")
+    parser.add_argument('portal_path')
+    parser.add_argument('--error-log', help='Error log file. Default: ~/catalog-rebuild-error.log',
+                        default='~/catalog-rebuild-error.log', required=False, dest='errorLogPath')
+
+    args = parser.parse_args()
+    main(args.portal_path)
     
