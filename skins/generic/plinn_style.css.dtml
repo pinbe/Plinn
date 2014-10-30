@@ -9,9 +9,10 @@ input, textarea, select {
 }
 
 table.TwoColumnForm {
-	color: &dtml-twoColumnFormFontColor;;
+  color: &dtml-twoColumnFormFontColor;;
   background-color: &dtml-twoColumnFormBackground;;
   padding : 4px ;
+  border-radius: &dtml-borderRadius;px;
 }
   
 table.TwoColumnForm td.ListDefinition {
@@ -96,18 +97,18 @@ table.assign_global_roles {
 .config a:link,
 .config a:visited,
 .config a:active {
-	color : &dtml-linkColor;;
+  color : &dtml-linkColor;;
 }
 
 .config a:hover {
-	color : &dtml-linkHoverColor;;
+  color : &dtml-linkHoverColor;;
 }
 
 .config .tabs a,
 .config .tabs a:link,
 .config .tabs a:visited,
 .config .tabs a:active {
-	color : &dtml-tabsFontColor;;
+  color : &dtml-tabsFontColor;;
   text-decoration: none
 
 }
@@ -162,7 +163,7 @@ table.assign_global_roles {
 }
   
 .boxes_container img {
-	vertical-align:middle
+  vertical-align:middle
 }
   
 .boxes_container a:link,
@@ -419,47 +420,47 @@ table.assign_global_roles {
 }
 
 .resize_handle {
-	position : absolute;
-	display : block;
-	right : 0;
-	bottom : 0;
-	visibility:hidden;
-	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='&dtml-portal_url;/resize_handle.png');
-	line-height : 0; /* IE hack */
-	background-repeat : no-repeat;
-	width : 12px;
-	height : 12px;
-/*	cursor : se-resize;*/
+  position : absolute;
+  display : block;
+  right : 0;
+  bottom : 0;
+  visibility:hidden;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='&dtml-portal_url;/resize_handle.png');
+  line-height : 0; /* IE hack */
+  background-repeat : no-repeat;
+  width : 12px;
+  height : 12px;
+/*  cursor : se-resize;*/
 }
 
 .resize_handle[class] {
-	background-image : url(&dtml-portal_url;/resize_handle.png);
+  background-image : url(&dtml-portal_url;/resize_handle.png);
 }
 
 .rectangle_header {
-	position : absolute;
-	background : url(&dtml-portal_url;/degrad_rectangle_header.gif);
-	height : 11px;
-	width : 100%;
-	border: 1px solid #cbcbcb;
-	border-bottom : 1px solid #9f9f9f;
-	top : -13px;
-	left : -1px;
-	visibility:hidden;
-/*	cursor : move;*/
+  position : absolute;
+  background : url(&dtml-portal_url;/degrad_rectangle_header.gif);
+  height : 11px;
+  width : 100%;
+  border: 1px solid #cbcbcb;
+  border-bottom : 1px solid #9f9f9f;
+  top : -13px;
+  left : -1px;
+  visibility:hidden;
+/*  cursor : move;*/
 }
 
 .rectangle_delimg {
-	margin-left:5px;
+  margin-left:5px;
 }
 
 
 #ImageUploadForm, #FileUploadForm {
   border : 1px solid #aaa;
   position : absolute;
-	padding : 2px;
-	top : 29px;
-	left : -317px;
+  padding : 2px;
+  top : 29px;
+  left : -317px;
   height : 130px;
   width : 310px;
   background : #ccc;
@@ -497,47 +498,47 @@ table.assign_global_roles {
 
 /* clipboard */
 .clipboard td, .clipboard ul {
-	padding : 0;
+  padding : 0;
 }
 
 
 .clipboard li {
-	padding-left : 5px;
-	list-style : none outside none;
+  padding-left : 5px;
+  list-style : none outside none;
 }
 
 .clipboard li.odd {
-	background-color : &dtml-oddRowBackgroundColor;;
+  background-color : &dtml-oddRowBackgroundColor;;
 }
 
 .clipboard li.even {
-	background-color : &dtml-evenRowBackgroundColor;;
+  background-color : &dtml-evenRowBackgroundColor;;
 }
 
 .clipboard input {
-	font-size : &dtml-fontSmallSize;;
+  font-size : &dtml-fontSmallSize;;
 }
 
 .live_field {
-	border : 1px solid black;
+  border : 1px solid black;
 }
 
 .editable:hover {
-	background: #fff8aa;
-	cursor:text;
-	border-color: #666666 rgb(221, 221, 221) rgb(221, 221, 221) rgb(102, 102, 102);
-	border-style:solid;
-	border-width:2px;
+  background: #fff8aa;
+  cursor:text;
+  border-color: #666666 rgb(221, 221, 221) rgb(221, 221, 221) rgb(102, 102, 102);
+  border-style:solid;
+  border-width:2px;
 }
 
 /* Epoz */
 
 .EpozToolbar img, #EpozToolbar img {
-	border: 1px solid rgb(170, 170, 170);
-	background-color: rgb(204, 204, 204);
-	cursor: pointer;
-	margin-right: 1px;
-	margin-bottom: 1px;
+  border: 1px solid rgb(170, 170, 170);
+  background-color: rgb(204, 204, 204);
+  cursor: pointer;
+  margin-right: 1px;
+  margin-bottom: 1px;
 }
 
 /* Mosaic document */
@@ -553,16 +554,16 @@ form.block_form { border : 2px solid #d7d7d7; background-color : #fff }
 /* completions */
 
 ul.completions {
-	border:1px solid black;
-	margin:0;
-	padding:0;
-	position:absolute;
-	background:#fff;
-	list-style:none;
-	cursor : pointer;
+  border:1px solid black;
+  margin:0;
+  padding:0;
+  position:absolute;
+  background:#fff;
+  list-style:none;
+  cursor : pointer;
 }
 ul.completions li.selected {
-	background:&dtml-linkHoverColor;;
+  background:&dtml-linkHoverColor;;
 }
 
 ul.completions li:hover {
