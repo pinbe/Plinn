@@ -10,6 +10,7 @@
 }
 
 .std-background {
+	color: #fff;
   padding: &dtml-borderRadius;px;
   background: &dtml-outlineColor;;
 }

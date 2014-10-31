@@ -28,7 +28,7 @@ inputFontColor:string=#000
 
 evenRowBackgroundColor:string=#f0f0f0
 oddRowBackgroundColor:string=#fff
-highLightColor:string=#f7fd5c
+highLightColor:string=#ffa239
 
 messageBackgroundColor:string=#fff
 messageBorderColor:string=#fff
@@ -48,7 +48,7 @@ portfolioSlideBackgroundColor:string=#f2f2f2
 
 memberActionsBoxBackground:string=#f6f6f6
 footerBackgroundColor:string=#f6f6f6
-outlineColor:string=#fc3
+outlineColor:string=#ffa239
 bylineBackgroundColor:string=#fff
 messageFontColor:string=#000
 listingHeaderBackgroundColor:string=#ddd
