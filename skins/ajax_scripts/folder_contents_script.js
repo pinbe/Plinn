@@ -352,14 +352,25 @@ DDFolderUploader.prototype.beforeUpload = function(item) {
 DDFolderUploader.prototype.uploadCompleteHandlerCB = function(req) {
 	var item = this.uploadedItem;
 	var row = getCopyOfNode(req.responseXML.documentElement.firstChild);
-	row.className = item.className;
 
 	if (req.status === 200) {
 		// update
-		console.log('todo');
+		this.listing.removeChild(item);
+		var itemUrl = row.getElementsByTagName('a')[0].href;
+		var links = this.listing.getElementsByTagName('a');
+		var i, existingRow;
+		for (i=0 ; i < links.length ; i++) {
+			if (links[i].href === itemUrl) {
+				existingRow = links[i].parentNode.parentNode;
+				row.className = existingRow.className;
+				this.listing.replaceChild(row, existingRow);
+				break;
+			}
+		}
 	}
 	else if(req.status === 201) {
 		// creation
+		row.className = item.className;
 		this.listing.replaceChild(row, item);
 		this.progressBarMaxSize = row.clientWidth;
 	}
