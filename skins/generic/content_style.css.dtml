@@ -16,7 +16,6 @@
 
 .std-focusbox {
   background: &dtml-tabsBorderColor;;
-  color: &dtml-tabsFontColor;;
   padding: &dtml-borderRadius;px;
 }
 
