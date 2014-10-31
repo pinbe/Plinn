@@ -10,7 +10,7 @@
 
 .std-background {
   padding: &dtml-borderRadius;px;
-  background: &dtml-backgroundColor;;
+  background: &dtml-outlineColor;;
 }
 
 .std-focusbox {
