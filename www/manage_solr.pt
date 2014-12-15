@@ -1,18 +1,23 @@
 <tal:header tal:replace="structure here/manage_page_header">header</tal:header>
 <tal:tabs   tal:replace="structure here/manage_tabs">tabs</tal:tabs>
 <div i18n:domain="plinn">
-  <h3 i18n:translate="">Configure Solr delegated indexes</h3>
-  <p class="form-help" i18n:translate="">
-    Enter names of indexes to delegate to Solr.
-    One per line.
-  </p>
   <form action="." method="post" tal:attributes="action here/absolute_url">
-    <textarea name="indexes:lines" cols="40" rows="24"
-              tal:content="python:'\n'.join(here.getDelegatedIndexes())">
-    </textarea><br/>
-    <input type="submit" name="setDelegatedIndexes:method" value="Save" i18n:attributes="value" />
+    <div>
+      <h3 i18n:translate="">Solr server url</h3>
+      <input type="text" name="url" size="60"
+             tal:attributes="value here/solr_url"/>
+    </div>
+    <div>
+      <h3 i18n:translate="">Solr delegated indexes</h3>
+      <p class="form-help" i18n:translate="">
+        Enter names of indexes to delegate to Solr.
+        One per line.
+      </p>
+      <textarea name="indexes:lines" cols="40" rows="24"
+                tal:content="python:'\n'.join(here.getDelegatedIndexes())">
+      </textarea><br/>
+    </div>
+    <input type="submit" name="setSolrProperties:method" value="Save" i18n:attributes="value" />
   </form>
 </div>
 <tal:footer tal:replace="structure here/manage_page_footer">footer</tal:footer>
-
-

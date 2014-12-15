@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Tue Oct 14 15:55:50 2014\n"
-"PO-Revision-Date: 2014-10-14 15:57+0200\n"
+"POT-Creation-Date: Mon Dec 15 15:35:05 2014\n"
+"PO-Revision-Date: 2014-12-15 15:42+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -229,7 +229,7 @@ msgstr "Ajouter"
 #: n/skins/content/topic_edit_template.pt:26
 #: n/skins/custom_content/document_edit_template.pt:23
 #: n/skins/custom_content/event_edit_template.pt:135
-#: n/skins/generic/search_results_template.pt:87 n/www/manage_solr.pt:13
+#: n/skins/generic/search_results_template.pt:87 n/www/manage_solr.pt:20
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -2100,11 +2100,15 @@ msgstr "(Sans titre)"
 msgid "(No description)"
 msgstr "(Sans description)"
 
-#: n/www/manage_solr.pt:4
-msgid "Configure Solr delegated indexes"
-msgstr "Configurer les index délégués à Solr"
+#: n/www/manage_solr.pt:6
+msgid "Solr server url"
+msgstr "Url du serveur Solr"
 
-#: n/www/manage_solr.pt:5
+#: n/www/manage_solr.pt:11
+msgid "Solr delegated indexes"
+msgstr "Index délégués à Solr"
+
+#: n/www/manage_solr.pt:12
 msgid "Enter names of indexes to delegate to Solr. One per line."
 msgstr "Entrer les noms des index à déléguer à Solr. Un par ligne."
 
@@ -2966,6 +2970,9 @@ msgstr "Annuaire"
 
 msgid "Configure portal"
 msgstr "Configurer portail"
+
+#~ msgid "Configure Solr delegated indexes"
+#~ msgstr "Configurer les index délégués à Solr"
 
 #~ msgid "Modified on ${date} at ${time} – creator: ${creator}"
 #~ msgstr "Modifié le ${date} à ${time} – créateur : ${creator}"

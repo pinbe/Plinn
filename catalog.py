@@ -58,9 +58,10 @@ class CatalogTool(BaseCatalogTool) :
         """ read the method name """
         return self.delegatedIndexes
     
-    security.declareProtected(ManagePortal, 'setDelegatedIndexes')
-    def setDelegatedIndexes(self, indexes, REQUEST=None) :
-        """setDelegatedIndexes documentation"""
+    security.declareProtected(ManagePortal, 'setSolrProperties')
+    def setSolrProperties(self, url, indexes, REQUEST=None) :
+        """ set Solr server url and delegated indexes """
+        self.solr_url = url
         self.delegatedIndexes = tuple([i.strip() for i in indexes if i.strip()])
         if REQUEST :
             REQUEST.RESPONSE.redirect(self.absolute_url() + '/manage_solr?manage_tabs_message=Saved changes.')
