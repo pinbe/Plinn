@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(name='Products.Plinn',
       version='3.0',
-      descripton='Plinn content management framework',
+      description='Plinn content management framework',
       url='http://plinn.org',
       author="Benoît Pin – MINES ParisTech – Armines",
       author_email="benoit.pin@mines-paristech.fr",
