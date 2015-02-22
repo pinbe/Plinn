@@ -19,24 +19,26 @@
             <th><br/></th>
           </tr>
           <div tal:repeat="item here/allowedContentTypes" tal:omit-tag="">
-            <tr tal:define="icon python:here.restrictedTraverse(item.getIcon())">
-              <td class="ListName">
-                <img tal:attributes="src icon/absolute_url ; alt item/Title ; height icon/height ; width icon/width" i18n:attributes="alt"/>
-              </td>
-              <td tal:content="item/Title" i18n:translate="" class="ListName">Content name</td>
-              <td tal:condition="python:not item.listActionInfos('object/create', check_visibility=0)">
-                <input type="text" name="id" size="24" tal:attributes="name string:${item/id}.id:record; value ucn"/>
-              </td>
-              <td tal:condition="python:item.listActionInfos('object/create', check_visibility=0)">
-                <input type="hidden" value="1" tal:attributes="name string:${item/id}.create_form:record"/>
-              </td>
-              <td>
-                <input type="submit" value="Add" tal:attributes="name string:${item/id}.type:record" i18n:attributes="value"/>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="4" class="spacing"></td>
-            </tr>
+            <div tal:condition="python:item.getId() != 'File'" tal:omit-tag="">
+              <tr tal:define="icon python:here.restrictedTraverse(item.getIcon())">
+                <td class="ListName">
+                  <img tal:attributes="src icon/absolute_url ; alt item/Title ; height icon/height ; width icon/width" i18n:attributes="alt"/>
+                </td>
+                <td tal:content="item/Title" i18n:translate="" class="ListName">Content name</td>
+                <td tal:condition="python:not item.listActionInfos('object/create', check_visibility=0)">
+                  <input type="text" name="id" size="24" tal:attributes="name string:${item/id}.id:record; value ucn"/>
+                </td>
+                <td tal:condition="python:item.listActionInfos('object/create', check_visibility=0)">
+                  <input type="hidden" value="1" tal:attributes="name string:${item/id}.create_form:record"/>
+                </td>
+                <td>
+                  <input type="submit" value="Add" tal:attributes="name string:${item/id}.type:record" i18n:attributes="value"/>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" class="spacing"></td>
+              </tr>
+            </div>
           </div>
         </table>
       </form>
