@@ -14,7 +14,7 @@ if REQUEST :
 	kw.update(REQUEST.form)
 	
 try :
-	target = context.getActionInfo('object/history')['url']
+	target = context.getParentNode().getActionInfo('object/view')['url']
 except ValueError :
 	target = context.getActionInfo('object/view')['url']
 

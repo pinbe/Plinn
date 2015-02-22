@@ -17,7 +17,7 @@
         <legend i18n:translate="">Notify by e-mail</legend>
         <div tal:repeat="member creators" tal:omit-tag="">
           <label>
-            <input type="checkbox" name="recipients:list" value="membre" tal:attributes="value member/id" checked="checked" />
+            <input type="checkbox" name="recipients:list" value="membre" tal:attributes="value member/id"/>
             <span tal:replace="member/getMemberFullName">membre</span>
           </label><br/>
         </div>

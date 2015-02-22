@@ -1,6 +1,6 @@
 #! /bin/sh
 
-i18nextract --path . --site_zcml ../../etc/site.zcml --domain plinn -o locales
+i18nextract --path . --site_zcml /export/zope_instances/jma/etc/site.zcml --domain plinn -o locales
 
 cat locales/plinn.pot locales/plinn-manual.pot > locales/plinn-all.pot
 mv locales/plinn-all.pot locales/plinn.pot

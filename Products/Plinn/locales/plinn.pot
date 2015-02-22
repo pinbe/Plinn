@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Mon Dec 15 15:39:47 2014\n"
+"POT-Creation-Date: Sat Feb 21 01:11:05 2015\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -217,7 +217,7 @@ msgid " Change and View "
 msgstr ""
 
 #: n/skins/content/folder_factories.pt:18
-#: n/skins/custom_generic/folder_contents.py:103
+#: n/skins/custom_generic/folder_contents.py:104
 #: n/skins/custom_generic/personalize_form.pt:27
 #: n/skins/generic/gruf_macros.pt:256
 #: n/skins/generic/gruf_macros.pt:378
@@ -524,16 +524,20 @@ msgstr ""
 msgid "%d item moved up.%d items moved up."
 msgstr ""
 
-#: n/skins/custom_generic/folder_contents.py:99
+#: n/skins/custom_generic/folder_contents.py:100
 #: n/skins/photo_theme/search_results_macros.pt:14
 msgid "Type"
 msgstr ""
 
-#: n/skins/custom_generic/folder_contents.py:107
+#: n/skins/custom_generic/folder_contents.py:108
 msgid "Last Modified"
 msgstr ""
 
-#: n/skins/custom_generic/folder_contents.py:117
+#: n/skins/custom_generic/folder_contents.py:112
+msgid "State"
+msgstr ""
+
+#: n/skins/custom_generic/folder_contents.py:122
 msgid "Set Sorting as Default"
 msgstr ""
 
@@ -1097,30 +1101,6 @@ msgstr ""
 msgid "byline"
 msgstr ""
 
-#: n/skins/generic/content_depublish_form.pt:8
-msgid "Depublish: \"${docTitle}\""
-msgstr ""
-
-#: n/skins/generic/content_depublish_form.pt:10
-msgid "depublish_transition_explanations"
-msgstr ""
-
-#: n/skins/generic/content_depublish_form.pt:15
-msgid "Select the destination state"
-msgstr ""
-
-#: n/skins/generic/content_depublish_form.pt:18
-msgid "Private"
-msgstr ""
-
-#: n/skins/generic/content_depublish_form.pt:22
-msgid "Shared"
-msgstr ""
-
-#: n/skins/generic/content_depublish_form.pt:26
-msgid "Depublish"
-msgstr ""
-
 #: n/skins/generic/content_make_private_form.pt:10
 msgid "Make private: \"${docTitle}\""
 msgstr ""
@@ -1131,6 +1111,7 @@ msgid "make_private_transition_explanations"
 msgstr ""
 
 #: n/skins/generic/content_make_private_form.pt:16
+#: n/skins/generic/content_reject_form.pt:25
 msgid "Make private"
 msgstr ""
 
@@ -1152,16 +1133,11 @@ msgid "Publish"
 msgstr ""
 
 #: n/skins/generic/content_reject_form.pt:8
-msgid "Reject: \"${objectid}\""
+msgid "Make private: \"${objectid}\""
 msgstr ""
 
 #: n/skins/generic/content_reject_form.pt:9
-msgid "reject_transition_explanations"
-msgstr ""
-
-#: n/skins/generic/content_reject_form.pt:25
-#: n/skins/generic/pending_members.pt:30
-msgid "Reject"
+msgid "Make this item private to disable public access"
 msgstr ""
 
 #: n/skins/generic/content_retract_form.pt:8
@@ -1541,6 +1517,10 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
+#: n/skins/generic/pending_members.pt:30
+msgid "Reject"
+msgstr ""
+
 #: n/skins/generic/pending_members.pt:35
 msgid "Register"
 msgstr ""
@@ -1862,6 +1842,10 @@ msgstr ""
 
 #: n/skins/generic/wf_macros.pt:38
 msgid "This item has not had any status changes."
+msgstr ""
+
+#: n/skins/generic/wf_redirect.py:12
+msgid "You are not allowed to change this content state."
 msgstr ""
 
 #: n/skins/generic/widgets.pt:32

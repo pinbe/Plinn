@@ -11,7 +11,8 @@ from Products.CMFDefault.permissions import ListFolderContents
 from Products.CMFDefault.permissions import ManageProperties
 from Products.CMFDefault.permissions import ViewManagementScreens
 from Products.CMFDefault.permissions import ModifyPortalContent
-from Products.CMFDefault.utils import html_marshal, Message as _
+from Products.CMFDefault.utils import html_marshal#, Message as _
+from Products.Plinn.utils import Message as _
 
 mtool = getToolByName(script, 'portal_membership')
 checkPermission = mtool.checkPermission
@@ -107,6 +108,10 @@ columns = ( {'key': 'Type',
              'title': _('Last Modified'),
              'width': None,
              'colspan': None}
+            , {'key': 'review_state',
+             'title': _('State'),
+             'width': None,
+             'colspan': None}
             )
 
 for column in columns:  
@@ -166,6 +171,7 @@ for item in batch_obj:
          'modified': item.modified.strftime(locale_date_fmt),
          'title_or_id': item.Title or item_id,
          'type': item.Type or None,
+		 'state': item.review_state,
          'url': item_url } )
 
 options['batch'] = { 'listColumnInfos': tuple(columns),

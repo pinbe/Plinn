@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Mon Dec 15 15:35:05 2014\n"
-"PO-Revision-Date: 2014-12-15 15:41+0100\n"
+"POT-Creation-Date: Sat Feb 21 01:11:05 2015\n"
+"PO-Revision-Date: 2015-02-21 00:35+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
 "Language: \n"
@@ -218,7 +218,7 @@ msgid " Change and View "
 msgstr " Change and View "
 
 #: n/skins/content/folder_factories.pt:18
-#: n/skins/custom_generic/folder_contents.py:103
+#: n/skins/custom_generic/folder_contents.py:104
 #: n/skins/custom_generic/personalize_form.pt:27
 #: n/skins/generic/gruf_macros.pt:256 n/skins/generic/gruf_macros.pt:378
 #: n/skins/generic/last_member_logs.pt:23
@@ -525,16 +525,20 @@ msgstr "%d item moved to top.%d items moved to top."
 msgid "%d item moved up.%d items moved up."
 msgstr "%d item moved up.%d items moved up."
 
-#: n/skins/custom_generic/folder_contents.py:99
+#: n/skins/custom_generic/folder_contents.py:100
 #: n/skins/photo_theme/search_results_macros.pt:14
 msgid "Type"
 msgstr "Type"
 
-#: n/skins/custom_generic/folder_contents.py:107
+#: n/skins/custom_generic/folder_contents.py:108
 msgid "Last Modified"
 msgstr "Last Modified"
 
-#: n/skins/custom_generic/folder_contents.py:117
+#: n/skins/custom_generic/folder_contents.py:112
+msgid "State"
+msgstr "State"
+
+#: n/skins/custom_generic/folder_contents.py:122
 msgid "Set Sorting as Default"
 msgstr "Set Sorting as Default"
 
@@ -1199,30 +1203,6 @@ msgstr "Next"
 msgid "byline"
 msgstr "modified on ${date} at ${time} – creator: ${creator}"
 
-#: n/skins/generic/content_depublish_form.pt:8
-msgid "Depublish: \"${docTitle}\""
-msgstr "Depublish: \"${docTitle}\""
-
-#: n/skins/generic/content_depublish_form.pt:10
-msgid "depublish_transition_explanations"
-msgstr ""
-
-#: n/skins/generic/content_depublish_form.pt:15
-msgid "Select the destination state"
-msgstr "Select the destination state"
-
-#: n/skins/generic/content_depublish_form.pt:18
-msgid "Private"
-msgstr "Private"
-
-#: n/skins/generic/content_depublish_form.pt:22
-msgid "Shared"
-msgstr "Shared"
-
-#: n/skins/generic/content_depublish_form.pt:26
-msgid "Depublish"
-msgstr "Depublish"
-
 #: n/skins/generic/content_make_private_form.pt:10
 msgid "Make private: \"${docTitle}\""
 msgstr "Make private: \"${docTitle}\""
@@ -1233,6 +1213,7 @@ msgid "make_private_transition_explanations"
 msgstr ""
 
 #: n/skins/generic/content_make_private_form.pt:16
+#: n/skins/generic/content_reject_form.pt:25
 msgid "Make private"
 msgstr "Make private"
 
@@ -1254,17 +1235,12 @@ msgid "Publish"
 msgstr "Publish"
 
 #: n/skins/generic/content_reject_form.pt:8
-msgid "Reject: \"${objectid}\""
-msgstr "Reject: \"${objectid}\""
+msgid "Make private: \"${objectid}\""
+msgstr "Make private: \"${objectid}\""
 
 #: n/skins/generic/content_reject_form.pt:9
-msgid "reject_transition_explanations"
+msgid "Make this item private to disable public access"
 msgstr ""
-
-#: n/skins/generic/content_reject_form.pt:25
-#: n/skins/generic/pending_members.pt:30
-msgid "Reject"
-msgstr "Reject"
 
 #: n/skins/generic/content_retract_form.pt:8
 msgid "Retract: \"${objectid}\""
@@ -1644,6 +1620,10 @@ msgstr "Review members registration"
 msgid "Email"
 msgstr "Email"
 
+#: n/skins/generic/pending_members.pt:30
+msgid "Reject"
+msgstr "Reject"
+
 #: n/skins/generic/pending_members.pt:35
 msgid "Register"
 msgstr "Register"
@@ -2014,6 +1994,10 @@ msgstr "(no email sent)"
 #: n/skins/generic/wf_macros.pt:38
 msgid "This item has not had any status changes."
 msgstr "This item has not had any status changes."
+
+#: n/skins/generic/wf_redirect.py:12
+msgid "You are not allowed to change this content state."
+msgstr "You are not allowed to change this content state."
 
 #: n/skins/generic/widgets.pt:32 n/skins/generic/widgets.pt:33
 msgid "Edit metadata"
@@ -2936,6 +2920,24 @@ msgstr "Directory"
 
 msgid "Configure portal"
 msgstr "Configure portal"
+
+#~ msgid "Depublish: \"${docTitle}\""
+#~ msgstr "Depublish: \"${docTitle}\""
+
+#~ msgid "Select the destination state"
+#~ msgstr "Select the destination state"
+
+#~ msgid "Private"
+#~ msgstr "Private"
+
+#~ msgid "Shared"
+#~ msgstr "Shared"
+
+#~ msgid "Depublish"
+#~ msgstr "Depublish"
+
+#~ msgid "Reject: \"${objectid}\""
+#~ msgstr "Reject: \"${objectid}\""
 
 #~ msgid "Configure Solr delegated indexes"
 #~ msgstr "Configure Solr delegated indexes"

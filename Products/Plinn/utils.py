@@ -76,10 +76,10 @@ def thisObjectComeFromPortalSkin(ob, portal=None):
         except BadRequest :
             return False
 
-security.declarePublic('listActionProviders_')
-def listActionProviders_(context) :
-    atool = getToolByName(context, 'portal_actions')
-    return atool.listActionProviders()
+security.declarePublic('listWorkflowActions')
+def listWorkflowActions(context) :
+	wftool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IWorkflowTool')
+	return wftool.listActions(object=context)
 
 def capitalizeCompoundGivenName(givenName) :
     givenName = givenName.strip()

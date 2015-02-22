@@ -211,7 +211,7 @@ msgid " Change and View "
 msgstr " Changer et voir "
 
 #: n/skins/content/folder_factories.pt:18
-#: n/skins/custom_generic/folder_contents.py:103
+#: n/skins/custom_generic/folder_contents.py:104
 #: n/skins/custom_generic/personalize_form.pt:27
 #: n/skins/generic/gruf_macros.pt:256 n/skins/generic/gruf_macros.pt:378
 #: n/skins/generic/last_member_logs.pt:23
@@ -518,16 +518,20 @@ msgstr "%d élément déplacé en haut.%d éléments déplacés en haut."
 msgid "%d item moved up.%d items moved up."
 msgstr "%d élément déplacé vers le haut.%d éléments déplacés vers le haut."
 
-#: n/skins/custom_generic/folder_contents.py:99
+#: n/skins/custom_generic/folder_contents.py:100
 #: n/skins/photo_theme/search_results_macros.pt:14
 msgid "Type"
 msgstr "Type"
 
-#: n/skins/custom_generic/folder_contents.py:107
+#: n/skins/custom_generic/folder_contents.py:108
 msgid "Last Modified"
 msgstr "Modifié le"
 
-#: n/skins/custom_generic/folder_contents.py:117
+#: n/skins/custom_generic/folder_contents.py:112
+msgid "State"
+msgstr "État"
+
+#: n/skins/custom_generic/folder_contents.py:122
 msgid "Set Sorting as Default"
 msgstr "Définir comme tri par défaut"
 
@@ -1202,33 +1206,6 @@ msgstr "Suivant"
 msgid "byline"
 msgstr "modifié le ${date} à ${time} – créateur : ${creator}"
 
-#: n/skins/generic/content_depublish_form.pt:8
-msgid "Depublish: \"${docTitle}\""
-msgstr "Dépublier : «&nbsp;${docTitle}&nbsp;»"
-
-#: n/skins/generic/content_depublish_form.pt:10
-msgid "depublish_transition_explanations"
-msgstr ""
-"La dépublication de ce document annulera son partage entre tout les membres "
-"du site et permettra à son créateur de le modifier à nouveau. Vous devez "
-"choisir quel sera l'état de destination pour effectuer l'opération."
-
-#: n/skins/generic/content_depublish_form.pt:15
-msgid "Select the destination state"
-msgstr "Sélectionnez l'état de destination"
-
-#: n/skins/generic/content_depublish_form.pt:18
-msgid "Private"
-msgstr "Privé"
-
-#: n/skins/generic/content_depublish_form.pt:22
-msgid "Shared"
-msgstr "Partagé"
-
-#: n/skins/generic/content_depublish_form.pt:26
-msgid "Depublish"
-msgstr "Dépublier"
-
 #: n/skins/generic/content_make_private_form.pt:10
 msgid "Make private: \"${docTitle}\""
 msgstr "Rendre privé : «&nbsp;${docTitle}&nbsp;»"
@@ -1241,6 +1218,7 @@ msgstr ""
 "même ainsi que les coordonnateurs."
 
 #: n/skins/generic/content_make_private_form.pt:16
+#: n/skins/generic/content_reject_form.pt:25
 msgid "Make private"
 msgstr "Rendre privé"
 
@@ -1264,19 +1242,12 @@ msgid "Publish"
 msgstr "Publier"
 
 #: n/skins/generic/content_reject_form.pt:8
-msgid "Reject: \"${objectid}\""
-msgstr "Rejeter : «&nbsp;${objectid}&nbsp;»"
+msgid "Make private: \"${objectid}\""
+msgstr "Rendre privé : « ${objectid} »"
 
 #: n/skins/generic/content_reject_form.pt:9
-msgid "reject_transition_explanations"
-msgstr ""
-"Rejeter la publication de ce document pour que son propriétaire puisse "
-"continuer à travailler."
-
-#: n/skins/generic/content_reject_form.pt:25
-#: n/skins/generic/pending_members.pt:30
-msgid "Reject"
-msgstr "Rejeter"
+msgid "Make this item private to disable public access"
+msgstr "Rendre cet élément privé pour désactiver l'accès public."
 
 #: n/skins/generic/content_retract_form.pt:8
 msgid "Retract: \"${objectid}\""
@@ -1663,6 +1634,10 @@ msgstr "Modérer l'inscription des membres"
 msgid "Email"
 msgstr "E-mail"
 
+#: n/skins/generic/pending_members.pt:30
+msgid "Reject"
+msgstr "Rejeter"
+
 #: n/skins/generic/pending_members.pt:35
 msgid "Register"
 msgstr "Inscrire"
@@ -2043,6 +2018,10 @@ msgstr "(pas d'e-mail envoyé)"
 #: n/skins/generic/wf_macros.pt:38
 msgid "This item has not had any status changes."
 msgstr "Cet élément n'a pas encore eu de changement d'état."
+
+#: n/skins/generic/wf_redirect.py:12
+msgid "You are not allowed to change this content state."
+msgstr "Vous n'êtes pas autorisé à changer l'état de ce contenu."
 
 #: n/skins/generic/widgets.pt:32 n/skins/generic/widgets.pt:33
 msgid "Edit metadata"
@@ -2970,6 +2949,36 @@ msgstr "Annuaire"
 
 msgid "Configure portal"
 msgstr "Configurer portail"
+
+#~ msgid "Depublish: \"${docTitle}\""
+#~ msgstr "Dépublier : «&nbsp;${docTitle}&nbsp;»"
+
+#~ msgid "depublish_transition_explanations"
+#~ msgstr ""
+#~ "La dépublication de ce document annulera son partage entre tout les "
+#~ "membres du site et permettra à son créateur de le modifier à nouveau. "
+#~ "Vous devez choisir quel sera l'état de destination pour effectuer "
+#~ "l'opération."
+
+#~ msgid "Select the destination state"
+#~ msgstr "Sélectionnez l'état de destination"
+
+#~ msgid "Private"
+#~ msgstr "Privé"
+
+#~ msgid "Shared"
+#~ msgstr "Partagé"
+
+#~ msgid "Depublish"
+#~ msgstr "Dépublier"
+
+#~ msgid "Reject: \"${objectid}\""
+#~ msgstr "Rejeter : «&nbsp;${objectid}&nbsp;»"
+
+#~ msgid "reject_transition_explanations"
+#~ msgstr ""
+#~ "Rejeter la publication de ce document pour que son propriétaire puisse "
+#~ "continuer à travailler."
 
 #~ msgid "Configure Solr delegated indexes"
 #~ msgstr "Configurer les index délégués à Solr"

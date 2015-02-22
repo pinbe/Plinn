@@ -61,6 +61,10 @@
           <td>
             <span tal:replace="item_info/modified">2001</span>
           </td>
+          <td>
+            <a tal:attributes="href string:${item_info/url}/wf_redirect"
+               tal:content="item_info/state"i18n:translate="">pending</a>
+          </td>
         </tr>
 </tbody>
       </tbody>
