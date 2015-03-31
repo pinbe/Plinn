@@ -94,6 +94,8 @@ function _build_removeListener() {
 
 removeGroupListeners = function(group) {
 	var listeners = __groupListeners[group];
+	if(!listeners)
+		return;
 	var l, i;
 	for (i=0 ; i<listeners.length ; i++){
 		l = listeners[i];
