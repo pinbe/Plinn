@@ -1,13 +1,17 @@
-// (c) Benoît PIN 2006-2007
+// (c) Benoît PIN 2006-2015
 // http://plinn.org
 // Licence GPL
 // 
 // 
 
+var ScriptRegistry;
+var globalScriptRegistry;
+
+(function() {
 
 function ScriptRegistry() {
-	this.loadedScripts = new Object();
-	this.pendingScripts = new Array();
+	this.loadedScripts = {};
+	this.pendingScripts = [];
 	this.HEAD = document.getElementsByTagName('head')[0];
 	this.isLoading = false;
 }
@@ -28,7 +32,7 @@ ScriptRegistry.prototype.loadScript = function(scriptOb) {
 	}
 	if(!this.isLoading && this.pendingScripts.length)
 		this._loadNextScript();
-}
+};
 
 ScriptRegistry.prototype._loadNextScript = function() {
 	var firstScript = this.pendingScripts[0];
@@ -52,7 +56,9 @@ ScriptRegistry.prototype._loadNextScript = function() {
 			break;
 		case 'code' :
 			try {
+				/* jshint ignore:start */
 				eval(firstScript[1].text);
+				/* jshint ignore:end */
 			}
 			catch(e) {
 				if (window.console) {
@@ -64,15 +70,17 @@ ScriptRegistry.prototype._loadNextScript = function() {
 			}
 			this._removeScriptAfterLoad();
 			break;
-	};
-}
+	}
+};
 
 ScriptRegistry.prototype._removeScriptAfterLoad = function() {
 	this.pendingScripts.shift();
 	if(this.pendingScripts.length)
-		this._loadNextScript()
+		this._loadNextScript();
 	else
 		this.isLoading = false;
-}
+};
 
 globalScriptRegistry = new ScriptRegistry();
+
+}());
