@@ -26,7 +26,6 @@ function initDHTMLAPI() {
 // set event handler to initialize API
 //window.onload = initDHTMLAPI;
 addListener(window, 'load', initDHTMLAPI);
-//registerStartupFunction(initDHTMLAPI)
 
 // Seek nested NN4 layer from string name
 function seekLayer(doc, name) {
@@ -79,11 +78,11 @@ function shiftTo(obj, x, y) {
     if (theObj) {
         if (isCSS) {
             // equalize incorrect numeric value type
-            var units = (typeof theObj.left == "string") ? "px" : 0 
+            var units = (typeof theObj.left == "string") ? "px" : 0;
             theObj.left = x + units;
             theObj.top = y + units;
         } else if (isNN4) {
-            theObj.moveTo(x,y)
+            theObj.moveTo(x,y);
         }
     }
 }
@@ -94,7 +93,7 @@ function shiftBy(obj, deltaX, deltaY) {
     if (theObj) {
         if (isCSS) {
             // equalize incorrect numeric value type
-            var units = (typeof theObj.left == "string") ? "px" : 0 
+            var units = (typeof theObj.left == "string") ? "px" : 0;
             theObj.left = getObjectLeft(obj) + deltaX + units;
             theObj.top = getObjectTop(obj) + deltaY + units;
         } else if (isNN4) {
@@ -212,7 +211,7 @@ function getInsideWindowWidth() {
         return window.innerWidth;
     } else if (isIE6CSS) {
         // measure the html element's clientWidth
-        return document.body.parentElement.clientWidth
+        return document.body.parentElement.clientWidth;
     } else if (document.body && document.body.clientWidth) {
         return document.body.clientWidth;
     }
@@ -224,7 +223,7 @@ function getInsideWindowHeight() {
         return window.innerHeight;
     } else if (isIE6CSS) {
         // measure the html element's clientHeight
-        return document.body.parentElement.clientHeight
+        return document.body.parentElement.clientHeight;
     } else if (document.body && document.body.clientHeight) {
         return document.body.clientHeight;
     }
