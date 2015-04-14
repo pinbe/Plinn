@@ -75,7 +75,7 @@ AjaxLinkHandler.prototype.loadUrl = function(url, noPush) {
 		return;
 	}
 	if (!noPush)
-	    history.pushState(rawUrl, '', rawUrl)
+	    history.pushState(rawUrl, '', rawUrl);
 };
 
 function ajaxSubmitFormHandler(evt) {
@@ -102,6 +102,5 @@ function _addRootHandlers() {
 	}
 }
 
-registerStartupFunction(_addRootHandlers);
-
+addListener(window, 'load', _addRootHandlers);
 })();
