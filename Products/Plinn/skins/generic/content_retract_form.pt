@@ -6,7 +6,10 @@
 <div metal:fill-slot="main" i18n:domain="plinn">
 
 <h2 i18n:translate="">Retract: "<span tal:replace="here/title_or_id" i18n:name="objectid">Item</span>"</h2>
-	<div i18n:translate="retract_transition_explanations">retract_transition_explanations</div>
+	<div i18n:translate="retract_transition_explanations">
+    By retracting this content, you will cancel its submit and put it back to
+    private state.
+  </div>
 </div>
 
 <form action="dummy">

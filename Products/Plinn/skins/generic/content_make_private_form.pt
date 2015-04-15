@@ -8,7 +8,9 @@
   <body i18n:domain="plinn">
 		<div metal:fill-slot="main">
 	  	<h2 i18n:translate="">Make private: "<span i18n:name="docTitle" tal:replace="here/title_or_id">document title</span>"</h2>
-	  	<div i18n:translate="make_private_transition_explanations">share_transition_explanations</div>
+	  	<div i18n:translate="make_private_transition_explanations">
+        Once this change made, this content will only be visible by you and the reviewers.
+      </div>
 	  </div>
   	<form action=".">
 			<div metal:fill-slot="form">

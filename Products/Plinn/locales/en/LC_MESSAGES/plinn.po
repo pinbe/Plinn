@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Sat Feb 21 01:11:05 2015\n"
-"PO-Revision-Date: 2015-02-21 00:35+0100\n"
+"POT-Creation-Date: Wed Apr 15 17:13:53 2015\n"
+"PO-Revision-Date: 2015-04-15 17:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
 "Language: \n"
@@ -226,7 +226,7 @@ msgstr " Change and View "
 msgid "Name"
 msgstr "Name"
 
-#: n/skins/content/folder_factories.pt:34
+#: n/skins/content/folder_factories.pt:35
 #: n/skins/content/topic_edit_template.pt:51
 #: n/skins/generic/gruf_macros.pt:288 n/skins/generic/gruf_macros.pt:327
 msgid "Add"
@@ -592,19 +592,30 @@ msgstr "No news is no news."
 msgid "More..."
 msgstr "More..."
 
-#: n/skins/custom_generic/join_template.pt:14
-msgid ""
-"You are already a member. You may use the <a href=\"personalize_form"
-"\">personalization form</a> to change your membership information."
-msgstr ""
-"You are already a member. You may use the <a href=\"personalize_form"
-"\">personalization form</a> to change your membership information."
+#: n/skins/custom_generic/join_form.py:60
+#: n/skins/photo_theme/photo_main_macros.pt:28
+msgid "Join"
+msgstr "Join"
 
-#: n/skins/custom_generic/join_template.pt:20
+#: n/skins/custom_generic/join_template.pt:12
+msgid "Become a member"
+msgstr "Become a member"
+
+#: n/skins/custom_generic/join_template.pt:16
+msgid ""
+"You are already authenticated. You may use the ${personalize_form} to change "
+"your personal informations."
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:16
+msgid "personalization form"
+msgstr ""
+
+#: n/skins/custom_generic/join_template.pt:23
 msgid "You have been registered as a member."
 msgstr "You have been registered as a member."
 
-#: n/skins/custom_generic/join_template.pt:22
+#: n/skins/custom_generic/join_template.pt:24
 msgid ""
 "You will receive an email shortly containing your password and instructions "
 "on how to activate your membership."
@@ -612,7 +623,7 @@ msgstr ""
 "You will receive an email shortly containing your password and instructions "
 "on how to activate your membership."
 
-#: n/skins/custom_generic/join_template.pt:27
+#: n/skins/custom_generic/join_template.pt:29
 msgid "Click the button to log in immediately."
 msgstr "Click the button to log in immediately."
 
@@ -620,7 +631,7 @@ msgstr "Click the button to log in immediately."
 msgid "Your registration request has been taken into account."
 msgstr "Your registration request has been taken into account."
 
-#: n/skins/custom_generic/join_template.pt:42
+#: n/skins/custom_generic/join_template.pt:41
 msgid ""
 "Your request will be reviewed soon by a portal administrator. You will "
 "receive an email containing your password and instructions on how to "
@@ -630,7 +641,7 @@ msgstr ""
 "receive an email containing your password and instructions on how to "
 "activate your membership when your registration will be approved."
 
-#: n/skins/custom_generic/join_template.pt:48
+#: n/skins/custom_generic/join_template.pt:47
 msgid ""
 "Your request will be reviewed soon by a portal administrator. You will "
 "receive an email when your registration will be approved."
@@ -642,7 +653,7 @@ msgstr ""
 msgid "Return to homepage"
 msgstr "Return to homepage"
 
-#: n/skins/custom_generic/join_template.pt:57
+#: n/skins/custom_generic/join_template.pt:56
 msgid ""
 "Becoming a member gives you the ability to personalize the site and "
 "participate in the community."
@@ -658,7 +669,7 @@ msgstr ""
 "It does not cost any money to become a member and your email and other "
 "personal information will remain private."
 
-#: n/skins/custom_generic/join_template.pt:63
+#: n/skins/custom_generic/join_template.pt:64
 msgid ""
 "You must submit a valid email address. This address will be used to send you "
 "a randomly-generated password. Once you have logged in with this password, "
@@ -668,39 +679,33 @@ msgstr ""
 "a randomly-generated password. Once you have logged in with this password, "
 "you may change it to anything you like."
 
-#: n/skins/custom_generic/join_template.pt:74
-msgid "Member ID"
-msgstr "Member ID"
-
-#: n/skins/custom_generic/join_template.pt:81
+#: n/skins/custom_generic/join_template.pt:76
 msgid "First name"
 msgstr "First name"
 
-#: n/skins/custom_generic/join_template.pt:87
+#: n/skins/custom_generic/join_template.pt:81
 msgid "Last name"
 msgstr "Last name"
 
-#: n/skins/custom_generic/join_template.pt:93
-msgid "Email Address"
-msgstr "Email Address"
+#: n/skins/custom_generic/join_template.pt:88
+#: n/skins/custom_generic/personalize_form.pt:39
+#: n/skins/generic/gruf_macros.pt:280 n/skins/generic/gruf_macros.pt:402
+msgid "Email address"
+msgstr "Email address"
 
-#: n/skins/custom_generic/join_template.pt:100
+#: n/skins/custom_generic/join_template.pt:94
+msgid "use as login"
+msgstr "use as login"
+
+#: n/skins/custom_generic/join_template.pt:101
 #: n/skins/custom_generic/login_form.pt:28 n/skins/generic/gruf_macros.pt:268
 #: n/skins/generic/gruf_macros.pt:390
 msgid "Password"
 msgstr "Password"
 
-#: n/skins/custom_generic/join_template.pt:106
+#: n/skins/custom_generic/join_template.pt:107
 msgid "Password (confirm)"
 msgstr "Password (confirm)"
-
-#: n/skins/custom_generic/join_template.pt:112
-msgid "Mail Password?"
-msgstr "Mail Password?"
-
-#: n/skins/custom_generic/join_template.pt:116
-msgid "Check this box to have the password mailed."
-msgstr "Check this box to have the password mailed."
 
 #: n/skins/custom_generic/logged_in.py:28
 #: n/skins/custom_generic/logged_in_template.pt:9
@@ -932,11 +937,6 @@ msgstr "Click here"
 #: n/skins/generic/gruf_macros.pt:262 n/skins/generic/gruf_macros.pt:384
 msgid "Given Name"
 msgstr "Given Name"
-
-#: n/skins/custom_generic/personalize_form.pt:39
-#: n/skins/generic/gruf_macros.pt:280 n/skins/generic/gruf_macros.pt:402
-msgid "Email address"
-msgstr "Email address"
 
 #: n/skins/custom_generic/personalize_form.pt:45
 msgid "Preferred languages"
@@ -1207,12 +1207,14 @@ msgstr "modified on ${date} at ${time} – creator: ${creator}"
 msgid "Make private: \"${docTitle}\""
 msgstr "Make private: \"${docTitle}\""
 
-#. Default: "share_transition_explanations"
+#. Default: "Once this change made, this content will only be visible by you and the reviewers."
 #: n/skins/generic/content_make_private_form.pt:11
 msgid "make_private_transition_explanations"
 msgstr ""
+"Once this change made, this content will only be visible by you and the "
+"reviewers."
 
-#: n/skins/generic/content_make_private_form.pt:16
+#: n/skins/generic/content_make_private_form.pt:18
 #: n/skins/generic/content_reject_form.pt:25
 msgid "Make private"
 msgstr "Make private"
@@ -1221,16 +1223,19 @@ msgstr "Make private"
 msgid "Publish: \"${docTitle}\""
 msgstr "Publish: \"${docTitle}\""
 
+#. Default: "The publication of this content will make it available to all visitors and prevent its suppression."
 #: n/skins/generic/content_publish_form.pt:10
 msgid "publish_transition_explanations"
 msgstr ""
+"The publication of this content will make it available to all visitors and "
+"prevent its suppression."
 
-#: n/skins/generic/content_publish_form.pt:17
+#: n/skins/generic/content_publish_form.pt:20
 #: n/skins/generic/content_reject_form.pt:16
 msgid "Notify by e-mail"
 msgstr "Notify by e-mail"
 
-#: n/skins/generic/content_publish_form.pt:26
+#: n/skins/generic/content_publish_form.pt:29
 msgid "Publish"
 msgstr "Publish"
 
@@ -1240,17 +1245,18 @@ msgstr "Make private: \"${objectid}\""
 
 #: n/skins/generic/content_reject_form.pt:9
 msgid "Make this item private to disable public access"
-msgstr ""
+msgstr "Make this item private to disable public access"
 
 #: n/skins/generic/content_retract_form.pt:8
 msgid "Retract: \"${objectid}\""
 msgstr "Retract: \"${objectid}\""
 
+#. Default: "By retracting this content, you will cancel its submit and put it back to private state."
 #: n/skins/generic/content_retract_form.pt:9
 msgid "retract_transition_explanations"
-msgstr ""
+msgstr "By retracting this content, you will cancel its submit and put it back to private state."
 
-#: n/skins/generic/content_retract_form.pt:15
+#: n/skins/generic/content_retract_form.pt:18
 msgid "Retract"
 msgstr "Retract"
 
@@ -2030,10 +2036,6 @@ msgstr "Loading progress..."
 #: n/skins/photo_theme/main_template_standard.pt:97
 msgid "Skip to content"
 msgstr "Skip to content"
-
-#: n/skins/photo_theme/photo_main_macros.pt:28
-msgid "Join"
-msgstr "Join"
 
 #: n/skins/photo_theme/search_results_macros.pt:12
 msgid "Title"
@@ -2920,6 +2922,25 @@ msgstr "Directory"
 
 msgid "Configure portal"
 msgstr "Configure portal"
+
+#~ msgid ""
+#~ "You are already a member. You may use the <a href=\"personalize_form"
+#~ "\">personalization form</a> to change your membership information."
+#~ msgstr ""
+#~ "You are already a member. You may use the <a href=\"personalize_form"
+#~ "\">personalization form</a> to change your membership information."
+
+#~ msgid "Member ID"
+#~ msgstr "Member ID"
+
+#~ msgid "Email Address"
+#~ msgstr "Email Address"
+
+#~ msgid "Mail Password?"
+#~ msgstr "Mail Password?"
+
+#~ msgid "Check this box to have the password mailed."
+#~ msgstr "Check this box to have the password mailed."
 
 #~ msgid "Depublish: \"${docTitle}\""
 #~ msgstr "Depublish: \"${docTitle}\""
