@@ -5,6 +5,7 @@
 // 
 
 var FormManager;
+var shake;
 
 (function(){
 	
@@ -487,7 +488,7 @@ function smoothScroll(from, to) {
 }
 
 /* adapted from http://xahlee.info/js/js_shake_box.html */
-function shake(e, distance, time) {
+shake = function(e, distance, time) {
 	// Handle arguments
 	if (!time) { time = 500; }
 	if (!distance) { distance = 5; }
@@ -525,6 +526,6 @@ function shake(e, distance, time) {
 		}
 	}
 	animate();
-}
+};
 
 }());
