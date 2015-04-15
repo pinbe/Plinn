@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Wed Apr 15 17:27:17 2015\n"
+"POT-Creation-Date: Wed Apr 15 17:38:57 2015\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -1174,10 +1174,11 @@ msgid "Submit: \"${objectid}\" for Review."
 msgstr ""
 
 #: n/skins/generic/content_submit_form.pt:9
+#. Default: "Submit this content to request a validation by a reviewer."
 msgid "submit_transition_explanations"
 msgstr ""
 
-#: n/skins/generic/content_submit_form.pt:15
+#: n/skins/generic/content_submit_form.pt:17
 msgid "Submit"
 msgstr ""
 

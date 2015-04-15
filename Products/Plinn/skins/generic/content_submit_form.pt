@@ -7,7 +7,7 @@
 
 <h2 i18n:translate="">Submit: "<span tal:replace="here/title_or_id" i18n:name="objectid">Item</span>" for Review.</h2>
 	<div i18n:translate="submit_transition_explanations">
-    
+    Submit this content to request a validation by a reviewer.
   </div>
 </div>
 

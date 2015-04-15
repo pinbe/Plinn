@@ -32,8 +32,9 @@ existing role names to roles understood by the CMF.</p>
 
 <h2 i18n:translate="member_creation_area_title">Creation of member areas</h2>
 
-<p i18n:translate="member_creation_area_explanations">This feature controls whether users coming from an outside user source (such as an underlying 
-user folder) will have their own folder created upon first login or not</p>
+<p i18n:translate="member_creation_area_explanations">
+  This function determines if a personal folder will be created at the first user entrance.
+</p>
 
 <form method="post" action=".">
 
