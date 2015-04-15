@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Wed Apr 15 17:13:14 2015\n"
+"POT-Creation-Date: Wed Apr 15 17:26:41 2015\n"
 "PO-Revision-Date: 2015-04-15 15:06+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -598,11 +598,11 @@ msgstr "Devenir membre"
 msgid ""
 "You are already authenticated. You may use the ${personalize_form} to change "
 "your personal informations."
-msgstr ""
+msgstr "Vous êtes déjà authentifié. Vous pouvez utiliser le ${personalize_form} pour modifier vos informations personnelles"
 
 #: n/skins/custom_generic/join_template.pt:16
 msgid "personalization form"
-msgstr ""
+msgstr "formulaire des préférences"
 
 #: n/skins/custom_generic/join_template.pt:23
 msgid "You have been registered as a member."
@@ -1267,13 +1267,14 @@ msgstr "Retirer"
 msgid "Share: \"${docTitle}\""
 msgstr "Partager : «&nbsp;${docTitle}&nbsp;»"
 
+#. Default: "Share to make this content available to all authenticated members."
 #: n/skins/generic/content_share_form.pt:11
 msgid "share_transition_explanations"
 msgstr ""
 "Partager signifie que l'ensemble des utilisateurs ayant accès à ce dossier "
 "pourra lire ce document."
 
-#: n/skins/generic/content_share_form.pt:16
+#: n/skins/generic/content_share_form.pt:18
 msgid "Share"
 msgstr "Partager"
 

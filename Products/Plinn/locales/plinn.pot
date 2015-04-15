@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Wed Apr 15 17:13:53 2015\n"
+"POT-Creation-Date: Wed Apr 15 17:27:17 2015\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -1161,10 +1161,11 @@ msgid "Share: \"${docTitle}\""
 msgstr ""
 
 #: n/skins/generic/content_share_form.pt:11
+#. Default: "Share to make this content available to all authenticated members."
 msgid "share_transition_explanations"
 msgstr ""
 
-#: n/skins/generic/content_share_form.pt:16
+#: n/skins/generic/content_share_form.pt:18
 msgid "Share"
 msgstr ""
 

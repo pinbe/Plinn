@@ -605,11 +605,11 @@ msgstr "Become a member"
 msgid ""
 "You are already authenticated. You may use the ${personalize_form} to change "
 "your personal informations."
-msgstr ""
+msgstr "You are already authenticated. You may use the ${personalize_form} to change your personal informations."
 
 #: n/skins/custom_generic/join_template.pt:16
 msgid "personalization form"
-msgstr ""
+msgstr "personalization form"
 
 #: n/skins/custom_generic/join_template.pt:23
 msgid "You have been registered as a member."
@@ -1266,7 +1266,7 @@ msgstr "Share: \"${docTitle}\""
 
 #: n/skins/generic/content_share_form.pt:11
 msgid "share_transition_explanations"
-msgstr ""
+msgstr "Share to make this content available to all authenticated members."
 
 #: n/skins/generic/content_share_form.pt:16
 msgid "Share"
@@ -1278,7 +1278,7 @@ msgstr "Submit: \"${objectid}\" for Review."
 
 #: n/skins/generic/content_submit_form.pt:9
 msgid "submit_transition_explanations"
-msgstr ""
+msgstr "Submit this content to request a validation by a reviewer."
 
 #: n/skins/generic/content_submit_form.pt:15
 msgid "Submit"
