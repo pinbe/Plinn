@@ -1,9 +1,14 @@
 #! /bin/sh
 
-i18nextract --path . --site_zcml /export/zope_instances/jma/etc/site.zcml --domain plinn -o locales
+if [ !$1 ]; then
+    ZCML=$INSTANCE_HOME/etc/site.zcml
+else
+    ZCML=$1
+fi
 
-cat locales/plinn.pot locales/plinn-manual.pot > locales/plinn-all.pot
-mv locales/plinn-all.pot locales/plinn.pot
+i18nextract --path . --site_zcml $ZCML --domain plinn -o locales
+
+cat locales/plinn-manual.pot >> locales/plinn.pot
 
 msgmerge --update --no-fuzzy-matching locales/fr/LC_MESSAGES/plinn.po locales/plinn.pot
 msgmerge --update --no-fuzzy-matching locales/en/LC_MESSAGES/plinn.po locales/plinn.pot
