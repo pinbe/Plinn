@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Wed Apr 15 17:38:57 2015\n"
+"POT-Creation-Date: Wed Apr 15 17:26:41 2015\n"
 "PO-Revision-Date: 2015-04-15 15:06+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -598,9 +598,7 @@ msgstr "Devenir membre"
 msgid ""
 "You are already authenticated. You may use the ${personalize_form} to change "
 "your personal informations."
-msgstr ""
-"Vous êtes déjà authentifié. Vous pouvez utiliser le ${personalize_form} pour "
-"modifier vos informations personnelles"
+msgstr "Vous êtes déjà authentifié. Vous pouvez utiliser le ${personalize_form} pour modifier vos informations personnelles."
 
 #: n/skins/custom_generic/join_template.pt:16
 msgid "personalization form"
@@ -1284,13 +1282,12 @@ msgstr "Partager"
 msgid "Submit: \"${objectid}\" for Review."
 msgstr "Soumettre : «&nbsp;${objectid}&nbsp;» pour validation."
 
-#. Default: "Submit this content to request a validation by a reviewer."
 #: n/skins/generic/content_submit_form.pt:9
 msgid "submit_transition_explanations"
 msgstr ""
 "Soumettre ce document en vue d'une validation accordée par un modérateur."
 
-#: n/skins/generic/content_submit_form.pt:17
+#: n/skins/generic/content_submit_form.pt:15
 msgid "Submit"
 msgstr "Soumettre"
 
