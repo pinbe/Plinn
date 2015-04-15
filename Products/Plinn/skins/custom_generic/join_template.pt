@@ -1,27 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal" xmlns:i18n="http://xml.zope.org/namespaces/i18n" metal:use-macro="context/main_template/macros/master">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master">
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
   </head>
   <body>
-    <metal:slot metal:fill-slot="main_no_tabs" i18n:domain="plinn" tal:define="form options/form">
+    <metal:slot metal:fill-slot="main_no_tabs"
+                i18n:domain="plinn"
+                tal:define="form options/form">
       <h1 tal:content="options/title" i18n:translate="">Become a member</h1>
       <div class="Desktop">
         <tal:case tal:condition="options/isOrdinaryMember">
-          <p i18n:translate="">You are already a member. You may use the
-      <a href="personalize_form">personalization form</a>
-       to change your membership information.</p>
+          <p i18n:translate="">
+            You are already a member. You may use the <a
+            href="personalize_form">personalization form</a> to change your
+            membership information.
+         </p>
         </tal:case>
         <tal:case tal:condition="python:options['isNewMember'] and options['isAnonRegistration']">
           <p i18n:translate="">You have been registered as a member.</p>
-          <p tal:condition="options/validate_email" i18n:translate="">You will receive
-	  an email shortly containing your password and instructions on how to
-	  activate your membership.</p>
+          <p tal:condition="options/validate_email" i18n:translate="">
+            You will receive an email shortly containing your password and
+            instructions on how to activate your membership.
+          </p>
           <tal:case tal:condition="not: options/validate_email">
             <p i18n:translate="">Click the button to log in immediately.</p>
             <form tal:attributes="action form/action">
-              <input type="hidden" name="__ac_name" value="" tal:attributes="value options/member_id"/>
-              <input type="hidden" name="__ac_password" value="" tal:attributes="value options/password"/>
+              <input type="hidden" name="__ac_name" tal:attributes="value options/member_id"/>
+              <input type="hidden" name="__ac_password" tal:attributes="value options/password"/>
               <input type="hidden" name="noAjax" value="1"/>
               <metal:macro metal:use-macro="context/form_widgets/macros/buttons"/>
             </form>
@@ -29,27 +36,34 @@
         </tal:case>
         <tal:case tal:condition="python:options['isNewMember'] and options['isReviewedRegistration']">
           <p i18n:translate="">Your registration request has been taken into account.</p>
-          <p tal:condition="options/validate_email" i18n:translate="">Your request will be reviewed
-		soon by a portal administrator. You will receive
-	  an email containing your password and
-	  instructions on how to activate your membership 
-	  when your registration will be approved.</p>
-          <p tal:condition="not:options/validate_email" i18n:translate="">Your request will be reviewed
-		soon by a portal administrator. You will receive
-	  an email when your registration will be approved.</p>
+          <p tal:condition="options/validate_email" i18n:translate="">
+            Your request will be reviewed soon by a portal administrator. You
+            will receive an email containing your password and instructions on
+            how to activate your membership when your registration will be
+            approved.
+          </p>
+          <p tal:condition="not:options/validate_email" i18n:translate="">
+            Your request will be reviewed soon by a portal administrator. You
+            will receive an email when your registration will be approved.
+          </p>
           <p>
             <a href="" tal:attributes="href options/portal_url" i18n:translate="">Return to homepage</a>
           </p>
         </tal:case>
         <tal:case tal:condition="options/isAnon">
-          <p i18n:translate="">Becoming a member gives you the ability to personalize
-    the site and participate in the community.</p>
-          <p i18n:translate="">It does not cost any money to become a member and your
-    email and other personal information will remain private.</p>
+          <p i18n:translate="">
+            Becoming a member gives you the ability to personalize the site and
+            participate in the community.
+          </p>
+          <p i18n:translate="">
+            It does not cost any money to become a member and your email and
+            other personal information will remain private.
+          </p>
           <p tal:condition="options/validate_email" i18n:translate="">
-      You must submit a valid email address. This address will be used
-      to send you a randomly-generated password.  Once you have logged
-      in with this password, you may change it to anything you like.</p>
+            You must submit a valid email address. This address will be used to
+            send you a randomly-generated password. Once you have logged in
+            with this password, you may change it to anything you like.
+          </p>
         </tal:case>
         <tal:case tal:condition="options/isAnonOrUserManager">
           <form action="." method="post" tal:attributes="action form/action">
@@ -57,25 +71,25 @@
               <tr>
                 <th i18n:translate="">Member ID</th>
                 <td>
-                  <input type="text" name="member_id" size="30" value="" tal:attributes="value options/member_id"/>
+                  <input type="text" name="member_id" size="30" tal:attributes="value options/member_id"/>
                 </td>
               </tr>
               <tr>
                 <th i18n:translate="">First name</th>
                 <td>
-                  <input type="text" name="given_name" size="30" value="" tal:attributes="value options/given_name|nothing"/>
+                  <input type="text" name="given_name" size="30" tal:attributes="value options/given_name|nothing"/>
                 </td>
               </tr>
               <tr>
                 <th i18n:translate="">Last name</th>
                 <td>
-                  <input type="text" name="name" size="30" value="" tal:attributes="value options/name|nothing"/>
+                  <input type="text" name="name" size="30" tal:attributes="value options/name|nothing"/>
                 </td>
               </tr>
               <tr>
                 <th i18n:translate="">Email Address</th>
                 <td>
-                  <input type="text" name="member_email" size="30" value="" tal:attributes="value options/member_email"/>
+                  <input type="text" name="member_email" size="30" tal:attributes="value options/member_email"/>
                 </td>
               </tr>
               <tal:case tal:condition="not: options/validate_email">
@@ -96,8 +110,9 @@
                   <td>
                     <input type="checkbox" name="send_password" id="cb_send_password" tal:attributes="checked options/send_password"/>
                     <em>
-                      <label for="cb_send_password" i18n:translate="">Check this box to
-        have the password mailed.</label>
+                      <label for="cb_send_password" i18n:translate="">
+                        Check this box to have the password mailed.
+                      </label>
                     </em>
                   </td>
                 </tr>
