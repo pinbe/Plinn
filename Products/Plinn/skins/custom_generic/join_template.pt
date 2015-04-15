@@ -9,16 +9,17 @@
     <metal:slot metal:fill-slot="main_no_tabs"
                 i18n:domain="plinn"
                 tal:define="form options/form">
-      <h1 tal:content="options/title" i18n:translate="">Become a member</h1>
+      <h1 i18n:translate="">Become a member</h1>
       <div class="Desktop">
-        <tal:case tal:condition="options/isOrdinaryMember">
-          <p i18n:translate="">
-            You are already a member. You may use the <a
-            href="personalize_form">personalization form</a> to change your
-            membership information.
-         </p>
-        </tal:case>
-        <tal:case tal:condition="python:options['isNewMember'] and options['isAnonRegistration']">
+        <p tal:condition="options/isOrdinaryMember" i18n:translate="">
+            You are already authenticated. You may use the
+            <a tal:attributes="href string:$portal_url/personalize_form"
+               i18n:name="personalize_form"
+               i18n:translate="">personalization form</a>
+            to change your personal informations.
+        </p>
+        
+        <div tal:condition="python:options['isNewMember'] and options['isAnonRegistration']">
           <p i18n:translate="">You have been registered as a member.</p>
           <p tal:condition="options/validate_email" i18n:translate="">
             You will receive an email shortly containing your password and
@@ -33,8 +34,9 @@
               <metal:macro metal:use-macro="context/form_widgets/macros/buttons"/>
             </form>
           </tal:case>
-        </tal:case>
-        <tal:case tal:condition="python:options['isNewMember'] and options['isReviewedRegistration']">
+        </div>
+        
+        <div tal:condition="python:options['isNewMember'] and options['isReviewedRegistration']">
           <p i18n:translate="">Your registration request has been taken into account.</p>
           <p tal:condition="options/validate_email" i18n:translate="">
             Your request will be reviewed soon by a portal administrator. You
@@ -49,85 +51,65 @@
           <p>
             <a href="" tal:attributes="href options/portal_url" i18n:translate="">Return to homepage</a>
           </p>
-        </tal:case>
-        <tal:case tal:condition="options/isAnon">
-          <p i18n:translate="">
-            Becoming a member gives you the ability to personalize the site and
-            participate in the community.
-          </p>
-          <p i18n:translate="">
-            It does not cost any money to become a member and your email and
-            other personal information will remain private.
-          </p>
-          <p tal:condition="options/validate_email" i18n:translate="">
-            You must submit a valid email address. This address will be used to
-            send you a randomly-generated password. Once you have logged in
-            with this password, you may change it to anything you like.
-          </p>
-        </tal:case>
-        <tal:case tal:condition="options/isAnonOrUserManager">
-          <form action="." method="post" tal:attributes="action form/action">
-            <table class="FormLayout">
+        </div>
+        
+        <div tal:condition="options/isAnonOrUserManager">
+          <form method="post" tal:attributes="action form/action">
+            <table>
               <tr>
-                <th i18n:translate="">Member ID</th>
                 <td>
-                  <input type="text" name="member_id" size="30" tal:attributes="value options/member_id"/>
+                  <input type="text" name="given_name" size="30"
+                         placeholder="First name" i18n:attributes="placeholder"
+                         tal:attributes="value options/given_name|nothing"/>
+                </td>
+                <td>
+                  <input type="text" name="name" size="30"
+                         placeholder="Last name" i18n:attributes="placeholder"
+                         tal:attributes="value options/name|nothing"/>
                 </td>
               </tr>
               <tr>
-                <th i18n:translate="">First name</th>
-                <td>
-                  <input type="text" name="given_name" size="30" tal:attributes="value options/given_name|nothing"/>
+                <td colspan="2">
+                  <input type="text" name="member_email"
+                         placeholder="Email address" i18n:attributes="placeholder"
+                         tal:attributes="value options/member_email|nothing"/>
+                  <label>
+                    <input type="checkbox" name="email_as_login"
+                           tal:attributes="checked python:options.get('email_as_login', True)"/>
+                    <span tal:omit-tag="" i18n:translate="">use as login</span>
+                  </label>
                 </td>
               </tr>
               <tr>
-                <th i18n:translate="">Last name</th>
-                <td>
-                  <input type="text" name="name" size="30" tal:attributes="value options/name|nothing"/>
+                <td colspan="2">
+                  <input type="text" name="member_id"
+                         placeholder="login" i18n:attributes="placeholder"
+                         tal:attributes="value options/member_id|nothing"/>
                 </td>
               </tr>
-              <tr>
-                <th i18n:translate="">Email Address</th>
-                <td>
-                  <input type="text" name="member_email" size="30" tal:attributes="value options/member_email"/>
-                </td>
-              </tr>
-              <tal:case tal:condition="not: options/validate_email">
+              <tbody tal:condition="not: options/validate_email" tal:omit-tag="">
                 <tr>
-                  <th i18n:translate="">Password</th>
-                  <td>
-                    <input type="password" name="password" size="30"/>
+                  <td colspan="2">
+                    <input type="password" name="password"
+                           placeholder="Password" i18n:attributes="placeholder"/>
                   </td>
                 </tr>
                 <tr>
-                  <th i18n:translate="">Password (confirm)</th>
-                  <td>
-                    <input type="password" name="confirm" size="30"/>
+                  <td colspan="2">
+                    <input type="password" name="confirm"
+                           placeholder="Password (confirm)" i18n:attributes="placeholder"/>
                   </td>
                 </tr>
-                <tr>
-                  <th i18n:translate="">Mail Password?</th>
-                  <td>
-                    <input type="checkbox" name="send_password" id="cb_send_password" tal:attributes="checked options/send_password"/>
-                    <em>
-                      <label for="cb_send_password" i18n:translate="">
-                        Check this box to have the password mailed.
-                      </label>
-                    </em>
-                  </td>
-                </tr>
-              </tal:case>
+              </tbody>
               <tr>
-                <td>
-                  <br/>
-                </td>
-                <td>
+                <td colspan="2">
                   <metal:macro metal:use-macro="context/form_widgets/macros/buttons"/>
                 </td>
               </tr>
             </table>
           </form>
-        </tal:case>
+        </div>
+        
       </div>
     </metal:slot>
   </body>

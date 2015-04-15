@@ -1,8 +1,11 @@
-##parameters=b_start=0, member_id='', given_name='', name='', member_email='', password='', confirm='', send_password='', add='', cancel='', ajax=''
+##parameters=b_start=0, member_id='', given_name='', name='', member_email='', password='', confirm='', send_password='', add='', ajax=''
 ##
 from Products.CMFCore.utils import getToolByName
 from Products.CMFDefault.permissions import ManageUsers
 from Products.Plinn.RegistrationTool import MODE_ANONYMOUS, MODE_REVIEWED
+from Products.Plinn.utils import translate
+def _(message) : return translate(message, context).encode('utf-8')
+
 
 mtool = getToolByName(script, 'portal_membership')
 ptool = getToolByName(script, 'portal_properties')
@@ -22,10 +25,6 @@ if add and \
 		context.members_add_control(**form) and \
 		context.setRedirect(atool, 'user/join', b_start=b_start, ajax=ajax):
 	return
-elif cancel and \
-		context.setRedirect(mtool, 'global/manage_members', b_start=b_start, ajax=ajax):
-	return
-
 
 options = {}
 
@@ -33,7 +32,6 @@ if context.REQUEST.get('portal_status_message', '') == 'Success!':
 	is_anon = False
 	is_newmember = True
 
-options['title'] = is_usermanager and 'Register Member' or 'Become a Member'
 options['member_id'] = member_id
 options['given_name'] = given_name
 options['name'] = name
@@ -55,8 +53,7 @@ if is_newmember:
 	buttons.append( {'name': 'login', 'value': 'Log in'} )
 else:
 	target = atool.getActionInfo('user/join')['url']
-	buttons.append( {'name': 'add', 'value': 'Register'} )
-	buttons.append( {'name': 'cancel', 'value': 'Cancel'} )
+	buttons.append( {'name': 'add', 'value': _('Join')} )
 options['form'] = { 'action': target,
 					'listButtonInfos': tuple(buttons) }
 options['ajax']=ajax
