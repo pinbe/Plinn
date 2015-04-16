@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Thu Apr 16 16:35:11 2015\n"
+"POT-Creation-Date: Thu Apr 16 18:57:18 2015\n"
 "PO-Revision-Date: 2015-04-15 17:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -32,33 +32,33 @@ msgstr "Object deleted"
 msgid "Please rename each listed object."
 msgstr "Please rename each listed object."
 
-#: n/RegistrationTool.py:267
+#: n/RegistrationTool.py:266
 msgid "Complete your registration on the %s website"
 msgstr "Complete your registration on the %s website"
 
-#: n/RegistrationTool.py:269
+#: n/RegistrationTool.py:268
 msgid "How to reset your password on the %s website"
 msgstr "How to reset your password on the %s website"
 
-#: n/RegistrationTool.py:287
+#: n/RegistrationTool.py:286
 msgid "Unknown user name. Please retry."
 msgstr "Unknown user name. Please retry."
 
-#: n/RegistrationTool.py:302
+#: n/RegistrationTool.py:301
 msgid "Invalid reset password request."
 msgstr "Invalid reset password request."
 
-#: n/RegistrationTool.py:308
+#: n/RegistrationTool.py:307
 msgid "Your reset password request has expired. You can ask a new one."
 msgstr "Your reset password request has expired. You can ask a new one."
 
-#: n/RegistrationTool.py:317
+#: n/RegistrationTool.py:316
 msgid "Password successfully updated."
 msgstr "Password successfully updated."
 
-#: n/RegistrationTool.py:319
-msgid "\"%s\" username not found."
-msgstr "\"%s\" username not found."
+#: n/RegistrationTool.py:318
+msgid "\"${userid}\" username not found."
+msgstr "\"${userid}\" username not found."
 
 #: n/profiles/default/workflows/default_workflow/scripts/sendNotificationEmail.py:52
 #: n/profiles/default/workflows/folder_workflow/scripts/sendNotificationEmail.py:52
@@ -600,7 +600,7 @@ msgstr "More..."
 msgid "Success!"
 msgstr "Success!"
 
-#: n/skins/custom_generic/join_form.py:67
+#: n/skins/custom_generic/join_form.py:68
 #: n/skins/photo_theme/photo_main_macros.pt:28
 msgid "Join"
 msgstr "Join"
@@ -681,17 +681,17 @@ msgstr "Email address"
 msgid "use as login"
 msgstr "use as login"
 
-#: n/skins/custom_generic/join_template.pt:85
+#: n/skins/custom_generic/join_template.pt:86
 msgid "login"
 msgstr "login"
 
-#: n/skins/custom_generic/join_template.pt:93
+#: n/skins/custom_generic/join_template.pt:94
 #: n/skins/custom_generic/login_form.pt:28 n/skins/generic/gruf_macros.pt:268
 #: n/skins/generic/gruf_macros.pt:390
 msgid "Password"
 msgstr "Password"
 
-#: n/skins/custom_generic/join_template.pt:99
+#: n/skins/custom_generic/join_template.pt:100
 msgid "Password (confirm)"
 msgstr "Password (confirm)"
 
@@ -2940,6 +2940,9 @@ msgstr "Directory"
 
 msgid "Configure portal"
 msgstr "Configure portal"
+
+#~ msgid "\"%s\" username not found."
+#~ msgstr "\"%s\" username not found."
 
 #~ msgid "Your personal login to log in later is:"
 #~ msgstr "Your personal login to log in later is:"

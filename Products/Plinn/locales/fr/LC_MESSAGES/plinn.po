@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Thu Apr 16 16:35:11 2015\n"
+"POT-Creation-Date: Thu Apr 16 18:57:18 2015\n"
 "PO-Revision-Date: 2015-04-15 15:06+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -24,35 +24,35 @@ msgstr "Objet supprimé"
 msgid "Please rename each listed object."
 msgstr "Veuillez renommer tous les éléments listés."
 
-#: n/RegistrationTool.py:267
+#: n/RegistrationTool.py:266
 msgid "Complete your registration on the %s website"
 msgstr "Terminer votre inscription sur le site %s"
 
-#: n/RegistrationTool.py:269
+#: n/RegistrationTool.py:268
 msgid "How to reset your password on the %s website"
 msgstr "Comment réinitialiser votre mot de passe sur le site %s"
 
-#: n/RegistrationTool.py:287
+#: n/RegistrationTool.py:286
 msgid "Unknown user name. Please retry."
 msgstr "Nom d'utilisateur inconnu. Veuillez réessayer."
 
-#: n/RegistrationTool.py:302
+#: n/RegistrationTool.py:301
 msgid "Invalid reset password request."
 msgstr "Demande de réinitialisation de mot de passe invalide."
 
-#: n/RegistrationTool.py:308
+#: n/RegistrationTool.py:307
 msgid "Your reset password request has expired. You can ask a new one."
 msgstr ""
 "Votre demande de réinitialisation de mot de passe a expiré. Vous pouvez en "
 "demander une nouvelle."
 
-#: n/RegistrationTool.py:317
+#: n/RegistrationTool.py:316
 msgid "Password successfully updated."
 msgstr "Mot de passe correctement mis à jour."
 
-#: n/RegistrationTool.py:319
-msgid "\"%s\" username not found."
-msgstr "Nom : « %s » non trouvé."
+#: n/RegistrationTool.py:318
+msgid "\"${userid}\" username not found."
+msgstr "Identifiant « ${userid} » non trouvé."
 
 #: n/profiles/default/workflows/default_workflow/scripts/sendNotificationEmail.py:52
 #: n/profiles/default/workflows/folder_workflow/scripts/sendNotificationEmail.py:52
@@ -593,7 +593,7 @@ msgstr "Plus…"
 msgid "Success!"
 msgstr "Succès !"
 
-#: n/skins/custom_generic/join_form.py:67
+#: n/skins/custom_generic/join_form.py:68
 #: n/skins/photo_theme/photo_main_macros.pt:28
 msgid "Join"
 msgstr "S'inscrire"
@@ -674,17 +674,17 @@ msgstr "Adresse e-mail"
 msgid "use as login"
 msgstr "utiliser comme identifiant"
 
-#: n/skins/custom_generic/join_template.pt:85
+#: n/skins/custom_generic/join_template.pt:86
 msgid "login"
 msgstr "identifiant"
 
-#: n/skins/custom_generic/join_template.pt:93
+#: n/skins/custom_generic/join_template.pt:94
 #: n/skins/custom_generic/login_form.pt:28 n/skins/generic/gruf_macros.pt:268
 #: n/skins/generic/gruf_macros.pt:390
 msgid "Password"
 msgstr "Mot de passe"
 
-#: n/skins/custom_generic/join_template.pt:99
+#: n/skins/custom_generic/join_template.pt:100
 msgid "Password (confirm)"
 msgstr "Confirmation"
 
@@ -2959,6 +2959,9 @@ msgstr "Annuaire"
 
 msgid "Configure portal"
 msgstr "Configurer portail"
+
+#~ msgid "\"%s\" username not found."
+#~ msgstr "Nom : « %s » non trouvé."
 
 #~ msgid ""
 #~ "You will receive an email shortly containing your password and "

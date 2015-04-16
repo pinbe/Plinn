@@ -54,7 +54,7 @@
         </div>
         
         <div tal:condition="options/isAnon">
-          <form method="post" tal:attributes="action form/action">
+          <form method="post" tal:attributes="action form/action" id="registration-form">
             <table>
               <tr>
                 <td>
@@ -75,12 +75,13 @@
                          tal:attributes="value options/member_email|nothing"/>
                   <label>
                     <input type="checkbox" name="email_as_login" value="email_as_login"
-                           tal:attributes="checked python:options.get('email_as_login', True)"/>
+                           tal:attributes="checked python:options['email_as_login']"/>
                     <span tal:omit-tag="" i18n:translate="">use as login</span>
                   </label>
                 </td>
               </tr>
-              <tr>
+              <tr id="login-row"
+                  tal:attributes="class python:'hidden' if options['email_as_login'] else nothing">
                 <td colspan="2">
                   <input type="text" name="member_id"
                          placeholder="login" i18n:attributes="placeholder"
@@ -108,6 +109,22 @@
               </tr>
             </table>
           </form>
+          <script type="text/javascript">
+            (function(){
+              var login_row = document.getElementById('login-row');
+              var form = document.getElementById('registration-form');
+              var cb = form.elements.namedItem('email_as_login');
+              addListener(cb,
+                          'change',
+                          function(){
+                            if (cb.checked)
+                              login_row.className = 'hidden';
+                            else
+                              login_row.className = null;
+                          }
+                          );
+            }());
+          </script>
         </div>
         
       </div>
