@@ -27,7 +27,7 @@
           </p>
           <tal:case tal:condition="not: options/validate_email">
             <p i18n:translate="">Click the button to log in immediately.</p>
-            <form tal:attributes="action form/action">
+            <form tal:attributes="action form/action" method="post">
               <input type="hidden" name="__ac_name" tal:attributes="value options/member_id"/>
               <input type="hidden" name="__ac_password" tal:attributes="value options/password"/>
               <input type="hidden" name="noAjax" value="1"/>
