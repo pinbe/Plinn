@@ -11,7 +11,7 @@
                 tal:define="form options/form">
       <h1 i18n:translate="">Become a member</h1>
       <div class="Desktop">
-        <p tal:condition="not:options/isAnon" i18n:translate="">
+        <p tal:condition="options/isOrdinaryMember" i18n:translate="">
             You are already authenticated. You may use the
             <a tal:attributes="href string:$portal_url/personalize_form"
                i18n:name="personalize_form"
@@ -22,8 +22,8 @@
         <div tal:condition="python:options['isNewMember'] and options['isAnonRegistration']">
           <p i18n:translate="">You have been registered as a member.</p>
           <p tal:condition="options/validate_email" i18n:translate="">
-            You will receive an email shortly containing your password and
-            instructions on how to activate your membership.
+            You will receive an email shortly. Please follow sent instructions
+            to complete your registration.
           </p>
           <tal:case tal:condition="not: options/validate_email">
             <p i18n:translate="">Click the button to log in immediately.</p>

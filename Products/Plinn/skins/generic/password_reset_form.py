@@ -9,8 +9,7 @@ uuid = traverse_subpath[0]
 
 passwordChanged = False
 
-if validate and \
-    context.validatePassword(**form) :
+if validate :
     userid = context.reset_password_control(uuid=uuid, **form)
     if userid :
         passwordChanged = True

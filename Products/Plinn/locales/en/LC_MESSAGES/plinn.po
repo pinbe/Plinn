@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Wed Apr 15 17:38:57 2015\n"
+"POT-Creation-Date: Thu Apr 16 16:35:11 2015\n"
 "PO-Revision-Date: 2015-04-15 17:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -32,27 +32,31 @@ msgstr "Object deleted"
 msgid "Please rename each listed object."
 msgstr "Please rename each listed object."
 
-#: n/RegistrationTool.py:254
+#: n/RegistrationTool.py:267
+msgid "Complete your registration on the %s website"
+msgstr "Complete your registration on the %s website"
+
+#: n/RegistrationTool.py:269
 msgid "How to reset your password on the %s website"
 msgstr "How to reset your password on the %s website"
 
-#: n/RegistrationTool.py:269
+#: n/RegistrationTool.py:287
 msgid "Unknown user name. Please retry."
 msgstr "Unknown user name. Please retry."
 
-#: n/RegistrationTool.py:284
+#: n/RegistrationTool.py:302
 msgid "Invalid reset password request."
 msgstr "Invalid reset password request."
 
-#: n/RegistrationTool.py:290
+#: n/RegistrationTool.py:308
 msgid "Your reset password request has expired. You can ask a new one."
 msgstr "Your reset password request has expired. You can ask a new one."
 
-#: n/RegistrationTool.py:299
+#: n/RegistrationTool.py:317
 msgid "Password successfully updated."
 msgstr "Password successfully updated."
 
-#: n/RegistrationTool.py:301
+#: n/RegistrationTool.py:319
 msgid "\"%s\" username not found."
 msgstr "\"%s\" username not found."
 
@@ -592,7 +596,11 @@ msgstr "No news is no news."
 msgid "More..."
 msgstr "More..."
 
-#: n/skins/custom_generic/join_form.py:60
+#: n/skins/custom_generic/join_form.py:41
+msgid "Success!"
+msgstr "Success!"
+
+#: n/skins/custom_generic/join_form.py:67
 #: n/skins/photo_theme/photo_main_macros.pt:28
 msgid "Join"
 msgstr "Join"
@@ -619,11 +627,11 @@ msgstr "You have been registered as a member."
 
 #: n/skins/custom_generic/join_template.pt:24
 msgid ""
-"You will receive an email shortly containing your password and instructions "
-"on how to activate your membership."
+"You will receive an email shortly. Please follow sent instructions to "
+"complete your registration."
 msgstr ""
-"You will receive an email shortly containing your password and instructions "
-"on how to activate your membership."
+"You will receive an email shortly. Please follow sent instructions to "
+"complete your registration."
 
 #: n/skins/custom_generic/join_template.pt:29
 msgid "Click the button to log in immediately."
@@ -655,57 +663,35 @@ msgstr ""
 msgid "Return to homepage"
 msgstr "Return to homepage"
 
-#: n/skins/custom_generic/join_template.pt:56
-msgid ""
-"Becoming a member gives you the ability to personalize the site and "
-"participate in the community."
-msgstr ""
-"Becoming a member gives you the ability to personalize the site and "
-"participate in the community."
-
-#: n/skins/custom_generic/join_template.pt:60
-msgid ""
-"It does not cost any money to become a member and your email and other "
-"personal information will remain private."
-msgstr ""
-"It does not cost any money to become a member and your email and other "
-"personal information will remain private."
-
-#: n/skins/custom_generic/join_template.pt:64
-msgid ""
-"You must submit a valid email address. This address will be used to send you "
-"a randomly-generated password. Once you have logged in with this password, "
-"you may change it to anything you like."
-msgstr ""
-"You must submit a valid email address. This address will be used to send you "
-"a randomly-generated password. Once you have logged in with this password, "
-"you may change it to anything you like."
-
-#: n/skins/custom_generic/join_template.pt:76
+#: n/skins/custom_generic/join_template.pt:61
 msgid "First name"
 msgstr "First name"
 
-#: n/skins/custom_generic/join_template.pt:81
+#: n/skins/custom_generic/join_template.pt:66
 msgid "Last name"
 msgstr "Last name"
 
-#: n/skins/custom_generic/join_template.pt:88
+#: n/skins/custom_generic/join_template.pt:73
 #: n/skins/custom_generic/personalize_form.pt:39
 #: n/skins/generic/gruf_macros.pt:280 n/skins/generic/gruf_macros.pt:402
 msgid "Email address"
 msgstr "Email address"
 
-#: n/skins/custom_generic/join_template.pt:94
+#: n/skins/custom_generic/join_template.pt:79
 msgid "use as login"
 msgstr "use as login"
 
-#: n/skins/custom_generic/join_template.pt:101
+#: n/skins/custom_generic/join_template.pt:85
+msgid "login"
+msgstr "login"
+
+#: n/skins/custom_generic/join_template.pt:93
 #: n/skins/custom_generic/login_form.pt:28 n/skins/generic/gruf_macros.pt:268
 #: n/skins/generic/gruf_macros.pt:390
 msgid "Password"
 msgstr "Password"
 
-#: n/skins/custom_generic/join_template.pt:107
+#: n/skins/custom_generic/join_template.pt:99
 msgid "Password (confirm)"
 msgstr "Password (confirm)"
 
@@ -799,7 +785,7 @@ msgid "Remember my name."
 msgstr "Remember my name."
 
 #: n/skins/custom_generic/login_form.pt:43
-#: n/skins/generic/password_reset_form.py:26
+#: n/skins/generic/password_reset_form.py:25
 msgid " Login "
 msgstr " Login "
 
@@ -1564,19 +1550,19 @@ msgstr "Paste"
 msgid "Exit boxes editing"
 msgstr "Exit boxes editing"
 
-#: n/skins/generic/password_reset_form.py:30
+#: n/skins/generic/password_reset_form.py:29
 msgid "Update Password"
 msgstr "Update Password"
 
-#: n/skins/generic/password_reset_mail.py:4
+#: n/skins/generic/password_reset_mail.py:5
 msgid "Hi %(fullName)s,"
 msgstr "Hi %(fullName)s,"
 
-#: n/skins/generic/password_reset_mail.py:6
+#: n/skins/generic/password_reset_mail.py:8
 msgid "You recently asked to reset your password."
 msgstr "You recently asked to reset your password."
 
-#: n/skins/generic/password_reset_mail.py:8
+#: n/skins/generic/password_reset_mail.py:10
 msgid ""
 "To get back into your account on the %(siteName)s website, you'll need to "
 "create a new password."
@@ -1584,17 +1570,39 @@ msgstr ""
 "To get back into your account on the %(siteName)s website, you'll need to "
 "create a new password."
 
-#: n/skins/generic/password_reset_mail.py:9
+#: n/skins/generic/password_reset_mail.py:11
+#: n/skins/generic/password_reset_mail.py:18
 msgid "It's easy:"
 msgstr "It's easy:"
 
-#: n/skins/generic/password_reset_mail.py:10
+#: n/skins/generic/password_reset_mail.py:12
+#: n/skins/generic/password_reset_mail.py:19
 msgid "Click the link below to open a browser window."
 msgstr "Click the link below to open a browser window."
 
-#: n/skins/generic/password_reset_mail.py:11
+#: n/skins/generic/password_reset_mail.py:13
 msgid "Fill the form with your new password."
 msgstr "Fill the form with your new password."
+
+#: n/skins/generic/password_reset_mail.py:16
+msgid "You just sign up on the %(siteName)s website."
+msgstr "You just sign up on the %(siteName)s website."
+
+#: n/skins/generic/password_reset_mail.py:17
+msgid "Now you have to create your password to complete your registration."
+msgstr "Now you have to create your password to complete your registration."
+
+#: n/skins/generic/password_reset_mail.py:20
+msgid "Choose a password and enter it in the form."
+msgstr "Choose a password and enter it in the form."
+
+#: n/skins/generic/password_reset_mail.py:25
+msgid "Please note:"
+msgstr "Please note:"
+
+#: n/skins/generic/password_reset_mail.py:26
+msgid "Your personal login to sign in later is:"
+msgstr "Your personal login to sign in later is:"
 
 #: n/skins/generic/password_reset_template.pt:16
 msgid "Password resetting"
@@ -2533,7 +2541,9 @@ msgid "Member properties"
 msgstr "Member properties"
 
 msgid "member_creation_area_explanations"
-msgstr "This function determines if a personal folder will be created at the first user entrance."
+msgstr ""
+"This function determines if a personal folder will be created at the first "
+"user entrance."
 
 msgid "member_creation_area_title"
 msgstr "Creation of member areas"
@@ -2542,7 +2552,9 @@ msgid "Membership role mappings"
 msgstr "Membership role mappings"
 
 msgid "membership_role_mapping_explanations"
-msgstr "Use this screen if you are using a userfolder other than the built-in folder to map existing role names to roles understood by the CMF."
+msgstr ""
+"Use this screen if you are using a userfolder other than the built-in folder "
+"to map existing role names to roles understood by the CMF."
 
 msgid "Metadata"
 msgstr "Metadata"
@@ -2928,6 +2940,45 @@ msgstr "Directory"
 
 msgid "Configure portal"
 msgstr "Configure portal"
+
+#~ msgid "Your personal login to log in later is:"
+#~ msgstr "Your personal login to log in later is:"
+
+#~ msgid "%(member_id)s"
+#~ msgstr "%(member_id)s"
+
+#~ msgid "How to initialize your password on the %s website"
+#~ msgstr "How to initialize your password on the %s website"
+
+#~ msgid ""
+#~ "You will receive an email shortly containing your password and "
+#~ "instructions on how to activate your membership."
+#~ msgstr ""
+#~ "You will receive an email shortly containing your password and "
+#~ "instructions on how to activate your membership."
+
+#~ msgid ""
+#~ "Becoming a member gives you the ability to personalize the site and "
+#~ "participate in the community."
+#~ msgstr ""
+#~ "Becoming a member gives you the ability to personalize the site and "
+#~ "participate in the community."
+
+#~ msgid ""
+#~ "It does not cost any money to become a member and your email and other "
+#~ "personal information will remain private."
+#~ msgstr ""
+#~ "It does not cost any money to become a member and your email and other "
+#~ "personal information will remain private."
+
+#~ msgid ""
+#~ "You must submit a valid email address. This address will be used to send "
+#~ "you a randomly-generated password. Once you have logged in with this "
+#~ "password, you may change it to anything you like."
+#~ msgstr ""
+#~ "You must submit a valid email address. This address will be used to send "
+#~ "you a randomly-generated password. Once you have logged in with this "
+#~ "password, you may change it to anything you like."
 
 #~ msgid ""
 #~ "You are already a member. You may use the <a href=\"personalize_form"

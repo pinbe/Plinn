@@ -24,34 +24,27 @@ form = context.REQUEST.form
 if add :
     if validate_email :
         password = confirm = rtool.generatePassword()
+        ok = True
     else :
         ok = context.validatePassword(**form)
-    try :
-        if email_as_login :
-            member_id = member_email
-    	rtool.addMember(id=member_id, password=password,
-    					properties={'username': member_id,
-    								'given_name' : given_name,
-    								'name' : name,
-    								'email': member_email})
-        context.setStatus(True, _('Success!'))
-    except ValueError, errmsg:
-    	context.setStatus(False, errmsg)
+    if ok :
+        try :
+            if email_as_login :
+                member_id = member_email
+        	rtool.addMember(id=member_id, password=password,
+        					properties={'username': member_id,
+        								'given_name' : given_name,
+        								'name' : name,
+        								'email': member_email})
+            if validate_email :
+                rtool.requestPasswordReset(member_id, initial=True)
+            context.setStatus(True, _('Success!'))
+            is_newmember = True
+            is_anon = False
+        except ValueError, errmsg:
+        	context.setStatus(False, errmsg)
     
-        
-
-# if add and \
-#         context.validatePassword(**form) and \
-#         context.members_add_control(**form) and \
-#         context.setRedirect(atool, 'user/join', b_start=b_start, ajax=ajax):
-#     return
-
 options = {}
-
-if context.REQUEST.get('portal_status_message', '') == 'Success!':
-	is_anon = False
-	is_newmember = True
-
 options['member_id'] = member_id
 options['given_name'] = given_name
 options['name'] = name
@@ -60,6 +53,7 @@ options['password'] = is_newmember and context.REQUEST.get('password', '') or ''
 options['portal_url'] = portal_url
 options['isAnon'] = is_anon
 options['isNewMember'] = is_newmember
+options['isOrdinaryMember'] = not (mtool.isAnonymousUser() or is_newmember)
 options['validate_email'] = validate_email
 options['isAnonRegistration'] = rtool.getMode() == MODE_ANONYMOUS
 options['isReviewedRegistration'] = rtool.getMode() == MODE_REVIEWED

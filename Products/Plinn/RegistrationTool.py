@@ -233,7 +233,7 @@ class RegistrationTool(BaseRegistrationTool) :
         return str(uuid4())
 
     security.declarePublic('requestPasswordReset')
-    def requestPasswordReset(self, userid, initialize=False):
+    def requestPasswordReset(self, userid, initial=False):
         """ add uuid / (userid, expiration) pair
             if ok: send an email to member. returns error message otherwise.
         """
@@ -263,12 +263,15 @@ class RegistrationTool(BaseRegistrationTool) :
             mailhost = portal.MailHost
             sender = encodeQuopriEmail(ptool.getProperty('email_from_name'), ptool.getProperty('email_from_address'))
             to = encodeQuopriEmail(member.getMemberFullName(nameBefore=0), member.getProperty('email'))
-            if initialize :
-                subject = translate(_('How to initialize your password on the %s website')) % ptool.getProperty('title')
+            if initial :
+                subject = translate(_('Complete your registration on the %s website')) % ptool.getProperty('title')
             else :
                 subject = translate(_('How to reset your password on the %s website')) % ptool.getProperty('title')
             subject = encodeMailHeader(subject)
-            options = {'fullName' : member.getMemberFullName(nameBefore=0),
+            options = {'initial' : initial,
+                       'fullName' : member.getMemberFullName(nameBefore=0),
+                       'member_id' : member.getId(),
+                       'loginIsNotEmail' : member.getId() != member.getProperty('email'),
                        'siteName' : ptool.getProperty('title'),
                        'resetPasswordUrl' : '%s/password_reset_form/%s' % (utool(), uuid)}
             body = self.password_reset_mail(options)
