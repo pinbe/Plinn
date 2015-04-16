@@ -183,7 +183,7 @@ class RegistrationTool(BaseRegistrationTool) :
                 private_collections = portal.get('private_collections')
                 if not private_collections :
                     raise AccessControl_Unauthorized()
-                    return
+
                 data = private_collections.data
                 lines = filter(None, [l.strip() for l in data.split('\n')])
                 assert len(lines) % 3 == 0
@@ -194,7 +194,6 @@ class RegistrationTool(BaseRegistrationTool) :
                 if not (collecInfos.has_key(properties.get('collection_id')) and \
                     collecInfos[properties.get('collection_id')]['pw'] == properties.get('collection_password')) :
                     raise AccessControl_Unauthorized('Wrong primary credentials')
-                    return
 
 
             BaseRegistrationTool.addMember(self, id, password, roles=roles,
@@ -316,7 +315,7 @@ class RegistrationTool(BaseRegistrationTool) :
                 del self._passwordResetRequests[uuid]
                 return  userid, _('Password successfully updated.')
             else :
-                return None, _('"%s" username not found.') % userid
+                return None, _('"${userid}" username not found.', mapping={'userid': userid})
         else :
             return None, msg
 
