@@ -1610,7 +1610,7 @@ msgstr "Notez bien :"
 
 #: n/skins/generic/password_reset_mail.py:26
 msgid "Your personal login to sign in later is:"
-msgstr "Votre authentifiant pour vous connecter plus tard est :"
+msgstr "Votre identifiant pour vous connecter plus tard est :"
 
 #: n/skins/generic/password_reset_template.pt:16
 msgid "Password resetting"
