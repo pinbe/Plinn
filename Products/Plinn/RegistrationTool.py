@@ -314,6 +314,7 @@ class RegistrationTool(BaseRegistrationTool) :
                 return  userid, _('Password successfully updated.')
             else :
                 return None, _('"%s" username not found.') % userid
-
+        else :
+            return None, msg
 
 InitializeClass(RegistrationTool)
