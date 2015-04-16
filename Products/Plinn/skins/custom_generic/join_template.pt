@@ -11,7 +11,7 @@
                 tal:define="form options/form">
       <h1 i18n:translate="">Become a member</h1>
       <div class="Desktop">
-        <p tal:condition="options/isOrdinaryMember" i18n:translate="">
+        <p tal:condition="not:options/isAnon" i18n:translate="">
             You are already authenticated. You may use the
             <a tal:attributes="href string:$portal_url/personalize_form"
                i18n:name="personalize_form"
@@ -53,7 +53,7 @@
           </p>
         </div>
         
-        <div tal:condition="options/isAnonOrUserManager">
+        <div tal:condition="options/isAnon">
           <form method="post" tal:attributes="action form/action">
             <table>
               <tr>
@@ -74,7 +74,7 @@
                          placeholder="Email address" i18n:attributes="placeholder"
                          tal:attributes="value options/member_email|nothing"/>
                   <label>
-                    <input type="checkbox" name="email_as_login"
+                    <input type="checkbox" name="email_as_login" value="email_as_login"
                            tal:attributes="checked python:options.get('email_as_login', True)"/>
                     <span tal:omit-tag="" i18n:translate="">use as login</span>
                   </label>
