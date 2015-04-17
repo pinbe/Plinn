@@ -1,149 +1,144 @@
-<html metal:use-macro="context/main_template/macros/master">
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-</head>
-<body metal:fill-slot="main_no_tabs" i18n:domain="plinn" tal:omit-tag="" tal:define="form options/form">
-
-<h1 i18n:translate="">Configure the Portal</h1>
-
-<div class="config">
-
-<p i18n:translate="">This form is used to set the portal configuration
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal" xmlns:i18n="http://xml.zope.org/namespaces/i18n" metal:use-macro="context/main_template/macros/master">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+  </head>
+  <body metal:fill-slot="main_no_tabs" i18n:domain="plinn" tal:omit-tag="" tal:define="form options/form">
+    <h1 i18n:translate="">Configure the Portal</h1>
+    <div class="config">
+      <p i18n:translate="">This form is used to set the portal configuration
   options.</p>
-
-<form method="post" tal:attributes="action form/action">
-<table class="TwoColumnForm">
- <tr>
-  <th i18n:translate="">Portal 'From' name</th>
-  <td>
-   <input name="email_from_name" value=""
-      tal:attributes="value form/email_from_name" />
-   <dl class="FieldHelp">
-    <dd i18n:translate="">When the portal generates mail, it uses this name as
+      <form method="post" tal:attributes="action form/action">
+        <table class="TwoColumnForm">
+          <tr>
+            <th i18n:translate="">Portal 'From' name</th>
+            <td>
+              <input name="email_from_name" value="" tal:attributes="value form/email_from_name"/>
+              <dl class="FieldHelp">
+                <dd i18n:translate="">When the portal generates mail, it uses this name as
      its (apparent) sender.</dd>
-   </dl>
-  </td>
- </tr>
- <tr>
-  <th i18n:translate="">Portal 'From' address</th>
-  <td>
-   <input name="email_from_address" value=""
-      tal:attributes="value form/email_from_address" />
-   <dl class="FieldHelp">
-    <dd i18n:translate="">When the portal generates mail, it uses this address
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">Portal 'From' address</th>
+            <td>
+              <input name="email_from_address" value="" tal:attributes="value form/email_from_address"/>
+              <dl class="FieldHelp">
+                <dd i18n:translate="">When the portal generates mail, it uses this address
      as its (apparent) return address.</dd>
-   </dl>
-  </td>
- </tr>
- <tr>
-  <th i18n:translate="">SMTP server</th>
-  <td>
-   <input name="smtp_server" value=""
-      tal:attributes="value form/smtp_server" />
-   <dl class="FieldHelp">
-    <dd i18n:translate="">This is the address of your local SMTP (out-going
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">SMTP server</th>
+            <td>
+              <input name="smtp_server" value="" tal:attributes="value form/smtp_server"/>
+              <dl class="FieldHelp">
+                <dd i18n:translate="">This is the address of your local SMTP (out-going
      mail) server.</dd>
-   </dl>
-  </td>
- </tr>
- <tr>
-  <th i18n:translate="">Portal title</th>
-  <td>
-   <input name="title" value="" tal:attributes="value form/title" />
-   <dl class="FieldHelp">
-    <dd i18n:translate="">This is the title which appears at the top of every
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">Portal title</th>
+            <td>
+              <input name="title" value="" tal:attributes="value form/title"/>
+              <dl class="FieldHelp">
+                <dd i18n:translate="">This is the title which appears at the top of every
      portal page.</dd>
-   </dl>
-  </td>
- </tr>
- <tr>
-  <th i18n:translate="">Portal description</th>
-  <td class="TextField">
-   <textarea name="description" rows="3" cols="40" tal:content="form/description"></textarea>
-   <dl class="FieldHelp">
-    <dd i18n:translate=""> This description is made available via syndicated
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">Portal description</th>
+            <td class="TextField">
+              <textarea name="description" rows="3" cols="40" tal:content="form/description"/>
+              <dl class="FieldHelp">
+                <dd i18n:translate=""> This description is made available via syndicated
       content and elsewhere. It should be fairly brief.</dd>
-   </dl>
-  </td>
- </tr>
- <tr>
-  <th i18n:translate="">Keywords</th>
-  <td class="TextField">
-   <textarea name="keywords:lines" rows="6" cols="40" tal:content="form/keywords"></textarea>
-   <dl class="FieldHelp">
-    <dd i18n:translate="">Keywords describing the portal. Type one keyword (or expression) per line.</dd>
-   </dl>
-  </td>
- </tr>
- <tr i18n:domain="plinn">
-  <th i18n:translate="">Copyright notice</th>
-  <td class="TextField">
-   <input name="copyright_notice" value="" tal:attributes="value form/copyright_notice" />
-   <dl class="FieldHelp">
-    <dd i18n:translate="">Copyright notice displayed on the portal footer.</dd>
-   </dl>
-  </td>
- </tr>
- <tr>
-  <th i18n:translate="">Password policy</th>
-  <td><label>
-   <input type="radio" name="validate_email:boolean" value="True"
-      tal:attributes="checked form/validate_email" />
-   <tal:span i18n:translate="">Generate and email members' initial
-    password</tal:span></label>
-   <br /><label>
-   <input type="radio" name="validate_email:boolean" value="False"
-      tal:attributes="checked not:form/validate_email" />
-   <tal:span i18n:translate="">Allow members to select their initial
-    password</tal:span></label>
-  </td>
- </tr>
- <tr>
-  <th i18n:translate="">Portal default encoding</th>
-  <td>
-   <input name="default_charset" value="" disabled="disabled"
-      tal:attributes="value form/default_charset" />
-   <dl class="FieldHelp">
-    <dd i18n:translate="">Charset used to decode portal content strings.
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">Keywords</th>
+            <td class="TextField">
+              <textarea name="keywords:lines" rows="6" cols="40" tal:content="form/keywords"/>
+              <dl class="FieldHelp">
+                <dd i18n:translate="">Keywords describing the portal. Type one keyword (or expression) per line.</dd>
+              </dl>
+            </td>
+          </tr>
+          <tr i18n:domain="plinn">
+            <th i18n:translate="">Copyright notice</th>
+            <td class="TextField">
+              <input name="copyright_notice" value="" tal:attributes="value form/copyright_notice"/>
+              <dl class="FieldHelp">
+                <dd i18n:translate="">Copyright notice displayed on the portal footer.</dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">Password policy</th>
+            <td>
+              <label>
+                <input type="radio" name="validate_email:boolean" value="True" tal:attributes="checked form/validate_email"/>
+                <tal:span i18n:translate="">Generate and email members' initial
+    password</tal:span>
+              </label>
+              <br/>
+              <label>
+                <input type="radio" name="validate_email:boolean" value="False" tal:attributes="checked not:form/validate_email"/>
+                <tal:span i18n:translate="">Allow members to select their initial
+    password</tal:span>
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">Portal default encoding</th>
+            <td>
+              <input name="default_charset" value="" disabled="disabled" tal:attributes="value form/default_charset"/>
+              <dl class="FieldHelp">
+                <dd i18n:translate="">Charset used to decode portal content strings.
      If empty, 'ascii' is used.</dd>
-   </dl>
-  </td>
- </tr>
-  <tr>
-    <th i18n:translate="">
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <th i18n:translate="">
       Thumbnails size
     </th>
-    <td>
-      <input name="slide_size:int" value="" tal:attributes="value form/slide_size" size="5" />
-      <dl class="FieldHelp">
-        <dd i18n:translate="">This is the size of the thumbnails in the photo album, in pixels.</dd>
-      </dl>
-    </td>
-  </tr>
-    <tr i18n:domain="plinn">
-      <th i18n:translate="">Default ajax options</th>
-      <td>
-        <label>
-          <input type="checkbox" name="ajax_rootClickHandler:boolean" tal:attributes="checked form/ajax_rootClickHandler" />
-          <span i18n:translate="" tal:omit-tag="">Enable handling of all clicks over links</span>
-        </label>
-        <br/>
-        <label>
-          <input type="checkbox" name="ajax_autoFormManager:boolean" tal:attributes="checked form/ajax_autoFormManager" />
-          <span i18n:translate="" tal:omit-tag="">Enable handling of all forms submissions</span>
-        </label>
-      </td>
-    </tr>
-  <tr>
-  <td>&nbsp;</td>
-  <td>
-   <metal:macro metal:use-macro="context/form_widgets/macros/buttons" />
-  </td>
- </tr>
-</table>
-</form>
-
-</div>
-
-</body>
+            <td>
+              <input name="slide_size:int" value="" tal:attributes="value form/slide_size" size="5"/>
+              <dl class="FieldHelp">
+                <dd i18n:translate="">This is the size of the thumbnails in the photo album, in pixels.</dd>
+              </dl>
+            </td>
+          </tr>
+          <tr i18n:domain="plinn">
+            <th i18n:translate="">Default ajax options</th>
+            <td>
+              <label>
+                <input type="checkbox" name="ajax_rootClickHandler:boolean" tal:attributes="checked form/ajax_rootClickHandler"/>
+                <span i18n:translate="" tal:omit-tag="">Enable handling of all clicks over links</span>
+              </label>
+              <br/>
+              <label>
+                <input type="checkbox" name="ajax_autoFormManager:boolean" tal:attributes="checked form/ajax_autoFormManager"/>
+                <span i18n:translate="" tal:omit-tag="">Enable handling of all forms submissions</span>
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <br/>
+            </td>
+            <td>
+              <metal:macro metal:use-macro="context/form_widgets/macros/buttons"/>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </body>
 </html>
