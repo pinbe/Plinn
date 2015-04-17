@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Thu Apr 16 18:57:18 2015\n"
+"POT-Creation-Date: Fri Apr 17 09:59:32 2015\n"
 "PO-Revision-Date: 2015-04-15 15:06+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -24,33 +24,45 @@ msgstr "Objet supprimé"
 msgid "Please rename each listed object."
 msgstr "Veuillez renommer tous les éléments listés."
 
-#: n/RegistrationTool.py:266
+#: n/RegistrationTool.py:230
+msgid "You must enter a password."
+msgstr "Vous devez entrer un mot de passe."
+
+#: n/RegistrationTool.py:233
+msgid "Your password must contain at least 8 characters."
+msgstr "Votre mot de passe doit comporter au moins 8 caractères."
+
+#: n/RegistrationTool.py:236
+msgid "Your password and confirmation did not match. Please try again."
+msgstr "Votre mot de passe et sa confirmation sont différents. Essayez à nouveau."
+
+#: n/RegistrationTool.py:288
 msgid "Complete your registration on the %s website"
 msgstr "Terminer votre inscription sur le site %s"
 
-#: n/RegistrationTool.py:268
+#: n/RegistrationTool.py:290
 msgid "How to reset your password on the %s website"
 msgstr "Comment réinitialiser votre mot de passe sur le site %s"
 
-#: n/RegistrationTool.py:286
+#: n/RegistrationTool.py:308
 msgid "Unknown user name. Please retry."
 msgstr "Nom d'utilisateur inconnu. Veuillez réessayer."
 
-#: n/RegistrationTool.py:301
+#: n/RegistrationTool.py:323
 msgid "Invalid reset password request."
 msgstr "Demande de réinitialisation de mot de passe invalide."
 
-#: n/RegistrationTool.py:307
+#: n/RegistrationTool.py:329
 msgid "Your reset password request has expired. You can ask a new one."
 msgstr ""
 "Votre demande de réinitialisation de mot de passe a expiré. Vous pouvez en "
 "demander une nouvelle."
 
-#: n/RegistrationTool.py:316
+#: n/RegistrationTool.py:338
 msgid "Password successfully updated."
 msgstr "Mot de passe correctement mis à jour."
 
-#: n/RegistrationTool.py:318
+#: n/RegistrationTool.py:340
 msgid "\"${userid}\" username not found."
 msgstr "Identifiant « ${userid} » non trouvé."
 

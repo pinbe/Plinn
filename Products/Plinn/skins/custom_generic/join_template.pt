@@ -70,7 +70,7 @@
               </tr>
               <tr>
                 <td colspan="2">
-                  <input type="text" name="member_email"
+                  <input type="text" name="member_email" size="30"
                          placeholder="Email address" i18n:attributes="placeholder"
                          tal:attributes="value options/member_email|nothing"/>
                   <label>
@@ -91,13 +91,13 @@
               <tbody tal:condition="not: options/validate_email" tal:omit-tag="">
                 <tr>
                   <td colspan="2">
-                    <input type="password" name="password"
+                    <input type="password" name="password" size="25"
                            placeholder="Password" i18n:attributes="placeholder"/>
                   </td>
                 </tr>
                 <tr>
                   <td colspan="2">
-                    <input type="password" name="confirm"
+                    <input type="password" name="confirm" size="25"
                            placeholder="Password (confirm)" i18n:attributes="placeholder"/>
                   </td>
                 </tr>
