@@ -35,6 +35,7 @@ from Products.CMFCore.exceptions import AccessControl_Unauthorized
 from Products.CMFDefault.exceptions import EmailAddressInvalid
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.utils import getUtilityByInterfaceName
+from Products.CMFCore.utils import _checkPermission
 from Products.CMFDefault.utils import checkEmailAddress
 from Products.GroupUserFolder.GroupsToolPermissions import ManageGroups
 from Products.Plinn.utils import Message as _
@@ -216,6 +217,27 @@ class RegistrationTool(BaseRegistrationTool) :
         else :
             BaseRegistrationTool.addMember(self, id, password, roles=roles,
                                            domains=domains, properties=properties)
+
+    security.declarePublic( 'testPasswordValidity' )
+    def testPasswordValidity(self, password, confirm=None):
+
+        """ Verify that the password satisfies the portal's requirements.
+
+        o If the password is valid, return None.
+        o If not, return a string explaining why.
+        """
+        if not password:
+            return _(u'You must enter a password.')
+
+        if len(password) < 8 and not _checkPermission(ManagePortal, self):
+            return _(u'Your password must contain at least 8 characters.')
+
+        if confirm is not None and confirm != password:
+            return _(u'Your password and confirmation did not match. '
+                     u'Please try again.')
+
+        return None
+
 
 
     def afterAdd(self, member, id, password, properties):
