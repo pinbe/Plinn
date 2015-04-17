@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Fri Apr 17 09:59:32 2015\n"
+"POT-Creation-Date: Fri Apr 17 10:39:07 2015\n"
 "PO-Revision-Date: 2015-04-15 17:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -946,7 +946,7 @@ msgstr "Preferred languages"
 msgid "Please enter language codes separated by spaces."
 msgstr "Please enter language codes separated by spaces."
 
-#: n/skins/custom_generic/reconfig_template.pt:7
+#: n/skins/custom_generic/reconfig_template.pt:9
 msgid "Configure the Portal"
 msgstr "Configure the Portal"
 
@@ -964,11 +964,11 @@ msgid ""
 msgstr ""
 "When the portal generates mail, it uses this name as its (apparent) sender."
 
-#: n/skins/custom_generic/reconfig_template.pt:28
+#: n/skins/custom_generic/reconfig_template.pt:30
 msgid "Portal 'From' address"
 msgstr "Portal 'From' address"
 
-#: n/skins/custom_generic/reconfig_template.pt:33
+#: n/skins/custom_generic/reconfig_template.pt:35
 msgid ""
 "When the portal generates mail, it uses this address as its (apparent) "
 "return address."
@@ -976,27 +976,27 @@ msgstr ""
 "When the portal generates mail, it uses this address as its (apparent) "
 "return address."
 
-#: n/skins/custom_generic/reconfig_template.pt:39
+#: n/skins/custom_generic/reconfig_template.pt:43
 msgid "SMTP server"
 msgstr "SMTP server"
 
-#: n/skins/custom_generic/reconfig_template.pt:44
+#: n/skins/custom_generic/reconfig_template.pt:48
 msgid "This is the address of your local SMTP (out-going mail) server."
 msgstr "This is the address of your local SMTP (out-going mail) server."
 
-#: n/skins/custom_generic/reconfig_template.pt:50
+#: n/skins/custom_generic/reconfig_template.pt:56
 msgid "Portal title"
 msgstr "Portal title"
 
-#: n/skins/custom_generic/reconfig_template.pt:54
+#: n/skins/custom_generic/reconfig_template.pt:61
 msgid "This is the title which appears at the top of every portal page."
 msgstr "This is the title which appears at the top of every portal page."
 
-#: n/skins/custom_generic/reconfig_template.pt:60
+#: n/skins/custom_generic/reconfig_template.pt:69
 msgid "Portal description"
 msgstr "Portal description"
 
-#: n/skins/custom_generic/reconfig_template.pt:64
+#: n/skins/custom_generic/reconfig_template.pt:73
 msgid ""
 "This description is made available via syndicated content and elsewhere. It "
 "should be fairly brief."
@@ -1004,63 +1004,53 @@ msgstr ""
 "This description is made available via syndicated content and elsewhere. It "
 "should be fairly brief."
 
-#: n/skins/custom_generic/reconfig_template.pt:70
+#: n/skins/custom_generic/reconfig_template.pt:81
 msgid "Keywords"
 msgstr "Keywords"
 
-#: n/skins/custom_generic/reconfig_template.pt:74
+#: n/skins/custom_generic/reconfig_template.pt:85
 msgid ""
 "Keywords describing the portal. Type one keyword (or expression) per line."
 msgstr ""
 "Keywords describing the portal. Type one keyword (or expression) per line."
 
-#: n/skins/custom_generic/reconfig_template.pt:79
+#: n/skins/custom_generic/reconfig_template.pt:93
 msgid "Copyright notice"
 msgstr "Copyright notice"
 
-#: n/skins/custom_generic/reconfig_template.pt:83
+#: n/skins/custom_generic/reconfig_template.pt:98
 msgid "Copyright notice displayed on the portal footer."
 msgstr "Copyright notice displayed on the portal footer."
 
-#: n/skins/custom_generic/reconfig_template.pt:88
-msgid "Password policy"
-msgstr "Password policy"
+#: n/skins/custom_generic/reconfig_template.pt:105
+msgid "Registration policy"
+msgstr "Registration policy"
 
-#: n/skins/custom_generic/reconfig_template.pt:92
-msgid "Generate and email members' initial password"
-msgstr "Generate and email members' initial password"
+#: n/skins/custom_generic/reconfig_template.pt:110
+msgid "Send email to new members to validate their registrations"
+msgstr "Send email to new members to validate their registrations"
 
-#: n/skins/custom_generic/reconfig_template.pt:97
-msgid "Allow members to select their initial password"
-msgstr "Allow members to select their initial password"
+#: n/skins/custom_generic/reconfig_template.pt:118
+msgid "Allow new members to select their initial passwords"
+msgstr "Allow new members to select their initial passwords"
 
-#: n/skins/custom_generic/reconfig_template.pt:102
-msgid "Portal default encoding"
-msgstr "Portal default encoding"
-
-#: n/skins/custom_generic/reconfig_template.pt:107
-msgid ""
-"Charset used to decode portal content strings. If empty, 'ascii' is used."
-msgstr ""
-"Charset used to decode portal content strings. If empty, 'ascii' is used."
-
-#: n/skins/custom_generic/reconfig_template.pt:113
+#: n/skins/custom_generic/reconfig_template.pt:125
 msgid "Thumbnails size"
 msgstr "Thumbnails size"
 
-#: n/skins/custom_generic/reconfig_template.pt:119
+#: n/skins/custom_generic/reconfig_template.pt:130
 msgid "This is the size of the thumbnails in the photo album, in pixels."
 msgstr "This is the size of the thumbnails in the photo album, in pixels."
 
-#: n/skins/custom_generic/reconfig_template.pt:124
+#: n/skins/custom_generic/reconfig_template.pt:138
 msgid "Default ajax options"
 msgstr "Default ajax options"
 
-#: n/skins/custom_generic/reconfig_template.pt:128
+#: n/skins/custom_generic/reconfig_template.pt:143
 msgid "Enable handling of all clicks over links"
 msgstr "Enable handling of all clicks over links"
 
-#: n/skins/custom_generic/reconfig_template.pt:133
+#: n/skins/custom_generic/reconfig_template.pt:149
 msgid "Enable handling of all forms submissions"
 msgstr "Enable handling of all forms submissions"
 
@@ -2952,6 +2942,26 @@ msgstr "Directory"
 
 msgid "Configure portal"
 msgstr "Configure portal"
+
+#~ msgid "Registration option"
+#~ msgstr "Registration option"
+
+#~ msgid "Password policy"
+#~ msgstr "Password policy"
+
+#~ msgid "Generate and email members' initial password"
+#~ msgstr "Generate and email members' initial password"
+
+#~ msgid "Allow members to select their initial password"
+#~ msgstr "Allow members to select their initial password"
+
+#~ msgid "Portal default encoding"
+#~ msgstr "Portal default encoding"
+
+#~ msgid ""
+#~ "Charset used to decode portal content strings. If empty, 'ascii' is used."
+#~ msgstr ""
+#~ "Charset used to decode portal content strings. If empty, 'ascii' is used."
 
 #~ msgid "\"%s\" username not found."
 #~ msgstr "\"%s\" username not found."

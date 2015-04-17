@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Fri Apr 17 09:59:32 2015\n"
+"POT-Creation-Date: Fri Apr 17 10:39:07 2015\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -887,7 +887,7 @@ msgstr ""
 msgid "Please enter language codes separated by spaces."
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:7
+#: n/skins/custom_generic/reconfig_template.pt:9
 msgid "Configure the Portal"
 msgstr ""
 
@@ -903,91 +903,83 @@ msgstr ""
 msgid "When the portal generates mail, it uses this name as its (apparent) sender."
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:28
+#: n/skins/custom_generic/reconfig_template.pt:30
 msgid "Portal 'From' address"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:33
+#: n/skins/custom_generic/reconfig_template.pt:35
 msgid "When the portal generates mail, it uses this address as its (apparent) return address."
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:39
+#: n/skins/custom_generic/reconfig_template.pt:43
 msgid "SMTP server"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:44
+#: n/skins/custom_generic/reconfig_template.pt:48
 msgid "This is the address of your local SMTP (out-going mail) server."
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:50
+#: n/skins/custom_generic/reconfig_template.pt:56
 msgid "Portal title"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:54
+#: n/skins/custom_generic/reconfig_template.pt:61
 msgid "This is the title which appears at the top of every portal page."
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:60
+#: n/skins/custom_generic/reconfig_template.pt:69
 msgid "Portal description"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:64
+#: n/skins/custom_generic/reconfig_template.pt:73
 msgid "This description is made available via syndicated content and elsewhere. It should be fairly brief."
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:70
+#: n/skins/custom_generic/reconfig_template.pt:81
 msgid "Keywords"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:74
+#: n/skins/custom_generic/reconfig_template.pt:85
 msgid "Keywords describing the portal. Type one keyword (or expression) per line."
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:79
+#: n/skins/custom_generic/reconfig_template.pt:93
 msgid "Copyright notice"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:83
+#: n/skins/custom_generic/reconfig_template.pt:98
 msgid "Copyright notice displayed on the portal footer."
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:88
-msgid "Password policy"
+#: n/skins/custom_generic/reconfig_template.pt:105
+msgid "Registration policy"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:92
-msgid "Generate and email members' initial password"
+#: n/skins/custom_generic/reconfig_template.pt:110
+msgid "Send email to new members to validate their registrations"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:97
-msgid "Allow members to select their initial password"
+#: n/skins/custom_generic/reconfig_template.pt:118
+msgid "Allow new members to select their initial passwords"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:102
-msgid "Portal default encoding"
-msgstr ""
-
-#: n/skins/custom_generic/reconfig_template.pt:107
-msgid "Charset used to decode portal content strings. If empty, 'ascii' is used."
-msgstr ""
-
-#: n/skins/custom_generic/reconfig_template.pt:113
+#: n/skins/custom_generic/reconfig_template.pt:125
 msgid "Thumbnails size"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:119
+#: n/skins/custom_generic/reconfig_template.pt:130
 msgid "This is the size of the thumbnails in the photo album, in pixels."
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:124
+#: n/skins/custom_generic/reconfig_template.pt:138
 msgid "Default ajax options"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:128
+#: n/skins/custom_generic/reconfig_template.pt:143
 msgid "Enable handling of all clicks over links"
 msgstr ""
 
-#: n/skins/custom_generic/reconfig_template.pt:133
+#: n/skins/custom_generic/reconfig_template.pt:149
 msgid "Enable handling of all forms submissions"
 msgstr ""
 

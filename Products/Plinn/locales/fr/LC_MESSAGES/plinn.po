@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Fri Apr 17 09:59:32 2015\n"
+"POT-Creation-Date: Fri Apr 17 10:39:07 2015\n"
 "PO-Revision-Date: 2015-04-15 15:06+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
@@ -34,7 +34,8 @@ msgstr "Votre mot de passe doit comporter au moins 8 caractères."
 
 #: n/RegistrationTool.py:236
 msgid "Your password and confirmation did not match. Please try again."
-msgstr "Votre mot de passe et sa confirmation sont différents. Essayez à nouveau."
+msgstr ""
+"Votre mot de passe et sa confirmation sont différents. Essayez à nouveau."
 
 #: n/RegistrationTool.py:288
 msgid "Complete your registration on the %s website"
@@ -946,7 +947,7 @@ msgstr "Préférences linguistiques"
 msgid "Please enter language codes separated by spaces."
 msgstr "Veuillez entrer les codes de langues, séparés par des espaces."
 
-#: n/skins/custom_generic/reconfig_template.pt:7
+#: n/skins/custom_generic/reconfig_template.pt:9
 msgid "Configure the Portal"
 msgstr "Configurer le portail"
 
@@ -964,38 +965,38 @@ msgid ""
 msgstr ""
 "Lorsque le portail envoie un mail, il utilise ce nom pour l'expéditeur."
 
-#: n/skins/custom_generic/reconfig_template.pt:28
+#: n/skins/custom_generic/reconfig_template.pt:30
 msgid "Portal 'From' address"
 msgstr "Email d'expéditeur"
 
-#: n/skins/custom_generic/reconfig_template.pt:33
+#: n/skins/custom_generic/reconfig_template.pt:35
 msgid ""
 "When the portal generates mail, it uses this address as its (apparent) "
 "return address."
 msgstr ""
 "Lorsque le portail envoie un mail, il utilise cette adresse d'expédition."
 
-#: n/skins/custom_generic/reconfig_template.pt:39
+#: n/skins/custom_generic/reconfig_template.pt:43
 msgid "SMTP server"
 msgstr "Serveur SMTP"
 
-#: n/skins/custom_generic/reconfig_template.pt:44
+#: n/skins/custom_generic/reconfig_template.pt:48
 msgid "This is the address of your local SMTP (out-going mail) server."
 msgstr "Ceci est l'adresse de votre serveur SMTP (courrier sortant)."
 
-#: n/skins/custom_generic/reconfig_template.pt:50
+#: n/skins/custom_generic/reconfig_template.pt:56
 msgid "Portal title"
 msgstr "Titre du portail"
 
-#: n/skins/custom_generic/reconfig_template.pt:54
+#: n/skins/custom_generic/reconfig_template.pt:61
 msgid "This is the title which appears at the top of every portal page."
 msgstr "Ceci est le titre qui apparaîtra en haut de chaque page."
 
-#: n/skins/custom_generic/reconfig_template.pt:60
+#: n/skins/custom_generic/reconfig_template.pt:69
 msgid "Portal description"
 msgstr "Description du portail"
 
-#: n/skins/custom_generic/reconfig_template.pt:64
+#: n/skins/custom_generic/reconfig_template.pt:73
 msgid ""
 "This description is made available via syndicated content and elsewhere. It "
 "should be fairly brief."
@@ -1003,65 +1004,54 @@ msgstr ""
 "Cette description est visible via les canaux de diffusion et partout "
 "ailleurs. Il est recommandé d'être concis."
 
-#: n/skins/custom_generic/reconfig_template.pt:70
+#: n/skins/custom_generic/reconfig_template.pt:81
 msgid "Keywords"
 msgstr "Mots clés"
 
-#: n/skins/custom_generic/reconfig_template.pt:74
+#: n/skins/custom_generic/reconfig_template.pt:85
 msgid ""
 "Keywords describing the portal. Type one keyword (or expression) per line."
 msgstr ""
 "Mots clés décrivant le portail. Entrez un mot (ou expression) par ligne."
 
-#: n/skins/custom_generic/reconfig_template.pt:79
+#: n/skins/custom_generic/reconfig_template.pt:93
 msgid "Copyright notice"
 msgstr "Mention légale"
 
-#: n/skins/custom_generic/reconfig_template.pt:83
+#: n/skins/custom_generic/reconfig_template.pt:98
 msgid "Copyright notice displayed on the portal footer."
 msgstr "Mention légale affichée sur le pied de page du portail."
 
-#: n/skins/custom_generic/reconfig_template.pt:88
-msgid "Password policy"
-msgstr "Option des mots de passe"
+#: n/skins/custom_generic/reconfig_template.pt:105
+msgid "Registration policy"
+msgstr "Modalité d'inscription"
 
-#: n/skins/custom_generic/reconfig_template.pt:92
-msgid "Generate and email members' initial password"
-msgstr "Générer et envoyer par e-mail les mots de passe initiaux aux membres"
+#: n/skins/custom_generic/reconfig_template.pt:110
+msgid "Send email to new members to validate their registrations"
+msgstr "Envoyer un email aux nouveaux membres pour valider leurs inscriptions"
 
-#: n/skins/custom_generic/reconfig_template.pt:97
-msgid "Allow members to select their initial password"
-msgstr "Autoriser les membres à choisir leur mot de passe initial"
+#: n/skins/custom_generic/reconfig_template.pt:118
+msgid "Allow new members to select their initial passwords"
+msgstr "Permettre aux nouveaux membre de choisir leurs mots de passe initiaux"
 
-#: n/skins/custom_generic/reconfig_template.pt:102
-msgid "Portal default encoding"
-msgstr "Encodage par défaut du portail"
-
-#: n/skins/custom_generic/reconfig_template.pt:107
-msgid ""
-"Charset used to decode portal content strings. If empty, 'ascii' is used."
-msgstr ""
-"Encodage utilisé par le portail pour décoder les textes des contenus. Si ce "
-"champ est laissé vide, c'est l'encodage ascii qui sera utilisé."
-
-#: n/skins/custom_generic/reconfig_template.pt:113
+#: n/skins/custom_generic/reconfig_template.pt:125
 msgid "Thumbnails size"
 msgstr "Taille des vignettes"
 
-#: n/skins/custom_generic/reconfig_template.pt:119
+#: n/skins/custom_generic/reconfig_template.pt:130
 msgid "This is the size of the thumbnails in the photo album, in pixels."
 msgstr ""
 "C'est la taille, en pixels, utilisée pour les vignettes des albums photo."
 
-#: n/skins/custom_generic/reconfig_template.pt:124
+#: n/skins/custom_generic/reconfig_template.pt:138
 msgid "Default ajax options"
 msgstr "Options ajax par défaut"
 
-#: n/skins/custom_generic/reconfig_template.pt:128
+#: n/skins/custom_generic/reconfig_template.pt:143
 msgid "Enable handling of all clicks over links"
 msgstr "Activer l'interception de tous les clicks sur les liens"
 
-#: n/skins/custom_generic/reconfig_template.pt:133
+#: n/skins/custom_generic/reconfig_template.pt:149
 msgid "Enable handling of all forms submissions"
 msgstr "Activer l'interception de tous les envois de formulaires"
 
@@ -2971,6 +2961,28 @@ msgstr "Annuaire"
 
 msgid "Configure portal"
 msgstr "Configurer portail"
+
+#~ msgid "Registration option"
+#~ msgstr "Option d'inscription"
+
+#~ msgid "Password policy"
+#~ msgstr "Option des mots de passe"
+
+#~ msgid "Generate and email members' initial password"
+#~ msgstr ""
+#~ "Générer et envoyer par e-mail les mots de passe initiaux aux membres"
+
+#~ msgid "Allow members to select their initial password"
+#~ msgstr "Autoriser les membres à choisir leur mot de passe initial"
+
+#~ msgid "Portal default encoding"
+#~ msgstr "Encodage par défaut du portail"
+
+#~ msgid ""
+#~ "Charset used to decode portal content strings. If empty, 'ascii' is used."
+#~ msgstr ""
+#~ "Encodage utilisé par le portail pour décoder les textes des contenus. Si "
+#~ "ce champ est laissé vide, c'est l'encodage ascii qui sera utilisé."
 
 #~ msgid "\"%s\" username not found."
 #~ msgstr "Nom : « %s » non trouvé."
