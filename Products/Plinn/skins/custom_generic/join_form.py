@@ -1,4 +1,4 @@
-##parameters=member_id='', given_name='', name='', member_email='', password='', confirm='', add='', ajax=''
+##parameters=member_id='', given_name='', name='', member_email='', password='', confirm='', add='', came_from='', ajax=''
 ##
 from Products.CMFCore.utils import getToolByName
 from Products.CMFDefault.permissions import ManageUsers
@@ -58,6 +58,7 @@ options['isOrdinaryMember'] = not (mtool.isAnonymousUser() or is_newmember)
 options['validate_email'] = validate_email
 options['isAnonRegistration'] = rtool.getMode() == MODE_ANONYMOUS
 options['isReviewedRegistration'] = rtool.getMode() == MODE_REVIEWED
+options['came_from'] = came_from
 
 buttons = []
 if is_newmember:
