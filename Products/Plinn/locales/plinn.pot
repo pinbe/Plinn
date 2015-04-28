@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Fri Apr 17 10:39:07 2015\n"
+"POT-Creation-Date: Tue Apr 28 15:48:29 2015\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -773,15 +773,19 @@ msgstr ""
 msgid "Forgot your login or password?"
 msgstr ""
 
-#: n/skins/custom_generic/login_form.pt:51
-msgid "Having trouble logging in? Make sure to enable cookies in your web browser."
-msgstr ""
-
 #: n/skins/custom_generic/login_form.pt:55
-msgid "Don't forget to logout or exit your browser when you're done."
+msgid "Not a member yet? Register now!"
 msgstr ""
 
 #: n/skins/custom_generic/login_form.pt:58
+msgid "Having trouble logging in? Make sure to enable cookies in your web browser."
+msgstr ""
+
+#: n/skins/custom_generic/login_form.pt:62
+msgid "Don't forget to logout or exit your browser when you're done."
+msgstr ""
+
+#: n/skins/custom_generic/login_form.pt:65
 msgid "Setting the 'Remember my name' option will set a cookie with your username, so that when you next log in, your user name will already be filled in for you."
 msgstr ""
 

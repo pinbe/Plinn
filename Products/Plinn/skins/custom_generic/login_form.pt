@@ -48,6 +48,13 @@
         <p>
           <a href="" tal:attributes="href string:${here/portal_url}/request_password_reset_form" i18n:translate="">Forgot your login or password?</a>
         </p>
+        <p tal:define="join_action python:atool.getActionInfo('user/join', check_condition=1);
+                       mq python:modules['ZTUtils'].make_query;
+                       join_url python:join_action['url'] if not request.get('came_from') else '%s?%s' % (join_action['url'], mq(came_from=request.get('came_from')))"
+           tal:on-error="nothing">
+          <a tal:attributes="href join_url"
+             i18n:translate="">Not a member yet? Register now!</a>
+        </p>
         <p i18n:translate="">
           Having trouble logging in? Make sure to enable cookies in your web
           browser.

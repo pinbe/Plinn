@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Fri Apr 17 10:39:07 2015\n"
-"PO-Revision-Date: 2015-04-15 15:06+0200\n"
+"POT-Creation-Date: Tue Apr 28 15:48:29 2015\n"
+"PO-Revision-Date: 2015-04-28 15:49+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -803,20 +803,24 @@ msgstr "Connexion"
 msgid "Forgot your login or password?"
 msgstr "Login ou mot de passe oublié ?"
 
-#: n/skins/custom_generic/login_form.pt:51
+#: n/skins/custom_generic/login_form.pt:55
+msgid "Not a member yet? Register now!"
+msgstr "Pas encore membre ? Inscrivez-vous maintenant !"
+
+#: n/skins/custom_generic/login_form.pt:58
 msgid ""
 "Having trouble logging in? Make sure to enable cookies in your web browser."
 msgstr ""
 "Vous rencontrez des difficultés pour la connexion ? Vérifiez que votre "
 "navigateur accepte les cookies."
 
-#: n/skins/custom_generic/login_form.pt:55
+#: n/skins/custom_generic/login_form.pt:62
 msgid "Don't forget to logout or exit your browser when you're done."
 msgstr ""
 "N'oubliez pas de vous déconnecter ou de fermer votre navigateur à la fin de "
 "la session."
 
-#: n/skins/custom_generic/login_form.pt:58
+#: n/skins/custom_generic/login_form.pt:65
 msgid ""
 "Setting the 'Remember my name' option will set a cookie with your username, "
 "so that when you next log in, your user name will already be filled in for "
