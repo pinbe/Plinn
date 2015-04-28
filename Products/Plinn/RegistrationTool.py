@@ -254,7 +254,7 @@ class RegistrationTool(BaseRegistrationTool) :
         return str(uuid4())
 
     security.declarePublic('requestPasswordReset')
-    def requestPasswordReset(self, userid, initial=False):
+    def requestPasswordReset(self, userid, initial=False, came_from=''):
         """ add uuid / (userid, expiration) pair
             if ok: send an email to member. returns error message otherwise.
         """
@@ -274,7 +274,7 @@ class RegistrationTool(BaseRegistrationTool) :
             uuid = str(uuid4())
             while self._passwordResetRequests.has_key(uuid) :
                 uuid = str(uuid4())
-            self._passwordResetRequests[uuid] = (userid, DateTime() + 1)
+            self._passwordResetRequests[uuid] = (userid, DateTime() + 1, came_from)
             utool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IURLTool')
             ptool = getUtilityByInterfaceName('Products.CMFCore.interfaces.IPropertiesTool')
             # fuck : mailhost récupéré avec getUtilityByInterfaceName n'est pas correctement
@@ -311,7 +311,7 @@ class RegistrationTool(BaseRegistrationTool) :
     def clearExpiredPasswordResetRequests(self):
         now = DateTime()
         for uuid, record in self._passwordResetRequests.items() :
-            userid, date = record
+            date = record[1]
             if date < now :
                 del self._passwordResetRequests[uuid]
 
@@ -322,7 +322,7 @@ class RegistrationTool(BaseRegistrationTool) :
         if not record :
             return None, _('Invalid reset password request.')
 
-        userid, expiration = record
+        userid, expiration, came_from = record
         now = DateTime()
         if expiration < now :
             self.clearExpiredPasswordResetRequests()
@@ -335,7 +335,7 @@ class RegistrationTool(BaseRegistrationTool) :
             if member :
                 member.setSecurityProfile(password=password)
                 del self._passwordResetRequests[uuid]
-                return  userid, _('Password successfully updated.')
+                return  {'userid': userid, 'came_from' : came_from}, _('Password successfully updated.')
             else :
                 return None, _('"${userid}" username not found.', mapping={'userid': userid})
         else :

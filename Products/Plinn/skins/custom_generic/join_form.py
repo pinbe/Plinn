@@ -37,11 +37,12 @@ if add :
                                         'name' : name,
                                         'email': member_email})
             if validate_email :
-                rtool.requestPasswordReset(member_id, initial=True)
+                rtool.requestPasswordReset(member_id, initial=True, came_from=came_from)
             context.setStatus(True, _('Success!'))
             is_newmember = True
             is_anon = False
         except ValueError, errmsg:
+            raise
             context.setStatus(False, errmsg)
     
 options = {}

@@ -10,18 +10,19 @@ uuid = traverse_subpath[0]
 passwordChanged = False
 
 if validate :
-    userid = context.reset_password_control(uuid=uuid, **form)
-    if userid :
+    infos = context.reset_password_control(uuid=uuid, **form)
+    if infos :
         passwordChanged = True
 
 options = {}
 options['uuid'] = uuid
 options['passwordChanged'] = passwordChanged
 if passwordChanged :
-    hidden_vars = ({'name' : '__ac_name',       'value' : userid},
+    hidden_vars = ({'name' : '__ac_name',       'value' : infos['userid']},
                    {'name' : '__ac_password',   'value' : form['password']},
+                   {'name' : 'came_from',       'value' : infos['came_from']},
                    {'name' : 'noAjax',          'value' : '1'})
-    target = utool()
+    target = atool.getActionInfo('user/logged_in')['url']
     buttons = ({'name': 'login', 'value': _(' Login ')},)
 else :
     hidden_vars = []
