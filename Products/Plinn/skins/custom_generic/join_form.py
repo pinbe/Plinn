@@ -42,7 +42,6 @@ if add :
             is_newmember = True
             is_anon = False
         except ValueError, errmsg:
-            raise
             context.setStatus(False, errmsg)
     
 options = {}

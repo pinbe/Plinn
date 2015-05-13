@@ -84,7 +84,7 @@
               <tr id="login-row"
                   tal:attributes="class python:'hidden' if options['email_as_login'] else nothing">
                 <td colspan="2">
-                  <input type="text" name="member_id"
+                  <input type="text" name="member_id" size="30"
                          placeholder="login" i18n:attributes="placeholder"
                          tal:attributes="value options/member_id|nothing"/>
                 </td>
