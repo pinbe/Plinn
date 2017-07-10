@@ -165,6 +165,9 @@ msgstr "Rôles locaux modifiés."
 msgid "Login success"
 msgstr "Connexion réussie"
 
+msgid "Login failure"
+msgstr "Échec de la connexion"
+
 msgid "Member modified."
 msgstr "Membre modifié."
 
