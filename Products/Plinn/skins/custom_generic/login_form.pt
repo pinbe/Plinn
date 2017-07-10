@@ -9,7 +9,7 @@
     <div metal:fill-slot="main_no_tabs" i18n:domain="plinn">
       <div id="Desktop">
         <h1 i18n:translate="">Log in</h1>
-        <form action="" method="post" tal:attributes="action string:${here/portal_url}/logged_in">
+        <form action="" method="post" tal:attributes="action python: atool.getActionInfo('user/logged_in')['url']">
           <input type="hidden" name="noAjax" value="1"/>
           <!-- ****** Enable the automatic redirect ***** -->
           <span tal:condition="exists: request/came_from">
