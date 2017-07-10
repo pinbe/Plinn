@@ -39,3 +39,4 @@ else:
 	else :
 		url = '%s?%s' %(portal_url, mq(portal_status_message=_('Login success')))
 		return context.REQUEST.RESPONSE.redirect(url)
+return context.logged_in_template(**decode(options, script))
