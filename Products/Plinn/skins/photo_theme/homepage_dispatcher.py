@@ -16,6 +16,11 @@ if isAnon:
     context.REQUEST.RESPONSE.expireCookie('__ac', path='/')
     return resp.redirect('%s?%s' % (atool.getActionInfo('user/login')['url'], mq(portal_status_message=_('Login failure'))))
 
+member = mtool.getAuthenticatedMember()
+landing_page = member.getProperty('landing_page', None)
+if landing_page :
+    return resp.redirect('%s%s?%s' % (utool(), landing_page, mq(portal_status_message=_('Login success'))))
+
 
 if came_from :
     urlQs = came_from.split('?', 1)
@@ -30,8 +35,6 @@ else :
     from Products.Plinn.utils import searchContentsWithLocalRolesForAuthenticatedUser as search
     results = search(portal_type='Portfolio')
     if results :
-        atool = getToolByName(context, 'portal_actions')
         return context.setRedirect(atool, 'user/my_albums', portal_status_message=_('Login success'))
     else :
-        utool = getToolByName(context, 'portal_url')
         return resp.redirect('%s?%s' % (utool(), mq(portal_status_message=_('Login success'))))
