@@ -1,0 +1,176 @@
+/* <dtml-with base_properties> */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: &dtml-background;;
+  font-family: &dtml-fontFamily;;
+}
+
+a {
+  color: #369;
+  text-decoration: none;
+}
+
+#body-wrapper {
+  height: 100vh;
+  width: 100vw;
+}
+
+#top-bar {
+  padding: 10px 100px;
+  display: flex;
+  justify-content: space-between;
+  background: &dtml-topbar_background;;
+}
+
+#top-bar > * {
+  /*border: 1px dotted darkgreen;*/
+}
+
+#site-menu {
+  display: flex;
+  font-size: 20px;
+}
+
+#site-menu > a {
+  font-weight: lighter;
+  color: #0a001f;
+  padding: 0 20px;
+  align-self: center;
+  border-right: 1px solid;
+}
+
+#site-menu > a:last-child {
+  border-right: none;
+}
+
+#user-menu {
+  display: flex;
+}
+
+#user-menu > span:first-of-type {
+  align-self: center;
+  display: flex;
+  position: relative;
+}
+
+#user-menu > span:first-of-type > * {
+  align-self: center;
+}
+
+#user-menu >
+  span:first-of-type >
+  span:first-of-type {
+  margin-right: 0.25em;
+}
+
+#user-menu >
+  span:first-of-type >
+  i {
+  cursor: pointer;
+}
+
+
+#user-menu ul {
+  list-style: none;
+  position: absolute;
+  border: 1px solid &dtml-tabsBorderColor;;
+  border-top-width: 2px;
+  top: 32px;
+  right: 0;
+  padding: 3px;
+  box-shadow: 6px 6px 15px 0 #ccc;
+  background: &dtml-configBackgroundColor;;
+  display: block;
+}
+
+#user-menu ul::before {
+	position: absolute;
+	width: 0;
+	height: 0px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid &dtml-tabsBorderColor;;
+	top: -9px;
+	right: 2px;
+	content: "";
+}
+
+#user-menu li {
+  white-space: nowrap;
+}
+
+#user-menu ul.hidden {
+  display: none;
+}
+
+
+#content-outer {
+  margin: 0 100px;
+}
+
+
+/* Content tabs */
+.contentTabs {
+  border-bottom : &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+  border-collapse: collapse;
+  white-space: nowrap;
+  padding-left: 1em;
+  margin: 0;
+}
+
+.contentTabs li, .additionalTabs li {
+  display: inline;
+  font-size: &dtml-fontSmallSize;;
+}
+
+.contentTabs a,
+.contentTabs a:visited {
+  background-color: &dtml-tabsBackgroundColor;;
+  color: &dtml-tabsFontColor;;
+  margin-right: 0.5em;
+  padding: 0 1em;
+  border-left : 1px dashed &dtml-tabsBorderColor;;
+  border-top : 1px dashed &dtml-tabsBorderColor;;
+  border-right : 1px dashed &dtml-tabsBorderColor;;
+  border-radius:7px 7px 0 0;
+}
+
+.contentTabs a:hover, .contentTabs a:active {
+  background-color: &dtml-tabsBorderColor;;
+  color: &dtml-tabsFontColor;;
+}
+
+.contentTabs .selected a,
+.contentTabs .selected a:visited,
+.contentTabs .selected a:hover {
+  border-left : &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+  border-right : &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+  border-top : &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+  border-bottom : &dtml-tabsBottomBorderSelectedWidth; solid &dtml-selectedTabBackgroundColor;;
+  color: &dtml-tabsFontColor;;
+  background-color : &dtml-selectedTabBackgroundColor;;
+}
+
+.additionalTabs {
+  padding-right : 2em ;
+  text-align : right ;
+  margin : 0 ;
+}
+
+.additionalTabs a, .additionalTabs a:visited {
+  color: &dtml-tabsFontColor;;
+  padding: 0 1em;
+  border-left : 1px dashed &dtml-tabsBorderColor;;
+}
+
+.additionalTabs .selected a {
+  background-color : &dtml-tabsBorderColor;;
+  }
+
+
+/* </dtml-with> */

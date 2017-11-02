@@ -69,6 +69,8 @@ if __solr_ok :
 registerFileExtension('ttf', FSFile)
 registerFileExtension('eot', FSFile)
 registerFileExtension('cur', FSFile)
+registerFileExtension('woff', FSFile)
+registerFileExtension('woff2', FSFile)
 
 def initialize(registrar) :
     
