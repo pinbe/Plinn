@@ -29,7 +29,7 @@ descriptionColor:string=#333
 inputFontColor:string=#000
 
 evenRowBackgroundColor:string=#f0f0f0
-oddRowBackgroundColor:string=#fc3
+oddRowBackgroundColor:string=#fff
 highLightColor:string=#f28c18
 
 messageBackgroundColor:string=#fff
@@ -64,6 +64,6 @@ bulletColor:string=#369
 boxeHeaderBackgroundColor:string=#ddd
 
 twoColumnFormFontColor:string=#000
-twoColumnFormBackground:string=#ddd
+twoColumnFormBackground:string=#fff
 
 borderRadius:int=7

@@ -10,9 +10,14 @@ body {
   font-family: &dtml-fontFamily;;
 }
 
-a {
-  color: #369;
+a,
+a:visited {
+  color: &dtml-linkColor;;
   text-decoration: none;
+}
+
+a:hover {
+  color: &dtml-linkHoverColor;;
 }
 
 #body-wrapper {
@@ -171,6 +176,41 @@ a {
 .additionalTabs .selected a {
   background-color : &dtml-tabsBorderColor;;
   }
+/Users/pinbe/dev/pyenvs/zope-2.13.26/lib/python2.7/site-packages/Products/CMFCore/permissions.py:91
+
+
+/* Batched navigation */
+
+.listingBar {
+  background-color: &dtml-tabsBackgroundColor;;
+  font-size: &dtml-fontSmallSize;;
+  border: 1px solid &dtml-listingBarBorderColor;;
+  padding: 0em 1em;
+  margin:1em 0;
+  text-align: center;
+  vertical-align: top;
+}
+
+.listingBar a,
+.listingBar a:link,
+.listingBar a:visited,
+.listingBar a:active {
+	color : &dtml-linkColor;;
+}
+
+.listingBar a:hover {
+	color : &dtml-linkHoverColor;;
+}
+
+.listingBar a.previous {
+    text-align: left;
+    float: left;
+}
+
+.listingBar a.next {
+    text-align: right;
+    float: right;
+}
 
 
 /* </dtml-with> */

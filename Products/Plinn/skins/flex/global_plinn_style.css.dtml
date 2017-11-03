@@ -1,2 +1,9 @@
 /* main_layout.css */
 <dtml-var main_layout.css>
+
+/* plinn folder */
+
+<dtml-var plinn_folder.css>
+
+/* forms */
+<dtml-var forms.css>

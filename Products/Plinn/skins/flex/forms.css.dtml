@@ -1,0 +1,51 @@
+/* <dtml-with base_properties> */
+
+input[type=text],
+input[type=password]{
+  border: none;
+  border-bottom: 2px solid &dtml-outlineColor;;
+}
+
+textarea {
+  border: none;
+  border-left: 2px solid &dtml-outlineColor;;
+  border-bottom: 2px solid &dtml-outlineColor;;
+}
+
+table.TwoColumnForm {
+  color: &dtml-twoColumnFormFontColor;;
+  background-color: &dtml-twoColumnFormBackground;;
+  padding : 4px ;
+  border-radius: &dtml-borderRadius;px;
+}
+
+table.TwoColumnForm td.ListDefinition {
+  font-style: italic }
+
+table.TwoColumnForm td.ListName {
+  color: #fff;
+  font-weight: bold;
+  background-color: #369;
+  vertical-align: middle }
+
+table.TwoColumnForm th {
+  font-weight: bold;
+  text-align: right;
+  padding-right: 5px }
+
+table.TwoColumnForm tr {
+/*  background-color: #ddd;*/
+  vertical-align: top }
+
+table.TwoColumnForm tr td.TextField {
+  vertical-align: top;
+  padding-right: 10px;
+  padding-left: 10px }
+
+dl.FieldHelp {
+  margin: 3px }
+
+dl.FieldHelp dd {
+  font-size : 90% ;
+  font-style : italic }
+/* </dtml-with> */
