@@ -1,0 +1,9 @@
+// $Id$
+// $URL$
+
+var base_properties = [];
+<dtml-with base_properties>
+<dtml-in propertyIds>
+base_properties["<dtml-var sequence-item>"] = '<dtml-var "getProperty(_['sequence-item'])">';
+</dtml-in>
+</dtml-with>

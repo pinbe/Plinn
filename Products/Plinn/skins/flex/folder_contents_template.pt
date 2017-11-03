@@ -1,0 +1,52 @@
+<html metal:use-macro="here/main_template/macros/master">
+
+  <head>
+    <title>folder_contents</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <metal:block metal:fill-slot="javascript_head_slot">
+  		<script tal:attributes="src string:$portal_url/js/fileupload.js" type="text/javascript"></script>
+  		<script tal:attributes="src string:$portal_url/js/folder_contents_script.js" type="text/javascript"></script>
+    </metal:block>
+  </head>
+
+  <body>
+    <div tal:define="hideContentByLine python:1" metal:fill-slot="header">
+      <div metal:use-macro="here/widgets/macros/generic_header">generic_header</div>
+    </div>
+    <div metal:fill-slot="main" i18n:domain="plinn" tal:omit-tag=""
+    		 tal:define="form options/form">
+      <form method="post" tal:attributes="action string:${here/absolute_url}/folder_contents">
+	      <div id="FolderListing">
+	      	<div metal:use-macro="here/folder_contents_macros/macros/FolderListing">FolderListing macro</div>
+				</div>
+	      <br/>
+	      <div metal:use-macro="context/form_widgets/macros/buttons">
+	        buttons here
+	      </div>
+
+				<noscript>
+				<div class="FormButtons" tal:condition="form/listDeltas|nothing" i18n:domain="plinn">
+					<input type="submit" name="items_up" value="Up"
+					   i18n:attributes="value" />
+					/
+					<input type="submit" name="items_down" value="Down"
+					   i18n:attributes="value" />
+					<span i18n:translate="move_by" tal:omit-tag="">by</span>
+					<select name="delta:int">
+					 <option value=""
+					    tal:repeat="delta form/listDeltas"
+					    tal:attributes="value delta"
+					    tal:content="delta">
+					 </option>
+					</select>
+					<input type="submit" name="items_top" value="Top"
+					   i18n:attributes="value" />
+					<input type="submit" name="items_bottom" value="Bottom"
+					   i18n:attributes="value" />
+				</div>
+				</noscript>
+
+      </form>
+    </div>
+  </body>
+</html>

@@ -24,6 +24,10 @@
       <link metal:define-slot="css_slot" tal:replace="nothing" />
       <script type="text/javascript"
               tal:attributes="src string:$portal_url/js/d3.min.js"></script>
+      <script type="text/javascript"
+              tal:attributes="src string:$portal_url/js/utils.js"></script>
+      <script type="text/javascript"
+              tal:attributes="src string:$portal_url/js/base_properties.js"></script>
       <!--?<script type="text/javascript" tal:attributes="src here/epoz_script_detect.js/absolute_url"></script>-->
       <!--?<script type="text/javascript" tal:attributes="src here/javascript_events_api.js/absolute_url"></script>-->
       <!--?<script type="text/javascript" tal:attributes="src here/sarissa.js/absolute_url"></script>      -->
@@ -81,7 +85,8 @@
       
       <script type="text/javascript" metal:define-slot="javascript_head_slot" tal:replace="nothing"></script>
     </head>
-    <body>
+    <body tal:attributes="data-portal_url portal_url;
+                          data-absolute_url here/absolute_url">
       <div id="body-wrapper"
            metal:define-slot="body">
         <div metal:use-macro="main_macros/top_bar">top bar</div>
