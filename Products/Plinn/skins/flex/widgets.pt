@@ -23,34 +23,55 @@
     </table>
 
     <div metal:define-macro="generic_header"
-     tal:define="mq python:modules['ZTUtils'].make_query;
-     						 url python:request.get('URL0');
-     						 cmfPerms python:modules['Products.CMFCore.permissions'];
-     						 ModifyPortalContent cmfPerms/ModifyPortalContent;
-     						 allow_edit python:mtool.checkPermission(ModifyPortalContent, here)">
-	    <table width="100%">
+         tal:define="mq python:modules['ZTUtils'].make_query;
+         						 url python:request.get('URL0');
+         						 cmfPerms python:modules['Products.CMFCore.permissions'];
+         						 ModifyPortalContent cmfPerms/ModifyPortalContent;
+         						 allow_edit python:mtool.checkPermission(ModifyPortalContent, here);
+                     header_id python:header_id if exists('header_id') else 'header_%s' % template.getId()"
+         i18n:domain="plinn">
+	    <table class="palette"
+             tal:attributes="id string:$header_id">
 	      <tr>
-	        <td tal:condition="allow_edit" i18n:domain="plinn">
-	          <a title="Edit metadata" id="ToggleFormButton"
+	        <td tal:condition="allow_edit" class="toggle closed">
+	          <a title="Edit metadata"
                i18n:attributes="title"
 	          	 tal:attributes="href python: '%s?%s' % (url , mq(request.form, {'edit_metadata':'titleAndDescForm'}))">
               <i class="fa fa-caret-right"></i>
             </a>
 	        </td>
-	        <td width="100%" id="HeaderArea" tal:define="metadata_macro python:request.form.get('edit_metadata', 'viewTitleAndDesc')">
+	        <td class="main" tal:define="metadata_macro python:request.form.get('edit_metadata', 'viewTitleAndDesc')">
 	        	<span metal:use-macro="python:here.header_widgets.macros[metadata_macro]"></span>
 	        </td>
 	      </tr>
 	    </table>
-			<script type="text/javascript" tal:attributes="src here/palette.js/absolute_url"></script>
-			<script type="text/javascript" tal:attributes="src here/generic_header_script.js/absolute_url"></script>
-			<script type="text/javascript" tal:attributes="src here/calendar.js/absolute_url"></script>
-      <script type="text/javascript" tal:attributes="src string:${portal_url}/lang/calendar-fr.js"></script>
-      <script type="text/javascript" tal:attributes="src here/calendar-setup.js/absolute_url"></script>
-	    <script type="text/javascript">//<!--
-				initHeaderScript();
-				//-->
-			</script>
+      <div tal:condition="allow_edit"
+           tal:omit-tag="">
+        <script type="text/javascript"
+                tal:attributes="src string:$portal_url/js/palette.js"></script>
+        <script type="text/javascript"
+                tal:content="structure python:'''
+                new InspectorPalette('#%(header_id)s',
+                       function(inspector){
+                         var fi = new FragmentImporter(absolute_url());
+                         fi.useMacro('header_widgets', 'titleAndDescForm', '#%(header_id)s .main');
+                       },
+                       function(inspector){
+                         var fi = new FragmentImporter(absolute_url());
+                         fi.useMacro('header_widgets', 'viewTitleAndDesc', '#%(header_id)s .main');
+                       },
+                       );
+                ''' % {'header_id' : header_id}"></script>
+      </div>
+			<!--?<script type="text/javascript" tal:attributes="src here/palette.js/absolute_url"></script>-->
+			<!--?<script type="text/javascript" tal:attributes="src here/generic_header_script.js/absolute_url"></script>-->
+			<!--?<script type="text/javascript" tal:attributes="src here/calendar.js/absolute_url"></script>-->
+      <!--?<script type="text/javascript" tal:attributes="src string:${portal_url}/lang/calendar-fr.js"></script>-->
+      <!--?<script type="text/javascript" tal:attributes="src here/calendar-setup.js/absolute_url"></script>-->
+	    <!--?<script type="text/javascript">//<!---->
+				<!--?initHeaderScript();-->
+				<!--?//-->
+			<!--?</script>-->
     </div>
     
     <div metal:define-macro="clipboard"

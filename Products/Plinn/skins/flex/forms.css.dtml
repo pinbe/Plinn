@@ -48,4 +48,35 @@ dl.FieldHelp {
 dl.FieldHelp dd {
   font-size : 90% ;
   font-style : italic }
+
+.palette {
+  width: 100%;
+}
+
+.palette .toggle {
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+.palette .toggle a,
+.palette .toggle a:hover {
+  color: &dtml-highLightColor;;
+  font-size: 25px;
+}
+
+.palette .toggle i {
+  transition: all 0.25s;
+}
+
+.palette .toggle.closed i {
+  transform: rotate(0);
+}
+
+.palette .toggle.opened i {
+  transform: rotate(90deg);
+}
+
+.palette .main {
+  width: 100%;
+}
 /* </dtml-with> */

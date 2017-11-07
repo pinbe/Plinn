@@ -1,0 +1,42 @@
+<html i18n:domain="plinn">
+
+<div metal:define-macro="wysiwygEditorBox"
+		 tal:omit-tag="">
+
+
+  <textarea cols="80" rows="25"
+            tal:content="inputvalue"
+            tal:define="defaultStyle string:width: 99%;; height: 450px;; margin-top: 2px;; border: 1px solid #8cacbb;;;
+  								 			style style|defaultStyle;"
+            tal:attributes="name inputname;
+  													id inputname;
+                            rows rows|default;
+                            cols cols|default;
+                            style style"></textarea>
+  <div>
+    <script type="text/javascript" tal:attributes="src string:$portal_url/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" tal:content="structure python:'''
+      (function(){
+      CKEDITOR.replace('%(inputname)s');
+      var ck = CKEDITOR.instances['%(inputname)s'];
+      ck.contentPath = '%(contentPath)s';
+      ck.config.baseHref = '%(baseHref)s';
+      var ckForm = document.getElementById('%(inputname)s').form;
+      /*
+  		if ((AJAX_CONFIG & 2) == 2) {
+    		var formManager = new FormManager(ckForm, document.getElementById('mainCell'));
+    		formManager.onBeforeSubmit = function(manager) {
+    			var editor = CKEDITOR.instances['%(inputname)s'];
+    			editor.updateElement();
+    		};
+  		}
+      */
+		  })();
+      ''' % {'inputname' : inputname,
+             'contentPath' : here.absolute_url(relative=1),
+             'baseHref' : here.absolute_url()+'/'}">
+    </script>
+  </div>
+</div>
+
+</html>
