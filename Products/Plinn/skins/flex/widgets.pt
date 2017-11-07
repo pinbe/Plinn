@@ -31,8 +31,11 @@
 	    <table width="100%">
 	      <tr>
 	        <td tal:condition="allow_edit" i18n:domain="plinn">
-	          <a href="." title="Edit metadata" i18n:attributes="title" id="ToggleFormButton"
-	          	 tal:attributes="href python: '%s?%s' % (url , mq( request.form, {'edit_metadata':'titleAndDescForm'} ))"><img src="../images/collapsedPalette.gif" alt="Edit metadata" height="16" width="16" tal:attributes="src here/collapsedPalette.gif/absolute_url" border="0" i18n:attributes="alt" /></a>
+	          <a title="Edit metadata" id="ToggleFormButton"
+               i18n:attributes="title"
+	          	 tal:attributes="href python: '%s?%s' % (url , mq(request.form, {'edit_metadata':'titleAndDescForm'}))">
+              <i class="fa fa-caret-right"></i>
+            </a>
 	        </td>
 	        <td width="100%" id="HeaderArea" tal:define="metadata_macro python:request.form.get('edit_metadata', 'viewTitleAndDesc')">
 	        	<span metal:use-macro="python:here.header_widgets.macros[metadata_macro]"></span>
