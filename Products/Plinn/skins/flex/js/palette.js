@@ -10,6 +10,7 @@ var InspectorPalette;
         this.toggleButton.node()
             .addEventListener('click',
                 function(evt) {
+                    evt.preventDefault();
                     self.toggle(evt);
                 }
             );
@@ -24,8 +25,7 @@ var InspectorPalette;
         };
     };
 
-    InspectorPalette.prototype.toggle = function(evt) {
-        evt.preventDefault();
+    InspectorPalette.prototype.toggle = function() {
         var wrapperNode = this.toggleWrapper.node();
         if(wrapperNode.classList.contains('closed')) {
             wrapperNode.classList.remove('closed');

@@ -136,10 +136,10 @@ var shake;
         req.onreadystatechange = function() {
             switch(req.readyState) {
                 case 1 :
-                    showProgressImage();
+                    // showProgressImage();
                     break;
                 case 4 :
-                    hideProgressImage();
+                    // hideProgressImage();
                     if(req.status === 200 || req.status === 204) {
                         thisManager.onResponseLoad(req);
                     }

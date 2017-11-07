@@ -50,17 +50,10 @@
         <script type="text/javascript"
                 tal:attributes="src string:$portal_url/js/palette.js"></script>
         <script type="text/javascript"
+                tal:attributes="src string:$portal_url/js/metadata_edit.js"></script>
+        <script type="text/javascript"
                 tal:content="structure python:'''
-                new InspectorPalette('#%(header_id)s',
-                       function(inspector){
-                         var fi = new FragmentImporter(absolute_url());
-                         fi.useMacro('header_widgets', 'titleAndDescForm', '#%(header_id)s .main');
-                       },
-                       function(inspector){
-                         var fi = new FragmentImporter(absolute_url());
-                         fi.useMacro('header_widgets', 'viewTitleAndDesc', '#%(header_id)s .main');
-                       },
-                       );
+                       new MetadataEditManager('#%(header_id)s');
                 ''' % {'header_id' : header_id}"></script>
       </div>
 			<!--?<script type="text/javascript" tal:attributes="src here/palette.js/absolute_url"></script>-->
