@@ -14,7 +14,6 @@ var SitePanel;
     };
 
     SitePanel.prototype.toggle = function() {
-        var self = this;
         var t = d3.transition()
             .duration(500)
             .ease(d3.easeCubicOut)

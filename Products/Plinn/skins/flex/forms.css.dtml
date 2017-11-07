@@ -5,11 +5,22 @@ input[type=password]{
   border: none;
   border-bottom: 2px solid &dtml-outlineColor;;
   outline: none;
+  font-size: &dtml-fontBaseSize;;
+}
+
+input[type=submit] {
+  border: 2px solid &dtml-outlineColor;;
+  font-size: &dtml-fontBaseSize;;
+  background: transparent;
+  padding: 3px 5px;
+  border-radius: 13px;
+  cursor: pointer;
 }
 
 textarea {
-  border: none;
-  border-left: 2px solid &dtml-outlineColor;;
+  font-family: &dtml-fontFamily;;
+  padding: 2px;
+  border: 1px dashed &dtml-outlineColor;;
   border-bottom: 2px solid &dtml-outlineColor;;
 }
 
@@ -23,16 +34,23 @@ table.TwoColumnForm {
 table.TwoColumnForm td.ListDefinition {
   font-style: italic }
 
+table.TwoColumnForm th {
+  font-weight: normal;
+  text-align: right;
+  padding-right: 5px;
+  padding-bottom: 7px; /* belongs to input border-bottom + td.padding-bottom */
+  vertical-align: bottom;
+}
+
+table.TwoColumnForm td {
+  padding-bottom: 5px;
+}
+
 table.TwoColumnForm td.ListName {
   color: #fff;
   font-weight: bold;
   background-color: #369;
   vertical-align: middle }
-
-table.TwoColumnForm th {
-  font-weight: bold;
-  text-align: right;
-  padding-right: 5px }
 
 table.TwoColumnForm tr {
 /*  background-color: #ddd;*/

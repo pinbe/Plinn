@@ -8,6 +8,7 @@
 body {
   background: &dtml-background;;
   font-family: &dtml-fontFamily;;
+  font-size: &dtml-fontBaseSize;;
 }
 
 a,
