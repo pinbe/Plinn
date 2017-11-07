@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>widgets</title>
+    <link href="../patch_skins/plinn_style.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body>
+    <table metal:define-macro="tabs" class="tabs" >
+      <tr>
+        <td tal:repeat="ai_dict ai_dicts"
+            tal:attributes="class python:'selected' if
+                                          (useQueryString and '%s?%s' % (request['URL0'],  request['QUERY_STRING']) == ai_dict['url'])
+                                          or request['URL0'] == ai_dict['url']
+                                          else None">
+          <a tal:attributes="href ai_dict/url"
+             tal:content="python:ai_dict['name'] or ai_dict['id']"
+             i18n:translate="">Action</a>
+        </td>
+      </tr>
+    </table>
+
+    <div metal:define-macro="generic_header"
+     tal:define="mq python:modules['ZTUtils'].make_query;
+     						 url python:request.get('URL0');
+     						 cmfPerms python:modules['Products.CMFCore.permissions'];
+     						 ModifyPortalContent cmfPerms/ModifyPortalContent;
+     						 allow_edit python:mtool.checkPermission(ModifyPortalContent, here)">
+	    <table width="100%">
+	      <tr>
+	        <td tal:condition="allow_edit" i18n:domain="plinn">
+	          <a href="." title="Edit metadata" i18n:attributes="title" id="ToggleFormButton"
+	          	 tal:attributes="href python: '%s?%s' % (url , mq( request.form, {'edit_metadata':'titleAndDescForm'} ))"><img src="../images/collapsedPalette.gif" alt="Edit metadata" height="16" width="16" tal:attributes="src here/collapsedPalette.gif/absolute_url" border="0" i18n:attributes="alt" /></a>
+	        </td>
+	        <td width="100%" id="HeaderArea" tal:define="metadata_macro python:request.form.get('edit_metadata', 'viewTitleAndDesc')">
+	        	<span metal:use-macro="python:here.header_widgets.macros[metadata_macro]"></span>
+	        </td>
+	      </tr>
+	    </table>
+			<script type="text/javascript" tal:attributes="src here/palette.js/absolute_url"></script>
+			<script type="text/javascript" tal:attributes="src here/generic_header_script.js/absolute_url"></script>
+			<script type="text/javascript" tal:attributes="src here/calendar.js/absolute_url"></script>
+      <script type="text/javascript" tal:attributes="src string:${portal_url}/lang/calendar-fr.js"></script>
+      <script type="text/javascript" tal:attributes="src here/calendar-setup.js/absolute_url"></script>
+	    <script type="text/javascript">//<!--
+				initHeaderScript();
+				//-->
+			</script>
+    </div>
+    
+    <div metal:define-macro="clipboard"
+         tal:condition="python:not request.SESSION.get('editBoxes')"
+         i18n:domain="plinn"
+         tal:on-error="python:here.emptyClipboard(empty=True,ajax=True) and None"
+         id="clipboard">
+    	<table tal:condition="clip" class="clipboard" cellspacing="0" tal:define="clip here/getCPInfoList">
+    		<tr><th i18n:translate="">Clipboard</th></tr>
+    		<tr><td>
+					<form tal:attributes="action string:${here/absolute_url}/emptyClipboard" method="post">
+	    			<ul>
+							<li tal:repeat="item clip" tal:attributes="class python:repeat['item'].odd() and 'odd' or 'even'"><input type="checkbox" name="indexes:int:list" tal:attributes="value repeat/item/index"/><a tal:attributes="href item/url ; title item/title"><img tal:attributes="src item/icon ; alt item/type ; height item/height ; width item/width" border="0" /> <span tal:replace="item/title">Title</span></a></li>
+						</ul>
+            <input type="submit" name="delete" value="Delete" i18n:attributes="value" style="float:left"/>
+            <input type="submit" name="empty" value="Empty" i18n:attributes="value" style="float:right" />
+					</form>
+				</td></tr>
+			</table>
+    </div>
+    
+		<div metal:define-macro="date_selector"
+		tal:define="isDict python:hasattr(date, 'keys');
+		year  python:str(isDict and date['year'] or date.year()) ;
+		month python:str(isDict and date['month'] or date.month()).zfill(2) ;
+		day python:str(isDict and date['day'] or date.day()).zfill(2) ;
+		hour python:str(isDict and date['hour'] or date.hour()).zfill(2) ;
+		minute python:str(isDict and date['minute'] or date.minute()).zfill(2);
+		defaultDate defaultDate|nothing"
+		i18n:domain="plinn"
+		tal:omit-tag="">
+		<div  tal:condition="defaultDate" tal:omit-tag="">
+  		<label>
+  	    <input type="checkbox" id="effective_date_cb" tal:attributes="id string:${dateName}_cb" />
+  	    <span tal:replace="defaultDateLabel|nothing">default</span>
+      </label><br />
+    </div>
+    <div tal:attributes="id string:${dateName}_fields">
+			<input type="hidden" tal:attributes="id dateName" /><span i18n:translate="" tal:omit-tag=""
+			><span i18n:name="month"
+			><input type="text" size="2" tal:attributes="id string:${dateName}_month; name string:${dateName}.month:record; value month"
+			/></span>&nbsp;/&nbsp;<span i18n:name="day"
+			><input type="text" size="2" tal:attributes="id string:${dateName}_day; name string:${dateName}.day:record; value day"
+			/></span>&nbsp;/&nbsp;<span i18n:name="year"
+			><input type="text" size="4" tal:attributes="id string:${dateName}_year; name string:${dateName}.year:record; value year"
+			/></span>&nbsp;&nbsp;<span i18n:name="hour"
+			><input type="text" size="2" tal:attributes="id string:${dateName}_hour; name string:${dateName}.hour:record; value hour"
+			/></span>&nbsp;:&nbsp;<span i18n:name="minute"
+			><input type="text" size="2" tal:attributes="id string:${dateName}_minute; name string:${dateName}.minute:record; value minute"
+			/></span></span>
+			<input type="button" value="..." tal:attributes="id string:show_${dateName}_cal" /><br />
+		<script type="text/javascript" tal:condition="not:defaultDate"
+tal:content="structure python:'''
+		// <!--\n
+		  new MetadataDateManager('%s');\n
+		// -->''' % dateName">
+		</script>
+		<script type="text/javascript" tal:condition="defaultDate"
+tal:content="structure python:'''
+		// <!--\n
+		  new MetadataDateManager('%s', new Date('%s'));\n
+		// -->''' % (dateName, defaultDate)">
+		</script>
+		</div>
+		</div>
+		
+    <table metal:define-macro="news_box"
+      class="news_box" cellspacing="0"
+      tal:define="ctool python:modules['Products.CMFCore.utils'].getToolByName(here, 'portal_catalog');
+                  news python:ctool(portal_type='News Item'
+                                  , sort_on='modified'
+                                  , sort_order='reverse'
+                                  , review_state='published')[:5]"
+      tal:condition="news"
+      i18n:domain="plinn">
+      <tr>
+        <th i18n:translate="">News</th>
+      </tr>
+      <tr tal:repeat="n news">
+        <td tal:define="oddrow repeat/n/odd" tal:attributes="class python:oddrow and 'odd' or 'even'">
+          <a tal:attributes="href n/getURL ; title n/Description">
+            <img border="0" alt="News Item" tal:attributes="src n/getIcon" i18n:attributes="alt" />
+            <span tal:replace="n/Title|n/getId"></span>
+            <div tal:content="python:DateTime(n.ModificationDate).strftime(locale_date_fmt)"></div>
+          </a>
+        </td>
+      </tr>
+    </table>
+    
+    
+    <div metal:define-macro="debug" tal:replace="nothing">
+    </div>
+  </body>
+
+</html>
