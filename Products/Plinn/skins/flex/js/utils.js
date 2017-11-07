@@ -1,5 +1,6 @@
 var copyPrototype;
 var getCopyOfNode;
+var readCookie;
 var absolute_url;
 var portal_url;
 
@@ -63,5 +64,23 @@ var portal_url;
     portal_url = function() {
         return document.body.getAttribute('data-portal_url');
     };
+
+    readCookie = function(name) {
+        // from w3schools.com
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        var i;
+        for(i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while(c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if(c.indexOf(nameEQ) !== -1) {
+                return c.substring(nameEQ.length, c.length);
+            }
+        }
+        return null;
+    };
+
 
 }());

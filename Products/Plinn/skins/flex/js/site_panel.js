@@ -1,7 +1,7 @@
 var SitePanel;
 (function() {
     SitePanel = function(panelSelector, mainWrapperSelector) {
-        this.opened = false;
+        this.opened = readCookie('spo') === '1';
         this.panel = document.querySelector(panelSelector);
         this.mainWrapper = document.querySelector(mainWrapperSelector);
         var handle =this.panel.querySelector('.handle a');
@@ -14,9 +14,11 @@ var SitePanel;
     };
 
     SitePanel.prototype.toggle = function() {
+        var self = this;
         var t = d3.transition()
             .duration(500)
-            .ease(d3.easeCubicOut);
+            .ease(d3.easeCubicOut)
+        ;
 
         var targetWidth = this.opened ? '0px' : '300px';
 
@@ -28,9 +30,10 @@ var SitePanel;
         d3.select(this.mainWrapper)
             .transition(t)
             .style('margin-left', targetWidth)
-            .style('width', 'calc(100vw - ' + targetWidth + ')');
+            .style('width', 'calc(100vw - ' + targetWidth + ')')
         ;
 
         this.opened = !this.opened;
+        document.cookie = 'spo=' + ((this.opened) ? '1' : '0');
     };
 }());

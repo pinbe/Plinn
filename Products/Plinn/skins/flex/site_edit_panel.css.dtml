@@ -1,7 +1,7 @@
 /* <dtml-with base_properties> */
 #site-edit-panel {
   position: fixed;
-  /*width: 100px;*/
+  width: 0px;
   height: 100vh;
   background: #484848;
 }
