@@ -17,7 +17,7 @@ fontSmallSize:string=90%
 topbarBackgroundColor:string=#fff
 breadcrumbsBackground:string=#fff
 
-tabsBorderColor:string=#ddd
+tabsBorderColor:string=#f28c18
 tabsBorderWidth:string=2px
 tabsBottomBorderSelectedWidth:string=3px
 tabsFontColor:string=#369

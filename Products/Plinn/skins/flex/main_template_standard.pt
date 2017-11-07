@@ -39,6 +39,7 @@
     </head>
     <body tal:attributes="data-portal_url portal_url;
                           data-absolute_url here/absolute_url">
+      <div metal:use-macro="main_macros/site_edit_panel"></div>
       <div id="body-wrapper"
            metal:define-slot="body">
         <div metal:use-macro="main_macros/top_bar">top bar</div>

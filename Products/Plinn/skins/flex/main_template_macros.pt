@@ -37,37 +37,6 @@ global specialCtxHeader options/specialCtxHeader|nothing"
 		/>
 
 
-<div metal:define-macro="top_bar_disabled">
-	<table id="Masthead" cellspacing="0" border="0">
-		<tr>
-			<td id="PortalLogo" width="215"><a href="#" tal:attributes="href string:${portal_url}?noajax=1; title portal_object/title_or_id"><img src="logo.gif" tal:define="logo here/logo.gif" tal:attributes="src logo/absolute_url; alt portal_object/title_or_id; height logo/height; width logo/width" /></a></td>
-			<td>
-				<div id="site_menu"
-				     tal:define="menu actions/site_menu|nothing"
-				     tal:condition="menu">
-          <span tal:repeat="a menu" tal:omit-tag="">
-            <a tal:content="a/title" tal:attributes="href a/url">Site Menu</a>
-            <span tal:condition="not:repeat/a/end" tal:omit-tag=""> |</span>
-          </span>
-			  </div>
-			</td>
-			<td>
-			  <img tal:attributes="src here/loading_progress.gif/absolute_url" width="32" height="32" id="loading_progress" alt="Loading progress..." i18n:attributes="alt" style="display:none" />
-			</td>
-			<td style="vertical-align:top">
-				<div id="site_related"
-				     tal:define="menu actions/site_related|nothing"
-				     tal:condition="menu">
-          <span tal:repeat="a menu" tal:omit-tag="">
-           <a tal:content="a/title" tal:attributes="href a/url">Site Menu</a>
-           <span tal:condition="not:repeat/a/end" tal:omit-tag=""> |</span>
-          </span>
-				</div>
-			</td>
-		</tr>
-	</table>
-</div>
-
     <div metal:define-macro="top_bar" id="top-bar">
         <a tal:attributes="href string:${portal_url}?noajax=1;
                            title portal_object/title_or_id">
@@ -120,22 +89,32 @@ global specialCtxHeader options/specialCtxHeader|nothing"
       </script>
     </div>
 
+    <div metal:define-macro="site_edit_panel"
+         tal:omit-tag=""
+         i18n:domain="plinn">
+      <script type="text/javascript"
+              tal:attributes="src string:$portal_url/js/site_panel.js"></script>
+      <div id="site-edit-panel"
+           tal:condition="python:member.has_role(['photographe', 'Manager'])">
+        <div class="handle">
+          <a href="#"
+             title="Edit site"
+             i18n:attributes="title">
+            <i class="fa fa-bars"></i>
+          </a>
+        </div>
+        <div class="content"></div>
+      </div>
+      <script type="text/javascript">
+        window.addEventListener('load',
+          function() {
+            new SitePanel('#site-edit-panel', '#body-wrapper');
+          }
+        );
+      </script>
+
+    </div>
   
-<div tal:define="uname python: (isAnon and [''] or [member.getMemberFullName(nameBefore=0)])[0]" metal:define-macro="user_menu_bar">
-	<table id="MemberActionsBox" border="0" cellspacing="0" i18n:domain="plinn">
-		<tr>
-			<td class="ActionTitle" tal:content="uname">Guest</td>
-			<td><img tal:attributes="src here/loading_progress.gif/absolute_url" width="82" height="7" id="loading_progress" alt="Loading progress..." i18n:attributes="alt" style="display:none" /></td>
-			<td class="ActionLink" align="right">
-				<span tal:repeat="action user_actions">
-					<a href="#" tal:attributes="href action/url" tal:content="action/name" i18n:translate="">Login</a>
-					<span tal:condition="not: repeat/action/end"> | </span> 
-				</span>
-				<span tal:condition="nothing"><a href="join_form" i18n:translate="">Join</a></span>
-			</td>
-		</tr>
-	</table>
-</div>
 
 
 <div metal:define-macro="Breadcrumbs" tal:omit-tag="">

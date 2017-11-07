@@ -22,7 +22,7 @@ a:hover {
 
 #body-wrapper {
   height: 100vh;
-  width: 100vw;
+  width: calc(100vw - 0px);
 }
 
 #top-bar {

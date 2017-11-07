@@ -11,6 +11,7 @@ var InspectorPalette;
             .addEventListener('click',
                 function(evt) {
                     evt.preventDefault();
+                    evt.stopPropagation();
                     self.toggle(evt);
                 }
             );
