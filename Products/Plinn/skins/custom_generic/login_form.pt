@@ -21,7 +21,9 @@
             <tr>
               <th i18n:translate="user_name">Login</th>
               <td>
-                <input type="text" name="__ac_name" size="20" value="" tal:attributes="value python: request.get('__ac_name') or ''"/>
+                <input type="text" name="__ac_name" size="20" value=""
+                       autofocus="autofocus"
+                       tal:attributes="value python: request.get('__ac_name') or ''"/>
               </td>
             </tr>
             <tr>

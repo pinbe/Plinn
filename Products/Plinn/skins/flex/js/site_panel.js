@@ -33,6 +33,6 @@ var SitePanel;
         ;
 
         this.opened = !this.opened;
-        document.cookie = 'spo=' + ((this.opened) ? '1' : '0');
+        document.cookie = 'spo=' + ((this.opened) ? '1' : '0') + '; path=/';
     };
 }());
