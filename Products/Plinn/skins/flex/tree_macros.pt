@@ -18,7 +18,28 @@
                        portal_url here/portal_url"
                tal:condition="rows"
                tal:omit-tag="">
-        <script type="text/javascript" tal:attributes="src here/tree_block_script.js/absolute_url"></script>
+        <!--?<script type="text/javascript" tal:attributes="src here/tree_block_script.js/absolute_url"></script>-->
+
+        <div class="tree-view">
+          <div tal:repeat="row rows"
+               tal:attributes="style python:'padding-left: %dpx' % ((row.depth - 1) * 16)">
+            <span tal:define="obj nocall:row/object;
+                              rlink row/branch"
+                  tal:omit-tag="">
+              <a tal:condition="row/state"
+                 tal:attributes="href rlink/link">
+                <i tal:attributes="class python:'fa fa-caret-right %s' %  ('opened' if row.state > 0 else 'closed')"></i>
+              </a>
+              <i tal:condition="not:row/state"> </i>
+              <img tal:attributes="src obj/getIconURL"/>
+              <a tal:attributes="href obj/absolute_url;
+                                 title obj/Description"
+                 tal:content="obj/title_or_id"></a>
+            </span>
+          </div>
+        </div>
+
+        <hr/>
         <table class="tree_box" cellspacing="0">
           <tr>
             <th>

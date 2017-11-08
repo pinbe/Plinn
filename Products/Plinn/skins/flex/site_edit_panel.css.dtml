@@ -5,6 +5,7 @@
   left: -300px;
   height: 100vh;
   background: #484848;
+  padding: 5px;
 }
 
 #site-edit-panel > .handle {
@@ -14,7 +15,7 @@
 }
 
 #site-edit-panel > .handle a,
-#site-edit-panel > .handle a {
+#site-edit-panel > .handle a:hover {
   color: &dtml-highLightColor;;
 }
 

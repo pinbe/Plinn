@@ -214,5 +214,14 @@ a:hover {
     float: right;
 }
 
+/* tree view */
+
+.tree-view i {
+  font-size: 25px;
+}
+
+.tree-view i.opened {
+  transform: rotate(90deg);
+}
 
 /* </dtml-with> */
