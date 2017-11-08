@@ -1,7 +1,8 @@
 /* <dtml-with base_properties> */
 #site-edit-panel {
   position: fixed;
-  width: 0px;
+  width: 300px;
+  left: -300px;
   height: 100vh;
   background: #484848;
 }
@@ -15,6 +16,14 @@
 #site-edit-panel > .handle a,
 #site-edit-panel > .handle a {
   color: &dtml-highLightColor;;
+}
+
+#site-edit-panel a {
+  color: &dtml-sitePanelLinkColor;;
+}
+
+#site-edit-panel a:hover {
+  color: &dtml-sitePanelLinkHoverColor;;
 }
 
 /* </dtml-with> */

@@ -58,8 +58,8 @@ listingHeaderFontColor:string=#000
 listingBarBorderColor:string=#ddd
 newsTitleBorderColor:string=#ddd
 boxesBorderColor:string=#ddd
-specialLinkColor:string=#f60
-specialLinkHoverColor:string=#fff4c00
+sitePanelLinkColor:string=#a7d3ff
+sitePanelLinkHoverColor:string=#f1f8ff
 bulletColor:string=#369
 boxeHeaderBackgroundColor:string=#ddd
 

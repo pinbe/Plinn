@@ -19,17 +19,17 @@ var SitePanel;
             .ease(d3.easeCubicOut)
         ;
 
-        var targetWidth = this.opened ? '0px' : '300px';
+        var shift = this.opened ? 0 : 300;
 
         d3.select(this.panel)
             .transition(t)
-            .style('width', targetWidth)
+            .style('left', (-300 + shift) + 'px')
         ;
 
         d3.select(this.mainWrapper)
             .transition(t)
-            .style('margin-left', targetWidth)
-            .style('width', 'calc(100vw - ' + targetWidth + ')')
+            .style('margin-left', shift + 'px')
+            .style('width', 'calc(100vw - ' + shift + 'px)')
         ;
 
         this.opened = !this.opened;
