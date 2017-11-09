@@ -39,14 +39,16 @@
     </head>
     <body tal:attributes="data-portal_url portal_url;
                           data-absolute_url here/absolute_url">
-      <div metal:use-macro="main_macros/site_edit_panel"></div>
-      <div metal:define-slot="body"
+      <div id="site-edit-panel"
+           metal:use-macro="main_macros/site_edit_panel"></div>
+      <div id="body-wrapper"
+           metal:define-slot="body"
            tal:define="isManager python:member.has_role(['photographe', 'Manager']);
                        shift python:300 if request.cookies.get('spo')=='1' else 0"
            tal:attributes="style python:'margin-left: %(shift)dpx;; width: calc(100vw - %(shift)dpx);;' % {'shift':shift} if
-                  isManager else None"
-           id="body-wrapper">
-        <div metal:use-macro="main_macros/top_bar">top bar</div>
+                  isManager else None">
+        <div id="top-bar"
+             metal:use-macro="main_macros/top_bar">top bar</div>
         <div id="content-outer">
           <div metal:define-slot="main_no_tabs">
             <div tal:condition="specialCtxHeader" tal:content="structure specialCtxHeader">special context header</div>

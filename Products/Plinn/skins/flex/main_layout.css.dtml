@@ -22,15 +22,19 @@ a:hover {
 }
 
 #body-wrapper {
+  position: relative;
   height: 100vh;
   width: calc(100vw - 0px);
+  z-index: 1;
 }
 
 #top-bar {
+  position: relative;
   padding: 10px 100px;
   display: flex;
   justify-content: space-between;
   background: &dtml-topbar_background;;
+  z-index: 3;
 }
 
 #top-bar > * {
@@ -117,7 +121,9 @@ a:hover {
 
 
 #content-outer {
+  position: relative;
   margin: 0 100px;
+  z-index: 2;
 }
 
 

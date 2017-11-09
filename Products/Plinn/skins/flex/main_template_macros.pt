@@ -37,7 +37,8 @@ global specialCtxHeader options/specialCtxHeader|nothing"
 		/>
 
 
-    <div metal:define-macro="top_bar" id="top-bar">
+    <div metal:define-macro="top_bar"
+         id="top-bar">
         <a tal:attributes="href portal_url;
                            title portal_object/title_or_id">
           <img tal:define="logo here/logo.png"

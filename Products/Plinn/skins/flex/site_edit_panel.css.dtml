@@ -6,6 +6,7 @@
   height: 100vh;
   background: #484848;
   padding: 5px;
+  z-index: 4;
 }
 
 #site-edit-panel > .handle {
