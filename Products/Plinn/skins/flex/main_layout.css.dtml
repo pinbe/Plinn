@@ -216,8 +216,17 @@ a:hover {
 
 /* tree view */
 
+.tree-view > div {
+  overflow: hidden;
+}
+
 .tree-view i {
   font-size: 25px;
+  transition: all 0.5s ease-out;
+}
+
+.tree-view i.closed{
+  transform: rotate(0deg);
 }
 
 .tree-view i.opened {

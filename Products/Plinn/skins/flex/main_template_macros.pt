@@ -106,7 +106,8 @@ global specialCtxHeader options/specialCtxHeader|nothing"
           </a>
         </div>
         <div class="content">
-          <div tal:define="treeRoot portal_object"
+          <div tal:define="treeRoot portal_object;
+                           treeRootSelector string:#site-edit-panel"
                tal:omit-tag="">
             <div metal:use-macro="here/tree_macros/macros/tree"></div>
           </div>

@@ -9,26 +9,29 @@
     <div  metal:define-macro="tree"
           tal:omit-tag=""
           i18n:domain="plinn">
-      <div tal:define="treeDict   python:portal_object.make_nav_tree(rootObject=treeRoot);
+      <div tal:define="treeMetaTypes python:['Huge Plinn Folder', 'Portfolio', 'Topic'];
+                       treeDict   python:portal_object.make_nav_tree(rootObject=treeRoot);
                        tree treeDict/tree;
                        rows treeDict/rows;
                        height tree/height;
                        rootNode python:rows.pop(0);
-                       box_id string:avirer;
                        portal_url here/portal_url"
                tal:condition="rows"
                tal:omit-tag="">
-        <!--?<script type="text/javascript" tal:attributes="src here/tree_block_script.js/absolute_url"></script>-->
 
-        <div class="tree-view">
+        <div class="tree-view"
+             tal:attributes="data-root-id rootNode/id">
           <div tal:repeat="row rows"
-               tal:attributes="style python:'padding-left: %dpx' % ((row.depth - 1) * 16)">
+               tal:attributes="style python:'padding-left: %dpx' % ((row.depth - 1) * 16 + 5);
+                               data-depth python:row.depth;
+                               data-id row/id">
             <span tal:define="obj nocall:row/object;
                               rlink row/branch"
                   tal:omit-tag="">
               <a tal:condition="row/state"
                  tal:attributes="href rlink/link">
-                <i tal:attributes="class python:'fa fa-caret-right %s' %  ('opened' if row.state > 0 else 'closed')"></i>
+                <i tal:attributes="class python:'fa fa-caret-right %s' %
+                                   ('opened' if row.state > 0 else 'closed')"></i>
               </a>
               <i tal:condition="not:row/state"> </i>
               <img tal:attributes="src obj/getIconURL"/>
@@ -38,58 +41,16 @@
             </span>
           </div>
         </div>
+        <script type="text/javascript"
+                tal:attributes="src string:$portal_url/js/tree.js"></script>
+        <script type="text/javascript"
+                tal:content="python:'''
+                  tm = new TreeMaker('%s .tree-view', '%s', '%s');
+                       ''' % (treeRootSelector,
+                              ','.join(treeMetaTypes),
+                              tree.tree_pre)"></script>
 
         <hr/>
-        <table class="tree_box" cellspacing="0">
-          <tr>
-            <th>
-              <table>
-                <tr>
-                  <td width="16" tal:condition="nothing">
-                    <a title="collapse all"
-                       href="." tal:attributes="href string:?collapse_all=${rootNode/object/id}" i18n:attributes="title"><img
-                            src="../skins/collapse_all.gif" alt="collapse all" height="16" width="16"
-                            border="0" tal:attributes="src here/collapse_all.gif/absolute_url" i18n:attributes="alt" /></a>
-                  </td>
-                  <th tal:content="rootNode/object/title_or_id" style="border : none">Root Node</th>
-                </tr>
-              </table>
-            </th>
-          </tr>
-
-          <tr>
-            <td>
-              <table cellspacing="0">
-                <tbody tal:attributes="id  box_id; name rootNode/id">
-                  <tr tal:repeat="row rows">
-                    <td tal:define="indent python: row.depth - 1" tal:attributes="colspan indent" tal:condition="indent">
-                      &nbsp;
-                    </td>
-                    <td tal:define="state row/state ; rlink row/branch ; msg python:state > 0 and 'collapse' or 'expand'"
-                            width="16"
-                    >
-                      <a href="#" tal:condition="state" tal:attributes="name row/id ; href rlink/link ; title msg" i18n:attributes="title"
-                      ><img src="/p_/pl"
-                            alt="" tal:attributes="src python:'%s/%s' % (portal_url, state > 0 and 'mi.png' or 'pl.png') ; alt msg" i18n:attributes="alt"
-                            border="0" height="16" width="16"/></a>
-                      <a href="#" tal:attributes="name row/id ; href rlink/link" tal:condition="not:state">&nbsp;&nbsp;</a>
-                    </td>
-                    <td colspan="1" tal:define="obj nocall: row/object; url obj/absolute_url; description obj/Description"
-                            	tal:attributes="colspan python: height - row.depth"
-                        width="99%" tal:on-error="string:erreur"
-                    ><a href="." tal:attributes="href url; title description"
-                    ><img src="."
-                          alt="" tal:define="icon python:here.restrictedTraverse(obj.icon())" tal:attributes="src icon/absolute_url; height icon/height; width icon/width"
-                          border="0"/>
-                      <span tal:replace="obj/title_or_id">Title</span></a></td>
-                  </tr>
-                </tbody>
-              </table>
-              <!--?<tal:include-->
-                      <!--?content="structure python:here.inline_tree_script(box_id=box_id, filter_str=','.join(filteredMetaTypes.text))"/>-->
-            </td>
-          </tr>
-        </table>
       </div>
     </div>
   </body>
