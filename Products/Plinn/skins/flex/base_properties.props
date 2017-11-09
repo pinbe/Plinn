@@ -1,6 +1,7 @@
 title:string=Color, font, logo and border defaults
 
 background:string=#fff
+backgroundColor:string=#fff
 fontColor:string=#000
 fontFamily:string=Helvetica, sans-serif
 fontBaseSize:string=15px

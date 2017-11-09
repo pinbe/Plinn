@@ -8,5 +8,9 @@
 
 <dtml-var plinn_folder.css>
 
+/* Portfolio */
+<dtml-var portfolio_style.css>
+
+
 /* forms */
 <dtml-var forms.css>
