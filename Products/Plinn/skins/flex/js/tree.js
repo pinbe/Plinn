@@ -12,12 +12,17 @@ var TreeMaker;
         this.root = document.querySelector(rootSelector);
         this.filter = filter;
         this.tree_pre = tree_pre; // actualy SimpleTreeMaker cookie name
+        this.t = d3.transition()
+            .duration(500)
+            .ease(d3.easeCubicOut)
+        ;
+
         var self = this;
         this.root.addEventListener('click',
             function(evt) {
                 self.refreshTree(evt);
             });
-        this.depthCpt = [];
+
     };
 
     /*
@@ -64,62 +69,6 @@ var TreeMaker;
                          "&expansion=" + encodeURIComponent(this.getExpansion()));
 
             }
-            return;
-
-            var srcParts = target.src.split("/");
-            var imgId = srcParts[srcParts.length - 1];
-            var parentTd = target.parentNode.parentNode;
-            var parentRow = parentTd.parentNode;
-            var self = this;
-
-            switch(imgId) {
-                case "pl.png" :
-                case "pl_ani.png" :
-                    var linkCell = parentTd.nextSibling;
-                    while(linkCell.nodeType !== 1)
-                        linkCell = linkCell.nextSibling;
-
-                    var obUrl = linkCell.getElementsByTagName("A")[0].href;
-
-                    var req = new XMLHttpRequest();
-                    req.onreadystatechange = function() {
-                        switch(req.readyState) {
-                            case 1:
-                                showProgressImage();
-                                break;
-                            case 4:
-                                hideProgressImage();
-                                self.importRows(req, parentRow);
-                        }
-                    };
-                    target.src = this.baseImgUrl + "mi_ani.png";
-                    this._lastAniImg = target;
-                    window.setTimeout(function() {
-                        self._removeLastAniImg();
-                    }, 500);
-
-                    req.open("POST", obUrl + "/xml_nav_tree", true);
-                    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-                    req.send("filter=" + encodeURIComponent(this.filter) +
-                        "&root_name=" + encodeURIComponent(this.root.id) +
-                        "&expansion=" + encodeURIComponent(this.getExpansion()));
-
-                    break;
-
-                case "mi.png" :
-                case "mi_ani.png" :
-                    this.removeRows(parentRow);
-                    target.src = this.baseImgUrl + "pl_ani.png";
-                    this._lastAniImg = target;
-                    window.setTimeout(function() {
-                        self._removeLastAniImg();
-                    }, 500);
-                    document.cookie = encodeURIComponent(this.root.id) + '-state=' + encodeURIComponent(this.getExpansion()) +
-                        ';path=/';
-                    break;
-            } // end switch (imgId)
-            evt.preventDefault();
-            evt.stopPropagation();
         }
     };
 
@@ -195,6 +144,10 @@ var TreeMaker;
                 .text(xmlRow.childNodes[0].nodeValue);
 
             appendRow(row.node());
+
+            row.style('height', '0px')
+                .transition(this.t)
+                .style('height', null);
         }
     };
 
@@ -204,14 +157,10 @@ var TreeMaker;
     TreeMaker.prototype.removeRows = function(baseRow) {
         var baseRowDepth = parseInt(baseRow.getAttribute('data-depth'), 10);
         var nextRow = baseRow.nextElementSibling;
-        var t = d3.transition()
-            .duration(500)
-            .ease(d3.easeCubicOut)
-        ;
         while(nextRow !== null &&
               parseInt(nextRow.getAttribute('data-depth')) > baseRowDepth) {
             d3.select(nextRow)
-                .transition(t)
+                .transition(this.t)
                 .style('height', '0px')
                 .remove();
             nextRow = nextRow.nextElementSibling;
