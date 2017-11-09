@@ -227,10 +227,21 @@ a:hover {
 
 .tree-view i.closed{
   transform: rotate(0deg);
-}
+  }
 
 .tree-view i.opened {
   transform: rotate(90deg);
+}
+
+.tree-view a.toggle {
+  display: inline-block;
+  width: 16px;
+  padding-left: 3px;
+}
+
+.tree-view i.sp {
+  display: inline-block;
+  width: 16px;
 }
 
 /* </dtml-with> */

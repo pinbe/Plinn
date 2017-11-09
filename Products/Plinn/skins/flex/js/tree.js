@@ -179,12 +179,13 @@ var TreeMaker;
             state = parseInt(xmlRow.getAttribute('state'));
             if(state === -1)
                 row.append('a')
+                    .attr('class', 'toggle')
                     .attr('href', '#')
                     .append('i')
                     .attr('class', 'fa fa-caret-right closed');
             else
                 row.append('i')
-                    .text(' ');
+                    .attr('class', 'sp');
             row.append('img')
                 .attr('src', xmlRow.getAttribute('icon'));
 

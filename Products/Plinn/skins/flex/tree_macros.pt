@@ -7,48 +7,49 @@
 
   <body>
     <div  metal:define-macro="tree"
-          tal:omit-tag=""
-          i18n:domain="plinn">
+             tal:omit-tag=""
+             i18n:domain="plinn">
       <div tal:define="treeMetaTypes python:['Huge Plinn Folder', 'Portfolio', 'Topic'];
-                       treeDict   python:portal_object.make_nav_tree(rootObject=treeRoot);
-                       tree treeDict/tree;
-                       rows treeDict/rows;
-                       height tree/height;
-                       rootNode python:rows.pop(0);
-                       portal_url here/portal_url"
+              treeDict   python:portal_object.make_nav_tree(rootObject=treeRoot);
+              tree treeDict/tree;
+              rows treeDict/rows;
+              height tree/height;
+              rootNode python:rows.pop(0);
+              portal_url here/portal_url"
                tal:condition="rows"
                tal:omit-tag="">
 
         <div class="tree-view"
-             tal:attributes="data-root-id rootNode/id">
+                 tal:attributes="data-root-id rootNode/id">
           <div tal:repeat="row rows"
-               tal:attributes="style python:'padding-left: %dpx' % ((row.depth - 1) * 16 + 5);
-                               data-depth python:row.depth;
-                               data-id row/id">
-            <span tal:define="obj nocall:row/object;
-                              rlink row/branch"
-                  tal:omit-tag="">
-              <a tal:condition="row/state"
-                 tal:attributes="href rlink/link">
+                   tal:attributes="style python:'padding-left: %dpx' % ((row.depth - 1) * 16 + 5);
+                                   data-depth python:row.depth;
+                                   data-id row/id"
+          ><span tal:define="obj nocall:row/object;
+                    rlink row/branch"
+                     tal:omit-tag=""
+            ><a class="toggle"
+                tal:condition="row/state"
+                tal:attributes="href rlink/link">
                 <i tal:attributes="class python:'fa fa-caret-right %s' %
-                                   ('opened' if row.state > 0 else 'closed')"></i>
-              </a>
-              <i tal:condition="not:row/state"> </i>
-              <img tal:attributes="src obj/getIconURL"/>
-              <a tal:attributes="href obj/absolute_url;
-                                 title obj/Description"
-                 tal:content="obj/title_or_id"></a>
-            </span>
+                                   ('opened' if row.state > 0 else 'closed')"
+                ></i></a><i class="sp"
+                            tal:condition="not:row/state"
+              ></i><img tal:attributes="src obj/getIconURL"
+                /><a tal:attributes="href obj/absolute_url;
+                      title obj/Description"
+                       tal:content="obj/title_or_id"
+                  ></a></span>
           </div>
         </div>
         <script type="text/javascript"
-                tal:attributes="src string:$portal_url/js/tree.js"></script>
+                 tal:attributes="src string:$portal_url/js/tree.js"></script>
         <script type="text/javascript"
-                tal:content="python:'''
-                  tm = new TreeMaker('%s .tree-view', '%s', '%s');
-                       ''' % (treeRootSelector,
-                              ','.join(treeMetaTypes),
-                              tree.tree_pre)"></script>
+                 tal:content="python:'''
+                tm = new TreeMaker('%s .tree-view', '%s', '%s');
+                ''' % (treeRootSelector,
+                ','.join(treeMetaTypes),
+                tree.tree_pre)"></script>
 
         <hr/>
       </div>
