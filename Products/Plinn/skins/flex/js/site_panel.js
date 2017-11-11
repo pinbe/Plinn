@@ -22,8 +22,13 @@ var SitePanel;
         var shift = this.opened ? 0 : 300;
 
         d3.select(this.panel)
-            .transition(t)
-            .style('left', (-300 + shift) + 'px')
+          .transition(t)
+          .style('left', (-300 + shift) + 'px')
+          .tween('attr.left', function() {
+              return function(t) {
+                  window.dispatchEvent(new Event('resize'));
+              };
+          })
         ;
 
         d3.select(this.mainWrapper)
