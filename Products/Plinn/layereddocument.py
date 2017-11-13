@@ -25,19 +25,25 @@ class LayeredDocument(PortalContent, DefaultDublinCoreImpl) :
         self.layers = PersistentList()
         self.layers.append('')
 
-
-
     security.declareProtected(ModifyPortalContent, 'edit')
     def edit(self, text, layer) :
+        if layer > 128:
+            raise ValueError, 'Layer number could not exeed 128'
+
+        if layer > len(self.layers) - 1 :
+            for i in range(layer - (len(self.layers) - 1)):
+                self.layers.append('')
+
         self.layers[layer] = text
         self.reindexObject()
         return True
 
-
     security.declareProtected(View, 'getLayer')
     def getLayer(self, layer) :
-        return self.layers[layer]
-
+        try :
+            return self.layers[layer]
+        except IndexError :
+            return ''
 
     security.declareProtected(View, 'SearchableText')
     def SearchableText(self) :

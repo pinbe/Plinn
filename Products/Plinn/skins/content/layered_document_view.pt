@@ -4,11 +4,11 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <base href="." metal:fill-slot="base" tal:attributes="href python: here.absolute_url() + '/'" />
   </head>
-<body>
+  <body>
 
-<div metal:fill-slot="main" tal:omit-tag="">
-  <div tal:content="python:here.getLayer(-1)"></div>
-</div>
+    <div metal:fill-slot="main" tal:omit-tag="">
+      <div tal:content="structure python:here.getLayer(0)"></div>
+    </div>
 
-</body>
+  </body>
 </html>

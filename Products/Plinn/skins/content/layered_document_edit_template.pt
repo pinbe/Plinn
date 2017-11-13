@@ -10,25 +10,22 @@
         generic_header macro
       </div>
     </div>
-    <div id="Desktop">
-      <div metal:fill-slot="main">
-        <form method="post" enctype="multipart/form-data"
-              tal:attributes="action string:${here/absolute_url}/layered_document_edit_form">
-          <textarea name="text"
-                    tal:content="python:here.getLayer(-1)"></textarea>
-          <div tal:define="inputname string:text;
-                           inputvalue python:here.getLayer(request.get('layer', 0))"
-               tal:omit-tag="">
-            <div metal:use-macro="here/wysiwyg_support/macros/wysiwygEditorBox">
-              Wysiwig Code
-            </div>
+
+    <div metal:fill-slot="main">
+      <form method="post" enctype="multipart/form-data"
+               tal:attributes="action string:${here/absolute_url}/layered_document_edit_form">
+        <div tal:define="inputname string:text;
+                inputvalue python:here.getLayer(request.get('layer', 0))"
+                 tal:omit-tag="">
+          <div metal:use-macro="here/wysiwyg_support/macros/wysiwygEditorBox">
+            Wysiwig Code
           </div>
-           <div>
-            <br/>
-            <input type="submit" name="save" value="Save" i18n:attributes="value"/>
-          </div>
-        </form>
-      </div>
+        </div>
+        <input name="layer:int" type="hidden"
+               tal:attributes="value python:request.get('layer', 0)"/>
+        <br/>
+        <input type="submit" name="save" value="Save" i18n:attributes="value"/>
+      </form>
     </div>
   </body>
 </html>
