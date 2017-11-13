@@ -30,7 +30,7 @@ from Products.CMFDefault import utils as default_cmf_utils
 from Products.CMFCore.permissions import AddPortalContent
 from Products.CMFCore.FSFile import FSFile
 from Products.CMFCore.DirectoryView import registerFileExtension
-import File, Folder, HugePlinnFolder, Topic
+import File, Folder, HugePlinnFolder, Topic, layereddocument
 import MembershipTool
 import MemberDataTool
 import GroupsTool
@@ -50,9 +50,16 @@ import patch
 from AccessControl import allow_module, allow_class
 
 
-contentClasses = (File.File, Folder.PlinnFolder, HugePlinnFolder.HugePlinnFolder, Topic.Topic )
+contentClasses = (File.File,
+                  Folder.PlinnFolder,
+                  HugePlinnFolder.HugePlinnFolder,
+                  Topic.Topic,
+                  layereddocument.LayeredDocument)
 
-contentConstructors = (File.addFile, Folder.manage_addPlinnFolder, HugePlinnFolder.manage_addHugePlinnFolder, Topic.addTopic)
+contentConstructors = (File.addFile,
+                       Folder.manage_addPlinnFolder,
+                       HugePlinnFolder.manage_addHugePlinnFolder,
+                       Topic.addTopic)
 
 tools = ( MembershipTool.MembershipTool
         , MemberDataTool.MemberDataTool

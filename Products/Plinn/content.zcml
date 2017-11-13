@@ -14,6 +14,18 @@
       name="plinn.file"
       />
 
+  <!-- Layered Document -->
+  <five:registerClass
+      class=".layereddocument.LayeredDocument"
+      meta_type="Layered Document"
+      permission="cmf.AddPortalContent"
+      />
+
+  <utility
+      component=".layereddocument.LayeredDocumentFactory"
+      name="plinn.layereddocument"
+      />
+
   <!-- Plinn Folder -->
   <five:registerClass
       class=".Folder.PlinnFolder"
@@ -40,7 +52,6 @@
   
   
   <!-- Topic -->
-
   <five:registerClass
       class=".Topic.Topic"
       meta_type="Plinn Topic"
