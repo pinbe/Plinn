@@ -250,4 +250,12 @@ a:hover {
   width: 16px;
 }
 
+/* convenients classes */
+
+.hidden {
+  visibility : hidden;
+  display : none;
+}
+
+
 /* </dtml-with> */
