@@ -1,4 +1,5 @@
-<fragments metal:define-macro="master">
+<fragments metal:define-macro="master"
+           tal:attributes="content-url here/absolute_url">
   <metal:block use-macro="here/main_template_macros/macros/global_defines"/>
   <tal:block define="global dummy python:request.RESPONSE.setHeader('Content-Type', 'text/xml;;charset=utf-8')"/>
   <base metal:define-slot="base" tal:attributes="href python: here.absolute_url() + '/'"/>

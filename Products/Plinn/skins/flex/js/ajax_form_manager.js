@@ -457,8 +457,7 @@ var shake;
             }
         }
 
-        var onAfterPopulate = this.onAfterPopulate;
-        onAfterPopulate();
+        this.onAfterPopulate(req);
         this.scrollToPortalMessage();
         var url = this.form.action;
         if(!this.noHistory) {
