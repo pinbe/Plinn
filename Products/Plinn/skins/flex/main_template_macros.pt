@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -126,37 +126,15 @@ global specialCtxHeader options/specialCtxHeader|nothing"
   
 
 
-<div metal:define-macro="Breadcrumbs" tal:omit-tag="">
-	<span tal:content="here/absolute_url" id="BC_Object_URL" style="display:none"></span>
-  <span i18n:translate="">You are here:</span> <span tal:omit-tag="" tal:repeat="bc options/breadcrumbs|here/breadcrumbs"><a href="." tal:attributes="href bc/url" tal:content="python:bc['title'] or bc['id']">ID</a><span tal:condition="not: repeat/bc/end" tal:omit-tag=""> / </span> </span>
-</div>
+    <div metal:define-macro="Breadcrumbs" tal:omit-tag="">
+      <span tal:content="here/absolute_url" id="BC_Object_URL" style="display:none"></span>
+      <span i18n:translate="">You are here:</span> <span tal:omit-tag="" tal:repeat="bc options/breadcrumbs|here/breadcrumbs"><a href="." tal:attributes="href bc/url" tal:content="python:bc['title'] or bc['id']">ID</a><span tal:condition="not: repeat/bc/end" tal:omit-tag=""> / </span> </span>
+    </div>
 
 
-<div id="leftCell" class="boxes_container" width="15%" metal:define-macro="leftCell"
-		 tal:define="block python:getattr(here.global_settings, 'left_boxes', None) ;
-								 displayAction python:request.SESSION.get('editBoxes') and 'edit' or 'view'"
-		 tal:omit-tag="">
-		<div tal:condition="python:displayAction == 'edit' and here.cb_dataValid() and block.haveRules()">
-			<a title="Paste" href="#" tal:attributes="href string:${block/absolute_url}/pasteBlocks" i18n:attributes="title"><img src="paste.png" alt="Paste" height="14" width="16" tal:attributes="src string:paste.png" border="0" i18n:attributes="alt" /></a>
-		</div>
-		<div metal:use-macro="here/block_canvas/macros/canvas">left boxes</div>
-</div>
+    <div metal:define-macro="leftCell">LeftCell</div>
+    <div metal:define-macro="rightCell">rightCell</div>
 
-<div metal:define-macro="rightCell" 
-		 tal:define="block python:getattr(here.global_settings, 'right_boxes', None) ;
-								 displayAction python:request.SESSION.get('editBoxes') and 'edit' or 'view'"
-		 tal:condition="python:block is not None">
-	<div tal:condition="python:displayAction=='edit'" style="text-align:right">
-		<a tal:attributes="href string:$portal_url/manage_boxes?exitMode:boolean=True" i18n:domain="plinn" i18n:translate="">Exit boxes editing</a><br/>
-	</div>
-	<div tal:condition="python:displayAction == 'edit' and here.cb_dataValid() and block.haveRules()">
-		<a title="Paste" href="#" tal:attributes="href string:${block/absolute_url}/pasteBlocks" i18n:attributes="title"><img src="paste.png" alt="Paste" height="14" width="16" tal:attributes="src string:paste.png" border="0" i18n:attributes="alt" /></a>
-	</div>
-	
-	<div metal:use-macro="here/block_canvas/macros/canvas">right boxes</div>
-
-	<div metal:use-macro="here/widgets/macros/clipboard">Clipboard</div>
-</div>
 
   </body>
 

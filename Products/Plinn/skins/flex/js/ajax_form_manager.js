@@ -417,7 +417,10 @@ var shake;
                         element = fragments[i];
                         switch(element.nodeName) {
                             case 'fragment' :
-                                dest = document.getElementById(element.getAttribute('id'));
+                                dest = element.hasAttribute('selector') ?
+                                       document.querySelector(element.getAttribute('selector')) :
+                                       document.getElementById(element.getAttribute('id'));
+
                                 if(dest) {
                                     dest.innerHTML = element.firstChild.nodeValue;
                                     scripts = dest.getElementsByTagName('script');
