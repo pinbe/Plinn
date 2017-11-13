@@ -1,0 +1,34 @@
+<html metal:use-macro="here/main_template/macros/master">
+  <head>
+    <title>Document edit form</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <link href="zpt_stylesheet.css" rel="stylesheet" media="screen"/>
+  </head>
+  <body i18n:domain="plinn">
+    <div metal:fill-slot="header">
+      <div metal:use-macro="here/widgets/macros/generic_header">
+        generic_header macro
+      </div>
+    </div>
+    <div id="Desktop">
+      <div metal:fill-slot="main">
+        <form method="post" enctype="multipart/form-data"
+              tal:attributes="action string:${here/absolute_url}/layered_document_edit_form">
+          <textarea name="text"
+                    tal:content="python:here.getLayer(-1)"></textarea>
+          <div tal:define="inputname string:text;
+                           inputvalue python:here.getLayer(request.get('layer', 0))"
+               tal:omit-tag="">
+            <div metal:use-macro="here/wysiwyg_support/macros/wysiwygEditorBox">
+              Wysiwig Code
+            </div>
+          </div>
+           <div>
+            <br/>
+            <input type="submit" name="save" value="Save" i18n:attributes="value"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

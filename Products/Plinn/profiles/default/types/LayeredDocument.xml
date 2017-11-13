@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<object name="Layered Document" meta_type="Factory-based Type Information"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title">Layered document</property>
+ <property name="description"></property>
+ <property name="icon_expr">string:${portal_url}/ldoc_icon.gif</property>
+ <property name="content_meta_type">Layered Document</property>
+ <property name="product"></property>
+ <property name="factory">plinn.layereddocument</property>
+ <property name="add_view_expr"></property>
+ <property name="link_target"></property>
+ <property name="immediate_view">object/edit</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="Calendar"/>
+  <element value="Document"/>
+  <element value="File"/>
+  <element value="Huge Plinn Folder"/>
+  <element value="Portfolio"/>
+  <element value="Topic"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="layered_document_view"/>
+ <alias from="info" to="content_info"/>
+ <alias from="view" to="layered_document_view"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    icon_expr="" link_target="" url_expr="string:${object_url}/layered_document_view"
+    visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    icon_expr="" link_target=""
+    url_expr="string:${object_url}/layered_document_edit_form" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="Share" action_id="localroles" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/folder_localrole_form" visible="True">
+  <permission value="Set Local Roles"/>
+ </action>
+ <action title="History" action_id="changes" category="object"
+    condition_expr="" icon_expr="" link_target=""
+    url_expr="string:${object_url}/changes_history" visible="True">
+  <permission value="View History"/>
+ </action>
+</object>

@@ -28,9 +28,10 @@ class LayeredDocument(PortalContent, DefaultDublinCoreImpl) :
 
 
     security.declareProtected(ModifyPortalContent, 'edit')
-    def edit(self, text, layer='-1') :
+    def edit(self, text, layer) :
         self.layers[layer] = text
         self.reindexObject()
+        return True
 
 
     security.declareProtected(View, 'getLayer')
