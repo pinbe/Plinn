@@ -53,7 +53,7 @@
           };
           var id2type = /(^[^\.]+)\.id:record$/;
           function trackFocus(evt) {
-            var input = getTargetedObject(evt);
+            var input = evt.target;
             var matches = id2type.exec(input.name);
             if (matches && matches.length == 2)
               submitButton = fform.elements[matches[1] + '.type:record'];
@@ -62,7 +62,7 @@
           for (var i = 0 ; i < fform.elements.length ; i++) {
             e = fform.elements[i];
             if (e.type==='text')
-              addListener(e, 'focus', trackFocus);
+                e.addEventListener('focus', trackFocus);
           }
         }());
       </script>
