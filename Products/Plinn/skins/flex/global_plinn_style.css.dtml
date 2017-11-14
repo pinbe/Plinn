@@ -14,3 +14,6 @@
 
 /* forms */
 <dtml-var forms.css>
+
+/* content_style.css */
+<dtml-var content_style.css>

@@ -1,0 +1,46 @@
+/* <dtml-with base_properties> */
+
+.rounded-corners {
+  border-radius: &dtml-borderRadius;px;
+  padding: &dtml-borderRadius;px;
+}
+
+.std-border {
+  border: &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;
+}
+
+.std-background {
+  color: #fff;
+  padding: &dtml-borderRadius;px;
+  background: &dtml-outlineColor;;
+}
+
+.std-background a,
+.std-background a:link,
+.std-background a:visited,
+.std-background a:active {
+  color:#ae1b1b;
+}
+
+.std-background a:hover {
+  color:#f40909;
+}
+
+.std-focusbox {
+  background: &dtml-tabsBorderColor;;
+  color: &dtml-tabsFontColor;;
+  padding: &dtml-borderRadius;px;
+}
+
+.std-focusbox a,
+.std-focusbox a:link,
+.std-focusbox a:visited,
+.std-focusbox a:active {
+  color:#f28c18;
+}
+
+.std-focusbox a:hover {
+  color:#f2ae61;
+}
+
+/*</dtml-with> */
