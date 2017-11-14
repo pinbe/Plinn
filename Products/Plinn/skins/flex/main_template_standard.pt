@@ -29,6 +29,8 @@
       <script type="text/javascript"
               tal:attributes="src string:$portal_url/js/base_properties.js"></script>
       <script type="text/javascript"
+              tal:attributes="src string:$portal_url/js/main_layout.js"></script>
+      <script type="text/javascript"
               tal:attributes="src string:$portal_url/js/script_loader.js"></script>
       <script type="text/javascript"
               tal:attributes="src string:$portal_url/js/fragment_importer.js"></script>
@@ -38,7 +40,8 @@
       <script type="text/javascript" metal:define-slot="javascript_head_slot" tal:replace="nothing"></script>
     </head>
     <body tal:attributes="data-portal_url portal_url;
-                          data-absolute_url here/absolute_url">
+                          data-absolute_url here/absolute_url;
+                          data-isAnon python:not not isAnon">
       <div id="site-edit-panel"
            metal:use-macro="main_macros/site_edit_panel"></div>
       <div id="body-wrapper"
