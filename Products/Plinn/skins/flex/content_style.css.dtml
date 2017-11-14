@@ -1,5 +1,43 @@
 /* <dtml-with base_properties> */
 
+@font-face {
+  font-family: "Coda Caption";
+  src: url(<dtml-var portal_url>/fonts/CodaCaption-ExtraBold.ttf);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 18px;
+  font-weight: lighter;
+  margin: 1em 0 0.5em 0;
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
+h2 {
+  font-style: italic;
+}
+
+.document {
+  text-align: justify;
+}
+
+.document .img-row {
+  /*border: 1px dashed darkslategrey;*/
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  /*text-align-last: left;*/
+}
+
+.document .img-row img {
+  margin: 0 15px 15px 0;
+  display: inline-block;
+  height: 280px;
+  width: auto;
+}
+
 .rounded-corners {
   border-radius: &dtml-borderRadius;px;
   padding: &dtml-borderRadius;px;
@@ -43,4 +81,11 @@
   color:#f2ae61;
 }
 
+.letter-spacing-plus {
+  letter-spacing: 0.4em;
+}
+
+.coda {
+  font-family: 'Coda Caption', sans-serif;
+}
 /*</dtml-with> */

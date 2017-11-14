@@ -91,8 +91,7 @@ a:hover {
 #user-menu ul {
   list-style: none;
   position: absolute;
-  border: 1px solid &dtml-tabsBorderColor;;
-  border-top-width: 2px;
+  border-top: 2px solid &dtml-tabsBorderColor;;
   top: 32px;
   right: 0;
   padding: 3px;
@@ -126,6 +125,7 @@ a:hover {
 #content-outer {
   position: relative;
   margin: 0 100px;
+  padding-top: 2px;
   z-index: 2;
 }
 

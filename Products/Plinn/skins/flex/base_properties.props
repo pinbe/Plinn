@@ -4,7 +4,7 @@ background:string=#fff
 backgroundColor:string=#fff
 fontColor:string=#000
 fontFamily:string=Helvetica, sans-serif
-fontBaseSize:string=15px
+fontBaseSize:string=13px
 headingFontFamily:string=Helvetica, sans-serif
 
 topbar_background:string=rgba(255,255,255,0.8)
@@ -12,13 +12,13 @@ topbar_background:string=rgba(255,255,255,0.8)
 linkColor:string=#369
 linkHoverColor:string=#5af
 
-fontSmallSize:string=90%
+fontSmallSize:string=13px
 
 
 topbarBackgroundColor:string=#fff
 breadcrumbsBackground:string=#fff
 
-tabsBorderColor:string=#f28c18
+tabsBorderColor:string=#ff9c00
 tabsBorderWidth:string=2px
 tabsBottomBorderSelectedWidth:string=3px
 tabsFontColor:string=#369
@@ -31,7 +31,7 @@ inputFontColor:string=#000
 
 evenRowBackgroundColor:string=#f0f0f0
 oddRowBackgroundColor:string=#fff
-highLightColor:string=#f28c18
+highLightColor:string=#ff9c00
 
 messageBackgroundColor:string=#fff
 messageBorderColor:string=#fff
@@ -51,7 +51,7 @@ portfolioSlideBackgroundColor:string=#f2f2f2
 
 memberActionsBoxBackground:string=#f6f6f6
 footerBackgroundColor:string=#000
-outlineColor:string=#f28c18
+outlineColor:string=#ff9c00
 bylineBackgroundColor:string=#fff
 messageFontColor:string=#000
 listingHeaderBackgroundColor:string=#ddd
