@@ -5,6 +5,10 @@
   src: url(<dtml-var portal_url>/fonts/CodaCaption-ExtraBold.ttf);
 }
 
+#fixed-content {
+  position: fixed;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-size: 18px;
   font-weight: lighter;
@@ -21,6 +25,16 @@ h2 {
 
 article {
   text-align: justify;
+  background: &dtml-contentBackgroundColor;;
+  min-height: 100vh;
+}
+
+.layereddocument article {
+  margin-top: 480px;
+}
+
+.layereddocument article {
+  padding: 10px 10px 0 10px;
 }
 
 article .flex-wrapper {
@@ -43,22 +57,19 @@ article .flex {
 
 
 article .img-grid {
-  /*border: 1px dashed darkslategrey;*/
   text-align: center;
   max-width: 1200px;
   margin: 0 auto;
-  /*text-align-last: left;*/
 }
 
 article .img-grid img {
   margin: 0 15px 15px 0;
   display: inline-block;
-  height: 280px;
+  height: 270px;
   width: auto;
 }
 
 article .captioned-img {
-  border: 1px dashed darkmagenta;
   display: inline-block;
   margin: 0 15px 15px 0;
   width: 400px;

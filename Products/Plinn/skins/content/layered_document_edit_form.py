@@ -8,7 +8,7 @@ text = form.get('text')
 
 if save and \
         context.edit(form.get('text'), layer) :
-    attachments.removeUnusedAttachments(context.getLayer(layer))
+    attachments.removeUnusedAttachments(context.layersStack())
     return context.setRedirect(context, 'object/view', **{'ajax':ajax})
 
 

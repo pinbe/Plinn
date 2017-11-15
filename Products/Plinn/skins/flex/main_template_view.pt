@@ -1,0 +1,36 @@
+<metal:block metal:define-macro="master">
+<html metal:use-macro="here/main_template/macros/master">
+
+  <head>
+  
+    <tal:block metal:fill-slot="base">
+      <base metal:define-slot="base" tal:omit-tag="" />
+    </tal:block>
+    <tal:block metal:fill-slot="css_slot">
+      <link metal:define-slot="css_slot" tal:replace="nothing" />
+    </tal:block>
+    <tal:block metal:fill-slot="javascript_head_slot">
+      <script type="text/javascript" metal:define-slot="javascript_head_slot" tal:replace="nothing"></script>
+    </tal:block>
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>main_template with comments at bottom</title>
+  </head>
+
+  <body>
+    <tal:block metal:fill-slot="fixed_content_top">
+      <div metal:define-slot="fixed_content_top"></div>
+    </tal:block>
+    <tal:block metal:fill-slot="header">
+      <div metal:define-slot="header"></div>
+    </tal:block>
+    <tal:block metal:fill-slot="main">
+      <div metal:define-slot="main"></div>
+    </tal:block>
+    <tal:block metal:fill-slot="footer">
+    	<div metal:use-macro="here/viewThreadsAtBottom/macros/threadsDisplay" />
+    </tal:block>
+  </body>
+
+</html>
+</metal:block>

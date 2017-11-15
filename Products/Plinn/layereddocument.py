@@ -45,6 +45,10 @@ class LayeredDocument(PortalContent, DefaultDublinCoreImpl) :
         except IndexError :
             return ''
 
+    security.declareProtected(ModifyPortalContent, 'layersStack')
+    def layersStack(self) :
+        return ''.join([('<div>%s</div>' % l) for l in self.layers])
+
     security.declareProtected(View, 'SearchableText')
     def SearchableText(self) :
         return '%s %s' % (super(LayeredDocument, self).SearchableText(), ' '.join([l for l in self.layers]))

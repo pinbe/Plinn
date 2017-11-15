@@ -44,6 +44,9 @@
                           data-isAnon python:not not isAnon">
       <div id="site-edit-panel"
            metal:use-macro="main_macros/site_edit_panel"></div>
+      <div id="fixed-content">
+        <div metal:define-slot="fixed_content_top"></div>
+      </div>
       <div id="body-wrapper"
            metal:define-slot="body"
            tal:define="isManager python:member.has_role(['photographe', 'Manager']);

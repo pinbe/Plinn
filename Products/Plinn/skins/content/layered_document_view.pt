@@ -6,9 +6,15 @@
   </head>
   <body>
 
-    <div metal:fill-slot="main" tal:omit-tag="">
+    <div metal:fill-slot="fixed_content_top">
       <div tal:content="structure python:here.getLayer(0)"></div>
     </div>
 
+    <div metal:fill-slot="main"
+         class="layereddocument">
+      <article>
+        <div tal:content="structure python:here.getLayer(1)"></div>
+      </article>
+    </div>
   </body>
 </html>

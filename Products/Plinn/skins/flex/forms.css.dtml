@@ -9,18 +9,19 @@ input[type=password]{
 }
 
 input[type=submit] {
-  border: 2px solid &dtml-outlineColor;;
+  border: 1px solid &dtml-outlineColor;;
   font-size: &dtml-fontBaseSize;;
   background: transparent;
   padding: 3px 5px;
-  border-radius: 13px;
+  /*border-radius: 2px;*/
   cursor: pointer;
 }
 
 textarea {
   font-family: &dtml-fontFamily;;
   padding: 2px;
-  border: 1px dashed &dtml-outlineColor;;
+  border:none;
+  border-top: 1px dashed &dtml-outlineColor;;
   border-bottom: 2px solid &dtml-outlineColor;;
 }
 
@@ -39,7 +40,7 @@ table.TwoColumnForm th {
   text-align: right;
   padding-right: 5px;
   padding-bottom: 7px; /* belongs to input border-bottom + td.padding-bottom */
-  vertical-align: bottom;
+  vertical-align: top;
 }
 
 table.TwoColumnForm td {
@@ -54,7 +55,8 @@ table.TwoColumnForm td.ListName {
 
 table.TwoColumnForm tr {
 /*  background-color: #ddd;*/
-  vertical-align: top }
+  vertical-align: top
+}
 
 table.TwoColumnForm tr td.TextField {
   vertical-align: top;
