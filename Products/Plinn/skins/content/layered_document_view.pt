@@ -3,6 +3,9 @@
     <title>Document view</title>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <base href="." metal:fill-slot="base" tal:attributes="href python: here.absolute_url() + '/'" />
+    <script type="text/javascript"
+            metal:fill-slot="javascript_head_slot"
+            tal:attributes="src string:$portal_url/js/layereddocument.js"></script>
   </head>
   <body>
 
