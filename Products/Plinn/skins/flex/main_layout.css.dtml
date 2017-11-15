@@ -46,15 +46,17 @@ a:hover {
 
 #site-menu {
   display: flex;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 #site-menu > a {
-  font-weight: lighter;
+  /*border: 1px dashed darkslateblue;*/
+  /*font-weight: lighter;*/
   color: #0a001f;
   padding: 0 20px;
   align-self: center;
   border-right: 1px solid;
+  font-variant: small-caps;
 }
 
 #site-menu > a:last-child {
