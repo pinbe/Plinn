@@ -123,12 +123,13 @@ a:hover {
   display: none;
 }
 
-
 #content-outer {
   position: relative;
   margin: 0 100px;
   padding-top: 2px;
   z-index: 2;
+  display: flex;
+  justify-content: center;
 }
 
 

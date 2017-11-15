@@ -52,24 +52,10 @@ article {
   padding: 10px 10px 0 10px;
 }
 
-article .flex-wrapper {
-  /*border: 1px solid deeppink;*/
-  /*display: table;*/
-  /*width: 100%;*/
-
-}
-
 article .flex {
-  /*border: 1px dashed  darkslateblue;*/
   display: flex;
   flex-wrap: wrap;
-  /*vertical-align: top;*/
-  /*text-align: left;*/
-  /*width: -moz-fit-content;*/
-  /*width: -webkit-fit-content;*/
-  /*width: fit-content;*/
 }
-
 
 article .img-grid {
   text-align: center;
