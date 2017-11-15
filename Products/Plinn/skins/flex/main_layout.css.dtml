@@ -132,7 +132,6 @@ a:hover {
   justify-content: center;
 }
 
-
 /* Content tabs */
 .contentTabs {
   border-bottom : &dtml-tabsBorderWidth; solid &dtml-tabsBorderColor;;

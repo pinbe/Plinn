@@ -12,17 +12,23 @@
     </div>
 
     <div metal:fill-slot="main">
+      <div tal:define="filteredActionsList options/layerstabs;
+                       forceTab options/selected_tab">
+        <div metal:use-macro="here/tabs/macros/standalone_tabs">
+          layer selector
+        </div>
+      </div>
       <form method="post" enctype="multipart/form-data"
-               tal:attributes="action string:${here/absolute_url}/layered_document_edit_form">
+               tal:attributes="action options/form/action">
         <div tal:define="inputname string:text;
-                inputvalue python:here.getLayer(request.get('layer', 0))"
+                         inputvalue options/layer_html"
                  tal:omit-tag="">
           <div metal:use-macro="here/wysiwyg_support/macros/wysiwygEditorBox">
             Wysiwig Code
           </div>
         </div>
         <input name="layer:int" type="hidden"
-               tal:attributes="value python:request.get('layer', 0)"/>
+               tal:attributes="value options/selected_layer"/>
         <br/>
         <input type="submit" name="save" value="Save" i18n:attributes="value"/>
       </form>

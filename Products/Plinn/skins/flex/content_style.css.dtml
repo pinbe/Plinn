@@ -89,6 +89,9 @@ article .captioned-img h1 {
 }
 
 
+.layer-selector {
+  margin: 10px 0;
+}
 
 .rounded-corners {
   border-radius: &dtml-borderRadius;px;

@@ -45,6 +45,10 @@ class LayeredDocument(PortalContent, DefaultDublinCoreImpl) :
         except IndexError :
             return ''
 
+    security.declareProtected(View, 'getLayerLength')
+    def getLayerLength(self) :
+        return max(len(self.layers), 2)
+
     security.declareProtected(ModifyPortalContent, 'layersStack')
     def layersStack(self) :
         return ''.join([('<div>%s</div>' % l) for l in self.layers])
