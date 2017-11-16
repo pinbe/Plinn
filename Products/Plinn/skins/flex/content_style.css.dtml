@@ -23,20 +23,6 @@ h2 {
   font-style: italic;
 }
 
-span.half-underline {
-  position: relative;
-}
-
-span.half-underline::before {
-	display: block;
-	position: absolute;
-	content: "";
-	width: 50%;
-	left: 25%;
-	top: 1.2em;
-	border-bottom: 2px solid #484848;
-}
-
 article {
   text-align: justify;
   background: &dtml-contentBackgroundColor;;
@@ -135,6 +121,21 @@ article .captioned-img h1 {
 .std-focusbox a:hover {
   color:#f2ae61;
 }
+
+.half-underline {
+  position: relative;
+}
+
+.half-underline::before {
+	display: block;
+	position: absolute;
+	content: "";
+	width: 50%;
+	left: 25%;
+	top: 1.2em;
+	border-bottom: 2px solid #484848;
+}
+
 
 .letter-spacing-plus {
   letter-spacing: 0.4em;

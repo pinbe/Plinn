@@ -3,20 +3,37 @@ CKEDITOR.stylesSet.add('plinn_styles', [
 		name: "Grille d'images",
 		className: 'img-grid'
 	},
-	{
-		name: 'Arrondis',
-		className: 'rounded-corners'
-	},
-	{
-		name: 'Bordure standard',
-		className: 'std-border'
-	},
-	{
-		name: 'Fond coloré',
-		className: 'std-background'
-	},
-	{
-		name: 'Focus',
-		className: 'std-focusbox'
-	}]
+    {
+        name: "Lettres espacées",
+        className: 'letter-spacing-plus'
+    },
+    {
+        name: "Demi-souligné",
+        className: 'half-underline'
+    },
+    {
+        name: "Coda",
+        className: 'coda'
+    },
+    {
+        name: "Flex",
+        className: 'flex'
+    }
+	// {
+	// 	name: 'Arrondis',
+	// 	className: 'rounded-corners'
+	// },
+	// {
+	// 	name: 'Bordure standard',
+	// 	className: 'std-border'
+	// },
+	// {
+	// 	name: 'Fond coloré',
+	// 	className: 'std-background'
+	// },
+	// {
+	// 	name: 'Focus',
+	// 	className: 'std-focusbox'
+	// }
+	]
 );
