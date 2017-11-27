@@ -4,7 +4,7 @@
 /* personalisation pour l'éditeur
 <dtml-with base_properties> */
 body {
-/*  background: &dtml-contentBackgroundColor;;*/
+  margin-top: 16px;
 }
 
 /* XXX may be moved to ckeditor */
@@ -35,5 +35,14 @@ body {
   width: 100%;
   left: 0;
   top: 1em
+}
+
+.flex {
+  border: 1px dotted silver;
+}
+
+/* CKEditor workarround*/
+.cke_widget_captioned_img {
+  display: inline-block;
 }
 /* </dtml-with> */
