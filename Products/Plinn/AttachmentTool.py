@@ -191,7 +191,8 @@ class AttachmentContainer (Folder):
         if ob.meta_type == 'Blob File' :
             return '<element id="%s" title="%s"/>' % (ob.getId(), escape(ob.title_or_id()))
         elif ob.meta_type == 'Photo' :
-            width, height = ob.getResizedImageSize(size=(310, 310))
+            req_img_size = int(unquote(REQUEST.getHeader('X-Img-Size', '310')))
+            width, height = ob.getResizedImageSize(size=(req_img_size, req_img_size))
             return '<element src="%(src)s" title="%(title)s" width="%(width)d" height="%(height)d"/>' % \
                 {'src' : 'attachments/%s/getResizedImage?size=%d_%d' % (ob.getId(), width, height),
                  'title' : escape(ob.title_or_id()),
