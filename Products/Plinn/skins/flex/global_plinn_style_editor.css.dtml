@@ -6,4 +6,34 @@
 body {
 /*  background: &dtml-contentBackgroundColor;;*/
 }
+
+/* XXX may be moved to ckeditor */
+
+.captioned-img img,
+.captioned-img path {
+  transition: all 250ms;
+}
+
+.captioned-img svg path {
+  fill: #d1d1d1;
+}
+
+.captioned-img .dragover path {
+  fill: &dtml-outlineColor;;
+}
+
+.captioned-img img.dragover {
+  opacity: 0.2;
+}
+
+.progress-bar {
+  display: block;
+  position: absolute;
+  background: &dtml-outlineColor;;
+  height: 4px;
+  border-radius: 2px;
+  width: 100%;
+  left: 0;
+  top: 1em
+}
 /* </dtml-with> */
