@@ -45,6 +45,7 @@ from webdav.interfaces import IWriteLock
 from webdav.common import Locked
 from webdav.common import PreconditionFailed
 from zope.contenttype import guess_content_type
+import json
 
 from libxml2 import HTML_PARSE_RECOVER, HTML_PARSE_NOERROR, HTML_PARSE_NOWARNING
 from libxml2 import htmlReadDoc
@@ -187,19 +188,21 @@ class AttachmentContainer (Folder):
 
         ob.PUT(REQUEST, RESPONSE)
         RESPONSE.setStatus(httpRespCode)
-        RESPONSE.setHeader('Content-Type', 'text/xml;;charset=utf-8')
+        RESPONSE.setHeader('Content-Type', 'application/json')
         if ob.meta_type == 'Blob File' :
             return '<element id="%s" title="%s"/>' % (ob.getId(), escape(ob.title_or_id()))
         elif ob.meta_type == 'Photo' :
             req_img_size = int(unquote(REQUEST.getHeader('X-Img-Size', '310')))
             width, height = ob.getResizedImageSize(size=(req_img_size, req_img_size))
-            return '<element src="%(src)s" title="%(title)s" width="%(width)d" height="%(height)d"/>' % \
-                {'src' : 'attachments/%s/getResizedImage?size=%d_%d' % (ob.getId(), width, height),
-                 'title' : escape(ob.title_or_id()),
-                 'width' : width,
-                 'height' : height
-                 }
-    
+            return json.dumps(
+                    {'src' : 'attachments/%s/getResizedImage?size=%d_%d' % (ob.getId(), width, height),
+                     'title' : ob.getXmpValue('dc:title') or ob.getXmpValue('photoshop:Headline'),
+                     'description' : ob.getXmpValue('dc:description'),
+                     'width' : width,
+                     'height' : height
+                     }
+            )
+
     security.declareProtected(ModifyPortalContent, 'removeUnusedAttachments')
     def removeUnusedAttachments(self, html) :
         html = '<div>%s</div>' % html
