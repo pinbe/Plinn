@@ -30,16 +30,6 @@ if site.acl_users.Users.acl_users.encrypt_passwords :
 	site.acl_users.Users.acl_users.manage_setUserFolderProperties(encrypt_passwords=True)
 
 
-# configure mosaicTool
-blockTypes = ('Action Box Block', 'Container Block', 'File Block', 'Image Block', 'Mosaic Document',
-			  'Section Block', 'Spacer Block', 'Text Block', 'Tree Box Block')
-
-mostool = getToolByName(site, 'mosaic_tool')
-addBI = mostool.manage_addProduct['MosaicDocument'].addMosaicBlockInformation
-for bt in blockTypes :
-	try : addBI(blockType=bt)
-	except BadRequest : pass
-
 # contents
 ttool = getToolByName(site, 'portal_types')
 wtool = getToolByName(site, 'portal_workflow')
@@ -70,27 +60,7 @@ doActionForOrSkip(site.index_html, 'direct_publish')
 
 # default folders
 constructOrSkip('Huge Plinn Folder', site, 'Members', title =	translate('Members'))
-#constructOrSkip('Huge Plinn Folder', site, 'global_settings', title = translate('Portlets'))
-if not hasattr(site, 'global_settings') :
-	site.manage_addProduct['OFSP'].manage_addFolder('global_settings')
-if not site.global_settings.hasProperty('noIndex'):
-	site.global_settings.manage_addProperty('noIndex', True, 'boolean')
 
-# left boxes
-constructOrSkip('Mosaic Document', site.global_settings, 'left_boxes', title=translate('Left boxes'))
-lb = site.global_settings.left_boxes
-addBlockOrSkip(lb, 'Tree Box Block', 0, id='nav_tree')
-lb.nav_tree.saveBlock(filteredMetaTypes={'text' : ['Huge Plinn Folder', 'Portfolio', 'Topic']})
-doActionForOrSkip(lb, 'direct_publish')
-
-# right boxes
-constructOrSkip('Mosaic Document', site.global_settings, 'right_boxes', title=translate('Right boxes'))
-rb = site.global_settings.right_boxes
-addBlockOrSkip(rb, 'Action Box Block', 0, id='global_actions')
-rb.global_actions.saveBlock(boxTitle={'text' : translate('Global actions')}, categories={'text' : ['global']})
-addBlockOrSkip(rb, 'Action Box Block', 0, id='workflow_actions')
-rb.workflow_actions.saveBlock(boxTitle={'text' : translate('Workflow')}, categories={'text' : ['workflow']})
-doActionForOrSkip(rb, 'direct_publish')
 
 # tools settings
 mtool = getToolByName(site, 'portal_membership')
