@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <site>
- <property name="title">Plinn</property>
- <property name="description">Plinn default portal</property>
- <property name="copyright_notice" type="string"></property>
+ <property name="title">photo</property>
+ <property name="description">Plinn photo website</property>
  <property name="email_from_address"
     type="string">postmaster@localhost</property>
  <property name="email_from_name" type="string"></property>
@@ -24,11 +23,10 @@
  </property>
  <property name="keywords" type="lines"/>
  <property name="ajax_config" type="int">2</property>
- <property name="copyright_notice"
-    type="string"></property>
- <property name="thumb_size" type="int">192</property>
- <property name="slide_size" type="int">222</property>
- <property name="tiles_background_color" type="string">#ffffff</property>
+ <property name="copyright_notice" type="string"></property>
+ <property name="thumb_size" type="int">278</property>
+ <property name="slide_size" type="int">288</property>
+ <property name="tiles_background_color" type="string">#484848</property>
  <property name="tiles_min_zoom" type="int">25</property>
  <property name="tiles_max_zoom" type="int">100</property>
  <property name="tiles_step_zoom" type="int">25</property>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <object name="portal_skins" meta_type="CMF Skins Tool" allow_any="False"
-   cookie_persistence="False" default_skin="Plinn Basic"
+   cookie_persistence="False" default_skin="flex"
    request_varname="portal_skin">
  <object name="Images" meta_type="Filesystem Directory View"
     directory="Products.CMFDefault:skins/Images"/>
@@ -23,12 +23,6 @@
     directory="Products.Plinn:skins/jscalendar"/>
  <object name="mimetypes_icons" meta_type="Filesystem Directory View"
     directory="Products.MimetypesRegistry:skins/mimetypes_icons"/>
- <object name="mosaic_blocks" meta_type="Filesystem Directory View"
-    directory="Products.MosaicDocument:default_blocks"/>
- <object name="mosaic_document" meta_type="Filesystem Directory View"
-    directory="Products.MosaicDocument:skins"/>
- <object name="mosaic_slots" meta_type="Filesystem Directory View"
-    directory="Products.MosaicDocument:default_slots"/>
  <object name="photoprint" meta_type="Filesystem Directory View"
     directory="Products.photoprint:skins"/>
  <object name="plinn_ajax" meta_type="Filesystem Directory View"
@@ -37,12 +31,14 @@
     directory="Products.Plinn:skins/content"/>
  <object name="plinn_control" meta_type="Filesystem Directory View"
     directory="Products.Plinn:skins/control"/>
- <object name="plinn_document" meta_type="Filesystem Directory View"
-    directory="Products.PlinnDocument:skins"/>
+ <object name="plinn_flex" meta_type="Filesystem Directory View"
+    directory="Products.Plinn:skins/flex"/>
  <object name="plinn_generic" meta_type="Filesystem Directory View"
     directory="Products.Plinn:skins/generic"/>
  <object name="plinn_images" meta_type="Filesystem Directory View"
     directory="Products.Plinn:skins/images"/>
+ <object name="plinn_photo_theme" meta_type="Filesystem Directory View"
+    directory="Products.Plinn:skins/photo_theme"/>
  <object name="portfolio" meta_type="Filesystem Directory View"
     directory="Products.Portfolio:skins"/>
  <object name="zpt_calendar" meta_type="Filesystem Directory View"
@@ -55,8 +51,10 @@
     directory="Products.CMFDefault:skins/zpt_generic"/>
  <object name="zpt_topic" meta_type="Filesystem Directory View"
     directory="Products.CMFTopic:skins/zpt_topic"/>
- <skin-path name="Plinn Basic">
+ <skin-path name="flex">
   <layer name="custom"/>
+  <layer name="plinn_flex"/>
+  <layer name="plinn_photo_theme"/>
   <layer name="photoprint"/>
   <layer name="plinn_content"/>
   <layer name="plinn_control"/>
@@ -66,8 +64,8 @@
   <layer name="custom_content"/>
   <layer name="custom_control"/>
   <layer name="custom_generic"/>
+  <layer name="portfolio"/>
   <layer name="jscalendar"/>
-  <layer name="plinn_document"/>
   <layer name="epoz_core"/>
   <layer name="epoz_i18n"/>
   <layer name="epoz_images"/>
@@ -75,7 +73,6 @@
   <layer name="mosaic_document"/>
   <layer name="mosaic_blocks"/>
   <layer name="mosaic_slots"/>
-  <layer name="portfolio"/>
   <layer name="mimetypes_icons"/>
   <layer name="zpt_topic"/>
   <layer name="zpt_calendar"/>

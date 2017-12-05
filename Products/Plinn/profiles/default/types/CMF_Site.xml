@@ -17,8 +17,7 @@
   <element value="Document"/>
   <element value="File"/>
   <element value="Huge Plinn Folder"/>
-  <element value="News Item"/>
-  <element value="Plinn Document"/>
+  <element value="Layered Document"/>
   <element value="Portfolio"/>
   <element value="Topic"/>
  </property>

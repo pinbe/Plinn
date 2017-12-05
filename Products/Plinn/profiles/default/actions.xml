@@ -6,6 +6,28 @@
  <action-provider name="portal_actions"/>
  <object name="user" meta_type="CMF Action Category">
   <property name="title"></property>
+  <object name="selection" meta_type="CMF Action" i18n:domain="portfolio">
+   <property name="title" i18n:translate="">My selection</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/selection_view</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions"/>
+   <property name="visible">True</property>
+  </object>
+  <object name="panier" meta_type="CMF Action" i18n:domain="portfolio">
+   <property name="title" i18n:translate="">My cart</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/my_cart</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
   <object name="login" meta_type="CMF Action" i18n:domain="cmf_default">
    <property name="title" i18n:translate="">Login</property>
    <property name="description" i18n:translate=""></property>
@@ -13,6 +35,30 @@
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr">not: member</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="my_albums" meta_type="CMF Action" i18n:domain="portfolio">
+   <property name="title" i18n:translate="">My albums</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/member_albums</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">member</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="my_orders" meta_type="CMF Action" i18n:domain="photoprint">
+   <property name="title" i18n:translate="">My orders</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/my_orders</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">member</property>
    <property name="permissions">
     <element value="View"/>
    </property>
@@ -59,6 +105,18 @@
    </property>
    <property name="visible">False</property>
   </object>
+  <object name="visionneuses" meta_type="CMF Action" i18n:domain="portfolio">
+   <property name="title" i18n:translate="">My lightboxes</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${object_url}/visionneuses</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">False</property>
+  </object>
   <object name="preferences" meta_type="CMF Action" i18n:domain="cmf_default">
    <property name="title" i18n:translate="">Preferences</property>
    <property name="description" i18n:translate=""></property>
@@ -86,7 +144,8 @@
   <object name="logged_in" meta_type="CMF Action" i18n:domain="cmf_default">
    <property name="title" i18n:translate="">Logged in</property>
    <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${portal_url}/index_html</property>
+   <property
+      name="url_expr">string:${portal_url}/homepage_dispatcher</property>
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr"></property>
@@ -98,7 +157,8 @@
   <object name="join" meta_type="CMF Action" i18n:domain="cmf_default">
    <property name="title" i18n:translate="">Join</property>
    <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${portal_url}/join_form</property>
+   <property
+      name="url_expr">string:${portal_url}/customer_join_form</property>
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr">not: member</property>
@@ -126,19 +186,6 @@
  </object>
  <object name="global" meta_type="CMF Action Category">
   <property name="title"></property>
-  <object name="manage_boxes" meta_type="CMF Action" i18n:domain="plinn">
-   <property name="title" i18n:translate="">Manage Boxes</property>
-   <property name="description" i18n:translate=""></property>
-   <property
-      name="url_expr">string:${portal_url}/manage_boxes?noajax=1</property>
-   <property name="link_target"></property>
-   <property name="icon_expr"></property>
-   <property name="available_expr"></property>
-   <property name="permissions">
-    <element value="Manage portal"/>
-   </property>
-   <property name="visible">True</property>
-  </object>
   <object name="send_email" meta_type="CMF Action" i18n:domain="plinn">
    <property name="title" i18n:translate="">Send an email</property>
    <property name="description" i18n:translate=""></property>
@@ -147,9 +194,9 @@
    <property name="icon_expr"></property>
    <property name="available_expr">member</property>
    <property name="permissions">
-    <element value="View"/>
+    <element value="Manage portal"/>
    </property>
-   <property name="visible">True</property>
+   <property name="visible">False</property>
   </object>
   <object name="undo" meta_type="CMF Action" i18n:domain="cmf_default">
    <property name="title" i18n:translate="">Undo</property>
@@ -159,9 +206,9 @@
    <property name="icon_expr"></property>
    <property name="available_expr">member</property>
    <property name="permissions">
-    <element value="List undoable changes"/>
+    <element value="Manage portal"/>
    </property>
-   <property name="visible">True</property>
+   <property name="visible">False</property>
   </object>
   <object name="configPortal" meta_type="CMF Action" i18n:domain="plinn">
    <property name="title" i18n:translate="">Configure Portal</property>
@@ -184,6 +231,44 @@
    <property name="available_expr"></property>
    <property name="permissions">
     <element value="Manage Groups"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+ </object>
+ <object name="site_menu" meta_type="CMF Action Category">
+  <property name="title"></property>
+  <object name="photographes" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title"
+      i18n:translate="">Photographers</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/photographers</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="services" meta_type="CMF Action">
+   <property name="title">Services</property>
+   <property name="description"></property>
+   <property name="url_expr">string:${portal_url}/services</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions"/>
+   <property name="visible">True</property>
+  </object>
+  <object name="contact" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">Contact</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/contact</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
    </property>
    <property name="visible">True</property>
   </object>
@@ -230,6 +315,35 @@
       name="available_expr">python:member and folder is object and object.portal_type in ['Huge Plinn Folder', 'Portfolio']</property>
    <property name="permissions">
     <element value="List folder contents"/>
+   </property>
+   <property name="visible">Folder</property>
+  </object>
+ </object>
+ <object name="customer" meta_type="CMF Action Category">
+  <property name="title"></property>
+  <object name="join" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">Join</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${portal_url}/customer_join_form</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">not: member</property>
+   <property name="permissions">
+    <element value="Add portal member"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="login" meta_type="CMF Action" i18n:domain="plinn">
+   <property name="title" i18n:translate="">Login</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${portal_url}/customer_login_form</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">not: member</property>
+   <property name="permissions">
+    <element value="View"/>
    </property>
    <property name="visible">True</property>
   </object>

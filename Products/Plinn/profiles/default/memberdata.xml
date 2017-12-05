@@ -9,4 +9,9 @@
  <property name="name" type="string"></property>
  <property name="given_name" type="string"></property>
  <property name="photo_width" type="int">800</property>
+ <property name="billing_address" type="text"></property>
+ <property name="billing_city" type="string"></property>
+ <property name="billing_zipcode" type="string"></property>
+ <property name="country" type="string"></property>
+ <property name="phone" type="string"></property>
 </object>

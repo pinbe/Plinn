@@ -10,12 +10,12 @@
       for="Products.CMFCore.interfaces.ISiteRoot"
       />
 
-  <genericsetup:registerProfile
-      name="photo"
-      title="Plinn photo site"
-      description="Profile for a photo based Plinn site."
-      for="Products.CMFCore.interfaces.ISiteRoot"
-      />
+  <!--?<genericsetup:registerProfile-->
+      <!--?name="photo"-->
+      <!--?title="Plinn photo site"-->
+      <!--?description="Profile for a photo based Plinn site."-->
+      <!--?for="Products.CMFCore.interfaces.ISiteRoot"-->
+      <!--?/>-->
   <genericsetup:registerProfile
     name="solr"
     title="Solr catalog"
