@@ -6,7 +6,6 @@
 <fragment selector="#content-outer"><span tal:replace="structure string:&lt;![CDATA[" />
 
   <link metal:define-slot="css_slot" tal:replace="nothing" />
-  <div id="Object_URL" tal:content="here/absolute_url" style="display:none"></div>
   <script type="text/javascript" metal:define-slot="javascript_head_slot" tal:replace="nothing"></script>
 
   <div>
@@ -21,6 +20,8 @@
       <div metal:define-slot="footer" tal:replace="nothing">footer slot</div>
     </div>
   </div>
+
+  <div id="Object_URL" tal:content="here/absolute_url" style="display:none"></div>
 
 <span tal:replace="structure string:]]>" /></fragment>
 
