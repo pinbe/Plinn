@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Tue Apr 28 15:48:29 2015\n"
-"PO-Revision-Date: 2015-04-28 15:49+0200\n"
+"POT-Creation-Date: Wed Dec  6 23:00:16 2017\n"
+"PO-Revision-Date: 2017-12-06 23:21+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -211,7 +211,8 @@ msgstr "Aperçu"
 
 #: n/skins/content/folder_edit_form.pt:29
 #: n/skins/custom_content/event_edit_template.pt:115
-#: n/skins/custom_content/event_view.pt:57 n/skins/generic/gruf_macros.pt:57
+#: n/skins/custom_content/event_view.pt:57 n/skins/flex/header_widgets.pt:24
+#: n/skins/flex/header_widgets.pt:90 n/skins/generic/gruf_macros.pt:57
 #: n/skins/generic/gruf_macros.pt:313 n/skins/generic/header_widgets.pt:24
 #: n/skins/generic/header_widgets.pt:85 n/skins/generic/search_form.pt:36
 msgid "Description"
@@ -231,24 +232,36 @@ msgstr " Changer et voir "
 #: n/skins/custom_generic/folder_contents.py:104
 #: n/skins/custom_generic/personalize_form.pt:27
 #: n/skins/generic/gruf_macros.pt:256 n/skins/generic/gruf_macros.pt:378
-#: n/skins/generic/last_member_logs.pt:23
-#: n/skins/generic/pending_members.pt:13
+#: n/skins/generic/last_member_logs.pt:23 n/skins/generic/pending_members.pt:13
 msgid "Name"
 msgstr "Nom"
 
 #: n/skins/content/folder_factories.pt:35
-#: n/skins/content/topic_edit_template.pt:51
-#: n/skins/generic/gruf_macros.pt:288 n/skins/generic/gruf_macros.pt:327
+#: n/skins/content/topic_edit_template.pt:51 n/skins/generic/gruf_macros.pt:288
+#: n/skins/generic/gruf_macros.pt:327
 msgid "Add"
 msgstr "Ajouter"
 
 #: n/skins/content/folder_notifications_template.pt:23
+#: n/skins/content/layered_document_edit_template.pt:33
 #: n/skins/content/topic_edit_template.pt:26
 #: n/skins/custom_content/document_edit_template.pt:23
 #: n/skins/custom_content/event_edit_template.pt:135
 #: n/skins/generic/search_results_template.pt:87 n/www/manage_solr.pt:20
 msgid "Save"
 msgstr "Enregistrer"
+
+#: n/skins/content/layered_document_edit_form.py:30
+msgid "Foreground"
+msgstr "Premier plan"
+
+#: n/skins/content/layered_document_edit_form.py:32
+msgid "Background"
+msgstr "Arrière plan"
+
+#: n/skins/content/layered_document_edit_form.py:34
+msgid "Layer ${n}"
+msgstr "Calque ${n}"
 
 #: n/skins/content/list_pending_contents.pt:23
 msgid "Pending documents"
@@ -274,8 +287,8 @@ msgstr "oui"
 msgid "no"
 msgstr "non"
 
-#: n/skins/content/topic_edit_template.pt:27
-#: n/skins/generic/gruf_macros.pt:211 n/skins/generic/gruf_macros.pt:235
+#: n/skins/content/topic_edit_template.pt:27 n/skins/generic/gruf_macros.pt:211
+#: n/skins/generic/gruf_macros.pt:235
 msgid "Remove selected"
 msgstr "Supprimer la sélection"
 
@@ -349,7 +362,7 @@ msgstr "Début"
 
 #: n/skins/custom_content/event_edit_template.pt:78
 #: n/skins/custom_content/event_edit_template.pt:103
-#: n/skins/generic/widgets.pt:96
+#: n/skins/flex/widgets.pt:115 n/skins/generic/widgets.pt:96
 msgid ""
 "${month}&nbsp;/&nbsp;${day}&nbsp;/&nbsp;${year}&nbsp;&nbsp;${hour}&nbsp;:"
 "&nbsp;${minute}"
@@ -480,8 +493,7 @@ msgstr "Transition de « ${objectid} »."
 msgid "Transition description."
 msgstr "Description"
 
-#: n/skins/custom_content/transition_form.pt:30
-#: n/skins/generic/wf_macros.pt:19
+#: n/skins/custom_content/transition_form.pt:30 n/skins/generic/wf_macros.pt:19
 msgid "Comments"
 msgstr "Commentaires"
 
@@ -553,23 +565,28 @@ msgid "Set Sorting as Default"
 msgstr "Définir comme tri par défaut"
 
 #: n/skins/custom_generic/folder_contents_template.pt:29
+#: n/skins/flex/folder_contents_template.pt:29
 msgid "Up"
 msgstr "Haut"
 
 #: n/skins/custom_generic/folder_contents_template.pt:32
+#: n/skins/flex/folder_contents_template.pt:32
 msgid "Down"
 msgstr "Bas"
 
 #. Default: "by"
 #: n/skins/custom_generic/folder_contents_template.pt:34
+#: n/skins/flex/folder_contents_template.pt:34
 msgid "move_by"
 msgstr "de"
 
 #: n/skins/custom_generic/folder_contents_template.pt:42
+#: n/skins/flex/folder_contents_template.pt:42
 msgid "Top"
 msgstr "Premier"
 
 #: n/skins/custom_generic/folder_contents_template.pt:44
+#: n/skins/flex/folder_contents_template.pt:44
 msgid "Bottom"
 msgstr "Dernier"
 
@@ -589,7 +606,7 @@ msgstr "Ressources liées"
 msgid "Folders"
 msgstr "Dossiers"
 
-#: n/skins/custom_generic/index_html_utils.pt:104
+#: n/skins/custom_generic/index_html_utils.pt:104 n/skins/flex/widgets.pt:144
 #: n/skins/generic/recent_news.pt:21 n/skins/generic/widgets.pt:125
 msgid "News"
 msgstr "Actualités"
@@ -606,7 +623,7 @@ msgstr "Plus…"
 msgid "Success!"
 msgstr "Succès !"
 
-#: n/skins/custom_generic/join_form.py:68
+#: n/skins/custom_generic/join_form.py:69
 #: n/skins/photo_theme/photo_main_macros.pt:28
 msgid "Join"
 msgstr "S'inscrire"
@@ -643,11 +660,11 @@ msgstr ""
 msgid "Click the button to log in immediately."
 msgstr "Cliquez sur le bouton pour vous connecter immédiatement."
 
-#: n/skins/custom_generic/join_template.pt:40
+#: n/skins/custom_generic/join_template.pt:41
 msgid "Your registration request has been taken into account."
 msgstr "Votre demande d'inscription a été prise en compte."
 
-#: n/skins/custom_generic/join_template.pt:41
+#: n/skins/custom_generic/join_template.pt:42
 msgid ""
 "Your request will be reviewed soon by a portal administrator. You will "
 "receive an email containing your password and instructions on how to "
@@ -657,7 +674,7 @@ msgstr ""
 "Vous recevrez un e-mail contenant votre mot de passe et des instructions "
 "pour vous connectez dès que votre inscription aura été approuvée."
 
-#: n/skins/custom_generic/join_template.pt:47
+#: n/skins/custom_generic/join_template.pt:48
 msgid ""
 "Your request will be reviewed soon by a portal administrator. You will "
 "receive an email when your registration will be approved."
@@ -665,52 +682,54 @@ msgstr ""
 "Votre demande va bientôt être vérifiée par un administrateur du portail. "
 "Vous recevrez un e-mail lorsque votre inscription aura été approuvée."
 
-#: n/skins/custom_generic/join_template.pt:52
+#: n/skins/custom_generic/join_template.pt:53
 msgid "Return to homepage"
 msgstr "Retour à la page d'accueil"
 
-#: n/skins/custom_generic/join_template.pt:61
+#: n/skins/custom_generic/join_template.pt:62
 msgid "First name"
 msgstr "Prénom"
 
-#: n/skins/custom_generic/join_template.pt:66
+#: n/skins/custom_generic/join_template.pt:67
 msgid "Last name"
 msgstr "Nom"
 
-#: n/skins/custom_generic/join_template.pt:73
+#: n/skins/custom_generic/join_template.pt:74
 #: n/skins/custom_generic/personalize_form.pt:39
 #: n/skins/generic/gruf_macros.pt:280 n/skins/generic/gruf_macros.pt:402
 msgid "Email address"
 msgstr "Adresse e-mail"
 
-#: n/skins/custom_generic/join_template.pt:79
+#: n/skins/custom_generic/join_template.pt:80
 msgid "use as login"
 msgstr "utiliser comme identifiant"
 
-#: n/skins/custom_generic/join_template.pt:86
+#: n/skins/custom_generic/join_template.pt:87
 msgid "login"
 msgstr "identifiant"
 
-#: n/skins/custom_generic/join_template.pt:94
-#: n/skins/custom_generic/login_form.pt:28 n/skins/generic/gruf_macros.pt:268
+#: n/skins/custom_generic/join_template.pt:95
+#: n/skins/custom_generic/login_form.pt:30 n/skins/generic/gruf_macros.pt:268
 #: n/skins/generic/gruf_macros.pt:390
 msgid "Password"
 msgstr "Mot de passe"
 
-#: n/skins/custom_generic/join_template.pt:100
+#: n/skins/custom_generic/join_template.pt:101
 msgid "Password (confirm)"
 msgstr "Confirmation"
 
 #: n/skins/custom_generic/logged_in.py:28
 #: n/skins/custom_generic/logged_in_template.pt:9
+#: n/skins/photo_theme/homepage_dispatcher.py:17
 msgid "Login failure"
 msgstr "Échec de la connexion"
 
-#: n/skins/custom_generic/logged_in.py:50
-#: n/skins/photo_theme/homepage_dispatcher.py:14
-#: n/skins/photo_theme/homepage_dispatcher.py:17
-#: n/skins/photo_theme/homepage_dispatcher.py:25
+#: n/skins/custom_generic/logged_in.py:40
+#: n/skins/photo_theme/homepage_dispatcher.py:22
 #: n/skins/photo_theme/homepage_dispatcher.py:28
+#: n/skins/photo_theme/homepage_dispatcher.py:31
+#: n/skins/photo_theme/homepage_dispatcher.py:38
+#: n/skins/photo_theme/homepage_dispatcher.py:40
 msgid "Login success"
 msgstr "Connexion réussie"
 
@@ -790,37 +809,37 @@ msgstr "Connexion"
 msgid "user_name"
 msgstr "Login"
 
-#: n/skins/custom_generic/login_form.pt:37
+#: n/skins/custom_generic/login_form.pt:39
 msgid "Remember my name."
 msgstr "Se souvenir de mon login."
 
-#: n/skins/custom_generic/login_form.pt:43
-#: n/skins/generic/password_reset_form.py:25
+#: n/skins/custom_generic/login_form.pt:45
+#: n/skins/generic/password_reset_form.py:26
 msgid " Login "
 msgstr "Connexion"
 
-#: n/skins/custom_generic/login_form.pt:49
+#: n/skins/custom_generic/login_form.pt:51
 msgid "Forgot your login or password?"
 msgstr "Login ou mot de passe oublié ?"
 
-#: n/skins/custom_generic/login_form.pt:55
+#: n/skins/custom_generic/login_form.pt:57
 msgid "Not a member yet? Register now!"
 msgstr "Pas encore membre ? Inscrivez-vous maintenant !"
 
-#: n/skins/custom_generic/login_form.pt:58
+#: n/skins/custom_generic/login_form.pt:60
 msgid ""
 "Having trouble logging in? Make sure to enable cookies in your web browser."
 msgstr ""
 "Vous rencontrez des difficultés pour la connexion ? Vérifiez que votre "
 "navigateur accepte les cookies."
 
-#: n/skins/custom_generic/login_form.pt:62
+#: n/skins/custom_generic/login_form.pt:64
 msgid "Don't forget to logout or exit your browser when you're done."
 msgstr ""
 "N'oubliez pas de vous déconnecter ou de fermer votre navigateur à la fin de "
 "la session."
 
-#: n/skins/custom_generic/login_form.pt:65
+#: n/skins/custom_generic/login_form.pt:67
 msgid ""
 "Setting the 'Remember my name' option will set a cookie with your username, "
 "so that when you next log in, your user name will already be filled in for "
@@ -910,7 +929,7 @@ msgid "Information"
 msgstr "Information"
 
 #: n/skins/custom_generic/main_template_standard.pt:112
-#: n/skins/custom_generic/talkback_tree.pt:64
+#: n/skins/custom_generic/talkback_tree.pt:64 n/skins/flex/widgets.pt:18
 #: n/skins/generic/main_template_ajax.pt:12 n/skins/generic/widgets.pt:17
 #: n/skins/photo_theme/main_template_standard.pt:120
 #: n/skins/photo_theme/search_results_macros.pt:38
@@ -1089,8 +1108,7 @@ msgid "unknown"
 msgstr "inconnu"
 
 #. Default: "at"
-#: n/skins/custom_generic/talkback_tree.pt:37
-#: n/skins/generic/recent_news.pt:43
+#: n/skins/custom_generic/talkback_tree.pt:37 n/skins/generic/recent_news.pt:43
 msgid "at_(date)"
 msgstr "le"
 
@@ -1098,10 +1116,10 @@ msgstr "le"
 msgid "Body"
 msgstr "Corps"
 
-#: n/skins/custom_generic/talkback_tree.pt:82
-#: n/skins/generic/gruf_macros.pt:77 n/skins/generic/gruf_macros.pt:410
-#: n/skins/generic/header_widgets.pt:32 n/skins/generic/header_widgets.pt:173
-#: n/skins/generic/send_email_form.pt:79
+#: n/skins/custom_generic/talkback_tree.pt:82 n/skins/flex/header_widgets.pt:33
+#: n/skins/flex/header_widgets.pt:178 n/skins/generic/gruf_macros.pt:77
+#: n/skins/generic/gruf_macros.pt:410 n/skins/generic/header_widgets.pt:32
+#: n/skins/generic/header_widgets.pt:173 n/skins/generic/send_email_form.pt:79
 msgid "Validate"
 msgstr "Valider"
 
@@ -1154,6 +1172,102 @@ msgstr "Par"
 #: n/skins/custom_generic/viewThreadsAtBottom.pt:10
 msgid "Comments:"
 msgstr "Commentaires :"
+
+#: n/skins/flex/header_widgets.pt:34 n/skins/generic/header_widgets.pt:33
+msgid "Edit all metadata"
+msgstr "Éditer toutes les métadonnées"
+
+#: n/skins/flex/header_widgets.pt:56 n/skins/generic/header_widgets.pt:54
+msgid "Enable Discussion?"
+msgstr "Activer les commentaires ?"
+
+#: n/skins/flex/header_widgets.pt:59 n/skins/generic/header_widgets.pt:57
+msgid "Default"
+msgstr "Par défaut"
+
+#: n/skins/flex/header_widgets.pt:63 n/skins/generic/header_widgets.pt:60
+msgid "Off"
+msgstr "Désactiver"
+
+#: n/skins/flex/header_widgets.pt:67 n/skins/generic/header_widgets.pt:63
+msgid "On"
+msgstr "Activer"
+
+#: n/skins/flex/header_widgets.pt:75 n/skins/generic/gruf_macros.pt:45
+#: n/skins/generic/header_widgets.pt:70
+msgid "Identifier"
+msgstr "Identifiant"
+
+#: n/skins/flex/header_widgets.pt:96 n/skins/generic/header_widgets.pt:91
+msgid "Subject"
+msgstr "Sujet"
+
+#: n/skins/flex/header_widgets.pt:113 n/skins/generic/header_widgets.pt:108
+msgid "Contributors"
+msgstr "Contributeurs"
+
+#: n/skins/flex/header_widgets.pt:120 n/skins/generic/header_widgets.pt:115
+msgid "Creation Date"
+msgstr "Date de création"
+
+#: n/skins/flex/header_widgets.pt:123 n/skins/generic/header_widgets.pt:118
+msgid "Last Modified Date"
+msgstr "Dernière modification"
+
+#: n/skins/flex/header_widgets.pt:135 n/skins/generic/header_widgets.pt:130
+msgid "Effective Date"
+msgstr "Date de mise en ligne"
+
+#: n/skins/flex/header_widgets.pt:146 n/skins/generic/header_widgets.pt:141
+msgid "Expiration Date"
+msgstr "Date d'expiration"
+
+#: n/skins/flex/header_widgets.pt:152 n/skins/generic/header_widgets.pt:147
+msgid "Format"
+msgstr "Format"
+
+#: n/skins/flex/header_widgets.pt:160 n/skins/generic/header_widgets.pt:155
+msgid "Language"
+msgstr "Langue"
+
+#: n/skins/flex/header_widgets.pt:168 n/skins/generic/header_widgets.pt:163
+msgid "Rights"
+msgstr "Droits"
+
+#: n/skins/flex/header_widgets.pt:179 n/skins/generic/header_widgets.pt:174
+msgid "Edit standard metadata"
+msgstr "Éditer les métadonnées standard"
+
+#: n/skins/flex/main_template_macros.pt:103
+msgid "Edit site"
+msgstr "Éditer le site"
+
+#: n/skins/flex/main_template_macros.pt:131
+#: n/skins/generic/main_template_macros.pt:80
+#: n/skins/photo_theme/main_template_macros.pt:91
+msgid "You are here:"
+msgstr "Vous êtes ici :"
+
+#: n/skins/flex/widgets.pt:37 n/skins/generic/widgets.pt:32
+#: n/skins/generic/widgets.pt:33
+msgid "Edit metadata"
+msgstr "Éditer les métadonnées"
+
+#: n/skins/flex/widgets.pt:76 n/skins/generic/widgets.pt:57
+msgid "Clipboard"
+msgstr "Presse-papier"
+
+#: n/skins/flex/widgets.pt:82 n/skins/generic/widgets.pt:63
+msgid "Delete"
+msgstr "Supprimer"
+
+#: n/skins/flex/widgets.pt:83 n/skins/generic/widgets.pt:64
+msgid "Empty"
+msgstr "Vider"
+
+#: n/skins/flex/widgets.pt:149 n/skins/generic/widgets.pt:130
+msgid "News Item"
+msgstr "Actualité"
 
 #. Default: "previous ${number}"
 #: n/skins/generic/batch_macros.pt:26
@@ -1316,10 +1430,6 @@ msgstr "Groupes pour «&nbsp;${groupId}&nbsp;»"
 msgid "Group Tree"
 msgstr "Arborescence des groupes"
 
-#: n/skins/generic/gruf_macros.pt:45 n/skins/generic/header_widgets.pt:70
-msgid "Identifier"
-msgstr "Identifiant"
-
 #: n/skins/generic/gruf_macros.pt:63 n/skins/generic/gruf_macros.pt:319
 msgid "Shared folder"
 msgstr "Dossier partagé"
@@ -1420,66 +1530,6 @@ msgstr "condenser tout"
 msgid "&lt;&lt; Back to member properties"
 msgstr "&lt;&lt; Revenir aux propriétés du membre"
 
-#: n/skins/generic/header_widgets.pt:33
-msgid "Edit all metadata"
-msgstr "Éditer toutes les métadonnées"
-
-#: n/skins/generic/header_widgets.pt:54
-msgid "Enable Discussion?"
-msgstr "Activer les commentaires ?"
-
-#: n/skins/generic/header_widgets.pt:57
-msgid "Default"
-msgstr "Par défaut"
-
-#: n/skins/generic/header_widgets.pt:60
-msgid "Off"
-msgstr "Désactiver"
-
-#: n/skins/generic/header_widgets.pt:63
-msgid "On"
-msgstr "Activer"
-
-#: n/skins/generic/header_widgets.pt:91
-msgid "Subject"
-msgstr "Sujet"
-
-#: n/skins/generic/header_widgets.pt:108
-msgid "Contributors"
-msgstr "Contributeurs"
-
-#: n/skins/generic/header_widgets.pt:115
-msgid "Creation Date"
-msgstr "Date de création"
-
-#: n/skins/generic/header_widgets.pt:118
-msgid "Last Modified Date"
-msgstr "Dernière modification"
-
-#: n/skins/generic/header_widgets.pt:130
-msgid "Effective Date"
-msgstr "Date de mise en ligne"
-
-#: n/skins/generic/header_widgets.pt:141
-msgid "Expiration Date"
-msgstr "Date d'expiration"
-
-#: n/skins/generic/header_widgets.pt:147
-msgid "Format"
-msgstr "Format"
-
-#: n/skins/generic/header_widgets.pt:155
-msgid "Language"
-msgstr "Langue"
-
-#: n/skins/generic/header_widgets.pt:163
-msgid "Rights"
-msgstr "Droits"
-
-#: n/skins/generic/header_widgets.pt:174
-msgid "Edit standard metadata"
-msgstr "Éditer les métadonnées standard"
-
 #: n/skins/generic/last_member_logs.pt:19
 msgid "Last member login times"
 msgstr "Dates de dernière connexion des membres"
@@ -1543,11 +1593,6 @@ msgstr "Rechercher"
 msgid "Advanced search"
 msgstr "Recherche avancée"
 
-#: n/skins/generic/main_template_macros.pt:80
-#: n/skins/photo_theme/main_template_macros.pt:91
-msgid "You are here:"
-msgstr "Vous êtes ici :"
-
 #: n/skins/generic/main_template_macros.pt:93
 #: n/skins/generic/main_template_macros.pt:96
 #: n/skins/generic/main_template_macros.pt:114
@@ -1562,7 +1607,7 @@ msgstr "Coller"
 msgid "Exit boxes editing"
 msgstr "Quitter l'édition des boîtes"
 
-#: n/skins/generic/password_reset_form.py:29
+#: n/skins/generic/password_reset_form.py:30
 msgid "Update Password"
 msgstr "Mettre à jour le mot de passe"
 
@@ -2042,26 +2087,6 @@ msgstr "Cet élément n'a pas encore eu de changement d'état."
 #: n/skins/generic/wf_redirect.py:12
 msgid "You are not allowed to change this content state."
 msgstr "Vous n'êtes pas autorisé à changer l'état de ce contenu."
-
-#: n/skins/generic/widgets.pt:32 n/skins/generic/widgets.pt:33
-msgid "Edit metadata"
-msgstr "Éditer les métadonnées"
-
-#: n/skins/generic/widgets.pt:57
-msgid "Clipboard"
-msgstr "Presse-papier"
-
-#: n/skins/generic/widgets.pt:63
-msgid "Delete"
-msgstr "Supprimer"
-
-#: n/skins/generic/widgets.pt:64
-msgid "Empty"
-msgstr "Vider"
-
-#: n/skins/generic/widgets.pt:130
-msgid "News Item"
-msgstr "Actualité"
 
 #: n/skins/photo_theme/logout.py:15
 msgid "You have been logged out."
