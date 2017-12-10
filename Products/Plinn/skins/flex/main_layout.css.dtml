@@ -46,7 +46,7 @@ a:hover {
 
 #site-menu {
   display: flex;
-  font-size: 16px;
+  font-size: &dtml-fontMenuSize;;
 }
 
 #site-menu > a {

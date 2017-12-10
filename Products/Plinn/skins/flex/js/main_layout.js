@@ -1,4 +1,12 @@
 (function() {
+    var getWindowScrollY = (window.scrollY !== undefined) ?
+        function() {
+            return window.scrollY;
+        } :
+        function() {
+            return document.documentElement.scrollTop;
+        };
+
     function fixTopBar() {
         var topBar = document.getElementById('top-bar');
         var topBarRect = topBar.getBoundingClientRect();
@@ -18,10 +26,21 @@
             'px';
     }
 
+    function stretchLogo() {
+        var logo = document.getElementById('portal-logo');
+        var natHeight = logo.naturalHeight;
+        logo.height = Math.min(natHeight,
+            Math.max(natHeight - getWindowScrollY(),
+            parseInt(window.getComputedStyle(document.getElementById('site-menu')).fontSize)));
+        logo.width = logo.height * (logo.naturalWidth / natHeight);
+    }
+
     window.addEventListener('load', function() {
         if(document.body.getAttribute('data-isAnon') === 'True') {
             fixTopBar();
             window.addEventListener('resize', fitTopBar);
+            window.addEventListener('scroll', stretchLogo);
         }
     });
+
 }());

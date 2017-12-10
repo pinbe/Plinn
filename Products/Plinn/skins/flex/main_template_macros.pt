@@ -41,7 +41,8 @@ global specialCtxHeader options/specialCtxHeader|nothing"
          id="top-bar">
         <a tal:attributes="href portal_url;
                            title portal_object/title_or_id">
-          <img tal:define="logo here/logo.png"
+          <img id="portal-logo"
+               tal:define="logo here/logo.png"
                tal:attributes="src logo/absolute_url;
                                alt portal_object/title_or_id;
                                height logo/height;

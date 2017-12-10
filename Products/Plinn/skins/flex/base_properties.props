@@ -5,6 +5,7 @@ backgroundColor:string=#fff
 fontColor:string=#000
 fontFamily:string=Helvetica, sans-serif
 fontBaseSize:string=13px
+fontMenuSize:string=16px
 headingFontFamily:string=Helvetica, sans-serif
 
 topbar_background:string=rgba(255,255,255,0.8)
