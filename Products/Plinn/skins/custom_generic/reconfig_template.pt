@@ -16,7 +16,7 @@
           <tr>
             <th i18n:translate="">Portal 'From' name</th>
             <td>
-              <input name="email_from_name" value=""
+              <input name="email_from_name" type="text" value=""
                      tal:attributes="value form/email_from_name"/>
               <dl class="FieldHelp">
                 <dd i18n:translate="">
@@ -29,7 +29,7 @@
           <tr>
             <th i18n:translate="">Portal 'From' address</th>
             <td>
-              <input name="email_from_address" value=""
+              <input name="email_from_address" type="text" value=""
                      tal:attributes="value form/email_from_address"/>
               <dl class="FieldHelp">
                 <dd i18n:translate="">
@@ -42,7 +42,7 @@
           <tr>
             <th i18n:translate="">SMTP server</th>
             <td>
-              <input name="smtp_server" value=""
+              <input name="smtp_server" type="text" value=""
                      tal:attributes="value form/smtp_server"/>
               <dl class="FieldHelp">
                 <dd i18n:translate="">
@@ -55,7 +55,7 @@
           <tr>
             <th i18n:translate="">Portal title</th>
             <td>
-              <input name="title" value=""
+              <input name="title" type="text" value=""
                      tal:attributes="value form/title"/>
               <dl class="FieldHelp">
                 <dd i18n:translate="">
@@ -92,7 +92,7 @@
           <tr>
             <th i18n:translate="">Copyright notice</th>
             <td class="TextField">
-              <input name="copyright_notice" value=""
+              <input name="copyright_notice" type="text" value=""
                      tal:attributes="value form/copyright_notice"/>
               <dl class="FieldHelp">
                 <dd i18n:translate="">
@@ -124,7 +124,7 @@
           <tr>
             <th i18n:translate="">Thumbnails size</th>
             <td>
-              <input name="slide_size:int" value=""
+              <input name="slide_size:int" type="text" value=""
                      tal:attributes="value form/slide_size" size="5"/>
               <dl class="FieldHelp">
                 <dd i18n:translate="">
