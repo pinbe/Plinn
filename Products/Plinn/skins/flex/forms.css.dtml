@@ -32,6 +32,11 @@ table.TwoColumnForm {
   border-radius: &dtml-borderRadius;px;
 }
 
+.config td,
+.config th {
+  vertical-align: top;
+}
+
 table.TwoColumnForm td.ListDefinition {
   font-style: italic }
 
