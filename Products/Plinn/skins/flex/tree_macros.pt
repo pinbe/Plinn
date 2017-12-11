@@ -51,7 +51,6 @@
                 ','.join(treeMetaTypes),
                 tree.tree_pre)"></script>
 
-        <hr/>
       </div>
     </div>
   </body>

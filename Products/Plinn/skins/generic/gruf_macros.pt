@@ -1,77 +1,106 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="here/main_template/macros/master">
 
   <head>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <title>GRUF Macros</title>
-    <link href="../content/plinn_style.css" rel="stylesheet" media="screen" />
+    <link href="../content/plinn_style.css" rel="stylesheet" media="screen"/>
     <link href="../patch_skins/zpt_stylesheet.css" rel="stylesheet" media="screen">
   </head>
 
   <body tal:omit-tag="" metal:fill-slot="main" i18n:domain="plinn">
-    <pre>gruf_tree</pre>
-    <hr />
-    <table tal:define="treeDict	here/makeGrufTree ;
-                       tree		treeDict/tree ;
-                       rows		treeDict/rows ;
-                       rootNode	python:rows.pop(0) ;
-                       height	tree/height ;
-                       gtool here/portal_groups ;
-                       group_prefix here/acl_users/getGroupPrefix ;
-                       prefixLength python:len(group_prefix);
-                       u0 request/URL0" metal:define-macro="gruf_tree">
+    <table metal:define-macro="gruf_tree"
+             tal:define="treeDict  here/makeGrufTree ;
+            tree  treeDict/tree ;
+            rows  treeDict/rows ;
+            rootNode  python:rows.pop(0) ;
+            height  tree/height ;
+            gtool here/portal_groups ;
+            group_prefix here/acl_users/getGroupPrefix ;
+            prefixLength python:len(group_prefix);
+            u0 request/URL0">
       <tr>
         <th colspan="3" tal:attributes="colspan height" nowrap="nowrap" i18n:translate="">Group Tree</th>
       </tr>
       <tr tal:repeat="row rows">
-        <td colspan="1" tal:attributes="colspan indent" tal:define="indent python: row.depth - 1" tal:condition="indent">
-          <br />
+        <td tal:define="indent python: row.depth - 1"
+            tal:condition="indent"
+            tal:attributes="colspan indent">
+          <br/>
         </td>
-        <td tal:define="state row/state ; rlink row/branch ; msg python:state > 0 and 'collapse' or 'expand'" width="16">
-          <a href="#" tal:attributes="name row/id ; href string:$u0${rlink/link}; title msg" tal:condition="state" i18n:attributes="title"><img src="pl.gif" alt="" tal:attributes="src python:state > 0 and '/p_/mi' or '/p_/pl' ; alt msg" border="0" i18n:attributes="alt" /></a><span tal:condition="not:state" tal:omit-tag="">  </span>
+        <td tal:define="state row/state;
+                rlink row/branch;
+                msg python:state > 0 and 'collapse' or 'expand'"
+                width="16">
+          <a tal:attributes="name row/id ;
+                  href string:$u0${rlink/link};
+                  title msg"
+             tal:condition="state"
+             i18n:attributes="title">
+            <img tal:attributes="src python:state > 0 and '/p_/mi' or '/p_/pl';
+                    alt msg"
+                 i18n:attributes="alt"/>
+          </a>
+          <span tal:condition="not:state" tal:omit-tag="">  </span>
         </td>
-        <td colspan="1" tal:attributes="colspan python: height - row.depth" tal:define="object row/object ; group python:gtool.getGroupById(object.id)" nowrap="nowrap">
-          <a href="." tal:attributes="href string:${template_url}?group=${object/id}"><img src="GRUFGroups.gif" alt="Group id" tal:attributes="src here/GRUFGroups.gif/absolute_url ; alt object/id" border="0" /><span tal:replace="python:group.title or group.id[prefixLength:]">group</span></a>
+        <td  tal:define="object row/object ; group python:gtool.getGroupById(object.id)"
+             tal:attributes="colspan python: height - row.depth"
+            nowrap="nowrap">
+          <a tal:attributes="href string:${template_url}?group=${object/id}">
+            <img tal:attributes="src here/GRUFGroups.gif/absolute_url;
+                                 alt object/id"/>
+            <span tal:replace="python:group.title or group.id[prefixLength:]">group</span>
+          </a>
         </td>
       </tr>
     </table>
-    <pre>change_group_data</pre>
-    <hr />
-    <form action="change_group" method="post" tal:attributes="action string:${portal_url}/change_group" metal:define-macro="change_group_data">
-      <table class="TwoColumnForm" cellspacing="0" tal:define="wGroup python:here.portal_groups.getGroupById(requestedGroup) ;
-       			   sharedFolderUrl python:here.portal_groups.getGroupareaURL(id = requestedGroup)">
+
+    <form metal:define-macro="change_group_data"
+          tal:attributes="action string:${portal_url}/change_group"
+          method="post">
+      <table tal:define="wGroup python:here.portal_groups.getGroupById(requestedGroup);
+                         sharedFolderUrl python:here.portal_groups.getGroupareaURL(id = requestedGroup)"
+             class="TwoColumnForm">
         <tr>
           <th i18n:translate="">Identifier</th>
           <td>
-            <span tal:replace="requestedGroup">Group Name</span><input type="hidden" name="groupId" value="group" tal:attributes="value requestedGroup" />
+            <span tal:replace="requestedGroup">Group Name</span>
+            <input type="hidden" name="groupId"
+                   tal:attributes="value requestedGroup"/>
           </td>
         </tr>
         <tr>
           <th i18n:translate="">Title</th>
           <td>
-            <input type="text" name="title" size="51" tal:attributes="value wGroup/title" />
+            <input type="text" name="title" size="51"
+                   tal:attributes="value wGroup/title"/>
           </td>
         </tr>
         <tr>
           <th i18n:translate="">Description</th>
           <td>
-            <textarea id="textareaName" name="description" rows="3" cols="38" tal:content="wGroup/description"></textarea>
+            <textarea id="textareaName" name="description" rows="3"
+                      cols="38"
+                      tal:content="wGroup/description"></textarea>
           </td>
         </tr>
         <tr tal:define="creationFlag here/portal_groups/getGroupWorkspacesCreationFlag" tal:condition="creationFlag | sharedFolderUrl">
           <th i18n:translate="">Shared folder</th>
           <td>
             <div tal:condition="sharedFolderUrl">
-              <a href="." tal:attributes="href python:sharedFolderUrl+'/folder_contents'" i18n:translate="">Open shared folder...</a>
+              <a href="." tal:attributes="href python:sharedFolderUrl+'/folder_contents'" i18n:translate="">Open shared
+                folder...</a>
             </div>
             <div tal:condition="not:sharedFolderUrl">
-              <label><input type="checkbox" name="createSharedFolder" /><span i18n:translate="" tal:omit-tag="">Create</span></label>
+              <label><input type="checkbox"
+                            name="createSharedFolder"/><span i18n:translate="" tal:omit-tag="">Create</span></label>
             </div>
           </td>
         </tr>
         <tr>
-          <th><br />
+          <th><br/>
           </th>
           <td>
             <input type="submit" value="Validate" i18n:attributes="value" />
@@ -79,71 +108,90 @@
         </tr>
       </table>
     </form>
-    <pre>assign_roles</pre>
-    <div tal:condition="python:mtool.checkPermission('Manage portal', portal_object)" tal:omit-tag="" metal:define-macro="assign_roles">
-      <table class="assign_global_roles" cellspacing="0" tal:define="groupId requestedGroup ;
-                    group python:here.portal_groups.getGroupById(groupId);
-                    explicitRoles python:filter(lambda x: x not in ('Authenticated', 'Shared'), group.getUserRoles());
-                    implicitRoles python:[ role for role in group.getRoles() if role not in explicitRoles + ['Authenticated', 'Shared'] ];
-                    assignabledRoles python:[ role for role in here.portal_membership.getPortalRoles() if role not in explicitRoles + ['Authenticated', 'Shared'] ]">
+
+    <div metal:define-macro="assign_roles"
+         tal:condition="python:mtool.checkPermission('Manage portal', portal_object)"
+         tal:omit-tag="">
+      <table class="assign_global_roles"
+             tal:define="groupId requestedGroup ;
+                         group python:here.portal_groups.getGroupById(groupId);
+                         explicitRoles python:filter(lambda x: x not in ('Authenticated', 'Shared'), group.getUserRoles());
+                         implicitRoles python:[ role for role in group.getRoles() if role not in explicitRoles + ['Authenticated', 'Shared'] ];
+                         assignabledRoles python:[ role for role in here.portal_membership.getPortalRoles() if role not in explicitRoles + ['Authenticated', 'Shared'] ]">
         <tr>
           <th i18n:translate="">Implicit roles</th>
           <td>
             <ul tal:condition="implicitRoles">
-              <li tal:content="role" tal:repeat="role implicitRoles" i18n:translate="">role</li>
+              <li tal:repeat="role implicitRoles"
+                  tal:content="role"
+                  i18n:translate="">role</li>
             </ul>
           </td>
         </tr>
         <tr>
           <th i18n:translate="">Explicit roles</th>
           <td>
-            <form action="." method="post" tal:attributes="action here/portal_url">
-              <div tal:condition="explicitRoles" tal:omit-tag="">
+            <form tal:attributes="action here/portal_url" method="post" >
+              <div tal:condition="explicitRoles"
+                   tal:omit-tag="">
                 <div tal:repeat="role explicitRoles">
-                  <input type="checkbox" name="roles:list" value="role" tal:attributes="value role" /><span tal:content="role" tal:omit-tag="" i18n:translate="">role</span>
+                  <input type="checkbox" name="roles:list"
+                         tal:attributes="value role"/>
+                  <span tal:content="role" tal:omit-tag="" i18n:translate="">role</span>
                 </div>
-                <input type="submit" name="remove_group_roles:method" value="Remove" i18n:attributes="value" /><br />
-                <br />
+                <input type="submit" name="remove_group_roles:method" value="Remove" i18n:attributes="value" /><br/>
+                <br/>
               </div>
               <input type="hidden" name="groupId" value="group" tal:attributes="value groupId"/>
               <div tal:condition="assignabledRoles">
-                <select name="role" size="1">
-                  <option tal:attributes="value role" tal:content="role" tal:repeat="role assignabledRoles" i18n:translate="">role</option>
-                </select><input type="submit" name="append_group_role:method" value="Append" i18n:attributes="value" />
+                <select name="role">
+                  <option tal:repeat="role assignabledRoles"
+                          tal:attributes="value role"
+                          tal:content="role"
+                          i18n:translate="">role</option>
+                </select>
+                <input type="submit" name="append_group_role:method" value="Append" i18n:attributes="value" />
               </div>
             </form>
           </td>
         </tr>
       </table>
     </div>
-    <hr />
-    <pre>assign_members</pre>
-    <hr />
-    <form action="." method="post" tal:attributes="action portal_url" metal:define-macro="assign_members">
-      <table class="twins_list" tal:define="
-              		uNamesOfGroup	python:here.portal_groups.getUserNamesOfGroup(requestedGroup) ;
-              		memberMetadata python:mtool.getMembersMetadata(uNamesOfGroup);
-              		insideList		memberMetadata/memberList ;
-              		outsideList 	memberMetadata/complementList">
+
+    <form  metal:define-macro="assign_members"
+           tal:attributes="action portal_url"
+           method="post" >
+      <table class="twins_list"
+             tal:define="uNamesOfGroup python:here.portal_groups.getUserNamesOfGroup(requestedGroup) ;
+                         memberMetadata python:mtool.getMembersMetadata(uNamesOfGroup);
+                         insideList memberMetadata/memberList ;
+                         outsideList memberMetadata/complementList">
         <tr>
           <th i18n:translate="">Outside group</th>
-          <td><br /></td>
+          <td><br/></td>
           <th i18n:translate="">Inside group</th>
         </tr>
         <tr>
           <td>
             <select name="append_members:list" size="20" multiple="multiple">
-              <option value="one" tal:attributes="value member/id" tal:content="member/fullname" tal:repeat="member outsideList">NAME Surname or login</option>
+              <option tal:repeat="member outsideList"
+                      tal:attributes="value member/id"
+                      tal:content="member/fullname">
+                NAME Surname or login
+              </option>
             </select>
           </td>
           <td class="twins_list">
-            <input type="submit" name="append_users_in_group:method" value="&gt;&gt;&gt;" />
-            <br /><br />
+            <input type="submit" name="append_users_in_group:method" value="&gt;&gt;&gt;"/>
+            <br/><br/>
             <input type="submit" name="remove_users_in_group:method" value="&lt;&lt;&lt;" tal:condition="insideList" />
           </td>
           <td>
-            <select name="remove_members:list" size="20" multiple="multiple" tal:condition="insideList">
-              <option value="one" tal:attributes="value member/id" tal:content="member/fullname" tal:repeat="member insideList">NAME Surname or login</option>
+            <select name="remove_members:list" size="20" multiple="multiple"
+                    tal:condition="insideList">
+              <option  tal:repeat="member insideList"
+                       tal:attributes="value member/id"
+                       tal:content="member/fullname">NAME Surname or login</option>
             </select>
             <div class="info_message" tal:condition="not:insideList" i18n:translate="">None</div>
           </td>
@@ -151,97 +199,107 @@
       </table>
       <input type="hidden" name="groupId" value="group" tal:attributes="value requestedGroup" />
     </form>
-    <pre>assign_groups</pre>
-    <hr/>
+
     <form action="." method="post" tal:attributes="action portal_url" metal:define-macro="assign_groups">
       <table class="twins_list"
-             tal:define="
-						 gtool			here/portal_groups ;
-						 groupsOfGroup	python:gtool.getGroupsOfGroup(requestedGroup) ;
-						 insideList		python:gtool.getGroups(groupsOfGroup) ;
-						 outsideList		python:gtool.getOtherGroups(groupsOfGroup)">
+             tal:define="gtool here/portal_groups ;
+                         groupsOfGroup python:gtool.getGroupsOfGroup(requestedGroup) ;
+                         insideList python:gtool.getGroups(groupsOfGroup) ;
+                         outsideList python:gtool.getOtherGroups(groupsOfGroup)">
         <tr>
           <th i18n:translate="">Outside group</th>
-          <th><br /></th>
+          <th><br/></th>
           <th i18n:translate="">Inside group</th>
         </tr>
         <tr>
           <td>
             <select name="append_groups:list" size="6" multiple="multiple">
-              <option tal:attributes="value group/id" tal:content="python:group.title or group.id[prefixLength:]" tal:repeat="group outsideList">group1</option>
+              <option tal:repeat="group outsideList"
+                      tal:attributes="value group/id"
+                      tal:content="python:group.title or group.id[prefixLength:]">group1</option>
             </select>
           </td>
           <td>
             <input type="submit" name="append_groups_in_group:method" value="&gt;&gt;&gt;"/><br/>
             <br/>
-            <input type="submit" name="remove_groups_in_group:method" value="&lt;&lt;&lt;" tal:condition="insideList" />
+            <input type="submit" name="remove_groups_in_group:method" value="&lt;&lt;&lt;"
+                   tal:condition="insideList" />
           </td>
           <td>
-            <select name="remove_groups:list" size="6" multiple="multiple" tal:condition="insideList">
-              <option tal:attributes="value group/id" tal:content="python:group.title or group.id[prefixLength:]" tal:repeat="group insideList">group2</option>
+            <select name="remove_groups:list" size="6" multiple="multiple"
+                    tal:condition="insideList">
+              <option tal:repeat="group insideList"
+                      tal:attributes="value group/id"
+                      tal:content="python:group.title or group.id[prefixLength:]">group2</option>
             </select>
-            <div class="info_message" tal:condition="not:insideList" i18n:translate="">
-              None
-            </div>
+            <div class="info_message" tal:condition="not:insideList" i18n:translate="">None</div>
           </td>
         </tr>
       </table>
       <input type="hidden" name="groupId" value="groupId" tal:attributes="value requestedGroup" />
     </form>
 
-    <pre>all_members</pre>
-    <hr/>
-    <form action="." method="post" tal:attributes="action portal_url" metal:define-macro="all_members">
-      <table class="TwoColumnForm" cellspacing="0">
+    <form metal:define-macro="all_members"
+          tal:attributes="action portal_url"
+          method="post" >
+      <table class="TwoColumnForm">
         <tr>
           <th i18n:translate="">All members</th>
         </tr>
         <tr>
           <td>
             <select name="memberIds:list" size="20" multiple="multiple"
-        tal:attributes="ondblclick string:javascript:openMemberPopup(this.value);;"
-        tal:define="membersMetadata python:mtool.getMembersMetadata([])['complementList']">
-              <option value="userid" tal:attributes="value member/id" tal:content="member/fullname" tal:repeat="member membersMetadata">NAME surname</option>
+                    tal:attributes="ondblclick string:javascript:openMemberPopup(this.value);;"
+                    tal:define="membersMetadata python:mtool.getMembersMetadata([])['complementList']">
+              <option tal:repeat="member membersMetadata"
+                      tal:attributes="value member/id"
+                      tal:content="member/fullname">NAME surname</option>
             </select>
           </td>
         </tr>
         <tr>
           <td>
             <input type="submit" name="member_properties_form:method" value="Edit" i18n:attributes="value" /><br/>
-<input type="submit" name="delete_members:method" value="Remove selected" i18n:attributes="value" />
+            <input type="submit" name="delete_members:method" value="Remove selected" i18n:attributes="value" />
           </td>
         </tr>
       </table>
     </form>
-    <pre>all_groups</pre>
-    <hr/>
-    <form action="." method="post" tal:attributes="action portal_url" metal:define-macro="all_groups">
-      <table class="TwoColumnForm" cellspacing="0"
-      			 tal:define="gtool here/portal_groups ;
-      			 						 group_prefix here/acl_users/getGroupPrefix ;
-      			 						 prefixLength python:len(group_prefix)">
+
+    <form metal:define-macro="all_groups"
+          tal:attributes="action portal_url"
+          method="post" >
+      <table class="TwoColumnForm"
+             tal:define="gtool here/portal_groups ;
+                         group_prefix here/acl_users/getGroupPrefix ;
+                         prefixLength python:len(group_prefix)">
         <tr>
           <th i18n:translate="">All groups</th>
         </tr>
         <tr>
           <td>
             <select name="groups:list" size="20" multiple="multiple">
-              <option value="group1" tal:repeat="group python:gtool.getOtherGroups([])" tal:attributes="value group/id" tal:content="python:group.title or group.id[prefixLength:]" >Group 1</option>
+              <option tal:repeat="group python:gtool.getOtherGroups([])"
+                      tal:attributes="value group/id"
+                      tal:content="python:group.title or group.id[prefixLength:]">
+                Group 1
+              </option>
             </select>
           </td>
         </tr>
         <tr>
           <td>
-						<input type="submit" name="remove_groups:method" value="Remove selected" i18n:attributes="value"
-									 tal:define="DeleteGroups python:modules['Products.Plinn.permissions'].DeleteGroups"
-									 tal:attributes="disabled python:not mtool.checkPermission(DeleteGroups, portal_object)"/>
+            <input type="submit" name="remove_groups:method" value="Remove selected" i18n:attributes="value"
+                   tal:define="DeleteGroups python:modules['Products.Plinn.permissions'].DeleteGroups"
+                   tal:attributes="disabled python:not mtool.checkPermission(DeleteGroups, portal_object)"/>
           </td>
         </tr>
       </table>
     </form>
-    <pre>add_member</pre>
-    <hr/>
-    <form action="." method="post" tal:attributes="action portal_url" metal:define-macro="add_member">
+
+    <form metal:define-macro="add_member"
+          tal:attributes="action portal_url"
+          method="post">
       <table class="TwoColumnForm" cellspacing="0">
         <tr>
           <th colspan="2" nowrap="nowrap" i18n:translate="">Add new member</th>
@@ -290,9 +348,10 @@
         </tr>
       </table>
     </form>
-    <pre>add_group</pre>
-    <hr/>
-    <form action="." method="post" tal:attributes="action portal_url" metal:define-macro="add_group">
+
+    <form metal:define-macro="add_group"
+          tal:attributes="action portal_url"
+          method="post" >
       <table class="TwoColumnForm" cellspacing="0">
         <tr>
           <th colspan="2" i18n:translate="">Add new group</th>
@@ -318,26 +377,25 @@
         <tr tal:condition="here/portal_groups/getGroupWorkspacesCreationFlag|nothing">
           <th i18n:translate="">Shared folder</th>
           <td>
-            <label><input type="checkbox" name="createArea" /><span i18n:translate="" tal:omit-tag="">Create</span></label>
+            <label><input type="checkbox"
+                          name="createArea"/><span i18n:translate="" tal:omit-tag="">Create</span></label>
           </td>
         </tr>
         <tr>
-          <td><br /></td>
+          <td><br/></td>
           <td>
             <input type="submit" name="add_group:method" value="Add" i18n:attributes="value"
-            			 tal:define="AddGroups python:modules['Products.Plinn.permissions'].AddGroups"
-									 tal:attributes="disabled python:not mtool.checkPermission(AddGroups, portal_object)"/>
+                     tal:define="AddGroups python:modules['Products.Plinn.permissions'].AddGroups"
+                     tal:attributes="disabled python:not mtool.checkPermission(AddGroups, portal_object)"/>
           </td>
         </tr>
       </table>
     </form>
-    <pre>gruf_settings</pre>
-    <hr />
-    <table class="config" metal:define-macro="gruf_settings">
+
+    <table metal:define-macro="gruf_settings" class="config">
       <tr>
-        <td tal:define="ai_dicts here/group_actions;
-						useQueryString python:0">
-          <div metal:use-macro="here/widgets/macros/tabs">
+        <td tal:define="filteredActionsList here/group_actions">
+          <div metal:use-macro="here/tabs/macros/standalone_tabs">
             GRUF tabs
           </div>
         </td>
@@ -353,125 +411,149 @@
 
     <pre>member_properties_form</pre>
     <div metal:define-macro="member_properties_form"
-	    	tal:define="selectedMember python:here.portal_membership.getMemberById(request.form['member_id']);
-										gtool here/portal_groups ;
-										group_prefix here/acl_users/getGroupPrefix ;
-										prefixLength python:len(group_prefix) ;
-										implExpl python:gtool.getExplAndImplGroupsByUserId(selectedMember.getId());
-										mq nocall:modules/ZTUtils/make_query">
-	    <form action="." method="post" tal:attributes="action portal_url">
-	      <table class="TwoColumnForm" cellspacing="0">
-	        <tr>
-	          <th nowrap="nowrap" i18n:translate="">Login</th>
-	          <td>
-	            <span tal:replace="selectedMember/getId"></span><input type="hidden" name="username" tal:attributes="value selectedMember/getId" />
-	          </td>
-	        </tr>
+         tal:define="selectedMember python:here.portal_membership.getMemberById(request.form['member_id']);
+                     gtool here/portal_groups ;
+                     group_prefix here/acl_users/getGroupPrefix ;
+                     prefixLength python:len(group_prefix) ;
+                     implExpl python:gtool.getExplAndImplGroupsByUserId(selectedMember.getId());
+                     mq nocall:modules/ZTUtils/make_query">
+      <form tal:attributes="action portal_url" method="post" >
+        <table class="TwoColumnForm">
+          <tr>
+            <th nowrap="nowrap" i18n:translate="">Login</th>
+            <td>
+              <span tal:replace="selectedMember/getId"></span>
+              <input type="hidden" name="username"
+                     tal:attributes="value selectedMember/getId" />
+            </td>
+          </tr>
           <tr tal:condition="implExpl/explicit|implExpl/implicit">
             <th nowrap="nowrap" i18n:translate="">Groups</th>
             <td>
-            	<div tal:condition="implExpl/explicit"><span i18n:translate="" tal:omit-tag="">explicitly:</span> <span tal:repeat="group implExpl/explicit"><span tal:replace="python:group.title or group.id[prefixLength:]">group</span><span tal:condition="not:repeat/group/end">, </span></span></div>
-            	<div tal:condition="implExpl/implicit"><span i18n:translate="" tal:omit-tag="">implicitly:</span> <span tal:repeat="group implExpl/implicit"><span tal:replace="python:group.title or group.id[prefixLength:]">group</span><span tal:condition="not:repeat/group/end">, </span></span></div>
+              <div tal:condition="implExpl/explicit"><span i18n:translate="" tal:omit-tag="">explicitly:</span>
+                <span tal:repeat="group implExpl/explicit"><span tal:replace="python:group.title or group.id[prefixLength:]">group</span><span tal:condition="not:repeat/group/end">, </span></span>
+              </div>
+              <div tal:condition="implExpl/implicit"><span i18n:translate="" tal:omit-tag="">implicitly:</span>
+                <span tal:repeat="group implExpl/implicit"><span tal:replace="python:group.title or group.id[prefixLength:]">group</span><span tal:condition="not:repeat/group/end">, </span></span>
+              </div>
             </td>
           </tr>
           <tr>
-	          <th nowrap="nowrap" i18n:translate="">Name</th>
-	          <td>
-	            <input type="text" name="name" size="40" tal:attributes="value python:selectedMember.getProperty('name')" />
-	          </td>
-	        </tr>
+            <th nowrap="nowrap" i18n:translate="">Name</th>
+            <td>
+              <input type="text" name="name"
+                     size="40" tal:attributes="value python:selectedMember.getProperty('name')" />
+            </td>
+          </tr>
           <tr>
-	          <th nowrap="nowrap" i18n:translate="">Given Name</th>
-	          <td>
-	            <input type="text" name="given_name" size="40" tal:attributes="value python:selectedMember.getProperty('given_name')" />
-	          </td>
-	        </tr>
-	        <tr>
-	          <th nowrap="nowrap" i18n:translate="">Password</th>
-	          <td>
-	            <input type="password" name="password" size="40" />
-	          </td>
-	        </tr>
-	        <tr>
-	          <th nowrap="nowrap" i18n:translate="">Confirm</th>
-	          <td>
-	            <input type="password" name="confirm" size="40"/>
-	          </td>
-	        </tr>
-	        <tr>
-	          <th nowrap="nowrap" i18n:translate="">Email address</th>
-	          <td>
-	            <input type="text" name="email" size="40" tal:attributes="value python:selectedMember.getProperty('email')" />
-	          </td>
-	        </tr>
-	        <tr>
-	          <th nowrap="nowrap" i18n:translate=""></th>
-	          <td>
-	            <input type="submit" name="edit_member_settings:method" value="Validate" i18n:attributes="value" />
-	          </td>
-	        </tr>
-	      </table>
-	    </form>
-		  <h2 i18n:translate="">Tree view by this member</h2>
-		  <a href="." onclick="openMemberTreeView(event)" tal:attributes="href python:'%s/portal_members?%s' % ( portal_url, mq(member_id=selectedMember.getId(), macroName='member_tree_view') )" i18n:translate="">Click here to see the tree viewed by this member &gt;&gt;</a>
-	  </div>
-	  
-		<pre>member_tree_view</pre>
-		<div metal:define-macro="member_tree_view"
-				 class="boxes_container"
-				 tal:define="selectedMember python:here.portal_membership.getMemberById(request.member_id);
-				 						 treeRoot   portal_object;
-                     treeDict   python:here.make_nav_tree(rootObject=treeRoot, filtered_meta_types=['Huge Plinn Folder', 'Portfolio', 'Topic'], userid=request.member_id );
-                     tree       treeDict/tree;
-                     rows       treeDict/rows;
-                     height			tree/height;
-                     rootNode   python:rows.pop(0);
+            <th nowrap="nowrap" i18n:translate="">Given Name</th>
+            <td>
+              <input type="text" name="given_name"
+                     size="40" tal:attributes="value python:selectedMember.getProperty('given_name')" />
+            </td>
+          </tr>
+          <tr>
+            <th nowrap="nowrap" i18n:translate="">Password</th>
+            <td>
+              <input type="password" name="password" size="40"/>
+            </td>
+          </tr>
+          <tr>
+            <th nowrap="nowrap" i18n:translate="">Confirm</th>
+            <td>
+              <input type="password" name="confirm" size="40"/>
+            </td>
+          </tr>
+          <tr>
+            <th nowrap="nowrap" i18n:translate="">Email address</th>
+            <td>
+              <input type="text" name="email"
+                     size="40" tal:attributes="value python:selectedMember.getProperty('email')" />
+            </td>
+          </tr>
+          <tr>
+            <th nowrap="nowrap" i18n:translate=""></th>
+            <td>
+              <input type="submit" name="edit_member_settings:method" value="Validate" i18n:attributes="value" />
+            </td>
+          </tr>
+        </table>
+      </form>
+      <h2 i18n:translate="">Tree view by this member</h2>
+      <a onclick="openMemberTreeView(event)"
+         tal:attributes="href python:'%s/portal_members?%s' % ( portal_url, mq(member_id=selectedMember.getId(), macroName='member_tree_view') )"
+         i18n:translate="">
+        Click here to see the tree viewed by this member &gt;&gt;
+      </a>
+    </div>
+
+    <div metal:define-macro="member_tree_view" class="boxes_container"
+         tal:define="selectedMember python:here.portal_membership.getMemberById(request.member_id);
+                     treeRoo portal_object;
+                     treeDict python:here.make_nav_tree(rootObject=treeRoot, filtered_meta_types=['Huge Plinn Folder', 'Portfolio', 'Topic'], userid=request.member_id );
+                     tree treeDict/tree;
+                     rows treeDict/rows;
+                     height tree/height;
+                     rootNode python:rows.pop(0);
                      box_id string:tree_box_${rootNode/object/id}_${request/member_id};
                      mq nocall:modules/ZTUtils/make_query"
          tal:omit-tag=""
-         tal:on-error="string:Path Error"
-         >
-			<table class="tree_box" cellspacing="0">
-				<tr>
-					<th>
-						<table>
-							<tr>
-								<td width="16" tal:condition="nothing">
-									<a title="collapse all" href="." tal:attributes="href string:?collapse_all=${rootNode/object/id}" i18n:attributes="title"><img src="../skins/collapse_all.gif" alt="collapse all" height="16" width="16" border="0" tal:attributes="src here/collapse_all.gif/absolute_url" i18n:attributes="alt" /></a>
-								</td>
-								<th tal:content="rootNode/object/title_or_id" style="border : none">Root Node</th>
-							</tr>
-						</table>
-					</th>
-				</tr>
+         tal:on-error="string:Path Error">
+      <table class="tree_box" cellspacing="0">
+        <tr>
+          <th>
+            <table>
+              <tr>
+                <td width="16" tal:condition="nothing">
+                  <a title="collapse all"
+                     tal:attributes="href string:?collapse_all=${rootNode/object/id}"
+                     i18n:attributes="title">
+                    <img alt="collapse all" height="16" width="16"
+                         tal:attributes="src here/collapse_all.gif/absolute_url"
+                         i18n:attributes="alt" /></a>
+                </td>
+                <th tal:content="rootNode/object/title_or_id" style="border: none">Root Node</th>
+              </tr>
+            </table>
+          </th>
+        </tr>
 
-				<tr>
-					<td>
-						<table  cellspacing="0">
-							<tbody tal:attributes="id  box_id">
-								<tr tal:repeat="row rows">
-								<td tal:define="indent python: row.depth - 1" tal:attributes="colspan indent" tal:condition="indent">&nbsp;</td>
-								<td tal:define="state row/state ; rlink row/branch ; msg python:state > 0 and 'collapse' or 'expand'" width="16"
-								 ><a href="#" tal:condition="state" tal:attributes="name row/id ; href python:'%s/portal_members?%s' % (portal_url, mq(member_id=selectedMember.getId(), macroName='member_tree_view') + '&' + rlink['link'][1:]) ; title msg" i18n:attributes="title"
-								 ><img src="/p_/pl" alt="" tal:attributes="src python:state > 0 and '/p_/mi' or '/p_/pl' ; alt msg" i18n:attributes="alt" height="16" width="16" border="0" /></a>
-								  <a href="#" tal:attributes="name row/id ; href rlink/link" tal:condition="not:state">&nbsp;&nbsp;</a>
-								</td>
-								<td colspan="1" tal:define="obj nocall: row/object"
-										tal:attributes="colspan python: height - row.depth"
-										width="99%" tal:on-error="string:erreur"
-								 ><img src="." alt="" tal:define="icon python:context.restrictedTraverse(obj.getIcon())" tal:attributes="src icon/absolute_url; height icon/height; width icon/width; alt obj/getPortalTypeName" i18n:attributes="alt" border="0" />
-									<span tal:replace="obj/title_or_id">Title</span></td>
-								</tr>
-							</tbody>
-						</table>
-					</td>
-				</tr>
-			</table>
-		  <div>
-		  	<a href="." tal:attributes="href python:'%s/portal_members?%s' % ( portal_url, mq(member_id=selectedMember.getId(), macroName='member_properties_form') )" i18n:translate="">&lt;&lt; Back to member properties</a>
-		  </div>
+        <tr>
+          <td>
+            <table cellspacing="0">
+              <tbody tal:attributes="id  box_id">
+                <tr tal:repeat="row rows">
+                  <td tal:define="indent python: row.depth - 1" tal:attributes="colspan indent" tal:condition="indent">
+                    &nbsp;
+                  </td>
+                  <td tal:define="state row/state ; rlink row/branch ; msg python:state > 0 and 'collapse' or 'expand'"
+                          width="16"
+                  >
+                    <a href="#" tal:condition="state" tal:attributes="name row/id ; href python:'%s/portal_members?%s' % (portal_url, mq(member_id=selectedMember.getId(), macroName='member_tree_view') + '&' + rlink['link'][1:]) ; title msg" i18n:attributes="title"
+                    ><img src="/p_/pl"
+                          alt="" tal:attributes="src python:state > 0 and '/p_/mi' or '/p_/pl' ; alt msg" i18n:attributes="alt"
+                          height="16" width="16" border="0"/></a>
+                    <a href="#" tal:attributes="name row/id ; href rlink/link" tal:condition="not:state">&nbsp;&nbsp;</a>
+                  </td>
+                  <td colspan="1" tal:define="obj nocall: row/object"
+                          	tal:attributes="colspan python: height - row.depth"
+                      width="99%" tal:on-error="string:erreur"
+                  ><img src="."
+                        alt="" tal:define="icon python:context.restrictedTraverse(obj.getIcon())" tal:attributes="src icon/absolute_url; height icon/height; width icon/width; alt obj/getPortalTypeName" i18n:attributes="alt"
+                        border="0"/>
+                    <span tal:replace="obj/title_or_id">Title</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <a tal:attributes="href python:'%s/portal_members?%s' % ( portal_url, mq(member_id=selectedMember.getId(), macroName='member_properties_form') )"
+           i18n:translate="">&lt;&lt; Back to member properties</a>
+      </div>
     </div>
-    
+
   </body>
 
 </html>

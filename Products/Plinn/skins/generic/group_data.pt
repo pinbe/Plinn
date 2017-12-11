@@ -10,6 +10,7 @@
   <body metal:fill-slot="main_no_tabs"
         tal:define="requestedGroup python:here.setAndGetSessionVar('requestedGroup', request.get('group', None), allowFalse=0)"
         i18n:domain="plinn" tal:omit-tag="">
+    <h1 i18n:translate="">Directory</h1>
     <table  metal:use-macro="here/gruf_macros/macros/gruf_settings">
       <tr>
         <td>Using gruf_settings macro</td>

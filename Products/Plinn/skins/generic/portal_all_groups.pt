@@ -6,6 +6,7 @@
   </head>
 
   <body metal:fill-slot="main_no_tabs" tal:omit-tag="" i18n:domain="plinn">
+    <h1 i18n:translate="">Directory</h1>
     <table metal:use-macro="here/gruf_macros/macros/gruf_settings">
       <tr>
         <td colspan="2">Using gruf_settings macro</td>

@@ -13,6 +13,7 @@
         						prefixLength		python:len(group_prefix) ;
 			        			template_url		python:'%s/%s' % (portal_url, template.id)"
         i18n:domain="plinn">
+    <h1 i18n:translate="">Directory</h1>
     <table metal:use-macro="here/gruf_macros/macros/gruf_settings">
       <tr>
         <td>Using gruf_setting macro from gruf_macros</td>
