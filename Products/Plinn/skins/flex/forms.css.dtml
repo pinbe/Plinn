@@ -75,6 +75,21 @@ dl.FieldHelp dd {
   font-size : 90% ;
   font-style : italic }
 
+table.FolderFactories th {
+  text-align : center ;
+}
+
+table.FolderFactories td.ListName {
+  color: &dtml-fontColor;;
+  font-weight: bold;
+  vertical-align: middle;
+  padding : 2px;
+}
+
+table.FolderFactories td.spacing {
+  height : 8px ;
+}
+
 .palette {
   width: 100%;
 }

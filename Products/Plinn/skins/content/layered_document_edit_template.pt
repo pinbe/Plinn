@@ -20,17 +20,24 @@
       </div>
       <form method="post" enctype="multipart/form-data"
                tal:attributes="action options/form/action">
-        <div tal:define="inputname string:text;
-                         inputvalue options/layer_html"
-                 tal:omit-tag="">
-          <div metal:use-macro="here/wysiwyg_support/macros/wysiwygEditorBox">
-            Wysiwig Code
+        <div tal:condition="python:options['edit_type']=='layer'"
+             tal:omit-tag="">
+          <div tal:define="inputname string:text;
+                           inputvalue options/layer_html"
+               tal:omit-tag="">
+            <div metal:use-macro="here/wysiwyg_support/macros/wysiwygEditorBox">
+              Wysiwig Code
+            </div>
           </div>
+          <input name="layer:int" type="hidden"
+                 tal:attributes="value options/selected_layer"/>
+          <br/>
+          <input type="submit" name="save" value="Save" i18n:attributes="value"/>
         </div>
-        <input name="layer:int" type="hidden"
-               tal:attributes="value options/selected_layer"/>
-        <br/>
-        <input type="submit" name="save" value="Save" i18n:attributes="value"/>
+
+        <div tal:condition="python:options['edit_type'] == 'kinematic'">
+          <!-- TODO -->
+        </div>
       </form>
     </div>
   </body>

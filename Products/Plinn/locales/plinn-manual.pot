@@ -841,9 +841,6 @@ msgstr ""
 msgid "Properties"
 msgstr ""
 
-msgid "Directory"
-msgstr ""
-
 msgid "Configure portal"
 msgstr ""
 

@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Wed Dec  6 23:00:16 2017\n"
-"PO-Revision-Date: 2017-12-06 23:22+0100\n"
+"POT-Creation-Date: Mon Dec 11 19:23:10 2017\n"
+"PO-Revision-Date: 2017-12-11 19:24+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
 "Language: \n"
@@ -218,8 +218,8 @@ msgstr "Preview"
 #: n/skins/content/folder_edit_form.pt:29
 #: n/skins/custom_content/event_edit_template.pt:115
 #: n/skins/custom_content/event_view.pt:57 n/skins/flex/header_widgets.pt:24
-#: n/skins/flex/header_widgets.pt:90 n/skins/generic/gruf_macros.pt:57
-#: n/skins/generic/gruf_macros.pt:313 n/skins/generic/header_widgets.pt:24
+#: n/skins/flex/header_widgets.pt:90 n/skins/generic/gruf_macros.pt:82
+#: n/skins/generic/gruf_macros.pt:372 n/skins/generic/header_widgets.pt:24
 #: n/skins/generic/header_widgets.pt:85 n/skins/generic/search_form.pt:36
 msgid "Description"
 msgstr "Description"
@@ -237,19 +237,19 @@ msgstr " Change and View "
 #: n/skins/content/folder_factories.pt:18
 #: n/skins/custom_generic/folder_contents.py:104
 #: n/skins/custom_generic/personalize_form.pt:27
-#: n/skins/generic/gruf_macros.pt:256 n/skins/generic/gruf_macros.pt:378
+#: n/skins/generic/gruf_macros.pt:314 n/skins/generic/gruf_macros.pt:442
 #: n/skins/generic/last_member_logs.pt:23 n/skins/generic/pending_members.pt:13
 msgid "Name"
 msgstr "Name"
 
 #: n/skins/content/folder_factories.pt:35
-#: n/skins/content/topic_edit_template.pt:51 n/skins/generic/gruf_macros.pt:288
-#: n/skins/generic/gruf_macros.pt:327
+#: n/skins/content/topic_edit_template.pt:51 n/skins/generic/gruf_macros.pt:346
+#: n/skins/generic/gruf_macros.pt:387
 msgid "Add"
 msgstr "Add"
 
 #: n/skins/content/folder_notifications_template.pt:23
-#: n/skins/content/layered_document_edit_template.pt:33
+#: n/skins/content/layered_document_edit_template.pt:36
 #: n/skins/content/topic_edit_template.pt:26
 #: n/skins/custom_content/document_edit_template.pt:23
 #: n/skins/custom_content/event_edit_template.pt:135
@@ -257,17 +257,21 @@ msgstr "Add"
 msgid "Save"
 msgstr "Save"
 
-#: n/skins/content/layered_document_edit_form.py:30
+#: n/skins/content/layered_document_edit_form.py:35
 msgid "Foreground"
 msgstr "Foreground"
 
-#: n/skins/content/layered_document_edit_form.py:32
+#: n/skins/content/layered_document_edit_form.py:37
 msgid "Background"
 msgstr "Background"
 
-#: n/skins/content/layered_document_edit_form.py:34
+#: n/skins/content/layered_document_edit_form.py:39
 msgid "Layer ${n}"
 msgstr "Layer ${n}"
+
+#: n/skins/content/layered_document_edit_form.py:47
+msgid "Kinematic"
+msgstr "Kinematic"
 
 #: n/skins/content/list_pending_contents.pt:23
 msgid "Pending documents"
@@ -293,8 +297,8 @@ msgstr "yes"
 msgid "no"
 msgstr "no"
 
-#: n/skins/content/topic_edit_template.pt:27 n/skins/generic/gruf_macros.pt:211
-#: n/skins/generic/gruf_macros.pt:235
+#: n/skins/content/topic_edit_template.pt:27 n/skins/generic/gruf_macros.pt:263
+#: n/skins/generic/gruf_macros.pt:292
 msgid "Remove selected"
 msgstr "Remove selected"
 
@@ -702,7 +706,7 @@ msgstr "Last name"
 
 #: n/skins/custom_generic/join_template.pt:74
 #: n/skins/custom_generic/personalize_form.pt:39
-#: n/skins/generic/gruf_macros.pt:280 n/skins/generic/gruf_macros.pt:402
+#: n/skins/generic/gruf_macros.pt:338 n/skins/generic/gruf_macros.pt:468
 msgid "Email address"
 msgstr "Email address"
 
@@ -715,8 +719,8 @@ msgid "login"
 msgstr "login"
 
 #: n/skins/custom_generic/join_template.pt:95
-#: n/skins/custom_generic/login_form.pt:30 n/skins/generic/gruf_macros.pt:268
-#: n/skins/generic/gruf_macros.pt:390
+#: n/skins/custom_generic/login_form.pt:30 n/skins/generic/gruf_macros.pt:326
+#: n/skins/generic/gruf_macros.pt:456
 msgid "Password"
 msgstr "Password"
 
@@ -957,7 +961,7 @@ msgid "Click here"
 msgstr "Click here"
 
 #: n/skins/custom_generic/personalize_form.pt:33
-#: n/skins/generic/gruf_macros.pt:262 n/skins/generic/gruf_macros.pt:384
+#: n/skins/generic/gruf_macros.pt:320 n/skins/generic/gruf_macros.pt:449
 msgid "Given Name"
 msgstr "Given Name"
 
@@ -1115,8 +1119,8 @@ msgid "Body"
 msgstr "Body"
 
 #: n/skins/custom_generic/talkback_tree.pt:82 n/skins/flex/header_widgets.pt:33
-#: n/skins/flex/header_widgets.pt:178 n/skins/generic/gruf_macros.pt:77
-#: n/skins/generic/gruf_macros.pt:410 n/skins/generic/header_widgets.pt:32
+#: n/skins/flex/header_widgets.pt:178 n/skins/generic/gruf_macros.pt:106
+#: n/skins/generic/gruf_macros.pt:477 n/skins/generic/header_widgets.pt:32
 #: n/skins/generic/header_widgets.pt:173 n/skins/generic/send_email_form.pt:79
 msgid "Validate"
 msgstr "Validate"
@@ -1192,7 +1196,7 @@ msgstr "Off"
 msgid "On"
 msgstr "On"
 
-#: n/skins/flex/header_widgets.pt:75 n/skins/generic/gruf_macros.pt:45
+#: n/skins/flex/header_widgets.pt:75 n/skins/generic/gruf_macros.pt:67
 #: n/skins/generic/header_widgets.pt:70
 msgid "Identifier"
 msgstr "Identifier"
@@ -1237,11 +1241,11 @@ msgstr "Rights"
 msgid "Edit standard metadata"
 msgstr "Edit standard metadata"
 
-#: n/skins/flex/main_template_macros.pt:103
+#: n/skins/flex/main_template_macros.pt:104
 msgid "Edit site"
 msgstr "Edit site"
 
-#: n/skins/flex/main_template_macros.pt:131
+#: n/skins/flex/main_template_macros.pt:139
 #: n/skins/generic/main_template_macros.pt:80
 #: n/skins/photo_theme/main_template_macros.pt:91
 msgid "You are here:"
@@ -1412,11 +1416,16 @@ msgstr ""
 msgid "To change the content just select \"Edit\" in the Tab bar on the top."
 msgstr "To change the content just select \"Edit\" in the Tab bar on the top."
 
-#: n/skins/generic/groups_members.pt:35
+#: n/skins/generic/group_data.pt:13 n/skins/generic/groups_members.pt:16
+#: n/skins/generic/portal_all_groups.pt:9 n/skins/generic/portal_members.pt:12
+msgid "Directory"
+msgstr "Directory"
+
+#: n/skins/generic/groups_members.pt:36
 msgid "Members of \"${groupId}\""
 msgstr "Members of \"${groupId}\""
 
-#: n/skins/generic/groups_members.pt:47
+#: n/skins/generic/groups_members.pt:48
 msgid "Groups of \"${groupId}\""
 msgstr "Groups of \"${groupId}\""
 
@@ -1424,103 +1433,103 @@ msgstr "Groups of \"${groupId}\""
 msgid "Group Tree"
 msgstr "Group Tree"
 
-#: n/skins/generic/gruf_macros.pt:63 n/skins/generic/gruf_macros.pt:319
+#: n/skins/generic/gruf_macros.pt:90 n/skins/generic/gruf_macros.pt:378
 msgid "Shared folder"
 msgstr "Shared folder"
 
-#: n/skins/generic/gruf_macros.pt:66
+#: n/skins/generic/gruf_macros.pt:93
 msgid "Open shared folder..."
 msgstr "Open shared folder..."
 
-#: n/skins/generic/gruf_macros.pt:69 n/skins/generic/gruf_macros.pt:321
+#: n/skins/generic/gruf_macros.pt:98 n/skins/generic/gruf_macros.pt:381
 msgid "Create"
 msgstr "Create"
 
-#: n/skins/generic/gruf_macros.pt:90
+#: n/skins/generic/gruf_macros.pt:122
 msgid "Implicit roles"
 msgstr "Implicit roles"
 
-#: n/skins/generic/gruf_macros.pt:98
+#: n/skins/generic/gruf_macros.pt:132
 msgid "Explicit roles"
 msgstr "Explicit roles"
 
-#: n/skins/generic/gruf_macros.pt:105
+#: n/skins/generic/gruf_macros.pt:142
 msgid "Remove"
 msgstr "Remove"
 
-#: n/skins/generic/gruf_macros.pt:112
+#: n/skins/generic/gruf_macros.pt:153
 msgid "Append"
 msgstr "Append"
 
-#: n/skins/generic/gruf_macros.pt:129 n/skins/generic/gruf_macros.pt:164
+#: n/skins/generic/gruf_macros.pt:170 n/skins/generic/gruf_macros.pt:210
 msgid "Outside group"
 msgstr "Outside group"
 
-#: n/skins/generic/gruf_macros.pt:131 n/skins/generic/gruf_macros.pt:166
+#: n/skins/generic/gruf_macros.pt:172 n/skins/generic/gruf_macros.pt:212
 msgid "Inside group"
 msgstr "Inside group"
 
-#: n/skins/generic/gruf_macros.pt:148 n/skins/generic/gruf_macros.pt:183
+#: n/skins/generic/gruf_macros.pt:196 n/skins/generic/gruf_macros.pt:235
 msgid "None"
 msgstr "None"
 
-#: n/skins/generic/gruf_macros.pt:197
+#: n/skins/generic/gruf_macros.pt:247
 msgid "All members"
 msgstr "All members"
 
-#: n/skins/generic/gruf_macros.pt:210
+#: n/skins/generic/gruf_macros.pt:262
 msgid "Edit"
 msgstr "Edit"
 
-#: n/skins/generic/gruf_macros.pt:224
+#: n/skins/generic/gruf_macros.pt:277
 msgid "All groups"
 msgstr "All groups"
 
-#: n/skins/generic/gruf_macros.pt:247
+#: n/skins/generic/gruf_macros.pt:305
 msgid "Add new member"
 msgstr "Add new member"
 
-#: n/skins/generic/gruf_macros.pt:250 n/skins/generic/gruf_macros.pt:365
+#: n/skins/generic/gruf_macros.pt:308 n/skins/generic/gruf_macros.pt:423
 msgid "Login"
 msgstr "Login"
 
-#: n/skins/generic/gruf_macros.pt:274 n/skins/generic/gruf_macros.pt:396
+#: n/skins/generic/gruf_macros.pt:332 n/skins/generic/gruf_macros.pt:462
 msgid "Confirm"
 msgstr "Confirm"
 
-#: n/skins/generic/gruf_macros.pt:298
+#: n/skins/generic/gruf_macros.pt:357
 msgid "Add new group"
 msgstr "Add new group"
 
-#: n/skins/generic/gruf_macros.pt:301
+#: n/skins/generic/gruf_macros.pt:360
 msgid "Id"
 msgstr "Id"
 
-#: n/skins/generic/gruf_macros.pt:371
+#: n/skins/generic/gruf_macros.pt:431
 msgid "Groups"
 msgstr "Groups"
 
-#: n/skins/generic/gruf_macros.pt:373
+#: n/skins/generic/gruf_macros.pt:433
 msgid "explicitly:"
 msgstr "explicitly:"
 
-#: n/skins/generic/gruf_macros.pt:374
+#: n/skins/generic/gruf_macros.pt:436
 msgid "implicitly:"
 msgstr "implicitly:"
 
-#: n/skins/generic/gruf_macros.pt:415
+#: n/skins/generic/gruf_macros.pt:482
 msgid "Tree view by this member"
 msgstr "Tree view by this member"
 
-#: n/skins/generic/gruf_macros.pt:416
+#: n/skins/generic/gruf_macros.pt:483
 msgid "Click here to see the tree viewed by this member &gt;&gt;"
 msgstr "Click here to see the tree viewed by this member &gt;&gt;"
 
-#: n/skins/generic/gruf_macros.pt:440
+#: n/skins/generic/gruf_macros.pt:508 n/skins/generic/gruf_macros.pt:511
 msgid "collapse all"
 msgstr "collapse all"
 
-#: n/skins/generic/gruf_macros.pt:471
+#: n/skins/generic/gruf_macros.pt:552
 msgid "&lt;&lt; Back to member properties"
 msgstr "&lt;&lt; Back to member properties"
 
@@ -2965,9 +2974,6 @@ msgstr "List"
 
 msgid "Properties"
 msgstr "Properties"
-
-msgid "Directory"
-msgstr "Directory"
 
 msgid "Configure portal"
 msgstr "Configure portal"
