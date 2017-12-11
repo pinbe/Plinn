@@ -114,6 +114,13 @@ global specialCtxHeader options/specialCtxHeader|nothing"
             <div metal:use-macro="here/tree_macros/macros/tree"></div>
           </div>
         </div>
+        <hr/>
+        <ul>
+          <li tal:repeat="action global_actions">
+            <a href="#" tal:attributes="href action/url" tal:content="action/title">Login</a>
+          </li>
+        </ul>
+
       </div>
       <script type="text/javascript">
         window.addEventListener('load',
@@ -124,7 +131,7 @@ global specialCtxHeader options/specialCtxHeader|nothing"
       </script>
 
     </div>
-  
+
 
 
     <div metal:define-macro="Breadcrumbs" tal:omit-tag="">
