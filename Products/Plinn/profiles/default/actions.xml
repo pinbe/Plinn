@@ -225,7 +225,7 @@
   <object name="manage_direcories" meta_type="CMF Action" i18n:domain="plinn">
    <property name="title" i18n:translate="">Directory</property>
    <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${portal_url}/groups_members</property>
+   <property name="url_expr">string:${portal_url}/portal_members</property>
    <property name="link_target"></property>
    <property name="icon_expr"></property>
    <property name="available_expr"></property>
