@@ -5,10 +5,6 @@
   src: url(<dtml-var portal_url>/fonts/CodaCaption-ExtraBold.ttf);
 }
 
-#fixed-content {
-  position: fixed;
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-size: 18px;
   font-weight: lighter;
@@ -25,13 +21,13 @@ h2 {
 
 article {
   text-align: justify;
-  background: rgba(255,255,255,0.95);
+  background: &dtml-articleBackground;;
   min-height: 100vh;
   max-width: 1080px;
 }
 
 .layereddocument article {
-  margin-top: 480px;
+  margin-top: 50vh;
 }
 
 .layereddocument article {

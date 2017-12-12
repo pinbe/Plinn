@@ -1,4 +1,4 @@
-##parameters=save='', layer=None, edit_type='layer', ajax=''
+##parameters=save_layer='', save_options='', layer=None, edit_type='layer', kopts={}, ajax=''
 from Products.CMFCore.utils import getToolByName
 from ZTUtils import make_query as mq
 from Products.Plinn.utils import Message as _
@@ -9,9 +9,13 @@ attachments = atool.getAttachmentsFor(context)
 form = context.REQUEST.form
 text = form.get('text')
 
-if save and \
+if save_layer and \
         context.edit(form.get('text'), layer) :
     attachments.removeUnusedAttachments(context.layersStack())
+    return context.setRedirect(context, 'object/view', **{'ajax' : ajax})
+
+if save_options and \
+    context.setKinematicOptions(kopts) :
     return context.setRedirect(context, 'object/view', **{'ajax' : ajax})
 
 options = {}

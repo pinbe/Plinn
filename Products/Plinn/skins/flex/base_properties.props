@@ -29,6 +29,8 @@ selectedTabBackgroundColor:string=#fff
 descriptionColor:string=#333
 
 inputFontColor:string=#000
+inputBackground:string=#fff
+inputSubmitColor:string=#000
 
 evenRowBackgroundColor:string=#f0f0f0
 oddRowBackgroundColor:string=#fff
@@ -69,3 +71,4 @@ twoColumnFormFontColor:string=#000
 twoColumnFormBackground:string=#fff
 
 borderRadius:int=7
+articleBackground:string=rgba(255,255,255,0.95)

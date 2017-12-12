@@ -7,6 +7,7 @@
 
 body {
   background: &dtml-background;;
+  color: &dtml-fontColor;;
   font-family: &dtml-fontFamily;;
   font-size: &dtml-fontBaseSize;;
 }
@@ -33,10 +34,10 @@ a:hover {
   padding: 10px 100px;
   display: flex;
   justify-content: space-between;
-  /*background: &dtml-topbar_background;;*/
-  background: linear-gradient(to bottom,
-    rgba(255,255,255,1) 0%,
-    rgba(255,255,255,0.85) 100%);
+  background: &dtml-topbar_background;;
+  /*background: linear-gradient(to bottom,*/
+    /*rgba(255,255,255,1) 0%,*/
+    /*rgba(255,255,255,0.85) 100%);*/
   z-index: 3;
 }
 
@@ -130,6 +131,11 @@ a:hover {
   z-index: 2;
   display: flex;
   justify-content: center;
+}
+
+#fixed-content {
+  position: fixed;
+  width: 100%;
 }
 
 @media all and (max-width: 1080px){
@@ -279,6 +285,5 @@ a:hover {
   visibility : hidden;
   display : none;
 }
-
 
 /* </dtml-with> */

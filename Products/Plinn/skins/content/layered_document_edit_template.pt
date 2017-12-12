@@ -32,11 +32,59 @@
           <input name="layer:int" type="hidden"
                  tal:attributes="value options/selected_layer"/>
           <br/>
-          <input type="submit" name="save" value="Save" i18n:attributes="value"/>
+          <input type="submit" name="save_layer" value="Save" i18n:attributes="value"/>
         </div>
 
         <div tal:condition="python:options['edit_type'] == 'kinematic'">
-          <!-- TODO -->
+          <div tal:define="kopts python:here.getKinematicOptions(asjson=False)"
+               tal:omit-tag="">
+            <table class="TwoColumnForm">
+              <tr>
+                <td colspan="2">
+                  <h1 i18n:translate="">Background options</h1>
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="">
+                  Stitch background after
+                </th>
+                <td>
+                  <input type="text" name="kopts.stitch_after:record"
+                         placeholder="selector"
+                         tal:attributes="value kopts/stitch_after|nothing"
+                         i18n:attributes="placeholder"/>
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="">
+                  Background scroll speedup
+                </th>
+                <td>
+                  <input type="text" name="kopts.bg_scroll_speedup:record"
+                         placeholder="number"
+                         tal:attributes="value kopts/bg_scroll_speedup|nothing"
+                         i18n:attributes="placeholder"/>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <h1 i18n:translate="">Foreground options</h1>
+                </td>
+              </tr>
+              <tr>
+                <th i18n:translate="">
+                  Initial position
+                </th>
+                <td>
+                  <input type="text" name="kopts.fg_init_position:record"
+                         placeholder="css size with unit"
+                         tal:attributes="value kopts/fg_init_position|nothing"
+                         i18n:attributes="placeholder"/>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <input type="submit" name="save_options" value="Save" i18n:attributes="value"/>
         </div>
       </form>
     </div>

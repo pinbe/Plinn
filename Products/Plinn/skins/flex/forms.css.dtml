@@ -2,22 +2,26 @@
 
 input[type=text],
 input[type=password]{
+  color: &dtml-inputFontColor;;
+  background: &dtml-inputBackground;;
+  font-size: &dtml-fontBaseSize;;
   border: none;
   border-bottom: 2px solid &dtml-outlineColor;;
   outline: none;
-  font-size: &dtml-fontBaseSize;;
 }
 
 input[type=submit] {
+  color: &dtml-inputSubmitColor;;
+  background: transparent;
   border: 1px solid &dtml-outlineColor;;
   font-size: &dtml-fontBaseSize;;
-  background: transparent;
   padding: 3px 5px;
-  /*border-radius: 2px;*/
   cursor: pointer;
 }
 
 textarea {
+  color: &dtml-inputFontColor;;
+  background: &dtml-inputBackground;;
   font-family: &dtml-fontFamily;;
   padding: 2px;
   border:none;

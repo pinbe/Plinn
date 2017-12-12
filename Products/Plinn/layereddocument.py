@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import json
+
 from AccessControl import ClassSecurityInfo
 from AccessControl.class_init import InitializeClass
 from Products.CMFCore.PortalContent import PortalContent
@@ -15,6 +17,7 @@ class LayeredDocument(PortalContent, DefaultDublinCoreImpl) :
     """
 
     security = ClassSecurityInfo()
+    kinematic_options = {}
 
     def __init__(self, id, title='', description=''):
         DefaultDublinCoreImpl.__init__(self)
@@ -24,6 +27,7 @@ class LayeredDocument(PortalContent, DefaultDublinCoreImpl) :
         self.setFormat('text/html')
         self.layers = PersistentList()
         self.layers.append('')
+        self.kinematic_options = {}
 
     security.declareProtected(ModifyPortalContent, 'edit')
     def edit(self, text, layer) :
@@ -53,9 +57,22 @@ class LayeredDocument(PortalContent, DefaultDublinCoreImpl) :
     def layersStack(self) :
         return ''.join([('<div>%s</div>' % l) for l in self.layers])
 
+    security.declareProtected(View, 'getKinematicOptions')
+    def getKinematicOptions(self, asjson=True) :
+        if asjson :
+            return json.dumps(self.kinematic_options)
+        else :
+            return self.kinematic_options
+
+    security.declareProtected(ModifyPortalContent, 'setKinematicOptions')
+    def setKinematicOptions(self, options) :
+        self.kinematic_options = dict([(k,v) for k, v in options.items() if v])
+        return True
+
     security.declareProtected(View, 'SearchableText')
     def SearchableText(self) :
         return '%s %s' % (super(LayeredDocument, self).SearchableText(), ' '.join([l for l in self.layers]))
+
 
 
 InitializeClass(LayeredDocument)

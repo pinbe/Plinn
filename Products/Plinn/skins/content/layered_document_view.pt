@@ -9,13 +9,14 @@
   </head>
   <body>
 
-    <div metal:fill-slot="fixed_content_top">
-      <div tal:content="structure python:here.getLayer(0)"></div>
-    </div>
+    <div metal:fill-slot="fixed_content_top"
+         tal:attributes="data-options here/getKinematicOptions"
+         tal:content="structure python:here.getLayer(0)"></div>
 
     <div metal:fill-slot="main"
-         class="layereddocument">
-      <article>
+         class="layereddocument"
+         tal:define="margin_top python:here.getKinematicOptions(asjson=False).get('fg_init_position')">
+      <article tal:attributes="style python:'margin-top: %s' % margin_top if margin_top else None">
         <div tal:content="structure python:here.getLayer(1)"></div>
       </article>
     </div>

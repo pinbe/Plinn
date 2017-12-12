@@ -93,7 +93,7 @@ table.assign_global_roles {
   padding: 0px;
   border-bottom: 1pt solid #669 }
 
-.config a
+.config a,
 .config a:link,
 .config a:visited,
 .config a:active {
