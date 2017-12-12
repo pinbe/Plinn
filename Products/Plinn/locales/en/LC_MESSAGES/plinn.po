@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Mon Dec 11 19:23:10 2017\n"
-"PO-Revision-Date: 2017-12-11 19:24+0100\n"
+"POT-Creation-Date: Tue Dec 12 16:34:09 2017\n"
+"PO-Revision-Date: 2017-12-12 16:46+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
 "Language: \n"
@@ -249,7 +249,8 @@ msgid "Add"
 msgstr "Add"
 
 #: n/skins/content/folder_notifications_template.pt:23
-#: n/skins/content/layered_document_edit_template.pt:36
+#: n/skins/content/layered_document_edit_template.pt:35
+#: n/skins/content/layered_document_edit_template.pt:87
 #: n/skins/content/topic_edit_template.pt:26
 #: n/skins/custom_content/document_edit_template.pt:23
 #: n/skins/custom_content/event_edit_template.pt:135
@@ -257,21 +258,53 @@ msgstr "Add"
 msgid "Save"
 msgstr "Save"
 
-#: n/skins/content/layered_document_edit_form.py:35
+#: n/skins/content/layered_document_edit_form.py:39
 msgid "Foreground"
 msgstr "Foreground"
 
-#: n/skins/content/layered_document_edit_form.py:37
+#: n/skins/content/layered_document_edit_form.py:41
 msgid "Background"
 msgstr "Background"
 
-#: n/skins/content/layered_document_edit_form.py:39
+#: n/skins/content/layered_document_edit_form.py:43
 msgid "Layer ${n}"
 msgstr "Layer ${n}"
 
-#: n/skins/content/layered_document_edit_form.py:47
+#: n/skins/content/layered_document_edit_form.py:51
 msgid "Kinematic"
 msgstr "Kinematic"
+
+#: n/skins/content/layered_document_edit_template.pt:44
+msgid "Background options"
+msgstr "Background options"
+
+#: n/skins/content/layered_document_edit_template.pt:48
+msgid "Stitch background after"
+msgstr "Stitch background after"
+
+#: n/skins/content/layered_document_edit_template.pt:52
+msgid "selector"
+msgstr "selector"
+
+#: n/skins/content/layered_document_edit_template.pt:59
+msgid "Background scroll speedup"
+msgstr "Background scroll speedup"
+
+#: n/skins/content/layered_document_edit_template.pt:63
+msgid "number"
+msgstr "number"
+
+#: n/skins/content/layered_document_edit_template.pt:71
+msgid "Foreground options"
+msgstr "Foreground options"
+
+#: n/skins/content/layered_document_edit_template.pt:75
+msgid "Initial position"
+msgstr "Initial position"
+
+#: n/skins/content/layered_document_edit_template.pt:79
+msgid "css size with unit"
+msgstr "css size with unit"
 
 #: n/skins/content/list_pending_contents.pt:23
 msgid "Pending documents"
