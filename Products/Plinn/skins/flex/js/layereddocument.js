@@ -8,7 +8,7 @@
             null;
         var topOffset = (stitchAtterElt) ?
             function() {
-                return stitchAtterElt.getBoundingClientRect().bottom;
+                return Math.max(stitchAtterElt.getBoundingClientRect().bottom, 0) ;
             } :
             function() {
                 return 0;
@@ -16,7 +16,7 @@
         fixedContent.style.top = topOffset() + 'px';
 
 
-        var speedup = (options.bg_scroll_speedup) ? parseInt(options.bg_scroll_speedup) : 0.5;
+        var speedup = (options.bg_scroll_speedup) ? parseFloat(options.bg_scroll_speedup) : 0.5;
         speedup = (isNaN(speedup)) ? 0.5 : speedup;
 
         window.addEventListener('scroll', function() {
