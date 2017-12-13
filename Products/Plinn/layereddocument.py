@@ -6,8 +6,10 @@ from AccessControl.class_init import InitializeClass
 from Products.CMFCore.PortalContent import PortalContent
 from Products.CMFCore.permissions import ModifyPortalContent, View
 from Products.CMFDefault.DublinCore import DefaultDublinCoreImpl
-from persistent.list import PersistentList
 from zope.component.factory import Factory
+from zope.interface import implements
+
+from .interfaces.layereddocument import ILayeredDocument
 
 
 class LayeredDocument(PortalContent, DefaultDublinCoreImpl) :
@@ -16,6 +18,7 @@ class LayeredDocument(PortalContent, DefaultDublinCoreImpl) :
         separately and displayed, for instance with parallax effect.
     """
 
+    implements(ILayeredDocument)
     security = ClassSecurityInfo()
     kinematic_options = {}
 
@@ -25,20 +28,21 @@ class LayeredDocument(PortalContent, DefaultDublinCoreImpl) :
         self.title = title
         self.description = description
         self.setFormat('text/html')
-        self.layers = PersistentList()
-        self.layers.append('')
+        self.layers = tuple('',)
         self.kinematic_options = {}
 
     security.declareProtected(ModifyPortalContent, 'edit')
     def edit(self, text, layer) :
+        layers = list(self.layers)
         if layer > 128:
             raise ValueError, 'Layer number could not exeed 128'
 
-        if layer > len(self.layers) - 1 :
-            for i in range(layer - (len(self.layers) - 1)):
-                self.layers.append('')
+        if layer > len(layers) - 1 :
+            for i in range(layer - (len(layers) - 1)):
+                layers.append('')
 
-        self.layers[layer] = text
+        layers[layer] = text
+        self.layers = tuple(layers)
         self.reindexObject()
         return True
 

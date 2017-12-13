@@ -1,0 +1,28 @@
+/* <dtml-with base_properties> */
+.comparison th {
+  background:#ddd;
+}
+.comparison .mid {
+  background:#f0f0f0;
+}
+.comparison .insert .left,
+.comparison .insert .right {
+  background:#dfd;
+}
+
+.comparison .replace .left,
+.comparison .replace .right {
+  background:#fe9;
+}
+
+.comparison .delete .left,
+.comparison .delete .right {
+  background:#fdd;
+}
+
+.revision_context {
+  border:1px solid &dtml-outlineColor;;
+  background: &dtml-configBackgroundColor;;
+  padding:0 0.5em;
+}
+/* </dtml-with> */

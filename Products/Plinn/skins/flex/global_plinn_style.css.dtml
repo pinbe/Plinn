@@ -4,6 +4,9 @@
 /* site_edit_panel.css */
 <dtml-var site_edit_panel.css>
 
+/* history.css */
+<dtml-var history.css>
+
 /* plinn folder */
 
 <dtml-var plinn_folder.css>

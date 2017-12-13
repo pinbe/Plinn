@@ -10,7 +10,7 @@
   <body>
     <div metal:fill-slot="main" tal:omit-tag=""
          tal:define="entries options/entries;
-                     b_start options/batchNavigation/current"
+                     b_start options/batchNavigation/current|nothing"
          i18n:domain="plinn">
       <form tal:condition="python:entries is not None"
             tal:attributes="action string:${here/absolute_url}/changes_history;"

@@ -37,103 +37,134 @@ import re
 
 rent = re.compile(r"&(?P<entName>[A-Za-z]+);")
 
-class DocumentHistory(ContentHistory) :
 
-	security = ClassSecurityInfo()
-	
-	security.declareProtected(ViewHistory, 'compare')
-	def compare(self, leftkey, rightkey):
-		leftRev, leftDate = self.getHistoricalRevisionByKey(leftkey)
-		rightRev, rightDate = self.getHistoricalRevisionByKey(rightkey)
-		
-		left = leftRev.EditableBody()
-		right = rightRev.EditableBody()
-		
-		infos = {'diff'			: html_ready_diff(left, right)
-				,'leftDate'		: leftDate
-				,'rightDate'	: rightDate
-				,'structure'	: False}
-		return infos
-	
-	security.declareProtected(ModifyPortalContent, 'restore')
-	def restore(self, key):
-		rev = self.getHistoricalRevisionByKey(key)[0]
-		self._content.edit(rev.Format(), rev.EditableBody())
-		
+class DocumentHistory(ContentHistory) :
+    security = ClassSecurityInfo()
+
+    security.declareProtected(ViewHistory, 'compare')
+
+    def compare(self, leftkey, rightkey) :
+        leftRev, leftDate = self.getHistoricalRevisionByKey(leftkey)
+        rightRev, rightDate = self.getHistoricalRevisionByKey(rightkey)
+
+        left = leftRev.EditableBody()
+        right = rightRev.EditableBody()
+
+        infos = {'diff' : html_ready_diff(left, right)
+            , 'leftDate' : leftDate
+            , 'rightDate' : rightDate
+            , 'structure' : False}
+        return infos
+
+    security.declareProtected(ModifyPortalContent, 'restore')
+
+    def restore(self, key) :
+        rev = self.getHistoricalRevisionByKey(key)[0]
+        self._content.edit(rev.Format(), rev.EditableBody())
+
 
 InitializeClass(DocumentHistory)
 
+
+class LayeredDocumentHistory(ContentHistory) :
+    security = ClassSecurityInfo()
+
+    security.declareProtected(ViewHistory, 'compare')
+
+    def compare(self, leftkey, rightkey) :
+        leftRev, leftDate = self.getHistoricalRevisionByKey(leftkey)
+        rightRev, rightDate = self.getHistoricalRevisionByKey(rightkey)
+
+        left = leftRev.layersStack()
+        right = rightRev.layersStack()
+
+        infos = {'diff' : html_ready_diff(left, right)
+            , 'leftDate' : leftDate
+            , 'rightDate' : rightDate
+            , 'structure' : False}
+        return infos
+
+    security.declareProtected(ModifyPortalContent, 'restore')
+
+    def restore(self, key) :
+        rev = self.getHistoricalRevisionByKey(key)[0]
+        self._content.edit(rev.Format(), rev.EditableBody())
+
+
+InitializeClass(LayeredDocumentHistory)
+
+
 class FolderishHistory(ContentHistory) :
-	
-	security = ClassSecurityInfo()
-	
-	security.declareProtected(ViewHistory, 'compare')
-	def compare(self, leftkey, rightkey):
-		leftRev, leftDate = self.getHistoricalRevisionByKey(leftkey)
-		rightRev, rightDate = self.getHistoricalRevisionByKey(rightkey)
-		
-		leftIds = leftRev.objectIds()
-		leftTitleAndIds = []
-		for id in leftIds :
-			title = leftRev[id].Title()
-			if title != id :
-				leftTitleAndIds.append('%s (%s)' % (id, title))
-			else :
-				leftTitleAndIds.append('%s' % id)
-		left = '\n'.join(leftTitleAndIds)
+    security = ClassSecurityInfo()
 
-		rightIds = rightRev.objectIds()
-		rightTitleAndIds = []
-		for id in rightIds :
-			title = rightRev[id].Title()
-			if title != id :
-				rightTitleAndIds.append('%s (%s)' % (id, title))
-			else :
-				rightTitleAndIds.append('%s' % id)
-		right = '\n'.join(rightTitleAndIds)
+    security.declareProtected(ViewHistory, 'compare')
 
-		infos = {'diff'			: html_ready_diff(left, right)
-				,'leftDate'		: leftDate
-				,'rightDate'	: rightDate
-				,'structure'	: True}
-		return infos
-	
-	
-	security.declareProtected(ModifyPortalContent, 'restore')
-	def restore(self, key):
-		pass
+    def compare(self, leftkey, rightkey) :
+        leftRev, leftDate = self.getHistoricalRevisionByKey(leftkey)
+        rightRev, rightDate = self.getHistoricalRevisionByKey(rightkey)
 
-InitializeClass(FolderishHistory)
-	
-	
-	
+        leftIds = leftRev.objectIds()
+        leftTitleAndIds = []
+        for id in leftIds :
+            title = leftRev[id].Title()
+            if title != id :
+                leftTitleAndIds.append('%s (%s)' % (id, title))
+            else :
+                leftTitleAndIds.append('%s' % id)
+        left = '\n'.join(leftTitleAndIds)
+
+        rightIds = rightRev.objectIds()
+        rightTitleAndIds = []
+        for id in rightIds :
+            title = rightRev[id].Title()
+            if title != id :
+                rightTitleAndIds.append('%s (%s)' % (id, title))
+            else :
+                rightTitleAndIds.append('%s' % id)
+        right = '\n'.join(rightTitleAndIds)
+
+        infos = {'diff' : html_ready_diff(left, right)
+            , 'leftDate' : leftDate
+            , 'rightDate' : rightDate
+            , 'structure' : True}
+        return infos
+
+    security.declareProtected(ModifyPortalContent, 'restore')
+
+    def restore(self, key) :
+        pass
+
 
 InitializeClass(FolderishHistory)
+
+InitializeClass(FolderishHistory)
+
 
 def html_ready_diff(left, right, n=3) :
-	if isinstance(left, UnicodeType) :
-		left = left.encode('utf-8')
-	if isinstance(right, UnicodeType) :
-		right = right.encode('utf-8')
-	left = rent.sub(convertEnt, left)
-	right = rent.sub(convertEnt, right)
-	sm = SequenceMatcher()
-	leftLines = left.splitlines()
-	rightLines = right.splitlines()
-	sm.set_seqs(leftLines, rightLines)
-	
-	groups = []
-	for i, group in enumerate(sm.get_grouped_opcodes(n)) :
-		groups.append([])
-		infos = groups[i]
-		for tag, i1, i2, j1, j2 in group :
-			info = {'tag'	: tag
-			       ,'left'	: '\n'.join(leftLines[i1:i2])
-				   ,'right'	: '\n'.join(rightLines[j1:j2])}
-			infos.append(info)
-	return groups
+    if isinstance(left, UnicodeType) :
+        left = left.encode('utf-8')
+    if isinstance(right, UnicodeType) :
+        right = right.encode('utf-8')
+    left = rent.sub(convertEnt, left)
+    right = rent.sub(convertEnt, right)
+    sm = SequenceMatcher()
+    leftLines = left.splitlines()
+    rightLines = right.splitlines()
+    sm.set_seqs(leftLines, rightLines)
 
-def convertEnt(m):
-	"""convert html entity to utf-8 encoded character
-	"""
-	return unichr(name2codepoint.get(m.group('entName'), 32)).encode('utf-8')
+    groups = []
+    for i, group in enumerate(sm.get_grouped_opcodes(n)) :
+        groups.append([])
+        infos = groups[i]
+        for tag, i1, i2, j1, j2 in group :
+            info = {'tag' : tag
+                , 'left' : '\n'.join(leftLines[i1 :i2])
+                , 'right' : '\n'.join(rightLines[j1 :j2])}
+            infos.append(info)
+    return groups
+
+
+def convertEnt(m) :
+    """convert html entity to utf-8 encoded character
+    """
+    return unichr(name2codepoint.get(m.group('entName'), 32)).encode('utf-8')

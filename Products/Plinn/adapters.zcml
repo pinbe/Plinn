@@ -5,6 +5,10 @@
     factory=".HistoryAdapters.DocumentHistory"/>
   <adapter
     provides=".interfaces.IContentHistory"
+    for=".interfaces.ILayeredDocument"
+    factory=".HistoryAdapters.LayeredDocumentHistory"/>
+  <adapter
+    provides=".interfaces.IContentHistory"
     for="Products.CMFCore.interfaces.IFolderish"
     factory=".HistoryAdapters.FolderishHistory"/>
   <adapter
