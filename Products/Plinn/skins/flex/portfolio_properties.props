@@ -1,5 +1,7 @@
 medium_image_background:string=#727272
 metadata_bar_background:string=#fff
+image_toolbar_background:string=rgba(255,255,255, 0.85)
+image_toolbar_border_color:string=silver
 photographer_font_color:string=#fff
 title_font_color:string=#2b2b2b
 metadata_edit_label_color:string=#9da097
