@@ -46,3 +46,6 @@ body {
   display: inline-block;
 }
 /* </dtml-with> */
+
+/* editor css customizations */
+<dtml-var editor_style_customizations.css>
