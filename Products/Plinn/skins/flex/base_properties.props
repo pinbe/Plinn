@@ -74,3 +74,4 @@ twoColumnFormBackground:string=#fff
 borderRadius:int=7
 articleBackground:string=#fff
 articleWrapperBackground:string=transparent
+articleMaxWidth:string=1080px

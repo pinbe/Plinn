@@ -30,7 +30,7 @@ article {
   margin: 0 auto;
   background: &dtml-articleBackground;;
   min-height: 100vh;
-  max-width: 1080px;
+  max-width: &dtml-articleMaxWidth;
   /*border: 2px solid orange;*/
 }
 
