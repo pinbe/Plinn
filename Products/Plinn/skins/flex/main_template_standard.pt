@@ -54,7 +54,7 @@
            tal:attributes="style python:'margin-left: %(shift)dpx;; width: calc(100vw - %(shift)dpx);;' % {'shift':shift} if
                   isManager else None">
         <div id="top-bar"
-             metal:use-macro="main_macros/top_bar">top bar</div>
+             metal:use-macro="here/topbar_macros/macros/top_bar">top bar</div>
         <div id="content-outer">
           <div id="content-wrapper" tal:attributes="class content_wrapper_class|nothing">
             <div metal:define-slot="main_no_tabs" tal:omit-tag="">
