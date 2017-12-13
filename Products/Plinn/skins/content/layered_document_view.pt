@@ -1,24 +1,28 @@
-<html metal:use-macro="here/main_template_view/macros/master">
-  <head>
-    <title>Document view</title>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-    <base href="." metal:fill-slot="base" tal:attributes="href python: here.absolute_url() + '/'" />
-    <script type="text/javascript"
-            metal:fill-slot="javascript_head_slot"
-            tal:attributes="src string:$portal_url/js/layereddocument.js"></script>
-  </head>
-  <body>
+<metal:block tal:define="content_wrapper_class string:no-content-margin">
+  <html metal:use-macro="here/main_template_view/macros/master">
+    <head>
+      <title>Document view</title>
+      <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+      <base href="." metal:fill-slot="base" tal:attributes="href python: here.absolute_url() + '/'" />
+      <script type="text/javascript"
+               metal:fill-slot="javascript_head_slot"
+               tal:attributes="src string:$portal_url/js/layereddocument.js"></script>
+    </head>
+    <body>
 
-    <div metal:fill-slot="fixed_content_top"
-         tal:attributes="data-options here/getKinematicOptions"
-         tal:content="structure python:here.getLayer(0)"></div>
+      <div metal:fill-slot="fixed_content_top"
+               tal:attributes="data-options here/getKinematicOptions"
+               tal:content="structure python:here.getLayer(0)"></div>
 
-    <div metal:fill-slot="main"
-         class="layereddocument"
-         tal:define="margin_top python:here.getKinematicOptions(asjson=False).get('fg_init_position')">
-      <article tal:attributes="style python:'margin-top: %s' % margin_top if margin_top else None">
-        <div tal:content="structure python:here.getLayer(1)"></div>
-      </article>
-    </div>
-  </body>
-</html>
+      <div metal:fill-slot="main"
+              class="layereddocument"
+               tal:define="margin_top python:here.getKinematicOptions(asjson=False).get('fg_init_position')">
+        <div class="article-wrapper">
+          <article tal:attributes="style python:'margin-top: %s' % margin_top if margin_top else None">
+            <div tal:content="structure python:here.getLayer(1)"></div>
+          </article>
+        </div>
+      </div>
+    </body>
+  </html>
+</metal:block>

@@ -1,16 +1,19 @@
-<html metal:use-macro="here/main_template_view/macros/master">
-  <head>
-    <title>Document view</title>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-    <base href="." metal:fill-slot="base" tal:attributes="href python: here.absolute_url() + '/'" />
-  </head>
-  <body>
+<metal:block tal:define="content_wrapper_class string:no-content-margin">
+  <html metal:use-macro="here/main_template_view/macros/master">
+    <head>
+      <title>Document view</title>
+      <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+      <base href="." metal:fill-slot="base" tal:attributes="href python: here.absolute_url() + '/'" />
+    </head>
+    <body>
 
-    <article metal:fill-slot="main" class="document">
-      <div tal:condition="python:here.Format() == 'text/html'" tal:replace="structure here/EditableBody">Editable Body
-      </div>
-      <div tal:condition="python:here.Format() != 'text/html'" tal:replace="structure here/CookedBody">Cooked Body</div>
-    </article>
+      <article metal:fill-slot="main" class="document">
+        <div tal:condition="python:here.Format() == 'text/html'" tal:replace="structure here/EditableBody">Editable Body
+        </div>
+        <div tal:condition="python:here.Format() != 'text/html'" tal:replace="structure here/CookedBody">Cooked Body
+        </div>
+      </article>
 
-  </body>
-</html>
+    </body>
+  </html>
+</metal:block>

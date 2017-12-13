@@ -19,11 +19,18 @@ h2 {
   font-style: italic;
 }
 
+.article-wrapper {
+  width: 100%;
+  background: &dtml-articleWrapperBackground;;
+}
+
 article {
   text-align: justify;
+  margin: 0 auto;
   background: &dtml-articleBackground;;
   min-height: 100vh;
   max-width: 1080px;
+  /*border: 2px solid orange;*/
 }
 
 .layereddocument article {

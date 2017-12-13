@@ -126,11 +126,22 @@ a:hover {
 
 #content-outer {
   position: relative;
-  margin: 0 100px;
-  padding-top: 2px;
   z-index: 2;
   display: flex;
   justify-content: center;
+}
+
+#content-wrapper {
+  width: 100%;
+  margin: 0 100px;
+}
+
+#content-wrapper.no-content-margin {
+  margin: 0;
+}
+
+#content-wrapper.no-content-margin .edit-controls {
+  margin: 0 100px;
 }
 
 #fixed-content {
@@ -139,7 +150,8 @@ a:hover {
 }
 
 @media all and (max-width: 1080px){
-  #content-outer {
+  #content-wrapper.no-content-margin .edit-controls,
+  #content-wrapper {
     margin: 0 5px;
   }
   #top-bar {
@@ -148,7 +160,8 @@ a:hover {
 }
 
 @media all and (min-width: 1080px) and (max-width: 1280px) {
-  #content-outer{
+  #content-wrapper.no-content-margin .edit-controls,
+  #content-wrapper {
     margin: 0 calc((100vw - 1080px)/2);
   }
   #top-bar {
@@ -162,7 +175,7 @@ a:hover {
   border-collapse: collapse;
   white-space: nowrap;
   padding-left: 1em;
-  margin: 0;
+  margin-top: &dtml-tabsBorderWidth;;
 }
 
 .contentTabs li, .additionalTabs li {
