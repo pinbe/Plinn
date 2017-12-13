@@ -42,7 +42,8 @@
     </head>
     <body tal:attributes="data-portal_url portal_url;
                           data-absolute_url here/absolute_url;
-                          data-isAnon python:not not isAnon">
+                          data-isAnon python:not not isAnon;
+                          class python:'pt-%s' % here.getPortalTypeName().replace(' ', '-').lower()">
       <div id="site-edit-panel"
            metal:use-macro="main_macros/site_edit_panel"></div>
       <div id="fixed-content">
