@@ -88,7 +88,7 @@ class LayeredDocumentHistory(ContentHistory) :
 
     def restore(self, key) :
         rev = self.getHistoricalRevisionByKey(key)[0]
-        self._content.edit(rev.Format(), rev.EditableBody())
+        self._content.layers = rev.layers[:]
 
 
 InitializeClass(LayeredDocumentHistory)
