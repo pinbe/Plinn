@@ -53,6 +53,12 @@ global specialCtxHeader options/specialCtxHeader|nothing"
           </a>
         </div>
         <div class="content">
+          <div tal:on-error="nothing">
+            <a tal:attributes="href python:portal_object.getActionInfo('object/folderContents')['url']">
+              <i class="fa fa-home" style="font-size: 1.5em"></i>
+              <span i18n:translate="" tal:omit-tag="">Site root</span>
+            </a>
+          </div>
           <div tal:define="treeRoot portal_object;
                            treeRootSelector string:#site-edit-panel"
                tal:omit-tag="">
