@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Tue Dec 12 16:34:09 2017\n"
+"POT-Creation-Date: Tue Dec 19 02:36:27 2017\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -252,8 +252,8 @@ msgid "Add"
 msgstr ""
 
 #: n/skins/content/folder_notifications_template.pt:23
-#: n/skins/content/layered_document_edit_template.pt:35
-#: n/skins/content/layered_document_edit_template.pt:87
+#: n/skins/content/layered_document_edit_template.pt:34
+#: n/skins/content/layered_document_edit_template.pt:86
 #: n/skins/content/topic_edit_template.pt:26
 #: n/skins/custom_content/document_edit_template.pt:23
 #: n/skins/custom_content/event_edit_template.pt:135
@@ -278,35 +278,35 @@ msgstr ""
 msgid "Kinematic"
 msgstr ""
 
-#: n/skins/content/layered_document_edit_template.pt:44
+#: n/skins/content/layered_document_edit_template.pt:43
 msgid "Background options"
 msgstr ""
 
-#: n/skins/content/layered_document_edit_template.pt:48
+#: n/skins/content/layered_document_edit_template.pt:47
 msgid "Stitch background after"
 msgstr ""
 
-#: n/skins/content/layered_document_edit_template.pt:52
+#: n/skins/content/layered_document_edit_template.pt:51
 msgid "selector"
 msgstr ""
 
-#: n/skins/content/layered_document_edit_template.pt:59
+#: n/skins/content/layered_document_edit_template.pt:58
 msgid "Background scroll speedup"
 msgstr ""
 
-#: n/skins/content/layered_document_edit_template.pt:63
+#: n/skins/content/layered_document_edit_template.pt:62
 msgid "number"
 msgstr ""
 
-#: n/skins/content/layered_document_edit_template.pt:71
+#: n/skins/content/layered_document_edit_template.pt:70
 msgid "Foreground options"
 msgstr ""
 
-#: n/skins/content/layered_document_edit_template.pt:75
+#: n/skins/content/layered_document_edit_template.pt:74
 msgid "Initial position"
 msgstr ""
 
-#: n/skins/content/layered_document_edit_template.pt:79
+#: n/skins/content/layered_document_edit_template.pt:78
 msgid "css size with unit"
 msgstr ""
 
@@ -1212,11 +1212,15 @@ msgstr ""
 msgid "Edit standard metadata"
 msgstr ""
 
-#: n/skins/flex/main_template_macros.pt:104
+#: n/skins/flex/main_template_macros.pt:49
 msgid "Edit site"
 msgstr ""
 
-#: n/skins/flex/main_template_macros.pt:139
+#: n/skins/flex/main_template_macros.pt:59
+msgid "Site root"
+msgstr ""
+
+#: n/skins/flex/main_template_macros.pt:90
 #: n/skins/generic/main_template_macros.pt:80
 #: n/skins/photo_theme/main_template_macros.pt:91
 msgid "You are here:"
