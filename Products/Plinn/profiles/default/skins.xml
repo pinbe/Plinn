@@ -70,9 +70,6 @@
   <layer name="epoz_i18n"/>
   <layer name="epoz_images"/>
   <layer name="ckeditor"/>
-  <layer name="mosaic_document"/>
-  <layer name="mosaic_blocks"/>
-  <layer name="mosaic_slots"/>
   <layer name="mimetypes_icons"/>
   <layer name="zpt_topic"/>
   <layer name="zpt_calendar"/>
