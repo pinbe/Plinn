@@ -238,8 +238,7 @@
  <object name="site_menu" meta_type="CMF Action Category">
   <property name="title"></property>
   <object name="photographes" meta_type="CMF Action" i18n:domain="plinn">
-   <property name="title"
-      i18n:translate="">Photographers</property>
+   <property name="title" i18n:translate="">Photographers</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${portal_url}/photographers</property>
    <property name="link_target"></property>
@@ -316,7 +315,7 @@
    <property name="permissions">
     <element value="List folder contents"/>
    </property>
-   <property name="visible">Folder</property>
+   <property name="visible">False</property>
   </object>
  </object>
  <object name="customer" meta_type="CMF Action Category">
