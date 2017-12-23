@@ -146,6 +146,11 @@ a:hover {
   width: 100%;
 }
 
+#main-footer {
+  background: &dtml-backgroundColor;;
+  text-align: center;
+}
+
 @media all and (max-width: 1080px){
   #content-wrapper.no-content-margin .edit-controls,
   #content-wrapper {

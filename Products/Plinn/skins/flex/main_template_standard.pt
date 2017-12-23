@@ -71,6 +71,10 @@
               <div metal:define-slot="main" tal:omit-tag="">main</div>
               <div metal:define-slot="footer" tal:replace="nothing">footer slot</div>
             </div>
+            <div id="main-footer" metal:define-slot="main_footer">
+              <div tal:replace="structure here/main_footer/EditableBody"
+                   tal:on-error="string:">Footer content</div>
+            </div>
           </div>
         </div>
       </div>
