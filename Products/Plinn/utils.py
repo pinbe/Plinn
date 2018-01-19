@@ -57,16 +57,16 @@ def thisObjectComeFromPortalSkin(ob, portal=None):
     if not portal :
         portal = getToolByName(ob, 'portal_url')
         portal = portal.getPortalObject()
-    
+
     if ob.aq_self == portal.aq_self :
         return False
-    
+
     obId = ob.id
     if callable(obId) :
         obId = obId()
-    
+
     sob = getattr(portal, obId, None)
-        
+
     if sob is None :
         return False
     elif not(sob.aq_inner.aq_self is ob.aq_inner.aq_self) :
@@ -88,8 +88,8 @@ def capitalizeCompoundGivenName(givenName) :
     givenNames = ' '.join(givenName.split('-')).split()
     givenNameCapitalized = '-'.join(map(string.capitalize, givenNames))
     return givenNameCapitalized
-                
-             
+
+
 def formatFullName(memberName, memberGivenName, memberId, nameBefore=1) :
     memberName = memberName.decode('utf-8')
     memberGivenName = memberGivenName.decode('utf-8')
@@ -98,17 +98,17 @@ def formatFullName(memberName, memberGivenName, memberId, nameBefore=1) :
         if nameBefore :
             memberFullName = memberName.capitalize() + ' ' + capitalizeCompoundGivenName(memberGivenName)
         else :
-            memberFullName = capitalizeCompoundGivenName(memberGivenName) + ' ' + memberName.capitalize() 
-        
+            memberFullName = capitalizeCompoundGivenName(memberGivenName) + ' ' + memberName.capitalize()
+
     elif memberName and not memberGivenName :
         memberFullName = memberName.capitalize()
-        
+
     elif not memberName and memberGivenName :
         memberFullName = capitalizeCompoundGivenName(memberGivenName)
-        
+
     else :
         memberFullName = memberId
-    
+
     return memberFullName.encode('utf-8')
 
 # from OFS.ObjectManager #63
@@ -123,15 +123,15 @@ def makeValidId(self, id, allow_dup=0):
     # only check that the id string contains no illegal chars;
     # check_valid_id() will be called again later with allow_dup
     # set to false before the object is added.
-    
+
     makeRandomId = False
     if id in ('.', '..'):
         makeRandomId = True
     if id.startswith('_'):
         id = id.lstrip('_')
-    if id.startswith('aq_'): 
+    if id.startswith('aq_'):
         id = id[3:]
-    
+
     while id.endswith('__') :
         id = id[:-1]
     if not allow_dup:
@@ -150,12 +150,12 @@ def makeValidId(self, id, allow_dup=0):
                 makeRandomId = True
     if id == 'REQUEST':
         makeRandomId = True
-    
+
     if makeRandomId is True :
         id = str(randrange(2,10000)) + id
     return id
-    
-    
+
+
 
 def _checkMemberPermission(userid, permission, obj, StringType = type('')):
     user = obj.aq_inner.acl_users.getUser(userid)
@@ -165,7 +165,7 @@ def _checkMemberPermission(userid, permission, obj, StringType = type('')):
     if user.allowed( obj, roles ):
         return 1
     return 0
-    
+
 def getCPInfo(self) :
     if self.REQUEST.RESPONSE.cookies.has_key('__cp') :
         cp = self.REQUEST.RESPONSE.cookies['__cp']['value']
@@ -179,7 +179,7 @@ def getCPInfo(self) :
 def popCP(self, indexes=None) :
     try: cp = _cb_decode(self.REQUEST['__cp'])
     except: return
-    
+
     paths = list(cp[1])
     if indexes is not None :
         indexes = list(indexes)
@@ -189,7 +189,7 @@ def popCP(self, indexes=None) :
             paths.pop(index)
     else :
         paths.pop()
-    
+
     if not paths :
         self.REQUEST.RESPONSE.expireCookie('__cp', path=self.REQUEST['BASEPATH1'] or "/")
     else :
@@ -286,7 +286,7 @@ def encodeMailHeader(content) :
         stop = stop + STEP
         part = s[start:stop]
         lines.append(part)
-    
+
     lines = [' =?utf-8?Q?%s?=' % part for part in lines]
     s = '\n'.join(lines)
     s = s.strip()
@@ -300,13 +300,13 @@ def _sudo(func, userid=None) :
     security assertions (eg. checkPermission) encountered
     during the execution.
     """
-    
+
     sm = getSecurityManager()
     restrictedUser = sm.getUser()
-    
+
     if not userid :
         userid = restrictedUser.getId()
-    
+
     sm._context.user = UnrestrictedUser(userid, '', (), ())
 
     deferedEx = None
@@ -314,9 +314,9 @@ def _sudo(func, userid=None) :
         ret = func()
     except Exception, e :
         deferedEx = e
-    
+
     sm._context.user = restrictedUser
-    
+
     if deferedEx is not None :
         raise e
 
@@ -329,12 +329,84 @@ def searchContentsWithLocalRolesForAuthenticatedUser(**kw):
     member = mtool.getAuthenticatedMember()
     userid = member.getId()
     userAndGroups = ['user:%s' % userid]
-    
+
     getGroups = getattr(member, 'getGroups', None)
     if getGroups is not None :
         for group in getGroups():
             userAndGroups.append('user:'+group)
-    
+
     kw[ 'allowedRolesAndUsers' ] = userAndGroups
-    
+
     return ctool.unrestrictedSearchResults(**kw)
+
+
+security.declarePublic('getLdJson')
+def getLdJson(ob, indent=None) :
+    supported_types = {'Portfolio' : 'ImageGallery',
+                       'Photo' : 'WebPage',
+                       'Document' : 'WebPage',
+                       'Layered Document' : 'WebPage'}
+    pt = ob.getPortalTypeName()
+    if not supported_types.has_key(pt) :
+        return
+
+
+    ldscript = '<script type="application/ld+json">\n%s\n</script>'
+
+    jsonData = {
+        "@context" : "http://schema.org",
+        "@type" : supported_types[pt],
+        "name" : ob.title_or_id(),
+        "description" : ob.Description(),
+        "keywords" : ', '.join(ob.Subject()),
+        "breadcrumb" : {
+            "@context" : "http://schema.org",
+            "@type" : "BreadcrumbList",
+            "itemListElement" : []
+        },
+    }
+
+    for i, c in enumerate(ob.breadcrumbs()) :
+        jsonData['breadcrumb']['itemListElement'].append(
+                {
+                    "@type" : "ListItem",
+                    "position" : i+1,
+                    "item" : {
+                        "@id" : c['url'],
+                        "name" : c['title']
+                    }
+                }
+        )
+
+    if pt == 'Photo' :
+        width, height = ob.getResizedImageSize(size=(600, 600))
+        jsonData['primaryImageOfPage'] = {
+            "@context" : "http://schema.org",
+            "@type" : "ImageObject",
+            'caption' : ob.Description(),
+            'author' : ob.Rights(),
+            'contentUrl' : '%s/getResizedImage?size=600' % ob.absolute_url(),
+            'representativeOfPage' : 'True',
+            'width' : {
+                "@context" : "http://schema.org",
+                "@type" : "QuantitativeValue",
+                'value' : width
+            },
+            'height' : {
+                "@context" : "http://schema.org",
+                "@type" : "QuantitativeValue",
+                'value' : height
+            }
+        }
+        jsonData['mainEntityOfPage'] = jsonData['primaryImageOfPage']
+
+    def cleanup(d) :
+        cleand = {}
+        for k, v in d.iteritems() :
+            if type(v) == dict :
+                v = cleanup(v)
+            if v :
+                cleand[k] = v
+        return cleand
+
+    return ldscript % json_dumps(cleanup(jsonData), sort_keys=True, indent=indent)
