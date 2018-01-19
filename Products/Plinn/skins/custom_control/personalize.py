@@ -12,8 +12,6 @@ if failMessage:
 									portal_status_message=failMessage)
 
 member.setProperties(REQUEST)
-#photo_width = REQUEST['photo_width']
-#context.getOrSetSessionVar(key = 'preferedImageSize', value=(photo_width, photo_width))
 
 if REQUEST.has_key('portal_skin'):
 	context.portal_skins.updateSkinCookie()
