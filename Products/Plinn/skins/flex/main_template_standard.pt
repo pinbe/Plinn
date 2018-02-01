@@ -15,6 +15,7 @@
             tal:define="keywords python:here.Subject() or portal_object.keywords or []"
             tal:attributes="content python:', '.join(keywords)" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <metal:block metal:define-slot="meta"></metal:block>
       <base tal:omit-tag="" metal:define-slot="base" />
 
       <link rel="Shortcut Icon" type="image/x-icon" href="favicon.ico" tal:attributes="href string:$portal_url/favicon.ico" />
