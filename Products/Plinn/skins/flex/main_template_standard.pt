@@ -18,6 +18,11 @@
       <metal:block metal:define-slot="meta"></metal:block>
       <base tal:omit-tag="" metal:define-slot="base" />
 
+      <link rel="canonical"
+            tal:condition="python:here.getPortalTypeName() != 'CMF Site'"
+            tal:define="canonical python:here.absolute_url().rstrip('/')"
+            tal:attributes="href python: canonical if not canonical.endswith('/index_html') else canonical[:-len('/index_html')]"/>
+
       <link rel="Shortcut Icon" type="image/x-icon" href="favicon.ico" tal:attributes="href string:$portal_url/favicon.ico" />
       <metal:block metal:define-slot="analytics-slot">
         <tal:block tal:define="analytics_template nocall:here/analytics_template|nothing">
