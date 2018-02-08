@@ -31,10 +31,12 @@
             <th><br/></th>
             <td>
               <input type="submit" name="metadata_edit_control:method" value="Validate" i18n:attributes="value" />
+              <!--
               <a href="." style="float:right" id="showFullMetadataForm"
                  tal:define="mq nocall:mq|nothing;"
                  tal:attributes="href python:mq and '%s?%s' % (url , mq( request.form, {'edit_metadata':'fullMetadataForm'})) or '.'"
                  i18n:translate="">Edit all metadata</a>
+                 -->
             </td>
           </tr>
         </table>
