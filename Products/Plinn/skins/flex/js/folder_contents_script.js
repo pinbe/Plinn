@@ -293,7 +293,8 @@ var DDFolderUploader;
                 var urlParts = url.split("/");
                 url = urlParts.slice(0, urlParts.length - 1).join("/");
                 if(query.search("template") === -1) {
-                    query += "&template=folder_contents_macros&macro=FolderListing&fragmentId=FolderListing";
+                    query += "&template=folder_contents_macros&macro=FolderListing&fragmentSelector=" +
+                        encodeURIComponent("#FolderListing");
                 }
                 url = url + "/folder_contents?" + query;
 
