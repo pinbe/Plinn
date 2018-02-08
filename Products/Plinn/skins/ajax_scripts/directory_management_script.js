@@ -4,7 +4,7 @@
 
 function openMemberPopup(member_id) {
 	var slot = document.getElementById("MemberFormSlot");
-	var url = portal_url() + "/use_macro?template=gruf_macros&macro=member_properties_form&fragmentId=MemberFormSlot&member_id=" + member_id;
+	var url = portal_url() + "/use_macro?template=gruf_macros&macro=member_properties_form&fragmentSelector=%23MemberFormSlot&member_id=" + member_id;
 	new FragmentImporter(url, function() {initForms(slot);}).load();
 }
 
@@ -16,7 +16,7 @@ function openMemberTreeView(evt) {
 	var member_id = link.href.split("member_id=")[1];
 	/* member_id parameter is not necesary at the last position.*/
 	var member_id = member_id.split("&");
-	var url = portal_url() + "/use_macro?template=gruf_macros&macro=member_tree_view&fragmentId=MemberFormSlot&member_id=" + member_id;
+	var url = portal_url() + "/use_macro?template=gruf_macros&macro=member_tree_view&fragmentSelector=%23MemberFormSlot&member_id=" + member_id;
 	new FragmentImporter(url, _initMemberTreeListener).load(url);
 }
 
@@ -55,7 +55,7 @@ function handleMemberTreeViewClick(evt) {
 			query = target.href.split('?')[1];
 			query = query.replace(/macroName/, "macro");
 			query = query.split('#')[0];
-			url = portal_url() + "/use_macro?template=gruf_macros&fragmentId=MemberFormSlot&" + query;
+			url = portal_url() + "/use_macro?template=gruf_macros&fragmentSelector=%23MemberFormSlot&" + query;
 			afterLoadFunction = (afterLoadFunction) ? afterLoadFunction : function() {initForms(slot);};
 			new FragmentImporter(url, afterLoadFunction).load();
 	}
