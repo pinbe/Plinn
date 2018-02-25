@@ -123,13 +123,11 @@ class HugePlinnFolder(BTreeFolder2Base, PlinnFolder) :
                 ident = pos2id[p+shift]
                 pos2id[p] = ident
                 id2pos[ident] = p
-                if not suppress_events :
-                    notify(ObjectPositionModified(self[ident], self, p))
-            
+                notify(ObjectPositionModified(self[ident], self, p))
+
             id2pos[id] = newPosition
             pos2id[newPosition] = id
-            if not suppress_events :
-                notify(ObjectPositionModified(self[id], self, newPosition))
+            notify(ObjectPositionModified(self[id], self, newPosition))
         
         if not suppress_events :
             notifyContainerModified(self)
