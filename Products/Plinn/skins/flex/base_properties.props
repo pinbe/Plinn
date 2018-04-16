@@ -19,7 +19,7 @@ fontSmallSize:string=13px
 
 
 topbarBackgroundColor:string=#fff
-breadcrumbsBackground:string=#fff
+breadcrumbsBackground:string=rgba(255,255,255,0.85)
 
 tabsBorderColor:string=#ff9c00
 tabsBorderWidth:string=2px

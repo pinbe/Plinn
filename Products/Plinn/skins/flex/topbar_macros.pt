@@ -9,57 +9,62 @@
 
   <body>
     <div metal:define-macro="top_bar"
-         id="top-bar">
+            id="top-bar">
+      <div id="top-row">
         <a tal:attributes="href portal_url;
-                           title portal_object/title_or_id">
+                title portal_object/title_or_id">
           <img id="portal-logo"
-               tal:define="logo here/logo.png"
-               tal:attributes="src logo/absolute_url;
-                               alt portal_object/title_or_id;
-                               height logo/height;
-                               width logo/width" />
+                   tal:define="logo here/logo.png"
+                   tal:attributes="src logo/absolute_url;
+                  alt portal_object/title_or_id;
+                  height logo/height;
+                  width logo/width" />
         </a>
-      <div id="site-menu"
-           tal:define="menu actions/site_menu|nothing"
-           tal:condition="menu">
+        <div id="site-menu"
+                 tal:define="menu actions/site_menu|nothing"
+                 tal:condition="menu">
 
-        <a tal:repeat="a menu"
-           tal:content="a/title" tal:attributes="href a/url">Site Menu</a>
-      </div>
-      <div id="user-menu"
-           tal:define="uname python:member.getMemberFullName(nameBefore=0) if not isAnon else ''">
+          <a tal:repeat="a menu"
+                   tal:content="a/title" tal:attributes="href a/url">Site Menu</a>
+        </div>
+        <div id="user-menu"
+                 tal:define="uname python:member.getMemberFullName(nameBefore=0) if not isAnon else ''">
         <span>
           <span tal:content="uname">Mâne</span>
           <i class="fa fa-user-circle" style="font-size: 1.5em; padding-bottom: 3px"></i>
           <ul class="hidden">
             <li tal:repeat="action user_actions">
               <a tal:attributes="href action/url"
-                 tal:content="action/title">yeah</a>
+                       tal:content="action/title">yeah</a>
             </li>
           </ul>
         </span>
-      </div>
-      <script type="text/javascript">
-        (function() {
-          d3.select('#user-menu i')
+        </div>
+        <script type="text/javascript">
+          (function() {
+            d3.select('#user-menu i')
               .on('click',
-                function() {
-                  var menu = d3.select('#user-menu ul').node();
-                  var body = d3.select('body');
-                  if(menu.classList.contains('hidden')) {
-                    menu.classList.remove('hidden');
-                    d3.event.stopPropagation();
-                    body.on('click.cancel-user-menu',
-                      function() {
-                        menu.classList.add('hidden');
-                        body.on('click.cancel-user-menu', null);
-                      }
-                    );
+                  function() {
+                    var menu = d3.select('#user-menu ul').node();
+                    var body = d3.select('body');
+                    if(menu.classList.contains('hidden')) {
+                      menu.classList.remove('hidden');
+                      d3.event.stopPropagation();
+                      body.on('click.cancel-user-menu',
+                              function() {
+                                menu.classList.add('hidden');
+                                body.on('click.cancel-user-menu', null);
+                              }
+                      );
+                    }
                   }
-                }
               )
-        }());
-      </script>
+          }());
+        </script>
+      </div>
+      <div id="Breadcrumbs">
+        <div metal:use-macro="main_macros/Breadcrumbs">Breadcrumbs</div>
+      </div>
     </div>
   </body>
 </html>
