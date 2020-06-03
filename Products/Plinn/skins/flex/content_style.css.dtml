@@ -173,4 +173,17 @@ article {
 .alt-navbar a:last-child {
   border-right: none;
 }
+
+.grid-3-cols {
+  display: grid;
+  grid-template-columns: 33% 33% auto;
+}
+
+.grid-3-cols > div {
+  padding: 1em;
+}
+
+.grid-3-cols > div > *:first-child {
+  margin-top: 0;
+}
 /*</dtml-with> */

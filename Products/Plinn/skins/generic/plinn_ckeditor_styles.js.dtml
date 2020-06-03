@@ -18,6 +18,10 @@ CKEDITOR.stylesSet.add('plinn_styles', [
     {
         name: "Flex",
         className: 'flex'
+    },
+    {
+      name: "Trois colonnes",
+        className: 'grid-3-cols'
     }
 	// {
 	// 	name: 'Arrondis',

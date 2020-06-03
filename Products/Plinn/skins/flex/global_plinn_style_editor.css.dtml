@@ -37,7 +37,7 @@ body {
   top: 1em
 }
 
-.flex {
+.flex, .grid-3-cols {
   border: 1px dotted silver;
 }
 
