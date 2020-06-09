@@ -9,6 +9,7 @@
         this.imgUrls = imgUrls;
         this.width = width;
         this.height = height;
+        console.info(`size: ${width}, ${height}`);
         this.duration = duration;
         this.currentIndex = 0;
         this.pendingImage = new Image();
@@ -52,8 +53,8 @@
                 elt.style.width = elt.getAttribute('data-slideshow_width');
                 elt.style.height = elt.getAttribute('data-slideshow_height');
                 let rect = elt.getBoundingClientRect();
-                let width = rect.width;
-                let height = rect.height;
+                let width = Math.round(rect.width);
+                let height = Math.round(rect.height);
                 let url = elt.getAttribute('data-slideshow_url');
                 let duration = parseFloat(elt.getAttribute('data-slideshow_duration'));
                 duration = (isNaN(duration)) ? 4.0 : duration;
