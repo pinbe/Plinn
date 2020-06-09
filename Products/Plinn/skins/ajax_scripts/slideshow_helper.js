@@ -1,5 +1,5 @@
 (function() {
-    const TRANSITION_DURATION = 750; // ms
+    const TRANSITION_DURATION = 0.750; //seconds
     let Slideshow = function(container,
                              imgUrls,
                              width,
@@ -13,6 +13,7 @@
         this.currentIndex = 0;
         this.pendingImage = new Image();
         this.pendingImage.addEventListener('load', () => this.onImgLoaded());
+        this.tr_duration = Math.min(TRANSITION_DURATION, duration/2) * 1000;
     };
 
     Slideshow.prototype.start = function() {
@@ -23,7 +24,7 @@
         let prevImg = this.container.querySelector('img');
         if (prevImg)
             d3.select(prevImg)
-                .transition().duration(TRANSITION_DURATION)
+                .transition().duration(this.tr_duration)
                 .style('opacity', '0')
                 .remove();
 
@@ -31,7 +32,7 @@
           .append('img')
           .style('opacity', '0')
           .attr('src', this.pendingImage.src)
-          .transition().duration(TRANSITION_DURATION)
+          .transition().duration(this.tr_duration)
           .style('opacity', '1');
 
         setTimeout(() => this.loadNext(), this.duration*1000);
@@ -54,6 +55,8 @@
                 let width = rect.width;
                 let height = rect.height;
                 let url = elt.getAttribute('data-slideshow_url');
+                let duration = parseFloat(elt.getAttribute('data-slideshow_duration'));
+                duration = (isNaN(duration)) ? 4.0 : duration;
                 let path = url.slice(portal_url().length);
 
                 let req = new XMLHttpRequest();
@@ -64,7 +67,7 @@
                     for (let row of rows) {
                         imgUrls.push(row.getAttribute('link'));
                     }
-                    let sh = new Slideshow(elt, imgUrls, width, height, 4);
+                    let sh = new Slideshow(elt, imgUrls, width, height, duration);
                     sh.start();
                 });
                 req.open('POST', connurl, true);
