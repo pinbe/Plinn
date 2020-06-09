@@ -187,7 +187,7 @@ article .slideshow > img {
 
 .grid-3-cols {
   display: grid;
-  grid-template-columns: 33% 33% auto;
+  grid-template-columns: 33.333333% 33.333333% 33.333333%;
 }
 
 .grid-3-cols > div {
