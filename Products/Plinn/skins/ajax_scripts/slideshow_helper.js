@@ -1,9 +1,10 @@
 (function() {
+    const TRANSITION_DURATION = 750; // ms
     let Slideshow = function(container,
                              imgUrls,
                              width,
                              height,
-                             duration) {
+                             duration /* seconds */) {
         this.container = container;
         this.imgUrls = imgUrls;
         this.width = width;
@@ -19,12 +20,20 @@
     };
 
     Slideshow.prototype.onImgLoaded = function() {
-        let dispImg = this.container.querySelector('img');
-        if (!dispImg) {
-            dispImg = new Image();
-            this.container.appendChild(dispImg);
-        }
-        dispImg.src = this.pendingImage.src;
+        let prevImg = this.container.querySelector('img');
+        if (prevImg)
+            d3.select(prevImg)
+                .transition().duration(TRANSITION_DURATION)
+                .style('opacity', '0')
+                .remove();
+
+        d3.select(this.container)
+          .append('img')
+          .style('opacity', '0')
+          .attr('src', this.pendingImage.src)
+          .transition().duration(TRANSITION_DURATION)
+          .style('opacity', '1');
+
         setTimeout(() => this.loadNext(), this.duration*1000);
     };
 
@@ -32,7 +41,6 @@
         this.currentIndex++;
         if(this.currentIndex >= this.imgUrls.length)
             this.currentIndex = 0;
-        console.log(this.imgUrls[this.currentIndex]);
         this.pendingImage.src = `${this.imgUrls[this.currentIndex]}/getResizedImage?size=${this.width}_${this.height}`;
     };
 
