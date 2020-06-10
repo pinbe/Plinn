@@ -206,7 +206,7 @@ a:hover {
   }
 
   #top-bar {
-    padding: 10px calc((100vw - 1080px)/2);
+    padding: 0 calc((100vw - 1080px)/2);
   }
 
   #site-menu {

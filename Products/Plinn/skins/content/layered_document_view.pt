@@ -21,6 +21,9 @@
           <article tal:attributes="style python:'margin-top: %s' % margin_top if margin_top else None">
             <div tal:content="structure python:here.getLayer(1)"></div>
           </article>
+          <script type="text/javascript"
+                  tal:attributes="src here/slideshow_helper.js/absolute_url"></script>
+
         </div>
       </div>
     </body>

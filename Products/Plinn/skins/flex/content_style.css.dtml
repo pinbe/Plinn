@@ -42,10 +42,10 @@ article {
   padding: 10px 10px 0 10px;
 }
 
-article .slideshow {
+.slideshow {
   position: relative;
 }
-article .slideshow > img {
+.slideshow > img {
   position: absolute;
   top: 50%;
   left: 50%;

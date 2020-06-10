@@ -47,7 +47,7 @@
     };
 
     let connurl = portal_url() + '/ckeditor/filemanager/browser/mac_finder/connectors/plinn/connector'
-    document.querySelectorAll('article.document .slideshow')
+    document.querySelectorAll('div.slideshow')
             .forEach((elt, index, all) => {
                 elt.style.position = 'relative';
                 elt.style.width = elt.getAttribute('data-slideshow_width');

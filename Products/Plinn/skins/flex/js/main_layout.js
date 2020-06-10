@@ -29,9 +29,13 @@
     function stretchLogo() {
         var logo = document.getElementById('portal-logo');
         var natHeight = logo.naturalHeight;
+        var menu = document.getElementById('site-menu');
+        var minTopbarheight = (menu) ?
+            parseInt(window.getComputedStyle(menu).fontSize) :
+            natHeight / 2;
         logo.height = Math.min(natHeight,
-            Math.max(natHeight - getWindowScrollY(),
-            parseInt(window.getComputedStyle(document.getElementById('site-menu')).fontSize)));
+                               Math.max(natHeight - getWindowScrollY(),
+                                        minTopbarheight));
         logo.width = logo.height * (logo.naturalWidth / natHeight);
     }
 
