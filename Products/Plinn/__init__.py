@@ -78,6 +78,7 @@ registerFileExtension('eot', FSFile)
 registerFileExtension('cur', FSFile)
 registerFileExtension('woff', FSFile)
 registerFileExtension('woff2', FSFile)
+registerFileExtension('map', FSFile)
 
 def initialize(registrar) :
     
