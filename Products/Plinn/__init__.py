@@ -79,6 +79,7 @@ registerFileExtension('cur', FSFile)
 registerFileExtension('woff', FSFile)
 registerFileExtension('woff2', FSFile)
 registerFileExtension('map', FSFile)
+registerFileExtension('json', FSFile)
 
 def initialize(registrar) :
     
