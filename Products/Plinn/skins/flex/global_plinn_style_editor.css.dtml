@@ -48,6 +48,10 @@ body {
   transform: unset;
 }
 
+.slideshow .error {
+  color: #f00;
+}
+
 /* CKEditor workarround*/
 .cke_widget_captioned_img {
   display: inline-block;

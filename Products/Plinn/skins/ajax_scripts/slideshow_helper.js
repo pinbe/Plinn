@@ -62,14 +62,19 @@
 
                 let req = new XMLHttpRequest();
                 req.addEventListener('load', () => {
-                    let doc = req.responseXML.documentElement;
-                    let rows = doc.getElementsByTagName('row');
-                    let imgUrls = [];
-                    for (let row of rows) {
-                        imgUrls.push(row.getAttribute('link'));
+                    if (req.status === 200) {
+                        let doc = req.responseXML.documentElement;
+                        let rows = doc.getElementsByTagName('row');
+                        let imgUrls = [];
+                        for (let row of rows) {
+                            imgUrls.push(row.getAttribute('link'));
+                        }
+                        let sh = new Slideshow(elt, imgUrls, width, height, duration);
+                        sh.start();
                     }
-                    let sh = new Slideshow(elt, imgUrls, width, height, duration);
-                    sh.start();
+                    else {
+                        console.error('Slide show HTTP error', req.status, req.statusText);
+                    }
                 });
                 req.open('POST', connurl, true);
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
