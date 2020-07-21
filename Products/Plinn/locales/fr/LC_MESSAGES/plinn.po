@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
 "POT-Creation-Date: Tue Jul 21 10:36:08 2020\n"
-"PO-Revision-Date: 2020-07-21 10:17+0200\n"
+"PO-Revision-Date: 2020-07-21 12:33+0200\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -133,11 +133,11 @@ msgstr "Ne pas faire de suppression"
 
 #: n/skins/content/changes_history_template.pt:25
 msgid "« later revisions"
-msgstr "« révisions précédentes"
+msgstr "« révisions ultérieures"
 
 #: n/skins/content/changes_history_template.pt:29
 msgid "earlier revisions »"
-msgstr "révisions suivantes »"
+msgstr "révisions antérieures »"
 
 #: n/skins/content/changes_history_template.pt:38
 msgid "user"
