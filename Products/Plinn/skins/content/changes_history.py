@@ -1,6 +1,7 @@
 ##parameters=compare=''
 
 from Products.Plinn.utils import getAdapterByInterface
+from Products.Plinn.utils import translate
 
 options = {}
 form = context.REQUEST.form
@@ -40,5 +41,7 @@ else :
 
 options['comparison'] = comparison
 options['batchNavigation'] = batchNavigation
+options['locale_date_fmt_seconds'] = translate('locale_date_fmt_seconds',
+                                               default='%m/%d/%Y %H:%M:%S')
 
 return context.changes_history_template(**options)

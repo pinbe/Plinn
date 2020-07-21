@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Tue Dec 19 02:36:27 2017\n"
-"PO-Revision-Date: 2017-12-19 02:37+0100\n"
+"POT-Creation-Date: Tue Jul 21 10:36:08 2020\n"
+"PO-Revision-Date: 2020-07-21 10:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
 "Language: \n"
@@ -137,28 +137,28 @@ msgstr "The next click over an event will remove it!"
 msgid "Cancel delete mode"
 msgstr "Cancel delete mode"
 
-#: n/skins/content/changes_history_template.pt:24
+#: n/skins/content/changes_history_template.pt:25
 msgid "« later revisions"
 msgstr "« later revisions"
 
-#: n/skins/content/changes_history_template.pt:28
+#: n/skins/content/changes_history_template.pt:29
 msgid "earlier revisions »"
 msgstr "earlier revisions »"
 
-#: n/skins/content/changes_history_template.pt:37
+#: n/skins/content/changes_history_template.pt:38
 msgid "user"
 msgstr "user"
 
-#: n/skins/content/changes_history_template.pt:63
+#: n/skins/content/changes_history_template.pt:64
 #: n/skins/generic/load_revision.py:29
 msgid "nobody"
 msgstr "nobody"
 
-#: n/skins/content/changes_history_template.pt:70
+#: n/skins/content/changes_history_template.pt:71
 msgid "Compare"
 msgstr "Compare"
 
-#: n/skins/content/changes_history_template.pt:72
+#: n/skins/content/changes_history_template.pt:73
 msgid "Please select one revision per column to compare."
 msgstr "Please select one revision per column to compare."
 
@@ -218,7 +218,7 @@ msgstr "Preview"
 #: n/skins/content/folder_edit_form.pt:29
 #: n/skins/custom_content/event_edit_template.pt:115
 #: n/skins/custom_content/event_view.pt:57 n/skins/flex/header_widgets.pt:24
-#: n/skins/flex/header_widgets.pt:90 n/skins/generic/gruf_macros.pt:82
+#: n/skins/flex/header_widgets.pt:92 n/skins/generic/gruf_macros.pt:82
 #: n/skins/generic/gruf_macros.pt:372 n/skins/generic/header_widgets.pt:24
 #: n/skins/generic/header_widgets.pt:85 n/skins/generic/search_form.pt:36
 msgid "Description"
@@ -752,7 +752,7 @@ msgid "login"
 msgstr "login"
 
 #: n/skins/custom_generic/join_template.pt:95
-#: n/skins/custom_generic/login_form.pt:30 n/skins/generic/gruf_macros.pt:326
+#: n/skins/custom_generic/login_form.pt:31 n/skins/generic/gruf_macros.pt:326
 #: n/skins/generic/gruf_macros.pt:456
 msgid "Password"
 msgstr "Password"
@@ -839,43 +839,43 @@ msgstr ""
 "You are logged in outside the portal. You may need to <a href=\"/"
 "manage_zmi_logout\">log out of the Zope management interface</a>."
 
-#: n/skins/custom_generic/login_form.pt:11
+#: n/skins/custom_generic/login_form.pt:12
 msgid "Log in"
 msgstr "Log in"
 
 #. Default: "Login"
-#: n/skins/custom_generic/login_form.pt:22
+#: n/skins/custom_generic/login_form.pt:23
 msgid "user_name"
 msgstr "login"
 
-#: n/skins/custom_generic/login_form.pt:39
+#: n/skins/custom_generic/login_form.pt:40
 msgid "Remember my name."
 msgstr "Remember my name."
 
-#: n/skins/custom_generic/login_form.pt:45
+#: n/skins/custom_generic/login_form.pt:46
 #: n/skins/generic/password_reset_form.py:26
 msgid " Login "
 msgstr " Login "
 
-#: n/skins/custom_generic/login_form.pt:51
+#: n/skins/custom_generic/login_form.pt:52
 msgid "Forgot your login or password?"
 msgstr "Forgot your login or password?"
 
-#: n/skins/custom_generic/login_form.pt:57
+#: n/skins/custom_generic/login_form.pt:58
 msgid "Not a member yet? Register now!"
 msgstr "Not a member yet? Register now!"
 
-#: n/skins/custom_generic/login_form.pt:60
+#: n/skins/custom_generic/login_form.pt:61
 msgid ""
 "Having trouble logging in? Make sure to enable cookies in your web browser."
 msgstr ""
 "Having trouble logging in? Make sure to enable cookies in your web browser."
 
-#: n/skins/custom_generic/login_form.pt:64
+#: n/skins/custom_generic/login_form.pt:65
 msgid "Don't forget to logout or exit your browser when you're done."
 msgstr "Don't forget to logout or exit your browser when you're done."
 
-#: n/skins/custom_generic/login_form.pt:67
+#: n/skins/custom_generic/login_form.pt:68
 msgid ""
 "Setting the 'Remember my name' option will set a cookie with your username, "
 "so that when you next log in, your user name will already be filled in for "
@@ -907,7 +907,7 @@ msgstr ""
 
 #. Default: "Send"
 #: n/skins/custom_generic/mail_password_form.pt:31
-#: n/skins/generic/request_password_reset_template.pt:27
+#: n/skins/generic/request_password_reset_template.pt:28
 msgid " Send "
 msgstr " Send "
 
@@ -1152,7 +1152,7 @@ msgid "Body"
 msgstr "Body"
 
 #: n/skins/custom_generic/talkback_tree.pt:82 n/skins/flex/header_widgets.pt:33
-#: n/skins/flex/header_widgets.pt:178 n/skins/generic/gruf_macros.pt:106
+#: n/skins/flex/header_widgets.pt:180 n/skins/generic/gruf_macros.pt:106
 #: n/skins/generic/gruf_macros.pt:477 n/skins/generic/header_widgets.pt:32
 #: n/skins/generic/header_widgets.pt:173 n/skins/generic/send_email_form.pt:79
 msgid "Validate"
@@ -1209,68 +1209,64 @@ msgstr "By"
 msgid "Comments:"
 msgstr "Comments:"
 
-#: n/skins/flex/header_widgets.pt:34 n/skins/generic/header_widgets.pt:33
-msgid "Edit all metadata"
-msgstr "Edit all metadata"
-
-#: n/skins/flex/header_widgets.pt:56 n/skins/generic/header_widgets.pt:54
+#: n/skins/flex/header_widgets.pt:58 n/skins/generic/header_widgets.pt:54
 msgid "Enable Discussion?"
 msgstr "Enable Discussion?"
 
-#: n/skins/flex/header_widgets.pt:59 n/skins/generic/header_widgets.pt:57
+#: n/skins/flex/header_widgets.pt:61 n/skins/generic/header_widgets.pt:57
 msgid "Default"
 msgstr "Default"
 
-#: n/skins/flex/header_widgets.pt:63 n/skins/generic/header_widgets.pt:60
+#: n/skins/flex/header_widgets.pt:65 n/skins/generic/header_widgets.pt:60
 msgid "Off"
 msgstr "Off"
 
-#: n/skins/flex/header_widgets.pt:67 n/skins/generic/header_widgets.pt:63
+#: n/skins/flex/header_widgets.pt:69 n/skins/generic/header_widgets.pt:63
 msgid "On"
 msgstr "On"
 
-#: n/skins/flex/header_widgets.pt:75 n/skins/generic/gruf_macros.pt:67
+#: n/skins/flex/header_widgets.pt:77 n/skins/generic/gruf_macros.pt:67
 #: n/skins/generic/header_widgets.pt:70
 msgid "Identifier"
 msgstr "Identifier"
 
-#: n/skins/flex/header_widgets.pt:96 n/skins/generic/header_widgets.pt:91
+#: n/skins/flex/header_widgets.pt:98 n/skins/generic/header_widgets.pt:91
 msgid "Subject"
 msgstr "Subject"
 
-#: n/skins/flex/header_widgets.pt:113 n/skins/generic/header_widgets.pt:108
+#: n/skins/flex/header_widgets.pt:115 n/skins/generic/header_widgets.pt:108
 msgid "Contributors"
 msgstr "Contributors"
 
-#: n/skins/flex/header_widgets.pt:120 n/skins/generic/header_widgets.pt:115
+#: n/skins/flex/header_widgets.pt:122 n/skins/generic/header_widgets.pt:115
 msgid "Creation Date"
 msgstr "Creation Date"
 
-#: n/skins/flex/header_widgets.pt:123 n/skins/generic/header_widgets.pt:118
+#: n/skins/flex/header_widgets.pt:125 n/skins/generic/header_widgets.pt:118
 msgid "Last Modified Date"
 msgstr "Last Modified Date"
 
-#: n/skins/flex/header_widgets.pt:135 n/skins/generic/header_widgets.pt:130
+#: n/skins/flex/header_widgets.pt:137 n/skins/generic/header_widgets.pt:130
 msgid "Effective Date"
 msgstr "Effective Date"
 
-#: n/skins/flex/header_widgets.pt:146 n/skins/generic/header_widgets.pt:141
+#: n/skins/flex/header_widgets.pt:148 n/skins/generic/header_widgets.pt:141
 msgid "Expiration Date"
 msgstr "Expiration Date"
 
-#: n/skins/flex/header_widgets.pt:152 n/skins/generic/header_widgets.pt:147
+#: n/skins/flex/header_widgets.pt:154 n/skins/generic/header_widgets.pt:147
 msgid "Format"
 msgstr "Format"
 
-#: n/skins/flex/header_widgets.pt:160 n/skins/generic/header_widgets.pt:155
+#: n/skins/flex/header_widgets.pt:162 n/skins/generic/header_widgets.pt:155
 msgid "Language"
 msgstr "Language"
 
-#: n/skins/flex/header_widgets.pt:168 n/skins/generic/header_widgets.pt:163
+#: n/skins/flex/header_widgets.pt:170 n/skins/generic/header_widgets.pt:163
 msgid "Rights"
 msgstr "Rights"
 
-#: n/skins/flex/header_widgets.pt:179 n/skins/generic/header_widgets.pt:174
+#: n/skins/flex/header_widgets.pt:181 n/skins/generic/header_widgets.pt:174
 msgid "Edit standard metadata"
 msgstr "Edit standard metadata"
 
@@ -1347,7 +1343,7 @@ msgstr "Month"
 msgid "Next"
 msgstr "Next"
 
-#. Default: "modified on ${date} at ${time} – creator: ${creator}"
+#. Default: "modified on ${date} at ${time}\302\240\342\200\223\302\240creator: ${creator}"
 #: n/skins/generic/content_byline.pt:17
 msgid "byline"
 msgstr "modified on ${date} at ${time} – creator: ${creator}"
@@ -1569,6 +1565,10 @@ msgstr "collapse all"
 #: n/skins/generic/gruf_macros.pt:552
 msgid "&lt;&lt; Back to member properties"
 msgstr "&lt;&lt; Back to member properties"
+
+#: n/skins/generic/header_widgets.pt:33
+msgid "Edit all metadata"
+msgstr "Edit all metadata"
 
 #: n/skins/generic/last_member_logs.pt:19
 msgid "Last member login times"
@@ -1800,11 +1800,11 @@ msgstr "Send"
 msgid "Request for resetting password sent to your contact email."
 msgstr "Request for resetting password sent to your contact email."
 
-#: n/skins/generic/request_password_reset_template.pt:11
+#: n/skins/generic/request_password_reset_template.pt:12
 msgid "Password reset"
 msgstr "Password reset"
 
-#: n/skins/generic/request_password_reset_template.pt:12
+#: n/skins/generic/request_password_reset_template.pt:13
 msgid ""
 "Enter your email or your login below and click on the \"Send\" button. For "
 "security reasons, we store your password encrypted, and cannot mail it to "
@@ -1814,7 +1814,7 @@ msgstr ""
 "security reasons, we store your password encrypted, and cannot mail it to "
 "you. You will receive an email with a link to reset your password."
 
-#: n/skins/generic/request_password_reset_template.pt:21
+#: n/skins/generic/request_password_reset_template.pt:22
 msgid ""
 "If this will not work for you (for example, if you forgot your login or your "
 "email address has changed), contact us at ${admin_email}."
@@ -1971,7 +1971,7 @@ msgid "Found 1 item."
 msgstr "Found 1 item."
 
 #: n/skins/generic/search_results_template.pt:28
-#: n/skins/photo_theme/search.pt:39
+#: n/skins/photo_theme/search.pt:40
 msgid "Found ${count} items."
 msgstr "Found ${count} items."
 
@@ -1988,7 +1988,7 @@ msgid "Title:"
 msgstr "Title:"
 
 #: n/skins/generic/search_results_template.pt:89
-#: n/skins/photo_theme/search.pt:45
+#: n/skins/photo_theme/search.pt:47
 msgid "There are no items matching your specified criteria."
 msgstr "There are no items matching your specified criteria."
 
@@ -3014,6 +3014,10 @@ msgstr "Properties"
 
 msgid "Configure portal"
 msgstr "Configure portal"
+
+#. Default: "%m/%d/%Y %H:%M:%S"
+msgid "locale_date_fmt_seconds"
+msgstr "%m/%d/%Y %H:%M:%S"
 
 #~ msgid "Registration option"
 #~ msgstr "Registration option"

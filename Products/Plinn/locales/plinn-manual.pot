@@ -844,3 +844,7 @@ msgstr ""
 msgid "Configure portal"
 msgstr ""
 
+
+#. Default: "%m/%d/%Y %H:%M:%S"
+msgid "locale_date_fmt_seconds"
+msgstr ""

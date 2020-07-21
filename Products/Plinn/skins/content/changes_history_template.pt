@@ -10,7 +10,8 @@
   <body>
     <div metal:fill-slot="main" tal:omit-tag=""
          tal:define="entries options/entries;
-                     b_start options/batchNavigation/current|nothing"
+                     b_start options/batchNavigation/current|nothing;
+                     locale_date_fmt_seconds options/locale_date_fmt_seconds"
          i18n:domain="plinn">
       <form tal:condition="python:entries is not None"
             tal:attributes="action string:${here/absolute_url}/changes_history;"
@@ -48,7 +49,7 @@
                                      checked python:entry['key'] == options['rightkey']" />
             </td>
             <td>
-              <a tal:content="python:entry['time'].strftime(locale_date_fmt)"
+              <a tal:content="python:entry['time'].strftime(locale_date_fmt_seconds)"
                  tal:attributes="href python:'%s/load_revision/%s?pos:int=%d' % (here.absolute_url(),
                                                                                  entry['key'],
                                                                                  b_start + repeat['entry'].index)">
@@ -79,10 +80,10 @@
         <table class="comparison" cellspacing="0">
           <tr>
             <th width="49%"
-                tal:content="python:options['comparison']['leftDate'].strftime(locale_date_fmt)">left</th>
+                tal:content="python:options['comparison']['leftDate'].strftime(locale_date_fmt_seconds)">left</th>
             <td width="10" class="mid"><br/></td>
             <th width="49%"
-                tal:content="python:options['comparison']['rightDate'].strftime(locale_date_fmt)">right</th>
+                tal:content="python:options['comparison']['rightDate'].strftime(locale_date_fmt_seconds)">right</th>
           </tr>
           <tbody tal:repeat="g options/comparison/diff">
             <tr tal:repeat="i g" tal:attributes="class i/tag">

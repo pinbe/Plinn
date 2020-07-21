@@ -202,7 +202,7 @@ security.declarePublic('Message')
 Message = MessageFactory('plinn')
 
 security.declarePublic('translate')
-def translate(message, context=None):
+def translate(message, context=None, default=None):
     """ Translate i18n message.
     """
     if isinstance(message, Exception):
@@ -214,7 +214,7 @@ def translate(message, context=None):
         request = getRequest()
     else :
         request = context.REQUEST
-    return i18ntranslate(message, domain='plinn', context=request)
+    return i18ntranslate(message, domain='plinn', context=request, default=default)
 
 security.declarePublic('desacc')
 desacc = Utf8Utils.desacc
