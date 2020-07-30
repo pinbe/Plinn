@@ -168,6 +168,13 @@ var shake;
             this.submitButton = target;
             evt.stopPropagation();
         }
+        else if (target.tagName === 'I') {
+            var parent = target.parentElement;
+            if(parent.tagName === 'BUTTON' && parent.type === 'submit') {
+                this.submitButton = parent;
+                evt.stopPropagation();
+            }
+        }
     };
 
     FormManager.prototype.replaceElementByField = function(evt) {
