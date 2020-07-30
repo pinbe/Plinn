@@ -8,7 +8,7 @@
   <link metal:define-slot="css_slot" tal:replace="nothing" />
   <script type="text/javascript" metal:define-slot="javascript_head_slot" tal:replace="nothing"></script>
 
-  <div>
+  <div id="content-wrapper">
     <div metal:define-slot="main_no_tabs" tal:omit-tag="">
       <div tal:condition="specialCtxHeader" tal:content="structure specialCtxHeader">special context header</div>
       <div id="ContentTabs" tal:condition="not:specialCtxHeader">
