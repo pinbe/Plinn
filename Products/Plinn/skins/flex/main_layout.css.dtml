@@ -22,6 +22,10 @@ a:hover {
   color: &dtml-linkHoverColor;;
 }
 
+*:focus {
+  outline: none;
+}
+
 #body-wrapper {
   position: relative;
   height: 100vh;
