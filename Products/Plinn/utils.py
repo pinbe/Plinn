@@ -27,7 +27,7 @@ import re
 from random import randrange
 from Acquisition import aq_base
 from quopri import encodestring
-from json import dumps as json_dumps
+from json import dumps as json_dumps, loads as json_loads
 from zope.globalrequest import getRequest
 from AccessControl.PermissionRole import rolesForPermissionOn
 from AccessControl import ModuleSecurityInfo
@@ -50,6 +50,7 @@ _marker = []
 security = ModuleSecurityInfo( 'Products.Plinn.utils' )
 
 security.declarePublic('json_dumps')
+security.declarePublic('json_loads')
 
 security.declarePublic('thisObjectComeFromPortalSkin')
 def thisObjectComeFromPortalSkin(ob, portal=None):
