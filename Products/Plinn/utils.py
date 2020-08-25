@@ -22,28 +22,29 @@
 
 """
 
-import string
 import re
-from random import randrange
-from Acquisition import aq_base
+import string
+from json import dumps as json_dumps
 from quopri import encodestring
-from json import dumps as json_dumps, loads as json_loads
-from zope.globalrequest import getRequest
-from AccessControl.PermissionRole import rolesForPermissionOn
+from random import randrange
+
 from AccessControl import ModuleSecurityInfo
 from AccessControl import getSecurityManager
+from AccessControl.PermissionRole import rolesForPermissionOn
 from AccessControl.User import UnrestrictedUser
-from OFS.CopySupport import _cb_decode, _cb_encode, cookie_path
-from Products.CMFCore.utils import getToolByName, getUtilityByInterfaceName
-from Products.CMFCore.exceptions import BadRequest
-from Products.Utf8Splitter.Utf8Splitter import Utf8Utils
+from Acquisition import aq_base
 from Globals import REPLACEABLE, NOT_REPLACEABLE, UNIQUE
+from OFS.CopySupport import _cb_decode, _cb_encode, cookie_path
+from Products.CMFCore.exceptions import BadRequest
+from Products.CMFCore.utils import getToolByName, getUtilityByInterfaceName
+from Products.Utf8Splitter.Utf8Splitter import Utf8Utils
+from zope.component import queryAdapter
+from zope.component.interfaces import ComponentLookupError
+from zope.dottedname.resolve import resolve as resolve_dotted_name
+from zope.globalrequest import getRequest
 from zope.i18n import translate as i18ntranslate
 from zope.i18n.interfaces import IUserPreferredLanguages
 from zope.i18nmessageid import MessageFactory
-from zope.component.interfaces import ComponentLookupError
-from zope.dottedname.resolve import resolve as resolve_dotted_name
-from zope.component import queryAdapter
 
 _marker = []
 
@@ -231,12 +232,12 @@ def getPreferredLanguages(context):
     return []
 
 security.declarePublic('getBestTranslationLanguage')
-def getBestTranslationLanguage(langs, context):
+def getBestTranslationLanguage(langs, context=None):
     """ returns best translation language according
         to available languages (param langs)
         and user preferences (retrieves by context)
     """
-    request = getattr(context, 'REQUEST', None)
+    request = getattr(context, 'REQUEST', getRequest())
     if request :
         negociator = getUtilityByInterfaceName('zope.i18n.interfaces.INegotiator')
         return negociator.getLanguage(langs, request) or langs[0]
