@@ -24,7 +24,7 @@
 
 import re
 import string
-from json import dumps as json_dumps
+from json import dumps as json_dumps, json_loads
 from quopri import encodestring
 from random import randrange
 
