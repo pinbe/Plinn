@@ -41,6 +41,8 @@ highLightColor:string=#ff9c00
 messageBackgroundColor:string=#fff
 messageBorderColor:string=#fff
 
+defaultShadow:string=6px 6px 15px 0 rgba(0,0,0, 0.2)
+
 weekTableFontHeight:int=10
 weekTableGridStep:int=10
 todayBackgroundColor:string=#f0f0f0

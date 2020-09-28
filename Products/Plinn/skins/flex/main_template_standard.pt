@@ -60,9 +60,6 @@
                           class python:'pt-%s' % here.getPortalTypeName().replace(' ', '-').lower()">
       <div id="site-edit-panel"
            metal:use-macro="main_macros/site_edit_panel"></div>
-      <div id="fixed-content">
-        <div metal:define-slot="fixed_content_top"></div>
-      </div>
       <div id="body-wrapper"
            metal:define-slot="body"
            tal:define="isManager python:member.has_role(['photographe', 'Manager']);
@@ -73,6 +70,10 @@
              metal:use-macro="here/topbar_macros/macros/top_bar">top bar</div>
         <div id="content-outer">
           <div id="content-wrapper" tal:attributes="class content_wrapper_class|nothing">
+            <div id="status-message"
+                 tal:condition="request/portal_status_message|nothing"
+                 tal:content="request/portal_status_message"
+                 i18n:translate=""></div>
             <div metal:define-slot="main_no_tabs" tal:omit-tag="">
               <div class="edit-controls">
                 <div tal:condition="specialCtxHeader" tal:content="structure specialCtxHeader">special context header</div>

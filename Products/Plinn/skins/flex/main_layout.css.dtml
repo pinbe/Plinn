@@ -166,6 +166,24 @@ a:hover {
   width: 100%;
 }
 
+#status-message {
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid &dtml-messageBorderColor;;
+  background: &dtml-messageBackgroundColor;;
+  box-shadow: &dtml-defaultShadow;;
+  margin-bottom: 6px;
+}
+
+#status-message::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f129"; /* fas fa-info */
+  color: &dtml-highLightColor;;
+  padding: 0 1rem;
+  font-size: 1.5em;
+}
+
 #main-footer {
   background: &dtml-backgroundColor;;
   text-align: center;
