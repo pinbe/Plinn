@@ -386,4 +386,12 @@ a:hover {
   display : none;
 }
 
+.rel-anchor {
+  position: relative;
+}
+
+.rel-anchor > * {
+  position: absolute;
+}
+
 /* </dtml-with> */
