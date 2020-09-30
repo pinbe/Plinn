@@ -11,22 +11,23 @@ mtool = getToolByName(context, 'portal_membership')
 utool = getToolByName(context, 'portal_url')
 
 if REQUEST :
-	kw.update(REQUEST.form)
-	
+    kw.update(REQUEST.form)
+
 try :
-	target = context.getParentNode().getActionInfo('object/view')['url']
+    target = context.getActionInfo('object/view')['url']
 except ValueError :
-	target = context.getActionInfo('object/view')['url']
+    target = context.getParentNode().getActionInfo('object/view')['url']
 
 res = wftool.doActionFor(context, workflow_action, **kw)
 if res :
-	# by (Plinn) convention
-	# occurs when a ObjectMoved is raised
-	kw.update({'syncFragments' : ['Breadcrumbs', 'rightCell']})
-	return REQUEST.RESPONSE.redirect('%s?%s' % (res.absolute_url(), mq(**kw)))
-
+    # by (Plinn) convention
+    # occurs when a ObjectMoved is raised
+    kw.update({'syncFragments' : ['Breadcrumbs', 'rightCell']})
+    return REQUEST.RESPONSE.redirect('%s?%s' % (res.absolute_url(), mq(**kw)))
 
 kw.update({'portal_status_message' : 'Status changed.'})
-try : context.id # touch something in context
-except zExceptions_Unauthorized : target = utool()
+try :
+    context.id  # touch something in context
+except zExceptions_Unauthorized :
+    target = utool()
 return REQUEST.RESPONSE.redirect('%s?%s' % (target, mq(**kw)))
