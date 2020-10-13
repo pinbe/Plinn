@@ -2,6 +2,7 @@
 
 .listing {
   font-size: &dtml-fontSmallSize;;
+  border-collapse: collapse;
 }
 
 .listing th {
