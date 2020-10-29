@@ -160,7 +160,7 @@ class DelegatedCatalog(Catalog) :
             try : plan.remove(i)
             except ValueError : pass
         c = SolrConnection(self.zcat.solr_url)
-        q =' AND '.join(['%s:(%s)' % item for item in delegatedQuery.items()])
+        q =' AND '.join(['%s:(%s)' % item for item in delegatedQuery.items() if item[1]])
         resp = c.query(q, fields='id', rows=len(self))
         c.close()
         return IISet(filter(None, [self.uids.get(r['id']) for r in resp.results])) 
