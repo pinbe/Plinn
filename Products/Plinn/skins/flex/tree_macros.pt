@@ -9,18 +9,21 @@
     <div  metal:define-macro="tree"
              tal:omit-tag=""
              i18n:domain="plinn">
-      <div tal:define="treeMetaTypes python:['Huge Plinn Folder', 'Portfolio', 'Topic'];
+      <div tal:define="
+              treeMetaTypes python:['Huge Plinn Folder', 'Portfolio', 'Topic'];
               treeDict   python:portal_object.make_nav_tree(rootObject=treeRoot);
               tree treeDict/tree;
               rows treeDict/rows;
               height tree/height;
               rootNode python:rows.pop(0);
               portal_url here/portal_url"
-               tal:condition="rows"
-               tal:omit-tag="">
+           tal:condition="rows"
+           tal:omit-tag="">
 
         <div class="tree-view"
-                 tal:attributes="data-root-id rootNode/id">
+             tal:attributes="data-root-id rootNode/id;
+                             data-filter python:','.join(treeMetaTypes);
+                             data-tree_pre tree/tree_pre">
           <div tal:repeat="row rows"
                    tal:attributes="style python:'padding-left: %dpx' % ((row.depth - 1) * 16 + 5);
                                    data-depth python:row.depth;
@@ -42,15 +45,6 @@
                   ></a></span>
           </div>
         </div>
-        <script type="text/javascript"
-                 tal:attributes="src string:$portal_url/js/tree.js"></script>
-        <script type="text/javascript"
-                 tal:content="python:'''
-                tm = new TreeMaker('%s .tree-view', '%s', '%s');
-                ''' % (treeRootSelector,
-                ','.join(treeMetaTypes),
-                tree.tree_pre)"></script>
-
       </div>
     </div>
   </body>

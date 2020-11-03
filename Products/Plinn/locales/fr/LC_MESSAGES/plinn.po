@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Tue Jul 21 10:36:08 2020\n"
-"PO-Revision-Date: 2020-07-21 12:33+0200\n"
+"POT-Creation-Date: Tue Nov  3 17:37:42 2020\n"
+"PO-Revision-Date: 2020-11-03 17:38+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -966,7 +966,8 @@ msgid "Information"
 msgstr "Information"
 
 #: n/skins/custom_generic/main_template_standard.pt:112
-#: n/skins/custom_generic/talkback_tree.pt:64 n/skins/flex/widgets.pt:18
+#: n/skins/custom_generic/talkback_tree.pt:64
+#: n/skins/flex/main_template_standard.pt:73 n/skins/flex/widgets.pt:18
 #: n/skins/generic/main_template_ajax.pt:12 n/skins/generic/widgets.pt:17
 #: n/skins/photo_theme/main_template_standard.pt:120
 #: n/skins/photo_theme/search_results_macros.pt:38
@@ -1284,6 +1285,10 @@ msgstr "Racine du site"
 #: n/skins/photo_theme/main_template_macros.pt:91
 msgid "You are here:"
 msgstr "Vous êtes ici :"
+
+#: n/skins/flex/topbar_macros.pt:34
+msgid "Search…"
+msgstr "Rechercher…"
 
 #: n/skins/flex/widgets.pt:37 n/skins/generic/widgets.pt:32
 #: n/skins/generic/widgets.pt:33

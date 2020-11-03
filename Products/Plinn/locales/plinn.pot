@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Tue Jul 21 10:36:08 2020\n"
+"POT-Creation-Date: Tue Nov  3 17:37:42 2020\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -909,6 +909,7 @@ msgstr ""
 
 #: n/skins/custom_generic/main_template_standard.pt:112
 #: n/skins/custom_generic/talkback_tree.pt:64
+#: n/skins/flex/main_template_standard.pt:73
 #: n/skins/flex/widgets.pt:18
 #: n/skins/generic/main_template_ajax.pt:12
 #: n/skins/generic/widgets.pt:17
@@ -1218,6 +1219,10 @@ msgstr ""
 #: n/skins/generic/main_template_macros.pt:80
 #: n/skins/photo_theme/main_template_macros.pt:91
 msgid "You are here:"
+msgstr ""
+
+#: n/skins/flex/topbar_macros.pt:34
+msgid "Search\342\200\246"
 msgstr ""
 
 #: n/skins/flex/widgets.pt:37

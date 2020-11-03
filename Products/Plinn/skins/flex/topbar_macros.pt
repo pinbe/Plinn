@@ -9,7 +9,8 @@
 
   <body>
     <div metal:define-macro="top_bar"
-            id="top-bar">
+            id="top-bar"
+            i18n:domain="plinn">
       <div id="top-row">
         <a tal:attributes="href portal_url;
                 title portal_object/title_or_id">
@@ -27,6 +28,17 @@
           <a tal:repeat="a menu"
                    tal:content="a/title" tal:attributes="href a/url">Site Menu</a>
         </div>
+        <div>
+          <span class="searchfield-wrapper">
+            <i class="fas fa-search"></i>
+            <i class="fa fa-spinner fa-spin fa-fw" style="animation-duration: 1s; display: none"></i>
+            <input type="text"
+                   name="q"
+                   placeholder="Search…"
+                   autocomplete="off"
+                   i18n:attributes="placeholder"/>
+          </span>
+        </div>
         <div id="user-menu"
                  tal:define="uname python:member.getMemberFullName(nameBefore=0) if not isAnon else ''">
         <span>
@@ -43,22 +55,22 @@
         <script type="text/javascript">
           (function() {
             d3.select('#user-menu i')
-              .on('click',
-                  function() {
-                    var menu = d3.select('#user-menu ul').node();
-                    var body = d3.select('body');
-                    if(menu.classList.contains('hidden')) {
-                      menu.classList.remove('hidden');
-                      d3.event.stopPropagation();
-                      body.on('click.cancel-user-menu',
-                              function() {
-                                menu.classList.add('hidden');
-                                body.on('click.cancel-user-menu', null);
+                    .on('click',
+                            function() {
+                              var menu = d3.select('#user-menu ul').node();
+                              var body = d3.select('body');
+                              if(menu.classList.contains('hidden')) {
+                                menu.classList.remove('hidden');
+                                d3.event.stopPropagation();
+                                body.on('click.cancel-user-menu',
+                                        function() {
+                                          menu.classList.add('hidden');
+                                          body.on('click.cancel-user-menu', null);
+                                        }
+                                );
                               }
-                      );
-                    }
-                  }
-              )
+                            }
+                    )
           }());
         </script>
       </div>

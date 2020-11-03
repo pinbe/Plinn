@@ -1,0 +1,7 @@
+Products/Plinn/ts/node_modules/*
+jsbuild
+*.pyc
+.DS_Store
+.idea
+*.egg-info
+*~

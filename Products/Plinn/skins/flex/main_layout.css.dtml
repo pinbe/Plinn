@@ -394,4 +394,32 @@ a:hover {
   position: absolute;
 }
 
+.searchfield-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.searchfield-wrapper input {
+  outline: none;
+  border: 2px solid #e0e1e0 !important;
+  border-radius: 10px;
+  width: 300px;
+  z-index: 2;
+}
+
+.searchfield-wrapper input {
+  background: #ffffffb5 !important;
+  font-size: 14px;
+  padding-left: 10px;
+  padding-right: 25px;
+  position: relative;
+}
+
+.searchfield-wrapper i {
+  z-index: 1;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+}
+
 /* </dtml-with> */

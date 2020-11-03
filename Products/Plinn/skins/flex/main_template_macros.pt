@@ -40,8 +40,6 @@ global specialCtxHeader options/specialCtxHeader|nothing"
          tal:condition="python:member.has_role(['photographe', 'Manager'])"
          tal:omit-tag=""
          i18n:domain="plinn">
-      <script type="text/javascript"
-              tal:attributes="src string:$portal_url/js/site_panel.js"></script>
       <div id="site-edit-panel"
            tal:define="shift python:300 if request.cookies.get('spo')=='1' else 0"
            tal:attributes="style python:'left: %dpx' % (-300 + shift)">
@@ -73,14 +71,6 @@ global specialCtxHeader options/specialCtxHeader|nothing"
         </ul>
 
       </div>
-      <script type="text/javascript">
-        window.addEventListener('load',
-          function() {
-            new SitePanel('#site-edit-panel', '#body-wrapper');
-          }
-        );
-      </script>
-
     </div>
 
 
