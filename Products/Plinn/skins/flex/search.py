@@ -152,4 +152,4 @@ if homeDir and results :
     options['queryAsHiddenInputs'] = make_hidden_input(**args)
 else :
     options['canSaveAsTopic'] = False
-return context.search_results_template(**options)
+return context.common_search_results_template(**options)
