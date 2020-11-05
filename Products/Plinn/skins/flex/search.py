@@ -3,6 +3,7 @@ from Products.CMFCore.utils import getToolByName
 from ZTUtils import make_query as mq
 from ZTUtils import make_hidden_input
 from Products.Plinn.utils import translate
+from Products.Plinn import Batch
 
 
 def _(message) : return translate(message, context).encode('utf-8')
@@ -123,8 +124,8 @@ def makeColumnHeader(indexName) :
 
 options['makeColumnHeader'] = makeColumnHeader
 results = ctool(**query)
-options['results'] = results
 options['resultsLength'] = len(results)
+
 if homeDir and results :
     options['canSaveAsTopic'] = True
     args = query.copy()
@@ -152,4 +153,17 @@ if homeDir and results :
     options['queryAsHiddenInputs'] = make_hidden_input(**args)
 else :
     options['canSaveAsTopic'] = False
-return context.common_search_results_template(**options)
+
+options['batch'] = Batch(results,
+                         context.default_batch_size,
+                         form.get('b_start', 0),
+                         orphan=1,
+                         quantumleap=1)
+
+photo_search_mode = len(query['portal_type']) == 1 and query['portal_type'][0] == 'Photo'
+
+if photo_search_mode :
+    options['brains_infos'] = context.getPhotoBrainsInfos(results)
+    return context.photo_search_results_template(**options)
+else :
+    return context.common_search_results_template(**options)

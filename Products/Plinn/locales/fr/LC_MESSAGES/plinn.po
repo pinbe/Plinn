@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plinn 2.0\n"
-"POT-Creation-Date: Tue Nov  3 17:37:42 2020\n"
-"PO-Revision-Date: 2020-11-03 17:38+0100\n"
+"POT-Creation-Date: Thu Nov  5 15:54:10 2020\n"
+"PO-Revision-Date: 2020-11-05 15:55+0100\n"
 "Last-Translator:  Benoît PIN\n"
 "Language-Team: CRI http://cri.ensmp.fr\n"
 "Language: \n"
@@ -248,6 +248,7 @@ msgstr "Ajouter"
 #: n/skins/content/topic_edit_template.pt:26
 #: n/skins/custom_content/document_edit_template.pt:23
 #: n/skins/custom_content/event_edit_template.pt:135
+#: n/skins/flex/common_search_results_template.pt:85
 #: n/skins/generic/search_results_template.pt:87 n/www/manage_solr.pt:20
 msgid "Save"
 msgstr "Enregistrer"
@@ -1211,6 +1212,53 @@ msgstr "Par"
 msgid "Comments:"
 msgstr "Commentaires :"
 
+#: n/skins/flex/common_search_results_template.pt:13
+#: n/skins/generic/search_results_template.pt:16
+#: n/skins/photo_theme/search.pt:14
+msgid "Search Results"
+msgstr "Résultats de la recherche"
+
+#: n/skins/flex/common_search_results_template.pt:20
+#: n/skins/flex/photo_search_results_template.pt:24
+#: n/skins/generic/search_results_template.pt:23
+#: n/skins/photo_theme/search.pt:33
+msgid "Found ${count} ${item_s_match} '${text}'."
+msgstr "${count} ${item_s_match} « ${text} »"
+
+#: n/skins/flex/common_search_results_template.pt:24
+#: n/skins/generic/search_results_template.pt:27
+#: n/skins/photo_theme/search.pt:38
+msgid "Found 1 item."
+msgstr "1 élément trouvé."
+
+#: n/skins/flex/common_search_results_template.pt:25
+#: n/skins/generic/search_results_template.pt:28
+#: n/skins/photo_theme/search.pt:40
+msgid "Found ${count} items."
+msgstr "${count} éléments trouvés."
+
+#: n/skins/flex/common_search_results_template.pt:43
+#: n/skins/generic/search_results_template.pt:45
+msgid "Last modified"
+msgstr "Dernière modification"
+
+#: n/skins/flex/common_search_results_template.pt:81
+#: n/skins/generic/search_results_template.pt:83
+msgid "Save this search as topic"
+msgstr "Enregistrer cette recherche dans un thème"
+
+#: n/skins/flex/common_search_results_template.pt:82
+#: n/skins/generic/search_results_template.pt:84
+msgid "Title:"
+msgstr "Titre :"
+
+#: n/skins/flex/common_search_results_template.pt:87
+#: n/skins/flex/photo_search_results_template.pt:45
+#: n/skins/generic/search_results_template.pt:89
+#: n/skins/photo_theme/search.pt:47
+msgid "There are no items matching your specified criteria."
+msgstr "Aucun élément ne correspond aux critères de recherche."
+
 #: n/skins/flex/header_widgets.pt:58 n/skins/generic/header_widgets.pt:54
 msgid "Enable Discussion?"
 msgstr "Activer les commentaires ?"
@@ -1272,21 +1320,34 @@ msgstr "Droits"
 msgid "Edit standard metadata"
 msgstr "Éditer les métadonnées standard"
 
-#: n/skins/flex/main_template_macros.pt:49
+#: n/skins/flex/main_template_macros.pt:47
 msgid "Edit site"
 msgstr "Éditer le site"
 
-#: n/skins/flex/main_template_macros.pt:59
+#: n/skins/flex/main_template_macros.pt:57
 msgid "Site root"
 msgstr "Racine du site"
 
-#: n/skins/flex/main_template_macros.pt:90
+#: n/skins/flex/main_template_macros.pt:80
 #: n/skins/generic/main_template_macros.pt:80
 #: n/skins/photo_theme/main_template_macros.pt:91
 msgid "You are here:"
 msgstr "Vous êtes ici :"
 
-#: n/skins/flex/topbar_macros.pt:34
+#: n/skins/flex/photo_search_results_template.pt:28
+msgid "Found 1 photo."
+msgstr "1 photo trouvée."
+
+#: n/skins/flex/photo_search_results_template.pt:32
+msgid "Found ${count} photos."
+msgstr "${count} photos trouvées."
+
+#: n/skins/flex/search.py:117 n/skins/flex/search.py:121
+#: n/skins/generic/search.py:116 n/skins/generic/search.py:120
+msgid "ascending sort"
+msgstr "tri croissant"
+
+#: n/skins/flex/topbar_macros.pt:36
 msgid "Search…"
 msgstr "Rechercher…"
 
@@ -1862,10 +1923,6 @@ msgstr "révision actuelle"
 msgid "next revision →"
 msgstr "révision suivante →"
 
-#: n/skins/generic/search.py:109 n/skins/generic/search.py:113
-msgid "ascending sort"
-msgstr "tri croissant"
-
 #: n/skins/generic/search_form.pt:11
 msgid "Search inside ${title}"
 msgstr "Rechercher dans ${title}"
@@ -1976,43 +2033,6 @@ msgstr ""
 #: n/skins/generic/search_form.pt:124
 msgid " Search "
 msgstr "Rechercher"
-
-#: n/skins/generic/search_results_template.pt:16
-#: n/skins/photo_theme/search.pt:14
-msgid "Search Results"
-msgstr "Résultats de la recherche"
-
-#: n/skins/generic/search_results_template.pt:23
-#: n/skins/photo_theme/search.pt:33
-msgid "Found ${count} ${item_s_match} '${text}'."
-msgstr "${count} ${item_s_match} « ${text} »"
-
-#: n/skins/generic/search_results_template.pt:27
-#: n/skins/photo_theme/search.pt:38
-msgid "Found 1 item."
-msgstr "1 élément trouvé."
-
-#: n/skins/generic/search_results_template.pt:28
-#: n/skins/photo_theme/search.pt:40
-msgid "Found ${count} items."
-msgstr "${count} éléments trouvés."
-
-#: n/skins/generic/search_results_template.pt:45
-msgid "Last modified"
-msgstr "Dernière modification"
-
-#: n/skins/generic/search_results_template.pt:83
-msgid "Save this search as topic"
-msgstr "Enregistrer cette recherche dans un thème"
-
-#: n/skins/generic/search_results_template.pt:84
-msgid "Title:"
-msgstr "Titre :"
-
-#: n/skins/generic/search_results_template.pt:89
-#: n/skins/photo_theme/search.pt:47
-msgid "There are no items matching your specified criteria."
-msgstr "Aucun élément ne correspond aux critères de recherche."
 
 #: n/skins/generic/send_email_form.pt:25
 msgid "Send an email"
@@ -3011,6 +3031,12 @@ msgstr "éléments correspondent à"
 
 msgid "item matching"
 msgstr "élément correspond à"
+
+msgid "photos matching"
+msgstr "photos correspondent à"
+
+msgid "photo matching"
+msgstr "photo correspond à"
 
 msgid "mail_to"
 msgstr "À"

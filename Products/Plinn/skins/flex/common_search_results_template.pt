@@ -6,17 +6,14 @@
   </head>
   <body>
     <div metal:fill-slot="main_no_tabs" i18n:domain="plinn" tal:omit-tag=""
-         tal:define="b_start python:0;b_start request/b_start | b_start;
-                          results options/results;
-                          stext request/SearchableText|nothing;
-                          resultsLength options/resultsLength;
-                          Batch python:modules['Products.Plinn'].Batch;
-                          batch python:Batch(results, here.default_batch_size, b_start, orphan=1, quantumleap=1);
-                          mch nocall:options/makeColumnHeader">
+         tal:define="stext request/SearchableText|nothing;
+                     resultsLength options/resultsLength;
+                     batch options/batch;
+                     mch nocall:options/makeColumnHeader">
       <h2 i18n:translate="">Search Results</h2>
       <div tal:condition="resultsLength" tal:omit-tag="">
         <p i18n:translate=""
-         tal:condition="stext">Found <span tal:replace="python:len(results)"
+         tal:condition="stext">Found <span tal:replace="resultsLength"
          i18n:name="count">100</span> <span i18n:name="item_s_match"
          tal:content="python:resultsLength > 1 and 'items matching' or 'item matching'"
          i18n:translate=""
@@ -29,7 +26,8 @@
       </div>
       </div>
       <div metal:use-macro="here/batch_macros/macros/navigation">batch navigation</div>
-      <table class="listing" tal:condition="results" cellspacing="0">
+      <table class="listing"
+             tal:condition="resultsLength">
         <thead>
           <tr>
             <th width="16"><br/></th>
@@ -86,7 +84,7 @@
         <div tal:replace="structure options/queryAsHiddenInputs"></div>
         <input type="submit" name="addTopic" value="Save" i18n:attributes="value"/>
       </form>
-      <p tal:condition="not:results" i18n:translate="">There are no items matching your specified criteria.</p>
+      <p tal:condition="not:resultsLength" i18n:translate="">There are no items matching your specified criteria.</p>
     </div>
   </body>
 </html>

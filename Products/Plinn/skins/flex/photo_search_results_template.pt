@@ -1,0 +1,51 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+   metal:use-macro="here/main_template/macros/master">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+  </head>
+  <body>
+    <div metal:fill-slot="main_no_tabs"
+       i18n:domain="plinn"
+       tal:omit-tag=""
+       tal:define="stext request/SearchableText|nothing;
+                   resultsLength options/resultsLength;
+                   batch options/batch;">
+      <div tal:condition="resultsLength">
+        <div tal:condition="resultsLength" tal:omit-tag="">
+          <p tal:condition="stext"
+             i18n:translate="">Found
+            <span tal:replace="resultsLength"
+                  i18n:name="count">100</span>
+            <span i18n:name="item_s_match"
+                  tal:content="python:resultsLength > 1 and 'photos matching' or 'photo matching'"
+                  i18n:translate=""
+                  tal:omit-tag="">photos matching</span>
+            '<span tal:replace="stext"
+                   i18n:name="text">search term</span>'.
+          </p>
+          <div tal:condition="not:stext">
+            <p tal:condition="python:resultsLength == 1"
+               i18n:translate="">Found 1 photo.</p>
+            <p tal:condition="python:resultsLength > 1"
+               i18n:translate="">Found
+              <span tal:content="resultsLength"
+                    tal:omit-tag=""
+                    i18n:name="count">2</span> photos.
+            </p>
+          </div>
+        </div>
+        <div metal:use-macro="here/batch_macros/macros/navigation">batch navigation</div>
+        <div tal:define="infos options/brains_infos/infos;
+                         features options/brains_infos/features"
+             tal:omit-tag="">
+          <div metal:use-macro="here/photo_layout_macros/macros/grid"></div>
+        </div>
+      </div>
+      <p tal:condition="not:resultsLength"
+         i18n:translate="">
+        There are no items matching your specified criteria.
+      </p>
+    </div>
+  </body>
+</html>

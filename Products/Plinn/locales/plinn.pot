@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Tue Nov  3 17:37:42 2020\n"
+"POT-Creation-Date: Thu Nov  5 15:54:10 2020\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -256,6 +256,7 @@ msgstr ""
 #: n/skins/content/topic_edit_template.pt:26
 #: n/skins/custom_content/document_edit_template.pt:23
 #: n/skins/custom_content/event_edit_template.pt:135
+#: n/skins/flex/common_search_results_template.pt:85
 #: n/skins/generic/search_results_template.pt:87
 #: n/www/manage_solr.pt:20
 msgid "Save"
@@ -1131,6 +1132,53 @@ msgstr ""
 msgid "Comments:"
 msgstr ""
 
+#: n/skins/flex/common_search_results_template.pt:13
+#: n/skins/generic/search_results_template.pt:16
+#: n/skins/photo_theme/search.pt:14
+msgid "Search Results"
+msgstr ""
+
+#: n/skins/flex/common_search_results_template.pt:20
+#: n/skins/flex/photo_search_results_template.pt:24
+#: n/skins/generic/search_results_template.pt:23
+#: n/skins/photo_theme/search.pt:33
+msgid "Found ${count} ${item_s_match} '${text}'."
+msgstr ""
+
+#: n/skins/flex/common_search_results_template.pt:24
+#: n/skins/generic/search_results_template.pt:27
+#: n/skins/photo_theme/search.pt:38
+msgid "Found 1 item."
+msgstr ""
+
+#: n/skins/flex/common_search_results_template.pt:25
+#: n/skins/generic/search_results_template.pt:28
+#: n/skins/photo_theme/search.pt:40
+msgid "Found ${count} items."
+msgstr ""
+
+#: n/skins/flex/common_search_results_template.pt:43
+#: n/skins/generic/search_results_template.pt:45
+msgid "Last modified"
+msgstr ""
+
+#: n/skins/flex/common_search_results_template.pt:81
+#: n/skins/generic/search_results_template.pt:83
+msgid "Save this search as topic"
+msgstr ""
+
+#: n/skins/flex/common_search_results_template.pt:82
+#: n/skins/generic/search_results_template.pt:84
+msgid "Title:"
+msgstr ""
+
+#: n/skins/flex/common_search_results_template.pt:87
+#: n/skins/flex/photo_search_results_template.pt:45
+#: n/skins/generic/search_results_template.pt:89
+#: n/skins/photo_theme/search.pt:47
+msgid "There are no items matching your specified criteria."
+msgstr ""
+
 #: n/skins/flex/header_widgets.pt:58
 #: n/skins/generic/header_widgets.pt:54
 msgid "Enable Discussion?"
@@ -1207,21 +1255,36 @@ msgstr ""
 msgid "Edit standard metadata"
 msgstr ""
 
-#: n/skins/flex/main_template_macros.pt:49
+#: n/skins/flex/main_template_macros.pt:47
 msgid "Edit site"
 msgstr ""
 
-#: n/skins/flex/main_template_macros.pt:59
+#: n/skins/flex/main_template_macros.pt:57
 msgid "Site root"
 msgstr ""
 
-#: n/skins/flex/main_template_macros.pt:90
+#: n/skins/flex/main_template_macros.pt:80
 #: n/skins/generic/main_template_macros.pt:80
 #: n/skins/photo_theme/main_template_macros.pt:91
 msgid "You are here:"
 msgstr ""
 
-#: n/skins/flex/topbar_macros.pt:34
+#: n/skins/flex/photo_search_results_template.pt:28
+msgid "Found 1 photo."
+msgstr ""
+
+#: n/skins/flex/photo_search_results_template.pt:32
+msgid "Found ${count} photos."
+msgstr ""
+
+#: n/skins/flex/search.py:117
+#: n/skins/flex/search.py:121
+#: n/skins/generic/search.py:116
+#: n/skins/generic/search.py:120
+msgid "ascending sort"
+msgstr ""
+
+#: n/skins/flex/topbar_macros.pt:36
 msgid "Search\342\200\246"
 msgstr ""
 
@@ -1767,11 +1830,6 @@ msgstr ""
 msgid "next revision \342\206\222"
 msgstr ""
 
-#: n/skins/generic/search.py:109
-#: n/skins/generic/search.py:113
-msgid "ascending sort"
-msgstr ""
-
 #: n/skins/generic/search_form.pt:11
 msgid "Search inside ${title}"
 msgstr ""
@@ -1856,43 +1914,6 @@ msgstr ""
 #: n/skins/generic/search_form.pt:124
 #. Default: "Search"
 msgid " Search "
-msgstr ""
-
-#: n/skins/generic/search_results_template.pt:16
-#: n/skins/photo_theme/search.pt:14
-msgid "Search Results"
-msgstr ""
-
-#: n/skins/generic/search_results_template.pt:23
-#: n/skins/photo_theme/search.pt:33
-msgid "Found ${count} ${item_s_match} '${text}'."
-msgstr ""
-
-#: n/skins/generic/search_results_template.pt:27
-#: n/skins/photo_theme/search.pt:38
-msgid "Found 1 item."
-msgstr ""
-
-#: n/skins/generic/search_results_template.pt:28
-#: n/skins/photo_theme/search.pt:40
-msgid "Found ${count} items."
-msgstr ""
-
-#: n/skins/generic/search_results_template.pt:45
-msgid "Last modified"
-msgstr ""
-
-#: n/skins/generic/search_results_template.pt:83
-msgid "Save this search as topic"
-msgstr ""
-
-#: n/skins/generic/search_results_template.pt:84
-msgid "Title:"
-msgstr ""
-
-#: n/skins/generic/search_results_template.pt:89
-#: n/skins/photo_theme/search.pt:47
-msgid "There are no items matching your specified criteria."
 msgstr ""
 
 #: n/skins/generic/send_email_form.pt:25
@@ -2868,6 +2889,12 @@ msgid "items matching"
 msgstr ""
 
 msgid "item matching"
+msgstr ""
+
+msgid "photos matching"
+msgstr ""
+
+msgid "photo matching"
 msgstr ""
 
 msgid "mail_to"

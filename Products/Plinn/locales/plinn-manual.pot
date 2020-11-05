@@ -817,6 +817,12 @@ msgstr ""
 msgid "item matching"
 msgstr ""
 
+msgid "photos matching"
+msgstr ""
+
+msgid "photo matching"
+msgstr ""
+
 msgid "mail_to"
 msgstr ""
 

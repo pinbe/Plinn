@@ -1,8 +1,4 @@
-##parameters=batch, searchArgs
-from ZTUtils import make_query as mq
-try : searchArgs.pop('ajax')
-except KeyError : pass
-
+##parameters=batch
 infos = []
 sd = context.session_data_manager.getSessionData(create = 1)
 selDict = sd.get('objects_selection_dict', {})
