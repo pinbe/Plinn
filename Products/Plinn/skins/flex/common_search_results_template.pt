@@ -13,7 +13,6 @@
                           Batch python:modules['Products.Plinn'].Batch;
                           batch python:Batch(results, here.default_batch_size, b_start, orphan=1, quantumleap=1);
                           mch nocall:options/makeColumnHeader">
-      yeah man !
       <h2 i18n:translate="">Search Results</h2>
       <div tal:condition="resultsLength" tal:omit-tag="">
         <p i18n:translate=""
