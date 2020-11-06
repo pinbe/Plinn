@@ -100,3 +100,28 @@ export function smoothScroll(from:number, to:number) {
     }
     intervalId = window.setInterval(jump, 10);
 }
+
+export function getCopyOfNode(node: Node): Node {
+    const ELEMENT_NODE = 1;
+    const TEXT_NODE = 3;
+    switch (node.nodeType) {
+        case ELEMENT_NODE:
+            const attributes = (<Element>node).attributes;
+            const childs = node.childNodes;
+
+            const e = document.createElement(node.nodeName);
+
+            for (let i = 0; i < attributes.length; i++) {
+                const attribute = attributes[i];
+                e.setAttribute(attribute.name, attribute.value);
+            }
+
+            for (let i = 0; i < childs.length; i++) {
+                e.appendChild(getCopyOfNode(childs[i]));
+            }
+            return e;
+
+        case TEXT_NODE:
+            return document.createTextNode(node.nodeValue);
+    }
+}
