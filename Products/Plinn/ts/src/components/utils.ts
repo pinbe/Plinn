@@ -1,3 +1,5 @@
+import {GLOBAL_SCRIPT_REGISTRY} from "./script_registry";
+
 export function readCookie(name: string) {
     // from w3schools.com
     const nameEQ = name + "=";
@@ -12,4 +14,89 @@ export function readCookie(name: string) {
         }
     }
     return null;
+}
+
+export function writeAjaxResponse(doc: Document) {
+    if (doc.documentElement.tagName !== 'fragments')
+        return;
+
+    for (let i = 0; i < doc.documentElement.children.length; i++) {
+        const elt = doc.documentElement.children[i];
+        switch (elt.tagName) {
+            case 'base':
+                let base: HTMLBaseElement = document.querySelector<HTMLBaseElement>('head base');
+                if (!base) {
+                    const head = document.querySelector<HTMLHeadElement>('head');
+                    base = document.createElement('base');
+                    head.appendChild(base)
+                }
+                base.href = elt.getAttribute('href');
+                break;
+
+            case 'fragment' :
+                const selector = elt.getAttribute('selector');
+                const targetElt = document.querySelector(selector);
+                if (targetElt) {
+                    targetElt.innerHTML = elt.firstChild.nodeValue; // eg. content text carried by a CDATA
+                    targetElt.querySelectorAll('script')
+                        .forEach((script: HTMLScriptElement) => GLOBAL_SCRIPT_REGISTRY.loadScript(script));
+                }
+                break;
+        }
+    }
+}
+
+/* adapted from http://xahlee.info/js/js_shake_box.html */
+export function shake(e: HTMLElement, distance = 5, time = 500) {
+    // Save the original style of e, Make e relatively positioned, Note the animation start time, Start the animation
+    const originalStyle = e.style.cssText;
+    e.style.position = "relative";
+    const start = (new Date()).getTime();
+
+    // This function checks the elapsed time and updates the position of e.
+    // If the animation is complete, it restores e to its original state.
+    // Otherwise, it updates e's position and schedules itself to run again.
+    function animate() {
+        const now = (new Date()).getTime();
+        // Get current time
+        const elapsed = now - start;
+        // How long since we started
+        const fraction = elapsed / time;
+        // What fraction of total time?
+        if (fraction < 1) {
+            // If the animation is not yet complete
+            // Compute the x position of e as a function of animation
+            // completion fraction. We use a sinusoidal function, and multiply
+            // the completion fraction by 4pi, so that it shakes back and
+            // forth twice.
+            const x = distance * Math.sin(fraction * 8 * Math.PI);
+            e.style.left = x + "px";
+            // Try to run again in 25ms or at the end of the total time.
+            // We're aiming for a smooth 40 frames/second animation.
+            setTimeout(animate, Math.min(25, time - elapsed));
+        } else {
+            // Otherwise, the animation is complete
+            e.style.cssText = originalStyle; // Restore the original style
+        }
+    }
+
+    animate();
+}
+
+export function smoothScroll(from:number, to:number) {
+    const step = 25;
+    let pos = from;
+    const dir:number = (to>from) ? 1 : -1;
+
+    let intervalId: number;
+    function jump () {
+        window.scroll(0, pos);
+        pos = pos + step * dir;
+        if ((dir === 1 && pos >= to) ||
+            (dir === -1 && pos <= to)) {
+            window.clearInterval(intervalId);
+            window.scroll(0, to);
+        }
+    }
+    intervalId = window.setInterval(jump, 10);
 }
