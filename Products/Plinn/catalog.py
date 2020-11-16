@@ -166,12 +166,14 @@ class DelegatedCatalog(Catalog) :
             except ValueError :
                 pass
 
-        c = SolrConnection(self.zcat.solr_url)
+        b_start = int(query.get('b_start', 0))
+        b_size = query.get('b_size', len(self))
+        solr_cn = SolrConnection(self.zcat.solr_url)
         q = ' AND '.join(['%s:(%s)' % item for item in delegatedQuery.items() if item[1]])
-        resp = c.query(q, fields='id', rows=len(self))
-        c.close()
+        resp = solr_cn.query(q, fields='id', start=b_start, rows=b_size)
+        solr_cn.close()
 
-        return IISet(filter(None, [self.uids.get(r['id']) for r in resp.results]))
+        return resp.numFound, IISet(filter(None, [self.uids.get(r['id']) for r in resp.results]))
 
     def search(self, query, sort_index=None, reverse=0, limit=None, merge=1) :
         """Iterate through the indexes, applying the query to each one. If
@@ -204,9 +206,12 @@ class DelegatedCatalog(Catalog) :
             plan = self._sorted_search_indexes(query)
 
         # délégation
-        rs = self.delegateSearch(query, plan)
-        if rs is not None and not rs :
-            return LazyCat([])
+        dres = self.delegateSearch(query, plan)
+        drlen = 0
+        if dres is not None :
+            drlen, rs = dres
+            if drlen == 0 :
+                return LazyCat([])
 
         indexes = self.indexes.keys()
         for i in plan :
@@ -296,7 +301,7 @@ class DelegatedCatalog(Catalog) :
             # Sort and convert to sequences.
             # XXX: The check for 'values' is really stupid since we call
             # items() and *not* values()
-            rlen = len(rs)
+            rlen = max(drlen, len(rs))
             if sort_index is None and hasattr(rs, 'items') :
                 # having a 'items' means we have a data structure with
                 # scores.  Build a new result set, sort it by score, reverse
@@ -314,12 +319,12 @@ class DelegatedCatalog(Catalog) :
                     cr.start_split('sort_on')
 
                     rs = rs.byValue(0)  # sort it by score
-                    max = float(rs[0][0])
+                    max_score = float(rs[0][0])
 
                     # Here we define our getter function inline so that
                     # we can conveniently store the max value as a default arg
                     # and make the normalized score computation lazy
-                    def getScoredResult(item, max=max, self=self) :
+                    def getScoredResult(item, max=max_score, self=self) :
                         """
                         Returns instances of self._v_brains, or whatever is
                         passed into self.useBrains.
@@ -333,7 +338,7 @@ class DelegatedCatalog(Catalog) :
                         return r
 
                     sequence, slen = self._limit_sequence(rs, rlen, b_start,
-                                                          b_size)
+                                                          None)
                     result = LazyMap(getScoredResult, sequence, slen,
                                      actual_result_count=rlen)
                     cr.stop_split('sort_on', None)
@@ -343,7 +348,7 @@ class DelegatedCatalog(Catalog) :
                 if hasattr(rs, 'keys') :
                     rs = rs.keys()
                 sequence, slen = self._limit_sequence(rs, rlen, b_start,
-                                                      b_size)
+                                                      None)
                 result = LazyMap(self.__getitem__, sequence, slen,
                                  actual_result_count=rlen)
             else :

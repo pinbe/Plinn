@@ -85,13 +85,18 @@ if query.has_key('modified') :
     else :
         del query['modified']
 
-sort_on = query.get('sort_on', 'fTitle')
+photo_search_mode = len(query['portal_type']) == 1 and query['portal_type'][0] == 'Photo'
+
+sort_on = query.get('sort_on', None if photo_search_mode else 'fTitle')
 if hasindex(sort_on) :
     query['sort_on'] = sort_on
     query['sort_order'] = query.get('sort_order', 'ascending')
 else :
     if query.has_key('sort_on') : query.pop('sort_on')
     if query.has_key('sort_order') : query.pop('sort_order')
+
+query['b_start'] = form.get('b_start', 0)
+query['b_size'] = context.default_batch_size
 
 
 def makeColumnHeader(indexName) :
@@ -124,7 +129,7 @@ def makeColumnHeader(indexName) :
 
 options['makeColumnHeader'] = makeColumnHeader
 results = ctool(**query)
-options['resultsLength'] = len(results)
+options['resultsLength'] = results.actual_result_count
 
 if homeDir and results :
     options['canSaveAsTopic'] = True

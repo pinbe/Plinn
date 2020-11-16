@@ -24,15 +24,14 @@ class LazyPrevBatch(Base):
 
 class LazyNextBatch(Base):
 	def __of__(self, parent):
-		try: parent._sequence[parent.end]
-		except IndexError: return None
-		return Batch(parent._sequence, parent._size,
-					 parent.end - parent.overlap, 0,
-					 parent.orphan, parent.overlap)
+		if parent.end < parent.sequence_length :
+			return Batch(parent._sequence, parent._size,
+						 parent.end - parent.overlap, 0,
+						 parent.orphan, parent.overlap)
 
 class LazySequenceLength(Base):
 	def __of__(self, parent):
-		parent.sequence_length = l = len(parent._sequence)
+		parent.sequence_length = l = getattr(parent._sequence, 'actual_result_count', len(parent._sequence))
 		return l
 
 class Batch(ZTUBatch):
@@ -156,7 +155,7 @@ class Batch(ZTUBatch):
 # 04/16/04 modified by Danny Bloemendaal (_ender_). Removed try/except structs because
 # in some situations they cause some unexpected problems. Also fixed some problems with the orphan stuff. Seems to work now.
 def opt(start,end,size,orphan,sequence):
-	length = len(sequence)
+	length = getattr(sequence, 'actual_result_count', len(sequence))
 	if size < 1:
 		if start > 0 and end > 0 and end >= start:
 			size = end + 1 - start
