@@ -1,31 +1,34 @@
 # -*- coding: utf-8 -*-
-from App.class_init import InitializeClass
-from AccessControl import ClassSecurityInfo
-from Products.CMFCore.interfaces import IIndexableObject
-from Products.CMFCore.CatalogTool import CatalogTool as BaseCatalogTool
-from Products.CMFCore.CatalogTool import IndexableObjectWrapper
-from Products.PageTemplates.PageTemplateFile import PageTemplateFile
-from Products.CMFCore.permissions import ModifyPortalContent, ManagePortal
-from zope.component import queryMultiAdapter
-from Products.ZCatalog.Catalog import Catalog
-import transaction
-from solr import *
+import warnings
 
-# imports for Catalog class
-from Products.PluginIndexes.interfaces import ILimitedResultIndex
-from Products.ZCatalog.Lazy import LazyMap, LazyCat, LazyValues
+import transaction
+from AccessControl import ClassSecurityInfo
+from Acquisition import aq_parent
+from App.class_init import InitializeClass
 from BTrees.IIBTree import intersection, IISet
 from BTrees.IIBTree import weightedIntersection
-import warnings
+from Products.CMFCore.CatalogTool import CatalogTool as BaseCatalogTool
+from Products.CMFCore.CatalogTool import IndexableObjectWrapper
+from Products.CMFCore.interfaces import IIndexableObject
+from Products.CMFCore.permissions import ManagePortal
+from Products.PageTemplates.PageTemplateFile import PageTemplateFile
+# imports for Catalog class
+from Products.PluginIndexes.interfaces import ILimitedResultIndex
+from Products.ZCatalog.Catalog import Catalog
+from Products.ZCatalog.Lazy import LazyMap, LazyCat
+from solr import *
+from zope.component import queryMultiAdapter
 
 _VOLATILE_SOLR_NAME = '_v_solrConnection'
 
+
 class SolrTransactionHook :
-    ''' commit solr couplé sur le commit de la ZODB '''
+    """ commit solr couplé sur le commit de la ZODB """
+
     def __init__(self, context, con) :
         self.context = context
         self.con = con
-    
+
     def __call__(self, status) :
         if status :
             self.con.commit()
@@ -37,27 +40,26 @@ class SolrTransactionHook :
         except AttributeError :
             pass
 
+
 class CatalogTool(BaseCatalogTool) :
     meta_type = 'Plinn Catalog'
     security = ClassSecurityInfo()
     manage_options = (BaseCatalogTool.manage_options[:5] +
                       ({'label' : 'Solr', 'action' : 'manage_solr'},) +
-                      BaseCatalogTool.manage_options[5:])
+                      BaseCatalogTool.manage_options[5 :])
     manage_solr = PageTemplateFile('www/manage_solr.pt', globals(), __name__='manage_solr')
-    
-    
-    
+
     def __init__(self, idxs=[]) :
         super(CatalogTool, self).__init__()
         self._catalog = DelegatedCatalog(self)
         self.solr_url = 'http://localhost:8983/solr'
         self.delegatedIndexes = ('Title', 'Description', 'SearchableText')
-    
+
     security.declarePublic('getDelegatedIndexes')
     def getDelegatedIndexes(self) :
         """ read the method name """
         return self.delegatedIndexes
-    
+
     security.declareProtected(ManagePortal, 'setSolrProperties')
     def setSolrProperties(self, url, indexes, REQUEST=None) :
         """ set Solr server url and delegated indexes """
@@ -65,7 +67,7 @@ class CatalogTool(BaseCatalogTool) :
         self.delegatedIndexes = tuple([i.strip() for i in indexes if i.strip()])
         if REQUEST :
             REQUEST.RESPONSE.redirect(self.absolute_url() + '/manage_solr?manage_tabs_message=Saved changes.')
-    
+
     def _getSolrConnection(self) :
         if not hasattr(self, _VOLATILE_SOLR_NAME) :
             con = SolrConnection(self.solr_url)
@@ -73,7 +75,7 @@ class CatalogTool(BaseCatalogTool) :
             txn = transaction.get()
             txn.addAfterCommitHook(SolrTransactionHook(self, con))
         return getattr(self, _VOLATILE_SOLR_NAME)
-    
+
     security.declarePrivate('solrAdd')
     def solrAdd(self, w, uid, idxs) :
         idxs = idxs if idxs else self.delegatedIndexes
@@ -85,31 +87,31 @@ class CatalogTool(BaseCatalogTool) :
             data[name] = attr() if callable(attr) else attr
         c = self._getSolrConnection()
         c.add(**data)
-    
+
     # PortalCatalog api overloads
     def catalog_object(self, obj, uid=None, idxs=None, update_metadata=1,
-                       pghandler=None):
+                       pghandler=None) :
         # Wraps the object with workflow and accessibility
         # information just before cataloging.
-        if IIndexableObject.providedBy(obj):
+        if IIndexableObject.providedBy(obj) :
             w = obj
-        else:
-            w = queryMultiAdapter( (obj, self), IIndexableObject )
-            if w is None:
+        else :
+            w = queryMultiAdapter((obj, self), IIndexableObject)
+            if w is None :
                 # BBB
                 w = IndexableObjectWrapper(obj, self)
-        
+
         idxs_ = idxs
-        if idxs:
+        if idxs :
             # Filter out invalid indexes.
             valid_indexes = self._catalog.indexes.keys()
             idxs_ = [i for i in idxs if i in valid_indexes]
-        
+
         super(CatalogTool, self).catalog_object(w, uid, idxs_, update_metadata, pghandler)
         self.solrAdd(w, uid, idxs)
-    
+
     security.declarePrivate('reindexObject')
-    def reindexObject(self, object, idxs=[], update_metadata=1, uid=None):
+    def reindexObject(self, object, idxs=[], update_metadata=1, uid=None) :
         """Update catalog after object data has changed.
 
         The optional idxs argument is a list of specific indexes
@@ -121,30 +123,31 @@ class CatalogTool(BaseCatalogTool) :
         If a non-None uid is passed, it will be used as the catalog uid
         for the object instead of its physical path.
         """
-        if uid is None:
+        if uid is None :
             uid = self.__url(object)
 
         self.catalog_object(object, uid, idxs, update_metadata)
-    
+
     security.declarePrivate('unindexObject')
-    def unindexObject(self, object):
+    def unindexObject(self, object) :
         """Remove from catalog.
         """
         super(CatalogTool, self).unindexObject(object)
         c = self._getSolrConnection()
         url = self.__url(object)
         c.delete(id=url)
-        
+
+
 InitializeClass(CatalogTool)
 
 
 class DelegatedCatalog(Catalog) :
     '''C'est ici qu'on délègue effectivement à Solr '''
-    
+
     def __init__(self, zcat, brains=None) :
         Catalog.__init__(self, brains=brains)
         self.zcat = zcat
-    
+
     def delegateSearch(self, query, plan) :
         '''
         retours faux : 
@@ -154,18 +157,23 @@ class DelegatedCatalog(Catalog) :
         indexes = set(query.keys()).intersection(set(self.zcat.delegatedIndexes))
         if not indexes :
             return None
+
         delegatedQuery = {}
         for i in indexes :
             delegatedQuery[i] = query.pop(i)
-            try : plan.remove(i)
-            except ValueError : pass
+            try :
+                plan.remove(i)
+            except ValueError :
+                pass
+
         c = SolrConnection(self.zcat.solr_url)
-        q =' AND '.join(['%s:(%s)' % item for item in delegatedQuery.items() if item[1]])
+        q = ' AND '.join(['%s:(%s)' % item for item in delegatedQuery.items() if item[1]])
         resp = c.query(q, fields='id', rows=len(self))
         c.close()
-        return IISet(filter(None, [self.uids.get(r['id']) for r in resp.results])) 
-    
-    def search(self, query, sort_index=None, reverse=0, limit=None, merge=1):
+
+        return IISet(filter(None, [self.uids.get(r['id']) for r in resp.results]))
+
+    def search(self, query, sort_index=None, reverse=0, limit=None, merge=1) :
         """Iterate through the indexes, applying the query to each one. If
         merge is true then return a lazy result set (sorted if appropriate)
         otherwise return the raw (possibly scored) results for later merging.
@@ -175,7 +183,7 @@ class DelegatedCatalog(Catalog) :
         results is not guaranteed to fall within the limit however, you should
         still slice or batch the results as usual."""
 
-        rs = None # resultset
+        rs = None  # resultset
 
         # Indexes fulfill a fairly large contract here. We hand each
         # index the query mapping we are given (which may be composed
@@ -192,40 +200,40 @@ class DelegatedCatalog(Catalog) :
         cr.start()
 
         plan = cr.plan()
-        if not plan:
+        if not plan :
             plan = self._sorted_search_indexes(query)
-        
+
         # délégation
         rs = self.delegateSearch(query, plan)
         if rs is not None and not rs :
             return LazyCat([])
 
         indexes = self.indexes.keys()
-        for i in plan:
-            if i not in indexes:
+        for i in plan :
+            if i not in indexes :
                 # We can have bogus keys or the plan can contain index names
                 # that have been removed in the meantime
                 continue
 
             index = self.getIndex(i)
             _apply_index = getattr(index, "_apply_index", None)
-            if _apply_index is None:
+            if _apply_index is None :
                 continue
 
             cr.start_split(i)
             limit_result = ILimitedResultIndex.providedBy(index)
-            if limit_result:
+            if limit_result :
                 r = _apply_index(query, rs)
-            else:
+            else :
                 r = _apply_index(query)
 
-            if r is not None:
+            if r is not None :
                 r, u = r
                 # Short circuit if empty result
                 # BBB: We can remove the "r is not None" check in Zope 2.14
                 # once we don't need to support the "return everything" case
                 # anymore
-                if r is not None and not r:
+                if r is not None and not r :
                     cr.stop_split(i, result=None, limit=limit_result)
                     return LazyCat([])
 
@@ -234,9 +242,9 @@ class DelegatedCatalog(Catalog) :
                 cr.start_split(intersect_id)
                 # weightedIntersection preserves the values from any mappings
                 # we get, as some indexes don't return simple sets
-                if hasattr(rs, 'items') or hasattr(r, 'items'):
+                if hasattr(rs, 'items') or hasattr(r, 'items') :
                     _, rs = weightedIntersection(rs, r)
-                else:
+                else :
                     rs = intersection(rs, r)
 
                 cr.stop_split(intersect_id)
@@ -244,23 +252,23 @@ class DelegatedCatalog(Catalog) :
                 # consider the time it takes to intersect the index result with
                 # the total resultset to be part of the index time
                 cr.stop_split(i, result=r, limit=limit_result)
-                if not rs:
+                if not rs :
                     break
-            else:
+            else :
                 cr.stop_split(i, result=None, limit=limit_result)
 
         # Try to deduce the sort limit from batching arguments
         b_start = int(query.get('b_start', 0))
         b_size = query.get('b_size', None)
-        if b_size is not None:
+        if b_size is not None :
             b_size = int(b_size)
 
-        if b_size is not None:
+        if b_size is not None :
             limit = b_start + b_size
-        elif limit and b_size is None:
+        elif limit and b_size is None :
             b_size = limit
 
-        if rs is None:
+        if rs is None :
             # None of the indexes found anything to do with the query
             # We take this to mean that the query was empty (an empty filter)
             # and so we return everything in the catalog
@@ -271,47 +279,47 @@ class DelegatedCatalog(Catalog) :
                           DeprecationWarning, stacklevel=3)
 
             rlen = len(self)
-            if sort_index is None:
+            if sort_index is None :
                 sequence, slen = self._limit_sequence(self.data.items(), rlen,
-                    b_start, b_size)
+                                                      b_start, b_size)
                 result = LazyMap(self.instantiate, sequence, slen,
-                    actual_result_count=rlen)
-            else:
+                                 actual_result_count=rlen)
+            else :
                 cr.start_split('sort_on')
                 result = self.sortResults(
-                    self.data, sort_index, reverse, limit, merge,
+                        self.data, sort_index, reverse, limit, merge,
                         actual_result_count=rlen, b_start=b_start,
                         b_size=b_size)
                 cr.stop_split('sort_on', None)
-        elif rs:
+        elif rs :
             # We got some results from the indexes.
             # Sort and convert to sequences.
             # XXX: The check for 'values' is really stupid since we call
             # items() and *not* values()
             rlen = len(rs)
-            if sort_index is None and hasattr(rs, 'items'):
+            if sort_index is None and hasattr(rs, 'items') :
                 # having a 'items' means we have a data structure with
                 # scores.  Build a new result set, sort it by score, reverse
                 # it, compute the normalized score, and Lazify it.
 
-                if not merge:
+                if not merge :
                     # Don't bother to sort here, return a list of
                     # three tuples to be passed later to mergeResults
                     # note that data_record_normalized_score_ cannot be
                     # calculated and will always be 1 in this case
                     getitem = self.__getitem__
                     result = [(score, (1, score, rid), getitem)
-                            for rid, score in rs.items()]
-                else:
+                              for rid, score in rs.items()]
+                else :
                     cr.start_split('sort_on')
 
-                    rs = rs.byValue(0) # sort it by score
+                    rs = rs.byValue(0)  # sort it by score
                     max = float(rs[0][0])
 
                     # Here we define our getter function inline so that
                     # we can conveniently store the max value as a default arg
                     # and make the normalized score computation lazy
-                    def getScoredResult(item, max=max, self=self):
+                    def getScoredResult(item, max=max, self=self) :
                         """
                         Returns instances of self._v_brains, or whatever is
                         passed into self.useBrains.
@@ -325,30 +333,30 @@ class DelegatedCatalog(Catalog) :
                         return r
 
                     sequence, slen = self._limit_sequence(rs, rlen, b_start,
-                        b_size)
+                                                          b_size)
                     result = LazyMap(getScoredResult, sequence, slen,
-                        actual_result_count=rlen)
+                                     actual_result_count=rlen)
                     cr.stop_split('sort_on', None)
 
-            elif sort_index is None and not hasattr(rs, 'values'):
+            elif sort_index is None and not hasattr(rs, 'values') :
                 # no scores
-                if hasattr(rs, 'keys'):
+                if hasattr(rs, 'keys') :
                     rs = rs.keys()
                 sequence, slen = self._limit_sequence(rs, rlen, b_start,
-                    b_size)
+                                                      b_size)
                 result = LazyMap(self.__getitem__, sequence, slen,
-                    actual_result_count=rlen)
-            else:
+                                 actual_result_count=rlen)
+            else :
                 # sort.  If there are scores, then this block is not
                 # reached, therefore 'sort-on' does not happen in the
                 # context of a text index query.  This should probably
                 # sort by relevance first, then the 'sort-on' attribute.
                 cr.start_split('sort_on')
                 result = self.sortResults(rs, sort_index, reverse, limit,
-                    merge, actual_result_count=rlen, b_start=b_start,
-                    b_size=b_size)
+                                          merge, actual_result_count=rlen, b_start=b_start,
+                                          b_size=b_size)
                 cr.stop_split('sort_on', None)
-        else:
+        else :
             # Empty result set
             result = LazyCat([])
         cr.stop()
