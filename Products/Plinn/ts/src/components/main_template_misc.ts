@@ -1,6 +1,4 @@
-const getWindowScrollY = (window.scrollY !== undefined) ?
-    () => window.scrollY :
-    () => document.documentElement.scrollTop;
+import {getWindowScrollY} from "./utils";
 
 function fixTopBar() {
     const topBar = document.getElementById('top-bar');

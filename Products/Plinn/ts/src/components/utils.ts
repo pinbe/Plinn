@@ -83,13 +83,14 @@ export function shake(e: HTMLElement, distance = 5, time = 500) {
     animate();
 }
 
-export function smoothScroll(from:number, to:number) {
+export function smoothScroll(from: number, to: number) {
     const step = 25;
     let pos = from;
-    const dir:number = (to>from) ? 1 : -1;
+    const dir: number = (to > from) ? 1 : -1;
 
     let intervalId: number;
-    function jump () {
+
+    function jump() {
         window.scroll(0, pos);
         pos = pos + step * dir;
         if ((dir === 1 && pos >= to) ||
@@ -98,6 +99,7 @@ export function smoothScroll(from:number, to:number) {
             window.scroll(0, to);
         }
     }
+
     intervalId = window.setInterval(jump, 10);
 }
 
@@ -125,3 +127,43 @@ export function getCopyOfNode(node: Node): Node {
             return document.createTextNode(node.nodeValue);
     }
 }
+
+export function absolute_url() {
+    let e = document.getElementById("Object_URL");
+    if (e)
+        return e.innerText;
+    else {
+        e = document.getElementById("BC_Object_URL");
+        if (e)
+            return e.innerText;
+        else
+            return document.body.getAttribute('data-absolute_url');
+    }
+}
+
+export function portal_url() {
+    return document.body.getAttribute('data-portal_url');
+}
+
+export const getWindowScrollY = (window.scrollY !== undefined) ?
+    () => window.scrollY :
+    () => document.documentElement.scrollTop;
+
+export const getWindowHeight = (window.innerHeight !== undefined) ?
+    () => window.innerHeight :
+    () => document.documentElement.clientHeight;
+
+export const clearSelection = function () {
+    if (window.getSelection) {
+        if (window.getSelection().empty) {  // Chrome
+            window.getSelection().empty();
+        } else if (window.getSelection().removeAllRanges) {  // Firefox
+            window.getSelection().removeAllRanges();
+        }
+    } else { // @ts-ignore
+        if (document.selection) {  // IE?
+                // @ts-ignore
+            document.selection.empty();
+            }
+    }
+};
