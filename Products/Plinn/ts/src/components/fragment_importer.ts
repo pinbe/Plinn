@@ -4,44 +4,39 @@
 //
 //
 
-var FragmentImporter;
+const isTextMime = /^text\/.+/i;
+const NULL_CALLBACK=()=>{};
 
-(function() {
+export class FragmentImporter {
+    private readonly url: string;
+    onAfterPopulate: () => void;
+    private fallBackUrl: string;
 
-    var isTextMime = /^text\/.+/i;
-
-    FragmentImporter = function(url, onAfterPopulate) {
+    constructor(url: string, onAfterPopulate: () => void = NULL_CALLBACK, fallbackUrl = '') {
         this.url = url;
-        this.onAfterPopulate = (!onAfterPopulate) ? function() {
-        } : onAfterPopulate;
-    };
+        this.onAfterPopulate = onAfterPopulate;
+        this.fallBackUrl = fallbackUrl;
+    }
 
-    FragmentImporter.prototype._load = function(url) {
-        var req = new XMLHttpRequest();
-        var self = this;
-        req.onreadystatechange = function() {
-            switch(req.readyState) {
-                case 1 :
-                    // showProgressImage();
-                    break;
+    private _load(url: string) {
+        const req = new XMLHttpRequest();
+        req.onreadystatechange = () => {
+            switch (req.readyState) {
                 case 2 :
                     try {
-                        if(!isTextMime.exec(req.getResponseHeader('Content-Type'))) {
+                        if (!isTextMime.exec(req.getResponseHeader('Content-Type'))) {
                             req.onreadystatechange = null;
                             req.abort();
-                            // hideProgressImage();
-                            window.location.href = self._fallBackUrl;
+                            window.location.href = this.fallBackUrl;
                         }
-                    }
-                    catch (e) {
+                    } catch (e) {
                     }
                     break;
+
                 case 4 :
-                    // hideProgressImage();
-                    if(req.status === 200) {
-                        self.populateBaseElement(req);
-                    }
-                    else {
+                    if (req.status === 200) {
+                        this.populateBaseElement(req);
+                    } else {
                         alert('Error: ' + req.status);
                     }
                     break;
@@ -50,67 +45,67 @@ var FragmentImporter;
 
         req.open("GET", url, true);
         req.send(null);
-    };
+    }
 
-    FragmentImporter.prototype.load = function(fallBackUrl) {
-        if(fallBackUrl) {
-            this._fallBackUrl = fallBackUrl;
-        }
-        else {
-            this._fallBackUrl = this.url;
+    private load(fallBackUrl='') {
+        if (fallBackUrl) {
+            this.fallBackUrl = fallBackUrl;
+        } else {
+            this.fallBackUrl = this.url;
         }
         this._load(this.url);
-    };
+    }
 
-    FragmentImporter.prototype.useMacro = function(template, macro, fragmentSelector, queryString) {
-        var url = this.url +
-                  "/use_macro?template=" + encodeURIComponent(template) +
-                  "&macro=" + encodeURIComponent(macro) +
-                  "&fragmentSelector=" + encodeURIComponent(fragmentSelector);
-        if(queryString) {
+    useMacro(template: string, macro: string, fragmentSelector: string, queryString: string = '') {
+        let url = this.url +
+            "/use_macro?template=" + encodeURIComponent(template) +
+            "&macro=" + encodeURIComponent(macro) +
+            "&fragmentSelector=" + encodeURIComponent(fragmentSelector);
+        if (queryString) {
             url += '&' + queryString;
         }
         this._load(url);
-    };
+    }
 
-    FragmentImporter.prototype.populateBaseElement = function(req) {
-        var contentType = req.getResponseHeader('Content-Type');
-        if(!isTextMime.exec(contentType)) {
-            window.location.href = this._fallBackUrl;
+    private populateBaseElement(req: XMLHttpRequest) {
+        const contentType = req.getResponseHeader('Content-Type');
+        if (!isTextMime.exec(contentType)) {
+            window.location.href = this.fallBackUrl;
             return;
         }
 
-        if(contentType.indexOf('text/xml') !== -1) {
-            var fragments = req.responseXML.documentElement.childNodes;
-            var element, dest, scripts, i, j;
-            for(i = 0; i < fragments.length; i++) {
-                element = fragments[i];
-                switch(element.nodeName) {
+        if (contentType.indexOf('text/xml') !== -1) {
+            const fragments = req.responseXML.documentElement.childNodes;
+            // var element, dest, scripts, i, j;
+            for (let i = 0; i < fragments.length; i++) {
+                const element = fragments[i];
+                switch (element.nodeName) {
                     case 'fragment' :
                         // dest = document.getElementById(element.getAttribute('id'));
-                        dest = document.querySelector(element.getAttribute('selector'));
-                        if(dest) {
+                        const dest = document.querySelector((<Element>element).getAttribute('selector'));
+                        if (dest) {
                             dest.innerHTML = element.firstChild.nodeValue;
-                            scripts = dest.getElementsByTagName('script');
-                            for(j = 0; j < scripts.length; j++) {
-                                globalScriptRegistry.loadScript(scripts[j]);
+                            const scripts = dest.getElementsByTagName('script');
+                            for (let j = 0; j < scripts.length; j++) {
+                                console.warn('TODO:', scripts[j]);
+                                // globalScriptRegistry.loadScript(scripts[j]);
                             }
                         }
                         break;
+
                     case 'base' :
-                        var headBase = document.getElementsByTagName('base');
-                        if(headBase.length > 0) {
-                            headBase[0].setAttribute('href', element.getAttribute('href'));
-                        }
-                        else {
-                            headBase = document.createElement('base');
-                            headBase.setAttribute('href', element.getAttribute('href'));
-                            document.head.appendChild(headBase);
+                        const headBase = document.getElementsByTagName('base');
+                        if (headBase.length > 0) {
+                            headBase[0].setAttribute('href', (<Element>element).getAttribute('href'));
+                        } else {
+                            const newBase = document.createElement('base');
+                            newBase.setAttribute('href', (<Element>element).getAttribute('href'));
+                            document.head.appendChild(newBase);
                         }
                         break;
                 }
             }
         }
         this.onAfterPopulate();
-    };
-}());
+    }
+}

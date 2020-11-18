@@ -9,7 +9,6 @@
 
     <div metal:define-macro="titleAndDescForm">
       <form method="post"
-            onsubmit="return submitMetadataForm(this);"
             tal:attributes="action here/absolute_url"
             i18n:domain="plinn">
         <table class="TwoColumnForm" cellspacing="0">
@@ -48,9 +47,9 @@
     <hr/>
 
     <div metal:define-macro="fullMetadataForm">
-      <form action="metadata_edit_form" method="post"
-              	tal:attributes="action here/absolute_url" i18n:domain="plinn"
-            onsubmit="return submitMetadataForm(this);">
+      <form method="post"
+            tal:attributes="action here/absolute_url"
+            i18n:domain="plinn">
         <table class="TwoColumnForm"
                  tal:define="allow_discussion python:getattr(here, 'allow_discussion', None);
                 DateTime nocall:modules/DateTime/DateTime;">

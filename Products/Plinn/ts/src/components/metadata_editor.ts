@@ -1,25 +1,33 @@
-var MetadataEditManager;
-(function() {
-    MetadataEditManager = function(paletteSelector) {
-        var paletteMain = document.querySelector(paletteSelector + ' .main');
-        var inspector = new InspectorPalette(paletteSelector);
+import {InspectorPalette} from "./palette";
+import {FragmentImporter} from "./fragment_importer";
+import {absolute_url} from "./utils";
+import {FormManager} from "./form_manager";
 
-        inspector.onExpand = function() {
-            var fi = new FragmentImporter(absolute_url());
-            fi.onAfterPopulate = function() {
-                var form = paletteMain.querySelector('form');
-                var fm = new FormManager(form);
-                fm.onResponseLoad = function() {
+export class MetadataEditManager {
+    private readonly wrapper: HTMLElement;
+
+    constructor(wrapper: HTMLElement) {
+        this.wrapper = wrapper;
+        const paletteMain = wrapper.querySelector('.main');
+        const inspector = new InspectorPalette(wrapper);
+
+        inspector.onExpand = () => {
+            const fi = new FragmentImporter(absolute_url());
+
+            fi.onAfterPopulate = () => {
+                const form = paletteMain.querySelector('form');
+                const fm = new FormManager(form);
+                fm.onResponseLoad = function () {
                     inspector.toggle();
                 };
             };
 
-            fi.useMacro('header_widgets', 'titleAndDescForm', paletteSelector + ' .main');
+            fi.useMacro('header_widgets', 'titleAndDescForm', `#${this.wrapper.id} .main`);
         };
 
-        inspector.onCollapse = function() {
-            var fi = new FragmentImporter(absolute_url());
-            fi.useMacro('header_widgets', 'viewTitleAndDesc', paletteSelector + ' .main');
+        inspector.onCollapse = () => {
+            const fi = new FragmentImporter(absolute_url());
+            fi.useMacro('header_widgets', 'viewTitleAndDesc', `#${this.wrapper.id} .main`);
         };
-    };
-}());
+    }
+}

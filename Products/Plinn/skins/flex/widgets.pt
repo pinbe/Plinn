@@ -45,26 +45,9 @@
 	        </td>
 	      </tr>
 	    </table>
-      <div tal:condition="allow_edit"
-           tal:omit-tag="">
-        <script type="text/javascript"
-                tal:attributes="src string:$portal_url/js/palette.js"></script>
-        <script type="text/javascript"
-                tal:attributes="src string:$portal_url/js/metadata_edit.js"></script>
-        <script type="text/javascript"
-                tal:content="structure python:'''
-                       new MetadataEditManager('#%(header_id)s');
-                ''' % {'header_id' : header_id}"></script>
-      </div>
-			<!--?<script type="text/javascript" tal:attributes="src here/palette.js/absolute_url"></script>-->
-			<!--?<script type="text/javascript" tal:attributes="src here/generic_header_script.js/absolute_url"></script>-->
-			<!--?<script type="text/javascript" tal:attributes="src here/calendar.js/absolute_url"></script>-->
-      <!--?<script type="text/javascript" tal:attributes="src string:${portal_url}/lang/calendar-fr.js"></script>-->
-      <!--?<script type="text/javascript" tal:attributes="src here/calendar-setup.js/absolute_url"></script>-->
-	    <!--?<script type="text/javascript">//<!---->
-				<!--?initHeaderScript();-->
-				<!--?//-->
-			<!--?</script>-->
+      <script type="text/javascript"
+              tal:condition="allow_edit"
+              tal:attributes="src string:$portal_url/plinn/jsbuild/metadata_helper.js"></script>
     </div>
     
     <div metal:define-macro="clipboard"
