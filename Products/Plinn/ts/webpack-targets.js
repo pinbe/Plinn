@@ -1,5 +1,6 @@
 const names = [
     'main',
+    'slideshow_helper',
 ];
 
 module.exports = {

@@ -20,7 +20,7 @@
           </div>
         </article>
         <script type="text/javascript"
-                tal:attributes="src here/slideshow_helper.js/absolute_url"></script>
+                tal:attributes="src string:$portal_url/plinn/jsbuild/slideshow_helper.js"></script>
       </div>
 
     </body>

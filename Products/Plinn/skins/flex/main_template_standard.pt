@@ -38,18 +38,18 @@
       <link metal:define-slot="css_slot" tal:replace="nothing" />
       <script type="text/javascript"
               tal:attributes="src string:$portal_url/plinn/jsbuild/main.js"></script>
-      <script type="text/javascript"
-              tal:attributes="src string:$portal_url/js/d3.min.js"></script>
-      <script type="text/javascript"
-              tal:attributes="src string:$portal_url/js/utils.js"></script>
-      <script type="text/javascript"
-              tal:attributes="src string:$portal_url/js/base_properties.js"></script>
-      <script type="text/javascript"
-              tal:attributes="src string:$portal_url/js/script_loader.js"></script>
-      <script type="text/javascript"
-              tal:attributes="src string:$portal_url/js/fragment_importer.js"></script>
-      <script type="text/javascript"
-              tal:attributes="src string:$portal_url/js/ajax_form_manager.js"></script>
+<!--?      <script type="text/javascript"-->
+<!--?              tal:attributes="src string:$portal_url/js/d3.min.js"></script>-->
+<!--?      <script type="text/javascript"-->
+<!--?              tal:attributes="src string:$portal_url/js/utils.js"></script>-->
+<!--?      <script type="text/javascript"-->
+<!--?              tal:attributes="src string:$portal_url/js/base_properties.js"></script>-->
+<!--?      <script type="text/javascript"-->
+<!--?              tal:attributes="src string:$portal_url/js/script_loader.js"></script>-->
+<!--?      <script type="text/javascript"-->
+<!--?              tal:attributes="src string:$portal_url/js/fragment_importer.js"></script>-->
+<!--?      <script type="text/javascript"-->
+<!--?              tal:attributes="src string:$portal_url/js/ajax_form_manager.js"></script>-->
 
       <script type="text/javascript" metal:define-slot="javascript_head_slot" tal:replace="nothing"></script>
       <tal:block tal:replace="structure python:modules['Products.Plinn.utils'].getLdJson(here)"></tal:block>
@@ -60,6 +60,9 @@
                           class python:'pt-%s' % here.getPortalTypeName().replace(' ', '-').lower()">
       <div id="site-edit-panel"
            metal:use-macro="main_macros/site_edit_panel"></div>
+      <div id="fixed-content">
+        <div metal:define-slot="fixed_content_top"></div>
+      </div>
       <div id="body-wrapper"
            metal:define-slot="body"
            tal:define="isManager python:member.has_role(['photographe', 'Manager']);
