@@ -57,27 +57,6 @@
             </ul>
           </span>
         </div>
-        <script type="text/javascript">
-          (function () {
-            d3.select('#user-menu i')
-              .on('click',
-                function () {
-                  var menu = d3.select('#user-menu ul').node();
-                  var body = d3.select('body');
-                  if (menu.classList.contains('hidden')) {
-                    menu.classList.remove('hidden');
-                    d3.event.stopPropagation();
-                    body.on('click.cancel-user-menu',
-                      function () {
-                        menu.classList.add('hidden');
-                        body.on('click.cancel-user-menu', null);
-                      }
-                    );
-                  }
-                }
-              )
-          }());
-        </script>
       </div>
       <div id="Breadcrumbs">
         <div metal:use-macro="main_macros/Breadcrumbs">Breadcrumbs</div>
