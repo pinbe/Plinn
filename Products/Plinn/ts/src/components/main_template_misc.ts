@@ -1,4 +1,5 @@
 import {getWindowScrollY} from "./utils";
+import * as d3 from "d3";
 
 function fixTopBar() {
     const topBar = document.getElementById('top-bar');
@@ -32,11 +33,30 @@ function stretchLogo() {
     logo.width = logo.height * (logo.naturalWidth / natHeight);
 }
 
+function initUserMenu() {
+    d3.select('#user-menu i')
+        .on('click', () => {
+                const menu = <HTMLElement>d3.select('#user-menu ul').node();
+                const body = d3.select('body');
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    d3.event.stopPropagation();
+                    body.on('click.cancel-user-menu',
+                        () => {
+                            menu.classList.add('hidden');
+                            body.on('click.cancel-user-menu', null);
+                        }
+                    );
+                }
+            }
+        );
+}
+
 export function init() {
     if (document.body.getAttribute('data-isAnon') === 'True') {
         fixTopBar();
         window.addEventListener('resize', fitTopBar);
         window.addEventListener('scroll', stretchLogo);
     }
+    initUserMenu();
 }
-
