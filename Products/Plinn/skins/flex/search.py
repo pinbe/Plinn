@@ -2,7 +2,7 @@
 from Products.CMFCore.utils import getToolByName
 from ZTUtils import make_query as mq
 from ZTUtils import make_hidden_input
-from Products.Plinn.utils import translate
+from Products.Plinn.utils import translate, json_loads
 from Products.Plinn import Batch
 
 
@@ -22,7 +22,7 @@ hasindex = indexes.has_key
 
 form = context.REQUEST.form
 query = {}
-skip_vars = ['strCreator', 'ajax', 'b_start']
+skip_vars = ['strCreator', 'ajax', 'b_start', 'tail_search']
 
 # list typed criterions
 select_vars = ('review_state'
@@ -58,6 +58,14 @@ else :
 for k in skip_vars :
     if query.has_key(k) :
         del query[k]
+
+isTailSearch = False
+if form.has_key('tail_search') :
+    try :
+        query.update(**json_loads(form['tail_search']))
+        isTailSearch = True
+    except ValueError:
+        pass
 
 # expand creator search item
 if form.has_key('strCreator') and form['strCreator'].strip() :
@@ -95,9 +103,18 @@ else :
     if query.has_key('sort_on') : query.pop('sort_on')
     if query.has_key('sort_order') : query.pop('sort_order')
 
+
+if isTailSearch :
+    results = ctool(**query)
+    length = results.actual_result_count
+    tail_options = {
+        'nomore' : query['b_start'] + query['b_size'] >= results.actual_result_count
+    }
+    tail_options.update(context.getPhotoBrainsInfos(results))
+    return context.portfolio_thumbnails_tail_template(**tail_options)
+
 query['b_start'] = form.get('b_start', 0)
 query['b_size'] = context.default_batch_size
-
 
 def makeColumnHeader(indexName) :
     toggleSortOrder = indexName == sort_on
@@ -169,6 +186,8 @@ photo_search_mode = len(query['portal_type']) == 1 and query['portal_type'][0] =
 
 if photo_search_mode :
     options['brains_infos'] = context.getPhotoBrainsInfos(results)
+    options['container_type'] = 'search_results' # utile pour objet TS Lightbox
+    options['query'] = query
     return context.photo_search_results_template(**options)
 else :
     return context.common_search_results_template(**options)

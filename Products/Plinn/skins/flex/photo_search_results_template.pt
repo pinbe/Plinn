@@ -35,10 +35,15 @@
             </p>
           </div>
         </div>
-        <div metal:use-macro="here/batch_macros/macros/navigation">batch navigation</div>
+        <noscript>
+          <div metal:use-macro="here/batch_macros/macros/navigation">batch navigation</div>
+        </noscript>
         <div tal:define="infos options/brains_infos/infos;
-                         features options/brains_infos/features"
-             tal:omit-tag="">
+                         features options/brains_infos/features;
+                         json_dumps python: modules['Products.Plinn.utils'].json_dumps"
+             tal:attributes="data-search_url string:$portal_url/search;
+                             data-search_params python:json_dumps(options['query']);"
+             id="search-results">
           <div metal:use-macro="here/photo_layout_macros/macros/grid"></div>
         </div>
       </div>
