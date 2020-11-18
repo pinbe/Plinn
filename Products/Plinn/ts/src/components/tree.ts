@@ -11,8 +11,8 @@ export class TreeMaker {
     static TR_DURATION = 500;
     static TR_EASE = d3.easeCubicOut;
 
-    constructor(rootSelector: string) {
-        this.root = document.querySelector(rootSelector);
+    constructor(rootWrapper: HTMLDivElement) {
+        this.root = rootWrapper;
         this.filter = this.root.getAttribute('data-filter');
         this.tree_pre = this.root.getAttribute('data-tree_pre');
         this.root.addEventListener('click', (evt) => this.refreshTree(evt));

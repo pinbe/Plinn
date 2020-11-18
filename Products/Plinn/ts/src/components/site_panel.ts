@@ -6,10 +6,10 @@ export class SitePanel {
     private panel: HTMLDivElement;
     private mainWrapper: HTMLDivElement;
 
-    constructor(panelSelector: string, mainWrapperSelector: string) {
+    constructor(panel: HTMLDivElement, mainWrapper: HTMLDivElement) {
         this.opened = readCookie('spo') === '1';
-        this.panel = document.querySelector(panelSelector);
-        this.mainWrapper = document.querySelector(mainWrapperSelector);
+        this.panel = panel;
+        this.mainWrapper = mainWrapper;
         const handle = this.panel.querySelector('.handle a');
         handle.addEventListener('click', (evt) => {
             evt.preventDefault();
