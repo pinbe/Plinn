@@ -5,8 +5,7 @@ import transaction
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_parent
 from App.class_init import InitializeClass
-from BTrees.IIBTree import intersection, IISet
-from BTrees.IIBTree import weightedIntersection
+from BTrees.IIBTree import intersection, weightedIntersection, IIBucket
 from Products.CMFCore.CatalogTool import CatalogTool as BaseCatalogTool
 from Products.CMFCore.CatalogTool import IndexableObjectWrapper
 from Products.CMFCore.interfaces import IIndexableObject
@@ -18,6 +17,7 @@ from Products.ZCatalog.Catalog import Catalog
 from Products.ZCatalog.Lazy import LazyMap, LazyCat
 from solr import *
 from zope.component import queryMultiAdapter
+from Products.ZCTextIndex.BaseIndex import scaled_int
 
 _VOLATILE_SOLR_NAME = '_v_solrConnection'
 
@@ -170,10 +170,17 @@ class DelegatedCatalog(Catalog) :
         b_size = query.get('b_size', len(self))
         solr_cn = SolrConnection(self.zcat.solr_url)
         q = ' AND '.join(['%s:(%s)' % item for item in delegatedQuery.items() if item[1]])
-        resp = solr_cn.query(q, fields='id', start=b_start, rows=b_size)
+        resp = solr_cn.query(q, fields='id,score', start=b_start, rows=b_size)
         solr_cn.close()
+        results = IIBucket()
 
-        return resp.numFound, IISet(filter(None, [self.uids.get(r['id']) for r in resp.results]))
+        for res in resp.results :
+            uid = self.uids.get(res['id'], None)
+            if uid is None :
+                continue
+            results[uid] = scaled_int(res['score'])
+
+        return resp.numFound, results
 
     def search(self, query, sort_index=None, reverse=0, limit=None, merge=1) :
         """Iterate through the indexes, applying the query to each one. If
