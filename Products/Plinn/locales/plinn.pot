@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0 beta 1\n"
-"POT-Creation-Date: Thu Nov  5 15:54:10 2020\n"
+"POT-Creation-Date: Thu Nov 19 16:24:44 2020\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
@@ -213,8 +213,8 @@ msgstr ""
 #: n/skins/content/folder_edit_form.pt:29
 #: n/skins/custom_content/event_edit_template.pt:115
 #: n/skins/custom_content/event_view.pt:57
-#: n/skins/flex/header_widgets.pt:24
-#: n/skins/flex/header_widgets.pt:92
+#: n/skins/flex/header_widgets.pt:23
+#: n/skins/flex/header_widgets.pt:91
 #: n/skins/generic/gruf_macros.pt:82
 #: n/skins/generic/gruf_macros.pt:372
 #: n/skins/generic/header_widgets.pt:24
@@ -410,7 +410,7 @@ msgstr ""
 
 #: n/skins/custom_content/event_edit_template.pt:78
 #: n/skins/custom_content/event_edit_template.pt:103
-#: n/skins/flex/widgets.pt:115
+#: n/skins/flex/widgets.pt:98
 #: n/skins/generic/widgets.pt:96
 msgid "${month}&nbsp;/&nbsp;${day}&nbsp;/&nbsp;${year}&nbsp;&nbsp;${hour}&nbsp;:&nbsp;${minute}"
 msgstr ""
@@ -611,28 +611,28 @@ msgid "Set Sorting as Default"
 msgstr ""
 
 #: n/skins/custom_generic/folder_contents_template.pt:29
-#: n/skins/flex/folder_contents_template.pt:29
+#: n/skins/flex/folder_contents_template.pt:25
 msgid "Up"
 msgstr ""
 
 #: n/skins/custom_generic/folder_contents_template.pt:32
-#: n/skins/flex/folder_contents_template.pt:32
+#: n/skins/flex/folder_contents_template.pt:28
 msgid "Down"
 msgstr ""
 
 #: n/skins/custom_generic/folder_contents_template.pt:34
-#: n/skins/flex/folder_contents_template.pt:34
+#: n/skins/flex/folder_contents_template.pt:30
 #. Default: "by"
 msgid "move_by"
 msgstr ""
 
 #: n/skins/custom_generic/folder_contents_template.pt:42
-#: n/skins/flex/folder_contents_template.pt:42
+#: n/skins/flex/folder_contents_template.pt:38
 msgid "Top"
 msgstr ""
 
 #: n/skins/custom_generic/folder_contents_template.pt:44
-#: n/skins/flex/folder_contents_template.pt:44
+#: n/skins/flex/folder_contents_template.pt:40
 msgid "Bottom"
 msgstr ""
 
@@ -653,7 +653,7 @@ msgid "Folders"
 msgstr ""
 
 #: n/skins/custom_generic/index_html_utils.pt:104
-#: n/skins/flex/widgets.pt:144
+#: n/skins/flex/widgets.pt:127
 #: n/skins/generic/recent_news.pt:21
 #: n/skins/generic/widgets.pt:125
 msgid "News"
@@ -910,7 +910,7 @@ msgstr ""
 
 #: n/skins/custom_generic/main_template_standard.pt:112
 #: n/skins/custom_generic/talkback_tree.pt:64
-#: n/skins/flex/main_template_standard.pt:73
+#: n/skins/flex/main_template_standard.pt:63
 #: n/skins/flex/widgets.pt:18
 #: n/skins/generic/main_template_ajax.pt:12
 #: n/skins/generic/widgets.pt:17
@@ -1085,8 +1085,8 @@ msgid "Body"
 msgstr ""
 
 #: n/skins/custom_generic/talkback_tree.pt:82
-#: n/skins/flex/header_widgets.pt:33
-#: n/skins/flex/header_widgets.pt:180
+#: n/skins/flex/header_widgets.pt:32
+#: n/skins/flex/header_widgets.pt:179
 #: n/skins/generic/gruf_macros.pt:106
 #: n/skins/generic/gruf_macros.pt:477
 #: n/skins/generic/header_widgets.pt:32
@@ -1173,84 +1173,84 @@ msgid "Title:"
 msgstr ""
 
 #: n/skins/flex/common_search_results_template.pt:87
-#: n/skins/flex/photo_search_results_template.pt:45
+#: n/skins/flex/photo_search_results_template.pt:50
 #: n/skins/generic/search_results_template.pt:89
 #: n/skins/photo_theme/search.pt:47
 msgid "There are no items matching your specified criteria."
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:58
+#: n/skins/flex/header_widgets.pt:57
 #: n/skins/generic/header_widgets.pt:54
 msgid "Enable Discussion?"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:61
+#: n/skins/flex/header_widgets.pt:60
 #: n/skins/generic/header_widgets.pt:57
 msgid "Default"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:65
+#: n/skins/flex/header_widgets.pt:64
 #: n/skins/generic/header_widgets.pt:60
 msgid "Off"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:69
+#: n/skins/flex/header_widgets.pt:68
 #: n/skins/generic/header_widgets.pt:63
 msgid "On"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:77
+#: n/skins/flex/header_widgets.pt:76
 #: n/skins/generic/gruf_macros.pt:67
 #: n/skins/generic/header_widgets.pt:70
 msgid "Identifier"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:98
+#: n/skins/flex/header_widgets.pt:97
 #: n/skins/generic/header_widgets.pt:91
 msgid "Subject"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:115
+#: n/skins/flex/header_widgets.pt:114
 #: n/skins/generic/header_widgets.pt:108
 msgid "Contributors"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:122
+#: n/skins/flex/header_widgets.pt:121
 #: n/skins/generic/header_widgets.pt:115
 msgid "Creation Date"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:125
+#: n/skins/flex/header_widgets.pt:124
 #: n/skins/generic/header_widgets.pt:118
 msgid "Last Modified Date"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:137
+#: n/skins/flex/header_widgets.pt:136
 #: n/skins/generic/header_widgets.pt:130
 msgid "Effective Date"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:148
+#: n/skins/flex/header_widgets.pt:147
 #: n/skins/generic/header_widgets.pt:141
 msgid "Expiration Date"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:154
+#: n/skins/flex/header_widgets.pt:153
 #: n/skins/generic/header_widgets.pt:147
 msgid "Format"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:162
+#: n/skins/flex/header_widgets.pt:161
 #: n/skins/generic/header_widgets.pt:155
 msgid "Language"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:170
+#: n/skins/flex/header_widgets.pt:169
 #: n/skins/generic/header_widgets.pt:163
 msgid "Rights"
 msgstr ""
 
-#: n/skins/flex/header_widgets.pt:181
+#: n/skins/flex/header_widgets.pt:180
 #: n/skins/generic/header_widgets.pt:174
 msgid "Edit standard metadata"
 msgstr ""
@@ -1277,11 +1277,15 @@ msgstr ""
 msgid "Found ${count} photos."
 msgstr ""
 
-#: n/skins/flex/search.py:117
-#: n/skins/flex/search.py:121
+#: n/skins/flex/search.py:139
+#: n/skins/flex/search.py:143
 #: n/skins/generic/search.py:116
 #: n/skins/generic/search.py:120
 msgid "ascending sort"
+msgstr ""
+
+#: n/skins/flex/search.py:192
+msgid "search results"
 msgstr ""
 
 #: n/skins/flex/topbar_macros.pt:36
@@ -1294,22 +1298,22 @@ msgstr ""
 msgid "Edit metadata"
 msgstr ""
 
-#: n/skins/flex/widgets.pt:76
+#: n/skins/flex/widgets.pt:59
 #: n/skins/generic/widgets.pt:57
 msgid "Clipboard"
 msgstr ""
 
-#: n/skins/flex/widgets.pt:82
+#: n/skins/flex/widgets.pt:65
 #: n/skins/generic/widgets.pt:63
 msgid "Delete"
 msgstr ""
 
-#: n/skins/flex/widgets.pt:83
+#: n/skins/flex/widgets.pt:66
 #: n/skins/generic/widgets.pt:64
 msgid "Empty"
 msgstr ""
 
-#: n/skins/flex/widgets.pt:149
+#: n/skins/flex/widgets.pt:132
 #: n/skins/generic/widgets.pt:130
 msgid "News Item"
 msgstr ""
