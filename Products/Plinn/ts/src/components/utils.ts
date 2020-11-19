@@ -34,12 +34,18 @@ export function writeAjaxResponse(doc: Document) {
                 break;
 
             case 'fragment' :
-                const selector = elt.getAttribute('selector');
-                const targetElt = document.querySelector(selector);
-                if (targetElt) {
-                    targetElt.innerHTML = elt.firstChild.nodeValue; // eg. content text carried by a CDATA
-                    targetElt.querySelectorAll('script')
+                const selector = (elt.hasAttribute('id')) ?
+                    `#${elt.getAttribute('id')}` :
+                    elt.getAttribute('selector') || '';
+                const dest = document.querySelector(selector);
+                if (dest) {
+                    dest.innerHTML = elt.firstChild.nodeValue; // eg. content text carried by a CDATA
+                    dest.querySelectorAll('script')
                         .forEach((script: HTMLScriptElement) => GLOBAL_SCRIPT_REGISTRY.loadScript(script));
+                }
+                else {
+                    console.warn('dest element not found:', selector);
+                    console.log(elt.firstChild.nodeValue)
                 }
                 break;
         }
@@ -162,8 +168,8 @@ export const clearSelection = function () {
         }
     } else { // @ts-ignore
         if (document.selection) {  // IE?
-                // @ts-ignore
+            // @ts-ignore
             document.selection.empty();
-            }
+        }
     }
 };
