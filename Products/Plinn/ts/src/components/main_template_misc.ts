@@ -35,12 +35,12 @@ function stretchLogo() {
 
 function initUserMenu() {
     d3.select('#user-menu i')
-        .on('click', () => {
+        .on('click', (evt: MouseEvent) => {
                 const menu = <HTMLElement>d3.select('#user-menu ul').node();
                 const body = d3.select('body');
                 if (menu.classList.contains('hidden')) {
                     menu.classList.remove('hidden');
-                    d3.event.stopPropagation();
+                    evt.stopPropagation();
                     body.on('click.cancel-user-menu',
                         () => {
                             menu.classList.add('hidden');
