@@ -1,7 +1,7 @@
 ##parameters=
 from Products.CMFCore.utils import getToolByName
 from ZTUtils import make_query as mq
-from ZTUtils import make_hidden_input
+from ZTUtils import make_hidden_input, make_query
 from Products.Plinn.utils import translate, json_loads
 from Products.Plinn import Batch
 
@@ -22,7 +22,7 @@ hasindex = indexes.has_key
 
 form = context.REQUEST.form
 query = {}
-skip_vars = ['strCreator', 'ajax', 'b_start', 'tail_search']
+skip_vars = ['strCreator', 'ajax', 'b_start', 'b_size', 'tail_search']
 
 # list typed criterions
 select_vars = ('review_state'
@@ -148,14 +148,15 @@ options['makeColumnHeader'] = makeColumnHeader
 results = ctool(**query)
 options['resultsLength'] = results.actual_result_count
 
+args = query.copy()
+for name in noFollowVars + skip_vars :
+    try :
+        args.pop(name)
+    except KeyError :
+        pass
+
 if homeDir and results :
     options['canSaveAsTopic'] = True
-    args = query.copy()
-    for name in noFollowVars :
-        try :
-            args.pop(name)
-        except :
-            pass
     if form.has_key('modified') :
         possibleValues = {'yesterday' : 1
             , 'lastWeek' : 7
@@ -183,6 +184,17 @@ options['batch'] = Batch(results,
                          quantumleap=1)
 
 photo_search_mode = len(query['portal_type']) == 1 and query['portal_type'][0] == 'Photo'
+
+# breadcrumbs customization
+breadcrumbs = context.breadcrumbs()
+breadcrumbs.append(
+    {'id'       : 'search'
+     ,'title'   : _('search results')
+     , 'url'    : '%s/search?%s' % (portal_url, make_query(**args))}
+)
+
+options['breadcrumbs'] = breadcrumbs
+context.REQUEST.other['syncFragments'] = ['Breadcrumbs']
 
 if photo_search_mode :
     options['brains_infos'] = context.getPhotoBrainsInfos(results)
