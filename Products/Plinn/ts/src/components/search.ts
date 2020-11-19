@@ -18,7 +18,16 @@ export class SearchForm {
         req.addEventListener('load', (e) => {
             const resp = <XMLHttpRequest>e.target;
             if(resp.status === 200){
+                document.querySelector('#fixed-content').innerHTML = '';
                 writeAjaxResponse(resp.responseXML);
+                fdata.delete('ajax');
+                const args: [string, string][] = [];
+                fdata.forEach((value, key)=>{
+                    args.push([key, encodeURIComponent(value.toString())])
+                });
+                const querystring = args.map((kv)=>`${kv[0]}=${kv[1]}`).join('&');
+                const url = `${this.form.action}?${querystring}`;
+                history.pushState(url, '', url);
             }
         });
         req.send(fdata);
