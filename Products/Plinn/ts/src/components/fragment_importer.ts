@@ -47,7 +47,7 @@ export class FragmentImporter {
         req.send(null);
     }
 
-    private load(fallBackUrl='') {
+    load(fallBackUrl='') {
         if (fallBackUrl) {
             this.fallBackUrl = fallBackUrl;
         } else {

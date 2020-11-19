@@ -1,31 +1,45 @@
-// (c) Benoît PIN 2006-2007
-// http://plinn.org
-// Licence GPL
-//
-//
+// var FolderDDropControler;
+// var DropTarget;
+// var loadListing;
+// var DDFolderUploader;
 
-var FolderDDropControler;
-var DropTarget;
-var loadListing;
-var DDFolderUploader;
+import {DDFileUploaderBase, UploadedElement} from "./fileupload";
+import {base_properties} from "./baseproperties";
+import {FragmentImporter} from "./fragment_importer";
+import {getCopyOfNode} from "./utils";
 
-(function() {
+interface TargetHTMLTableRowElement extends HTMLTableRowElement {
+    pos: number;
+}
 
-    function getTargetRow(evt) {
-        var target = evt.target;
-        while(target.nodeName !== "TR") {
-            target = target.parentNode;
-        }
-        return target;
+function getTargetRow(evt: Event): TargetHTMLTableRowElement {
+    let target = <HTMLElement>evt.target;
+    while (target.nodeName !== "TR") {
+        target = target.parentElement;
     }
+    return <TargetHTMLTableRowElement>target;
+}
 
-    function raiseMouseEvent(ob, eventName) {
-        var event = document.createEvent("MouseEvents");
-        event.initEvent(eventName, true, true);
-        ob.dispatchEvent(event);
-    }
+function raiseMouseEvent(el: HTMLElement, eventName: string) {
+    const event = document.createEvent("MouseEvents");
+    event.initEvent(eventName, true, true);
+    el.dispatchEvent(event);
+}
 
-    FolderDDropControler = function(listing, orderable, firstItemPos) {
+
+export class FolderDDropControler {
+    readonly folderUrl: string;
+    targetRow: TargetHTMLTableRowElement;
+    private lastOverPosition: number;
+    private prevDirUp: boolean;
+    private noOver: boolean;
+    private listing: HTMLTableSectionElement;
+    private readonly firstItemPos: number;
+    private lastCBChecked: HTMLInputElement;
+
+    constructor(listing: HTMLTableSectionElement,
+                orderable: boolean,
+                firstItemPos: number) {
         this.folderUrl = document.getElementById("FolderUrl").innerHTML;
         this.targetRow = null;
         this.lastOverPosition = null;
@@ -35,221 +49,197 @@ var DDFolderUploader;
         this.firstItemPos = firstItemPos;
         this._updatePositions();
         this.lastCBChecked = undefined;
-        var thisControler = this;
-        if(orderable) {
-            this.listing.onmousedown = function(evt) {
-                thisControler.drag(evt);
-            };
-            this.listing.onmouseover = function(evt) {
-                thisControler.moveRow(evt);
-            };
-            this.listing.onmouseup = function(evt) {
-                thisControler.drop(evt);
-            };
-            this.listing.addEventListener('click', function(evt) {
-                thisControler.disableClickAfterDrop(evt);
-            });
+
+        if (orderable) {
+            this.listing.onmousedown = (evt) => this.drag(evt);
+            this.listing.onmouseover = (evt) => this.moveRow(evt);
+            this.listing.onmouseup = (evt) => this.drop(evt);
+            this.listing.addEventListener('click',
+                (evt) => this.disableClickAfterDrop(evt));
         }
-        this.listing.addEventListener('click', function(evt) {
-            thisControler.selectCBRange(evt);
-        });
+        this.listing.addEventListener('click',
+            (evt) => this.selectCBRange(evt));
+    }
 
-        // if (browser.isIE10max) {
-        // 	this.listing.ondragstart = function() { window.event.returnValue = false;};
-        // }
-    };
-
-    FolderDDropControler.prototype._updatePositions = function() {
-        var rows = this.listing.getElementsByTagName("TR");
-        var i, row;
-        for(i = 0; i < rows.length; i++) {
-            row = rows[i];
-            row.pos = i + this.firstItemPos;
-            if(i % 2 === 0) {
+    private _updatePositions() {
+        const rows = this.listing.getElementsByTagName("TR");
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            (<any>row).pos = i + this.firstItemPos;
+            if (i % 2 === 0) {
                 row.className = "even";
-            }
-            else {
+            } else {
                 row.className = "odd";
             }
         }
-    };
+    }
 
-    FolderDDropControler.prototype.drag = function(evt) {
-        var target = evt.target;
-        if(target.nodeName === "INPUT") {
+    private drag(evt: Event) {
+        const target = <Element>evt.target;
+        if (target.nodeName === "INPUT") {
             return true;
         }
         evt.preventDefault();
-        var targetRow = getTargetRow(evt);
+        const targetRow = getTargetRow(evt);
         targetRow.style.backgroundColor = base_properties.highLightColor;
         this.listing.style.cursor = "move";
         this.targetRow = targetRow;
         this.lastOverPosition = targetRow.pos;
     };
 
-    FolderDDropControler.prototype.moveRow = function(evt) {
-        var targetRow = this.targetRow;
-        if(targetRow !== null) {
+    private moveRow(evt: Event) {
+        const targetRow = this.targetRow;
+        if (targetRow !== null) {
             this.noOver = false;
             // if (browser.isIE10max) {document.selection.clear();}
-            var overRow = getTargetRow(evt);
+            const overRow = getTargetRow(evt);
 
-            if(overRow.pos === targetRow.pos) {
+            if (overRow.pos === targetRow.pos) {
                 return;
             }
 
-            if(this.lastOverPosition < overRow.pos) { // move up
+            if (this.lastOverPosition < overRow.pos) { // move up
                 this.listing.insertBefore(targetRow, overRow.nextSibling);
                 this.prevDirUp = true;
                 this.lastOverPosition = overRow.pos;
-            }
-            else if(this.lastOverPosition > overRow.pos) { // move down
+            } else if (this.lastOverPosition > overRow.pos) { // move down
                 this.listing.insertBefore(targetRow, overRow);
                 this.prevDirUp = false;
                 this.lastOverPosition = overRow.pos;
-            }
-            else {
-                if(this.prevDirUp) {
+            } else {
+                if (this.prevDirUp) {
                     this.prevDirUp = false;
                     this.listing.insertBefore(targetRow, overRow);
-                }
-                else {
+                } else {
                     this.prevDirUp = true;
                     this.listing.insertBefore(targetRow, overRow.nextSibling);
                 }
             }
         }
-    };
+    }
 
-    FolderDDropControler.prototype.drop = function(evt) {
-        var targetRow = this.targetRow;
-        if(targetRow !== null) {
+    private drop(evt: Event) {
+        const targetRow = this.targetRow;
+        if (targetRow !== null) {
             targetRow.style.backgroundColor = "";
             this.listing.style.cursor = "";
-            var thisControler = this;
-            if(this.noOver) {
-                setTimeout(function() {
-                    thisControler.reset();
-                }, 50);
+
+            if (this.noOver) {
+                setTimeout(() => this.reset(), 50);
                 return;
             }
-            if(this.lastOverPosition !== null) {
+            if (this.lastOverPosition !== null) {
                 // get new object position.
-                var trim = 0;
-                if(targetRow.pos < this.lastOverPosition && !this.prevDirUp) {
+                let trim = 0;
+                if (targetRow.pos < this.lastOverPosition && !this.prevDirUp) {
                     trim = -1;
-                }
-                else if(targetRow.pos > this.lastOverPosition && this.prevDirUp) {
+                } else if (targetRow.pos > this.lastOverPosition && this.prevDirUp) {
                     trim = 1;
                 }
 
                 // construct url
-                var object_id = targetRow.getElementsByTagName("INPUT")[0].getAttribute("value");
-                var url = this.folderUrl + "/moveObjectIdToPosition";
-                var form = "object_id=" + object_id + "&position:int=" +
+                const object_id = targetRow.getElementsByTagName("INPUT")[0].getAttribute("value");
+                const url = this.folderUrl + "/moveObjectIdToPosition";
+                const form = "object_id=" + object_id + "&position:int=" +
                     String(this.lastOverPosition - 1 + trim);
 
                 // reinitialize positions
                 this._updatePositions();
 
                 // send request
-                var req = new XMLHttpRequest();
+                const req = new XMLHttpRequest();
                 req.open("POST", url, true);
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
                 req.send(form);
-                setTimeout(function() {
-                    thisControler.reset();
-                }, 50);
+                setTimeout(() => this.reset(), 50);
             }
         }
-    };
+    }
 
-    FolderDDropControler.prototype.disableClickAfterDrop = function(evt) {
-        if(!this.noOver) {
+    private disableClickAfterDrop(evt: Event) {
+        if (!this.noOver) {
             evt.stopPropagation();
             evt.preventDefault();
         }
         this.reset();
-    };
+    }
 
-    FolderDDropControler.prototype.selectCBRange = function(evt) {
-        var target = evt.target;
-        if(target.tagName === 'INPUT' && target.type === 'checkbox') {
+    private selectCBRange(evt: MouseEvent) {
+        const target = <HTMLInputElement>evt.target;
+        if (target.tagName === 'INPUT' && target.type === 'checkbox') {
             var shift = evt.shiftKey;
-            if(shift && this.lastCBChecked) {
-                var from = this.getCBIndex(this.lastCBChecked);
-                var to = this.getCBIndex(target);
-                var rows = this.listing.getElementsByTagName('TR');
-                var start = Math.min(from, to);
-                var stop = Math.max(from, to);
-                var i;
-                for(i = start; i < stop; i++) {
-                    rows[i].getElementsByTagName('INPUT')[0].checked = true;
+            if (shift && this.lastCBChecked) {
+                const from = this.getCBIndex(this.lastCBChecked);
+                const to = this.getCBIndex(target);
+                const rows = this.listing.getElementsByTagName('TR');
+                const start = Math.min(from, to);
+                const stop = Math.max(from, to);
+                for (let i = start; i < stop; i++) {
+                    (<HTMLInputElement>rows[i].getElementsByTagName('INPUT')[0]).checked = true;
                 }
-            }
-            else if(target.checked) {
+            } else if (target.checked) {
                 this.lastCBChecked = target;
-            }
-            else {
+            } else {
                 this.lastCBChecked = undefined;
             }
         }
-    };
+    }
 
-    FolderDDropControler.prototype.getCBIndex = function(cb) {
-        var row = cb.parentNode;
-        while(row.tagName !== 'TR') {
-            row = row.parentNode;
+    private getCBIndex(cb: HTMLInputElement) {
+        let row = cb.parentElement;
+        while (row.tagName !== 'TR') {
+            row = row.parentElement;
         }
-        return row.pos - this.firstItemPos;
+        return (<TargetHTMLTableRowElement>row).pos - this.firstItemPos;
     };
 
-    FolderDDropControler.prototype.reset = function() {
+    reset() {
         this.targetRow = null;
         this.lastOverPosition = null;
         this.prevDirUp = null;
         this.noOver = true;
-    };
+    }
+}
 
 
-    DropTarget = function(node, folderDDControler) {
+class DropTarget {
+    private readonly folderDDControler: FolderDDropControler;
+    private readonly batchSize: number;
+
+    constructor(node: HTMLElement, folderDDControler: FolderDDropControler) {
         this.folderDDControler = folderDDControler;
         this.batchSize = parseInt(document.getElementById("BatchNavigationSize").innerHTML, 10);
-        var thisControler = this;
-        node.onmouseup = function(evt) {
-            thisControler.drop(evt);
-        };
-        node.onmouseover = function(evt) {
-            thisControler.highlightTarget(evt);
-        };
-        node.onmouseout = function(evt) {
-            var target = evt.target;
-            if(target.nodeName === "A" && target.className === "dropPageTarget") {
+
+        node.onmouseup = (evt) => this.drop(evt);
+        node.onmouseover = (evt) => this.highlightTarget(evt);
+        node.onmouseout = (evt) => {
+            const target = <HTMLElement>evt.target;
+            if (target.nodeName === "A" && target.className === "dropPageTarget") {
                 target.className = "";
             }
         };
-    };
+    }
 
-    DropTarget.prototype.drop = function(evt) {
-        var target = evt.target;
-        if(target.nodeName === "A" &&
+    private drop(evt: Event) {
+        const target = <HTMLElement>evt.target;
+        if (target.nodeName === "A" &&
             target.className !== "previous" &&
             target.className !== "next") {
-            var pageNumber = parseInt(target.innerHTML, 10);
-            var targetRow = this.folderDDControler.targetRow;
-            if(!isNaN(pageNumber) && targetRow) {
+            const pageNumber = parseInt(target.innerHTML, 10);
+            const targetRow = this.folderDDControler.targetRow;
+            if (!isNaN(pageNumber) && targetRow) {
                 this.folderDDControler.reset();
-                var object_id = targetRow.getElementsByTagName("INPUT")[0].getAttribute("value");
-                var url = this.folderDDControler.folderUrl + "/moveObjectIdToPosition";
-                var form = "object_id=" + object_id + "&position:int=" + String(this.batchSize * (pageNumber - 1));
+                const object_id = targetRow.getElementsByTagName("INPUT")[0].getAttribute("value");
+                const url = this.folderDDControler.folderUrl + "/moveObjectIdToPosition";
+                const form = "object_id=" + object_id + "&position:int=" + String(this.batchSize * (pageNumber - 1));
                 // send request
-                var req = new XMLHttpRequest();
+                const req = new XMLHttpRequest();
                 req.open("POST", url, true);
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
                 req.send(form);
-                req.onreadystatechange = function() {
-                    if(req.readyState === 4) {
-                        switch(req.status) {
+                req.onreadystatechange = () => {
+                    if (req.readyState === 4) {
+                        switch (req.status) {
                             case 200:
                             case 204:
                             case 1223:
@@ -262,158 +252,164 @@ var DDFolderUploader;
                 };
             }
         }
-    };
+    }
 
-    DropTarget.prototype.highlightTarget = function(evt) {
+    private highlightTarget(evt: Event) {
         // if (browser.isIE10max) {document.selection.clear();}
-        var target = evt.target;
-        if(this.folderDDControler.targetRow &&
+        const target = <HTMLElement>evt.target;
+        if (this.folderDDControler.targetRow &&
             target.nodeName === "A" &&
             target.className !== "previous" &&
             target.className !== "next") {
             target.className = "dropPageTarget";
         }
-    };
+    }
+}
 
 
-    loadListing = function(evt) {
-        var target = evt.target;
-        evt.preventDefault();
-        evt.stopPropagation();
-        var url;
-        switch(target.nodeName) {
-            case "A" :
-                var parts = target.href.split('?');
-                url = parts[0];
-                var query = '';
-                if(parts.length === 2) {
-                    query = parts[1];
-                }
+function loadListing(evt: Event) {
+    const target = <HTMLElement>evt.target;
+    evt.preventDefault();
+    evt.stopPropagation();
+    let url;
+    switch (target.nodeName) {
+        case "A" :
+            const parts = (<HTMLAnchorElement>target).href.split('?');
+            url = parts[0];
+            let query = '';
+            if (parts.length === 2) {
+                query = parts[1];
+            }
 
-                var urlParts = url.split("/");
-                url = urlParts.slice(0, urlParts.length - 1).join("/");
-                if(query.search("template") === -1) {
-                    query += "&template=folder_contents_macros&macro=FolderListing&fragmentSelector=" +
-                        encodeURIComponent("#FolderListing");
-                }
-                url = url + "/folder_contents?" + query;
+            const urlParts = url.split("/");
+            url = urlParts.slice(0, urlParts.length - 1).join("/");
+            if (query.search("template") === -1) {
+                query += "&template=folder_contents_macros&macro=FolderListing&fragmentSelector=" +
+                    encodeURIComponent("#FolderListing");
+            }
+            url = url + "/folder_contents?" + query;
 
-                var fi = new FragmentImporter(url);
-                fi.load();
-                break;
+            const fi = new FragmentImporter(url);
+            fi.load();
+            break;
 
-            case "IMG" :
-                if(target.id === 'SetSortingAsDefault') {
-                    var parent = target.parentNode;
-                    url = parent.href;
-                    url = url.replace("folder_contents", "folder_sort_control");
-                    parent.parentNode.removeChild(parent);
+        case "IMG" :
+            if (target.id === 'SetSortingAsDefault') {
+                const parent = <HTMLAnchorElement>target.parentElement;
+                url = parent.href;
+                url = url.replace("folder_contents", "folder_sort_control");
+                parent.parentNode.removeChild(parent);
 
-                    var req = new XMLHttpRequest();
-                    req.open("GET", url, true);
-                    req.send(null);
-                }
-                break;
-        }
-        return false;
-    };
+                const req = new XMLHttpRequest();
+                req.open("GET", url, true);
+                req.send(null);
+            }
+            break;
+    }
+    return false;
+}
 
-    DDFolderUploader = function(dropbox, uploadUrl, listing) {
-        DDFileUploaderBase.apply(this, [dropbox, uploadUrl]);
+interface TableRowUploadedElement extends HTMLTableRowElement, UploadedElement {
+    progressBar: HTMLSpanElement;
+}
+
+class DDFolderUploader extends DDFileUploaderBase {
+    private listing: HTMLTableSectionElement;
+    private progressBarMaxSize: number;
+    private readonly tableSpan: number;
+    private lastRowClassName: string;
+    private uploadedItem: TableRowUploadedElement;
+    private progressBar: HTMLSpanElement;
+
+    constructor(dropbox: HTMLElement, uploadUrl: string, listing: HTMLTableSectionElement) {
+        super(dropbox, uploadUrl)
         this.listing = listing;
         this.progressBarMaxSize = listing.clientWidth;
-        var thead = listing;
+        let thead: HTMLTableSectionElement = listing;
         do {
-            thead = thead.previousSibling;
-        } while(thead.tagName !== 'THEAD');
+            thead = <HTMLTableSectionElement>thead.previousSibling;
+        } while (thead.tagName !== 'THEAD');
 
-        var cells = thead.getElementsByTagName('th');
-        var cell, i;
+        const cells = thead.getElementsByTagName('th');
         this.tableSpan = 0;
-        for(i = 0; i < cells.length; i++) {
-            cell = cells[i];
+        for (let i = 0; i < cells.length; i++) {
+            const cell = cells[i];
             this.tableSpan += cell.getAttribute('colspan') ? Number(cell.getAttribute('colspan')) : 1;
         }
-        var lastRow = listing.lastChild;
-        while(lastRow && lastRow.tagName !== 'TR') {
-            lastRow = lastRow.previousSibling;
+        let lastRow = <HTMLTableRowElement>listing.lastChild;
+        while (lastRow && lastRow.tagName !== 'TR') {
+            lastRow = <HTMLTableRowElement>lastRow.previousSibling;
         }
         this.lastRowClassName = lastRow ? lastRow.className : 'even';
-    };
-
-    copyPrototype(DDFolderUploader, DDFileUploaderBase);
+    }
 
 
-    DDFolderUploader.prototype.createRow = function(file) {
-        var row = document.createElement('tr');
+    private createRow(file: File) {
+        const row = <TableRowUploadedElement>document.createElement('tr');
         row.file = file;
         row.className = this.lastRowClassName === 'even' ? 'odd' : 'even';
         this.lastRowClassName = row.className;
-        var td = document.createElement('td');
-        td.setAttribute('colspan', this.tableSpan);
-        var relSpan = document.createElement('span');
+        const td: HTMLTableCellElement = document.createElement('td');
+        td.setAttribute('colspan', String(this.tableSpan));
+        const relSpan = document.createElement('span');
         relSpan.style.position = 'relative';
         td.appendChild(relSpan);
-        var progressBar = document.createElement('span');
+        const progressBar = document.createElement('span');
         progressBar.className = 'upload-progress';
         row.progressBar = progressBar;
         relSpan.appendChild(progressBar);
-        var fileNameSpan = document.createElement('span');
+        const fileNameSpan = document.createElement('span');
         fileNameSpan.innerHTML = file.name;
         td.appendChild(fileNameSpan);
         row.appendChild(td);
         this.listing.appendChild(row);
         this.progressBarMaxSize = row.clientWidth;
         return row;
-    };
+    }
 
 // Methods about upload
-    DDFolderUploader.prototype.handleFiles = function(files) {
-        var file, i, row;
-        for(i = 0; i < files.length; i++) {
-            file = files[i];
-            row = this.createRow(file);
+    protected handleFiles(files: FileList) {
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const row = this.createRow(file);
             this.uploadQueuePush(row);
         }
-    };
+    }
 
-    DDFolderUploader.prototype.beforeUpload = function(item) {
+    protected beforeUpload(item: TableRowUploadedElement) {
         this.uploadedItem = item;
         this.progressBar = item.progressBar;
-    };
+    }
 
-    DDFolderUploader.prototype.uploadCompleteHandlerCB = function(req) {
-        var item = this.uploadedItem;
-        var row = getCopyOfNode(req.responseXML.documentElement.firstChild);
+    protected uploadCompleteHandlerCB(req: XMLHttpRequest) {
+        const item = this.uploadedItem;
+        const row = <HTMLTableRowElement>getCopyOfNode(req.responseXML.documentElement.firstChild);
 
-        if(req.status === 200) {
+        if (req.status === 200) {
             // update
             this.listing.removeChild(item);
-            var itemUrl = row.getElementsByTagName('a')[0].href;
-            var links = this.listing.getElementsByTagName('a');
-            var i, existingRow;
-            for(i = 0; i < links.length; i++) {
-                if(links[i].href === itemUrl) {
-                    existingRow = links[i].parentNode.parentNode;
+            const itemUrl = row.getElementsByTagName('a')[0].href;
+            const links = this.listing.getElementsByTagName('a');
+            for (let i = 0; i < links.length; i++) {
+                if (links[i].href === itemUrl) {
+                    const existingRow = links[i].parentElement.parentElement;
                     row.className = existingRow.className;
                     this.listing.replaceChild(row, existingRow);
                     break;
                 }
             }
-        }
-        else if(req.status === 201) {
+        } else if (req.status === 201) {
             // creation
             row.className = item.className;
             this.listing.replaceChild(row, item);
             this.progressBarMaxSize = row.clientWidth;
         }
-    };
+    }
 
-    DDFolderUploader.prototype.progressHandlerCB = function(progress) {
+    protected progressHandlerCB(progress: number) {
         // 0 <= progress <= 1
-        var size = this.progressBarMaxSize * progress;
+        let size = this.progressBarMaxSize * progress;
         size = Math.round(size);
         this.progressBar.style.width = size + 'px';
-    };
-
-}());
+    }
+}
