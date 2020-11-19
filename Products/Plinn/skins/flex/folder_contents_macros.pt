@@ -38,7 +38,8 @@
           <td colspan="5" tal:replace="nothing"></td>
         </tr>
       </thead>
-      <tbody id="FolderListingBody">
+      <tbody id="FolderListingBody"
+             tal:attributes="data-items_add_allowed options/form/items_add_allowed">
 <tbody tal:repeat="item_info listItemInfos" tal:omit-tag="" metal:define-macro="itemListing">
         <tr class="" tal:attributes="class python: (even and 'even') or 'odd'" tal:define="even repeat/item_info/even">
           <td>
@@ -73,40 +74,8 @@
     <div tal:define="navBatchBarId string:bottomNavBatchBar" tal:omit-tag="">
       <span metal:use-macro="here/batch_macros/macros/navigation">batch navigation</span>
     </div>
-    <script type="text/javascript">
-    <!--
-		(function(){
-			// ordering / selecting
-			var firsItemPosElement = document.getElementById('FirstItemPos');
-			var listing = document.getElementById("FolderListingBody");
-			var orderable = firsItemPosElement ? true : false;
-			var firstItemPos = orderable ? parseInt(firsItemPosElement.innerHTML, 10) : 1;
-			var fDDcontroler = new FolderDDropControler(listing, orderable, firstItemPos);
-			var topNavBatchBar, bottomNavBatchBar;
-			if (orderable) {
-				topNavBatchBar = document.getElementById("topNavBatchBar");
-				bottomNavBatchBar = document.getElementById("bottomNavBatchBar");
-				if (topNavBatchBar && bottomNavBatchBar) {
-					new DropTarget(topNavBatchBar, fDDcontroler);
-					new DropTarget(bottomNavBatchBar, fDDcontroler);
-				}
-			}
-			document.getElementById("FolderListingHeader").addEventListener("click", loadListing);
-			if (topNavBatchBar && bottomNavBatchBar) {
-				topNavBatchBar.addEventListener("click", loadListing);
-				bottomNavBatchBar.addEvent("click", loadListing);
-			}
-
-		}());
-    // -->
-    </script>
-    <script type="text/javascript" tal:condition="options/form/items_add_allowed">
-		(function(){
-			// upload by drag and drop
-			var uploadUrl = absolute_url() + '/put_upload';
-			new DDFolderUploader(document.getElementById('content-outer'), uploadUrl, document.getElementById("FolderListingBody"));
-		}());
-    </script>
+    <script type="text/javascript"
+            tal:attributes="src string:$portal_url/plinn/jsbuild/folder_contents.js"></script>
   </body>
 
 </html>

@@ -21,7 +21,7 @@ export class FormManager {
     private readonly noHistory: boolean;
     public onBeforeSubmit: (fm: this, evt: Event) => string;
     public onResponseLoad: (resp: XMLHttpRequest) => void;
-    private onAfterPopulate: (resp: XMLHttpRequest) => void;
+    onAfterPopulate: (resp: XMLHttpRequest) => void;
     public submitButton: HTMLInputElement | HTMLButtonElement | {name: string, value: string};
     private readonly lazyListeners: {
         element: HTMLInputElement|HTMLTextAreaElement,

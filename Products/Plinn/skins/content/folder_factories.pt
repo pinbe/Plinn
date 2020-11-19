@@ -42,35 +42,8 @@
           </div>
         </table>
       </form>
-      <script type="text/javascript" charset="utf-8">
-        (function(){
-          var fform = document.getElementById('factories_form');
-          var fm = new FormManager(fform, undefined, undefined, true);
-          var submitButton;
-          fm.onBeforeSubmit = function(self, evt) {
-            if (submitButton)
-              self.submitButton = submitButton;
-          };
-          fm.onAfterPopulate = function(req) {
-              var url = req.responseXML.documentElement.getAttribute('content-url');
-              history.pushState(url, '', url);
-          };
-
-          var id2type = /(^[^\.]+)\.id:record$/;
-          function trackFocus(evt) {
-            var input = evt.target;
-            var matches = id2type.exec(input.name);
-            if (matches && matches.length == 2)
-              submitButton = fform.elements[matches[1] + '.type:record'];
-          }
-          var e;
-          for (var i = 0 ; i < fform.elements.length ; i++) {
-            e = fform.elements[i];
-            if (e.type==='text')
-                e.addEventListener('focus', trackFocus);
-          }
-        }());
-      </script>
+      <script type="text/javascript"
+              tal:attributes="src string:$portal_url/plinn/jsbuild/folder_factories.js"></script>
     </div>
   </body>
 </html>

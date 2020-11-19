@@ -1,8 +1,3 @@
-// var FolderDDropControler;
-// var DropTarget;
-// var loadListing;
-// var DDFolderUploader;
-
 import {DDFileUploaderBase, UploadedElement} from "./fileupload";
 import {base_properties} from "./baseproperties";
 import {FragmentImporter} from "./fragment_importer";
@@ -202,7 +197,7 @@ export class FolderDDropControler {
 }
 
 
-class DropTarget {
+export class DropTarget {
     private readonly folderDDControler: FolderDDropControler;
     private readonly batchSize: number;
 
@@ -267,7 +262,7 @@ class DropTarget {
 }
 
 
-function loadListing(evt: Event) {
+export function loadListing(evt: Event) {
     const target = <HTMLElement>evt.target;
     evt.preventDefault();
     evt.stopPropagation();
@@ -313,7 +308,7 @@ interface TableRowUploadedElement extends HTMLTableRowElement, UploadedElement {
     progressBar: HTMLSpanElement;
 }
 
-class DDFolderUploader extends DDFileUploaderBase {
+export class DDFolderUploader extends DDFileUploaderBase {
     private listing: HTMLTableSectionElement;
     private progressBarMaxSize: number;
     private readonly tableSpan: number;
