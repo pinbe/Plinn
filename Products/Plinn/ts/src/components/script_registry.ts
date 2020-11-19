@@ -25,7 +25,7 @@ class ScriptRegistry {
             scriptUrl = scriptOb.getAttribute('src');
 
         if (scriptUrl) {
-            if (!this.loadedScripts[scriptUrl])
+            // if (!this.loadedScripts[scriptUrl])
                 this.pendingScripts.push(['url', scriptUrl]);
         } else {
             this.pendingScripts.push(['code', scriptOb]);
