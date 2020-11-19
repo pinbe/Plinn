@@ -4,8 +4,12 @@
 //
 //
 
+import {GLOBAL_SCRIPT_REGISTRY} from "./script_registry";
+import {writeAjaxResponse} from "./utils";
+
 const isTextMime = /^text\/.+/i;
-const NULL_CALLBACK=()=>{};
+const NULL_CALLBACK = () => {
+};
 
 export class FragmentImporter {
     private readonly url: string;
@@ -47,7 +51,7 @@ export class FragmentImporter {
         req.send(null);
     }
 
-    load(fallBackUrl='') {
+    load(fallBackUrl = '') {
         if (fallBackUrl) {
             this.fallBackUrl = fallBackUrl;
         } else {
@@ -75,36 +79,7 @@ export class FragmentImporter {
         }
 
         if (contentType.indexOf('text/xml') !== -1) {
-            const fragments = req.responseXML.documentElement.childNodes;
-            // var element, dest, scripts, i, j;
-            for (let i = 0; i < fragments.length; i++) {
-                const element = fragments[i];
-                switch (element.nodeName) {
-                    case 'fragment' :
-                        // dest = document.getElementById(element.getAttribute('id'));
-                        const dest = document.querySelector((<Element>element).getAttribute('selector'));
-                        if (dest) {
-                            dest.innerHTML = element.firstChild.nodeValue;
-                            const scripts = dest.getElementsByTagName('script');
-                            for (let j = 0; j < scripts.length; j++) {
-                                console.warn('TODO:', scripts[j]);
-                                // globalScriptRegistry.loadScript(scripts[j]);
-                            }
-                        }
-                        break;
-
-                    case 'base' :
-                        const headBase = document.getElementsByTagName('base');
-                        if (headBase.length > 0) {
-                            headBase[0].setAttribute('href', (<Element>element).getAttribute('href'));
-                        } else {
-                            const newBase = document.createElement('base');
-                            newBase.setAttribute('href', (<Element>element).getAttribute('href'));
-                            document.head.appendChild(newBase);
-                        }
-                        break;
-                }
-            }
+            writeAjaxResponse(req.responseXML);
         }
         this.onAfterPopulate();
     }
