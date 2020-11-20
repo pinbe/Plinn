@@ -38,20 +38,7 @@
       <link metal:define-slot="css_slot" tal:replace="nothing" />
       <script type="text/javascript"
               tal:attributes="src string:$portal_url/plinn/jsbuild/main.js"></script>
-<!--?      <script type="text/javascript"-->
-<!--?              tal:attributes="src string:$portal_url/js/d3.min.js"></script>-->
-<!--?      <script type="text/javascript"-->
-<!--?              tal:attributes="src string:$portal_url/js/utils.js"></script>-->
-<!--?      <script type="text/javascript"-->
-<!--?              tal:attributes="src string:$portal_url/js/base_properties.js"></script>-->
-<!--?      <script type="text/javascript"-->
-<!--?              tal:attributes="src string:$portal_url/js/script_loader.js"></script>-->
-<!--?      <script type="text/javascript"-->
-<!--?              tal:attributes="src string:$portal_url/js/fragment_importer.js"></script>-->
-<!--?      <script type="text/javascript"-->
-<!--?              tal:attributes="src string:$portal_url/js/ajax_form_manager.js"></script>-->
-
-      <script type="text/javascript" metal:define-slot="javascript_head_slot" tal:replace="nothing"></script>
+      <metal:block metal:define-slot="javascript_head_slot"/>
       <tal:block tal:replace="structure python:modules['Products.Plinn.utils'].getLdJson(here)"></tal:block>
     </head>
     <body tal:attributes="data-portal_url portal_url;
