@@ -18,7 +18,7 @@ export class SitePanel {
         });
     }
 
-    toggle() {
+    toggle(): void {
         const t = d3.transition()
             .duration(500)
             .ease(d3.easeCubicOut)

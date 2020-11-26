@@ -169,11 +169,12 @@ a:hover {
 #status-message {
   font-weight: bold;
   text-align: center;
-  padding: 1rem;
+  padding: 13px;
   border: 1px solid &dtml-messageBorderColor;;
   background: &dtml-messageBackgroundColor;;
   box-shadow: &dtml-defaultShadow;;
   margin-bottom: 6px;
+  position: relative;
 }
 
 #status-message::before {

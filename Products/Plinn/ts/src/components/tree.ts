@@ -61,7 +61,7 @@ export class TreeMaker {
 
             }
         }
-    };
+    }
 
 
     private getExpansion() {
@@ -135,7 +135,7 @@ export class TreeMaker {
                 .ease(TreeMaker.TR_EASE)
                 .style('height', null);
         }
-    };
+    }
 
     /*
     * collapse the tree: removes deeper rows after the 'baseRow' passed.

@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 
-const NULL_CALLBACK = () => {
-};
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const NULL_CALLBACK = () => {};
 
 export class InspectorPalette {
     private toggleWrapper: d3.Selection<HTMLElement, null, HTMLElement, null>;
@@ -28,7 +28,7 @@ export class InspectorPalette {
 
     }
 
-    toggle() {
+    toggle(): void {
         const wrapperNode = this.toggleWrapper.node();
         if (wrapperNode.classList.contains('closed')) {
             wrapperNode.classList.remove('closed');

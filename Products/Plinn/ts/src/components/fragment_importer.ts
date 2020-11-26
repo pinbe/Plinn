@@ -4,12 +4,11 @@
 //
 //
 
-import {GLOBAL_SCRIPT_REGISTRY} from "./script_registry";
 import {writeAjaxResponse} from "./utils";
 
 const isTextMime = /^text\/.+/i;
-const NULL_CALLBACK = () => {
-};
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const NULL_CALLBACK = () => {};
 
 export class FragmentImporter {
     private readonly url: string;
@@ -33,6 +32,7 @@ export class FragmentImporter {
                             req.abort();
                             window.location.href = this.fallBackUrl;
                         }
+                        // eslint-disable-next-line no-empty
                     } catch (e) {
                     }
                     break;
@@ -51,7 +51,7 @@ export class FragmentImporter {
         req.send(null);
     }
 
-    load(fallBackUrl = '') {
+    load(fallBackUrl = ''): void {
         if (fallBackUrl) {
             this.fallBackUrl = fallBackUrl;
         } else {
@@ -60,7 +60,7 @@ export class FragmentImporter {
         this._load(this.url);
     }
 
-    useMacro(template: string, macro: string, fragmentSelector: string, queryString: string = '') {
+    useMacro(template: string, macro: string, fragmentSelector: string, queryString = ''): void {
         let url = this.url +
             "/use_macro?template=" + encodeURIComponent(template) +
             "&macro=" + encodeURIComponent(macro) +

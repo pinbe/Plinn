@@ -1,6 +1,9 @@
 import {getWindowScrollY} from "./utils";
 import * as d3 from "d3";
 
+const STATUS_MESSAGE_DURATION = 8; // seconds
+
+
 function fixTopBar() {
     const topBar = document.getElementById('top-bar');
     const topBarRect = topBar.getBoundingClientRect();
@@ -52,11 +55,28 @@ function initUserMenu() {
         );
 }
 
-export function init() {
+function initPortalStatusMessage() {
+    const psm = document.querySelector<HTMLDivElement>('#status-message');
+    if (!psm)
+        return;
+    setTimeout(() =>
+            d3.select(psm)
+                .style('height', `${psm.getBoundingClientRect().height}px`)
+                .style('overflow', 'hidden')
+                .style('opacity', '1')
+                .transition().duration(500)
+                .style('height', '0px')
+                .style('padding', '0px')
+                .style('opacity', '0')
+        , STATUS_MESSAGE_DURATION * 1000);
+}
+
+export function init(): void {
     if (document.body.getAttribute('data-isAnon') === 'True') {
         fixTopBar();
         window.addEventListener('resize', fitTopBar);
         window.addEventListener('scroll', stretchLogo);
     }
     initUserMenu();
+    initPortalStatusMessage();
 }

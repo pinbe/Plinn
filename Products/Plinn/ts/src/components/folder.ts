@@ -48,7 +48,7 @@ export class FolderDDropControler {
         if (orderable) {
             this.listing.onmousedown = (evt) => this.drag(evt);
             this.listing.onmouseover = (evt) => this.moveRow(evt);
-            this.listing.onmouseup = (evt) => this.drop(evt);
+            this.listing.onmouseup = () => this.drop();
             this.listing.addEventListener('click',
                 (evt) => this.disableClickAfterDrop(evt));
         }
@@ -60,7 +60,7 @@ export class FolderDDropControler {
         const rows = this.listing.getElementsByTagName("TR");
         for (let i = 0; i < rows.length; i++) {
             const row = rows[i];
-            (<any>row).pos = i + this.firstItemPos;
+            (<TargetHTMLTableRowElement>row).pos = i + this.firstItemPos;
             if (i % 2 === 0) {
                 row.className = "even";
             } else {
@@ -80,7 +80,7 @@ export class FolderDDropControler {
         this.listing.style.cursor = "move";
         this.targetRow = targetRow;
         this.lastOverPosition = targetRow.pos;
-    };
+    }
 
     private moveRow(evt: Event) {
         const targetRow = this.targetRow;
@@ -113,7 +113,7 @@ export class FolderDDropControler {
         }
     }
 
-    private drop(evt: Event) {
+    private drop() {
         const targetRow = this.targetRow;
         if (targetRow !== null) {
             targetRow.style.backgroundColor = "";
@@ -162,7 +162,7 @@ export class FolderDDropControler {
     private selectCBRange(evt: MouseEvent) {
         const target = <HTMLInputElement>evt.target;
         if (target.tagName === 'INPUT' && target.type === 'checkbox') {
-            var shift = evt.shiftKey;
+            const shift = evt.shiftKey;
             if (shift && this.lastCBChecked) {
                 const from = this.getCBIndex(this.lastCBChecked);
                 const to = this.getCBIndex(target);
@@ -186,9 +186,9 @@ export class FolderDDropControler {
             row = row.parentElement;
         }
         return (<TargetHTMLTableRowElement>row).pos - this.firstItemPos;
-    };
+    }
 
-    reset() {
+    reset(): void {
         this.targetRow = null;
         this.lastOverPosition = null;
         this.prevDirUp = null;
@@ -262,7 +262,7 @@ export class DropTarget {
 }
 
 
-export function loadListing(evt: Event) {
+export function loadListing(evt: Event): boolean {
     const target = <HTMLElement>evt.target;
     evt.preventDefault();
     evt.stopPropagation();
@@ -317,7 +317,7 @@ export class DDFolderUploader extends DDFileUploaderBase {
     private progressBar: HTMLSpanElement;
 
     constructor(dropbox: HTMLElement, uploadUrl: string, listing: HTMLTableSectionElement) {
-        super(dropbox, uploadUrl)
+        super(dropbox, uploadUrl);
         this.listing = listing;
         this.progressBarMaxSize = listing.clientWidth;
         let thead: HTMLTableSectionElement = listing;
@@ -363,7 +363,7 @@ export class DDFolderUploader extends DDFileUploaderBase {
     }
 
 // Methods about upload
-    protected handleFiles(files: FileList) {
+    protected handleFiles(files: FileList): void {
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const row = this.createRow(file);
@@ -371,12 +371,12 @@ export class DDFolderUploader extends DDFileUploaderBase {
         }
     }
 
-    protected beforeUpload(item: TableRowUploadedElement) {
+    protected beforeUpload(item: TableRowUploadedElement): void {
         this.uploadedItem = item;
         this.progressBar = item.progressBar;
     }
 
-    protected uploadCompleteHandlerCB(req: XMLHttpRequest) {
+    protected uploadCompleteHandlerCB(req: XMLHttpRequest): void {
         const item = this.uploadedItem;
         const row = <HTMLTableRowElement>getCopyOfNode(req.responseXML.documentElement.firstChild);
 
@@ -401,7 +401,7 @@ export class DDFolderUploader extends DDFileUploaderBase {
         }
     }
 
-    protected progressHandlerCB(progress: number) {
+    protected progressHandlerCB(progress: number): void {
         // 0 <= progress <= 1
         let size = this.progressBarMaxSize * progress;
         size = Math.round(size);

@@ -5,7 +5,7 @@ export interface UploadedElement {
 export class DDFileUploaderBase {
     protected dropbox: HTMLElement;
     private readonly uploadUrl: string;
-    private uploadQueue: any[];
+    private uploadQueue: UploadedElement[];
     private _uploadQueueRunning: boolean;
 
     constructor(dropbox: HTMLElement, uploadUrl: string) {
@@ -14,18 +14,18 @@ export class DDFileUploaderBase {
         this.uploadQueue = [];
         this._uploadQueueRunning = false;
 
-        dropbox.addEventListener('dragenter', (evt) => this.dragenter(evt));
-        dropbox.addEventListener('dragover', (evt) => this.dragover(evt));
+        dropbox.addEventListener('dragenter', (evt) => DDFileUploaderBase.dragenter(evt));
+        dropbox.addEventListener('dragover', (evt) => DDFileUploaderBase.dragover(evt));
         dropbox.addEventListener('drop', (evt) => this.drop(evt));
     }
 
     // Drag and drop
-    private dragenter(evt: DragEvent) {
+    private static dragenter(evt: DragEvent) {
         evt.preventDefault();
         evt.stopPropagation();
     }
 
-    private dragover(evt: DragEvent) {
+    private static dragover(evt: DragEvent) {
         evt.preventDefault();
         evt.stopPropagation();
         evt.dataTransfer.dropEffect = 'copy';
@@ -40,14 +40,16 @@ export class DDFileUploaderBase {
     }
 
     // Methods about upload
-    protected handleFiles(files: FileList) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    protected handleFiles(files: FileList): void {
         // To be implemented by descendant.
     }
 
 
-    protected beforeUpload(item: UploadedElement) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    protected beforeUpload(item: UploadedElement):void {
         // To be implemented by decendant.
-    };
+    }
 
 
     private upload(item: UploadedElement) {
@@ -59,7 +61,7 @@ export class DDFileUploaderBase {
 
         req.upload.addEventListener('progress', (evt) => this.progressHandler(evt));
         req.addEventListener('readystatechange',
-            (evt) => {
+            () => {
                 if (req.readyState === 4) {
                     this.uploadCompleteHandler(req);
                 }
@@ -77,10 +79,11 @@ export class DDFileUploaderBase {
                 }
             });
         reader.readAsArrayBuffer(file);
-    };
+    }
 
 
-    protected uploadCompleteHandlerCB(req: XMLHttpRequest) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    protected uploadCompleteHandlerCB(req: XMLHttpRequest): void {
         // To be implemented by descendant.
     }
 
@@ -89,7 +92,8 @@ export class DDFileUploaderBase {
         this.uploadQueueLoadNext();
     }
 
-    protected progressHandlerCB(progress: number) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    protected progressHandlerCB(progress: number): void {
         // To be implemented by descendant.
         // 0 <= progress <= 1
     }
@@ -101,7 +105,7 @@ export class DDFileUploaderBase {
     }
 
     // Methods about queue
-    protected uploadQueuePush(item: UploadedElement) {
+    protected uploadQueuePush(item: UploadedElement): void {
         this.uploadQueue.push(item);
         if (!this._uploadQueueRunning) {
             this.startUploadQueue();

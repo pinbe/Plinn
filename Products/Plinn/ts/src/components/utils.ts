@@ -1,6 +1,6 @@
 import {GLOBAL_SCRIPT_REGISTRY} from "./script_registry";
 
-export function readCookie(name: string) {
+export function readCookie(name: string): string | null {
     // from w3schools.com
     const nameEQ = name + "=";
     const ca = document.cookie.split(';');
@@ -16,7 +16,7 @@ export function readCookie(name: string) {
     return null;
 }
 
-export function writeAjaxResponse(doc: Document) {
+export function writeAjaxResponse(doc: Document): void {
     if (doc.documentElement.tagName !== 'fragments')
         return;
 
@@ -28,7 +28,7 @@ export function writeAjaxResponse(doc: Document) {
                 if (!base) {
                     const head = document.querySelector<HTMLHeadElement>('head');
                     base = document.createElement('base');
-                    head.appendChild(base)
+                    head.appendChild(base);
                 }
                 base.href = elt.getAttribute('href');
                 break;
@@ -42,10 +42,9 @@ export function writeAjaxResponse(doc: Document) {
                     dest.innerHTML = elt.firstChild.nodeValue; // eg. content text carried by a CDATA
                     dest.querySelectorAll('script')
                         .forEach((script: HTMLScriptElement) => GLOBAL_SCRIPT_REGISTRY.loadScript(script));
-                }
-                else {
+                } else {
                     console.warn('dest element not found:', selector);
-                    console.log(elt.firstChild.nodeValue)
+                    console.log(elt.firstChild.nodeValue);
                 }
                 break;
         }
@@ -53,7 +52,7 @@ export function writeAjaxResponse(doc: Document) {
 }
 
 /* adapted from http://xahlee.info/js/js_shake_box.html */
-export function shake(e: HTMLElement, distance = 5, time = 500) {
+export function shake(e: HTMLElement, distance = 5, time = 500): void {
     // Save the original style of e, Make e relatively positioned, Note the animation start time, Start the animation
     const originalStyle = e.style.cssText;
     e.style.position = "relative";
@@ -89,11 +88,12 @@ export function shake(e: HTMLElement, distance = 5, time = 500) {
     animate();
 }
 
-export function smoothScroll(from: number, to: number) {
+export function smoothScroll(from: number, to: number): void {
     const step = 25;
     let pos = from;
     const dir: number = (to > from) ? 1 : -1;
 
+    // eslint-disable-next-line prefer-const
     let intervalId: number;
 
     function jump() {
@@ -134,7 +134,7 @@ export function getCopyOfNode(node: Node): Node {
     }
 }
 
-export function absolute_url() {
+export function absolute_url(): string {
     let e = document.getElementById("Object_URL");
     if (e)
         return e.innerText;
@@ -147,7 +147,7 @@ export function absolute_url() {
     }
 }
 
-export function portal_url() {
+export function portal_url(): string {
     return document.body.getAttribute('data-portal_url');
 }
 
@@ -159,15 +159,19 @@ export const getWindowHeight = (window.innerHeight !== undefined) ?
     () => window.innerHeight :
     () => document.documentElement.clientHeight;
 
-export const clearSelection = function () {
+export const clearSelection = function (): void {
     if (window.getSelection) {
         if (window.getSelection().empty) {  // Chrome
             window.getSelection().empty();
         } else if (window.getSelection().removeAllRanges) {  // Firefox
             window.getSelection().removeAllRanges();
         }
-    } else { // @ts-ignore
+
+    } else {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         if (document.selection) {  // IE?
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             document.selection.empty();
         }

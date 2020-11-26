@@ -28,12 +28,12 @@ export class Slideshow {
         this.tr_duration = Math.min(TRANSITION_DURATION, duration / 2) * 1000;
     }
 
-    public start() {
+    public start(): void {
         this.pendingImage.src = `${this.imgUrls[this.currentIndex]}/getResizedImage?size=${this.width}_${this.height}`;
     }
 
     private onImgLoaded() {
-        let prevImg = this.container.querySelector('img');
+        const prevImg = this.container.querySelector('img');
         if (prevImg)
             d3.select(prevImg)
                 .transition().duration(this.tr_duration)

@@ -4,7 +4,6 @@
 //
 //
 
-import SubmitEvent = JQuery.SubmitEvent;
 import {shake, smoothScroll, writeAjaxResponse} from "./utils";
 import {GLOBAL_SCRIPT_REGISTRY} from "./script_registry";
 
@@ -22,18 +21,19 @@ export class FormManager {
     public onBeforeSubmit: (fm: this, evt: Event) => string;
     public onResponseLoad: (resp: XMLHttpRequest) => void;
     onAfterPopulate: (resp: XMLHttpRequest) => void;
-    public submitButton: HTMLInputElement | HTMLButtonElement | {name: string, value: string};
+    public submitButton: HTMLInputElement | HTMLButtonElement | { name: string, value: string };
     private readonly lazyListeners: {
-        element: HTMLInputElement|HTMLTextAreaElement,
+        element: HTMLInputElement | HTMLTextAreaElement,
         eventName: string,
-        handler: (evt: Event) => void }[];
+        handler: (evt: Event) => void
+    }[];
     private hasFile: boolean;
     private liveFormField: HTMLInputElement | HTMLTextAreaElement;
     private pendingEvent: [HTMLElement, string];
     private fieldTagName: string;
 
     constructor(form: HTMLFormElement,
-                responseTextDest: HTMLElement=undefined,
+                responseTextDest: HTMLElement = undefined,
                 lazy = false,
                 noHistory = false) {
         if (form.elements.namedItem("noAjax"))
@@ -67,7 +67,7 @@ export class FormManager {
         }
     }
 
-    public submit(evt: Event = null) {
+    public submit(evt: Event = null): void {
         const form = this.form;
 
         let bsMessage: string; // before submit message
@@ -76,10 +76,7 @@ export class FormManager {
         }
 
         if (bsMessage === 'cancelSubmit') {
-            try {
-                evt.preventDefault();
-            } catch (e) {
-            }
+            evt?.preventDefault();
             return;
         }
 
@@ -106,10 +103,7 @@ export class FormManager {
         else
             this._get(query);
 
-        try {
-            evt.preventDefault();
-        } catch (e2) {
-        }
+        evt?.preventDefault();
     }
 
     private _post(query: string) {
@@ -134,6 +128,7 @@ export class FormManager {
     private _get(query: string) {
         let url = this.form.action;
         url += '?' + query;
+        window.location.href = url;
         // TODO:
         // AjaxLinkHandler.prototype.loadUrl(url);
     }
@@ -209,7 +204,7 @@ export class FormManager {
                         {
                             element: inputText,
                             eventName: 'keypress',
-                            handler: (evt) => this._fitField(evt)
+                            handler: (evt) => FormManager._fitField(evt)
                         }
                     );
                     this._addLazyListeners();
@@ -238,7 +233,7 @@ export class FormManager {
                         {
                             element: ta,
                             eventName: 'blur',
-                            handler: () =>this.submit()
+                            handler: () => this.submit()
                         }
                     );
                     this._addLazyListeners();
@@ -321,7 +316,7 @@ export class FormManager {
             elements = form.elements;
         } else {
             elements = [];
-            let formElements = form.elements;
+            const formElements = form.elements;
             for (let i = 0; i < formElements.length; i++) {
                 formElem = <HTMLInputElement>formElements[i];
                 switch (formElem.type) {
@@ -354,6 +349,7 @@ export class FormManager {
                     }
                     break;
                 case 'select-multiple':
+                    // eslint-disable-next-line prefer-const
                     let options = formElem.getElementsByTagName("OPTION"), option;
                     for (let j = 0; j < options.length; j++) {
                         option = <HTMLOptionElement>options[j];
@@ -372,7 +368,7 @@ export class FormManager {
         return {'query': strSubmit, 'hasFile': hasFile};
     }
 
-    loadResponse(resp: XMLHttpRequest) {
+    loadResponse(resp: XMLHttpRequest): void {
         if (resp.getResponseHeader('Content-Type').indexOf('text/xml') !== -1) {
             switch (resp.responseXML.documentElement.nodeName) {
                 case 'fragments' :
@@ -386,18 +382,18 @@ export class FormManager {
         } else {
             this.responseTextDest.innerHTML = resp.responseText;
             this.responseTextDest.querySelectorAll<HTMLScriptElement>('script')
-                .forEach((script)=>GLOBAL_SCRIPT_REGISTRY.loadScript(script));
+                .forEach((script) => GLOBAL_SCRIPT_REGISTRY.loadScript(script));
         }
 
         this.onAfterPopulate(resp);
-        this.scrollToPortalMessage();
+        FormManager.scrollToPortalMessage();
         const url = this.form.action;
         if (!this.noHistory) {
             history.pushState(url, document.title, url);
         }
     }
 
-    private scrollToPortalMessage() {
+    private static scrollToPortalMessage() {
         const psm = document.getElementById('status-message');
         if (psm) {
             const msgOffset = psm.offsetTop;
@@ -406,7 +402,7 @@ export class FormManager {
         }
     }
 
-    private _fitField(evt: Event) {
+    private static _fitField(evt: Event) {
         const ob = <HTMLInputElement>evt.target;
         let inputWidth = ob.value.length / 1.9;
         inputWidth = (inputWidth > 5) ? inputWidth : 5;
@@ -414,11 +410,11 @@ export class FormManager {
     }
 }
 
-export function initForms(baseElement: HTMLElement|Document, lazy:boolean) {
+export function initForms(baseElement: HTMLElement | Document, lazy: boolean): void {
     if (!baseElement) {
         baseElement = document;
     }
     const dest = document.getElementById("content-wrapper");
     baseElement.querySelectorAll("form")
-        .forEach((form)=>new FormManager(form, dest, lazy))
+        .forEach((form) => new FormManager(form, dest, lazy));
 }

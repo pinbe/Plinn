@@ -45,9 +45,8 @@ class ScriptRegistry {
                 this.HEAD.appendChild(script);
                 this.loadedScripts[script.src] = true;
                 this.isLoading = true;
-                const this_ = this;
-                script.onload = function () {
-                    this_._removeScriptAfterLoad();
+                script.onload = () => {
+                    this._removeScriptAfterLoad();
                 };
                 break;
             case 'code' :
