@@ -25,6 +25,7 @@
     "webpack-obfuscator": "^3.1.0"
   },
   "dependencies": {
+    "bootstrap-icons": "^1.2.1",
     "d3": "^6.3.1",
     "jquery": "^3.5.1"
   }
