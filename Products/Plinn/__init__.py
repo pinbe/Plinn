@@ -75,6 +75,7 @@ if __solr_ok :
 # register files extensions
 registerFileExtension('ttf', FSFile)
 registerFileExtension('eot', FSFile)
+registerFileExtension('otf', FSFile)
 registerFileExtension('cur', FSFile)
 registerFileExtension('woff', FSFile)
 registerFileExtension('woff2', FSFile)
