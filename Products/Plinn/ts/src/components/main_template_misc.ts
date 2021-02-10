@@ -6,6 +6,7 @@ const STATUS_MESSAGE_DURATION = 8; // seconds
 
 function fixTopBar() {
     const topBar = document.getElementById('top-bar');
+    if(!topBar) return;
     const topBarRect = topBar.getBoundingClientRect();
     topBar.style.position = 'fixed';
     document.getElementById('content-outer').style.paddingTop = topBarRect.height + 'px';
