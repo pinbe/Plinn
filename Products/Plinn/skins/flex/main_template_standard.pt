@@ -34,6 +34,7 @@
       <link rel="stylesheet" media="screen" tal:attributes="href here/global_plinn_style.css/absolute_url" />
       <link rel="stylesheet" media="screen" tal:attributes="href string:${portal_url}/fonts/fontawesome/css/all.min.css" />
       <link rel="stylesheet" media="screen" tal:attributes="href string:${portal_url}/plinn/bi/bootstrap-icons.css" />
+      <link rel="stylesheet" media="screen" tal:attributes="href string:${portal_url}/plinn/jsbuild/css/bs-plinn.build.css" />
       <style type="text/css" media="all" tal:content="string:@import url(${here/calendar-system.css/absolute_url});"></style>
 
       <link metal:define-slot="css_slot" tal:replace="nothing" />

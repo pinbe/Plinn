@@ -19,9 +19,9 @@ const targets = tsTargets.map(name => {
 // scss targets
 targets.push(
     {
-        entry: './src/custom.scss',
+        entry: './src/bs-plinn.scss',
         output: {
-            filename: 'plinn-all.css'
+            filename: 'bs-plinn.css'
         }
     }
 );
