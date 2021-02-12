@@ -1,8 +1,8 @@
 import {portal_url} from "./components/utils";
 import {Slideshow} from "./components/slideshow";
-import "./custom.scss";
+// import "./custom.scss";
 import "bootstrap";
-import * as $ from "jquery";
+// import * as $ from "jquery";
 
 const connurl = portal_url() + '/ckeditor/filemanager/browser/mac_finder/connectors/plinn/connector'
 document.querySelectorAll<HTMLDivElement>('div.slideshow')

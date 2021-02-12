@@ -1,4 +1,5 @@
-const names = [
+// typescript targets
+const tsTargets = [
     'main',
     'slideshow_helper',
     'metadata_helper',
@@ -6,13 +7,25 @@ const names = [
     'folder_factories',
 ];
 
-module.exports = {
-    targets : names.map(name => {
-        return {
-            entry: `./src/${name}.ts`,
-            output: {
-                filename: `${name}.js`
-            }
+const targets = tsTargets.map(name => {
+    return {
+        entry: `./src/${name}.ts`,
+        output: {
+            filename: `${name}.js`
         }
-    })
+    };
+});
+
+// scss targets
+targets.push(
+    {
+        entry: './src/custom.scss',
+        output: {
+            filename: 'plinn-all.css'
+        }
+    }
+);
+
+module.exports = {
+    targets: targets
 };
