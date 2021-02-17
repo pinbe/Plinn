@@ -21,6 +21,7 @@
              tal:attributes="href brain/getURL">
             <span tal:define="portfolio brain/getObject;
                               sphoto portfolio/samplePhoto" tal:omit-tag="">
+              <h3 tal:content="portfolio/title_or_id">Portfolio title or id</h3>
               <span tal:condition="sphoto" tal:omit-tag="">
                 <img tal:attributes="src string:${sphoto/url}/getThumbnail;
                                      alt sphoto/title;
@@ -31,7 +32,6 @@
                 <img tal:attributes="src here/empty_portfolio.gif/absolute_url;
                                      alt portfolio/title_or_id"/>
               </span>
-              <h3 tal:content="portfolio/title_or_id">Portfolio title or id</h3>
               <div tal:content="portfolio/Description"></div>
             </span>
           </a>
