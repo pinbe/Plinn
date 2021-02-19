@@ -14,7 +14,7 @@
       <meta name="keywords"
             tal:define="keywords python:here.Subject() or portal_object.keywords or []"
             tal:attributes="content python:', '.join(keywords)" />
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=0.75">
       <metal:block metal:define-slot="meta"></metal:block>
       <base tal:omit-tag="" metal:define-slot="base" />
 
