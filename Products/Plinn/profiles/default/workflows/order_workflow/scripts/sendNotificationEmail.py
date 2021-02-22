@@ -8,6 +8,7 @@
 ##title=
 ##
 from Products.photoprint.utils import translate
+
 _ = lambda msg : translate(msg, context)
 portal = context.portal_url.getPortalObject()
 
@@ -15,28 +16,29 @@ mtool = portal.portal_membership
 
 recipients = sci.kwargs.get('recipients', [])
 if not recipients :
-	return []
-
+    return []
 
 MailHost = portal.MailHost
 from quopri import encodestring
 
+
 def encodeAdr(member) :
-	name = member.getMemberFullName(nameBefore=0)
-	email = member.getProperty('email')
-	qpName = encodestring(name).replace('=\n', '')
-	return '''"=?utf-8?q?%s?=" <%s>''' % (qpName, email)
+    name = member.getMemberFullName(nameBefore=0)
+    email = member.getProperty('email')
+    qpName = encodestring(name).replace('=\n', '')
+    return '''"=?utf-8?q?%s?=" <%s>''' % (qpName, email)
 
 
 object = sci.object
 
-sender = mtool.getAuthenticatedMember()
-sender = encodeAdr(sender)
+sender = '''"=?utf-8?q?%s?=" <%s>''' % \
+         (encodestring(portal.getProperty('email_from_name')).replace('=\n', ''),
+          portal.getProperty('email_from_address'))
 
-recipientsFormated = map(encodeAdr, mtool.getMembers( recipients ))
+recipientsFormated = map(encodeAdr, mtool.getMembers(recipients))
 mto = ', '.join(recipientsFormated)
-if mto[-2:] == ', ' :
-	mto = mto[:-2]
+if mto[-2 :] == ', ' :
+    mto = mto[:-2]
 
 subject = sci.kwargs.get('subject', '')
 
@@ -48,25 +50,21 @@ pr('')
 
 trNumber = sci.kwargs.get('tracking_number', '')
 if trNumber :
-	pr(_('Tracking number').encode('utf-8') + ' ' + trNumber)
+    pr(_('Tracking number').encode('utf-8') + ' ' + trNumber)
 
 trUrl = sci.kwargs.get('tracking_url', '')
 if trUrl :
-	pr(_('Tracking url').encode('utf-8') + ' ' + trUrl)
+    pr(_('Tracking url').encode('utf-8') + ' ' + trUrl)
 
 body = '\n'.join(body)
 
+message = context.echange_mail_template(From=sender,
+                                        To=mto,
+                                        Subject="=?utf-8?q?%s?=" % encodestring(subject).replace('=\n', ''),
+                                        ContentType='text/plain',
+                                        charset='UTF-8',
+                                        body=body)
 
-
-message = context.echange_mail_template(  From = sender
-										, To = mto
-										, Subject = "=?utf-8?q?%s?=" % encodestring(subject).replace('=\n', '')
-										, ContentType = 'text/plain'
-										, charset = 'UTF-8'
-										, body=body
-										)
-
-
-MailHost.send( message.encode('utf-8') )
+MailHost.send(message.encode('utf-8'))
 
 return recipients
