@@ -28,6 +28,16 @@ def encodeAdr(member) :
     qpName = encodestring(name).replace('=\n', '')
     return '''"=?utf-8?q?%s?=" <%s>''' % (qpName, email)
 
+def encodeSubject(subject) :
+    specials = '''!"#$@[\]^`{|}~'''
+    encoded = ''
+    for c in subject :
+        if c in specials :
+            encoded += ('=%x' % ord(c)).upper()
+        else :
+            encoded += encodestring(c)
+    return encoded
+
 
 object = sci.object
 
@@ -60,7 +70,7 @@ body = '\n'.join(body)
 
 message = context.echange_mail_template(From=sender,
                                         To=mto,
-                                        Subject="=?utf-8?q?%s?=" % encodestring(subject).replace('=\n', ''),
+                                        Subject="=?utf-8?q?%s?=" % encodeSubject(subject).replace('=\n', ''),
                                         ContentType='text/plain',
                                         charset='UTF-8',
                                         body=body)
