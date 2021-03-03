@@ -319,8 +319,7 @@ a:hover {
 
 .additionalTabs .selected a {
   background-color : &dtml-tabsBorderColor;;
-  }
-/Users/pinbe/dev/pyenvs/zope-2.13.26/lib/python2.7/site-packages/Products/CMFCore/permissions.py:91
+}
 
 
 /* Batched navigation */
