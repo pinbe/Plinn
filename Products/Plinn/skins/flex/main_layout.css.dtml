@@ -176,10 +176,6 @@ a:hover {
   margin-top: 1rem;
 }
 
-#DesktopTitle {
-  margin-top: 1rem;
-}
-
 #status-message {
   font-weight: bold;
   text-align: center;

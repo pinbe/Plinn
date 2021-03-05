@@ -97,6 +97,7 @@ table.FolderFactories td.spacing {
 
 .palette {
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .palette .toggle {
