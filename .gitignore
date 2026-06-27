@@ -5,3 +5,4 @@ jsbuild
 .idea
 *.egg-info
 *~
+event.json
