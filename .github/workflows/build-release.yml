@@ -1,0 +1,45 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: zope-2.13-egg
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 25.8.1
+
+      - name: Install dependencies
+        working-directory: ./Products/Plinn/ts
+        run: npm ci
+
+      - name: Build webpack bundle
+        working-directory: ./Products/Plinn/ts
+        run: npx webpack --config webpack.config.js
+
+      - name: Cleaning up and creating tarball
+        run: |
+          rm -rf Products/Plinn/ts/node_modules
+          rm -rf .git*
+          cd ..
+          tar -cJf build.tar.xz Plinn/
+          mv build.tar.xz Plinn/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build.tar.xz
