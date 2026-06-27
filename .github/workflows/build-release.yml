@@ -33,6 +33,9 @@ jobs:
 
       - name: Cleaning up and creating tarball
         run: |
+          rm Products/Plinn/skins/flex/plinn/bi
+          mkdir -p Products/Plinn/skins/flex/plinn/bi
+          cp -R Products/Plinn/ts/node_modules/bootstrap-icons/font/* Products/Plinn/skins/flex/plinn/bi
           rm -rf Products/Plinn/ts/node_modules
           rm -rf .git*
           cd ..
