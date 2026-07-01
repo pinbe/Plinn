@@ -364,7 +364,7 @@ class PlinnFolder(CMFCatalogAware, PortalFolder, DefaultDublinCoreImpl) :
             meth = getattr(self, method_id) if method_id else lambda ob : 'Not implemented'
 
         RESPONSE.setStatus(httpRespCode)
-        RESPONSE.setHeader('Content-Type', 'text/xml;;charset=utf-8')
+        RESPONSE.setHeader('Content-Type', 'text/xml;charset=utf-8')
         return '<fragment>%s</fragment>' % meth(ob).strip()
 
     
